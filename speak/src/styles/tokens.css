@@ -1,0 +1,138 @@
+/*
+ * SPEAK — design tokens. THIS IS A CONTRACT.
+ *
+ * Components use these variables and the class names in components.css.
+ * No raw hex, no raw px font sizes, no one-off radii or shadows anywhere else.
+ * A card feed that drifts by 2px per screen reads as cheap, and the whole point
+ * is that this feels better to open than Instagram.
+ */
+
+:root {
+  /* ── surface ─────────────────────────────────────────────────────────── */
+  --bg: #0b0d10;
+  --surface: #14181d;
+  --surface-2: #1c2229;
+  --line: #262d36;
+
+  /* ── ink ─────────────────────────────────────────────────────────────── */
+  --ink: #f2f5f8;
+  --ink-2: #a8b3bf;
+  --ink-3: #6b7683;
+
+  /* ── accent ──────────────────────────────────────────────────────────── */
+  --accent: #4ade80;
+  --accent-ink: #07120b;
+  --warn: #fbbf24;
+  --bad: #f87171;
+
+  /* One hue per card type — the feed should be readable at a glance. */
+  --t-word: #60a5fa;
+  --t-swap: #c084fc;
+  --t-idiom: #fbbf24;
+  --t-action_verb: #f472b6;
+  --t-pronounce: #22d3ee;
+  --t-say_it: #4ade80;
+  --t-breath: #94a3b8;
+
+  /* ── type scale — eight sizes, no others ─────────────────────────────── */
+  --fs-1: 0.6875rem; /* 11px — labels */
+  --fs-2: 0.8125rem; /* 13px — meta */
+  --fs-3: 0.9375rem; /* 15px — body */
+  --fs-4: 1.0625rem; /* 17px — lead */
+  --fs-5: 1.375rem; /* 22px — card body */
+  --fs-6: 1.75rem; /* 28px — term */
+  --fs-7: 2.25rem; /* 36px — hero term */
+  --fs-8: 3rem; /* 48px — timer */
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  --lh-tight: 1.15;
+  --lh-body: 1.5;
+
+  /* ── space scale ─────────────────────────────────────────────────────── */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+
+  /* The single page gutter. Every screen edge uses this and nothing else. */
+  --gutter: 20px;
+
+  /* ── shape ───────────────────────────────────────────────────────────── */
+  --r-sm: 10px;
+  --r-md: 18px;
+  --r-lg: 28px;
+  --r-pill: 999px;
+
+  --shadow: 0 8px 32px rgb(0 0 0 / 0.45);
+
+  /* ── motion ──────────────────────────────────────────────────────────── */
+  --dur-fast: 120ms;
+  --dur: 220ms;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* ── chrome heights ───────────────────────────────────────────────────── */
+  --tabbar-h: 56px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: var(--fs-3);
+  line-height: var(--lh-body);
+  /* The feed manages its own scrolling; the page itself never scrolls. */
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* iOS zooms the page when a font-size < 16px input is focused. */
+input,
+textarea,
+select {
+  font: inherit;
+  font-size: max(16px, var(--fs-3));
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Every tappable thing is at least this big. No exceptions. */
+.tap {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

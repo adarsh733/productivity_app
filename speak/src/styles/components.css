@@ -1,0 +1,681 @@
+/*
+ * Component styles. Every value comes from tokens.css — no raw hex, no raw px
+ * font sizes, no radii outside the four defined there.
+ *
+ * Built for one screen: an iPhone at 375×812, held in one hand, used for
+ * forty seconds at a time.
+ */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: var(--safe-top);
+}
+
+.app-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The feed stays mounted behind the other tabs. */
+.pane {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pane[hidden] {
+  display: none;
+}
+
+.screen {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--gutter) var(--s-4);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.screen.center {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* The feed owns the whole viewport; only the card body scrolls. */
+.screen.feed {
+  overflow: hidden;
+}
+
+/* ── tab bar ─────────────────────────────────────────────────────────────── */
+.tabbar {
+  display: flex;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  padding-bottom: var(--safe-bottom);
+  flex: none;
+}
+
+.tabbar-btn {
+  flex: 1;
+  height: var(--tabbar-h);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: var(--ink-3);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.tabbar-glyph {
+  font-size: var(--fs-4);
+  line-height: 1;
+}
+
+.tabbar-label {
+  font-size: var(--fs-1);
+  letter-spacing: 0.04em;
+}
+
+.tabbar-btn.is-active {
+  color: var(--accent);
+}
+
+/* ── feed chrome ─────────────────────────────────────────────────────────── */
+.feed-top {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+
+.feed-top-left {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-width: 0;
+}
+
+.pill {
+  font-size: var(--fs-1);
+  letter-spacing: 0.1em;
+  font-weight: var(--fw-medium);
+  padding: var(--s-1) var(--s-3);
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.pill-core {
+  color: var(--accent);
+}
+
+.streak {
+  font-size: var(--fs-1);
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+}
+
+.urge {
+  font-size: var(--fs-1);
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+  padding: var(--s-2) var(--s-3);
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line);
+  white-space: nowrap;
+  transition:
+    color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.urge.is-flash {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.core-bar {
+  flex: none;
+  height: 2px;
+  background: var(--surface-2);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.core-bar span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease);
+}
+
+/* ── the card ────────────────────────────────────────────────────────────── */
+.card-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.card-stage.is-leaving {
+  opacity: 0;
+  transform: translateY(-24px);
+  transition:
+    opacity var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease);
+}
+
+.card {
+  flex: 1;
+  min-height: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--accent-card, var(--line));
+  border-radius: var(--r-lg);
+  padding: var(--s-5) var(--s-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.card-kicker {
+  flex: none;
+  font-size: var(--fs-1);
+  letter-spacing: 0.14em;
+  font-weight: var(--fw-medium);
+  color: var(--accent-card, var(--ink-3));
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  margin: auto 0;
+}
+
+.term {
+  font-size: var(--fs-7);
+  line-height: var(--lh-tight);
+  font-weight: var(--fw-bold);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.term-sm {
+  font-size: var(--fs-6);
+}
+
+.term-weak {
+  color: var(--ink-2);
+  text-decoration: line-through;
+  text-decoration-color: var(--bad);
+  text-decoration-thickness: 2px;
+}
+
+.pos {
+  font-size: var(--fs-2);
+  color: var(--ink-3);
+  margin: 0;
+  font-style: italic;
+}
+
+.meaning {
+  font-size: var(--fs-4);
+  margin: 0;
+  color: var(--ink);
+}
+
+.contrast,
+.scenario {
+  font-size: var(--fs-3);
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.scenario {
+  color: var(--ink-3);
+}
+
+.quote {
+  margin: 0;
+  padding-left: var(--s-3);
+  border-left: 2px solid var(--line);
+  font-size: var(--fs-4);
+  color: var(--ink);
+}
+
+.examples,
+.instructions {
+  margin: 0;
+  padding-left: var(--s-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  font-size: var(--fs-3);
+  color: var(--ink-2);
+}
+
+.answers {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.answers li {
+  font-size: var(--fs-4);
+  padding: var(--s-2) var(--s-3);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  color: var(--ink);
+}
+
+.answers li:first-child {
+  color: var(--accent);
+}
+
+.prompt {
+  margin: 0;
+  font-size: var(--fs-3);
+  color: var(--accent);
+  display: flex;
+  gap: var(--s-2);
+  align-items: baseline;
+}
+
+.prompt-mark {
+  flex: none;
+  width: var(--s-2);
+  height: var(--s-2);
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+
+.hint {
+  font-size: var(--fs-2);
+  color: var(--ink-3);
+  margin: 0;
+}
+
+.warn {
+  font-size: var(--fs-3);
+  color: var(--warn);
+  margin: 0;
+}
+
+.syllables {
+  margin: 0;
+  font-size: var(--fs-6);
+  color: var(--ink-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.syllables .stressed {
+  color: var(--ink);
+  font-weight: var(--fw-bold);
+}
+
+.line {
+  margin: 0;
+  font-size: var(--fs-5);
+  line-height: var(--lh-body);
+  color: var(--ink);
+}
+
+/* Pause marks rendered as beats, not punctuation. */
+.pause {
+  display: inline-block;
+  width: var(--s-3);
+  height: 2px;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  vertical-align: middle;
+  margin: 0 var(--s-2);
+  opacity: 0.7;
+}
+
+.pause-long {
+  width: var(--s-6);
+  opacity: 1;
+}
+
+/* ── breath drills ───────────────────────────────────────────────────────── */
+.drill {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  align-items: flex-start;
+}
+
+.timer {
+  margin: 0;
+  font-size: var(--fs-8);
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--lh-tight);
+}
+
+.timer .unit {
+  font-size: var(--fs-4);
+  font-weight: var(--fw-regular);
+  color: var(--ink-3);
+  margin-left: var(--s-1);
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+/* ── buttons ─────────────────────────────────────────────────────────────── */
+.btn {
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: var(--s-3) var(--s-5);
+  min-height: 44px;
+  background: var(--surface-2);
+  color: var(--ink);
+  font-size: var(--fs-3);
+  align-self: flex-start;
+  transition:
+    background var(--dur-fast) var(--ease),
+    opacity var(--dur-fast) var(--ease);
+}
+
+.btn:active {
+  opacity: 0.6;
+}
+
+.btn:disabled {
+  opacity: 0.35;
+}
+
+.btn.big {
+  padding: var(--s-4) var(--s-6);
+  font-size: var(--fs-4);
+  align-self: stretch;
+  text-align: center;
+}
+
+.btn.round {
+  min-width: 44px;
+  padding: var(--s-3);
+  text-align: center;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: transparent;
+  font-weight: var(--fw-medium);
+}
+
+.btn.is-running {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.countdown {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+
+/* ── grades ──────────────────────────────────────────────────────────────── */
+.grades {
+  flex: none;
+  display: flex;
+  gap: var(--s-2);
+  align-items: stretch;
+}
+
+.grades-pass {
+  display: flex;
+  gap: var(--s-2);
+  flex: 1;
+}
+
+.grades .btn {
+  align-self: stretch;
+  flex: 1;
+  padding: var(--s-3) var(--s-2);
+  text-align: center;
+  font-size: var(--fs-2);
+}
+
+/* `again` is not "skip" — it means "I failed that", so it sits apart. */
+.grade-again {
+  flex: 0 0 auto;
+  min-width: 76px;
+  color: var(--bad);
+  background: transparent;
+}
+
+.grade-easy {
+  color: var(--accent);
+}
+
+.swipe-hint {
+  flex: none;
+  margin: 0;
+  text-align: center;
+  font-size: var(--fs-1);
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+  opacity: 0.6;
+}
+
+.feed-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-4);
+  text-align: center;
+}
+
+.feed-empty .btn.big {
+  align-self: stretch;
+}
+
+.kicker-done {
+  margin: 0;
+  font-size: var(--fs-1);
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+
+.spinner {
+  width: var(--s-5);
+  height: var(--s-5);
+  border-radius: var(--r-pill);
+  border: 2px solid var(--line);
+  border-top-color: var(--accent);
+  animation: spin 700ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── inbox ───────────────────────────────────────────────────────────────── */
+.inbox-field {
+  flex: none;
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  color: var(--ink);
+  padding: var(--s-4);
+  resize: none;
+  line-height: var(--lh-body);
+}
+
+.inbox-field::placeholder {
+  color: var(--ink-3);
+}
+
+.inbox-field:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.inbox-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.inbox-list li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-3);
+  border-bottom: 1px solid var(--line);
+  padding: var(--s-3) 0;
+}
+
+.inbox-text {
+  font-size: var(--fs-3);
+  color: var(--ink-2);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.inbox-x {
+  flex: none;
+  min-width: 44px;
+  min-height: 44px;
+  color: var(--ink-3);
+  font-size: var(--fs-4);
+}
+
+/* ── progress ────────────────────────────────────────────────────────────── */
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  padding: var(--s-5) 0 var(--s-3);
+}
+
+.hero-value {
+  font-size: var(--fs-8);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+.hero-label {
+  font-size: var(--fs-2);
+  letter-spacing: 0.08em;
+  color: var(--ink-2);
+}
+
+.stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-3);
+}
+
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: var(--s-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+
+.stat-value {
+  font-size: var(--fs-6);
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: var(--fs-1);
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+}
+
+.today-row {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.dot {
+  width: var(--s-2);
+  height: var(--s-2);
+  border-radius: var(--r-pill);
+  background: var(--ink-3);
+  flex: none;
+}
+
+.dot.is-on {
+  background: var(--accent);
+}
+
+.meta {
+  font-size: var(--fs-2);
+  color: var(--ink-3);
+  margin: 0;
+}
+
+.footnote {
+  line-height: var(--lh-body);
+}
+
+/* ── hindi ───────────────────────────────────────────────────────────────── */
+.screen.hindi {
+  overflow: hidden;
+}
+
+.hindi-top {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hindi-nav {
+  flex: none;
+  display: flex;
+  gap: var(--s-2);
+  align-items: stretch;
+}
+
+.hindi-nav .btn {
+  flex: 1;
+  align-self: stretch;
+  text-align: center;
+  padding: var(--s-3) var(--s-2);
+}
