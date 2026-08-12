@@ -4,13 +4,6 @@ import { currentStreak } from '../../features/session/day';
 import { todayKey } from '../../lib/date';
 import { syncConfigured } from '../../sync/supabase';
 
-/**
- * Four numbers.
- *
- * `urgesRedirected` is the headline and is deliberately the largest thing on
- * the screen — it is the only number here that measures what the app is
- * actually for. Charts arrive in Phase 5, when there is history worth drawing.
- */
 export default function ProgressScreen() {
   const days = useLiveQuery(() => db.days.toArray(), [], []);
   const today = todayKey();
@@ -19,51 +12,61 @@ export default function ProgressScreen() {
 
   const streak = currentStreak(new Map(rows.map((d) => [d.date, d])), today);
   const urges = rows.reduce((n, d) => n + d.urgesRedirected, 0);
-  const cards = rows.reduce((n, d) => n + d.cardsCompleted, 0);
+  const cardsToday = todayRow?.cardsCompleted ?? 0;
+  const totalCards = rows.reduce((n, d) => n + d.cardsCompleted, 0);
   const bestMpt = rows.reduce((n, d) => Math.max(n, d.bestMptSec ?? 0), 0);
-  const activeDays = rows.filter((d) => d.coreThreeDone).length;
+  const hasHistory = totalCards > 0 || rows.length > 1;
 
   return (
     <div className="screen progress">
-      <section className="hero-stat">
-        <span className="hero-value">{urges}</span>
-        <span className="hero-label">urges redirected</span>
-        <p className="hint">
-          Every time you felt the pull and did a card instead. This is the number
-          that matters.
+      <header className="screen-head">
+        <h1 className="screen-title">You</h1>
+      </header>
+
+      {!hasHistory && cardsToday === 0 ? (
+        <section className="starting-state">
+          <p className="starting-title">Day one.</p>
+          <p className="starting-desc">The numbers start after your first Core 3.</p>
+
+          <div className="stat-grid">
+            <StatTile label="Streak" value="—" />
+            <StatTile label="Cards today" value="—" />
+            <StatTile label="Core 3" value="—" />
+            <StatTile label="Best hold" value="—" />
+          </div>
+        </section>
+      ) : (
+        <>
+          <section className="stat-hero">
+            <span className="stat-value">{urges}</span>
+            <span className="stat-label">urges redirected</span>
+          </section>
+
+          <div className="stat-grid">
+            <StatTile label="Streak" value={`${streak} d`} />
+            <StatTile label="Cards today" value={cardsToday} />
+            <StatTile label="Core 3" value={todayRow?.coreThreeDone ? 'Done' : 'Pending'} />
+            <StatTile label="Best hold" value={bestMpt > 0 ? `${bestMpt.toFixed(1)}s` : '—'} />
+          </div>
+        </>
+      )}
+
+      <footer className="progress-footer">
+        <p className="meta">
+          {syncConfigured()
+            ? 'Backup configured.'
+            : 'Local only — no backup configured yet.'}
         </p>
-      </section>
-
-      <ul className="stats">
-        <Stat label="Day streak" value={streak} />
-        <Stat label="Days done" value={activeDays} />
-        <Stat label="Cards" value={cards} />
-        <Stat label="Best hold" value={bestMpt ? `${bestMpt.toFixed(1)}s` : '—'} />
-      </ul>
-
-      <section className="today-row">
-        <span className={`dot${todayRow?.coreThreeDone ? ' is-on' : ''}`} aria-hidden="true" />
-        <span className="meta">
-          Today · {todayRow?.cardsCompleted ?? 0} cards ·{' '}
-          {todayRow?.coreThreeDone ? 'Core 3 done' : 'Core 3 not done yet'}
-        </span>
-      </section>
-
-      <p className="meta footnote">
-        {syncConfigured()
-          ? 'Backup configured.'
-          : 'Local only — no backup configured yet. Everything lives on this device.'}
-      </p>
-      <p className="meta footnote">Breath, pace and volume measurement arrive in Phase 1.</p>
+      </footer>
     </div>
   );
 }
 
-function Stat({ label, value }: { label: string; value: string | number }) {
+function StatTile({ label, value }: { label: string; value: string | number }) {
   return (
-    <li className="stat">
+    <div className="stat-tile">
       <span className="stat-value">{value}</span>
       <span className="stat-label">{label}</span>
-    </li>
+    </div>
   );
 }

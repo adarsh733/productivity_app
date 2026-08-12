@@ -1,0 +1,1260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SPEAK — UI wireframes v1 (light)</title>
+<style>
+/* ══════════════════════════════════════════════════════════════════════════
+   SPEAK — wireframe document.
+   The palette and type below ARE the proposed design tokens. What you see in
+   the phone frames is what the app should look like, at 1:1, 375×812.
+   ══════════════════════════════════════════════════════════════════════════ */
+:root{
+  /* surface — warm paper, never pure white behind the card */
+  --paper:#FBFAF8;
+  --card:#FFFFFF;
+  --raised:#F3F1EC;
+  --sunken:#EFEDE7;
+  --line:#E7E3DB;
+  --line-2:#D8D3C8;
+
+  /* ink */
+  --ink:#15171A;
+  --ink-2:#585E66;
+  --ink-3:#9096A0;
+
+  /* one accent, one heat colour. That is the whole palette. */
+  --accent:#0369A1;
+  --accent-2:#075985;
+  --accent-soft:#E0F2FE;
+  --accent-ink:#FFFFFF;
+  --heat:#C2410C;
+  --heat-soft:#FDEDE3;
+
+  /* one hue per card type — used ONLY on the spine + the kicker */
+  --t-word:#1E3A8A;
+  --t-swap:#6D28D9;
+  --t-idiom:#B45309;
+  --t-action:#BE185D;
+  --t-pronounce:#0F766E;
+  --t-say:#15803D;
+  --t-breath:#475569;
+
+  /* type */
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --serif:ui-serif,"Iowan Old Style","Charter","Palatino",Georgia,serif;
+
+  --fs-1:.6875rem; --fs-2:.8125rem; --fs-3:.9375rem; --fs-4:1.0625rem;
+  --fs-5:1.375rem; --fs-6:1.75rem;  --fs-7:2.25rem;  --fs-8:3rem;
+
+  --r-sm:10px; --r-md:18px; --r-lg:28px; --r-pill:999px;
+  --sh-card:0 1px 2px rgb(21 23 26 / .04), 0 8px 24px rgb(21 23 26 / .06);
+  --sh-lift:0 2px 4px rgb(21 23 26 / .05), 0 18px 40px rgb(21 23 26 / .10);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:#F4F2ED;color:var(--ink);
+  font-family:var(--sans);font-size:15px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1500px;margin:0 auto;padding:48px 32px 120px}
+
+/* ── document chrome ─────────────────────────────────────────────────────── */
+.doc-head{border-bottom:1px solid var(--line-2);padding-bottom:28px;margin-bottom:44px}
+.doc-head h1{font-family:var(--serif);font-size:44px;line-height:1.05;margin:0 0 8px;letter-spacing:-.02em}
+.doc-head .sub{color:var(--ink-2);font-size:17px;max-width:62ch;margin:0 0 18px}
+.tagrow{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:var(--r-pill);background:var(--raised);color:var(--ink-2);border:1px solid var(--line)}
+.tag.on{background:var(--accent-soft);color:var(--accent-2);border-color:#C9E5D9}
+
+section{margin:0 0 72px;scroll-margin-top:24px}
+h2{font-family:var(--serif);font-size:30px;letter-spacing:-.01em;margin:0 0 6px}
+h2 .num{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);display:block;margin-bottom:6px}
+h3{font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:34px 0 14px;font-weight:600}
+.lede{color:var(--ink-2);max-width:74ch;font-size:16px;margin:0 0 24px}
+p{margin:0 0 12px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:var(--raised);padding:1px 5px;border-radius:5px}
+
+/* table of contents */
+.toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px 20px;padding:20px 24px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);margin-bottom:56px}
+.toc a{color:var(--ink-2);text-decoration:none;font-size:14px;display:block;padding:3px 0;border-bottom:1px solid transparent}
+.toc a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.toc a b{color:var(--ink-3);font-weight:600;margin-right:8px;font-size:12px}
+
+/* audit table */
+table.audit{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
+table.audit th{text-align:left;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding:14px 18px;border-bottom:1px solid var(--line);background:var(--raised);font-weight:600}
+table.audit td{padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14.5px}
+table.audit tr:last-child td{border-bottom:0}
+table.audit td:first-child{width:34px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+table.audit td.now{width:38%;color:var(--ink)}
+table.audit td.fix{color:var(--ink-2)}
+table.audit td.fix b{color:var(--accent-2);font-weight:600}
+
+/* frames */
+.rail{display:flex;flex-wrap:wrap;gap:40px 36px;align-items:flex-start}
+.frame{width:375px;flex:none;margin:0}
+.frame .scr{
+  width:375px;height:812px;background:var(--paper);border:1px solid var(--line-2);
+  border-radius:38px;overflow:hidden;display:flex;flex-direction:column;
+  box-shadow:var(--sh-lift);position:relative;
+}
+.frame figcaption{margin-top:14px;font-size:13.5px;color:var(--ink-2);max-width:375px}
+.frame figcaption b{color:var(--ink);font-weight:600;display:block;font-size:14px;margin-bottom:2px}
+
+/* notes column beside a rail */
+.notes{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:22px 26px;width:400px;flex:none}
+.notes h4{margin:0 0 12px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.notes ol{margin:0;padding-left:0;list-style:none;counter-reset:n}
+.notes ol li{counter-increment:n;position:relative;padding-left:32px;margin-bottom:14px;font-size:14.5px;color:var(--ink-2)}
+.notes ol li::before{
+  content:counter(n);position:absolute;left:0;top:1px;width:21px;height:21px;border-radius:50%;
+  background:var(--ink);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.notes ol li b{color:var(--ink);font-weight:600}
+.notes .kill{color:var(--heat);font-weight:600}
+
+/* ── in-frame app styles (the real proposed UI) ──────────────────────────── */
+.sbar{height:44px;flex:none;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 4px;font-size:13px;font-weight:600;color:var(--ink);letter-spacing:.01em}
+.sbar .r{display:flex;gap:5px;align-items:center;color:var(--ink-2);font-size:11px}
+
+.fhead{flex:none;display:flex;align-items:center;justify-content:space-between;padding:6px 20px 10px;gap:10px}
+.dots{display:flex;align-items:center;gap:9px}
+.dots .lab{font-size:var(--fs-1);letter-spacing:.14em;font-weight:700;color:var(--ink-3)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--line-2)}
+.dot.on{background:var(--accent)}
+.dot.now{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.streak{display:flex;align-items:center;gap:5px;font-size:var(--fs-2);font-weight:700;color:var(--heat);background:var(--heat-soft);padding:4px 11px;border-radius:var(--r-pill)}
+
+.fbody{flex:1;min-height:0;padding:0 20px;display:flex;flex-direction:column}
+
+/* the card */
+.card{
+  flex:1;min-height:0;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--r-lg);box-shadow:var(--sh-card);
+  display:flex;flex-direction:column;overflow:hidden;position:relative;
+}
+.card::before{content:"";position:absolute;left:0;top:26px;bottom:26px;width:3px;border-radius:0 3px 3px 0;background:var(--type-hue,var(--ink-3))}
+.card-scroll{flex:1;min-height:0;overflow:hidden;padding:26px 24px 8px}
+.kicker{font-size:var(--fs-1);letter-spacing:.16em;font-weight:700;color:var(--type-hue,var(--ink-3));margin-bottom:16px}
+.term{font-family:var(--serif);font-size:var(--fs-7);line-height:1.05;letter-spacing:-.02em;margin:0 0 4px}
+.term.sm{font-size:var(--fs-6)}
+.term.xs{font-size:var(--fs-5);line-height:1.25}
+.pos{font-size:var(--fs-2);color:var(--ink-3);font-style:italic;margin:0 0 14px}
+.meaning{font-size:var(--fs-4);color:var(--ink);margin:0 0 18px;line-height:1.4}
+.exs{list-style:none;margin:0 0 4px;padding:0;display:flex;flex-direction:column;gap:12px}
+.exs li{font-size:var(--fs-3);color:var(--ink-2);line-height:1.45;padding-left:14px;border-left:2px solid var(--line)}
+.exs li em{font-style:normal;color:var(--ink);font-weight:600;background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+
+/* the pinned say-block — the one thing that is always in the same place */
+.say{flex:none;border-top:1px solid var(--line);background:var(--accent-soft);padding:16px 24px 18px;margin:0}
+.say .lab{font-size:var(--fs-1);letter-spacing:.16em;font-weight:700;color:var(--accent-2);display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.say .lab .mic{width:13px;height:13px;border-radius:4px 4px 6px 6px;border:2px solid var(--accent-2);flex:none}
+.say p{margin:0;font-size:var(--fs-3);color:#0B3D2C;line-height:1.45}
+
+/* actions */
+.acts{flex:none;display:flex;gap:10px;padding:14px 20px 4px}
+.btn{height:54px;border-radius:var(--r-pill);font-size:var(--fs-4);font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line-2);background:var(--card);color:var(--ink-2)}
+.btn.ghost{width:112px;flex:none}
+.btn.prim{flex:1;background:var(--accent);border-color:var(--accent);color:var(--accent-ink);box-shadow:0 6px 16px rgb(15 122 87 / .24)}
+.btn.wide{width:100%}
+.btn.quiet{background:transparent;border-color:var(--line-2);color:var(--ink-2)}
+
+.subacts{flex:none;display:flex;align-items:center;justify-content:space-between;padding:10px 22px 4px}
+.pull{font-size:var(--fs-2);color:var(--ink-3);display:flex;align-items:center;gap:7px}
+.pull .ring{width:15px;height:15px;border-radius:50%;border:1.5px solid var(--line-2);flex:none}
+.swipe{font-size:var(--fs-2);color:var(--ink-3);display:flex;align-items:center;gap:6px}
+
+/* tab bar */
+.tabs{flex:none;height:64px;display:flex;border-top:1px solid var(--line);background:var(--card);padding-bottom:6px}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--ink-3);font-size:var(--fs-1);letter-spacing:.03em}
+.tab .ic{width:22px;height:22px;display:flex;align-items:center;justify-content:center}
+.tab.on{color:var(--accent);font-weight:600}
+.tab svg{display:block}
+
+/* misc in-frame bits */
+.centered{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 34px;gap:14px}
+.hint{font-size:var(--fs-2);color:var(--ink-3);margin:0}
+.big-num{font-family:var(--serif);font-size:64px;line-height:1;letter-spacing:-.03em}
+.callout{position:absolute;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;z-index:5;box-shadow:0 0 0 3px var(--paper)}
+
+/* palette + type specimens */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.sw{background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden}
+.sw .chip{height:64px}
+.sw .meta{padding:9px 12px;font-size:12px;line-height:1.45}
+.sw .meta b{display:block;font-size:13px}
+.sw .meta span{color:var(--ink-3);font-family:ui-monospace,monospace;font-size:11px}
+.specimen{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:26px 30px}
+.specimen .row{display:flex;align-items:baseline;gap:20px;padding:10px 0;border-bottom:1px solid var(--line)}
+.specimen .row:last-child{border-bottom:0}
+.specimen .row .k{width:190px;flex:none;font-size:12px;color:var(--ink-3);font-family:ui-monospace,monospace}
+.scale{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.scale i{background:var(--accent-soft);border:1px solid #C9E5D9;display:block;font-style:normal;font-size:10px;color:var(--accent-2);text-align:center;padding-top:3px}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:22px 26px}
+.panel h4{margin:0 0 12px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.panel ul{margin:0;padding-left:18px;color:var(--ink-2);font-size:14.5px}
+.panel ul li{margin-bottom:9px}
+.panel ul li b{color:var(--ink)}
+.panel.warn{background:#FFFBF4;border-color:#F0E2CC}
+.panel.warn h4{color:var(--heat)}
+
+.gesture{display:grid;grid-template-columns:120px 1fr 1fr;gap:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:14.5px}
+.gesture>div{padding:13px 18px;border-bottom:1px solid var(--line)}
+.gesture>div:nth-child(3n+1){font-weight:600}
+.gesture .h{background:var(--raised);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.gesture>div:nth-last-child(-n+3){border-bottom:0}
+
+.q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:var(--r-sm);padding:18px 22px;margin-bottom:14px}
+.q b{display:block;margin-bottom:4px}
+.q p{margin:0;color:var(--ink-2);font-size:14.5px}
+
+@media (max-width:900px){
+  .wrap{padding:28px 16px 80px}
+  .notes{width:100%}
+  .two{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="doc-head">
+  <h1>SPEAK — UI wireframes</h1>
+  <p class="sub">Every screen of the app, drawn at 1:1 on a 375×812 iPhone, in the light theme.
+  This is the spec the rebuild gets held to. Nothing in <code>speak/src</code> has been changed yet —
+  read it, tell me what's wrong, then I build it.</p>
+  <div class="tagrow">
+    <span class="tag on">v1 · 2026-08-12</span>
+    <span class="tag on">Light theme</span>
+    <span class="tag">375 × 812, one hand</span>
+    <span class="tag">Phase 0 scope + Phase 1 slots</span>
+    <span class="tag">Not yet implemented</span>
+  </div>
+  <p class="sub" style="margin-top:18px;padding:14px 16px;border:1px solid var(--line, #E7E3DB);border-radius:12px;background:var(--raised, #F3F1EC)">
+  <b>Scope of this document — read this first.</b> This is a <b>UI specification only</b>.
+  It does not decide scope, roadmap or priorities. Where it disagrees with
+  <code>PLAN.md</code>, the plan wins.
+  <br><br>
+  It covers <b>Phase&nbsp;0.5</b> — the rebuild of the shell that already exists. The twelve
+  problems in §01 are issues <b>U1–U12</b> in <code>PROBLEM-MAP.md</code>; the four questions in §12
+  are open questions <b>1–4</b> in <code>PLAN.md</code>&nbsp;§7, each with a stated default.
+  <br><br>
+  <b>Not covered here:</b> every Speaking Lab screen (M8–M16, Phases 1–2), the articulation
+  cards (M25–M26, Phase&nbsp;3) and the live voice partner (M30, Phase&nbsp;4) are unspecified
+  visually. They need their own frames before those phases are built.
+  <br><br>
+  Start at <code>docs/README.md</code>.</p>
+</header>
+
+<nav class="toc">
+  <a href="#audit"><b>01</b>What's wrong with it today</a>
+  <a href="#foundations"><b>02</b>Foundations — light theme</a>
+  <a href="#shell"><b>03</b>Shell &amp; navigation</a>
+  <a href="#anatomy"><b>04</b>Card anatomy &amp; gestures</a>
+  <a href="#types"><b>05</b>The seven card types</a>
+  <a href="#arc"><b>06</b>The session arc</a>
+  <a href="#inbox"><b>07</b>Inbox</a>
+  <a href="#hindi"><b>08</b>Hindi</a>
+  <a href="#you"><b>09</b>You (progress)</a>
+  <a href="#edges"><b>10</b>Empty &amp; edge states</a>
+  <a href="#motion"><b>11</b>Motion &amp; the rules</a>
+  <a href="#open"><b>12</b>What I need from you</a>
+</nav>
+
+<!-- ══ 01 AUDIT ══════════════════════════════════════════════════════════ -->
+<section id="audit">
+  <h2><span class="num">01</span>What's wrong with it today</h2>
+  <p class="lede">Before drawing anything I went back through the shipped Phase 0 interface. Twelve things,
+  most of them structural rather than cosmetic. The redesign below is answering this list, item by item —
+  if you disagree with a row, say so and the wireframe that depends on it changes.</p>
+
+  <table class="audit">
+    <thead><tr><th></th><th class="now">What it does now</th><th>What the wireframes do instead</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td class="now">Near-black shell (<code>#0b0d10</code>) with seven saturated hues on top.</td>
+        <td class="fix">Warm paper (<code>#FBFAF8</code>), white cards, near-black ink. <b>Light is the theme, not an option</b> — no toggle, no dark variant to maintain. The seven hues survive as a 3px spine and a kicker colour only.</td></tr>
+      <tr><td>2</td><td class="now">Four grade buttons under every card — Again / Hard / Good / Easy.</td>
+        <td class="fix">That's Anki's UI, and you can't honestly answer "was that Hard or Good?" about a rep you just spoke. <b>Two buttons: Again and Got it.</b> Easy is a long-press. <b>Hard was kept</b> (decision, 2026-08-12) and becomes <b>swipe-left</b> — it keeps the grade without spending a fourth button on it.</td></tr>
+      <tr><td>3</td><td class="now">Every card renders as the same undifferentiated stack: heading, paragraph, list, prompt.</td>
+        <td class="fix">A <b>fixed anatomy</b> where the thing you must say aloud is always the same block, in the same place, in the same colour — the bottom of the card, pinned, never scrolled off.</td></tr>
+      <tr><td>4</td><td class="now">"Felt the pull" sits top-right, competing with the streak, and the label doesn't say what it does.</td>
+        <td class="fix">Moves to a quiet chip below the actions: <b>"I felt the pull"</b> → taps to "Counted." It is a confession, not a header control; it should feel private.</td></tr>
+      <tr><td>5</td><td class="now">Tab glyphs are <code>◈ ＋ अ ◉</code>.</td>
+        <td class="fix">Those read as missing icons. <b>Four drawn line icons</b>, 22px, plus labels. Same four tabs.</td></tr>
+      <tr><td>6</td><td class="now">Progress leads with a giant number that is <code>0</code> for the first week.</td>
+        <td class="fix">Day one shows a <b>starting state</b>, not a zero. The hero stat only becomes the hero once it has earned it.</td></tr>
+      <tr><td>7</td><td class="now">No first-run screen at all — the app opens straight onto a breath drill with no context.</td>
+        <td class="fix">Three panels, about fifteen seconds, ending <i>inside</i> Core 1. It sets the one expectation that matters: <b>you will be speaking out loud.</b></td></tr>
+      <tr><td>8</td><td class="now">On a long word card, header + progress bar + body + four buttons + hint means the say-prompt can fall below the fold.</td>
+        <td class="fix">The card body scrolls <b>inside</b> a fixed frame. Chrome is 44+38 top and 54+34+64 bottom; the say-block is pinned above the actions. The mandatory part cannot be pushed off-screen.</td></tr>
+      <tr><td>9</td><td class="now">Hindi is a prev/next carousel that greys out its arrows at the end.</td>
+        <td class="fix">A <b>dead end</b> — the one thing the whole app forbids. Hindi gets the same endless queue, entered on purpose, with its own counter.</td></tr>
+      <tr><td>10</td><td class="now">"swipe up to pass" is permanent text at the bottom of every card, forever.</td>
+        <td class="fix">Shown on the <b>first three cards ever</b>, as a moving hint, then never again. A permanent instruction is an admission the gesture isn't discoverable.</td></tr>
+      <tr><td>11</td><td class="now">Everything is one system font at three sizes, centre-ish, evenly spaced.</td>
+        <td class="fix">A <b>serif for the word itself</b>, sans for all chrome. That single split is what stops it looking like a flashcard app and starts it looking like a dictionary you'd want to open.</td></tr>
+      <tr><td>12</td><td class="now">Core 3 progress is a full-width bar that scales 0 → 1.</td>
+        <td class="fix">A bar implies a loading screen. <b>Three dots.</b> Three is a number you can hold in your head; a bar at 33% is not.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ══ 02 FOUNDATIONS ═══════════════════════════════════════════════════ -->
+<section id="foundations">
+  <h2><span class="num">02</span>Foundations — the light theme</h2>
+  <p class="lede">These values replace <code>src/styles/tokens.css</code> wholesale. The rule that file already
+  states stays: no raw hex, no raw px font sizes, no one-off radii anywhere else in the app.</p>
+
+  <h3>Surface &amp; ink</h3>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#FBFAF8"></div><div class="meta"><b>paper</b><span>#FBFAF8</span> app background</div></div>
+    <div class="sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid var(--line)"></div><div class="meta"><b>card</b><span>#FFFFFF</span> the card only</div></div>
+    <div class="sw"><div class="chip" style="background:#F3F1EC"></div><div class="meta"><b>raised</b><span>#F3F1EC</span> chips, fields</div></div>
+    <div class="sw"><div class="chip" style="background:#E7E3DB"></div><div class="meta"><b>line</b><span>#E7E3DB</span> hairlines</div></div>
+    <div class="sw"><div class="chip" style="background:#15171A"></div><div class="meta"><b>ink</b><span>#15171A</span> body + terms</div></div>
+    <div class="sw"><div class="chip" style="background:#585E66"></div><div class="meta"><b>ink-2</b><span>#585E66</span> secondary</div></div>
+    <div class="sw"><div class="chip" style="background:#9096A0"></div><div class="meta"><b>ink-3</b><span>#9096A0</span> labels, hints</div></div>
+    <div class="sw"><div class="chip" style="background:#0369A1"></div><div class="meta"><b>accent</b><span>#0369A1</span> the only CTA colour</div></div>
+    <div class="sw"><div class="chip" style="background:#E0F2FE"></div><div class="meta"><b>accent-soft</b><span>#E0F2FE</span> the say-block</div></div>
+    <div class="sw"><div class="chip" style="background:#C2410C"></div><div class="meta"><b>heat</b><span>#C2410C</span> streak only</div></div>
+  </div>
+
+  <h3>Card-type hues — spine and kicker only, never a fill</h3>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#1E3A8A"></div><div class="meta"><b>word</b><span>#1E3A8A</span></div></div>
+    <div class="sw"><div class="chip" style="background:#6D28D9"></div><div class="meta"><b>swap</b><span>#6D28D9</span></div></div>
+    <div class="sw"><div class="chip" style="background:#B45309"></div><div class="meta"><b>idiom</b><span>#B45309</span></div></div>
+    <div class="sw"><div class="chip" style="background:#BE185D"></div><div class="meta"><b>action_verb</b><span>#BE185D</span></div></div>
+    <div class="sw"><div class="chip" style="background:#0F766E"></div><div class="meta"><b>pronounce</b><span>#0F766E</span></div></div>
+    <div class="sw"><div class="chip" style="background:#15803D"></div><div class="meta"><b>say_it</b><span>#15803D</span></div></div>
+    <div class="sw"><div class="chip" style="background:#475569"></div><div class="meta"><b>breath</b><span>#475569</span></div></div>
+  </div>
+
+  <h3>Type — two families, one split</h3>
+  <div class="specimen">
+    <div class="row"><span class="k">--serif · fs-7 / 36px</span><span style="font-family:var(--serif);font-size:36px;letter-spacing:-.02em">concise</span></div>
+    <div class="row"><span class="k">--serif · fs-6 / 28px</span><span style="font-family:var(--serif);font-size:28px">Hold the note</span></div>
+    <div class="row"><span class="k">--sans · fs-4 / 17px</span><span style="font-size:17px">saying what is needed in few words</span></div>
+    <div class="row"><span class="k">--sans · fs-3 / 15px</span><span style="font-size:15px;color:var(--ink-2)">Her answer was concise — two lines, and I understood everything.</span></div>
+    <div class="row"><span class="k">--sans · fs-2 / 13px</span><span style="font-size:13px;color:var(--ink-3)">6-day streak · Core 3 done</span></div>
+    <div class="row"><span class="k">--sans · fs-1 / 11px · .16em</span><span style="font-size:11px;letter-spacing:.16em;font-weight:700;color:var(--t-word)">WORD</span></div>
+  </div>
+  <p class="lede" style="margin-top:16px">The serif is a system stack — <code>ui-serif, "Iowan Old Style", Charter, Palatino, Georgia</code> —
+  so it costs zero bytes and renders natively on the iPhone. It is used for exactly one thing: <b>the item being learned</b>.
+  Never for UI, never for body copy, never for numbers in the stat grid.</p>
+
+  <h3>Space, shape, elevation</h3>
+  <div class="scale">
+    <i style="width:4px;height:34px">4</i><i style="width:8px;height:34px">8</i><i style="width:12px;height:34px">12</i>
+    <i style="width:16px;height:34px">16</i><i style="width:20px;height:34px">20</i><i style="width:24px;height:34px">24</i>
+    <i style="width:32px;height:34px">32</i><i style="width:48px;height:34px">48</i>
+  </div>
+  <div class="two" style="margin-top:20px">
+    <div class="panel">
+      <h4>Shape</h4>
+      <ul>
+        <li><b>28px</b> — the card. Nothing else uses it.</li>
+        <li><b>18px</b> — sheets, panels, the inbox field.</li>
+        <li><b>10px</b> — chips, small tiles.</li>
+        <li><b>pill</b> — every button, every counter.</li>
+        <li><b>20px gutter</b> on every screen edge. One value, no exceptions.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h4>Elevation — light theme rules</h4>
+      <ul>
+        <li>On paper, <b>shadow does the work borders did on dark</b>: card = 1px hairline + a wide, very soft shadow at 6% opacity.</li>
+        <li><b>Never</b> a grey fill to signal "raised" — that reads as disabled on light.</li>
+        <li>The primary button is the <b>only</b> element with a coloured shadow.</li>
+        <li>No shadow anywhere on the tab bar. A hairline only.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 03 SHELL ═════════════════════════════════════════════════════════ -->
+<section id="shell">
+  <h2><span class="num">03</span>Shell &amp; navigation</h2>
+  <p class="lede">Four tabs, unchanged from Phase 0 — the change is that they're drawn rather than typed.
+  Feed stays mounted behind the others so switching tabs never restarts a session.</p>
+
+  <div class="rail">
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="fhead">
+          <div class="dots"><span class="lab">CORE</span><span class="dot on"></span><span class="dot now"></span><span class="dot"></span></div>
+          <span class="streak">◆ 6</span>
+        </div>
+        <div class="fbody">
+          <article class="card" style="--type-hue:var(--t-word)">
+            <div class="card-scroll">
+              <div class="kicker">WORD</div>
+              <h1 class="term">concise</h1>
+              <p class="pos">adj.</p>
+              <p class="meaning">saying what is needed in few words</p>
+              <ul class="exs">
+                <li>Her answer was <em>concise</em> — two lines, and I understood everything.</li>
+                <li>Keep the status update <em>concise</em>; nobody reads past the third line.</li>
+              </ul>
+            </div>
+            <div class="say">
+              <div class="lab"><span class="mic"></span>SAY THIS</div>
+              <p>Think of a message someone sent you that was far too long. Say one sentence about it using “concise”.</p>
+            </div>
+          </article>
+        </div>
+        <div class="acts">
+          <button class="btn ghost">Again</button>
+          <button class="btn prim">Got it</button>
+        </div>
+        <div class="subacts">
+          <span class="pull"><span class="ring"></span>I felt the pull</span>
+          <span class="swipe">↑ swipe</span>
+        </div>
+        <nav class="tabs">
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>The reference screen</b>Everything else in this document is a variation on this. Word card, Core 3, card 2 of 3, six-day streak.</figcaption>
+    </figure>
+
+    <div class="notes">
+      <h4>Chrome budget · 375 × 812</h4>
+      <ol>
+        <li><b>44px</b> status bar / safe-area top. Never drawn by us.</li>
+        <li><b>38px</b> feed header — Core dots left, streak right. The streak is the only heat-coloured thing on the screen, and it disappears entirely at zero rather than showing "0-day".</li>
+        <li><b>~530px</b> card. This is 65% of the screen and it should be: it is the product.</li>
+        <li><b>54px</b> action row. Two targets, both ≥ 44px, thumb-reachable.</li>
+        <li><b>34px</b> sub-actions — the pull chip and the swipe hint, both at <code>ink-3</code>. Deliberately the quietest thing on screen.</li>
+        <li><b>64px</b> tab bar + safe-area bottom.</li>
+        <li class="kill">Removed: the full-width progress bar, two of the four grade buttons, the permanent "swipe up to pass" caption, the header urge button.</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3>Tabs</h3>
+  <div class="gesture">
+    <div class="h">Tab</div><div class="h">Holds</div><div class="h">Why it's a tab</div>
+    <div>Feed</div><div>Core 3, then Endless. The default screen on every launch.</div><div>It is the app. Everything else is support.</div>
+    <div>Capture</div><div>The 3AM box. One field, one button, a list.</div><div>Renamed from "Inbox" — it's a verb, and it says what to do with it.</div>
+    <div>हिंदी</div><div>Hindi vocabulary, its own endless queue.</div><div>Locked decision: Hindi never appears in the main feed. A tab is the honest way to keep that true.</div>
+    <div>You</div><div>Streak, urges redirected, breath numbers, days.</div><div>Opened once a week, not once a session. Low-frequency, so it takes the last slot.</div>
+  </div>
+</section>
+
+<!-- ══ 04 ANATOMY ═══════════════════════════════════════════════════════ -->
+<section id="anatomy">
+  <h2><span class="num">04</span>Card anatomy &amp; gestures</h2>
+  <p class="lede">The seven card types differ wildly in content — a breath drill and a swap have nothing in common.
+  What makes the feed feel like one app is that they share a skeleton, and the skeleton puts the spoken part
+  in the same place every single time.</p>
+
+  <div class="rail">
+    <figure class="frame">
+      <div class="scr">
+        <span class="callout" style="left:14px;top:64px">1</span>
+        <span class="callout" style="left:32px;top:150px">2</span>
+        <span class="callout" style="left:32px;top:196px">3</span>
+        <span class="callout" style="left:32px;top:330px">4</span>
+        <span class="callout" style="left:32px;top:520px">5</span>
+        <span class="callout" style="left:14px;top:690px">6</span>
+        <span class="callout" style="left:14px;top:744px">7</span>
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="fhead">
+          <div class="dots"><span class="lab">CORE</span><span class="dot on"></span><span class="dot now"></span><span class="dot"></span></div>
+          <span class="streak">◆ 6</span>
+        </div>
+        <div class="fbody">
+          <article class="card" style="--type-hue:var(--t-idiom)">
+            <div class="card-scroll">
+              <div class="kicker">PHRASE · CORPORATE</div>
+              <h1 class="term sm">bandwidth</h1>
+              <p class="meaning">the time and attention someone has available</p>
+              <ul class="exs">
+                <li>I don't have the <em>bandwidth</em> for this before the 20th — can it wait, or should something else move?</li>
+              </ul>
+              <p class="pos" style="margin-top:18px;font-style:normal;font-size:var(--fs-2);color:var(--ink-3);letter-spacing:.02em">
+                WHEN YOU'D USE IT</p>
+              <p style="font-size:var(--fs-3);color:var(--ink-2);margin:0">You're being handed a third project and need to decline without sounding unwilling.</p>
+            </div>
+            <div class="say">
+              <div class="lab"><span class="mic"></span>SAY THIS</div>
+              <p>Decline that third project out loud, in one sentence, using “bandwidth”.</p>
+            </div>
+          </article>
+        </div>
+        <div class="acts">
+          <button class="btn ghost">Again</button>
+          <button class="btn prim">Got it</button>
+        </div>
+        <div class="subacts">
+          <span class="pull"><span class="ring"></span>I felt the pull</span>
+          <span class="swipe">↑ swipe</span>
+        </div>
+        <nav class="tabs">
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>Anatomy</b>Numbered against the notes on the right. Every card type fills these same slots.</figcaption>
+    </figure>
+
+    <div class="notes">
+      <h4>The skeleton</h4>
+      <ol>
+        <li><b>Spine.</b> 3px, the type hue, inset from the corners. It is how you know at a glance that three swaps in a row happened — which is a bug you'd otherwise never see.</li>
+        <li><b>Kicker.</b> 11px, .16em tracking, type hue. Takes a qualifier after a middot (<code>PHRASE · CORPORATE</code>) so corporate idioms don't need their own screen.</li>
+        <li><b>The item.</b> Serif, 36px, or 28px when it's a phrase. This is the only serif on the screen and the eye lands here first.</li>
+        <li><b>Support.</b> Meaning, then examples with the target word underlined in accent-soft. Examples get a left rule, not bullets — they're quotes, not a list.</li>
+        <li><b>The say-block.</b> Pinned to the bottom of the card, tinted, never scrolls away, always says <code>SAY THIS</code>. <b>If a card can be answered in silence, the card is broken</b> — this block is how that rule gets enforced visually.</li>
+        <li><b>Two actions.</b> Again (112px, quiet) and Got it (fills the rest, accent). Reachable with a thumb without regripping.</li>
+        <li><b>Sub-actions.</b> The pull chip and the swipe hint. Both are <code>ink-3</code>; neither ever competes with the primary.</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3>Gestures — and what happens to the four SM-2 grades</h3>
+  <div class="gesture">
+    <div class="h">Input</div><div class="h">Meaning</div><div class="h">Grade sent to the scheduler</div>
+    <div>Swipe up</div><div>The fast path. Thumb is already trained for this.</div><div><code>good</code></div>
+    <div>Tap “Got it”</div><div>Same thing, for when the card has a control you were just using.</div><div><code>good</code></div>
+    <div>Tap “Again”</div><div>Didn't have it. Comes back later in the same session.</div><div><code>again</code></div>
+    <div>Long-press “Got it”</div><div>“Knew it cold” — a small label lifts out of the button, then the card leaves.</div><div><code>easy</code></div>
+    <div>Swipe down</div><div>Nothing. Reserved — do not bind it.</div><div>—</div>
+  </div>
+  <div class="panel warn" style="margin-top:20px">
+    <h4>Decision that needs your yes</h4>
+    <ul>
+      <li><b>“Hard” disappears from the UI.</b> The contract keeps all four grades, and the scheduler is untouched — but nothing in the interface emits <code>hard</code> any more.
+      Two reasons: after speaking a sentence aloud you genuinely cannot tell Hard from Good, so the button collects noise; and a four-way choice after every card is the tax that makes Anki feel like homework.
+      If you want <code>hard</code> kept, the cheapest honest version is <b>swipe left = Hard</b>, invisible until you discover it. Say which.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ 05 CARD TYPES ════════════════════════════════════════════════════ -->
+<section id="types">
+  <h2><span class="num">05</span>The seven card types</h2>
+  <p class="lede">Same skeleton, seven fills. Content below is real — taken from
+  <code>src/content/seed/00-exemplars.json</code> — so these are honest about length.
+  Chrome above and below is identical on all seven and is drawn once here per frame.</p>
+
+  <div class="rail">
+
+    <!-- WORD -->
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="fhead"><div class="dots"><span class="lab">ENDLESS</span></div><span class="streak">◆ 6</span></div>
+        <div class="fbody">
+          <article class="card" style="--type-hue:var(--t-word)">
+            <div class="card-scroll">
+              <div class="kicker">WORD</div>
+              <h1 class="term">thorough</h1>
+              <p class="pos">adj.</p>
+              <p class="meaning">complete, with nothing left out</p>
+              <ul class="exs">
+                <li>She's <em>thorough</em> — she checks the things nobody asks about.</li>
+                <li>Give it one <em>thorough</em> pass before we send it to the client.</li>
+              </ul>
+            </div>
+            <div class="say"><div class="lab"><span class="mic"></span>SAY THIS</div>
+              <p>Describe someone at work who checks everything properly. Use “thorough”.</p></div>
+          </article>
+        </div>
+        <div class="acts"><button class="btn ghost">Again</button><button class="btn prim">Got it</button></div>
+        <div class="subacts"><span class="pull"><span class="ring"></span>I felt the pull</span><span class="swipe">↑ swipe</span></div>
+        <nav class="tabs">
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>1 · Word</b>The plainest card, and the template for the rest. Target word underlined in the examples so the eye can find it without reading the sentence twice.</figcaption>
+    </figure>
+
+    <!-- SWAP: before reveal -->
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="fhead"><div class="dots"><span class="lab">ENDLESS</span></div><span class="streak">◆ 6</span></div>
+        <div class="fbody">
+          <article class="card" style="--type-hue:var(--t-swap)">
+            <div class="card-scroll" style="display:flex;flex-direction:column;justify-content:center;text-align:center;padding-top:0">
+              <div class="kicker" style="text-align:center">SAY IT BETTER</div>
+              <p style="font-size:var(--fs-2);color:var(--ink-3);margin:0 0 26px">One word instead. Out loud, before the clock runs out.</p>
+              <h1 class="term" style="color:var(--ink-3);text-decoration:line-through;text-decoration-thickness:1.5px;text-decoration-color:var(--t-swap);margin-bottom:34px">very busy</h1>
+              <div style="width:96px;height:96px;border-radius:50%;border:2px solid var(--line-2);margin:0 auto;display:flex;align-items:center;justify-content:center;position:relative">
+                <div style="position:absolute;inset:-2px;border-radius:50%;border:2px solid var(--t-swap);clip-path:polygon(50% 50%,50% 0,100% 0,100% 100%,50% 100%)"></div>
+                <span style="font-family:var(--serif);font-size:38px">3</span>
+              </div>
+            </div>
+            <div class="say"><div class="lab"><span class="mic"></span>SAY IT NOW</div>
+              <p>Say your word out loud before the ring closes. Then tap to check.</p></div>
+          </article>
+        </div>
+        <div class="acts"><button class="btn wide quiet">Show me</button></div>
+        <div class="subacts"><span class="pull"><span class="ring"></span>I felt the pull</span><span class="swipe"></span></div>
+        <nav class="tabs">
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>2a · Swap — before reveal</b>The only centred card in the app, because it's a challenge, not a reading. The countdown is a closing ring, not a bare digit. Note the action row collapses to one button: there is nothing to grade yet.</figcaption>
+    </figure>
+
+    <!-- SWAP: after reveal -->
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="fhead"><div class="dots"><span class="lab">ENDLESS</span></div><span class="streak">◆ 6</span></div>
+        <div class="fbody">
+          <article class="card" style="--type-hue:var(--t-swap)">
+            <div class="card-scroll">
+              <div class="kicker">SAY IT BETTER</div>
+              <h1 class="term sm" style="color:var(--ink-3);text-decoration:line-through;text-decoration-thickness:1.5px;text-decoration-color:var(--t-swap)">very busy</h1>
+              <div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:22px">
+                <span style="font-family:var(--serif);font-size:20px;padding:8px 16px;border-radius:var(--r-pill);background:#F4EEFC;color:#4C1D95">swamped</span>
+                <span style="font-family:var(--serif);font-size:20px;padding:8px 16px;border-radius:var(--r-pill);background:#F4EEFC;color:#4C1D95">slammed</span>
+                <span style="font-family:var(--serif);font-size:20px;padding:8px 16px;border-radius:var(--r-pill);background:#F4EEFC;color:#4C1D95">stretched</span>
+                <span style="font-family:var(--serif);font-size:20px;padding:8px 16px;border-radius:var(--r-pill);background:#F4EEFC;color:#4C1D95">flat out</span>
+              </div>
+              <p style="font-size:var(--fs-2);color:var(--ink-3);margin:20px 0 0">Tap any of them to hear it.</p>
+            </div>
+            <div class="say"><div class="lab"><span class="mic"></span>SAY THIS</div>
+              <p>Pick the best one and say a full sentence about your week with it.</p></div>
+          </article>
+        </div>
+        <div class="acts"><button class="btn ghost">Again</button><button class="btn prim">Got it</button></div>
+        <div class="subacts"><span class="pull"><span class="ring"></span>I felt the pull</span><span class="swipe">↑ swipe</span></div>
+        <nav class="tabs">
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>2b · Swap — revealed</b>Answers are tappable serif chips that speak on tap. The weak phrase stays struck through at the top so the contrast is the message.</figcaption>
+    </figure>
+
+    <!-- IDIOM handled in §04, so: ACTION VERB -->
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="fhead"><div class="dots"><span class="lab">ENDLESS</span></div><span class="streak">◆ 6</span></div>
+        <div class="fbody">
+          <article class="card" style="--type-hue:var(--t-action)">
+            <div class="card-scroll">
+              <div class="kicker">ACTION</div>
+              <h1 class="term">trip</h1>
+              <p class="meaning">to catch your foot on something and lose your balance</p>
+              <div style="background:var(--raised);border-radius:var(--r-sm);padding:14px 16px;margin-bottom:18px">
+                <div style="font-size:var(--fs-1);letter-spacing:.14em;font-weight:700;color:var(--ink-3);margin-bottom:7px">NOT THE SAME AS</div>
+                <p style="margin:0;font-size:var(--fs-3);color:var(--ink-2);line-height:1.5">
+                  You <b style="color:var(--ink)">trip</b> on something — there's an obstacle.
+                  You <b style="color:var(--ink)">slip</b> on something — the surface is smooth.
+                  You <b style="color:var(--ink)">stumble</b> after either one, while trying not to fall.</p>
+              </div>
+              <ul class="exs"><li>I <em>tripped</em> on the last step and nearly went down.</li></ul>
+            </div>
+            <div class="say"><div class="lab"><span class="mic"></span>SAY THIS</div>
+              <p>Describe something that happened to you using “trip”.</p></div>
+          </article>
+        </div>
+        <div class="acts"><button class="btn ghost">Again</button><button class="btn prim">Got it</button></div>
+        <div class="subacts"><span class="pull"><span class="ring"></span>I felt the pull</span><span class="swipe">↑ swipe</span></div>
+        <nav class="tabs">
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>3 · Action verb</b>The contrast block is the whole value of this card type, so it gets a container of its own rather than being a third paragraph.</figcaption>
+    </figure>
+
+    <!-- PRONOUNCE -->
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="fhead"><div class="dots"><span class="lab">ENDLESS</span></div><span class="streak">◆ 6</span></div>
+        <div class="fbody">
+          <article class="card" style="--type-hue:var(--t-pronounce)">
+            <div class="card-scroll">
+              <div class="kicker">PRONOUNCE</div>
+              <h1 class="term sm" style="color:var(--ink-3)">comfortable</h1>
+              <p style="font-family:var(--serif);font-size:34px;letter-spacing:-.01em;margin:14px 0 18px;line-height:1.2">
+                <span style="color:var(--ink);border-bottom:3px solid var(--t-pronounce);padding-bottom:2px">COMF</span><span style="color:var(--ink-3)">·ta·ble</span>
+              </p>
+              <div style="display:flex;align-items:center;gap:10px;background:#FFFBF4;border:1px solid #F0E2CC;border-radius:var(--r-sm);padding:13px 15px;margin-bottom:20px">
+                <span style="width:18px;height:18px;border-radius:50%;background:var(--heat);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">!</span>
+                <p style="margin:0;font-size:var(--fs-3);color:#7C3A12;line-height:1.45">Three syllables, not four. Not “com-FORT-able” — the middle collapses.</p>
+              </div>
+              <button class="btn quiet" style="height:48px;width:100%;font-size:var(--fs-3)">▶ Hear it — slowly</button>
+            </div>
+            <div class="say"><div class="lab"><span class="mic"></span>SAY THIS</div>
+              <p>Say it three times. Slower than feels natural.</p></div>
+          </article>
+        </div>
+        <div class="acts"><button class="btn ghost">Again</button><button class="btn prim">Got it</button></div>
+        <div class="subacts"><span class="pull"><span class="ring"></span>I felt the pull</span><span class="swipe">↑ swipe</span></div>
+        <nav class="tabs">
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>4 · Pronounce</b>The spelling is greyed and the <i>sound</i> is black — the stressed syllable is underlined, not shouted in caps alone. The common error is the only place in the app that uses a warning colour.</figcaption>
+    </figure>
+
+    <!-- SAY IT -->
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="fhead"><div class="dots"><span class="lab">CORE</span><span class="dot on"></span><span class="dot on"></span><span class="dot now"></span></div><span class="streak">◆ 6</span></div>
+        <div class="fbody">
+          <article class="card" style="--type-hue:var(--t-say)">
+            <div class="card-scroll">
+              <div class="kicker">SAY IT · 140 WPM</div>
+              <p style="font-family:var(--serif);font-size:25px;line-height:1.5;margin:6px 0 22px">
+                I looked at the numbers again this morning,<span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--t-say);opacity:.35;margin:0 8px;vertical-align:middle"></span>
+                and the problem isn't the budget.<span style="display:inline-block;width:22px;height:9px;border-radius:2px;background:var(--t-say);opacity:.55;margin:0 8px;vertical-align:middle"></span>
+                It's the timeline.
+              </p>
+              <p style="font-size:var(--fs-2);color:var(--ink-3);margin:0 0 20px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                <span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--t-say);opacity:.35"></span> short breath
+                <span style="display:inline-block;width:22px;height:9px;border-radius:2px;background:var(--t-say);opacity:.55;margin-left:8px"></span> full stop
+              </p>
+              <button class="btn quiet" style="height:48px;width:100%;font-size:var(--fs-3)">▶ Hear the pace</button>
+            </div>
+            <div class="say"><div class="lab"><span class="mic"></span>SAY THIS</div>
+              <p>Read it aloud. Land on every pause. Around 140 wpm.</p></div>
+          </article>
+        </div>
+        <div class="acts"><button class="btn ghost">Again</button><button class="btn prim">Got it</button></div>
+        <div class="subacts"><span class="pull"><span class="ring"></span>I felt the pull</span><span class="swipe">↑ swipe</span></div>
+        <nav class="tabs">
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>5 · Say it</b>The line is set in the serif at 25px because it's meant to be read aloud off the screen, like a script. Pauses are physical bars, sized by length — a short bar breathes, a long bar stops.</figcaption>
+    </figure>
+
+    <!-- BREATH -->
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="fhead"><div class="dots"><span class="lab">CORE</span><span class="dot now"></span><span class="dot"></span><span class="dot"></span></div><span class="streak">◆ 6</span></div>
+        <div class="fbody">
+          <article class="card" style="--type-hue:var(--t-breath)">
+            <div class="card-scroll" style="display:flex;flex-direction:column">
+              <div class="kicker">BREATH · 1 OF 3</div>
+              <h1 class="term sm">Hold the note</h1>
+              <ol style="margin:12px 0 0;padding-left:20px;font-size:var(--fs-3);color:var(--ink-2);line-height:1.5">
+                <li style="margin-bottom:7px">Sit up. Both feet on the floor.</li>
+                <li style="margin-bottom:7px">Breathe in through the nose for four counts — into the belly. Shoulders must not rise.</li>
+                <li style="margin-bottom:7px">Say “aaah” at a comfortable, even volume.</li>
+                <li>Stop the moment it wobbles.</li>
+              </ol>
+              <div style="margin-top:auto;text-align:center;padding-top:12px">
+                <p style="font-family:var(--serif);font-size:54px;line-height:1;margin:0 0 4px;font-variant-numeric:tabular-nums">14.2<span style="font-size:20px;color:var(--ink-3);font-family:var(--sans)">s</span></p>
+                <p class="hint" style="margin-bottom:12px">your best · 16.8s</p>
+                <button class="btn prim" style="width:180px;margin:0 auto;box-shadow:none;background:var(--ink);border-color:var(--ink)">Stop</button>
+              </div>
+            </div>
+            <div class="say"><div class="lab"><span class="mic"></span>SAY THIS</div>
+              <p>“Aaah” — steady, same volume from the first second to the last.</p></div>
+          </article>
+        </div>
+        <div class="acts"><button class="btn ghost">Again</button><button class="btn prim">Log 14.2s</button></div>
+        <div class="subacts"><span class="pull"><span class="ring"></span>I felt the pull</span><span class="swipe"></span></div>
+        <nav class="tabs">
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>6 · Breath — running</b>Instructions push up, the timer owns the bottom half. <b>“your best · 16.8s”</b> is new: a number to beat is what makes a breath drill worth repeating. The primary action names the value it will log, so the tap is never a leap.</figcaption>
+    </figure>
+
+    <!-- BREATH: count variant -->
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="fhead"><div class="dots"><span class="lab">ENDLESS</span></div><span class="streak">◆ 6</span></div>
+        <div class="fbody">
+          <article class="card" style="--type-hue:var(--t-breath)">
+            <div class="card-scroll" style="display:flex;flex-direction:column">
+              <div class="kicker">BREATH · LADDER</div>
+              <h1 class="term sm">Counting ladder</h1>
+              <ol style="margin:16px 0 0;padding-left:20px;font-size:var(--fs-3);color:var(--ink-2);line-height:1.5">
+                <li style="margin-bottom:7px">One full, low breath into the belly.</li>
+                <li style="margin-bottom:7px">Count out loud, evenly, as far as you can on that one breath.</li>
+                <li>Same volume on the last number as the first. That is the whole exercise.</li>
+              </ol>
+              <div style="margin-top:auto;text-align:center;padding-top:18px">
+                <p style="font-family:var(--serif);font-size:60px;line-height:1;margin:0 0 14px;font-variant-numeric:tabular-nums">23</p>
+                <div style="display:flex;gap:12px;justify-content:center;align-items:center">
+                  <button class="btn" style="width:56px;height:56px;border-radius:50%;font-size:22px">−</button>
+                  <button class="btn" style="width:56px;height:56px;border-radius:50%;font-size:22px">+</button>
+                </div>
+                <p class="hint" style="margin-top:12px">your best · 21</p>
+              </div>
+            </div>
+            <div class="say"><div class="lab"><span class="mic"></span>SAY THIS</div>
+              <p>Count out loud. One breath. Don't push from the throat.</p></div>
+          </article>
+        </div>
+        <div class="acts"><button class="btn ghost">Again</button><button class="btn prim">Log 23</button></div>
+        <div class="subacts"><span class="pull"><span class="ring"></span>I felt the pull</span><span class="swipe"></span></div>
+        <nav class="tabs">
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>7 · Breath — count variant</b>Same card, <code>logUnit: "count"</code>. Two round steppers and no timer. The unit is never ambiguous — <b>23</b> is a count, <b>14.2s</b> carries its unit, and they are written to different fields.</figcaption>
+    </figure>
+
+  </div>
+
+  <div class="panel warn" style="margin-top:26px">
+    <h4>Content problems the wireframes exposed</h4>
+    <ul>
+      <li><b>Breath instructions are too long to read while breathing.</b> The MPT drill ships with five steps, one of them 24 words. On the frame above I cut it to four short ones and moved "log the seconds" into the button. The seed content needs an editing pass for this — <i>the card is read once and then you're busy</i>.</li>
+      <li><b>Idiom cards carry a <code>scenario</code> and an <code>example</code> that say nearly the same thing.</b> The wireframe demotes <code>scenario</code> to a small "when you'd use it" line and makes the say-prompt derive from it.</li>
+      <li><b>Nothing in the seed set has a "best" to beat.</b> Breath cards need <code>bestMptSec</code> / best count surfaced on the card, which means the feed hook has to read it — a small change to <code>useFeed</code>, not the contract.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ 06 ARC ═══════════════════════════════════════════════════════════ -->
+<section id="arc">
+  <h2><span class="num">06</span>The session arc</h2>
+  <p class="lede">First open → Core 3 → the handoff → endless. The handoff is the most important screen in the app:
+  it is the exact moment you either keep going or open Instagram.</p>
+
+  <div class="rail">
+
+    <!-- COLD START -->
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="centered" style="justify-content:space-between;align-items:stretch;text-align:left;padding:40px 32px 32px">
+          <div>
+            <p style="font-size:var(--fs-1);letter-spacing:.3em;font-weight:700;color:var(--ink-3);margin:0 0 auto">SPEAK</p>
+          </div>
+          <div>
+            <h1 style="font-family:var(--serif);font-size:38px;line-height:1.15;letter-spacing:-.02em;margin:0 0 18px">You'll be talking out loud.</h1>
+            <p style="font-size:var(--fs-4);color:var(--ink-2);line-height:1.5;margin:0">Not typing, not tapping through. Every card ends with you saying something.
+            If you're somewhere you can't speak, this is the wrong moment to open it.</p>
+          </div>
+          <div>
+            <button class="btn prim wide" style="margin-bottom:18px">I can speak — start</button>
+            <div style="display:flex;gap:6px;justify-content:center">
+              <span style="width:22px;height:3px;border-radius:2px;background:var(--accent)"></span>
+              <span style="width:22px;height:3px;border-radius:2px;background:var(--line-2)"></span>
+              <span style="width:22px;height:3px;border-radius:2px;background:var(--line-2)"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <figcaption><b>Cold start · 1 of 3</b>No tab bar, no logo animation, no sign-up. Panel 2 is “Three cards a day is the whole requirement.” Panel 3 is “Everything stays on this phone.” Then it drops straight into Core 1 — the third tap is already the app.</figcaption>
+    </figure>
+
+    <!-- HANDOFF -->
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="fhead"><div class="dots"><span class="lab">CORE</span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></div><span class="streak">◆ 7</span></div>
+        <div class="fbody">
+          <div class="card" style="--type-hue:var(--accent);align-items:stretch;justify-content:center;padding:0">
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:34px 28px;text-align:left">
+              <p style="font-size:var(--fs-1);letter-spacing:.16em;font-weight:700;color:var(--accent);margin:0 0 20px">CORE 3 DONE · 2 MIN 40</p>
+              <p style="font-family:var(--serif);font-size:52px;line-height:1;letter-spacing:-.03em;margin:0 0 6px">7 days</p>
+              <p style="font-size:var(--fs-4);color:var(--ink-2);margin:0 0 26px">held. Today is banked whatever happens next.</p>
+              <div style="display:flex;flex-direction:column;gap:11px;border-top:1px solid var(--line);padding-top:20px">
+                <div style="display:flex;justify-content:space-between;font-size:var(--fs-3);color:var(--ink-2)"><span>Breath held</span><span style="color:var(--ink);font-weight:600">14.2s <span style="color:var(--accent)">+1.1</span></span></div>
+                <div style="display:flex;justify-content:space-between;font-size:var(--fs-3);color:var(--ink-2)"><span>Said out loud</span><span style="color:var(--ink);font-weight:600">3 of 3</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:var(--fs-3);color:var(--ink-2)"><span>New word</span><span style="color:var(--ink);font-weight:600">concise</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="acts">
+          <button class="btn prim wide">Keep going →</button>
+        </div>
+        <div class="subacts" style="justify-content:center">
+          <span class="hint">no end to this one · stop whenever</span>
+        </div>
+        <nav class="tabs">
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>The handoff</b>Not a finish line. There is no “see you tomorrow”, no confetti, no dismiss button — the only affordance is forward. The three-row recap exists so the two minutes leave a trace.</figcaption>
+    </figure>
+
+    <!-- URGE CONFIRM -->
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="fhead"><div class="dots"><span class="lab">ENDLESS</span></div><span class="streak">◆ 7</span></div>
+        <div class="fbody">
+          <article class="card" style="--type-hue:var(--t-word)">
+            <div class="card-scroll">
+              <div class="kicker">WORD</div>
+              <h1 class="term">reluctant</h1>
+              <p class="pos">adj.</p>
+              <p class="meaning">unwilling, and showing it</p>
+              <ul class="exs"><li>He was <em>reluctant</em> to put his name on it.</li></ul>
+            </div>
+            <div class="say"><div class="lab"><span class="mic"></span>SAY THIS</div>
+              <p>Say one sentence about something you agreed to but didn't want to do.</p></div>
+          </article>
+        </div>
+        <div class="acts"><button class="btn ghost">Again</button><button class="btn prim">Got it</button></div>
+        <div class="subacts">
+          <span class="pull" style="color:var(--heat);font-weight:600"><span class="ring" style="border-color:var(--heat);background:var(--heat)"></span>Counted — 41st time</span>
+          <span class="swipe">↑ swipe</span>
+        </div>
+        <nav class="tabs">
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>The pull, counted</b>Tapping the chip fills it and tells you the running total for about a second, then it fades back to grey. No modal, no card change, no interruption — the point is that admitting it costs nothing.</figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- ══ 07 INBOX ═════════════════════════════════════════════════════════ -->
+<section id="inbox">
+  <h2><span class="num">07</span>Capture</h2>
+  <p class="lede">Used half asleep, with one thumb, in the dark. Every control that isn't the field is a reason not to bother.</p>
+
+  <div class="rail">
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>3:07</span><span class="r">▲ ▮▮</span></div>
+        <div class="fbody" style="padding-top:14px">
+          <h1 style="font-family:var(--serif);font-size:26px;margin:0 0 4px">What don't you know?</h1>
+          <p class="hint" style="margin-bottom:18px">A word you couldn't find. A sentence that came out wrong.</p>
+          <div style="background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:16px 18px;min-height:150px;box-shadow:var(--sh-card)">
+            <p style="margin:0;font-size:17px;color:var(--ink)">couldn't explain the delay to the client without sounding defensive<span style="display:inline-block;width:2px;height:20px;background:var(--accent);vertical-align:-4px;margin-left:2px"></span></p>
+          </div>
+          <button class="btn prim wide" style="margin-top:14px">Save</button>
+          <p class="hint" style="margin-top:20px;display:flex;justify-content:space-between">
+            <span>4 waiting</span><span>they become cards in Phase 2</span></p>
+          <div style="margin-top:10px;display:flex;flex-direction:column;gap:2px">
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 2px;border-bottom:1px solid var(--line)">
+              <span style="flex:1;font-size:var(--fs-3);color:var(--ink-2)">word for when someone talks a lot but says nothing</span>
+              <span style="color:var(--ink-3);font-size:18px;line-height:1">×</span></div>
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 2px;border-bottom:1px solid var(--line)">
+              <span style="flex:1;font-size:var(--fs-3);color:var(--ink-2)">how to say “I'll do it later” professionally</span>
+              <span style="color:var(--ink-3);font-size:18px;line-height:1">×</span></div>
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 2px;border-bottom:1px solid var(--line)">
+              <span style="flex:1;font-size:var(--fs-3);color:var(--ink-2)">kept saying “basically” in the standup</span>
+              <span style="color:var(--ink-3);font-size:18px;line-height:1">×</span></div>
+          </div>
+        </div>
+        <nav class="tabs">
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>Capture — typing</b>The field is focused on tab-open, so the keyboard is already up. Save stays enabled-looking but does nothing on empty rather than greying out — a disabled primary at 3AM reads as “broken”.</figcaption>
+    </figure>
+
+    <div class="notes">
+      <h4>Changes from the shipped screen</h4>
+      <ol>
+        <li>A <b>title and a sub-line</b>. The bare textarea gave no reason to write anything; the question is the prompt.</li>
+        <li>The field is a <b>card, not a form control</b> — 17px minimum so iOS never zooms on focus.</li>
+        <li><b>Voice capture is the Phase-2 slot here</b>, and the layout leaves room for it: a mic button pairs with Save. Speaking a thought at 3AM beats typing it, and it feeds the same classifier.</li>
+        <li>The waiting list is <b>quiet and secondary</b> — hairline rows, ink-2, no cards. You are not meant to re-read it; you're meant to dump and close.</li>
+        <li>Discard is a <b>×</b> per row with a 44px target and no confirm dialog. It's a scratch pad.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 08 HINDI ═════════════════════════════════════════════════════════ -->
+<section id="hindi">
+  <h2><span class="num">08</span>हिंदी</h2>
+  <p class="lede">Locked decision: Hindi never enters the main feed. But it gets the same engine — an endless queue, not a carousel with disabled arrows at the end.</p>
+
+  <div class="rail">
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="fhead">
+          <div class="dots"><span class="lab" style="font-size:var(--fs-2);letter-spacing:0">हिंदी</span></div>
+          <span style="font-size:var(--fs-2);color:var(--ink-3)">12 today</span>
+        </div>
+        <div class="fbody">
+          <article class="card" style="--type-hue:#B45309">
+            <div class="card-scroll">
+              <div class="kicker" style="--type-hue:#B45309">शब्द</div>
+              <h1 class="term" style="font-family:var(--sans);font-weight:600">विनम्र</h1>
+              <p class="pos" style="font-style:normal">vinamra · adj.</p>
+              <p class="meaning">polite, humble — the way you speak to someone you respect</p>
+              <ul class="exs">
+                <li>वह हमेशा <em>विनम्र</em> रहता है, चाहे कोई कुछ भी कहे।</li>
+                <li style="color:var(--ink-3);font-size:var(--fs-2);border-left-color:transparent;padding-left:16px">He stays polite no matter what anyone says.</li>
+              </ul>
+              <button class="btn quiet" style="height:48px;width:100%;font-size:var(--fs-3);margin-top:16px">▶ सुनिए</button>
+            </div>
+            <div class="say"><div class="lab"><span class="mic"></span>बोलिए</div>
+              <p>अपने बारे में एक वाक्य कहिए — “विनम्र” का इस्तेमाल कीजिए।</p></div>
+          </article>
+        </div>
+        <div class="acts"><button class="btn ghost">फिर से</button><button class="btn prim">आ गया</button></div>
+        <div class="subacts"><span class="hint">Hindi has its own streak — it does not affect Core 3.</span></div>
+        <nav class="tabs">
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>Hindi card</b>Same skeleton, Devanagari in the sans (serif stacks have no Devanagari — it would fall back and look broken). Romanisation sits where the part-of-speech does. English gloss is a second, greyed example — present, but not the point.</figcaption>
+    </figure>
+
+    <div class="notes">
+      <h4>Decisions this makes</h4>
+      <ol>
+        <li><b>No prev/next.</b> Same two actions as the feed, same swipe, same scheduler. One engine, two decks.</li>
+        <li><b>The UI strings on this screen are Hindi.</b> If the section is Hindi, the buttons are Hindi — English chrome around Devanagari content is the tell that it was bolted on.</li>
+        <li><b>Its own counter, its own streak, and neither touches Core 3.</b> Stated on the screen so it never feels like skipping Hindi costs you the streak.</li>
+        <li>The serif exception is documented in tokens: <code>--serif</code> applies to <code>:lang(en)</code> terms only.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 09 YOU ═══════════════════════════════════════════════════════════ -->
+<section id="you">
+  <h2><span class="num">09</span>You</h2>
+  <p class="lede">Two frames: day 1 and day 40. The shipped screen shows the same layout on both, which means the first
+  week of using the app is a wall of zeroes.</p>
+
+  <div class="rail">
+
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="fbody" style="padding-top:16px;gap:0">
+          <h1 style="font-family:var(--serif);font-size:28px;margin:0 0 22px">Day one.</h1>
+          <div style="background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:22px;box-shadow:var(--sh-card);margin-bottom:16px">
+            <p style="margin:0 0 14px;font-size:var(--fs-4);color:var(--ink)">Do Core 3 today and this page starts filling up.</p>
+            <div style="display:flex;gap:9px;margin-bottom:16px">
+              <span class="dot now" style="width:11px;height:11px"></span><span class="dot" style="width:11px;height:11px"></span><span class="dot" style="width:11px;height:11px"></span>
+            </div>
+            <button class="btn prim wide" style="height:48px;font-size:var(--fs-3)">Start Core 3</button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:var(--r-md);background:var(--card);overflow:hidden">
+            <div style="padding:16px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-size:var(--fs-3)"><span style="color:var(--ink-2)">Urges redirected</span><span style="color:var(--ink-3)">—</span></div>
+            <div style="padding:16px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-size:var(--fs-3)"><span style="color:var(--ink-2)">Breath — best hold</span><span style="color:var(--ink-3)">not measured yet</span></div>
+            <div style="padding:16px 20px;display:flex;justify-content:space-between;font-size:var(--fs-3)"><span style="color:var(--ink-2)">Words seen</span><span style="color:var(--ink-3)">0 of 370</span></div>
+          </div>
+          <p class="hint" style="margin-top:auto;padding-bottom:8px">Local only — everything lives on this phone. Nothing is backed up yet.</p>
+        </div>
+        <nav class="tabs">
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>You — day 1</b>No giant zero. The screen's job on day one is to send you back to the feed, so the only prominent thing is the button that does that. Empty stats read “—” or a sentence, never “0”.</figcaption>
+    </figure>
+
+    <figure class="frame">
+      <div class="scr">
+        <div class="sbar"><span>9:41</span><span class="r">▲ ▮▮</span></div>
+        <div class="fbody" style="padding-top:16px;gap:0">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px">
+            <h1 style="font-family:var(--serif);font-size:28px;margin:0">You</h1>
+            <span class="streak">◆ 7-day streak</span>
+          </div>
+
+          <div style="background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 22px;box-shadow:var(--sh-card);margin-bottom:12px">
+            <p style="font-family:var(--serif);font-size:50px;line-height:1;margin:0 0 2px;letter-spacing:-.03em">41</p>
+            <p style="margin:0 0 10px;font-size:var(--fs-4);color:var(--ink)">urges redirected</p>
+            <p class="hint" style="line-height:1.45">Times you felt the pull and did a card instead. This is the only number here that measures what the app is for.</p>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+            <div style="background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 16px">
+              <p style="font-family:var(--serif);font-size:30px;margin:0;line-height:1.1">16.8<span style="font-size:15px;color:var(--ink-3);font-family:var(--sans)">s</span></p>
+              <p style="margin:2px 0 0;font-size:var(--fs-2);color:var(--ink-3)">best hold <span style="color:var(--accent)">+4.1</span></p>
+            </div>
+            <div style="background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 16px">
+              <p style="font-family:var(--serif);font-size:30px;margin:0;line-height:1.1">214</p>
+              <p style="margin:2px 0 0;font-size:var(--fs-2);color:var(--ink-3)">cards spoken</p>
+            </div>
+            <div style="background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 16px">
+              <p style="font-family:var(--serif);font-size:30px;margin:0;line-height:1.1">38</p>
+              <p style="margin:2px 0 0;font-size:var(--fs-2);color:var(--ink-3)">days done</p>
+            </div>
+            <div style="background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 16px">
+              <p style="font-family:var(--serif);font-size:30px;margin:0;line-height:1.1">96<span style="font-size:15px;color:var(--ink-3);font-family:var(--sans)">/370</span></p>
+              <p style="margin:2px 0 0;font-size:var(--fs-2);color:var(--ink-3)">words met</p>
+            </div>
+          </div>
+
+          <div style="background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:16px 18px">
+            <p style="margin:0 0 10px;font-size:var(--fs-2);letter-spacing:.1em;color:var(--ink-3);font-weight:600">LAST 5 WEEKS</p>
+            <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:5px">
+              <span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--sunken)"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span>
+              <span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--sunken)"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span>
+              <span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span>
+              <span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span>
+              <span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent);opacity:.85"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--accent-soft)"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--sunken)"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--sunken)"></span><span style="aspect-ratio:1;border-radius:3px;background:var(--sunken)"></span>
+            </div>
+            <p class="hint" style="margin:12px 0 0">2 grace days left this month.</p>
+          </div>
+        </div>
+        <nav class="tabs">
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="16" height="12" rx="3"/><path d="M7 18.5h8"/></svg></span>Feed</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 5v12M5 11h12"/></svg></span>Capture</span>
+          <span class="tab"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h14M11 6v11M7 17h8"/></svg></span>हिंदी</span>
+          <span class="tab on"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 16l4-5 3.5 3L18 6"/></svg></span>You</span>
+        </nav>
+      </div>
+      <figcaption><b>You — day 40</b>Hero stat, four tiles, five weeks of days. The grid is the only chart in Phase 0 and it's deliberately not a graph — <b>2 grace days left</b> is stated because a hidden grace rule feels like a bug the first time it saves you.</figcaption>
+    </figure>
+
+    <div class="notes">
+      <h4>Rules for this screen</h4>
+      <ol>
+        <li><b>Nothing here says “0”.</b> A stat with no data shows an em-dash or a sentence. Zeroes on a progress screen are a reason to close the app.</li>
+        <li><b>Deltas, not just totals.</b> <code>16.8s +4.1</code> is the sentence “your breath got better”, which is the actual reason the app exists.</li>
+        <li><b>The day grid stops at five weeks.</b> It fits without scrolling and the recent past is the only past that changes behaviour.</li>
+        <li><b>Grace days are visible.</b> The streak rule allows two a month; if the app quietly forgives you, you learn nothing from the streak.</li>
+        <li>Backup state moves to a single line at the bottom, and only appears when sync is <i>not</i> configured.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 10 EDGES ═════════════════════════════════════════════════════════ -->
+<section id="edges">
+  <h2><span class="num">10</span>Empty &amp; edge states</h2>
+  <p class="lede">Every one of these currently either doesn't exist or is a centred grey sentence.
+  On a light theme they need drawing properly, because there's nowhere for a bare sentence to hide.</p>
+
+  <div class="two">
+    <div class="panel">
+      <h4>Must exist</h4>
+      <ul>
+        <li><b>Queue exhausted</b> — genuinely no cards due and none new. Never a dead end: offer a review of the ten hardest, or a breath drill. Copy: “Nothing new is due. Want the ten you find hardest?”</li>
+        <li><b>Loading</b> — first launch seeds 370 cards. A skeleton card, not a spinner. Spinners on white read as broken.</li>
+        <li><b>Offline</b> — the app is local-first so it just works; the only surface is a one-line note on <b>You</b> if sync is stale.</li>
+        <li><b>TTS unavailable</b> — “Hear it” hides rather than failing on tap. iOS Safari with no voices installed is real.</li>
+        <li><b>Mid-card tab switch</b> — the card is preserved exactly, including a running timer. Already fixed once; the wireframes assume it stays fixed.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h4>Deliberately absent</h4>
+      <ul>
+        <li><b>No “you're done” screen.</b> Anywhere. Not after Core 3, not after 60 cards, not at midnight.</li>
+        <li><b>No streak-broken screen.</b> The number just changes. A screen mourning a lost streak is an invitation to quit.</li>
+        <li><b>No settings tab.</b> Anything configurable in Phase 0 belongs at the bottom of <b>You</b>.</li>
+        <li><b>No sign-in.</b> Supabase is backup, not an account gate — it stays a single line at the bottom of You until Phase 3.</li>
+        <li><b>No badges, no confetti, no “level 4”.</b> The streak and the urge count are the only two rewards, and both are real.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 11 MOTION ════════════════════════════════════════════════════════ -->
+<section id="motion">
+  <h2><span class="num">11</span>Motion &amp; the rules that survive</h2>
+  <div class="two">
+    <div class="panel">
+      <h4>Motion</h4>
+      <ul>
+        <li><b>Card leaves upward</b>, 220ms, <code>cubic-bezier(.22,.61,.36,1)</code>, fading as it goes. The next card is already behind it — no gap, ever.</li>
+        <li><b>Drag follows the thumb</b> with 0.6 resistance, capped at 160px. Past 70px the card lightens slightly so the commit point is felt, not guessed.</li>
+        <li><b>Core dot fills</b> with a 120ms scale pop. It is the only celebratory motion in the app.</li>
+        <li><b>Swipe hint</b> animates on the first three cards ever, then never again.</li>
+        <li><code>prefers-reduced-motion</code> kills all of it, and swipe still works.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h4>Unchanged from the current build</h4>
+      <ul>
+        <li>Core 3 = breath → say-it → word, in that order, and only that counts for the streak.</li>
+        <li>Endless never ends; no dead ends anywhere.</li>
+        <li>IndexedDB is the read path; Supabase is backup only.</li>
+        <li>Hindi is never in the main feed.</li>
+        <li>The contract in <code>src/types/contract.ts</code> — the redesign is presentation-only apart from the two flagged items (grades, and reading “best” onto breath cards).</li>
+        <li>Every tap target ≥ 44px. The gutter is 20px everywhere.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 12 OPEN ══════════════════════════════════════════════════════════ -->
+<section id="open">
+  <h2><span class="num">12</span>Answered — 2026-08-12</h2>
+  <p class="lede">All four were answered. They are locked in <code>PLAN.md</code> §8 and written into
+  the build brief at <code>.claude/briefs/AG-002-phase0.5-ui-rebuild.md</code>. Nothing here is open.</p>
+  <div class="q"><b>1 · Does “Hard” die?</b>
+    <p><b>Answer: keep it.</b> Per the fallback stated when this was asked, <code>hard</code> becomes
+    <b>swipe-left</b>. The button row stays at two — Again and Got it — with <code>easy</code> as a
+    long-press. Four grade paths, two of them gestures.</p></div>
+  <div class="q"><b>2 · Serif for the words — yes or no?</b>
+    <p><b>Answer: yes.</b> <code>--serif</code> is used for exactly one thing: the item being learned.
+    Never for UI, never for body copy, never for numbers.</p></div>
+  <div class="q"><b>3 · Green accent, or something else?</b>
+    <p><b>Answer: sky blue, not green.</b> The accent is <code>#0369A1</code>, with
+    <code>#E0F2FE</code> as the say-block fill and <code>#0EA5E9</code> for non-text use only
+    (focus rings, active indicators — it is too light to carry white text).
+    <b>The frames below are drawn from these variables and are already correct.</b>
+    Two card-type hues moved away from the accent so a 3px spine is never mistaken for a
+    call to action: <code>word</code> <code>#1D4ED8</code>&nbsp;→&nbsp;<code>#1E3A8A</code> and
+    <code>pronounce</code> <code>#0E7490</code>&nbsp;→&nbsp;<code>#0F766E</code>.</p></div>
+  <div class="q"><b>4 · “Inbox” → “Capture”?</b>
+    <p><b>Answer: yes.</b> A label change only — the tab, the heading, the placeholder, the empty
+    state. File names, the route key and everything under <code>src/features/inbox/</code> keep their
+    current names.</p></div>
+  <p class="lede" style="margin-top:26px"><b>Status: building.</b> <code>tokens.css</code> is written and
+  is the contract. The rest — <code>components.css</code> rewritten, the five screen components re-laid
+  out, plus the first-run screen, drawn icons, Core dots, card actions and the gesture hook — is
+  briefed as <b>AG-002</b>. The logic layer — <code>srs/</code>, <code>features/</code>,
+  <code>db/</code> — is not touched, so the 44 tests stay green throughout.</p>
+</section>
+
+</div>
+</body>
+</html>

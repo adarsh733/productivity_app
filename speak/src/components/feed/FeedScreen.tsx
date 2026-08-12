@@ -1,77 +1,68 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useFeed } from '../../features/feed/useFeed';
 import CardView from '../cards/CardView';
+import CoreDots from './CoreDots';
+import CardActions from './CardActions';
+import { useCardGestures } from './useCardGestures';
 import type { Grade } from '../../types/contract';
-
-/**
- * The feed.
- *
- * Swipe up = `good`. That is the whole point: his thumb is already trained for
- * a vertical feed, so the fast path costs one gesture and still records an
- * honest grade. The buttons exist for the other three answers.
- *
- * There is deliberately no "you're done!" screen. A dead end is the moment he
- * opens Instagram instead, so Core 3 hands straight to an infinite queue.
- */
-
-const SWIPE_THRESHOLD = 70;
-const GRADES: { g: Grade; label: string }[] = [
-  { g: 'hard', label: 'Hard' },
-  { g: 'good', label: 'Good' },
-  { g: 'easy', label: 'Easy' },
-];
 
 export default function FeedScreen() {
   const feed = useFeed('core');
   const [measure, setMeasure] = useState<number | undefined>();
-  const [drag, setDrag] = useState(0);
-  const [leaving, setLeaving] = useState(false);
-  const [urgeFlash, setUrgeFlash] = useState(false);
+  const [showHandoff, setShowHandoff] = useState(false);
 
-  const shownAt = useRef(Date.now());
-  const startY = useRef<number | null>(null);
-  const busy = useRef(false);
+  const shownAt = useRef<number>(Date.now());
+  const busy = useRef<boolean>(false);
+  /** null until the first observation, so a reopen mid-day is not "just finished". */
+  const prevCoreDone = useRef<boolean | null>(null);
 
   const cardId = feed.item?.card.id;
 
   useEffect(() => {
     shownAt.current = Date.now();
     setMeasure(undefined);
-    setDrag(0);
-    setLeaving(false);
     busy.current = false;
   }, [cardId]);
 
+  // Core 3 is a floor, not a finish line. The moment it lands the queue has to
+  // become endless by itself — the core queue is only 3 items long, so without
+  // this the feed runs dry and shows a spinner forever. A dead end here is the
+  // one failure this app cannot have.
+  const { ready, coreThreeDone, mode, setMode } = feed;
+  useEffect(() => {
+    if (ready && coreThreeDone && mode === 'core') setMode('endless');
+  }, [ready, coreThreeDone, mode, setMode]);
+
+  // The handoff banner marks the transition, so it may only fire on a genuine
+  // false → true edge. Firing on mount would congratulate him every time he
+  // reopens the app later the same day.
+  useEffect(() => {
+    if (!ready) return;
+    const was = prevCoreDone.current;
+    prevCoreDone.current = coreThreeDone;
+    if (was === false && coreThreeDone) {
+      setShowHandoff(true);
+      const timer = setTimeout(() => setShowHandoff(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [ready, coreThreeDone]);
+
   const submit = useCallback(
-    (g: Grade) => {
+    async (g: Grade) => {
       if (busy.current) return;
       busy.current = true;
-      setLeaving(true);
-      void feed.submit(g, { msSpent: Date.now() - shownAt.current, measure });
+      const msSpent = Date.now() - shownAt.current;
+      await feed.submit(g, { msSpent, measure });
     },
     [feed, measure],
   );
 
-  // ── swipe ──────────────────────────────────────────────────────────────────
-  const onTouchStart = (e: React.TouchEvent) => {
-    if (busy.current) return;
-    startY.current = e.touches[0]?.clientY ?? null;
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    if (startY.current === null) return;
-    const dy = (e.touches[0]?.clientY ?? 0) - startY.current;
-    // Upward only, with resistance so it never feels like a scroll.
-    setDrag(dy < 0 ? Math.max(dy, -160) * 0.6 : 0);
-  };
-
-  const onTouchEnd = () => {
-    if (startY.current === null) return;
-    const travelled = drag;
-    startY.current = null;
-    if (travelled <= -SWIPE_THRESHOLD) submit('good');
-    else setDrag(0);
-  };
+  const { dragOffset, leavingDirection, showHint, bindGestures } = useCardGestures(
+    cardId,
+    (grade) => {
+      void submit(grade);
+    },
+  );
 
   if (!feed.ready) {
     return (
@@ -83,91 +74,82 @@ export default function FeedScreen() {
     );
   }
 
-  // Core 3 finished. This is a handoff, not a finish line — the action is the
-  // dominant thing on screen and there is no "well done, see you tomorrow".
-  if (!feed.item && feed.mode === 'core' && feed.coreThreeDone) {
-    return (
-      <div className="screen feed">
-        <div className="feed-empty">
-          <p className="kicker-done">CORE 3 DONE</p>
-          <p className="hint">
-            {feed.streak > 0 ? `${feed.streak}-day streak held.` : 'Today counts.'}
-          </p>
-          <button className="btn primary big" onClick={() => feed.setMode('endless')}>
-            Keep going
-          </button>
-          <p className="hint">No end to this one. Stop whenever.</p>
-        </div>
-      </div>
-    );
-  }
-
+  // Fallback if queue somehow yields no item (feed tops up, so should not happen)
   if (!feed.item) {
     return (
       <div className="screen feed">
         <div className="feed-empty">
-          <p className="meaning">Nothing queued.</p>
-          <p className="hint">Add something to the Inbox and it becomes a card.</p>
+          <p className="meaning">Loading feed...</p>
+          <span className="spinner" aria-label="loading" />
         </div>
       </div>
     );
   }
 
-  const progress = feed.mode === 'core' ? feed.position / 3 : 0;
+  const transformStyle =
+    leavingDirection === 'up'
+      ? 'translateY(-100vh)'
+      : leavingDirection === 'left'
+        ? 'translateX(-100vw)'
+        : dragOffset.x || dragOffset.y
+          ? `translate3d(${dragOffset.x}px, ${dragOffset.y}px, 0)`
+          : undefined;
 
   return (
     <div className="screen feed">
-      <header className="feed-top">
-        <div className="feed-top-left">
-          <span className={`pill${feed.mode === 'core' ? ' pill-core' : ''}`}>
-            {feed.mode === 'core' ? `CORE ${Math.min(feed.position, 3)}/3` : 'ENDLESS'}
-          </span>
-          {feed.streak > 0 && <span className="streak">{feed.streak}-day</span>}
+      <header className="feed-head">
+        <div className="feed-head-row">
+          <span className="feed-mode-label">{feed.mode === 'core' ? 'CORE' : 'ENDLESS'}</span>
+
+          {feed.streak > 0 && (
+            <div className="streak">
+              <span className="streak-flame" aria-hidden="true">
+                🔥
+              </span>
+              <span>{feed.streak}</span>
+            </div>
+          )}
         </div>
-        <button
-          className={`urge tap${urgeFlash ? ' is-flash' : ''}`}
-          onClick={() => {
-            void feed.logUrge();
-            setUrgeFlash(true);
-            setTimeout(() => setUrgeFlash(false), 900);
-          }}
-        >
-          {urgeFlash ? 'Counted' : 'Felt the pull'}
-        </button>
+
+        <div className="feed-subhead-row">
+          {feed.mode === 'core' ? (
+            <CoreDots position={feed.position} coreThreeDone={feed.coreThreeDone} />
+          ) : (
+            <span className="feed-cards-done">{feed.cardsToday} done today</span>
+          )}
+        </div>
       </header>
 
-      {feed.mode === 'core' && (
-        <div className="core-bar" aria-hidden="true">
-          <span style={{ transform: `scaleX(${Math.min(progress, 1)})` }} />
-        </div>
+      {showHandoff && (
+        <div className="handoff-banner">Core 3 done. Streak {feed.streak}.</div>
       )}
 
       <div
-        className={`card-stage${leaving ? ' is-leaving' : ''}`}
-        style={{ transform: drag ? `translateY(${drag}px)` : undefined }}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
+        className={`card-frame${leavingDirection ? ' is-leaving' : ''}`}
+        style={{ transform: transformStyle }}
+        {...bindGestures}
       >
         <CardView card={feed.item.card} onMeasure={setMeasure} />
+
+        {showHint && (
+          <div className="swipe-hint" aria-hidden="true">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="18 15 12 9 6 15" />
+            </svg>
+          </div>
+        )}
       </div>
 
-      <footer className="grades">
-        <button className="btn grade-again tap" onClick={() => submit('again')}>
-          Again
-        </button>
-        <div className="grades-pass">
-          {GRADES.map(({ g, label }) => (
-            <button key={g} className={`btn grade-${g} tap`} onClick={() => submit(g)}>
-              {label}
-            </button>
-          ))}
-        </div>
-      </footer>
-
-      <p className="swipe-hint" aria-hidden="true">
-        swipe up to pass
-      </p>
+      <CardActions onSubmit={(g) => void submit(g)} onLogUrge={feed.logUrge} />
     </div>
   );
 }

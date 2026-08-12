@@ -1,10 +1,18 @@
+import { FeedIcon, CaptureIcon, HindiIcon, YouIcon } from './Icons';
+
 export type Tab = 'feed' | 'inbox' | 'hindi' | 'progress';
 
-const TABS: { id: Tab; label: string; glyph: string }[] = [
-  { id: 'feed', label: 'Feed', glyph: '◈' },
-  { id: 'inbox', label: 'Inbox', glyph: '＋' },
-  { id: 'hindi', label: 'हिंदी', glyph: 'अ' },
-  { id: 'progress', label: 'You', glyph: '◉' },
+interface TabConfig {
+  id: Tab;
+  label: string;
+  Icon: React.ComponentType;
+}
+
+const TABS: TabConfig[] = [
+  { id: 'feed', label: 'Feed', Icon: FeedIcon },
+  { id: 'inbox', label: 'Capture', Icon: CaptureIcon },
+  { id: 'hindi', label: 'हिंदी', Icon: HindiIcon },
+  { id: 'progress', label: 'You', Icon: YouIcon },
 ];
 
 export default function TabBar({
@@ -16,19 +24,23 @@ export default function TabBar({
 }) {
   return (
     <nav className="tabbar">
-      {TABS.map((t) => (
-        <button
-          key={t.id}
-          className={`tabbar-btn tap${active === t.id ? ' is-active' : ''}`}
-          onClick={() => onChange(t.id)}
-          aria-current={active === t.id ? 'page' : undefined}
-        >
-          <span className="tabbar-glyph" aria-hidden="true">
-            {t.glyph}
-          </span>
-          <span className="tabbar-label">{t.label}</span>
-        </button>
-      ))}
+      {TABS.map(({ id, label, Icon }) => {
+        const isActive = active === id;
+        return (
+          <button
+            key={id}
+            className={`tab tap no-select${isActive ? ' is-active' : ''}`}
+            onClick={() => onChange(id)}
+            aria-current={isActive ? 'page' : undefined}
+            type="button"
+          >
+            <span className="tab-icon">
+              <Icon />
+            </span>
+            <span className="tab-label">{label}</span>
+          </button>
+        );
+      })}
     </nav>
   );
 }

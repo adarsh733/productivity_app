@@ -1,67 +1,92 @@
 import { useLiveQuery } from 'dexie-react-hooks';
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+
 import { db } from '../../db/db';
 import CardView from '../cards/CardView';
-import { speak } from '../../lib/speech';
+import CardActions from '../feed/CardActions';
+import { useCardGestures } from '../feed/useCardGestures';
+import type { Grade } from '../../types/contract';
 
-/**
- * Hindi is deliberately NOT in the main feed — it is a section entered on
- * purpose, so it never competes for slots with the English work.
- *
- * Phase 3 gives it its own scheduler. For now: browse, hear it, say it.
- */
 export default function HindiScreen() {
   const cards = useLiveQuery(() => db.cards.where('lang').equals('hi').toArray(), [], []);
+
   const [index, setIndex] = useState(0);
+  const [doneTodayCount, setDoneTodayCount] = useState(0);
 
-  const list = (cards ?? []).filter((c) => c.status === 'active');
+  const activeCards = (cards ?? []).filter((c) => c.status === 'active');
+  const cardCount = activeCards.length;
 
-  if (list.length === 0) {
+  const currentCard = cardCount > 0 ? activeCards[index % cardCount] : null;
+  const cardId = currentCard?.id;
+
+  const busy = useRef(false);
+
+  useEffect(() => {
+    busy.current = false;
+  }, [cardId]);
+
+  const handleGrade = useCallback(
+    (grade: Grade) => {
+      if (busy.current || cardCount === 0) return;
+      busy.current = true;
+      if (grade !== 'again') {
+        setDoneTodayCount((n) => n + 1);
+      }
+      setIndex((i) => (i + 1) % cardCount);
+    },
+    [cardCount],
+  );
+
+  const { dragOffset, leavingDirection, bindGestures } = useCardGestures(cardId, handleGrade);
+
+  if (cardCount === 0) {
     return (
-      <div className="screen center">
-        <p className="meta">No Hindi cards yet.</p>
+      <div className="screen hindi center">
+        <p className="meaning">No Hindi cards available.</p>
       </div>
     );
   }
 
-  const at = Math.min(index, list.length - 1);
-  const card = list[at]!;
+  if (!currentCard) {
+    return (
+      <div className="screen hindi center">
+        <span className="spinner" aria-label="loading" />
+      </div>
+    );
+  }
+
+  const transformStyle =
+    leavingDirection === 'up'
+      ? 'translateY(-100vh)'
+      : leavingDirection === 'left'
+        ? 'translateX(-100vw)'
+        : dragOffset.x || dragOffset.y
+          ? `translate3d(${dragOffset.x}px, ${dragOffset.y}px, 0)`
+          : undefined;
 
   return (
     <div className="screen hindi">
-      <header className="hindi-top">
-        <span className="pill">हिंदी</span>
-        <span className="meta">
-          {at + 1} / {list.length}
-        </span>
+      <header className="feed-head">
+        <div className="feed-head-row">
+          <span className="feed-mode-label">हिंदी</span>
+          <span className="feed-cards-done">{doneTodayCount} today</span>
+        </div>
       </header>
 
-      <div className="card-stage">
-        <CardView card={card} />
+      <div
+        className={`card-frame${leavingDirection ? ' is-leaving' : ''}`}
+        style={{ transform: transformStyle }}
+        {...bindGestures}
+      >
+        <CardView card={currentCard} />
       </div>
 
-      <footer className="hindi-nav">
-        <button
-          className="btn tap"
-          onClick={() => setIndex((i) => Math.max(0, i - 1))}
-          disabled={at === 0}
-        >
-          ←
-        </button>
-        <button
-          className="btn tap"
-          onClick={() => card.type === 'word' && speak(card.term, { lang: 'hi', rate: 0.8 })}
-        >
-          ▶ सुनिए
-        </button>
-        <button
-          className="btn primary tap"
-          onClick={() => setIndex((i) => Math.min(list.length - 1, i + 1))}
-          disabled={at === list.length - 1}
-        >
-          →
-        </button>
-      </footer>
+      <CardActions
+        onSubmit={(g) => handleGrade(g)}
+        onLogUrge={() => {
+          // urge logging placeholder for Hindi view
+        }}
+      />
     </div>
   );
 }

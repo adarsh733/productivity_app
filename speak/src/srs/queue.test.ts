@@ -277,3 +277,39 @@ describe('the 70% spoken floor', () => {
     expect(spoken.length / q.length).toBeGreaterThanOrEqual(0.7);
   });
 });
+
+describe('Hindi never reaches the English feed', () => {
+  // Locked decision (PLAN.md §8, row 2): English is the whole feed, Hindi is a
+  // separate section. `buildCore` filtered by language and `buildEndless` did
+  // not, so Hindi words were served into the main feed once the English cards
+  // in a run were exhausted. This is exactly the kind of miss nobody notices
+  // until a Devanagari term appears mid-session.
+  const deck: Card[] = [
+    ...['w1', 'w2'].map((id) => card(id, 'word')),
+    ...['h1', 'h2', 'h3', 'h4', 'h5'].map((id) => card(id, 'word', 'hi')),
+    card('s1', 'say_it'),
+    card('sh1', 'say_it', 'hi'),
+    card('b1', 'breath'),
+  ];
+
+  it('excludes hi cards from an endless run', () => {
+    const q = buildQueue(deck, NONE, opts({ limit: 30, mode: 'endless' }));
+    expect(q.length).toBeGreaterThan(0);
+    expect(q.every((i) => i.card.lang === 'en')).toBe(true);
+  });
+
+  it('excludes hi cards from a core run', () => {
+    const q = buildQueue(deck, NONE, opts({ limit: 3, mode: 'core' }));
+    expect(q.every((i) => i.card.lang === 'en')).toBe(true);
+  });
+
+  it('recycles English rather than topping up with hi cards', () => {
+    // Only 3 non-breath English cards exist against a 30-card request. The
+    // endless queue must never dead-end, so it recycles them — but it must
+    // recycle *English*. Reaching for Hindi to pad the run is the failure.
+    const q = buildQueue(deck, NONE, opts({ limit: 30, mode: 'endless' }));
+    expect(q).toHaveLength(30);
+    expect(q.every((i) => i.card.lang === 'en')).toBe(true);
+    expect(new Set(q.map((i) => i.card.id)).size).toBeLessThanOrEqual(4);
+  });
+});

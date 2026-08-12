@@ -5,37 +5,66 @@
  * No raw hex, no raw px font sizes, no one-off radii or shadows anywhere else.
  * A card feed that drifts by 2px per screen reads as cheap, and the whole point
  * is that this feels better to open than Instagram.
+ *
+ * v2 — 2026-08-12. Light theme, sky accent. Decisions 7 and 10 in docs/PLAN.md.
+ * There is no dark variant and no theme toggle. Do not add one back.
  */
 
 :root {
-  /* ── surface ─────────────────────────────────────────────────────────── */
-  --bg: #0b0d10;
-  --surface: #14181d;
-  --surface-2: #1c2229;
-  --line: #262d36;
+  /* ── surface ─────────────────────────────────────────────────────────────
+     Warm paper behind, pure white on the card only. The card is the one thing
+     that should look lit. */
+  --paper: #fbfaf8;
+  --card: #ffffff;
+  --raised: #f3f1ec; /* chips, fields, inactive tiles */
+  --line: #e7e3db; /* hairlines */
+
+  /* Aliases kept so nothing that referenced the old names breaks silently. */
+  --bg: var(--paper);
+  --surface: var(--card);
+  --surface-2: var(--raised);
 
   /* ── ink ─────────────────────────────────────────────────────────────── */
-  --ink: #f2f5f8;
-  --ink-2: #a8b3bf;
-  --ink-3: #6b7683;
+  --ink: #15171a; /* body, terms */
+  --ink-2: #585e66; /* secondary */
+  --ink-3: #9096a0; /* labels, hints */
 
-  /* ── accent ──────────────────────────────────────────────────────────── */
-  --accent: #4ade80;
-  --accent-ink: #07120b;
-  --warn: #fbbf24;
-  --bad: #f87171;
+  /* ── accent — sky. The ONLY call-to-action colour. ───────────────────────
+     --accent carries white text and must stay dark enough to do so (6.4:1).
+     --accent-bright is for non-text use only: focus rings, active indicators,
+     the say-block rule. Never put text on it. */
+  --accent: #0369a1;
+  --accent-ink: #ffffff;
+  --accent-bright: #0ea5e9;
+  --accent-soft: #e0f2fe; /* the say-block fill */
+  --accent-line: #7dd3fc; /* the say-block left rule, the prompt mark */
 
-  /* One hue per card type — the feed should be readable at a glance. */
-  --t-word: #60a5fa;
-  --t-swap: #c084fc;
-  --t-idiom: #fbbf24;
-  --t-action_verb: #f472b6;
-  --t-pronounce: #22d3ee;
-  --t-say_it: #4ade80;
-  --t-breath: #94a3b8;
+  --heat: #c2410c; /* the streak flame, and nothing else */
+  --warn: #b45309;
+  --bad: #b91c1c;
 
-  /* ── type scale — eight sizes, no others ─────────────────────────────── */
-  --fs-1: 0.6875rem; /* 11px — labels */
+  /* One hue per card type. SPINE AND KICKER ONLY — never a fill, never a
+     button, never text larger than --fs-2. `word` and `pronounce` sit away
+     from the sky accent on purpose so a spine is never mistaken for a CTA. */
+  --t-word: #1e3a8a;
+  --t-swap: #6d28d9;
+  --t-idiom: #b45309;
+  --t-action_verb: #be185d;
+  --t-pronounce: #0f766e;
+  --t-say_it: #15803d;
+  --t-breath: #475569;
+
+  /* ── type — two families, one split ──────────────────────────────────────
+     The serif is used for EXACTLY ONE THING: the item being learned (the word,
+     the phrase, the verb, the Hindi term). Never for UI, never for body copy,
+     never for numbers in the stat grid. It is a system stack, so it costs zero
+     bytes and renders natively on the iPhone. */
+  --sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --serif: ui-serif, 'Iowan Old Style', Charter, Palatino, Georgia, serif;
+
+  /* Eight sizes, no others. There is no ninth. */
+  --fs-1: 0.6875rem; /* 11px — labels, kickers (add --ls-label) */
   --fs-2: 0.8125rem; /* 13px — meta */
   --fs-3: 0.9375rem; /* 15px — body */
   --fs-4: 1.0625rem; /* 17px — lead */
@@ -50,36 +79,57 @@
 
   --lh-tight: 1.15;
   --lh-body: 1.5;
+  --ls-label: 0.16em; /* kickers and all-caps labels only */
 
   /* ── space scale ─────────────────────────────────────────────────────── */
   --s-1: 4px;
   --s-2: 8px;
   --s-3: 12px;
   --s-4: 16px;
-  --s-5: 24px;
-  --s-6: 32px;
-  --s-7: 48px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-7: 32px;
+  --s-8: 48px;
 
   /* The single page gutter. Every screen edge uses this and nothing else. */
   --gutter: 20px;
 
   /* ── shape ───────────────────────────────────────────────────────────── */
-  --r-sm: 10px;
-  --r-md: 18px;
-  --r-lg: 28px;
-  --r-pill: 999px;
+  --r-sm: 10px; /* chips, small tiles */
+  --r-md: 18px; /* sheets, panels, the capture field */
+  --r-lg: 28px; /* the card. Nothing else uses this. */
+  --r-pill: 999px; /* every button, every counter */
 
-  --shadow: 0 8px 32px rgb(0 0 0 / 0.45);
+  /* ── elevation — light-theme rules ───────────────────────────────────────
+     On paper, shadow does the work borders did on dark. The card is a 1px
+     hairline plus a wide, very soft shadow. NEVER use a grey fill to signal
+     "raised" — on light that reads as disabled. */
+  --shadow-card:
+    0 1px 2px rgb(21 23 26 / 0.04), 0 12px 32px rgb(21 23 26 / 0.06);
+  --shadow-accent: 0 6px 18px rgb(3 105 161 / 0.28);
+  --shadow: var(--shadow-card);
 
   /* ── motion ──────────────────────────────────────────────────────────── */
   --dur-fast: 120ms;
   --dur: 220ms;
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 
-  /* ── chrome heights ───────────────────────────────────────────────────── */
-  --tabbar-h: 56px;
+  /* ── chrome heights — the card frame is computed from these ──────────────
+     The say-block must never be pushed below the fold, so the card body is a
+     fixed frame that scrolls internally. Its height is:
+       100dvh - safe-top - header-h - actions-h - urge-h - tabbar-h - safe-bottom
+     Use the variables. Do not hardcode the arithmetic. */
+  --header-h: 38px; /* streak + core dots row */
+  --actions-h: 54px; /* Again / Got it */
+  --urge-h: 34px; /* the "I felt the pull" chip row */
+  --tabbar-h: 64px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  --card-frame-h: calc(
+    100dvh - var(--safe-top) - var(--header-h) - var(--actions-h) -
+      var(--urge-h) - var(--tabbar-h) - var(--safe-bottom)
+  );
 }
 
 * {
@@ -95,10 +145,9 @@ body,
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--paper);
   color: var(--ink);
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-family: var(--sans);
   font-size: var(--fs-3);
   line-height: var(--lh-body);
   /* The feed manages its own scrolling; the page itself never scrolls. */
@@ -128,6 +177,14 @@ button {
 .tap {
   min-width: 44px;
   min-height: 44px;
+}
+
+/* Long-press for `easy` and swipe-left for `hard` both need this, or iOS
+   selects text and raises the callout menu mid-gesture. */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

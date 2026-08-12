@@ -43,7 +43,11 @@ export function buildQueue(
   reviews: ReadonlyMap<string, Review>,
   opts: QueueOptions,
 ): QueueItem[] {
-  const active = cards.filter((c) => c.status === 'active');
+  // English only, at the one seam both modes pass through. Hindi is a separate
+  // section by an explicit product decision (PLAN.md §8, row 2) and must never
+  // reach the main feed. `buildCore` filtered per-type and `buildEndless` did
+  // not, so every Hindi card was eligible for the endless pool.
+  const active = cards.filter((c) => c.status === 'active' && c.lang === 'en');
   if (opts.limit <= 0) return [];
 
   if (opts.mode === 'core') return buildCore(active, reviews, opts);
