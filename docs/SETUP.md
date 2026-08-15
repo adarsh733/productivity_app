@@ -65,35 +65,41 @@ This is the backup provider, so one exhausted quota can't take the app down.
 
 ### 4a. Put the code on GitHub
 
-The repo already exists locally at `speak/` with two commits. It needs to be on
-GitHub for Netlify to build it.
-
-1. Go to **https://github.com/new**.
-   - Repository name: `speak`
-   - **Private** ← choose this
-   - Do **not** add a README, .gitignore or licence — the repo already has them.
-2. Run these two commands, replacing `YOUR-USERNAME`:
-
-```bash
-cd "D:\Adarsh\Mission AI\Productivity\speak" && git remote add origin https://github.com/YOUR-USERNAME/speak.git
-```
-
-```bash
-cd "D:\Adarsh\Mission AI\Productivity\speak" && git branch -M main && git push -u origin main
-```
+**Already done.** The whole workspace is one repo at
+**https://github.com/adarsh733/productivity_app**, branch `master`, and the app
+lives in the `speak/` subdirectory of it. This matters for the next step: the
+app is *not* at the root of the repo.
 
 ### 4b. Connect Netlify
 
 1. Go to **https://app.netlify.com** → sign up **with GitHub** (this makes the
    next step one click).
 2. **Add new site** → **Import an existing project** → **GitHub** → authorise →
-   pick `speak`.
-3. Build settings — Netlify should read these from `netlify.toml` already.
-   Confirm they say:
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-   - Functions directory: `netlify/functions`
-4. **Before deploying**, click **Add environment variables** and add all four:
+   pick **`productivity_app`**.
+3. Build settings. Netlify reads these from `netlify.toml`, but check them
+   against this table before deploying — the **base directory** is the one that
+   goes wrong, because the app is in a subdirectory:
+
+   | Field | Value |
+   |---|---|
+   | Branch to deploy | `master` |
+   | **Base directory** | **`speak`** |
+   | Build command | `npm run build` |
+   | Publish directory | `dist` |
+   | Functions directory | `netlify/functions` |
+
+   > Publish and functions are resolved **relative to the base directory**, so
+   > `dist` here means `speak/dist`. Writing `speak/dist` in that box makes
+   > Netlify look for `speak/speak/dist` and the deploy fails with "deploy
+   > directory does not exist".
+
+4. **Before deploying**, click **Add environment variables** and add all four.
+
+   > **You can skip this and deploy right now.** Nothing in the app's daily loop
+   > needs a key: practice, recording, playback, volume measurement and progress
+   > are all local-first and work with these unset. Missing keys mean only that
+   > there is no cloud backup and no AI features — Progress will say "This
+   > device only". Add them later and redeploy when you want backup.
 
    | Key | Value | Notes |
    |---|---|---|
