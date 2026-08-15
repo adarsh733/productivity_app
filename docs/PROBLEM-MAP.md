@@ -128,9 +128,9 @@ Note the two meanings of "articulation", because they need different modules:
 
 | Correction | Detail | Fix |
 |---|---|---|
-| **Breath cards target a ruled-out cause** | 4 of 8 shipped breath cards (`br-ladder-back`, `br-phrase-hold`, `br-stairs`, plus the countdown framing of `br-mpt-sss`) drill *capacity*. Capacity measured normal (count 28, /s/ 18 s, /z/ 25 s). Only `br-hum` and `br-sigh` do work the evidence supports | Retire the capacity ladders; expand the SOVT set; make the transfer rep mandatory on every drill. Phase 1, with M9 |
+| ~~**Breath cards target a ruled-out cause**~~ | ~~4 of 8 shipped breath cards drill *capacity*, which measured normal~~ | **CLOSED 2026-08-13.** `br-ladder-back`, `br-phrase-hold`, `br-stairs` and `br-mpt-sss` retired. Deck rebuilt to 10 cards: five SOVT (straw, straw-in-water, hum, lip trill, /z/ glide), three release/drive, one posture, one measurement. Every card ends in a `TRANSFER:` line, and exactly one card logs `seconds` so `bestMptSec` means the habitual-volume hold and nothing else |
 | **`PLAN.md` v1 §1 root cause A was wrong** | It inferred "insufficient breath support" and ordered the whole roadmap off it. Measurement contradicts it | Corrected in `PLAN.md` v2 §1. v1 is superseded — do not cite it |
-| **The app cannot hear** | `speak/src` contains no `getUserMedia`, `MediaRecorder` or `AnalyserNode`. The plan's own rule is "≥70% of cards require speaking aloud" | Phase 1 is exactly this. Nothing before it changes how he speaks |
+| **The app cannot hear** | `speak/src` contained no `getUserMedia`, `MediaRecorder` or `AnalyserNode` | **Half closed 2026-08-13.** `lib/audioMeter.ts` now captures, meters, detects phonation and self-tests the device; `features/lab/` turns that into a session. **No screen mounts it yet** — AG-003 is the other half, and until it lands the microphone code is unreachable from the app |
 
 ---
 

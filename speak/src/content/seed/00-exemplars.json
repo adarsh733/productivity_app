@@ -6,7 +6,11 @@
       "id": "w-concise",
       "type": "word",
       "lang": "en",
-      "tags": ["work", "clarity", "core-400"],
+      "tags": [
+        "work",
+        "clarity",
+        "core-400"
+      ],
       "term": "concise",
       "pos": "adj.",
       "meaning": "saying what is needed in few words",
@@ -20,7 +24,11 @@
       "id": "w-hesitant",
       "type": "word",
       "lang": "en",
-      "tags": ["work", "feelings", "core-400"],
+      "tags": [
+        "work",
+        "feelings",
+        "core-400"
+      ],
       "term": "hesitant",
       "pos": "adj.",
       "meaning": "slow to act or speak because you are unsure",
@@ -34,7 +42,11 @@
       "id": "w-abrupt",
       "type": "word",
       "lang": "en",
-      "tags": ["work", "manner", "core-400"],
+      "tags": [
+        "work",
+        "manner",
+        "core-400"
+      ],
       "term": "abrupt",
       "pos": "adj.",
       "meaning": "sudden, and often rude because of it",
@@ -48,7 +60,11 @@
       "id": "w-thorough",
       "type": "word",
       "lang": "en",
-      "tags": ["work", "praise", "core-400"],
+      "tags": [
+        "work",
+        "praise",
+        "core-400"
+      ],
       "term": "thorough",
       "pos": "adj.",
       "meaning": "complete, with nothing left out",
@@ -62,7 +78,11 @@
       "id": "w-tedious",
       "type": "word",
       "lang": "en",
-      "tags": ["work", "complaint", "core-400"],
+      "tags": [
+        "work",
+        "complaint",
+        "core-400"
+      ],
       "term": "tedious",
       "pos": "adj.",
       "meaning": "boring because it is long and repetitive",
@@ -76,7 +96,11 @@
       "id": "w-blunt",
       "type": "word",
       "lang": "en",
-      "tags": ["work", "manner", "core-400"],
+      "tags": [
+        "work",
+        "manner",
+        "core-400"
+      ],
       "term": "blunt",
       "pos": "adj.",
       "meaning": "saying the truth directly, without softening it",
@@ -90,7 +114,11 @@
       "id": "w-reluctant",
       "type": "word",
       "lang": "en",
-      "tags": ["work", "feelings", "core-400"],
+      "tags": [
+        "work",
+        "feelings",
+        "core-400"
+      ],
       "term": "reluctant",
       "pos": "adj.",
       "meaning": "unwilling, and doing it anyway",
@@ -104,7 +132,10 @@
       "id": "w-spontaneous",
       "type": "word",
       "lang": "en",
-      "tags": ["everyday", "core-400"],
+      "tags": [
+        "everyday",
+        "core-400"
+      ],
       "term": "spontaneous",
       "pos": "adj.",
       "meaning": "done on impulse, without planning it",
@@ -114,67 +145,116 @@
       ],
       "say": "Describe the last unplanned thing you did. Use 'spontaneous'."
     },
-
     {
       "id": "sw-very-tired",
       "type": "swap",
       "lang": "en",
-      "tags": ["precision", "core-swap"],
+      "tags": [
+        "precision",
+        "core-swap"
+      ],
       "weak": "very tired",
-      "answers": ["exhausted", "drained", "spent", "shattered", "worn out"],
+      "answers": [
+        "exhausted",
+        "drained",
+        "spent",
+        "shattered",
+        "worn out"
+      ],
       "timerSec": 5
     },
     {
       "id": "sw-very-angry",
       "type": "swap",
       "lang": "en",
-      "tags": ["precision", "core-swap"],
+      "tags": [
+        "precision",
+        "core-swap"
+      ],
       "weak": "very angry",
-      "answers": ["furious", "livid", "irate", "seething"],
+      "answers": [
+        "furious",
+        "livid",
+        "irate",
+        "seething"
+      ],
       "timerSec": 5
     },
     {
       "id": "sw-very-hungry",
       "type": "swap",
       "lang": "en",
-      "tags": ["precision", "core-swap"],
+      "tags": [
+        "precision",
+        "core-swap"
+      ],
       "weak": "very hungry",
-      "answers": ["starving", "ravenous", "famished"],
+      "answers": [
+        "starving",
+        "ravenous",
+        "famished"
+      ],
       "timerSec": 5
     },
     {
       "id": "sw-very-sleepy",
       "type": "swap",
       "lang": "en",
-      "tags": ["precision", "core-swap"],
+      "tags": [
+        "precision",
+        "core-swap"
+      ],
       "weak": "very sleepy",
-      "answers": ["drowsy", "groggy", "heavy-eyed"],
+      "answers": [
+        "drowsy",
+        "groggy",
+        "heavy-eyed"
+      ],
       "timerSec": 5
     },
     {
       "id": "sw-very-good",
       "type": "swap",
       "lang": "en",
-      "tags": ["precision", "core-swap"],
+      "tags": [
+        "precision",
+        "core-swap"
+      ],
       "weak": "very good",
-      "answers": ["excellent", "outstanding", "superb", "first-rate"],
+      "answers": [
+        "excellent",
+        "outstanding",
+        "superb",
+        "first-rate"
+      ],
       "timerSec": 5
     },
     {
       "id": "sw-very-busy",
       "type": "swap",
       "lang": "en",
-      "tags": ["precision", "work", "core-swap"],
+      "tags": [
+        "precision",
+        "work",
+        "core-swap"
+      ],
       "weak": "very busy",
-      "answers": ["swamped", "slammed", "stretched", "flat out"],
+      "answers": [
+        "swamped",
+        "slammed",
+        "stretched",
+        "flat out"
+      ],
       "timerSec": 5
     },
-
     {
       "id": "id-circle-back",
       "type": "idiom",
       "lang": "en",
-      "tags": ["corporate", "meetings"],
+      "tags": [
+        "corporate",
+        "meetings"
+      ],
       "phrase": "circle back",
       "meaning": "return to a topic later, once there's more information",
       "scenario": "Someone raises a good question in a meeting, but answering it properly would derail the agenda. Park it.",
@@ -185,7 +265,10 @@
       "id": "id-same-page",
       "type": "idiom",
       "lang": "en",
-      "tags": ["corporate", "alignment"],
+      "tags": [
+        "corporate",
+        "alignment"
+      ],
       "phrase": "on the same page",
       "meaning": "in agreement about what is happening and why",
       "scenario": "Before a project starts, you want to confirm that everyone understood the plan the same way.",
@@ -196,7 +279,10 @@
       "id": "id-move-the-needle",
       "type": "idiom",
       "lang": "en",
-      "tags": ["corporate", "impact"],
+      "tags": [
+        "corporate",
+        "impact"
+      ],
       "phrase": "move the needle",
       "meaning": "make a difference big enough to actually show up in the numbers",
       "scenario": "You're arguing that a small tweak isn't worth the effort.",
@@ -207,7 +293,10 @@
       "id": "id-bandwidth",
       "type": "idiom",
       "lang": "en",
-      "tags": ["corporate", "capacity"],
+      "tags": [
+        "corporate",
+        "capacity"
+      ],
       "phrase": "bandwidth",
       "meaning": "the time and attention someone has available",
       "scenario": "You're being handed a third project and need to decline without sounding unwilling.",
@@ -218,7 +307,10 @@
       "id": "id-low-hanging-fruit",
       "type": "idiom",
       "lang": "en",
-      "tags": ["corporate", "priorities"],
+      "tags": [
+        "corporate",
+        "priorities"
+      ],
       "phrase": "low-hanging fruit",
       "meaning": "the easiest wins, worth doing first because they cost so little",
       "scenario": "You're planning what to tackle first with limited time.",
@@ -229,19 +321,24 @@
       "id": "id-take-it-offline",
       "type": "idiom",
       "lang": "en",
-      "tags": ["corporate", "meetings"],
+      "tags": [
+        "corporate",
+        "meetings"
+      ],
       "phrase": "take it offline",
       "meaning": "continue a discussion separately, outside the current meeting",
       "scenario": "Two people are deep in a detail that only concerns them, and eight others are waiting.",
       "example": "This is worth solving — can the two of you take it offline and report back?",
       "corporate": true
     },
-
     {
       "id": "av-trip",
       "type": "action_verb",
       "lang": "en",
-      "tags": ["movement", "narration"],
+      "tags": [
+        "movement",
+        "narration"
+      ],
       "verb": "trip",
       "meaning": "to catch your foot on something and lose your balance",
       "contrast": "You TRIP on something — there's an obstacle. You SLIP on something — the surface is smooth. You STUMBLE after either one, while trying not to fall.",
@@ -254,7 +351,10 @@
       "id": "av-stumble",
       "type": "action_verb",
       "lang": "en",
-      "tags": ["movement", "narration"],
+      "tags": [
+        "movement",
+        "narration"
+      ],
       "verb": "stumble",
       "meaning": "to lose your footing for a moment and half-recover",
       "contrast": "Tripping is the cause; stumbling is the wobble that follows. You can also stumble over your words — the same idea applied to speech.",
@@ -267,7 +367,10 @@
       "id": "av-stagger",
       "type": "action_verb",
       "lang": "en",
-      "tags": ["movement", "narration"],
+      "tags": [
+        "movement",
+        "narration"
+      ],
       "verb": "stagger",
       "meaning": "to walk unsteadily, as if about to fall over",
       "contrast": "A stumble is one moment. Staggering goes on for several steps — from exhaustion, weight or a blow.",
@@ -280,7 +383,10 @@
       "id": "av-fumble",
       "type": "action_verb",
       "lang": "en",
-      "tags": ["hands", "narration"],
+      "tags": [
+        "hands",
+        "narration"
+      ],
       "verb": "fumble",
       "meaning": "to handle something clumsily, nearly dropping it",
       "contrast": "Fumbling is with the hands; stumbling is with the feet. You fumble for keys in a dark bag, and you fumble a catch.",
@@ -293,7 +399,10 @@
       "id": "av-slam",
       "type": "action_verb",
       "lang": "en",
-      "tags": ["force", "narration"],
+      "tags": [
+        "force",
+        "narration"
+      ],
       "verb": "slam",
       "meaning": "to shut or put down something with sudden force and noise",
       "contrast": "Slamming is loud and forceful. Shutting is neutral. Banging is repeated noise, not one decisive movement.",
@@ -306,7 +415,10 @@
       "id": "av-glance",
       "type": "action_verb",
       "lang": "en",
-      "tags": ["looking", "narration"],
+      "tags": [
+        "looking",
+        "narration"
+      ],
       "verb": "glance",
       "meaning": "to look at something very briefly",
       "contrast": "A glance is a second or less. To GLARE is to look angrily. To STARE is to look for too long. To GLIMPSE is to barely catch sight of something.",
@@ -315,12 +427,13 @@
         "I glanced at the message and put the phone away."
       ]
     },
-
     {
       "id": "pr-comfortable",
       "type": "pronounce",
       "lang": "en",
-      "tags": ["common-error"],
+      "tags": [
+        "common-error"
+      ],
       "term": "comfortable",
       "syllables": "COMF·ta·ble",
       "stressIndex": 0,
@@ -330,7 +443,10 @@
       "id": "pr-schedule",
       "type": "pronounce",
       "lang": "en",
-      "tags": ["common-error", "work"],
+      "tags": [
+        "common-error",
+        "work"
+      ],
       "term": "schedule",
       "syllables": "SKE·jool",
       "stressIndex": 0,
@@ -340,7 +456,9 @@
       "id": "pr-often",
       "type": "pronounce",
       "lang": "en",
-      "tags": ["common-error"],
+      "tags": [
+        "common-error"
+      ],
       "term": "often",
       "syllables": "OF·en",
       "stressIndex": 0,
@@ -350,7 +468,10 @@
       "id": "pr-entrepreneur",
       "type": "pronounce",
       "lang": "en",
-      "tags": ["common-error", "work"],
+      "tags": [
+        "common-error",
+        "work"
+      ],
       "term": "entrepreneur",
       "syllables": "on·truh·pruh·NUR",
       "stressIndex": 3,
@@ -360,7 +481,10 @@
       "id": "pr-vegetable",
       "type": "pronounce",
       "lang": "en",
-      "tags": ["common-error", "everyday"],
+      "tags": [
+        "common-error",
+        "everyday"
+      ],
       "term": "vegetable",
       "syllables": "VEJ·ta·bul",
       "stressIndex": 0,
@@ -370,18 +494,23 @@
       "id": "pr-determine",
       "type": "pronounce",
       "lang": "en",
-      "tags": ["common-error", "work"],
+      "tags": [
+        "common-error",
+        "work"
+      ],
       "term": "determine",
       "syllables": "di·TUR·min",
       "stressIndex": 1,
       "commonError": "The last syllable is 'min', not 'mine'. Stress the middle."
     },
-
     {
       "id": "si-pause-basics",
       "type": "say_it",
       "lang": "en",
-      "tags": ["pace", "pauses"],
+      "tags": [
+        "pace",
+        "pauses"
+      ],
       "line": "I looked at the numbers again this morning, and the problem isn't the budget. It's the timeline.",
       "marked": "I looked at the numbers again this morning, / and the problem isn't the budget. // It's the timeline.",
       "targetWpm": 140
@@ -390,7 +519,10 @@
       "id": "si-bad-news",
       "type": "say_it",
       "lang": "en",
-      "tags": ["pace", "work"],
+      "tags": [
+        "pace",
+        "work"
+      ],
       "line": "We're not going to make the fifteenth. I want to tell you now rather than on the day.",
       "marked": "We're not going to make the fifteenth. // I want to tell you now / rather than on the day.",
       "targetWpm": 130
@@ -399,7 +531,10 @@
       "id": "si-ends-of-words",
       "type": "say_it",
       "lang": "en",
-      "tags": ["clarity", "endings"],
+      "tags": [
+        "clarity",
+        "endings"
+      ],
       "line": "He asked whether the accounts had been checked, approved and closed.",
       "marked": "He asked whether the accounts / had been checked, / approved / and closed.",
       "targetWpm": 130
@@ -408,7 +543,10 @@
       "id": "si-long-breath",
       "type": "say_it",
       "lang": "en",
-      "tags": ["breath", "phrasing"],
+      "tags": [
+        "breath",
+        "phrasing"
+      ],
       "line": "When the meeting finally started, forty minutes late, half the people who needed to be there had already left for lunch.",
       "marked": "When the meeting finally started, / forty minutes late, // half the people who needed to be there / had already left for lunch.",
       "targetWpm": 140
@@ -417,7 +555,10 @@
       "id": "si-numbers",
       "type": "say_it",
       "lang": "en",
-      "tags": ["clarity", "numbers"],
+      "tags": [
+        "clarity",
+        "numbers"
+      ],
       "line": "Revenue moved from four point two to five point one, which is about a twenty per cent jump.",
       "marked": "Revenue moved / from four point two / to five point one, // which is about a twenty per cent jump.",
       "targetWpm": 125
@@ -426,76 +567,13 @@
       "id": "si-story-open",
       "type": "say_it",
       "lang": "en",
-      "tags": ["storytelling", "pace"],
+      "tags": [
+        "storytelling",
+        "pace"
+      ],
       "line": "So there I was, standing outside the office at seven in the morning, with no keys and no phone.",
       "marked": "So there I was, / standing outside the office at seven in the morning, // with no keys / and no phone.",
       "targetWpm": 145
-    },
-
-    {
-      "id": "br-mpt",
-      "type": "breath",
-      "lang": "en",
-      "tags": ["breath", "baseline"],
-      "drill": "mpt",
-      "title": "Hold the note",
-      "instructions": [
-        "Sit up. Both feet on the floor.",
-        "Breathe in through the nose for four counts — into the belly, not the chest. Your shoulders should not rise.",
-        "Say 'aaah' at a comfortable, even volume and hold it steady.",
-        "Stop the timer the moment the sound wobbles or fades.",
-        "Log the seconds. This is your breath-support number — it goes up every week you do this."
-      ],
-      "logUnit": "seconds"
-    },
-    {
-      "id": "br-ladder",
-      "type": "breath",
-      "lang": "en",
-      "tags": ["breath", "capacity"],
-      "drill": "ladder",
-      "title": "Counting ladder",
-      "instructions": [
-        "One full, low breath into the belly.",
-        "Count out loud, evenly: one, two, three… as far as you can on that single breath.",
-        "Keep the volume the same on the last number as on the first — that is the whole exercise.",
-        "The moment you start pushing from the throat, stop.",
-        "Log the number you reached."
-      ],
-      "logUnit": "count"
-    },
-    {
-      "id": "br-box",
-      "type": "breath",
-      "lang": "en",
-      "tags": ["breath", "calm"],
-      "drill": "box",
-      "title": "Box breathing",
-      "instructions": [
-        "In through the nose, four counts.",
-        "Hold, four counts.",
-        "Out through the mouth, four counts.",
-        "Hold empty, four counts.",
-        "Four rounds. Nothing to log — this one is for settling before you speak."
-      ],
-      "logUnit": "none",
-      "durationSec": 64
-    },
-    {
-      "id": "br-straw",
-      "type": "breath",
-      "lang": "en",
-      "tags": ["breath", "voice"],
-      "drill": "straw",
-      "title": "Straw phonation",
-      "instructions": [
-        "Purse your lips as if blowing through a thin straw. An actual straw is better.",
-        "Hum a steady note through that small opening for ten seconds.",
-        "Slide the note gently up and down, staying quiet throughout.",
-        "Five rounds. This takes the work off the throat — where your volume is currently coming from."
-      ],
-      "logUnit": "none",
-      "durationSec": 90
     }
   ]
 }

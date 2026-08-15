@@ -18,6 +18,8 @@ const modules = import.meta.glob<{ default: unknown }>('../content/seed/*.json',
 export interface SeedReport {
   loaded: number;
   skipped: { file: string; id: unknown; reason: string }[];
+  /** Seed cards on this device that no longer exist in the seed files. */
+  retired: string[];
 }
 
 const REQUIRED_BY_TYPE: Record<CardType, string[]> = {
@@ -87,7 +89,7 @@ function isNonEmptyStringArray(v: unknown): boolean {
 
 export function readSeedFiles(): { cards: Card[]; report: SeedReport } {
   const cards: Card[] = [];
-  const report: SeedReport = { loaded: 0, skipped: [] };
+  const report: SeedReport = { loaded: 0, skipped: [], retired: [] };
   const seenIds = new Set<string>();
 
   for (const [path, mod] of Object.entries(modules)) {
@@ -126,26 +128,60 @@ export function readSeedFiles(): { cards: Card[]; report: SeedReport } {
 }
 
 /**
- * Idempotent. Re-running adds newly authored cards and refreshes the seed text
- * of existing ones, but never touches review state — his schedule survives a
- * content update.
+ * Which seed cards on this device no longer exist in the seed files.
+ *
+ * Pure so it can be tested without a database.
+ */
+export function retiredIds(
+  onDevice: readonly string[],
+  inSeedFiles: ReadonlySet<string>,
+): string[] {
+  return onDevice.filter((id) => !inSeedFiles.has(id));
+}
+
+/**
+ * Idempotent. Re-running adds newly authored cards, refreshes the seed text of
+ * existing ones, and **buries seed cards that have been removed from the
+ * files** — but never touches review state, so his schedule survives a content
+ * update.
+ *
+ * That last part is not housekeeping. Until 2026-08-13 this only ever added and
+ * updated, so a card deleted from the JSON stayed active on the device for good
+ * — which meant the Phase 1 breath correction (retiring four drills that train
+ * a capacity problem the measurements had ruled out) would have changed nothing
+ * at all on the one phone that matters. Removal has to be a real operation.
+ *
+ * Burying rather than deleting: `status: 'buried'` stops the queue serving the
+ * card (`srs/queue.ts` filters on `active`) while its reviews and events stay
+ * intact, so the history stays readable and a card can come back.
  */
 export async function ensureSeeded(): Promise<SeedReport> {
   const { cards, report } = readSeedFiles();
   if (cards.length === 0) return report;
 
-  const existing = new Set(await db.cards.where('source').equals('seed').primaryKeys());
+  const existingIds = (await db.cards.where('source').equals('seed').primaryKeys()) as string[];
+  const existing = new Set(existingIds);
+  const authored = new Set(cards.map((c) => c.id));
+  const retired = retiredIds(existingIds, authored);
+  report.retired = retired;
 
   await db.transaction('rw', db.cards, async () => {
     await db.cards.bulkPut(cards);
+    if (retired.length > 0) {
+      await db.cards
+        .where('id')
+        .anyOf(retired)
+        .modify({ status: 'buried' as const });
+    }
   });
 
   const added = cards.filter((c) => !existing.has(c.id)).length;
-  if (added > 0 || report.skipped.length > 0) {
+  if (added > 0 || report.skipped.length > 0 || retired.length > 0) {
     console.info(
       `[seed] ${report.loaded} cards (${added} new)` +
+        (retired.length ? `, ${retired.length} retired` : '') +
         (report.skipped.length ? `, ${report.skipped.length} skipped` : ''),
-      report.skipped,
+      { skipped: report.skipped, retired },
     );
   }
   return report;

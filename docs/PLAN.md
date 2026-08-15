@@ -144,10 +144,10 @@ Specified in [`VOICE-PROFILE.md`](VOICE-PROFILE.md) §6. All on-device.
 
 | ID | Module | What it does | Closes | Phase | Status |
 |---|---|---|---|---|---|
-| **M8** | Daily Session Runner | Runs Blocks A–E end to end with timers, prompts and a completion log. **Must work offline** — this is the module that has to be reliable | V1 | 1 | Planned |
-| **M9** | SOVT / straw timer | Guided 3-min block with a **mandatory transfer rep**. Low effort to build, highest evidence base | V1 V2 | 1 | Planned |
-| **M10** | MPT Tracker | Guided timed test, loud and soft. Charts both lines **plus the gap** — make the gap the default view. Mic-based auto-stop | V2 | 1 | Planned |
-| **M11** | Live Volume Meter | Real-time dB against a personal target band, with a gentle nudge on drift. **The single most valuable feature in the app** | V1 V2 | 1 | Planned |
+| **M8** | Daily Session Runner | Runs Blocks A–E end to end with timers, prompts and a completion log. **Must work offline** — this is the module that has to be reliable | V1 | 1 | **Logic shipped** — `features/lab/{routine,useLab}.ts`. UI in AG-003 |
+| **M9** | SOVT / straw timer | Guided 3-min block with a **mandatory transfer rep**. Low effort to build, highest evidence base | V1 V2 | 1 | **Logic shipped** — Block B, transfer enforced by `useLab`. Breath deck rewritten |
+| **M10** | MPT Tracker | Guided timed test, loud and soft. Charts both lines **plus the gap** — make the gap the default view. Mic-based auto-stop | V2 | 1 | **Logic shipped** — `useMptTest` + `PhonationDetector` auto-stop. Weekly cadence |
+| **M11** | Live Volume Meter | Real-time dB against a personal target band, with a gentle nudge on drift. **The single most valuable feature in the app** | V1 V2 | 1 | **Logic shipped** — `AudioMeterController` + `DriftDetector`, band from his own baseline |
 | **M12** | Volume Ladder Trainer | Prompts a sentence at level 1–5, measures whether he hit it, scores consistency. Includes the level-1 hold challenge | V5 | 2 | Planned |
 | **M13** | Pause Trainer | One word marked; emphasise it by pausing only. Detects whether volume spiked on the marked word. **High value, low complexity — amplitude analysis, no LLM** | V6 V7 | 2 | Planned |
 | **M14** | Emotional Palette | Same sentence in six modes, played back to back, stored monthly. Optionally Gemini classifies the intended emotion blind and reports whether it guessed right | V6 | 2 | Planned |
@@ -298,7 +298,7 @@ Phase by phase, with Adarsh's sign-off between each. One phase open at a time.
 |---|---|---|---|
 | **0** | PWA shell · Dexie · Supabase schema · key proxy · Capture · 370 seed cards · SRS · Core-3/Endless feed. **No mic, no live AI** | P1 P5 P6 P7 | **Done, not deployed** |
 | **0.5** | UI rebuild against `WIREFRAMES.html`: tokens replaced, components rewritten, five screens re-laid out. **The logic layer is not touched, so the 44 tests stay green** | U1–U12 | Blocked on 4 answers |
-| **1** | **Speaking Lab core** — M8 Session Runner, M9 SOVT + transfer rep, M10 MPT tracker, M11 live dB meter. Week-1 personal calibration. Breath content corrected. Real-device mic test **first** | V1 V2 P2 | Next |
+| **1** | **Speaking Lab core** — M8 Session Runner, M9 SOVT + transfer rep, M10 MPT tracker, M11 live dB meter. Week-1 personal calibration. Breath content corrected. Real-device mic test **first** | V1 V2 P2 | **Open.** Logic + contract shipped 2026-08-13; UI is AG-003 |
 | **2** | **Quiet register and emphasis** — M12 volume ladder, M13 pause trainer, M14 emotional palette | V5 V6 V7 | |
 | **3** | **Articulation and production** — M25 describe, M26 explain, M27 mini story, M28 fix my line, M15 pace/masking, M31 recording feedback, M29 expansion loop + gate | P4 P8 V3 | |
 | **4** | **M30 live voice partner**, scenario-bound, with the half-duplex fallback | V6 P8 | Needs sign-off |
@@ -354,6 +354,10 @@ part of the module either way.
 | 13 | Inbox | Renamed **Capture** in the UI; code names unchanged | 2026-08-12 |
 | 14 | M30 live voice | **Approved only while it is free.** Free half-duplex path first; Live API only if his AI Studio quota covers it | 2026-08-12 |
 | 15 | Build ownership | **Antigravity implements from Phase 0.5 onward; Claude writes the contract and does the review.** Never the reverse — see `.claude/DELEGATION.md` | 2026-08-12 |
+| 16 | Lab scope in Phase 1 | **All five blocks run from day one**; only Blocks A and B are metered. C/D/E are timed cues until M12 and M16 land. A half-routine trains half the thing | 2026-08-13 |
+| 17 | Lab entry point | **Fifth tab, second position** — Feed · Lab · Capture · हिंदी · You. The block that changes how he speaks is not buried behind the feed | 2026-08-13 |
+| 18 | The real-device mic test | **Run by the app, not off a checklist.** `runMicSelfTest()` records sample rate, whether AGC was actually disabled, and the room noise floor into `Profile.micProfile` on first use | 2026-08-13 |
+| 19 | MPT cadence | **Weekly, not daily.** Taking it every day invites pushing for a record, which measures effort rather than the habit | 2026-08-13 |
 
 ---
 
@@ -363,4 +367,5 @@ part of the module either way.
 |---|---|---|
 | v0 | 2026-08-11 | First plan. Six pillars, free stack, 5 phases |
 | v1 | 2026-08-11 | Second opinion reconciled; Groq added; Core-3/Endless adopted; §6 expansion loop + gate added; six decisions locked |
+| **v2.1** | **2026-08-13** | **Phase 1 opened.** Contract extended for the Speaking Lab (`LabStep`/`LabBlock`/`LabSession`/`VoiceSample`, `LAB_RULES`, calibration fields on `Profile`), Dexie v2, Supabase `lab_sessions` + `voice_samples`. M8–M11 logic shipped and under test; UI delegated as AG-003. Decisions 16–19 locked. Breath deck rewritten: the four capacity drills retired, SOVT set expanded to nine, transfer rep on every card, one `seconds` drill so `bestMptSec` means one thing |
 | **v2** | **2026-08-12** | **Root cause corrected against measurement** — over-drive, not breath capacity; roadmap reordered off it. Speaking Lab promoted to its own surface and specified as M8–M16. **Articulation gap closed** — M25 describe and M26 explain added, new issue P8. **M30 live voice partner** specified. Module catalogue with permanent IDs introduced. UI rebuild split out as Phase 0.5 |

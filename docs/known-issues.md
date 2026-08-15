@@ -62,6 +62,17 @@ only if the app is ever used on a desktop in earnest.
 
 ---
 
+## ~~P1 — breath instructions are still too long to read while breathing~~ — CLOSED 2026-08-13
+
+Fixed with the Phase 1 breath rewrite. The deck is now 10 cards, every one at
+three or four short lines, and the Lab's own cues are capped at 140 characters
+with a test that enforces it (`routine.test.ts`, "keeps every cue short enough
+to read mid-drill").
+
+Original entry below.
+
+---
+
 ## P1 — breath instructions are still too long to read while breathing
 
 Flagged in the wireframe audit and confirmed by Antigravity in the AG-002 report:

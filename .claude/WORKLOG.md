@@ -5,7 +5,224 @@ unplanned work. This is the month-end record of what got built.
 
 ---
 
-## Session — 2026-08-12 (Thu, 13:34) · Claude · window C-20260812-1334
+## Session — 2026-08-15 (Sat, 16:12) · Claude · window C-20260815-1612
+
+**Agenda (Adarsh: "codex restructured everything — check if anything's
+implementation is pending or are we good to push, and start using it on Netlify"):**
+1. Audit the Codex product-reset build against the plan of record.
+2. Establish what is actually reachable from the running app vs. dead code.
+3. Establish deploy readiness (build, secrets, Netlify config, remote).
+4. Push and deploy — pending Adarsh's call once the gaps are on the table.
+
+**Done:**
+- [x] Verified the build in-place: `npm test -- --run` **123/123 green**,
+      `npm run build` clean (390 kB JS / 31.7 kB CSS, PWA precache generated).
+- [x] Walked the whole reset product at 375×812 in the pane: 4-step onboarding →
+      Today → 60-second session → attempt 1 → feedback → redo → comparison →
+      save → Progress shows **1 completed loop**. **0 console errors.** The loop
+      Codex claims is complete does, in fact, run.
+- [x] **Traced reachability — the app is one hardcoded mission wide.** Every
+      entry point (Today, Coach, all 8 Practice lanes incl. Hindi, 60s/3min/20min)
+      lands on the same office mission, "explain why an AI feature launch is
+      premature". Verified by clicking the Hindi lane and landing on the English
+      office runner. Feedback is 4 fixed sentences with no transcript behind them.
+- [x] **Dead-code sweep.** Nothing imports `FeedScreen`, `HindiScreen`,
+      `InboxScreen`, the old `ProgressScreen`, `useFeed`, `useLab`, `LiveDbMeter`,
+      `MptTracker` or `VolumeLadder`. The 368 seeded cards, the SM-2 scheduler,
+      the Core-3/Endless queue and **the whole Phase 1 Speaking Lab** are
+      unreachable from the UI. `ensureSeeded` still runs on boot and writes 368
+      cards nobody reads (console: `[seed] 368 cards (0 new), 7 retired`).
+- [x] **Sync is unwired.** `backup()` has zero callers anywhere in `src`. Read
+      the live IndexedDB: **183 rows queued in `outbox` and nothing drains them.**
+      Clearing Safari data loses everything; restore-on-new-device does not work.
+- [x] **No audio is recorded.** No `MediaRecorder` in the codebase — only the
+      analyser meter. So "hear the second attempt improve", the product's stated
+      main retention hook, does not exist yet; Progress's voice archive is copy.
+- [x] Two further defects found by reading: `finishLoop` adds the *nominal*
+      duration to `secondsActive` (tap through a 20-min session in 90 s and it
+      still claims 20 min), and `calibrationSamples` is read by Progress but
+      never written by any reset flow, so "Baseline samples 0 / 7" is frozen.
+- [x] Deploy readiness established: remote is `adarsh733/productivity_app`,
+      **no Netlify site linked**, secrets clean (`.env` gitignored, only
+      `.env.example` tracked), but **two netlify.toml files disagree** —
+      root says `publish = "speak/dist"` under `base = "speak"`, `speak/`'s own
+      says `publish = "dist"`.
+
+**Then (Adarsh: "you fix whatever is required and then push the code, I'll
+connect to netlify, guide me for that as well"):**
+
+- [x] **Audio recording and playback built** — the product's central promise
+      ("hear the second attempt improve") existed only as copy. `MediaRecorder`
+      now writes the meter's *own* stream (added `AudioMeterController.mediaStream`;
+      a second `getUserMedia` would hand back an independent stream and on iOS
+      can steal the first one's track), container probed per browser
+      (`audio/mp4` on Safari, `audio/webm` elsewhere — an unsupported string
+      throws). Attempts are saved to a new Dexie **v3 `recordings`** store the
+      moment they stop, not at the end of the loop, and played back on the
+      feedback screen, the comparison screen and in Progress. Capped at 200
+      recordings — unbounded audio fills the storage quota and then *every*
+      write starts failing, day record included. **Blobs are never enqueued for
+      sync**; audio stays on the device.
+- [x] **Content layer built — `src/content/missions.ts`.** 21 missions across
+      all eight lanes. Today rotates the lane by date; Practice shows each
+      lane's actual prompt for today; the Hindi lane serves Hindi. Previously
+      every entry point in the app ran the same office prompt.
+- [x] **The 368 seeded cards are reachable again** — `useSessionBlocks` feeds
+      Voice reset / Volume / Precision / Vocabulary from the deck (breath drill,
+      marked say-it line, pronounce card with its common error, word card plus a
+      Hindi word) instead of four hardcoded strings, rotated by date. Verified
+      live: four different real cards across four blocks.
+- [x] **Fabricated feedback removed.** The app was asserting "Your recommendation
+      had a clear direction" about audio nothing had listened to. Replaced with:
+      play attempt 1 back → pick one of three authored corrections → that choice
+      becomes the redo target. Honest, offline, and the redo is gated on making
+      the choice. This is the seam a model plugs into later.
+- [x] **Practice minutes are now honest** — `activeSec` accumulates one tick at
+      a time in the reducer instead of crediting the nominal duration on
+      completion. Verified against IndexedDB: a 2 s + 3 s loop added exactly 5 s.
+- [x] **Calibration actually advances** — `updateCalibration` is now called on a
+      completed comparable (`free`) session, so "Baseline samples 0 / 7" can
+      reach 7 and the volume band can stop being the generic placeholder.
+- [x] **Outbox drains** — `push()` had no caller anywhere, so 183 rows had piled
+      up and "backed up" was never true. Now called on boot, after a completed
+      loop and after a redirected urge; no-ops when unconfigured or signed out.
+      Progress shows backup state plainly instead of implying it.
+- [x] **`netlify.toml` conflict fixed** — root had `publish = "speak/dist"`
+      under `base = "speak"`, which resolves to `speak/speak/dist` and fails the
+      deploy. Both files now agree on base-relative paths.
+- [x] **143 tests green** (was 123; +20 covering missions, lanes, honest time
+      accounting, v1-snapshot rejection and the container probe), build clean.
+      Verified at 375×812 on a clean load: **0 console errors**, no horizontal
+      overflow, smallest tap target 44px, all four tabs, full Hindi-lane loop
+      through to Progress.
+- [x] Committed and pushed to `adarsh733/productivity_app`.
+
+**Still open / unverified:**
+- The mic → recorder link could not be exercised here — the Browser pane blocks
+  capture. Everything downstream *was* proven in-browser (MediaRecorder chose
+  `audio/mp4`, produced 21 kB, round-tripped through the `recordings` store and
+  yielded a playable blob URL). **First real check is Adarsh's iPhone.**
+- Still deferred: real transcript/AI feedback, the Day-1 habitual/quiet/story
+  baseline recording, voice Capture, capture→mission generation.
+- Netlify site, Supabase project and the two API keys remain his to create
+  (`docs/SETUP.md`).
+
+---
+
+## Session - 2026-08-15 (Sat, 13:09) - Codex - window C-20260815-1309
+
+**Agenda (Adarsh approved the reset wireframes and asked to start building):**
+1. Replace the feed/card shell with the approved Today / Coach / Practice / Progress IA and global Capture.
+2. Build the first complete Today -> session -> Record -> Feedback -> Redo -> Progress vertical slice.
+3. Make navigation, drafts, Rescue, onboarding and every session checkpoint restore after leaving or closing the app.
+4. Preserve the existing Dexie, microphone-analysis, calibration, session and sync foundations.
+
+**Done:**
+- [x] Added a versioned reset snapshot/reducer and four regression tests. Active block, remaining time, session stage, environment, duration, selected tab, Capture draft, Rescue step, completed attempts and comparison state checkpoint synchronously to local storage.
+- [x] Foreground loss and `pagehide` pause active work. Reload during a live attempt returns to a safe restart point while retaining completed blocks and completed attempts; a browser cannot keep an open microphone stream or incomplete audio buffer alive after termination.
+- [x] Replaced the visible shell with Today, Coach, Practice and Progress plus global Capture; added reset onboarding with environment choice, mic self-test and 30 cm setup.
+- [x] Built the 60-second, 3-minute and 20-minute entry paths, six-block runner, live relative-volume meter, authored local feedback contract, immediate redo, A/B attempt summary, Rescue off-ramp, Capture draft/queue and Day 1/progress states.
+- [x] Completed loops write to the existing `labSessions`, `days`, `voiceSamples` and sync outbox stores without changing the shared contract or Dexie schema.
+- [x] Verified at 375x812: complete feedback-redo loop appears as 1 in Progress; reload restored Block 1 at exactly 02:59; Capture draft, Practice tab and Rescue challenge restored; 0 horizontal overflow, 0 targets under 44px, 0 console errors.
+- [x] 123/123 tests green; production build clean. Nothing committed or deployed.
+
+**Still deliberately deferred after this first production slice:** full habitual/quiet/story baseline recording, persistent audio blobs/playback, real transcript/AI upload and failure handling, voice Capture, generated-mission approval/editing, lane-specific missions instead of the shared office mission, and the mature 12-week archive visualizations.
+
+---
+
+## Session - 2026-08-15 (Sat, 12:14) - Codex - window C-20260815-1214
+
+**Agenda (Adarsh: "before wireframing make the final structured plan"):**
+1. Consolidate the product reset into one standalone source of truth.
+2. Replace the isolated weekly curriculum with balanced daily practice and rotating missions.
+3. Define the relative-decibel protocol, content system, Gemini/Groq roles, scope boundaries, delivery stages, and success measures.
+4. Provide an explicit handoff for a separate wireframing chat without treating recommendations as user-approved decisions.
+
+**Done:**
+- [x] Added `docs/PRODUCT-RESET-PLAN.md`, a complete product and wireframing brief covering the 20-minute daily system, Impulse Rescue, comparable versus anywhere volume measurement, authored/cached/AI-generated content layers, feedback contract, proposed information architecture, progress model, reuse/park decisions, delivery sequence, required flows and edge states, and mobile constraints.
+- [x] Included a copy/paste prompt for the wireframing chat and an explicit instruction not to describe recommendations as approved without Adarsh's confirmation in that chat.
+- [x] No application files, existing wireframes, or existing `docs/PLAN.md` were changed. Nothing committed or deployed.
+
+---
+
+## Session — 2026-08-13 (Thu, 16:46) · Claude · window C-20260813-1646
+
+**Agenda (Adarsh: "implement the next phase"):**
+1. Establish where Phase 1 actually stands (three standalone audio components
+   exist from 2026-08-12; none are wired, persisted or calibrated).
+2. Phase 0 of `DELEGATION.md` — plan + file partition + acceptance criteria,
+   approved before any code.
+3. Phase 1 of `DELEGATION.md` — write and commit the contract: types, Dexie v2
+   migration, the routine as data, the audio math, the calibration rules.
+4. Emit one ANTIGRAVITY BRIEF (AG-003) for the Lab UI slice.
+5. Build Claude's critical slice in parallel: audio math + session state +
+   calibration + the breath-content correction.
+6. One review pass off `git diff` + the AG-003 report.
+
+**Done:**
+- [x] State established. Phase 0.5 closed; Phase 1 is ~15% done and none of it
+      runs: `LiveDbMeter`/`MptTracker`/`VolumeLadder` are unmounted (no LAB tab),
+      write nothing to Dexie, and the dB target band is hardcoded rather than
+      derived from his own baseline. **`MptTracker` reads the loud-to-soft gap
+      backwards** — it congratulates a ≥5 s gap, which is the defect the whole
+      phase exists to shrink (baseline ~10 s → target < 3 s).
+- [x] **Two decisions taken** (locked as PLAN §8 rows 16–19): the Lab runs all
+      five blocks from day one with only A+B metered, and it gets the **fifth
+      tab in second position**. Also locked: the real-device mic test is run by
+      the app rather than off a checklist, and MPT is weekly, not daily.
+- [x] **Contract written and committed to the tree** — `LabStep` / `LabBlock` /
+      `LabSession` / `VoiceSample` / `MicProfile` / `LAB_RULES`, calibration
+      fields on `Profile`, two new fields on `DayRecord`. Additive only: every
+      Phase 0 shape held, as the Phase 0 contract said it had to. Dexie **v2**
+      (v1 stores carried forward — verified against a populated database, not
+      assumed), Supabase `lab_sessions` + `voice_samples` with RLS, and
+      `restore()` extended so the 12-week trend and the calibration survive a
+      new device.
+- [x] **M11 live meter + M10 MPT, the maths.** `PhonationDetector` gives MPT a
+      mic-driven auto-stop with hysteresis and false-start rejection, credited
+      to the last voiced frame — the clock is no longer stopped by his thumb,
+      which was measuring reaction time on top of breath. `DriftDetector`
+      debounces the nudge over 2 s with a 1.5 s hold, so one loud syllable says
+      nothing and a pause is never flagged as "too quiet". Meter smoothing
+      dropped 0.8 → 0.3 so the nudge can actually see a driven attack.
+- [x] **Week-1 personal calibration.** The band is derived from his own baseline
+      over seven sessions, and split in two: a 2 dB *average* target (what gets
+      scored) and a 10 dB *live* band (what the meter shows). A 2 dB live meter
+      would sit outside the band permanently and be ignored inside a day.
+- [x] **M8 + M9 session runner.** The 12-minute routine as data, blocks A–E in
+      the order the voice profile sets. The three transfer reps are mandatory,
+      have no skip control, and **do not auto-advance when their timer hits
+      zero** — that enforcement is the point of the phase.
+- [x] **The real-device mic test is now the app's job**, not a checklist:
+      `runMicSelfTest()` records sample rate, whether `autoGainControl:false`
+      was actually honoured, and the room noise floor into `Profile.micProfile`.
+- [x] **Breath deck corrected** — the four capacity drills retired, SOVT set
+      expanded to five, a `TRANSFER:` rep on every drill, instructions cut to
+      3–4 short lines. Closes the P1 known-issue and PROBLEM-MAP §6.
+- [x] **Four defects found by running it, all in my own slice.** (1) `ensureSeeded`
+      only ever added and updated, so the retired drills would have stayed
+      active on his phone for good — the entire content correction was a no-op
+      on the one device that matters. Cards absent from the seed files are now
+      buried. (2) `br-straw` collided with an exemplar of the same id and the
+      *old* text silently won the de-dupe. (3) Two `seconds` drills both wrote
+      `bestMptSec`, and the exemplar one still carried the superseded
+      "breath-support number" framing — the headline metric had two meanings.
+      (4) The exemplar deck still shipped a capacity `Counting ladder`.
+- [x] **119 tests green** (up from 51), build clean. Verified by running at
+      375×812: Core 3 in contract order → streak 1 → endless, 40 further cards
+      with no dead end and no adjacent same-type, all four tabs intact, no
+      horizontal overflow, zero console errors, day record persisted.
+- [x] **AG-003 emitted** — `.claude/briefs/AG-003-phase1-speaking-lab-ui.md`.
+      Ten files assigned, do-not-edit list, both hook surfaces reproduced in
+      full, the CSS class contract, and 13 acceptance criteria that have to be
+      verified by running the app.
+
+**Open / not started:** the Lab has **no screen yet** — until AG-003 lands, all
+of this Phase 1 code is unreachable from the app. Nothing committed, nothing
+deployed. Still unverified: none of the audio path has run against a real iPhone
+microphone, which is exactly what `micProfile` exists to record on first use.
+
+
 
 **Agenda (Adarsh: "I'm confused where the product is going — list every issue I
 pointed out and map it to what is solving it"):**

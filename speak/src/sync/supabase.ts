@@ -1,6 +1,13 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { db, getProfile, type OutboxRow } from '../db/db';
-import type { CardEvent, DayRecord, InboxItem, Review } from '../types/contract';
+import type {
+  CardEvent,
+  DayRecord,
+  InboxItem,
+  LabSession,
+  Review,
+  VoiceSample,
+} from '../types/contract';
 
 /**
  * Sync and backup. Never the read path — see src/db/db.ts.
@@ -57,6 +64,20 @@ const TABLE_KEY: Record<OutboxRow['table'], string> = {
   inbox: 'id',
   profile: 'user_id',
   cards: 'id',
+  labSessions: 'id',
+  voiceSamples: 'id',
+};
+
+/** Dexie table name → Postgres table name. They differ only in case style. */
+const REMOTE_TABLE: Record<OutboxRow['table'], string> = {
+  reviews: 'reviews',
+  events: 'events',
+  days: 'days',
+  inbox: 'inbox',
+  profile: 'profile',
+  cards: 'cards',
+  labSessions: 'lab_sessions',
+  voiceSamples: 'voice_samples',
 };
 
 /**
@@ -87,7 +108,7 @@ export async function push(): Promise<number> {
     }
 
     const { error } = await sb
-      .from(row.table)
+      .from(REMOTE_TABLE[row.table])
       .upsert(payload, { onConflict: `user_id,${TABLE_KEY[row.table]}` });
 
     if (error) {
@@ -127,7 +148,24 @@ async function materialise(row: OutboxRow, userId: string): Promise<Record<strin
     }
     case 'profile': {
       const p = await getProfile();
-      return { user_id: userId, baseline_wpm: p.baselineWpm ?? null, target_wpm: p.targetWpm ?? null };
+      return {
+        user_id: userId,
+        baseline_wpm: p.baselineWpm ?? null,
+        target_wpm: p.targetWpm ?? null,
+        baseline_db: p.baselineDb ?? null,
+        calibration_samples: p.calibrationSamples ?? 0,
+        target_band_min_db: p.targetBandDb?.minDb ?? null,
+        target_band_max_db: p.targetBandDb?.maxDb ?? null,
+        calibrated_at: p.calibratedAt ? new Date(p.calibratedAt).toISOString() : null,
+      };
+    }
+    case 'labSessions': {
+      const s = await db.labSessions.get(row.key);
+      return s ? labSessionRow(s, userId) : null;
+    }
+    case 'voiceSamples': {
+      const v = await db.voiceSamples.get(row.key);
+      return v ? voiceSampleRow(v, userId) : null;
     }
     case 'cards': {
       const c = await db.cards.get(row.key);
@@ -183,6 +221,30 @@ const dayRow = (d: DayRecord, userId: string) => ({
   seconds_active: d.secondsActive,
   urges_redirected: d.urgesRedirected,
   best_mpt_sec: d.bestMptSec ?? null,
+  lab_session_done: d.labSessionDone ?? false,
+  lab_seconds: d.labSeconds ?? 0,
+});
+
+const labSessionRow = (s: LabSession, userId: string) => ({
+  user_id: userId,
+  id: s.id,
+  date: s.date,
+  started_at: new Date(s.startedAt).toISOString(),
+  ended_at: s.endedAt ? new Date(s.endedAt).toISOString() : null,
+  completed_step_ids: s.completedStepIds,
+  transfer_reps: s.transferReps,
+  avg_db: s.avgDb ?? null,
+  aborted: s.aborted,
+});
+
+const voiceSampleRow = (v: VoiceSample, userId: string) => ({
+  user_id: userId,
+  id: v.id,
+  at: new Date(v.at).toISOString(),
+  date: v.date,
+  kind: v.kind,
+  value: v.value,
+  session_id: v.sessionId ?? null,
 });
 
 const inboxRow = (i: InboxItem, userId: string) => ({
@@ -199,15 +261,25 @@ const inboxRow = (i: InboxItem, userId: string) => ({
  * One-shot restore after signing in on a fresh device. Local rows win on
  * conflict, because the local copy is the one he has actually been using.
  */
-export async function restore(): Promise<{ reviews: number; days: number; inbox: number }> {
+export async function restore(): Promise<{
+  reviews: number;
+  days: number;
+  inbox: number;
+  labSessions: number;
+  voiceSamples: number;
+}> {
+  const empty = { reviews: 0, days: 0, inbox: 0, labSessions: 0, voiceSamples: 0 };
   const sb = supabase();
   const userId = await currentUserId();
-  if (!sb || !userId) return { reviews: 0, days: 0, inbox: 0 };
+  if (!sb || !userId) return empty;
 
-  const [rv, dy, ib] = await Promise.all([
+  const [rv, dy, ib, ls, vs, pf] = await Promise.all([
     sb.from('reviews').select('*'),
     sb.from('days').select('*'),
     sb.from('inbox').select('*'),
+    sb.from('lab_sessions').select('*'),
+    sb.from('voice_samples').select('*'),
+    sb.from('profile').select('*').maybeSingle(),
   ]);
 
   let reviews = 0;
@@ -237,6 +309,8 @@ export async function restore(): Promise<{ reviews: number; days: number; inbox:
       secondsActive: d.seconds_active,
       urgesRedirected: d.urges_redirected,
       bestMptSec: d.best_mpt_sec ?? undefined,
+      labSessionDone: d.lab_session_done ?? undefined,
+      labSeconds: d.lab_seconds ?? undefined,
     });
     days++;
   }
@@ -255,5 +329,57 @@ export async function restore(): Promise<{ reviews: number; days: number; inbox:
     inbox++;
   }
 
-  return { reviews, days, inbox };
+  let labSessions = 0;
+  for (const s of ls.data ?? []) {
+    if (await db.labSessions.get(s.id)) continue;
+    await db.labSessions.put({
+      id: s.id,
+      date: s.date,
+      startedAt: Date.parse(s.started_at),
+      endedAt: s.ended_at ? Date.parse(s.ended_at) : undefined,
+      completedStepIds: s.completed_step_ids ?? [],
+      transferReps: s.transfer_reps ?? 0,
+      avgDb: s.avg_db ?? undefined,
+      aborted: s.aborted ?? false,
+    });
+    labSessions++;
+  }
+
+  // The twelve-week trend lines. Without these a fresh device shows a flat
+  // chart and re-runs week-1 calibration, which is the one thing that must not
+  // silently happen — the whole retention hook is day 1 against day 56.
+  let voiceSamples = 0;
+  for (const v of vs.data ?? []) {
+    if (await db.voiceSamples.get(v.id)) continue;
+    await db.voiceSamples.put({
+      id: v.id,
+      at: Date.parse(v.at),
+      date: v.date,
+      kind: v.kind,
+      value: Number(v.value),
+      sessionId: v.session_id ?? undefined,
+    });
+    voiceSamples++;
+  }
+
+  // Calibration follows the samples. Local wins if this device already has it.
+  const local = await getProfile();
+  const remote = pf.data as Record<string, unknown> | null;
+  if (remote && local.baselineDb === undefined && remote.baseline_db != null) {
+    await db.profile.put({
+      ...local,
+      baselineDb: Number(remote.baseline_db),
+      calibrationSamples: Number(remote.calibration_samples ?? 0),
+      targetBandDb:
+        remote.target_band_min_db != null && remote.target_band_max_db != null
+          ? {
+              minDb: Number(remote.target_band_min_db),
+              maxDb: Number(remote.target_band_max_db),
+            }
+          : undefined,
+      calibratedAt: remote.calibrated_at ? Date.parse(String(remote.calibrated_at)) : undefined,
+    });
+  }
+
+  return { reviews, days, inbox, labSessions, voiceSamples };
 }

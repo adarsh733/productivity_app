@@ -1,12 +1,21 @@
+# Netlify reads this file from the repository root to discover `base`.
+#
+# `publish` and `functions` are resolved **relative to `base`**, so they must
+# not repeat the `speak/` prefix — `publish = "speak/dist"` under
+# `base = "speak"` resolves to `speak/speak/dist` and the deploy fails with
+# "deploy directory does not exist". These values deliberately match
+# `speak/netlify.toml` so it makes no difference which of the two Netlify reads.
+
 [build]
   base = "speak"
   command = "npm run build"
-  publish = "speak/dist"
-  functions = "speak/netlify/functions"
+  publish = "dist"
+  functions = "netlify/functions"
 
 [build.environment]
   NODE_VERSION = "20"
 
+# SPA fallback — every route serves the app shell.
 [[redirects]]
   from = "/*"
   to = "/index.html"

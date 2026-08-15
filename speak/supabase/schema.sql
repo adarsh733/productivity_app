@@ -19,6 +19,16 @@ create table if not exists public.profile (
   updated_at    timestamptz not null default now()
 );
 
+-- Phase 1 — personal audio calibration. Absolute dB off a phone mic is
+-- meaningless, so every band in the app is expressed relative to baseline_db,
+-- measured on his own device. `add column if not exists` so an already-created
+-- project can be brought forward by re-running this file.
+alter table public.profile add column if not exists baseline_db          numeric;
+alter table public.profile add column if not exists calibration_samples  int not null default 0;
+alter table public.profile add column if not exists target_band_min_db   numeric;
+alter table public.profile add column if not exists target_band_max_db   numeric;
+alter table public.profile add column if not exists calibrated_at        timestamptz;
+
 -- ── cards ───────────────────────────────────────────────────────────────────
 create table if not exists public.cards (
   user_id     uuid not null references auth.users(id) on delete cascade,
@@ -95,18 +105,59 @@ create table if not exists public.inbox (
 );
 create index if not exists inbox_status_idx on public.inbox (user_id, status);
 
+-- ── lab_sessions (Phase 1 — the Speaking Lab) ───────────────────────────────
+create table if not exists public.lab_sessions (
+  user_id            uuid not null references auth.users(id) on delete cascade,
+  id                 text not null,
+  date               date not null,
+  started_at         timestamptz not null,
+  ended_at           timestamptz,
+  completed_step_ids text[] not null default '{}',
+  -- The number that says whether the session was real. A session with zero
+  -- transfer reps ran the timers and trained nothing.
+  transfer_reps      int not null default 0,
+  avg_db             numeric,
+  aborted            boolean not null default false,
+  primary key (user_id, id)
+);
+create index if not exists lab_sessions_date_idx on public.lab_sessions (user_id, date desc);
+
+-- ── voice_samples (the charted numbers) ─────────────────────────────────────
+-- Deliberately not derived from `events`. These are the twelve-week trend
+-- lines; reconstructing them by filtering an event log is how a metric quietly
+-- changes meaning when the event log changes.
+create table if not exists public.voice_samples (
+  user_id    uuid not null references auth.users(id) on delete cascade,
+  id         text not null,
+  at         timestamptz not null,
+  date       date not null,
+  kind       text not null,
+  value      numeric not null,
+  session_id text,
+  primary key (user_id, id)
+);
+create index if not exists voice_samples_kind_idx on public.voice_samples (user_id, kind, at desc);
+
+-- Phase 1 — the Lab does not feed the streak (core_three_done stays the only
+-- thing that does), but the day still records that it happened.
+alter table public.days add column if not exists lab_session_done boolean not null default false;
+alter table public.days add column if not exists lab_seconds      int not null default 0;
+
 -- ── RLS ─────────────────────────────────────────────────────────────────────
-alter table public.profile enable row level security;
-alter table public.cards   enable row level security;
-alter table public.reviews enable row level security;
-alter table public.events  enable row level security;
-alter table public.days    enable row level security;
-alter table public.inbox   enable row level security;
+alter table public.profile       enable row level security;
+alter table public.cards         enable row level security;
+alter table public.reviews       enable row level security;
+alter table public.events        enable row level security;
+alter table public.days          enable row level security;
+alter table public.inbox         enable row level security;
+alter table public.lab_sessions  enable row level security;
+alter table public.voice_samples enable row level security;
 
 do $$
 declare t text;
 begin
-  foreach t in array array['profile','cards','reviews','events','days','inbox'] loop
+  foreach t in array array['profile','cards','reviews','events','days','inbox',
+                           'lab_sessions','voice_samples'] loop
     execute format('drop policy if exists own_rows on public.%I', t);
     execute format(
       'create policy own_rows on public.%I for all to authenticated

@@ -123,6 +123,9 @@
   --actions-h: 54px; /* Again / Got it */
   --urge-h: 34px; /* the "I felt the pull" chip row */
   --tabbar-h: 64px;
+  --reset-tabbar-h: 72px;
+  --reset-control-h: 52px;
+  --reset-icon-h: 44px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 

@@ -5,8 +5,11 @@
  * without an explicit decision recorded in `docs/PLAN.md`.
  *
  * Phase 0 scope: no microphone, no live AI. Cards that involve speaking are
- * still spoken — they are just self-graded rather than measured. The measuring
- * lands in Phase 1 and must not require a change to these shapes.
+ * still spoken — they are just self-graded rather than measured.
+ *
+ * Phase 1 (2026-08-13) added the Speaking Lab section at the bottom and three
+ * optional fields to `Profile` and `DayRecord`. Nothing above those was
+ * changed — the Phase 0 shapes held, as they were required to.
  */
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -215,6 +218,10 @@ export interface DayRecord {
   urgesRedirected: number;
   /** Best max-phonation-time logged that day, in seconds. */
   bestMptSec?: number;
+  /** Phase 1: a Lab session was run to the last step. Does NOT feed the streak. */
+  labSessionDone?: boolean;
+  /** Phase 1: seconds spent in the Lab today, partial sessions included. */
+  labSeconds?: number;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -249,6 +256,55 @@ export interface Profile {
   /** Supabase user id once he signs in. Null while local-only. */
   userId?: string | null;
   lastSyncAt?: Millis;
+
+  // ── Phase 1: personal audio calibration ────────────────────────────────────
+  /**
+   * Mean dBFS of his *habitual* speech, measured on his own device over the
+   * first `LAB_RULES.CALIBRATION_SESSIONS` Lab sessions.
+   *
+   * Absolute dB off a phone mic is meaningless (PLAN.md §3). Every band, nudge
+   * and trend in the app is expressed relative to this number and nothing else.
+   */
+  baselineDb?: number;
+  /** How many habitual samples `baselineDb` is the mean of. */
+  calibrationSamples?: number;
+  /** Derived from `baselineDb` — never authored, never absolute. */
+  targetBandDb?: TargetBandDb;
+  /** When the band last opened or moved. */
+  calibratedAt?: Millis;
+  /** Result of the in-app device test. Written on first successful mic use. */
+  micProfile?: MicProfile;
+}
+
+/**
+ * A dBFS window. `min`/`max` are both negative and `min < max`; -60 is the
+ * practical floor of the meter and 0 is full scale.
+ */
+export interface TargetBandDb {
+  minDb: number;
+  maxDb: number;
+}
+
+/**
+ * What the microphone on *this* device actually does. Written once, so a bad
+ * reading later can be told apart from a bad device.
+ *
+ * This is the "real-device mic test" PLAN.md §7 requires before Phase 1 is
+ * trusted — run by the app on his phone rather than by hand off a checklist.
+ */
+export interface MicProfile {
+  at: Millis;
+  sampleRate: number;
+  /**
+   * Whether the browser honoured `autoGainControl: false`. If it did not, the
+   * hardware is normalising loudness and every dB reading is compressed —
+   * the meter still works as a relative signal but the band will be narrow.
+   */
+  agcDisabled: boolean;
+  /** Room noise floor in dBFS, measured over ~1 s before he speaks. */
+  noiseFloorDb: number;
+  /** False when permission was denied or no audio input exists. */
+  ok: boolean;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -323,3 +379,192 @@ export interface AiResponse<T = unknown> {
   data?: T;
   error?: string;
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Speaking Lab — Phase 1 (M8 · M9 · M10 · M11)
+//
+// The 12-minute daily routine from VOICE-PROFILE.md §6, expressed as data.
+// The routine is *ordered on purpose*: release before production, and every
+// block ends where the learning actually happens. Reordering the blocks or
+// dropping a `transfer` step changes what the session trains — do neither
+// without a decision recorded in PLAN.md.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** Blocks A–E of the daily routine. Fixed set, fixed order. */
+export type LabBlockId = 'A' | 'B' | 'C' | 'D' | 'E';
+
+/**
+ * How a step is run. Only `meter`, `mpt`, `transfer` and `calibrate` open the
+ * microphone; `guided` is a timer and a cue and works with the mic denied.
+ *
+ * - `guided`    — timed cue, nothing measured. Blocks C/D/E in Phase 1.
+ * - `meter`     — live dB meter on; the reading feeds the session average.
+ * - `calibrate` — habitual speech captured to build `Profile.baselineDb`.
+ *                 Drops out of the routine once calibration completes.
+ * - `mpt`       — sustained phonation, mic auto-stop, writes a `VoiceSample`.
+ * - `transfer`  — **the transfer rep.** Speak one ordinary sentence carrying
+ *                 the feeling of the drill just done. PLAN.md §1 design
+ *                 consequence 4: the app must *enforce* this, because it is the
+ *                 step most likely to be skipped and the one that transfers.
+ *
+ * Kind says what the step *is*; `LabStep.metered` says whether the microphone
+ * opens for it. They are kept separate on purpose — Blocks C/D/E have transfer
+ * reps that are mandatory from day one but are not measured until M12 and M16
+ * land in Phases 2 and 5.
+ */
+export type LabStepKind = 'guided' | 'meter' | 'calibrate' | 'mpt' | 'transfer';
+
+export interface LabStep {
+  id: string;
+  block: LabBlockId;
+  title: string;
+  /**
+   * One line, and short enough to read *while doing the drill*. Never a list.
+   * A five-step instruction you have to scroll is unreadable while holding a
+   * breath — see `docs/known-issues.md`.
+   */
+  cue: string;
+  /** What "correct" feels like. Secondary text, may be omitted. */
+  feel?: string;
+  durationSec: number;
+  kind: LabStepKind;
+  /**
+   * A mandatory step cannot be skipped forward past — the runner refuses.
+   * Every `transfer` step is mandatory. Nothing else is.
+   */
+  mandatory: boolean;
+  /**
+   * The microphone opens for this step and the reading feeds the session
+   * average. False for every step whose measuring module has not shipped yet.
+   */
+  metered: boolean;
+  /** `mpt` steps only: which sample the measured duration is written as. */
+  sampleKind?: VoiceSampleKind;
+}
+
+export interface LabBlock {
+  id: LabBlockId;
+  title: string;
+  /** Why the block exists, in one line. Shown when the block opens. */
+  purpose: string;
+  /** The module that owns it. C/D/E stay `guided` until their own phase. */
+  module: 'M8' | 'M9' | 'M12' | 'M16' | 'M13';
+  steps: LabStep[];
+}
+
+/**
+ * A single measured number about the voice. Kept separate from `CardEvent`
+ * because these are the numbers that get charted over 12 weeks — they must not
+ * be reconstructed by filtering a general event log.
+ */
+export type VoiceSampleKind =
+  | 'mpt_habitual' // THE headline number. Baseline 15–16 s → target 24–25 s
+  | 'mpt_soft' // the ceiling the habitual number is chasing. ~25 s already
+  | 'session_db' // mean dBFS across a Lab session's metered steps
+  | 'baseline_db' // one habitual-speech sample during week-1 calibration
+  | 'level1_hold'; // Phase 2 (M12). Declared here so the table never migrates
+
+export interface VoiceSample {
+  id: string;
+  at: Millis;
+  date: DayKey;
+  kind: VoiceSampleKind;
+  /** Seconds for `mpt_*` and `level1_hold`; dBFS (negative) for the `*_db` kinds. */
+  value: number;
+  /** The Lab session it came from, when it came from one. */
+  sessionId?: string;
+}
+
+export interface LabSession {
+  id: string;
+  date: DayKey;
+  startedAt: Millis;
+  endedAt?: Millis;
+  /** Step ids completed, in order. */
+  completedStepIds: string[];
+  /**
+   * Transfer reps actually done. This is the number that says whether the
+   * session was real — a session with zero transfer reps trained nothing.
+   */
+  transferReps: number;
+  /** Mean dBFS across the metered steps. Undefined when the mic never ran. */
+  avgDb?: number;
+  /** He left before the last step. Logged anyway — a partial session is data. */
+  aborted: boolean;
+}
+
+/**
+ * One saved spoken attempt, audio included.
+ *
+ * The product promise is "hear the second attempt improve", and a promise you
+ * cannot replay is a claim. The blob lives in IndexedDB and **never** goes into
+ * the outbox: audio is local until an upload path exists that says so on screen
+ * (PRODUCT-RESET-PLAN §8.4).
+ */
+export interface Recording {
+  /** `${sessionId}-a${attempt}` — a redo overwrites its own attempt, not the pair. */
+  id: string;
+  sessionId: string;
+  attempt: 1 | 2;
+  missionId: string;
+  /** Shown in the archive so a recording from six weeks ago still means something. */
+  missionTitle: string;
+  date: DayKey;
+  at: Millis;
+  durationSec: number;
+  /** Whatever the browser gave us — `audio/mp4` on iOS, `audio/webm` elsewhere. */
+  mimeType: string;
+  blob: Blob;
+  /** Mean dBFS over the attempt. Undefined when the mic was denied. */
+  avgDb?: number;
+}
+
+/**
+ * The verdict on a loud-to-soft MPT pair.
+ *
+ * **The gap is a deficit — smaller is better.** Baseline ~10 s, 12-week target
+ * < 3 s. Getting this backwards congratulates the exact habit the app exists to
+ * remove, so the interpretation lives in `features/lab/calibration.ts` and no
+ * component is allowed to compute it.
+ */
+export type MptVerdict = 'target' | 'improving' | 'baseline';
+
+/**
+ * Constants the Lab must respect. Same role as `QUEUE_RULES` — changing a
+ * number here changes what the training means.
+ */
+export const LAB_RULES = {
+  /** Habitual-speech samples needed before a personal band is trusted. */
+  CALIBRATION_SESSIONS: 7,
+  /**
+   * Where the *session average* should land, relative to his own baseline.
+   * VOICE-PROFILE.md §7: "session dB average −6 to −8 dB from baseline".
+   */
+  TARGET_OFFSET_DB: { quietest: -8, loudest: -6 },
+  /**
+   * Half-width of the **live meter** band around that target.
+   *
+   * The target above is a 2 dB window, which is right for an average and wrong
+   * for a live meter — ordinary speech swings ~20 dB inside a sentence, so a
+   * 2 dB bar would sit outside the band permanently and be ignored within a
+   * day. The live band is centred on the target and wide enough to be
+   * achievable; the average is what actually gets scored.
+   */
+  LIVE_BAND_HALF_WIDTH_DB: 5,
+  /**
+   * How long the smoothed level must sit outside the band before the meter
+   * says anything. A nudge that fires on one loud syllable is noise.
+   */
+  DRIFT_HOLD_MS: 1500,
+  /** Window the drift detector averages over. */
+  DRIFT_WINDOW_MS: 2000,
+  /** Loud-to-soft MPT gap in seconds. Deficit — smaller is better. */
+  MPT_GAP_TARGET_SEC: 3,
+  MPT_GAP_BASELINE_SEC: 10,
+  /** The full routine, for the progress read-out. Blocks A–E sum to this. */
+  ROUTINE_SEC: 720,
+  /** MPT is a *weekly* measure, not a daily one. VOICE-PROFILE.md §7. */
+  MPT_INTERVAL_DAYS: 7,
+  /** Below this dBFS the meter treats the input as silence, not quiet speech. */
+  SILENCE_FLOOR_DB: -55,
+} as const;
