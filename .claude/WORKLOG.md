@@ -3,9 +3,266 @@
 Newest session first. One terse line per agenda item as it completes, plus any
 unplanned work. This is the month-end record of what got built.
 
+## Session — 2026-08-26 (Wed, 16:51) · Antigravity · window C-20260826-1643-feed-queue-xp-correctness
+
+**Agenda (Feed, Queue, Preferences, Activity, XP, and Streak Correctness):**
+1. Decouple browsing from SM-2 grading: viewing cards creates `card_viewed` production events without writing SM-2 review states (`useFeed.ts`, `day.ts`, `contract.ts`).
+2. Establish 7 distinct production events (`card_viewed`, `card_saved`, `card_unsaved`, `card_downweighted`, `spoken_rep_completed`, `describe_rep_completed`, `recall_graded`).
+3. Enforce gamification & XP rules: 1 XP per unique card viewed per day; 3 XP on first bookmark with anti-farming protection (`bookmarkXpAwarded`); 10 XP for standard spoken rep, 25 XP for Describe rep (`GAMIFICATION.XP` constants).
+4. Persist and synchronize XP across feed header and You screen (`FeedScreen.tsx`, `YouScreen.tsx`).
+5. Wire daily goal celebration banner based on selected XP goal (`casual`: 10 XP, `regular`: 30 XP, `serious`: 60 XP).
+6. Shared interest constants & ID union (`src/types/interests.ts`, `FirstRun.tsx`, `InterestsManager.tsx`, `queue.ts`). Neutral default subset `['office', 'words']`.
+7. Expiring downweights: left swipe stores `{ multiplier, expiresAt }` (7 calendar days), checked against tags then type, floored at 0.15.
+8. Queue engine: deterministic daily shuffling (`dayCardHash`), due-before-new priority, `MAX_NEW_PER_DAY` (20) cap across refills, 8%–18% Hindi ratio, and fresh Day 1 Card 1 English word/idiom.
+9. Swipe-down history navigation without event duplication.
+10. Verifiable freeze ledger tracking (`getMonthlyFreezeStatus`).
+11. Comprehensive Vitest test suite and clean production build.
+
+**Done:**
+- [x] Browsing exposure decoupled from SM-2 reviews; only explicit practice drills can record recall grades.
+- [x] Defined and implemented all 7 production event interfaces in `contract.ts` and Dexie dispatch.
+- [x] Implemented `applyCardView`, `applyBookmarkToggle`, `toggleBookmarkWithXp`, and `getMonthlyFreezeStatus` in `day.ts` and `db.ts`.
+- [x] Synchronized persisted day XP across Feed header and You screen.
+- [x] Built unified interest options and default neutral subset (`['office', 'words']`) in `src/types/interests.ts`.
+- [x] Enhanced queue engine with deterministic daily shuffling, 20 new cards cap, 8–18% Hindi ratio, and fresh Day 1 Card 1 starter.
+- [x] Added swipe down previous-card history navigation in `useCardGestures.ts` and `useFeed.ts`.
+- [x] All 33 test files and **251/251 tests pass** in Vitest.
+- [x] Production build (`tsc -b && vite build`) passed with 0 errors in 3.13s.
+
+---
+
+## Session — 2026-08-26 (Wed, 15:32) · Antigravity · window C-20260826-1524-v3-truthfulness-repair
+
+**Agenda (SPEAK V3 Truthfulness & Correctness Repair):**
+1. Authorize V3 as sole source of truth in repository documentation (`docs/PLAN.md`, `speak/AGENTS.md`, `speak/src/types/contract.ts`).
+2. Remove feed heuristics inferring speaking from browsing/time/type (`useFeed.ts`).
+3. Pure domain function extraction for card & speaking completion with strict audio validity (`day.ts`).
+4. Enforce speaking idempotency by recording ID in database transaction (`creditSpeakingAttempt`).
+5. Remove canned/offline AI coaching sentences, reject malformed responses, enforce transcript presence before review (`useAiFeedback.ts`, `PlaybackReview.tsx`, `netlify/functions/ai.ts`).
+6. Update UI headers from "Great rep!" to factual "Recording ready" and render honest null-audio / error states.
+7. Pass live SpeechRecognition transcript and prompt context from drill modes to `PlaybackReview`.
+8. Write comprehensive automated tests for all truthfulness and idempotency conditions.
+9. Verify full test suite, TypeScript check, and production build.
+
+**Done:**
+- [x] Repository documentation updated: microphone is optional; browsing never credits spoken reps; day complete on 5 cards or 1 spoken rep; Hindi at ~12.5%; decisions 20–25 locked in `docs/PLAN.md`.
+- [x] Removed all time/card-type speaking heuristics in `useFeed.ts`. Feed actions strictly call `applyCardCompletion`.
+- [x] Extracted pure domain functions `applyCardCompletion`, `validateSpeakingAttempt`, `applySpeakingCompletion`, and `creditSpeakingAttempt` in `day.ts`.
+- [x] Idempotency guaranteed: duplicate writes with the same `recordingId` return `{ credited: false }` and prevent duplicate XP / spoken rep crediting.
+- [x] Removed all hardcoded coaching strings in `useAiFeedback.ts`. AI review strictly requires transcript; network failures or malformed responses produce zero coaching claims.
+- [x] Serverless AI proxy in `netlify/functions/ai.ts` validates transcript existence for `review_recording`.
+- [x] `PlaybackReview.tsx` header updated to "Recording ready"; null/invalid audio shows 0 XP without spoken rep credit.
+- [x] Automated test suite: **216/216 tests green across 31 test files** (100% pass rate).
+- [x] TypeScript check: `npm run typecheck` clean (0 errors).
+- [x] Production build: `npm run build` clean (dist built in 2.16s).
+
+---
+
+## Session — 2026-08-20 (Thu, 11:44) · Antigravity · window C-20260820-1141-ag004-stage8
+
+**Agenda (AG-004 V3 Casual Rebuild · Stage 8 Content expansion):**
+1. Author seed card files for all new V3 contract types:
+   - `speak/src/content/seed/17-phrases.json` (corporate phrasing upgrades & calque swaps)
+   - `speak/src/content/seed/18-feelings.json` (nuanced emotion cards with contrasts)
+   - `speak/src/content/seed/19-story-moves.json` (narrative transition cards)
+   - `speak/src/content/seed/21-describe.json` (sensory scene drills)
+   - `speak/src/content/seed/22-explain.json` (technical explanation drills)
+   - `speak/src/content/seed/23-teach-backs.json` (concept teach-back drills)
+2. Validate 100% of seed files against TypeScript contract schemas in `seedLoader.ts`.
+3. Add acceptance test assertions for expanded card corpus in `seedLoader.test.ts`.
+4. Verify full test suite green and production build clean.
+
+**Done:**
+- [x] Authored all 6 new category seed files with 0 duplicate IDs and 0 validation errors.
+- [x] Total library size expanded to over 350+ cards across 13 distinct card types.
+- [x] All 8 Browse category decks dynamically load expanded card counts (Office English: 110, Everyday Words: 96, Practical Hindi: 40, Story Craft: 10, Action Verbs: 46, Say This Instead: 58, Pronunciation: 46, Speech Pace: 41).
+- [x] Automated test suite: **153/153 tests green across 17 test files**.
+- [x] Production build: **`npm run build` clean** (0 TS errors, 3.42s).
+
+---
+
+## Session — 2026-08-20 (Thu, 11:40) · Antigravity · window C-20260820-1138-ag004-stage7
+
+**Agenda (AG-004 V3 Casual Rebuild · Stage 7 AI feedback):**
+1. Enhance Netlify serverless function `speak/netlify/functions/ai.ts` with multi-provider failover (`Anthropic` Claude 3.5 Haiku, `Google` Gemini 2.5 Flash, `Groq` Llama 3.3) and speech review prompt instructions.
+2. Build front-end `useAiFeedback.ts` hook with request cancellation exit (Rule 2) and offline fallback.
+3. Integrate AI coaching trigger button, loading spinner with cancel, and structured feedback cards into `PlaybackReview.tsx`.
+4. Append CSS styles for AI feedback trigger, loading spinner, and coaching points in `components.css`.
+5. Add acceptance test suite `useAiFeedback.test.ts`.
+6. Verify test suite and production build clean.
+
+**Done:**
+- [x] Enhanced `speak/netlify/functions/ai.ts` with Anthropic, Gemini, and Groq support for `review_recording`.
+- [x] Created `speak/src/features/ai/useAiFeedback.ts` hook with graceful offline fallback and abort signal.
+- [x] Integrated AI coaching observation into `PlaybackReview.tsx`.
+- [x] Added styles in `components.css`.
+- [x] Automated test suite: **152/152 tests green across 17 test files**.
+- [x] Production build: **`npm run build` clean** (0 TS errors, 2.16s).
+
+---
+
+## Session — 2026-08-20 (Thu, 11:36) · Antigravity · window C-20260820-1133-ag004-stage6
+
+**Agenda (AG-004 V3 Casual Rebuild · Stage 6 You and gamification):**
+1. Implement `WeeklyDots.tsx` 7-day activity visualizer (green checkmarks for completed days `cardsCompleted >= 5 || spokenReps >= 1`, today ring, freeze allowance status).
+2. Build `BookmarksDrawer.tsx` modal for browsing saved cards with polymorphic `CardFace` tap-to-flip review and unstarring.
+3. Build `GoalSelector.tsx` daily commitment switcher (`Casual`, `Regular`, `Serious`) updating `Profile.dailyGoal` in IndexedDB.
+4. Build `InterestsManager.tsx` feed focus editor updating `Profile.interests` in IndexedDB.
+5. Upgrade `YouScreen.tsx` to integrate 3 core stats (Day Streak, Cards Read, Spoken Reps), activity dots, weekly summary, bookmarks drawer, goal selector, and interests manager.
+6. Delete deprecated `SavedScreen.tsx`.
+7. Add acceptance test suite `YouScreen.test.ts`.
+8. Verify test suite and production build clean.
+
+**Done:**
+- [x] Implemented `WeeklyDots.tsx` 7-day activity visualizer and streak freeze allowance tracker.
+- [x] Implemented `BookmarksDrawer.tsx` saved cards drawer with card review and unstarring.
+- [x] Implemented `GoalSelector.tsx` daily commitment selector.
+- [x] Implemented `InterestsManager.tsx` feed focus manager.
+- [x] Upgraded `YouScreen.tsx` with all components and live stats.
+- [x] Deleted obsolete `SavedScreen.tsx`.
+- [x] Verified in browser at 375x812: stats, activity dots, bookmark drawer, goal switcher, and feed focus chips render with 0 overflow.
+- [x] Automated test suite: **150/150 tests green across 16 test files**.
+- [x] Production build: **`npm run build` clean** (0 TS errors, 2.67s).
+
+---
+
+## Session — 2026-08-20 (Thu, 11:30) · Antigravity · window C-20260820-1126-ag004-stage5
+
+**Agenda (AG-004 V3 Casual Rebuild · Stage 5 Speak):**
+1. Implement the 4 speaking modes (`RapidRepMode` 30s, `SixtySecMode` 60s, `IncidentMode` 45s, `DescribeMode` 45s) under `speak/src/components/speak/modes/`.
+2. Build `AudioRecorder.tsx` with unforced mic initiation (Rule 3) and real `AudioMeterController` / `AnalyserNode` live volume meter.
+3. Build `PlaybackReview.tsx` with native audio playback (`<audio controls>`), exact recorded duration display, XP reward calculation (+10 XP / +25 XP), and IndexedDB `db.days` update (`spokenReps += 1`, `xp += reward`).
+4. Upgrade `SpeakScreen.tsx` to list all 4 modes with duration and XP badges, and auto-open `RapidRepMode` when `initialCard` is passed.
+5. Append CSS for speak runners, prompts, live meter, and playback review in `components.css`.
+6. Add unit and acceptance test suite `SpeakScreen.test.ts`.
+7. Verify test suite and production build clean.
+
+**Done:**
+- [x] Implemented `AudioRecorder.tsx` with unforced mic flow and real AnalyserNode volume meter.
+- [x] Implemented `PlaybackReview.tsx` with audio playback, honest duration, and day record persistence.
+- [x] Implemented all 4 speaking mode components: `RapidRepMode`, `SixtySecMode`, `IncidentMode`, `DescribeMode`.
+- [x] Upgraded `SpeakScreen.tsx` to display all 4 modes with XP rewards and instant card launcher.
+- [x] Verified in browser at 375x812: 4 modes listed, drill runner opens cleanly, mic is unforced, 0 overflow.
+- [x] Automated test suite: **147/147 tests green across 15 test files**.
+- [x] Production build: **`npm run build` clean** (0 TS errors, 2.52s).
+
+---
+
+## Session — 2026-08-20 (Thu, 11:24) · Antigravity · window C-20260820-1118-ag004-stage4
+
+**Agenda (AG-004 V3 Casual Rebuild · Stage 4 Browse):**
+1. Define 8 category decks in `categories.ts` (`Office English`, `Everyday Words`, `Practical Hindi`, `Story Craft`, `Action Verbs`, `Say This Instead`, `Pronunciation`, `Speech Pace`) with type and tag filter matchers.
+2. Implement dynamic deck card counts and review progress calculation from IndexedDB `reviews`.
+3. Create `DeckModal.tsx` for scoped deck player with `CardFace`, card index counter (`Card X of Y`), bookmarks, and advance controls.
+4. Implement `BrowseScreen.tsx` with search input filtering across decks and cards, and 2-column grid with progress rings.
+5. Delete deprecated `LibraryScreen.tsx` and old `DeckModal.tsx`.
+6. Add unit and acceptance test suite `categories.test.ts`.
+7. Verify test suite and production build clean.
+
+**Done:**
+- [x] Implemented `speak/src/features/browse/categories.ts` with 8 decks, `getDeckCards`, `getDeckProgress`, and `searchCards`.
+- [x] Created `speak/src/components/browse/DeckModal.tsx` with scoped deck navigation and bookmarking.
+- [x] Upgraded `speak/src/components/browse/BrowseScreen.tsx` with 2-column deck grid, live card counts, progress rings, and real-time search.
+- [x] Deleted obsolete `LibraryScreen.tsx` and old `DeckModal.tsx`.
+- [x] Verified in browser at 375x812: all 8 decks displayed, opening scoped deck player works seamlessly, search works, 0 overflow.
+- [x] Automated test suite: **144/144 tests green across 14 test files**.
+- [x] Production build: **`npm run build` clean** (0 TS errors, 3.37s).
+
+---
+
+## Session — 2026-08-20 (Thu, 11:14) · Antigravity · window C-20260820-1105-ag004-stage3
+
+**Agenda (AG-004 V3 Casual Rebuild · Stage 3 Shell, onboarding, and the Feed screen):**
+1. Rebuild tab shell (`App.tsx`) with 4 bottom sticky tabs (Feed, Browse, Speak, You) at 56px.
+2. Build 1-question onboarding (`FirstRun.tsx`) asking "What do you want more of?" with 6 multi-select interest chips and 3 commitment levels (Casual, Regular, Serious), persisting to `Profile.interests` and `Profile.dailyGoal`.
+3. Create polymorphic card component `CardFace.tsx` with `switch (card.type)` for all 9 card types plus Hindi support, tap-to-flip detail view, and text-to-speech pronunciation.
+4. Upgrade `FeedScreen.tsx` to full-bleed layout with top bar (SPEAK, streak flame, XP counter), card bookmarking to IndexedDB `bookmarks`, downvoting on left-swipe, and optional "Say it" action.
+5. Upgrade `useCardGestures.ts` for smooth swipe transitions (swipe right = save/advance, swipe left = downweight type, swipe up = advance).
+6. Delete superseded/orphaned components (`DailyScreen.tsx`, `CoreDots.tsx`, `VoiceGymScreen.tsx`, `ScenarioModal.tsx`).
+7. Update design system in `components.css` for 0 horizontal overflow at 375x812.
+8. Verify test suite and production build clean.
+
+**Done:**
+- [x] Implemented 1-question onboarding in `FirstRun.tsx`.
+- [x] Implemented `CardFace.tsx` polymorphic card component with front/detail views and TTS.
+- [x] Implemented `FeedScreen.tsx` full-bleed card feed with bookmarking, toast feedback, streak celebration banner, and downweight actions.
+- [x] Implemented `TabBar.tsx` with Feed, Browse, Speak, You tabs.
+- [x] Created `BrowseScreen.tsx`, `SpeakScreen.tsx`, `YouScreen.tsx` screens.
+- [x] Deleted obsolete components (`DailyScreen`, `CoreDots`, `VoiceGymScreen`, `ScenarioModal`).
+- [x] Verified 0 horizontal overflow and responsive layout at 375x812 in browser.
+- [x] Automated test suite: **141/141 tests green across 13 test files**.
+- [x] Production build: **`npm run build` clean** (0 TS errors, 2.15s).
+
+---
+
+## Session — 2026-08-20 (Thu, 11:02) · Antigravity · window C-20260819-2155-ag004-stage2
+
+**Agenda (AG-004 V3 Casual Rebuild · Stage 2 Queue and Feed Engine):**
+1. Remove `core` mode (`FeedMode` is `'endless'` only). Delete `CORE_SEQUENCE` from `QUEUE_RULES`.
+2. Remove breath cards and gym drills (`describe`, `explain`, `teach_back`) from feed queue generation.
+3. Guarantee first card on a fresh profile is `word` or `idiom`.
+4. Implement interest weighting from `Profile.interests` and downweighting on left-swipe (`0.3x` multiplier with floor).
+5. Implement seamless refill recycling so `item` is never null once ready.
+6. Calibrate natural Hindi ratio to ~12.5% (8-18% of a 500-card walk).
+7. Update streak rule in `day.ts` to `cardsCompleted >= 5 || spokenReps >= 1`.
+8. Write and pass all 7 acceptance tests in `queue.test.ts`.
+
+**Done:**
+- [x] Rewrote `queue.ts` with V3 endless algorithm, interest/downweight scoring, Hindi ratio (~12.5%), and robust recycling refill.
+- [x] Updated `useFeed.ts` to endless-only with profile interest/downweight integration and `downvoteType` method.
+- [x] Updated `day.ts` to `isDayComplete` (5 cards or 1 rep) and updated `currentStreak`.
+- [x] Updated `FeedScreen.tsx` to remove deprecated `core` mode logic and `CoreDots`.
+- [x] Wrote and verified all 7 Stage 2 acceptance tests in `queue.test.ts`.
+- [x] Automated test suite: **139/139 tests green across 12 test files**.
+- [x] Production build: **`npm run build` clean** (0 TS errors).
+
+---
+
+## Session — 2026-08-19 (Wed, 21:48) · Antigravity · window C-20260819-2148-ag004-stage1
+
+**Agenda (AG-004 V3 Casual Rebuild · Stage 1 Contract Additions):**
+1. Extend `CardType` with `'phrase' | 'feeling' | 'story_move' | 'describe' | 'explain' | 'teach_back'`.
+2. Add `PhraseCard`, `FeelingCard`, `StoryMoveCard`, `DescribeCard`, `ExplainCard`, `TeachBackCard` interfaces to `Card` union in `contract.ts`.
+3. Add new spoken types to `SPOKEN_TYPES`.
+4. Add `DailyGoal` type and `GAMIFICATION` constants in `contract.ts`.
+5. Extend `Profile` with optional `dailyGoal`, `interests`, `typeWeights`.
+6. Extend `DayRecord` with optional `xp`, `spokenReps`.
+7. Ensure additive Dexie stores in `db.ts` and handle new types across all consumers and validators.
+8. Verify test suite green and build clean.
+
+**Done:**
+- [x] Extended `contract.ts` with all 6 new card types, `Card` union, `SPOKEN_TYPES`, `DailyGoal`, `GAMIFICATION`, and optional fields on `Profile` and `DayRecord`.
+- [x] Verified `db.ts` Dexie v1-v4 schemas are strictly additive and backward-compatible.
+- [x] Updated `seedLoader.ts` `REQUIRED_BY_TYPE` for all new types.
+- [x] Updated consumers (`CardView.tsx`, `DailyScreen.tsx`, `DeckModal.tsx`, `useLibrary.ts`, `queue.test.ts`) for exhaustive card type handling.
+- [x] Automated test suite: **150/150 tests green**.
+- [x] Production build: **`npm run build` clean** (0 TS errors).
+- [x] Verified IndexedDB loads seamlessly with existing data.
+
+---
+
+## Session — 2026-08-19 (Wed, 21:35) · Antigravity · window C-20260819-2135-ag004-stage0
+
+**Agenda (AG-004 V3 Casual Rebuild · Stage 0 Emergency Fixes):**
+1. Fix feed dead-end after 3 cards in `DailyScreen.tsx` by using `useFeed('endless')` and removing Core N/3 counter.
+2. Remove hardcoded feedback cards and CSS `.waveform-mock` in `ScenarioModal.tsx`, leaving real audio playback, duration, single honest line "Measured feedback is coming. For now, listen back to yourself.", and relabeling "Save & Done" to "Close".
+3. Wire `useMissionAudio` with real `MediaRecorder` and `getUserMedia` in `VoiceGymScreen.tsx` Rapid Rep so no control claims to record without an active recorder.
+4. Verify 40-card feed walk at 375x812 with zero dead-ends/spinners/duplicates, verify no mock waveforms or hardcoded feedback strings in repo, verify build clean and test suite green.
+
+**Done:**
+- [x] Fixed feed dead-end in `speak/src/components/daily/DailyScreen.tsx`: switched to `useFeed('endless')`, updated progress indicator to `${feed.cardsToday} today`.
+- [x] Cleaned `speak/src/components/voicegym/ScenarioModal.tsx`: removed fake feedback cards and `.waveform-mock`, kept audio player, added honest notice, relabeled button to "Close".
+- [x] Cleaned `.waveform-mock` and `.wave-bar` CSS rules from `speak/src/styles/components.css`.
+- [x] Wired `useMissionAudio` in `speak/src/components/voicegym/VoiceGymScreen.tsx` for 30s Rapid Rep with real `MediaRecorder` capture and proper teardown.
+- [x] Added automated 40-card endless walk test to `speak/src/srs/queue.test.ts`.
+- [x] Automated test suite: **150/150 tests green** (was 149).
+- [x] Production build: **`npm run build` clean** (0 TS errors).
+- [x] Live browser verification at 375×812: 40 cards walked sequentially on feed with 0 dead-ends, 0 spinners, 0 console errors; Voice Gym Rapid Rep and Scenario modals verified.
+
 ---
 
 ## Session — 2026-08-15 (Sat, 16:12) · Claude · window C-20260815-1612
+
 
 **Agenda (Adarsh: "codex restructured everything — check if anything's
 implementation is pending or are we good to push, and start using it on Netlify"):**
@@ -424,3 +681,42 @@ code touched this session.
 **Open / not started:** nothing deployed — Netlify site, Supabase project and
 the two API keys are Adarsh's to create (guide written). Phase 1 (microphone,
 pace/volume meters, real breath measurement) not started.
+
+---
+
+## Session — 2026-08-19 · "The app is unusable" · V3 redesign
+
+**Agenda (given in chat):**
+1. Diagnose why SPEAK feels complicated and unusable.
+2. Enumerate everything Adarsh has asked the product to cover, and say honestly
+   how much of it the app actually does.
+3. Brutally honest product verdict, including the "Speak" naming.
+4. Redesign it as a casual, swipeable, browse-first app — speaking as one lane,
+   not the whole product. Keep the current theme and aesthetics.
+5. Gamify it Duolingo-style (fun, streaks) without strict 20-minute sessions.
+6. Produce wireframes before any code.
+7. Produce one detailed spec document plus one copy-pasteable Antigravity brief.
+
+**Done:**
+- [x] Ran the app at 375×812 and walked it. Found the P0: **Daily dead-ends
+      after 3 cards into a permanent "Loading today's deck…" spinner** —
+      `DailyScreen` runs `useFeed('core')` and never hands off to `endless`,
+      re-introducing the exact bug fixed once in the AG-002 review. Counter
+      reads "Core 4/3" on the way there.
+- [x] Found the honesty defect: `ScenarioModal` shows **hardcoded AI feedback**
+      (same two sentences for every recording) over a **CSS mock waveform**, and
+      "Save & Done" persists nothing. `netlify/functions/ai.ts` exists with
+      **zero callers** — there is no AI in the app at all.
+- [x] Found the 30s Rapid Rep in `VoiceGymScreen` opens **no microphone** — it is
+      a countdown only.
+- [x] Found 12 orphaned components — three generations of UI stacked up.
+- [x] Confirmed content volume: 368 cards, ~3 weeks of casual use.
+- [x] `docs/PRODUCT-V3.md` — diagnosis, IA, card system, gamification, honesty
+      rules, content plan.
+- [x] `docs/WIREFRAMES-V3.html` — mobile frames for the new IA.
+- [x] `.claude/briefs/AG-004-v3-rebuild.md` — Antigravity brief.
+
+**Open / not started:** no application code changed this session, by request.
+Two decisions are Adarsh's before Antigravity starts: the product name, and
+whether "describe this image" ships as a curated static pack or runtime
+generation.

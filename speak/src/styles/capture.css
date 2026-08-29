@@ -1,0 +1,130 @@
+/* -- SPEAK — Capture Sheet Overlay ----------------------------------------- */
+
+.capture-overlay {
+  z-index: 90;
+}
+
+.capture-sheet-container {
+  height: 85dvh;
+}
+
+.capture-sheet-header {
+  border-bottom: 1px solid var(--line);
+}
+
+.capture-sheet-title {
+  margin-top: 4px;
+}
+
+.capture-sheet-body {
+  padding: 16px var(--gutter);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.capture-sheet-lead {
+  color: var(--ink-2);
+  font-size: var(--fs-2);
+  margin: 0 0 14px;
+  line-height: 1.4;
+}
+
+.capture-field {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 14px;
+  background: var(--card);
+  font-size: var(--fs-3);
+  color: var(--ink);
+  line-height: 1.45;
+  resize: vertical;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 3px rgba(21, 23, 26, 0.04);
+}
+
+.capture-field:focus {
+  border-color: var(--accent);
+}
+
+.capture-save-btn {
+  margin-bottom: 10px;
+}
+
+.capture-voice-disabled-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--raised);
+  border: 1px solid var(--line);
+  color: var(--ink-3);
+  border-radius: var(--r-pill);
+  height: 44px;
+  font-size: var(--fs-1);
+  font-weight: var(--fw-bold);
+  cursor: not-allowed;
+  padding: 0 14px;
+}
+
+.capture-queue-section {
+  margin-top: 24px;
+  border-top: 1px dashed var(--line);
+  padding-top: 16px;
+}
+
+.capture-queue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.capture-queue-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.capture-queue-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.capture-queue-item-info strong {
+  display: block;
+  font-size: var(--fs-2);
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.capture-queue-item-info small {
+  display: block;
+  font-size: 10px;
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+
+.capture-discard-btn {
+  background: transparent;
+  border: none;
+  color: var(--bad);
+  font-size: var(--fs-1);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--r-sm);
+}
+
+.capture-discard-btn:hover {
+  background: #fee2e2;
+}

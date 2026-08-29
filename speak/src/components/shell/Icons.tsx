@@ -21,6 +21,100 @@ function IconFrame({ children, ...props }: IconProps) {
   );
 }
 
+export function FeedIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <rect x="3" y="3" width="7" height="9" rx="1.5" />
+      <rect x="14" y="3" width="7" height="5" rx="1.5" />
+      <rect x="14" y="12" width="7" height="9" rx="1.5" />
+      <rect x="3" y="16" width="7" height="5" rx="1.5" />
+    </IconFrame>
+  );
+}
+
+export function BrowseIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-3.5-3.5" />
+    </IconFrame>
+  );
+}
+
+export function SpeakIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <rect x="9" y="2" width="6" height="12" rx="3" />
+      <path d="M5 10a7 7 0 0 0 14 0" />
+      <path d="M12 18v4M8 22h8" />
+    </IconFrame>
+  );
+}
+
+export function YouIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </IconFrame>
+  );
+}
+
+export function DailyIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <rect x="3" y="4" width="18" height="16" rx="3" />
+      <path d="M7 8h10M7 12h7" />
+    </IconFrame>
+  );
+}
+
+
+export function LibraryIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <path d="m19 11-8-8-8 8" />
+      <path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10" />
+      <path d="M9 21v-6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v6" />
+    </IconFrame>
+  );
+}
+
+export function SearchIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.35-4.35" />
+    </IconFrame>
+  );
+}
+
+export function VoiceGymIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <rect x="9" y="2" width="6" height="12" rx="3" />
+      <path d="M5 10a7 7 0 0 0 14 0" />
+      <path d="M12 18v4M8 22h8" />
+    </IconFrame>
+  );
+}
+
+export function SavedIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </IconFrame>
+  );
+}
+
+export function StarIcon({ filled, ...props }: IconProps & { filled?: boolean }) {
+  return (
+    <IconFrame {...props} fill={filled ? 'currentColor' : 'none'}>
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </IconFrame>
+  );
+}
+
 export function TodayIcon(props: IconProps) {
   return (
     <IconFrame {...props}>
@@ -82,4 +176,3 @@ export function CloseIcon(props: IconProps) {
     </IconFrame>
   );
 }
-

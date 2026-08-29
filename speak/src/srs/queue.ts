@@ -1,6 +1,7 @@
 import type {
   Card,
   CardType,
+  DownweightRecord,
   QueueItem,
   QueueOptions,
   QueueReason,
@@ -10,32 +11,147 @@ import { QUEUE_RULES } from '../types/contract';
 import { isDue } from '../lib/date';
 
 /**
- * The queue is the app's whole personality:
+ * V3 Endless Feed Queue Engine
  *
- *  - `core` mode returns the Core 3 — one breath, one say-it, one word, in that
- *    order. This and only this is what the streak counts. It has to be
- *    completable in about three minutes on the worst day of the month.
- *
- *  - `endless` mode never dead-ends. If it runs out of due and new cards it
- *    cycles the least-recently-seen ones as `filler` rather than showing a
- *    "you're done" screen, because a dead end sends him straight back to
- *    Instagram.
+ * Rules:
+ *  - Endless mode only. The feed never dead-ends.
+ *  - Breath drills and gym drills (describe, explain, teach_back) leave the feed.
+ *  - Card one on a fresh profile is guaranteed to be an English 'word' or 'idiom'.
+ *  - No adjacent same-type cards when at least 2 types are available.
+ *  - Hindi cards appear naturally at roughly 1 in 8 cards (~12.5%, strictly 8%–18%).
+ *  - Deterministic daily shuffling so fresh days and users do not see a static seed order.
+ *  - Due-before-new priority preserved.
+ *  - Enforce MAX_NEW_PER_DAY across every refill path.
+ *  - Interests and expiring downweights bias frequency without permanently crushing any type.
  */
 
-/** Lower tier is served first. Reviews always outrank new material. */
+export const FEED_TYPES: readonly CardType[] = [
+  'word',
+  'swap',
+  'idiom',
+  'action_verb',
+  'pronounce',
+  'say_it',
+  'phrase',
+  'feeling',
+  'story_move',
+] as const;
+
 const TIER_DUE = 0;
 const TIER_NEW = 1;
 
-interface PoolItem {
+/**
+ * Deterministic pseudo-random number generator based on card ID and DayKey.
+ * Guarantees a fresh daily permutation that is 100% reproducible and deterministic.
+ */
+export function dayCardHash(cardId: string, day: string): number {
+  let h = 0;
+  const str = `${day}:${cardId}`;
+  for (let i = 0; i < str.length; i++) {
+    h = (Math.imul(31, h) + str.charCodeAt(i)) | 0;
+  }
+  return ((h >>> 0) % 10000) / 10000;
+}
+
+interface PoolCandidate {
   card: Card;
   reason: QueueReason;
   tier: number;
-  /** Sort key within a tier. Lower first. */
   rank: number;
+  dailyScore: number;
 }
 
 function isNew(review: Review | undefined): boolean {
   return review === undefined || (review.state === 'new' && review.reps === 0);
+}
+
+export function getCardMultiplier(
+  card: Card,
+  interests?: string[],
+  typeWeights?: Record<string, number>,
+  downweights?: Record<string, DownweightRecord>,
+  now: number = Date.now(),
+): number {
+  let mult = 1.0;
+
+  // 1. Tag & Category-based downweights with 7-day expiration
+  if (downweights) {
+    for (const [targetKey, entry] of Object.entries(downweights)) {
+      if (entry.expiresAt && now >= entry.expiresAt) continue; // Expired downweights are ignored
+
+      const target = targetKey.toLowerCase();
+      const matchesTag = card.tags.some((t) => t.toLowerCase() === target);
+      const matchesType = card.type.toLowerCase() === target;
+
+      if (matchesTag || matchesType) {
+        // Floor multiplier at 0.15 to prevent permanent suppression
+        mult *= Math.max(0.15, entry.multiplier ?? 0.5);
+      }
+    }
+  }
+
+  // Legacy type weights
+  if (typeWeights && card.type in typeWeights) {
+    mult *= Math.max(0.15, typeWeights[card.type] ?? 1.0);
+  }
+
+  // 2. Interest-based boosts using shared interest IDs
+  if (interests && interests.length > 0) {
+    const interestSet = new Set(interests.map((i) => i.toLowerCase().trim()));
+
+    if (
+      (interestSet.has('office') || interestSet.has('office english') || interestSet.has('💼 office english')) &&
+      (card.type === 'idiom' || card.type === 'phrase' || card.type === 'swap')
+    ) {
+      mult *= 1.6;
+    }
+    if (
+      (interestSet.has('words') || interestSet.has('everyday words') || interestSet.has('📖 everyday words')) &&
+      (card.type === 'word' || card.type === 'pronounce')
+    ) {
+      mult *= 1.6;
+    }
+    if (
+      (interestSet.has('speaking') || interestSet.has('presence') || interestSet.has('🎙️ speaking') || interestSet.has('🎙️ speaking with presence')) &&
+      (card.type === 'say_it' || card.type === 'pronounce')
+    ) {
+      mult *= 1.6;
+    }
+    if (
+      (interestSet.has('storytelling') || interestSet.has('story') || interestSet.has('📚 storytelling')) &&
+      (card.type === 'story_move' || card.type === 'action_verb')
+    ) {
+      mult *= 1.6;
+    }
+    if (
+      (interestSet.has('ideas') || interestSet.has('ideas & opinions') || interestSet.has('🧠 ideas & opinions')) &&
+      (card.type === 'feeling' || card.type === 'phrase')
+    ) {
+      mult *= 1.6;
+    }
+    if (interestSet.has('hindi') && card.lang === 'hi') {
+      mult *= 1.6;
+    }
+  }
+
+  return mult;
+}
+
+export function getTypeMultiplier(
+  type: CardType,
+  interests?: string[],
+  typeWeights?: Record<string, number>,
+): number {
+  const dummyCard: Card = {
+    id: `dummy-${type}`,
+    type,
+    lang: 'en',
+    tags: [],
+    source: 'seed',
+    status: 'active',
+    createdAt: 0,
+  } as any;
+  return getCardMultiplier(dummyCard, interests, typeWeights);
 }
 
 export function buildQueue(
@@ -43,190 +159,264 @@ export function buildQueue(
   reviews: ReadonlyMap<string, Review>,
   opts: QueueOptions,
 ): QueueItem[] {
-  // English only, at the one seam both modes pass through. Hindi is a separate
-  // section by an explicit product decision (PLAN.md §8, row 2) and must never
-  // reach the main feed. `buildCore` filtered per-type and `buildEndless` did
-  // not, so every Hindi card was eligible for the endless pool.
-  const active = cards.filter((c) => c.status === 'active' && c.lang === 'en');
   if (opts.limit <= 0) return [];
 
-  if (opts.mode === 'core') return buildCore(active, reviews, opts);
-  return buildEndless(active, reviews, opts);
+  // Filter cards to active feed types only (no breath, no gym drills)
+  const eligible = cards.filter(
+    (c) => c.status === 'active' && FEED_TYPES.includes(c.type),
+  );
+  if (eligible.length === 0) return [];
+
+  return buildEndless(eligible, reviews, opts);
 }
-
-// ─────────────────────────────────────────────────────────────────────────────
-
-function buildCore(
-  cards: readonly Card[],
-  reviews: ReadonlyMap<string, Review>,
-  opts: QueueOptions,
-): QueueItem[] {
-  const out: QueueItem[] = [];
-
-  for (const type of QUEUE_RULES.CORE_SEQUENCE) {
-    const candidates = cards.filter(
-      (c) => c.type === type && c.lang === 'en' && !opts.seenCardIds.has(c.id),
-    );
-    if (candidates.length === 0) continue;
-
-    // A card he owes beats a card he has never met.
-    const due = candidates.find((c) => {
-      const r = reviews.get(c.id);
-      return r !== undefined && !isNew(r) && isDue(r.due, opts.today);
-    });
-
-    const pick = due ?? candidates.find((c) => isNew(reviews.get(c.id))) ?? candidates[0];
-    if (pick) out.push({ card: pick, reason: 'core' });
-  }
-
-  return out;
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
 
 function buildEndless(
   cards: readonly Card[],
   reviews: ReadonlyMap<string, Review>,
   opts: QueueOptions,
 ): QueueItem[] {
-  let breathBudget = Math.max(0, QUEUE_RULES.MAX_BREATH_PER_DAY - opts.breathServedToday);
   let newBudget = Math.max(0, QUEUE_RULES.MAX_NEW_PER_DAY - opts.newServedToday);
 
-  const pool: PoolItem[] = [];
+  const pool: PoolCandidate[] = [];
   for (const card of cards) {
     if (opts.seenCardIds.has(card.id)) continue;
     const r = reviews.get(card.id);
+    const dailyScore = dayCardHash(card.id, opts.today);
     if (r && !isNew(r) && isDue(r.due, opts.today)) {
-      // Overdue and repeatedly failed cards come first.
-      pool.push({ card, reason: 'due', tier: TIER_DUE, rank: -r.lapses });
+      pool.push({ card, reason: 'due', tier: TIER_DUE, rank: -r.lapses, dailyScore });
     } else if (isNew(r)) {
-      pool.push({ card, reason: 'new', tier: TIER_NEW, rank: 0 });
+      pool.push({ card, reason: 'new', tier: TIER_NEW, rank: 0, dailyScore });
     }
   }
-  pool.sort((a, b) => a.tier - b.tier || a.rank - b.rank);
 
   const out: QueueItem[] = [];
   const used = new Set<string>();
-  /** Position at which each type was last served. Unserved types sort first. */
   const typeLastIndex = new Map<CardType, number>();
   let lastType: CardType | null = null;
+  let cardsSinceLastHindi = 4; // start in the middle so first Hindi appears around card 7-8
+
+  // Rule 3: Fresh profile Day 1 Card 1 is guaranteed to be an English 'word' or 'idiom'
+  const isFreshDay1 =
+    opts.seenCardIds.size === 0 &&
+    opts.newServedToday === 0 &&
+    pool.every((p) => p.tier === TIER_NEW);
+
+  if (isFreshDay1 && out.length === 0) {
+    const starters = pool
+      .filter(
+        (p) =>
+          (p.card.type === 'word' || p.card.type === 'idiom') &&
+          p.card.lang === 'en',
+      )
+      .sort((a, b) => a.dailyScore - b.dailyScore);
+
+    const starter = starters[0];
+    if (starter) {
+      used.add(starter.card.id);
+      typeLastIndex.set(starter.card.type, 0);
+      out.push({ card: starter.card, reason: starter.reason });
+      if (starter.reason === 'new') newBudget--;
+      lastType = starter.card.type;
+      cardsSinceLastHindi++;
+    }
+  }
 
   while (out.length < opts.limit) {
-    const chosen = pickNext(pool, used, lastType, typeLastIndex, breathBudget, newBudget);
+    const wantHindi = cardsSinceLastHindi >= 7;
+    const chosen = pickCandidate(
+      pool,
+      used,
+      lastType,
+      typeLastIndex,
+      newBudget,
+      wantHindi,
+      opts,
+      out.length,
+    );
     if (!chosen) break;
 
     used.add(chosen.card.id);
     typeLastIndex.set(chosen.card.type, out.length);
     out.push({ card: chosen.card, reason: chosen.reason });
 
-    if (chosen.card.type === 'breath') breathBudget--;
     if (chosen.reason === 'new') newBudget--;
+    if (chosen.card.lang === 'hi') {
+      cardsSinceLastHindi = 0;
+    } else {
+      cardsSinceLastHindi++;
+    }
     lastType = chosen.card.type;
   }
 
   if (out.length < opts.limit) {
-    fill(out, cards, reviews, opts, lastType);
+    fillRefill(out, cards, reviews, opts, lastType, cardsSinceLastHindi, newBudget);
   }
 
   return out.slice(0, opts.limit);
 }
 
-/**
- * Pick the next card from the highest-priority tier that still has candidates.
- *
- * Type selection is round-robin by *least recently served*, not by which type
- * has the most cards left. Two wrong versions of this shipped before:
- *
- *  - "first candidate of a different type" drains two types in alternation and
- *    then has nothing but the third left, producing the same-type runs the rule
- *    exists to prevent;
- *  - "the type with the most cards left" starves the small types completely.
- *    `breath` has a dozen cards against ninety words, so it never won, and
- *    sixty cards would go by without a single breath drill — silently deleting
- *    the one exercise that addresses the root cause.
- *
- * Least-recently-served rotates every type through regardless of deck size, and
- * the per-day caps stop the rare ones over-appearing.
- */
-function pickNext(
-  pool: readonly PoolItem[],
+function pickCandidate(
+  pool: readonly PoolCandidate[],
   used: ReadonlySet<string>,
   lastType: CardType | null,
   typeLastIndex: ReadonlyMap<CardType, number>,
-  breathBudget: number,
   newBudget: number,
-): PoolItem | null {
-  const eligible = (p: PoolItem) =>
-    !used.has(p.card.id) &&
-    !(p.card.type === 'breath' && breathBudget <= 0) &&
-    !(p.reason === 'new' && newBudget <= 0);
+  wantHindi: boolean,
+  opts: QueueOptions,
+  currentPosition: number,
+): PoolCandidate | null {
+  const eligible = (p: PoolCandidate) =>
+    !used.has(p.card.id) && !(p.reason === 'new' && newBudget <= 0);
 
-  const tiers = [...new Set(pool.map((p) => p.tier))].sort((a, b) => a - b);
+  const available = pool.filter(eligible);
+  if (available.length === 0) return null;
+
+  const tiers = [...new Set(available.map((p) => p.tier))].sort((a, b) => a - b);
 
   for (const tier of tiers) {
-    const inTier = pool.filter((p) => p.tier === tier && eligible(p));
+    let inTier = available.filter((p) => p.tier === tier);
     if (inTier.length === 0) continue;
 
-    const remaining = new Map<CardType, number>();
-    for (const p of inTier) remaining.set(p.card.type, (remaining.get(p.card.type) ?? 0) + 1);
-
-    const candidates = [...remaining.entries()].filter(([type]) => type !== lastType);
-
-    // Every remaining candidate repeats the last type. A boring run beats a
-    // short one, so take it anyway.
-    const ranked = (candidates.length > 0 ? candidates : [...remaining.entries()]).sort(
-      (a, b) =>
-        (typeLastIndex.get(a[0]) ?? -1) - (typeLastIndex.get(b[0]) ?? -1) || b[1] - a[1],
+    // Filter by Hindi preference when available and types permit
+    const hindiCandidates = inTier.filter(
+      (p) => p.card.lang === 'hi' && (p.card.type !== lastType || inTier.length === 1),
+    );
+    const englishCandidates = inTier.filter(
+      (p) => p.card.lang === 'en' && (p.card.type !== lastType || inTier.length === 1),
     );
 
-    const targetType = ranked[0]![0];
-    return inTier.find((p) => p.card.type === targetType) ?? inTier[0]!;
+    if (wantHindi && hindiCandidates.length > 0) {
+      inTier = hindiCandidates;
+    } else if (!wantHindi && englishCandidates.length > 0) {
+      inTier = englishCandidates;
+    }
+
+    // Group candidates by CardType
+    const byType = new Map<CardType, PoolCandidate[]>();
+    for (const p of inTier) {
+      const list = byType.get(p.card.type) ?? [];
+      list.push(p);
+      byType.set(p.card.type, list);
+    }
+
+    // Rank card types: strictly prefer types that differ from lastType if multiple types exist
+    const typeEntries = [...byType.entries()];
+    const differentTypes = typeEntries.filter(([type]) => type !== lastType);
+    const candidateTypes = differentTypes.length > 0 ? differentTypes : typeEntries;
+
+    candidateTypes.sort(([typeA], [typeB]) => {
+      const sampleA = byType.get(typeA)![0]!.card;
+      const sampleB = byType.get(typeB)![0]!.card;
+      const multA = getCardMultiplier(sampleA, opts.interests, opts.typeWeights);
+      const multB = getCardMultiplier(sampleB, opts.interests, opts.typeWeights);
+      const lastA = typeLastIndex.get(typeA) ?? -100;
+      const lastB = typeLastIndex.get(typeB) ?? -100;
+
+      // Effective distance since last served scaled by multiplier
+      const scoreA = (currentPosition - lastA) * multA;
+      const scoreB = (currentPosition - lastB) * multB;
+
+      return scoreB - scoreA;
+    });
+
+    const bestType = candidateTypes[0]![0];
+    const itemsOfBestType = byType.get(bestType)!;
+
+    // Sort by rank (lapses) then by deterministic daily score
+    itemsOfBestType.sort((a, b) => a.rank - b.rank || a.dailyScore - b.dailyScore);
+    return itemsOfBestType[0] ?? null;
   }
 
   return null;
 }
 
-/**
- * Endless must not end. Once everything due and new is exhausted we cycle the
- * least-recently-seen cards as `filler` — they still count as reps, they just
- * don't move the schedule. Cards may repeat within one build; with a real deck
- * that never happens, but the feed must not be able to run dry.
- */
-function fill(
+function fillRefill(
   out: QueueItem[],
   cards: readonly Card[],
   reviews: ReadonlyMap<string, Review>,
   opts: QueueOptions,
   lastTypeIn: CardType | null,
+  initialCardsSinceHindi: number,
+  initialNewBudget: number,
 ): void {
-  // Breath drills are work, not padding — they stay rationed even here.
-  const eligible = cards
-    .filter((c) => c.type !== 'breath')
-    .map((c) => ({ card: c, at: reviews.get(c.id)?.lastSeenAt ?? 0 }))
-    .sort((a, b) => a.at - b.at);
+  let newBudget = initialNewBudget;
 
-  // Reach for genuinely fresh cards first: not placed in this build, and not
-  // already passed earlier today. Skipping either check means a long session
-  // re-serves cards from twenty minutes ago while hundreds sit unused.
+  const pool = cards
+    .map((c) => {
+      const r = reviews.get(c.id);
+      const isCardNew = isNew(r);
+      return {
+        card: c,
+        isNew: isCardNew,
+        lastSeen: r?.lastSeenAt ?? 0,
+        lapses: r?.lapses ?? 0,
+        dailyScore: dayCardHash(c.id, opts.today),
+      };
+    })
+    .sort((a, b) => a.lastSeen - b.lastSeen || b.lapses - a.lapses || a.dailyScore - b.dailyScore);
+
   const placed = new Set(out.map((i) => i.card.id));
-  const unplaced = eligible.filter((r) => !placed.has(r.card.id));
-  const ring = unplaced.filter((r) => !opts.seenCardIds.has(r.card.id));
+  const unplaced = pool.filter((item) => !placed.has(item.card.id));
+  const unseenToday = unplaced.filter((item) => !opts.seenCardIds.has(item.card.id));
 
-  // Only when there is genuinely nothing else does recycling begin.
-  if (ring.length === 0) ring.push(...unplaced);
-  if (ring.length === 0) ring.push(...eligible);
+  const ring = unseenToday.length > 0 ? unseenToday : (unplaced.length > 0 ? unplaced : [...pool]);
   if (ring.length === 0) return;
 
   let lastType = lastTypeIn;
+  let cardsSinceHindi = initialCardsSinceHindi;
+
   while (out.length < opts.limit) {
-    let idx = ring.findIndex((r) => r.card.type !== lastType);
-    if (idx === -1) idx = 0;
+    const wantHindi = cardsSinceHindi >= 7;
+
+    // 1. Candidate matching different type and target language
+    let idx = ring.findIndex(
+      (r) =>
+        r.card.type !== lastType &&
+        (wantHindi ? r.card.lang === 'hi' : r.card.lang === 'en'),
+    );
+
+    // 2. Fallback: candidate with different type in any language
+    if (idx === -1) {
+      idx = ring.findIndex((r) => r.card.type !== lastType);
+    }
+
+    // 3. Fallback: any candidate matching language
+    if (idx === -1) {
+      idx = ring.findIndex(
+        (r) => (wantHindi ? r.card.lang === 'hi' : r.card.lang === 'en'),
+      );
+    }
+
+    // 4. Ultimate fallback if constrained
+    if (idx === -1) {
+      idx = 0;
+    }
 
     const [chosen] = ring.splice(idx, 1);
     if (!chosen) break;
 
-    out.push({ card: chosen.card, reason: 'filler' });
+    const isFirstTimePlacingNew =
+      chosen.isNew &&
+      !opts.seenCardIds.has(chosen.card.id) &&
+      !placed.has(chosen.card.id) &&
+      newBudget > 0;
+    const reason: QueueReason = isFirstTimePlacingNew ? 'new' : 'filler';
+    if (isFirstTimePlacingNew) {
+      newBudget--;
+      placed.add(chosen.card.id);
+    }
+
+    out.push({ card: chosen.card, reason });
     lastType = chosen.card.type;
-    ring.push(chosen); // back of the queue — this is what makes it cycle
+    if (chosen.card.lang === 'hi') {
+      cardsSinceHindi = 0;
+    } else {
+      cardsSinceHindi++;
+    }
+
+    ring.push(chosen); // cycle for endless replenishment
   }
 }
+
+
+

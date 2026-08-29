@@ -1,0 +1,617 @@
+[
+  {
+    "id": "tb-microservices-vs-monolith",
+    "type": "teach_back",
+    "prompt": "Teach back the core trade-offs between a Modular Monolith and Distributed Microservices to a junior engineer.",
+    "beats": [
+      "Monolith benefits: simpler local testing, atomic ACID transactions, lower operational overhead",
+      "Microservices inflection point: independent team deployment velocity vs network partition complexity",
+      "The practical recommendation: start monolithic and split boundaries along domain boundaries only when necessary"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "architecture",
+      "trade_off"
+    ]
+  },
+  {
+    "id": "tb-git-rebase-vs-merge",
+    "type": "teach_back",
+    "prompt": "Explain when to use Git Rebase versus Git Merge during a code review sync.",
+    "beats": [
+      "Merge preserves historical chronological context with a dedicated merge commit",
+      "Rebase creates a linear, clean commit history by replaying local commits on top of main",
+      "The golden rule: never rebase public shared branches"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "git",
+      "workflow"
+    ]
+  },
+  {
+    "id": "tb-zero-trust-security",
+    "type": "teach_back",
+    "prompt": "Explain the philosophy of Zero Trust Architecture in under 45 seconds.",
+    "beats": [
+      "The obsolete castle-and-moat perimeter model",
+      "The core axiom: never trust, always verify every single request",
+      "Implementation pillars: mutual TLS, strict identity verification, and least privilege access"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "security",
+      "principles"
+    ]
+  },
+  {
+    "id": "tb-solid-principles",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Teach back the Single Responsibility and Open/Closed SOLID principles to a junior engineer during a code review.",
+    "beats": [
+      "Single Responsibility: a class or function should have only one reason to change",
+      "Open/Closed: software entities should be open for extension via interfaces, but closed for direct modification",
+      "Practical takeaway: preventing massive 2,000-line God objects that break existing tests when new features are added"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "oop",
+      "code_quality"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-dependency-injection",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Explain Dependency Injection and Inversion of Control to a teammate struggling with unit testing.",
+    "beats": [
+      "Hardcoded dependencies: a class instantiating its own live database connection inside its constructor",
+      "Injected dependencies: passing the database interface as a parameter from the outside during construction",
+      "The test win: easily passing mock databases in unit tests without touching production infrastructure"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "testing",
+      "architecture"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-virtual-dom-mechanics",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Teach back how the React Virtual DOM diffing reconciliation algorithm works to an intern.",
+    "beats": [
+      "Real browser DOM mutations are computationally expensive and trigger layout reflows",
+      "React keeps a lightweight in-memory JavaScript tree of the UI and compares state changes with a reconciliation diff",
+      "React batches only the minimal necessary changes to the real DOM in a single efficient update pass"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "react",
+      "frontend"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-db-normalization-tradeoffs",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Explain when to normalize database tables and when to strategically denormalize for read speed.",
+    "beats": [
+      "3rd Normal Form: eliminating redundant duplicate data to prevent update anomalies and ensure storage integrity",
+      "Denormalization inflection: when complex multi-table SQL joins bottleneck high-frequency read dashboards",
+      "The rule of thumb: normalize for transaction write safety, denormalize selectively for heavy read performance"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "database",
+      "tradeoffs"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-async-event-loop",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Teach back how the single-threaded JavaScript Event Loop handles non-blocking asynchronous I/O.",
+    "beats": [
+      "The Call Stack executes synchronous JavaScript code one frame at a time",
+      "Asynchronous web APIs (fetch, timers) execute on background threads and place callbacks into the Task Queue",
+      "The Event Loop continuously checks if the call stack is empty before pushing queued tasks into execution"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "javascript",
+      "runtime"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-race-conditions-mutex",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Explain race conditions and how mutex locks prevent data corruption in concurrent systems.",
+    "beats": [
+      "Race condition: two threads simultaneously read inventory count 1, decrement it, and write back 0 (double sell)",
+      "Mutex (Mutual Exclusion): a digital lock where only one thread can hold the key to the critical code section at a time",
+      "The trade-off: guaranteed consistency versus potential lock contention and throughput serialization"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "concurrency",
+      "systems"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-clean-architecture-boundaries",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Explain the Clean Architecture dependency rule: business domain logic must never depend on UI or databases.",
+    "beats": [
+      "Core domain business entities live in the innermost ring with zero external framework imports",
+      "Databases, web frameworks, and third-party SDKs sit on the outermost perimeter as swappable plugins",
+      "The Dependency Inversion Rule: source code dependencies must point only inward toward domain policies"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "architecture",
+      "design"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-semantic-versioning",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Teach back SemVer (MAJOR.MINOR.PATCH) conventions to a team launching an open-source library.",
+    "beats": [
+      "PATCH (1.0.1): backwards-compatible bug fixes with zero API contract alterations",
+      "MINOR (1.1.0): backwards-compatible new functionality added to the public API",
+      "MAJOR (2.0.0): breaking API changes that require downstream consumers to update code"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "engineering",
+      "standards"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-trunk-based-development",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Explain the benefits of Trunk-Based Development over long-lived feature branches to an engineering team.",
+    "beats": [
+      "Long-lived branches create painful merge conflicts and delay integration feedback by weeks",
+      "Trunk-based workflow: engineers merge small, tested PRs into main multiple times a day",
+      "Feature flags safely hide incomplete capabilities in production while keeping code continuously integrated"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "git",
+      "devops"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-code-review-etiquette",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Teach back effective, constructive code review practices to a newly promoted senior engineer.",
+    "beats": [
+      "Distinguish between blocking correctness/security issues and non-blocking optional nits using clear prefixes",
+      "Ask clarifying architectural questions rather than issuing blunt commands (e.g. \"What was the trade-off here?\")",
+      "Explicitly praise elegant solutions and clean tests to build psychological safety on the team"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "leadership",
+      "culture"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-blameless-postmortems",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Explain the philosophy of Blameless Incident Postmortems to a director after a major outage.",
+    "beats": [
+      "Assuming humans are competent: human error is the symptom of a systemic tool or guardrail failure, not the root cause",
+      "If you punish individuals for mistakes, engineers will hide incidents and silence warnings",
+      "Focusing exclusively on systemic improvements: automated rollback, better telemetry, and defense-in-depth"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "culture",
+      "reliability"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-ci-pipeline-best-practices",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Teach back Continuous Integration essentials: fast feedback, test reliability, and pipeline determinism.",
+    "beats": [
+      "The 10-minute rule: CI pipelines must finish fast so developers stay in flow and don’t context-switch",
+      "Flaky tests are toxic: quarantined immediately because developers learn to ignore red test suites",
+      "Immutable build artifacts: build the production bundle once, test that exact binary, and promote across environments"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "devops",
+      "testing"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-blue-green-vs-canary",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Explain the difference between Blue/Green deployments and Canary rollouts to an operations team.",
+    "beats": [
+      "Blue/Green: instantaneous 100% traffic cutover from old fleet to new fleet behind a load balancer",
+      "Canary: routing 1% of live traffic to the new version first, monitoring error budgets, and gradually ramping to 100%",
+      "Canaries minimize blast radius by catching subtle production memory leaks before they impact all users"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "devops",
+      "deployment"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-observability-three-pillars",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Teach back the Three Pillars of Observability (Metrics, Logs, Traces) to a systems engineer.",
+    "beats": [
+      "Metrics (aggregates): high-level numeric health over time (CPU usage, error rates, p99 latency) to detect WHEN a problem occurs",
+      "Logs (discrete events): detailed contextual records of individual errors to understand WHAT failed",
+      "Traces (request journeys): following a single transaction across eight microservices to see WHERE latency was spent"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "observability",
+      "systems"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-immutability-benefits",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Explain why immutability in state management prevents subtle multi-threaded and UI bugs.",
+    "beats": [
+      "Mutable state allows any distant function to silently modify object properties, creating hard-to-trace side effects",
+      "Immutable state requires creating a new object copy on every change, making data flow strictly predictable and traceable",
+      "Enables fast shallow reference equality checks (prev !== next) instead of deep recursive object comparisons"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "functional_programming",
+      "state"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-cors-mechanics",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Teach back Cross-Origin Resource Sharing (CORS) and preflight requests to a junior web developer.",
+    "beats": [
+      "Same-Origin Policy: browsers block web pages from making unauthorized fetch requests to different domains for security",
+      "CORS headers: the server explicitly tells the browser \"I trust requests coming from app.example.com\"",
+      "Preflight OPTIONS request: the browser checks HTTP methods and headers before sending destructive POST/PUT payloads"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "security",
+      "web"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-dry-vs-wet-abstractions",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Explain why premature DRY abstractions can be more costly than slight code duplication (AHA programming).",
+    "beats": [
+      "Premature DRY: forcing two slightly similar features into one monster function with twenty confusing if/else flags",
+      "Duplication is cheaper than the wrong abstraction: allow code to duplicate until clear shared domain boundaries emerge",
+      "AHA (Avoid Hasty Abstractions): abstract only when the shared pattern is genuinely identical and stable"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "refactoring",
+      "clean_code"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-technical-interview-rubrics",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Teach back fair, objective technical interview evaluation rubrics to a hiring panel.",
+    "beats": [
+      "Avoid trivia trick questions; evaluate real-world problem decomposition, code cleanliness, and communication under ambiguity",
+      "Calibrate across standardized levels: junior (guidance needed), mid (independent execution), senior (architecture and trade-offs)",
+      "Write evaluation notes with verbatim quotes and concrete code observations before discussing candidates with other interviewers"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "hiring",
+      "leadership"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-mentoring-juniors",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Teach back the Socratic mentoring method for coaching junior software engineers.",
+    "beats": [
+      "Resist grabbing their keyboard to type the fix; ask guiding questions that help them discover the answer themselves",
+      "Normalize getting stuck as a standard part of engineering rather than a personal intellectual failure",
+      "Celebrate when they debug an issue end-to-end and encourage them to document the solution for the team wiki"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "mentorship",
+      "leadership"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-feature-flags-strategy",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Explain how feature flags decouple technical code deployment from business feature release.",
+    "beats": [
+      "Deploy code continuously to production in dark mode behind an inactive boolean flag",
+      "Product managers can turn on the feature for internal employees first, then 5% beta users, and finally 100% public",
+      "Provides an instantaneous emergency kill-switch in production without needing a hotfix deploy"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "devops",
+      "product"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-chaos-engineering-intro",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Teach back Chaos Engineering principles to an infrastructure squad.",
+    "beats": [
+      "Instead of waiting for a production outage at 2 AM on Sunday, deliberately inject simulated faults during business hours",
+      "Terminate random container instances, inject artificial network packet loss, and verify that auto-healing works as designed",
+      "Build systemic confidence before real hardware failures occur in production"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "reliability",
+      "testing"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-threat-modeling-stride",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Explain the STRIDE security threat modeling framework to a product development team.",
+    "beats": [
+      "Spoofing identity and Tampering with database records",
+      "Repudiation (denying an action) and Information disclosure (data leaks)",
+      "Denial of service and Elevation of unauthorized user privilege"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "security",
+      "architecture"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-api-versioning-patterns",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Teach back API versioning strategies (URI path vs Header versioning) to a backend team.",
+    "beats": [
+      "URI path versioning (/v1/users): explicit, easy to route and debug, but can lead to code duplication across controllers",
+      "Header versioning (Accept: application/vnd.app.v1+json): clean URLs, but requires specialized API gateway header routing",
+      "The golden rule: never introduce breaking schema changes without a graceful deprecation window and client notification"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "api",
+      "design"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-distributed-tracing-spans",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Explain Trace IDs and Spans in distributed telemetry (OpenTelemetry) to an SRE intern.",
+    "beats": [
+      "A global Trace ID is assigned at the API gateway and passed via HTTP headers (W3C tracecontext) across every downstream service",
+      "Each microservice creates a Span representing its own sub-operation duration (e.g. database query, redis cache read)",
+      "The telemetry dashboard stitches spans together into a single Gantt chart showing exact latency bottlenecks across services"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "telemetry",
+      "observability"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-sla-slo-sli-framework",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Teach back the difference between SLIs, SLOs, and SLAs to a product operations group.",
+    "beats": [
+      "SLI (Service Level Indicator): the real measured metric right now (e.g. 99.8% of requests succeed in under 200ms)",
+      "SLO (Service Level Objective): our internal engineering target (e.g. we aim for 99.9% uptime over any 30-day rolling window)",
+      "SLA (Service Level Agreement): the commercial contract with customers with financial penalties if missed (e.g. 99.5% uptime)"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "sre",
+      "metrics"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-identifying-memory-leaks",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Teach back common memory leak root causes in Node.js and browser apps to a junior frontend developer.",
+    "beats": [
+      "Forgotten global event listeners (window.addEventListener) that never get removed when components unmount",
+      "Closures capturing large parent scope objects in long-lived background setInterval timers",
+      "Unbounded in-memory caches that grow indefinitely without eviction policies (LRU limits)"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "performance",
+      "debugging"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "tb-ddd-ubiquitous-language",
+    "type": "teach_back",
+    "lang": "en",
+    "prompt": "Teach back Domain-Driven Design and Ubiquitous Language to an engineering team starting a greenfield project.",
+    "beats": [
+      "The translation trap: developers calling it \"TransactionEntity\" while business stakeholders call it \"PolicyRenewal\"",
+      "Ubiquitous Language: forging a single, shared, unambiguous glossary used identically in business meetings and source code variables",
+      "Eliminates costly misunderstandings and ensures software architecture directly models real-world business domains"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "teach_back",
+      "ddd",
+      "architecture"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  }
+]

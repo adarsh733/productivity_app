@@ -1,0 +1,1152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SPEAK 2.0 — Redesigned Casual & Searchable Wireframes</title>
+<style>
+:root {
+  /* Surfaces — warm paper & crisp white */
+  --paper: #FBF9F5;
+  --bg-page: #F3EFEA;
+  --card: #FFFFFF;
+  --raised: #F4F0E8;
+  --sunken: #ECE7DD;
+  --line: #E5DFC5;
+  --line-light: #EFECE3;
+  --line-strong: #D1C9BA;
+
+  /* Ink */
+  --ink: #16171A;
+  --ink-secondary: #585D69;
+  --ink-muted: #8E95A2;
+  --ink-faint: #BCC2CC;
+
+  /* Accents */
+  --accent: #1D4ED8;
+  --accent-soft: #EFF6FF;
+  --accent-border: #BFDBFE;
+  --heat: #D97706;
+  --heat-soft: #FEF3C7;
+  --success: #059669;
+  --success-soft: #ECFDF5;
+
+  /* Card Category Colors */
+  --c-idiom: #B45309;
+  --c-idiom-bg: #FEF3C7;
+  --c-swap: #6D28D9;
+  --c-swap-bg: #EDE9FE;
+  --c-verb: #BE185D;
+  --c-verb-bg: #FCE7F3;
+  --c-hindi: #0D9488;
+  --c-hindi-bg: #CCFBF1;
+  --c-scenario: #2563EB;
+  --c-scenario-bg: #DBEAFE;
+
+  /* Typography */
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --serif: ui-serif, "Charter", "Iowan Old Style", "Georgia", serif;
+  
+  --r-sm: 8px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+  --r-pill: 9999px;
+
+  --sh-sm: 0 1px 3px rgba(22, 23, 26, 0.04), 0 2px 8px rgba(22, 23, 26, 0.04);
+  --sh-md: 0 4px 14px rgba(22, 23, 26, 0.07), 0 1px 3px rgba(22, 23, 26, 0.03);
+  --sh-lg: 0 12px 32px rgba(22, 23, 26, 0.10), 0 2px 6px rgba(22, 23, 26, 0.04);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg-page);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-wrapper {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 48px 32px 120px;
+}
+
+/* Header */
+.doc-header {
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 32px;
+  margin-bottom: 48px;
+}
+.doc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--heat-soft);
+  color: var(--heat);
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  margin-bottom: 12px;
+}
+.doc-header h1 {
+  font-family: var(--serif);
+  font-size: 42px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.doc-header p {
+  font-size: 18px;
+  color: var(--ink-secondary);
+  max-width: 75ch;
+  line-height: 1.5;
+}
+
+/* Overview Comparison Cards */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+.comp-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  box-shadow: var(--sh-sm);
+}
+.comp-card.old { border-left: 5px solid #EF4444; }
+.comp-card.new { border-left: 5px solid var(--success); }
+.comp-card h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.comp-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14.5px;
+  color: var(--ink-secondary);
+}
+.comp-card ul li {
+  position: relative;
+  padding-left: 24px;
+}
+.comp-card.old ul li::before {
+  content: "✕";
+  position: absolute;
+  left: 0;
+  color: #EF4444;
+  font-weight: 700;
+}
+.comp-card.new ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--success);
+  font-weight: 700;
+}
+
+/* Sections */
+.section-title-wrap {
+  margin-bottom: 32px;
+}
+.section-kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.section-desc {
+  color: var(--ink-secondary);
+  font-size: 16px;
+  max-width: 70ch;
+}
+
+/* Frames Grid */
+.frames-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  margin-bottom: 72px;
+}
+.frame-box {
+  width: 375px;
+  flex: none;
+}
+.frame-label {
+  margin-bottom: 12px;
+}
+.frame-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+}
+.frame-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* Phone Screen Mockup (375x812) */
+.phone {
+  width: 375px;
+  height: 812px;
+  background: var(--paper);
+  border: 1px solid var(--line-strong);
+  border-radius: 40px;
+  box-shadow: var(--sh-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Top Status Bar */
+.phone-status {
+  height: 44px;
+  padding: 12px 28px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  flex: none;
+}
+
+/* Top App Bar */
+.app-topbar {
+  padding: 8px 20px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+}
+.brand-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.habit-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--heat-soft);
+  color: var(--heat);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+}
+
+/* Phone Body */
+.phone-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0 16px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bottom Tab Bar */
+.tab-bar {
+  height: 72px;
+  background: var(--card);
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 8px 12px;
+  flex: none;
+}
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: var(--ink-muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.tab-item.active {
+  color: var(--accent);
+}
+.tab-icon {
+  font-size: 18px;
+}
+
+/* Card Styles */
+.swipe-card {
+  flex: 1;
+  min-height: 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--sh-md);
+  position: relative;
+  cursor: pointer;
+}
+.card-category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  margin-bottom: 20px;
+  width: fit-content;
+}
+.badge-idiom { background: var(--c-idiom-bg); color: var(--c-idiom); }
+.badge-swap { background: var(--c-swap-bg); color: var(--c-swap); }
+.badge-hindi { background: var(--c-hindi-bg); color: var(--c-hindi); }
+.badge-verb { background: var(--c-verb-bg); color: var(--c-verb); }
+.badge-scenario { background: var(--c-scenario-bg); color: var(--c-scenario); }
+
+.card-main-phrase {
+  font-family: var(--serif);
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.card-sub-hint {
+  font-size: 14px;
+  color: var(--ink-muted);
+  margin-bottom: 24px;
+}
+
+.flip-cue {
+  margin-top: auto;
+  padding: 12px;
+  background: var(--raised);
+  border-radius: var(--r-md);
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Card Flipped / Details */
+.card-detail-section {
+  margin-bottom: 18px;
+}
+.card-detail-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 4px;
+}
+.card-detail-text {
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.45;
+}
+.card-example-box {
+  background: var(--raised);
+  border-left: 3px solid var(--accent);
+  padding: 12px 14px;
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  font-size: 14px;
+  color: var(--ink);
+  font-style: italic;
+  margin-top: 6px;
+}
+.card-example-box strong {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* Action Strip below card */
+.card-action-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex: none;
+}
+.btn-action {
+  flex: 1;
+  padding: 12px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--line);
+  background: var(--card);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.btn-action.primary {
+  background: var(--ink);
+  color: #FFF;
+  border-color: var(--ink);
+}
+.btn-action.icon-only {
+  flex: 0 0 46px;
+  padding: 0;
+}
+
+/* Search & Library */
+.search-input-wrap {
+  position: relative;
+  margin-bottom: 16px;
+  flex: none;
+}
+.search-input {
+  width: 100%;
+  padding: 12px 16px 12px 40px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--line-strong);
+  background: var(--card);
+  font-size: 14.5px;
+  color: var(--ink);
+  outline: none;
+}
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-muted);
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.category-tile {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.cat-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+.cat-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.cat-count {
+  font-size: 11.5px;
+  color: var(--ink-muted);
+}
+
+.search-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.result-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.result-phrase {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.result-meta {
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+/* Scenario & Voice Gym */
+.voice-mode-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 18px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+.mode-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-md);
+  background: var(--raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex: none;
+}
+.mode-info h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.mode-info p {
+  font-size: 12.5px;
+  color: var(--ink-secondary);
+}
+
+.scenario-img-mock {
+  width: 100%;
+  height: 140px;
+  background: linear-gradient(135deg, #1E293B, #0F172A);
+  border-radius: var(--r-md);
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  padding: 16px;
+  text-align: center;
+}
+.scenario-img-mock span { font-size: 32px; margin-bottom: 6px; }
+.scenario-img-mock small { font-size: 12px; opacity: 0.8; }
+
+.scenario-structure-box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 14px;
+  margin-bottom: 16px;
+}
+.scenario-structure-box h5 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 8px;
+}
+.struct-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.struct-num {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--raised);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.vocab-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.vocab-chip {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--r-pill);
+}
+
+.record-btn-big {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--r-lg);
+  background: #DC2626;
+  color: #FFF;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+}
+
+.audio-player-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.waveform-mock {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin: 12px 0;
+}
+.wave-bar {
+  flex: 1;
+  background: var(--accent-border);
+  border-radius: 2px;
+}
+.wave-bar.active { background: var(--accent); }
+
+.feedback-bubble {
+  background: var(--success-soft);
+  border: 1px solid #A7F3D0;
+  border-radius: var(--r-md);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.feedback-bubble h5 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #065F46;
+  margin-bottom: 6px;
+}
+.feedback-bubble p {
+  font-size: 13.5px;
+  color: #047857;
+  line-height: 1.4;
+}
+
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <header class="doc-header">
+    <div class="doc-badge">⚡ Interactive Architecture & Wireframes</div>
+    <h1>SPEAK 2.0 — Casual, Swipeable & Searchable</h1>
+    <p>Redesigned from a rigid 20-minute clinical exam into a delightfully casual daily pocket companion. High-value search, card browsing anywhere, and modular voluntary speaking practice.</p>
+  </header>
+
+  <div class="comparison-grid">
+    <div class="comp-card old">
+      <h3><span>⚠️ Previous Experience (Why it broke)</span></h3>
+      <ul>
+        <li>Forced 20-minute, 6-block linear exam on app open</li>
+        <li>Mandatory microphone; unusable on commute, sofa, or bed</li>
+        <li>370+ awesome idioms, swaps & Hindi cards buried in code</li>
+        <li>Zero search bar and zero category browsing</li>
+        <li>Clinical decibel meters and speech pathology jargon</li>
+      </ul>
+    </div>
+    <div class="comp-card new">
+      <h3><span>✨ New Experience (Simple, Casual & Useful)</span></h3>
+      <ul>
+        <li>Opens immediately to a casual bite-sized card (30s habit)</li>
+        <li>Instant universal search across all 370+ idioms, swaps & Hindi</li>
+        <li>Swipeable decks you can browse silently anywhere, anytime</li>
+        <li>Modular Voice Gym with visual scenario prompts (not blank mic screens)</li>
+        <li>Save to Toolkit for quick review before meetings</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title-wrap">
+    <div class="section-kicker">Visual Wireframe Gallery · 1:1 Scale (375 × 812)</div>
+    <h2 class="section-title">The 8 Core Mobile Screens</h2>
+    <p class="section-desc">Explore the proposed screen states below. Each screen represents a clean, low-friction interaction model designed for daily utility.</p>
+  </div>
+
+  <div class="frames-gallery">
+
+    <!-- FRAME 1: Daily Bite (Feed Front) -->
+    <div class="frame-box">
+      <div class="frame-label">
+        <span class="frame-num">Frame 01 · Feed</span>
+        <div class="frame-title">Daily Bite (Card Front)</div>
+      </div>
+      <div class="phone">
+        <div class="phone-status">
+          <span>9:41</span>
+          <span>⚡ 100%</span>
+        </div>
+        <div class="app-topbar">
+          <span class="brand-title">Speak</span>
+          <div class="habit-pill">🔥 4 days · Replaced 12m</div>
+        </div>
+        <div class="phone-body">
+          <div class="swipe-card">
+            <span class="card-category-badge badge-idiom">💼 Office Idiom</span>
+            <h2 class="card-main-phrase">in the weeds</h2>
+            <p class="card-sub-hint">When a meeting gets lost in low-level details.</p>
+            
+            <div class="flip-cue">
+              <span>👆 Tap to reveal meaning & example</span>
+            </div>
+          </div>
+          <div class="card-action-bar">
+            <button class="btn-action icon-only" title="Bookmark">⭐</button>
+            <button class="btn-action primary">Got It · Next (1/3)</button>
+            <button class="btn-action icon-only" title="Optional quick speak">🎙️</button>
+          </div>
+        </div>
+        <nav class="tab-bar">
+          <div class="tab-item active"><span class="tab-icon">🎴</span><span>Daily</span></div>
+          <div class="tab-item"><span class="tab-icon">🔍</span><span>Library</span></div>
+          <div class="tab-item"><span class="tab-icon">🎙️</span><span>Voice Gym</span></div>
+          <div class="tab-item"><span class="tab-icon">⭐</span><span>Saved</span></div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- FRAME 2: Feed (Card Flipped) -->
+    <div class="frame-box">
+      <div class="frame-label">
+        <span class="frame-num">Frame 02 · Feed</span>
+        <div class="frame-title">Card Flipped (Meaning & Real Use)</div>
+      </div>
+      <div class="phone">
+        <div class="phone-status">
+          <span>9:41</span>
+          <span>⚡ 100%</span>
+        </div>
+        <div class="app-topbar">
+          <span class="brand-title">Speak</span>
+          <div class="habit-pill">🔥 4 days</div>
+        </div>
+        <div class="phone-body">
+          <div class="swipe-card">
+            <span class="card-category-badge badge-idiom">💼 Office Idiom · Flipped</span>
+            <div class="card-detail-section">
+              <div class="card-detail-label">Meaning</div>
+              <div class="card-detail-text">Lost in granular technical detail at the expense of the core objective.</div>
+            </div>
+            <div class="card-detail-section">
+              <div class="card-detail-label">Workplace Context</div>
+              <div class="card-detail-text">Use this to diplomatically pull a derailed meeting back to executive level.</div>
+              <div class="card-example-box">
+                "We’re <strong>in the weeds</strong> here — let’s come back up a level and agree on the launch date first."
+              </div>
+            </div>
+            <div class="card-detail-section">
+              <div class="card-detail-label">Better Word Swaps</div>
+              <div class="card-detail-text" style="font-size:13px; color:var(--ink-secondary)">
+                Instead of <em>"too much details"</em> ➔ <strong>"in the weeds"</strong> / <strong>"granular"</strong>
+              </div>
+            </div>
+          </div>
+          <div class="card-action-bar">
+            <button class="btn-action icon-only" title="Bookmark">⭐</button>
+            <button class="btn-action primary">Save to Toolkit</button>
+            <button class="btn-action icon-only" title="Optional quick speak">🎙️</button>
+          </div>
+        </div>
+        <nav class="tab-bar">
+          <div class="tab-item active"><span class="tab-icon">🎴</span><span>Daily</span></div>
+          <div class="tab-item"><span class="tab-icon">🔍</span><span>Library</span></div>
+          <div class="tab-item"><span class="tab-icon">🎙️</span><span>Voice Gym</span></div>
+          <div class="tab-item"><span class="tab-icon">⭐</span><span>Saved</span></div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- FRAME 3: Library & Universal Search -->
+    <div class="frame-box">
+      <div class="frame-label">
+        <span class="frame-num">Frame 03 · Library</span>
+        <div class="frame-title">Universal Search & Decks</div>
+      </div>
+      <div class="phone">
+        <div class="phone-status">
+          <span>9:41</span>
+          <span>⚡ 100%</span>
+        </div>
+        <div class="app-topbar">
+          <span class="brand-title">Library</span>
+          <span style="font-size:12px; color:var(--ink-muted); font-weight:600;">370+ Phrases</span>
+        </div>
+        <div class="phone-body">
+          <div class="search-input-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" placeholder="Search idioms, swaps, Hindi..." value="" />
+          </div>
+
+          <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:10px;">Explore Decks</div>
+
+          <div class="category-grid">
+            <div class="category-tile">
+              <span class="cat-icon">💼</span>
+              <span class="cat-name">Office Jargon</span>
+              <span class="cat-count">45 idioms</span>
+            </div>
+            <div class="category-tile">
+              <span class="cat-icon">⚡</span>
+              <span class="cat-name">Smart Swaps</span>
+              <span class="cat-count">40 pairs</span>
+            </div>
+            <div class="category-tile">
+              <span class="cat-icon">🏃</span>
+              <span class="cat-name">Action Verbs</span>
+              <span class="cat-count">40 verbs</span>
+            </div>
+            <div class="category-tile">
+              <span class="cat-icon">🇮🇳</span>
+              <span class="cat-name">Modern Hindi</span>
+              <span class="cat-count">40 terms</span>
+            </div>
+            <div class="category-tile">
+              <span class="cat-icon">🤝</span>
+              <span class="cat-name">Meeting Pushbacks</span>
+              <span class="cat-count">30 phrases</span>
+            </div>
+            <div class="category-tile">
+              <span class="cat-icon">📖</span>
+              <span class="cat-name">Story Hooks</span>
+              <span class="cat-count">25 frames</span>
+            </div>
+          </div>
+        </div>
+        <nav class="tab-bar">
+          <div class="tab-item"><span class="tab-icon">🎴</span><span>Daily</span></div>
+          <div class="tab-item active"><span class="tab-icon">🔍</span><span>Library</span></div>
+          <div class="tab-item"><span class="tab-icon">🎙️</span><span>Voice Gym</span></div>
+          <div class="tab-item"><span class="tab-icon">⭐</span><span>Saved</span></div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- FRAME 4: Search Active State -->
+    <div class="frame-box">
+      <div class="frame-label">
+        <span class="frame-num">Frame 04 · Library</span>
+        <div class="frame-title">Instant Search Results</div>
+      </div>
+      <div class="phone">
+        <div class="phone-status">
+          <span>9:41</span>
+          <span>⚡ 100%</span>
+        </div>
+        <div class="app-topbar">
+          <span class="brand-title">Library</span>
+          <span style="font-size:12px; color:var(--accent); font-weight:600;">Clear</span>
+        </div>
+        <div class="phone-body">
+          <div class="search-input-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" value="diff" />
+          </div>
+
+          <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:10px;">4 Matching Results</div>
+
+          <div class="search-results-list">
+            <div class="result-item">
+              <div>
+                <div class="result-phrase">very difficult ➔ arduous, gruelling</div>
+                <div class="result-meta">⚡ Smart Swap · Precision</div>
+              </div>
+              <span style="color:var(--ink-muted)">›</span>
+            </div>
+            <div class="result-item">
+              <div>
+                <div class="result-phrase">uphill battle</div>
+                <div class="result-meta">💼 Office Idiom · Something that stays difficult</div>
+              </div>
+              <span style="color:var(--ink-muted)">›</span>
+            </div>
+            <div class="result-item">
+              <div>
+                <div class="result-phrase">mushkil / pechida (पेचीदा)</div>
+                <div class="result-meta">🇮🇳 Practical Hindi · Complex / Complicated</div>
+              </div>
+              <span style="color:var(--ink-muted)">›</span>
+            </div>
+            <div class="result-item">
+              <div>
+                <div class="result-phrase">grapple with</div>
+                <div class="result-meta">🏃 Action Verb · Struggling to handle a challenge</div>
+              </div>
+              <span style="color:var(--ink-muted)">›</span>
+            </div>
+          </div>
+        </div>
+        <nav class="tab-bar">
+          <div class="tab-item"><span class="tab-icon">🎴</span><span>Daily</span></div>
+          <div class="tab-item active"><span class="tab-icon">🔍</span><span>Library</span></div>
+          <div class="tab-item"><span class="tab-icon">🎙️</span><span>Voice Gym</span></div>
+          <div class="tab-item"><span class="tab-icon">⭐</span><span>Saved</span></div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- FRAME 5: Voice Gym (Modular Hub) -->
+    <div class="frame-box">
+      <div class="frame-label">
+        <span class="frame-num">Frame 05 · Voice Gym</span>
+        <div class="frame-title">Voluntary Practice Hub</div>
+      </div>
+      <div class="phone">
+        <div class="phone-status">
+          <span>9:41</span>
+          <span>⚡ 100%</span>
+        </div>
+        <div class="app-topbar">
+          <span class="brand-title">Voice Gym</span>
+          <span style="font-size:12px; color:var(--ink-muted); font-weight:600;">Low Pressure</span>
+        </div>
+        <div class="phone-body">
+          <p style="font-size:14px; color:var(--ink-secondary); margin-bottom:16px;">Practise speaking at your own pace. Zero forced routines.</p>
+
+          <div class="voice-mode-card">
+            <div class="mode-icon-box" style="background:var(--c-scenario-bg); color:var(--c-scenario)">🖼️</div>
+            <div class="mode-info">
+              <h4>Visual Scenario Simulator</h4>
+              <p>See a workplace scene & pitch your point in 45s.</p>
+            </div>
+          </div>
+
+          <div class="voice-mode-card">
+            <div class="mode-icon-box" style="background:var(--c-swap-bg); color:var(--c-swap)">⚡</div>
+            <div class="mode-info">
+              <h4>30-Second Rapid Rep</h4>
+              <p>Pick any card & speak an invented sentence.</p>
+            </div>
+          </div>
+
+          <div class="voice-mode-card">
+            <div class="mode-icon-box" style="background:var(--heat-soft); color:var(--heat)">🧘</div>
+            <div class="mode-info">
+              <h4>Composure & Pause Reset</h4>
+              <p>30s hum & pause drill before a live call.</p>
+            </div>
+          </div>
+
+          <div class="voice-mode-card" style="opacity:0.85">
+            <div class="mode-icon-box">🎧</div>
+            <div class="mode-info">
+              <h4>10-Min Full Session (Optional)</h4>
+              <p>For when you have privacy and 10 dedicated mins.</p>
+            </div>
+          </div>
+        </div>
+        <nav class="tab-bar">
+          <div class="tab-item"><span class="tab-icon">🎴</span><span>Daily</span></div>
+          <div class="tab-item"><span class="tab-icon">🔍</span><span>Library</span></div>
+          <div class="tab-item active"><span class="tab-icon">🎙️</span><span>Voice Gym</span></div>
+          <div class="tab-item"><span class="tab-icon">⭐</span><span>Saved</span></div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- FRAME 6: Visual Scenario Prompt -->
+    <div class="frame-box">
+      <div class="frame-label">
+        <span class="frame-num">Frame 06 · Scenario Mode</span>
+        <div class="frame-title">Visual Scenario & Framework</div>
+      </div>
+      <div class="phone">
+        <div class="phone-status">
+          <span>9:41</span>
+          <span>⚡ 100%</span>
+        </div>
+        <div class="app-topbar">
+          <span style="font-size:14px; font-weight:700; color:var(--ink-secondary)">← Exit</span>
+          <span style="font-size:13px; font-weight:700; color:var(--accent)">45s Goal</span>
+        </div>
+        <div class="phone-body">
+          <div class="scenario-img-mock">
+            <span>📊 🚨</span>
+            <strong>Release Timeline Slipped by 2 Weeks</strong>
+            <small>Client demo scheduled for Friday</small>
+          </div>
+
+          <h3 style="font-size:17px; font-weight:700; margin-bottom:4px;">Explain the Delay to Leadership</h3>
+          <p style="font-size:13px; color:var(--ink-secondary); margin-bottom:12px;">Deliver a calm, non-defensive update.</p>
+
+          <div class="scenario-structure-box">
+            <h5>3-Point Speaking Structure</h5>
+            <div class="struct-step"><span class="struct-num">1</span><span>State the core bottleneck calmly</span></div>
+            <div class="struct-step"><span class="struct-num">2</span><span>Acknowledge the client impact</span></div>
+            <div class="struct-step"><span class="struct-num">3</span><span>Propose the revised mitigation date</span></div>
+          </div>
+
+          <div class="vocab-chips-row">
+            <span class="vocab-chip">+ trade-off</span>
+            <span class="vocab-chip">+ premature</span>
+            <span class="vocab-chip">+ cushion</span>
+          </div>
+
+          <button class="record-btn-big">
+            <span>🎙️</span>
+            <span>Tap to Record (45s)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 7: Scenario AI Coaching & Playback -->
+    <div class="frame-box">
+      <div class="frame-label">
+        <span class="frame-num">Frame 07 · Feedback</span>
+        <div class="frame-title">Playback & Constructive AI Coach</div>
+      </div>
+      <div class="phone">
+        <div class="phone-status">
+          <span>9:41</span>
+          <span>⚡ 100%</span>
+        </div>
+        <div class="app-topbar">
+          <span class="brand-title">Review</span>
+          <span style="font-size:13px; font-weight:700; color:var(--success)">Done</span>
+        </div>
+        <div class="phone-body">
+          <div class="audio-player-card">
+            <div style="display:flex; justify-content:space-between; font-size:12px; font-weight:700; color:var(--ink-muted);">
+              <span>YOUR RECORDING</span>
+              <span>00:38 / 00:45</span>
+            </div>
+            <div class="waveform-mock">
+              <div class="wave-bar active" style="height:12px"></div>
+              <div class="wave-bar active" style="height:24px"></div>
+              <div class="wave-bar active" style="height:18px"></div>
+              <div class="wave-bar active" style="height:32px"></div>
+              <div class="wave-bar active" style="height:20px"></div>
+              <div class="wave-bar active" style="height:28px"></div>
+              <div class="wave-bar" style="height:16px"></div>
+              <div class="wave-bar" style="height:10px"></div>
+            </div>
+            <div style="display:flex; justify-content:center; gap:16px;">
+              <button class="btn-action" style="padding:6px 14px; font-size:13px;">▶ Play Audio</button>
+            </div>
+          </div>
+
+          <div class="feedback-bubble">
+            <h5>💡 1 Key Win</h5>
+            <p>You used "trade-off" naturally and paused before your recommendation instead of getting louder.</p>
+          </div>
+
+          <div class="feedback-bubble" style="background:#FFFBEB; border-color:#FDE68A;">
+            <h5 style="color:#B45309">🎯 1 Polish Opportunity</h5>
+            <p style="color:#92400E">Instead of saying <em>"the problem is bad"</em>, say <strong>"we hit an unforeseen roadblock."</strong></p>
+          </div>
+
+          <div class="card-action-bar">
+            <button class="btn-action">Try Again (Redo)</button>
+            <button class="btn-action primary">Save & Finish</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 8: Saved Toolkit & Pre-Meeting Cheat Sheet -->
+    <div class="frame-box">
+      <div class="frame-label">
+        <span class="frame-num">Frame 08 · Saved Toolkit</span>
+        <div class="frame-title">Personal Pre-Meeting Cheat Sheet</div>
+      </div>
+      <div class="phone">
+        <div class="phone-status">
+          <span>9:41</span>
+          <span>⚡ 100%</span>
+        </div>
+        <div class="app-topbar">
+          <span class="brand-title">Toolkit</span>
+          <span style="font-size:12px; color:var(--accent); font-weight:700;">+ Add Quick Note</span>
+        </div>
+        <div class="phone-body">
+          <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:10px;">⭐ Starred for Today's Meeting</div>
+
+          <div class="search-results-list" style="margin-bottom:20px;">
+            <div class="result-item">
+              <div>
+                <div class="result-phrase">touch base</div>
+                <div class="result-meta">"Let's touch base on Thursday before the call."</div>
+              </div>
+              <span>💼</span>
+            </div>
+            <div class="result-item">
+              <div>
+                <div class="result-phrase">on the back burner</div>
+                <div class="result-meta">"Deprioritised for now, but not cancelled."</div>
+              </div>
+              <span>⚡</span>
+            </div>
+            <div class="result-item">
+              <div>
+                <div class="result-phrase">ballpark figure</div>
+                <div class="result-meta">"A rough estimate, not a final commitment."</div>
+              </div>
+              <span>💼</span>
+            </div>
+          </div>
+
+          <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:10px;">📝 Captured Phrases</div>
+          <div class="result-item" style="background:var(--raised); border-style:dashed;">
+            <div style="font-size:13px; color:var(--ink-secondary)">
+              <em>"Learned on podcast: 'counter-intuitive trade-off'"</em>
+            </div>
+          </div>
+        </div>
+        <nav class="tab-bar">
+          <div class="tab-item"><span class="tab-icon">🎴</span><span>Daily</span></div>
+          <div class="tab-item"><span class="tab-icon">🔍</span><span>Library</span></div>
+          <div class="tab-item"><span class="tab-icon">🎙️</span><span>Voice Gym</span></div>
+          <div class="tab-item active"><span class="tab-icon">⭐</span><span>Saved</span></div>
+        </nav>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

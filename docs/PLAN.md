@@ -358,6 +358,12 @@ part of the module either way.
 | 17 | Lab entry point | **Fifth tab, second position** — Feed · Lab · Capture · हिंदी · You. The block that changes how he speaks is not buried behind the feed | 2026-08-13 |
 | 18 | The real-device mic test | **Run by the app, not off a checklist.** `runMicSelfTest()` records sample rate, whether AGC was actually disabled, and the room noise floor into `Profile.micProfile` on first use | 2026-08-13 |
 | 19 | MPT cadence | **Weekly, not daily.** Taking it every day invites pushing for a record, which measures effort rather than the habit | 2026-08-13 |
+| 20 | Microphone requirement | **Optional and never a feed gate.** Speaking is an upgrade, never a blocker | 2026-08-26 |
+| 21 | Spoken rep crediting | **Browsing never counts as a spoken rep.** Spoken rep credited only via speaking completion with audio blob >= 2s | 2026-08-26 |
+| 22 | Hindi in feed | **Allowed in feed at V3 target ratio** (~1 in 8 cards, ~12.5%) as well as Browse deck | 2026-08-26 |
+| 23 | Feed spoken ratio | **Obsolete ≥70% spoken-feed rule removed.** Feed is casual and endless | 2026-08-26 |
+| 24 | Day completion language | **"Core Three" replaced with "day complete".** 5 cards viewed OR 1 valid spoken rep completes the day (`coreThreeDone` stored for backwards compatibility) | 2026-08-26 |
+| 25 | AI coaching honesty | **Zero canned/offline fallback coaching.** Non-empty transcript required before calling AI; incomplete AI responses rejected | 2026-08-26 |
 
 ---
 
@@ -367,5 +373,7 @@ part of the module either way.
 |---|---|---|
 | v0 | 2026-08-11 | First plan. Six pillars, free stack, 5 phases |
 | v1 | 2026-08-11 | Second opinion reconciled; Groq added; Core-3/Endless adopted; §6 expansion loop + gate added; six decisions locked |
+| **v3** | **2026-08-26** | **V3 Rules Authorized & Truthfulness Repair.** Microphone is optional and never a feed gate; browsing a card never credits spoken reps; Hindi allowed in feed at ~12.5%; obsolete ≥70% spoken rule removed; Core Three replaced with day complete (5 cards OR 1 spoken rep); AI coaching stripped of all canned/offline fallbacks; transcript required for AI feedback; speaking attempt updates made idempotent by recording ID |
 | **v2.1** | **2026-08-13** | **Phase 1 opened.** Contract extended for the Speaking Lab (`LabStep`/`LabBlock`/`LabSession`/`VoiceSample`, `LAB_RULES`, calibration fields on `Profile`), Dexie v2, Supabase `lab_sessions` + `voice_samples`. M8–M11 logic shipped and under test; UI delegated as AG-003. Decisions 16–19 locked. Breath deck rewritten: the four capacity drills retired, SOVT set expanded to nine, transfer rep on every card, one `seconds` drill so `bestMptSec` means one thing |
 | **v2** | **2026-08-12** | **Root cause corrected against measurement** — over-drive, not breath capacity; roadmap reordered off it. Speaking Lab promoted to its own surface and specified as M8–M16. **Articulation gap closed** — M25 describe and M26 explain added, new issue P8. **M30 live voice partner** specified. Module catalogue with permanent IDs introduced. UI rebuild split out as Phase 0.5 |
+

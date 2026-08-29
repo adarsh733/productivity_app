@@ -14,9 +14,11 @@ Reading is always free.
 1. **The contract is `src/types/contract.ts`.** Build to it. Do not change it —
    if something genuinely doesn't fit, stop and say so rather than widening a
    type to make your code compile.
-2. **Every card ends with the user having said something out loud.** If a
-   redesign makes a card answerable in silence, that card is broken. At least
-   70% of the feed must be spoken types (`SPOKEN_TYPES` in the contract).
+2. **Microphone is optional and never a feed gate.** Speaking is an upgrade,
+   never a blocker. Browsing a card in the feed never counts as a spoken rep.
+   A spoken rep is credited only via the speaking completion path with valid
+   captured audio (>= 2 seconds). The obsolete ≥70% spoken-feed rule is removed.
+   A day is complete on 5 cards viewed OR 1 valid spoken rep.
 3. **Components never touch the database, the scheduler or the queue.** They
    read from the hooks in `src/features/**` and call the functions those return.
    A component importing `db` directly is a bug.
@@ -40,9 +42,10 @@ content.
   you are not certain a phrase is genuinely used, leave it out.
 - Example sentences must be things a colleague would say out loud, not
   dictionary prose.
-- Hindi cards are `"lang": "hi"` and appear only in the Hindi section, never in
-  the main feed.
+- Hindi cards are `"lang": "hi"` and appear in the feed at the V3 target ratio
+  (~1 in 8 cards, ~12.5%) and in the Browse Hindi deck.
 - Follow `src/content/seed/00-exemplars.json` exactly. Do not edit that file.
+
 
 ## Verifying
 

@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import type { Grade } from '../../types/contract';
 
 const CARDS_SEEN_KEY = 'speak.cardsSeen.v1';
-const DISTANCE_THRESHOLD = 60; // px
-const VELOCITY_THRESHOLD = 0.3; // px/ms
-const LEFT_EDGE_GUARD = 40; // px
+const DISTANCE_THRESHOLD = 50; // px
+const VELOCITY_THRESHOLD = 0.25; // px/ms
+const LEFT_EDGE_GUARD = 35; // px
 
 function getCardsSeenCount(): number {
   try {
@@ -28,17 +28,16 @@ function incrementCardsSeenCount(): number {
 
 export function useCardGestures(
   cardId: string | undefined,
-  onSubmitGrade: (grade: Grade) => void,
+  onSubmitGrade: (grade: Grade, direction: 'up' | 'left' | 'right') => void,
+  onSwipeDown?: () => void,
 ) {
   const [dragOffset, setDragOffset] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
-  const [leavingDirection, setLeavingDirection] = useState<'up' | 'left' | null>(null);
+  const [leavingDirection, setLeavingDirection] = useState<'up' | 'down' | 'left' | 'right' | null>(null);
   const [cardsSeen, setCardsSeen] = useState<number>(getCardsSeenCount());
 
-  const startPos = useRef<{ x: number; y: number; time: number } | null>(null);
+  const startPos = useRef<{ x: number; y: number; time: number; pointerId: number } | null>(null);
   const isBusy = useRef<boolean>(false);
-  /** The scrollable card body this drag started inside, if any. */
   const scrollEl = useRef<HTMLElement | null>(null);
-  /** Which card the "seen" counter has already been charged for. */
   const countedFor = useRef<string | undefined>(undefined);
 
   useEffect(() => {
@@ -47,21 +46,12 @@ export function useCardGestures(
     isBusy.current = false;
   }, [cardId]);
 
-  // The hint retires after three cards have been SEEN, not after three swipes.
-  // Counting swipes means someone who only taps the buttons keeps the hint
-  // forever — which is the permanent-instruction defect it exists to remove.
   useEffect(() => {
     if (!cardId || countedFor.current === cardId) return;
     countedFor.current = cardId;
     setCardsSeen(incrementCardsSeenCount());
   }, [cardId]);
 
-  /**
-   * A vertical swipe may only be claimed when the card body is not scrollable,
-   * or has already been read to the bottom. Otherwise scrolling down a long
-   * word card silently grades it `good` and advances — the reader loses the
-   * card they were in the middle of reading.
-   */
   const verticalAllowed = () => {
     const el = scrollEl.current;
     if (!el) return true;
@@ -69,66 +59,79 @@ export function useCardGestures(
     return el.scrollTop + el.clientHeight >= el.scrollHeight - 4;
   };
 
-  const triggerGrade = (grade: Grade, direction: 'up' | 'left') => {
+  const topPullAllowed = () => {
+    const el = scrollEl.current;
+    if (!el) return true;
+    return el.scrollTop <= 4;
+  };
+
+  const triggerGrade = (grade: Grade, direction: 'up' | 'left' | 'right') => {
     if (isBusy.current) return;
     isBusy.current = true;
     setLeavingDirection(direction);
-    onSubmitGrade(grade);
+    onSubmitGrade(grade, direction);
   };
 
-  const onTouchStart = (e: React.TouchEvent) => {
-    if (isBusy.current) return;
-    const touch = e.touches[0];
-    if (!touch) return;
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (isBusy.current || (e.button !== undefined && e.button !== 0)) return;
     const target = e.target as HTMLElement | null;
-    scrollEl.current = target?.closest?.('.card-body') as HTMLElement | null;
+    // Don't intercept button or input clicks
+    if (target?.closest('button, input, textarea, a, select')) return;
+
+    scrollEl.current = target?.closest?.('.card-inner-body') as HTMLElement | null;
     startPos.current = {
-      x: touch.clientX,
-      y: touch.clientY,
+      x: e.clientX,
+      y: e.clientY,
       time: Date.now(),
+      pointerId: e.pointerId,
     };
+    try {
+      (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    } catch {
+      // safe fallback
+    }
   };
 
-  const onTouchMove = (e: React.TouchEvent) => {
-    if (!startPos.current || isBusy.current) return;
-    const touch = e.touches[0];
-    if (!touch) return;
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!startPos.current || isBusy.current || startPos.current.pointerId !== e.pointerId) return;
 
-    const dx = touch.clientX - startPos.current.x;
-    const dy = touch.clientY - startPos.current.y;
+    const dx = e.clientX - startPos.current.x;
+    const dy = e.clientY - startPos.current.y;
 
-    // Left edge guard for swipe-left (prevent back gesture conflict)
     const isLeftSwipeAllowed = startPos.current.x >= LEFT_EDGE_GUARD;
 
-    // Apply 0.4 damping factor during drag
     let dampedX = 0;
     let dampedY = 0;
 
     if (Math.abs(dx) > Math.abs(dy)) {
-      // Horizontal dominant
-      if (dx < 0 && isLeftSwipeAllowed) {
-        dampedX = dx * 0.4;
+      if ((dx < 0 && isLeftSwipeAllowed) || dx > 0) {
+        dampedX = dx * 0.45;
       }
     } else {
-      // Vertical dominant — leave it to the scroller if the body still has
-      // unread content below.
       if (dy < 0 && verticalAllowed()) {
-        dampedY = dy * 0.4;
+        dampedY = dy * 0.45;
+      } else if (dy > 0 && topPullAllowed() && onSwipeDown) {
+        dampedY = dy * 0.45;
       }
     }
 
     setDragOffset({ x: dampedX, y: dampedY });
   };
 
-  const onTouchEnd = () => {
-    if (!startPos.current || isBusy.current) return;
+  const onPointerUp = (e: React.PointerEvent) => {
+    if (!startPos.current || isBusy.current || startPos.current.pointerId !== e.pointerId) return;
     const start = startPos.current;
     startPos.current = null;
 
+    try {
+      (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+    } catch {
+      // safe fallback
+    }
+
     const dt = Math.max(1, Date.now() - start.time);
-    // Undamped travel values for threshold check
-    const dx = dragOffset.x / 0.4;
-    const dy = dragOffset.y / 0.4;
+    const dx = dragOffset.x / 0.45;
+    const dy = dragOffset.y / 0.45;
 
     const absDx = Math.abs(dx);
     const absDy = Math.abs(dy);
@@ -137,35 +140,50 @@ export function useCardGestures(
 
     const isLeftSwipeAllowed = start.x >= LEFT_EDGE_GUARD;
 
-    if (absDx > absDy && dx < 0 && isLeftSwipeAllowed) {
-      // Left swipe dominant
-      if (absDx > DISTANCE_THRESHOLD || velX > VELOCITY_THRESHOLD) {
+    if (absDx > absDy) {
+      if (dx < 0 && isLeftSwipeAllowed && (absDx > DISTANCE_THRESHOLD || velX > VELOCITY_THRESHOLD)) {
         triggerGrade('hard', 'left');
         return;
+      } else if (dx > 0 && (absDx > DISTANCE_THRESHOLD || velX > VELOCITY_THRESHOLD)) {
+        triggerGrade('good', 'right');
+        return;
       }
-    } else if (absDy > absDx && dy < 0 && verticalAllowed()) {
-      // Upward swipe dominant
-      if (absDy > DISTANCE_THRESHOLD || velY > VELOCITY_THRESHOLD) {
+    } else if (absDy > absDx) {
+      if (dy < 0 && verticalAllowed() && (absDy > DISTANCE_THRESHOLD || velY > VELOCITY_THRESHOLD)) {
         triggerGrade('good', 'up');
+        return;
+      } else if (dy > 0 && topPullAllowed() && onSwipeDown && (absDy > DISTANCE_THRESHOLD || velY > VELOCITY_THRESHOLD)) {
+        setLeavingDirection('down');
+        onSwipeDown();
         return;
       }
     }
 
-    // Snap back if threshold not met
     scrollEl.current = null;
     setDragOffset({ x: 0, y: 0 });
+  };
+
+  const onPointerCancel = (e: React.PointerEvent) => {
+    if (startPos.current && startPos.current.pointerId === e.pointerId) {
+      startPos.current = null;
+      try {
+        (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+      } catch {
+        // safe fallback
+      }
+      setDragOffset({ x: 0, y: 0 });
+    }
   };
 
   return {
     dragOffset,
     leavingDirection,
-    // The counter is incremented as the card appears, so the first three cards
-    // read 1, 2, 3 — `<= 3` is what "the first three cards ever" means here.
     showHint: cardsSeen <= 3,
     bindGestures: {
-      onTouchStart,
-      onTouchMove,
-      onTouchEnd,
+      onPointerDown,
+      onPointerMove,
+      onPointerUp,
+      onPointerCancel,
     },
   };
 }

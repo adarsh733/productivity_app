@@ -1,0 +1,619 @@
+﻿/* ── SPEAK — Speaking Gym & Modes ────────────────────────────────────────── */
+
+.speak-screen {
+  flex: 1;
+  padding: 16px var(--gutter) calc(var(--tabbar-h) + 24px + var(--safe-bottom));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.speak-header {
+  margin-bottom: var(--s-3);
+  padding-top: var(--safe-top);
+}
+
+.speak-header-sub {
+  margin-top: 4px;
+  color: var(--ink-2);
+  font-size: var(--fs-2);
+}
+
+.speak-modes-list {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.speak-mode-card {
+  transition: border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+
+.speak-mode-card:hover {
+  border-color: var(--accent-line);
+}
+
+.speak-mode-card:active {
+  transform: scale(0.98);
+}
+
+.speak-mode-row-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.speak-time-badge {
+  font-size: 9px;
+  padding: 1px 5px;
+}
+
+.speak-xp-reward-tag {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  color: var(--accent);
+}
+
+.speak-mode-desc {
+  margin-top: 3px;
+  font-size: var(--fs-1);
+}
+
+/* ── Speak Drill Runner ──────────────────────────────────────────────────── */
+.speak-drill-runner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 16px var(--gutter) calc(var(--tabbar-h) + 24px + var(--safe-bottom));
+  padding-top: calc(16px + var(--safe-top));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--paper);
+}
+
+.speak-drill-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex: none;
+}
+
+.speak-drill-title-group h2 {
+  font-family: var(--serif);
+  font-size: var(--fs-5);
+  margin: 4px 0 0;
+  color: var(--ink);
+}
+
+.speak-prompt-box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(21, 23, 26, 0.04);
+}
+
+.speak-prompt-label {
+  display: block;
+  font-size: var(--fs-1);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 6px;
+  letter-spacing: var(--ls-label);
+}
+
+.speak-prompt-content {
+  font-size: var(--fs-4);
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 0;
+  font-weight: var(--fw-medium);
+}
+
+.speak-prompt-content.compact {
+  font-size: var(--fs-3);
+  margin-bottom: 10px;
+}
+
+.speak-prompt-hint {
+  display: block;
+  font-size: var(--fs-1);
+  color: var(--ink-2);
+  margin-top: 8px;
+}
+
+.speak-story-anchors {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.speak-anchor-pill {
+  background: var(--raised);
+  border-radius: var(--r-sm);
+  padding: 6px 10px;
+  font-size: var(--fs-2);
+  color: var(--ink);
+}
+
+.speak-incident-situation b,
+.speak-incident-challenge b {
+  display: block;
+  font-size: var(--fs-1);
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 2px;
+}
+
+.speak-incident-situation p,
+.speak-incident-challenge p {
+  margin: 0;
+  font-size: var(--fs-3);
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.speak-incident-challenge {
+  margin-top: 10px;
+}
+
+/* ── Audio Recorder ──────────────────────────────────────────────────────── */
+.audio-recorder-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.audio-recorder-target-vocab {
+  margin: 10px 0;
+}
+
+.audio-recorder-vocab-label {
+  font-size: var(--fs-1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-3);
+  font-weight: var(--fw-bold);
+  display: block;
+}
+
+.audio-recorder-vocab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.audio-recorder-vocab-chip {
+  font-size: var(--fs-1);
+  padding: 2px 8px;
+}
+
+.audio-recorder-ready {
+  text-align: center;
+  padding: 24px 16px;
+  background: var(--card);
+  border: 1px dashed var(--line);
+  border-radius: var(--r-md);
+}
+
+.audio-recorder-guide .g {
+  font-size: 32px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.audio-recorder-guide p {
+  font-size: var(--fs-2);
+  color: var(--ink-2);
+  margin: 8px 0 16px;
+}
+
+.audio-recorder-cancel-btn {
+  margin-top: 10px;
+  background: transparent;
+  border: none;
+  color: var(--ink-2);
+  font-size: var(--fs-2);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+  padding: 8px 16px;
+}
+
+.audio-recorder-error {
+  color: var(--bad);
+  font-size: var(--fs-2);
+  margin-bottom: 12px;
+}
+
+.audio-recorder-active {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 20px 16px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(21, 23, 26, 0.06);
+}
+
+.audio-recorder-timer-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.audio-recorder-pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bad);
+  animation: pulse-recording 1.2s infinite ease-in-out;
+}
+
+@keyframes pulse-recording {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+.audio-recorder-remaining {
+  font-family: var(--serif);
+  font-size: var(--fs-6);
+  color: var(--ink);
+}
+
+.audio-recorder-elapsed {
+  font-size: var(--fs-1);
+  color: var(--ink-3);
+}
+
+.audio-recorder-meter {
+  height: 8px;
+  background: var(--raised);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.audio-recorder-meter-bar {
+  height: 100%;
+  background: var(--accent);
+  border-radius: var(--r-pill);
+  transition: width 0.08s ease-out;
+}
+
+.audio-recorder-transcript-live {
+  background: var(--raised);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.audio-recorder-transcript-label {
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 2px;
+}
+
+.audio-recorder-transcript-text {
+  font-size: var(--fs-2);
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.audio-recorder-finish-btn {
+  margin-top: 8px;
+}
+
+.audio-recorder-loading {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.audio-recorder-loading-text {
+  font-size: var(--fs-3);
+  color: var(--ink);
+}
+
+.audio-recorder-standby-hint {
+  margin-top: 8px;
+  font-size: var(--fs-1);
+  color: var(--ink-3);
+  display: block;
+}
+
+/* ── Playback Review ─────────────────────────────────────────────────────── */
+.playback-review-card {
+  padding: 16px var(--gutter) calc(var(--tabbar-h) + 24px + var(--safe-bottom));
+  padding-top: calc(16px + var(--safe-top));
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--paper);
+}
+
+.playback-review-header h2 {
+  font-family: var(--serif);
+  font-size: var(--fs-6);
+  margin: 6px 0 0;
+  color: var(--ink);
+}
+
+.playback-review-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.stat-pill {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 12px;
+  text-align: center;
+}
+
+.stat-pill.highlight {
+  background: var(--accent-soft);
+  border-color: #bfdbfe;
+}
+
+.stat-pill b {
+  display: block;
+  font-family: var(--serif);
+  font-size: var(--fs-5);
+  color: var(--ink);
+}
+
+.stat-pill.highlight b {
+  color: var(--accent);
+}
+
+.stat-pill small {
+  font-size: var(--fs-1);
+  color: var(--ink-3);
+}
+
+.playback-review-player {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.playback-review-player label {
+  display: block;
+  font-size: var(--fs-2);
+  font-weight: var(--fw-bold);
+  color: var(--ink-2);
+  margin-bottom: 8px;
+}
+
+.playback-audio-element {
+  width: 100%;
+  height: 40px;
+}
+
+.playback-review-note {
+  background: var(--raised);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+
+.playback-review-note p {
+  font-size: var(--fs-2);
+  color: var(--ink-2);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.playback-review-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.playback-review-actions button {
+  flex: 1;
+}
+
+.playback-vocab-feedback {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+
+.playback-vocab-header {
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+
+.playback-vocab-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.b-good { background: #dcfce7; color: #15803d; }
+.b-weak { background: var(--raised); color: var(--ink-3); }
+
+.playback-transcript-box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+
+.playback-transcript-header {
+  font-size: 11px;
+  color: var(--ink-3);
+  margin-bottom: 4px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+}
+
+.playback-transcript-content {
+  margin: 0;
+  font-size: var(--fs-2);
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+/* ── AI Feedback Card ────────────────────────────────────────────────────── */
+.ai-feedback-section {
+  margin: 16px 0;
+}
+
+.ai-feedback-trigger-btn {
+  background: var(--card);
+  border: 1.5px dashed var(--line);
+  border-radius: var(--r-md);
+  color: var(--ink);
+  cursor: pointer;
+  padding: 14px;
+  width: 100%;
+}
+
+.ai-feedback-no-transcript,
+.ai-feedback-too-short {
+  background: var(--raised);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+}
+
+.ai-feedback-hint-text {
+  margin: 0;
+  font-size: var(--fs-2);
+  color: var(--ink-2);
+}
+
+.ai-feedback-loading-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 16px;
+  text-align: center;
+}
+
+.ai-loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--raised);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin-ai 0.8s linear infinite;
+  margin: 0 auto 8px;
+}
+
+@keyframes spin-ai {
+  to { transform: rotate(360deg); }
+}
+
+.ai-feedback-error-card {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+}
+
+.ai-feedback-error-text {
+  margin: 0;
+  font-size: var(--fs-2);
+  color: var(--bad);
+}
+
+.ai-feedback-result-card {
+  background: var(--card);
+  border: 1px solid #bfdbfe;
+  border-radius: var(--r-md);
+  padding: 14px 16px;
+  box-shadow: 0 2px 8px rgba(21, 23, 26, 0.05);
+  margin-bottom: 16px;
+}
+
+.ai-feedback-badge {
+  font-size: var(--fs-1);
+  font-weight: var(--fw-bold);
+  color: var(--accent);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.ai-summary {
+  font-size: var(--fs-2);
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+.ai-points-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.ai-point-box {
+  background: var(--raised);
+  border-radius: var(--r-sm);
+  padding: 10px;
+}
+
+.ai-point-box b {
+  display: block;
+  font-size: var(--fs-1);
+  margin-bottom: 4px;
+}
+
+.ai-point-box.positive b { color: #15803d; }
+.ai-point-box.correction b { color: var(--accent); }
+
+.ai-point-box p {
+  font-size: var(--fs-1);
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 0;
+}
+
+.ai-alternative-box {
+  background: var(--accent-soft);
+  border-radius: var(--r-sm);
+  padding: 8px 12px;
+  margin-top: 8px;
+}
+
+.ai-alternative-box b {
+  font-size: var(--fs-1);
+  color: var(--accent);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.ai-alternative-box p {
+  font-size: var(--fs-2);
+  font-style: italic;
+  color: var(--ink);
+  margin: 0;
+}

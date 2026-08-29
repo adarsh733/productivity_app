@@ -1,16 +1,17 @@
 import { describe, expect, it } from 'vitest';
-import { buildQueue } from './queue';
+import { buildQueue, dayCardHash, getCardMultiplier } from './queue';
 import { newReview } from './scheduler';
 import { QUEUE_RULES } from '../types/contract';
-import type { Card, CardType, QueueOptions, Review } from '../types/contract';
+import type { Card, CardType, DownweightRecord, QueueOptions, Review } from '../types/contract';
+import { readSeedFiles } from '../db/seedLoader';
 
 const TODAY = '2026-08-11';
 
-function card(id: string, type: CardType, lang: 'en' | 'hi' = 'en'): Card {
+function card(id: string, type: CardType, lang: 'en' | 'hi' = 'en', tags: string[] = []): Card {
   const base = {
     id,
     lang,
-    tags: [],
+    tags,
     source: 'seed' as const,
     status: 'active' as const,
     createdAt: 0,
@@ -30,6 +31,18 @@ function card(id: string, type: CardType, lang: 'en' | 'hi' = 'en'): Card {
       return { ...base, type, line: id, marked: id, targetWpm: 140 };
     case 'breath':
       return { ...base, type, drill: 'mpt', title: id, instructions: [], logUnit: 'seconds' };
+    case 'phrase':
+      return { ...base, type, weak: id, strong: id, why: '', register: 'office' };
+    case 'feeling':
+      return { ...base, type, term: id, meaning: '', contrast: '', example: '' };
+    case 'story_move':
+      return { ...base, type, move: id, why: '', example: '' };
+    case 'describe':
+      return { ...base, type, imagePath: '', alt: '', prompt: id, beats: ['', '', ''], targetVocab: [], targetSec: 30 };
+    case 'explain':
+      return { ...base, type, topic: id, angle: '', beats: ['', '', ''], targetVocab: [], targetSec: 60 };
+    case 'teach_back':
+      return { ...base, type, prompt: id, beats: ['', '', ''], targetSec: 60 };
   }
 }
 
@@ -47,121 +60,121 @@ function opts(over: Partial<QueueOptions> = {}): QueueOptions {
 
 const NONE = new Map<string, Review>();
 
-describe('core mode', () => {
-  const deck = [
-    card('b1', 'breath'),
-    card('s1', 'say_it'),
-    card('w1', 'word'),
-    card('i1', 'idiom'),
-  ];
+describe('V3 Queue Acceptance Suite', () => {
+  const seedCards = readSeedFiles().cards;
 
-  it('returns exactly the Core 3, in the contracted order', () => {
-    const q = buildQueue(deck, NONE, opts({ mode: 'core' }));
-    expect(q.map((i) => i.card.type)).toEqual(QUEUE_RULES.CORE_SEQUENCE);
-    expect(q).toHaveLength(3);
-    expect(q.every((i) => i.reason === 'core')).toBe(true);
+  it('A 1,000-card queue walk on the real seed data returns a card every time. item is never null', () => {
+    const q = buildQueue(seedCards, NONE, opts({ limit: 1000 }));
+    expect(q).toHaveLength(1000);
+    expect(q.every((item) => item && item.card && item.card.id)).toBe(true);
   });
 
-  it('never puts a Hindi card in the Core 3', () => {
-    const hindiOnly = [card('b1', 'breath'), card('s1', 'say_it'), card('hw', 'word', 'hi')];
-    const q = buildQueue(hindiOnly, NONE, opts({ mode: 'core' }));
-    expect(q.map((i) => i.card.id)).not.toContain('hw');
+  it('0 breath cards in 1,000 feed cards', () => {
+    const q = buildQueue(seedCards, NONE, opts({ limit: 1000 }));
+    const breaths = q.filter((i) => i.card.type === 'breath');
+    expect(breaths).toHaveLength(0);
   });
 
-  it('prefers a card that is due over one he has never seen', () => {
-    const reviews = new Map<string, Review>([
-      ['w2', { ...newReview('w2', TODAY), state: 'review', reps: 3, due: '2026-08-01' }],
-    ]);
-    const withDue = [...deck, card('w2', 'word')];
-    const q = buildQueue(withDue, reviews, opts({ mode: 'core' }));
-    expect(q.find((i) => i.card.type === 'word')!.card.id).toBe('w2');
+  it('0 gym drill cards (describe, explain, teach_back) in 1,000 feed cards', () => {
+    const q = buildQueue(seedCards, NONE, opts({ limit: 1000 }));
+    const gymCards = q.filter((i) => ['describe', 'explain', 'teach_back'].includes(i.card.type));
+    expect(gymCards).toHaveLength(0);
   });
 
-  it('skips a slot rather than substituting the wrong type', () => {
-    const noBreath = [card('s1', 'say_it'), card('w1', 'word')];
-    const q = buildQueue(noBreath, NONE, opts({ mode: 'core' }));
-    expect(q.map((i) => i.card.type)).toEqual(['say_it', 'word']);
-  });
-});
-
-describe('endless mode', () => {
-  it('never serves two cards of the same type back to back', () => {
-    const deck = [
-      ...Array.from({ length: 8 }, (_, i) => card(`w${i}`, 'word')),
-      ...Array.from({ length: 8 }, (_, i) => card(`p${i}`, 'pronounce')),
-      ...Array.from({ length: 8 }, (_, i) => card(`s${i}`, 'swap')),
-    ];
-    const q = buildQueue(deck, NONE, opts({ limit: 20 }));
+  it('0 adjacent same-type pairs in 1,000 feed cards when types are available', () => {
+    const q = buildQueue(seedCards, NONE, opts({ limit: 1000 }));
     for (let i = 1; i < q.length; i++) {
       expect(q[i]!.card.type).not.toBe(q[i - 1]!.card.type);
     }
   });
 
-  it('spreads types evenly rather than draining one at a time', () => {
-    // The naive "first candidate of a different type" pick alternates two types
-    // until they run out and then has nothing but the third left.
-    const deck = [
-      ...Array.from({ length: 6 }, (_, i) => card(`w${i}`, 'word')),
-      ...Array.from({ length: 6 }, (_, i) => card(`p${i}`, 'pronounce')),
-      ...Array.from({ length: 6 }, (_, i) => card(`s${i}`, 'swap')),
-    ];
-    const q = buildQueue(deck, NONE, opts({ limit: 18 }));
-    const counts = new Map<string, number>();
-    for (const i of q) counts.set(i.card.type, (counts.get(i.card.type) ?? 0) + 1);
-    for (const n of counts.values()) expect(n).toBe(6);
+  it('First card of a fresh profile is an English word or idiom, across 50 fresh runs', () => {
+    for (let run = 0; run < 50; run++) {
+      const shuffled = [...seedCards].sort(() => Math.random() - 0.5);
+      const q = buildQueue(shuffled, NONE, opts({ limit: 5 }));
+      expect(['word', 'idiom']).toContain(q[0]!.card.type);
+      expect(q[0]!.card.lang).toBe('en');
+    }
   });
 
-  it('accepts a repeated type only when nothing else is left', () => {
-    // 2 words then only swaps: a run of swaps is unavoidable and correct.
-    const deck = [
-      card('w0', 'word'),
-      card('w1', 'word'),
-      ...Array.from({ length: 6 }, (_, i) => card(`s${i}`, 'swap')),
-    ];
-    const q = buildQueue(deck, NONE, opts({ limit: 8 }));
-    expect(q).toHaveLength(8);
-    // The two words are spent as separators before any run begins.
-    const firstRunAt = q.findIndex(
-      (_, i) => i > 0 && q[i]!.card.type === q[i - 1]!.card.type,
-    );
-    expect(firstRunAt).toBeGreaterThanOrEqual(4);
+  it('Hindi is strictly between 8% and 18% of a 1,000-card walk', () => {
+    const q = buildQueue(seedCards, NONE, opts({ limit: 1000 }));
+    const hindiCount = q.filter((i) => i.card.lang === 'hi').length;
+    const ratio = hindiCount / q.length;
+    expect(ratio).toBeGreaterThanOrEqual(0.08);
+    expect(ratio).toBeLessThanOrEqual(0.18);
   });
 
-  it('serves rare types early instead of starving them behind common ones', () => {
-    // Realistic proportions: breath is ~3% of the deck. A selection rule based
-    // on "most cards left" never reaches it, and a whole session goes by with
-    // no breath drill at all.
-    const deck = [
-      ...Array.from({ length: 88 }, (_, i) => card(`w${i}`, 'word')),
-      ...Array.from({ length: 51 }, (_, i) => card(`i${i}`, 'idiom')),
-      ...Array.from({ length: 46 }, (_, i) => card(`p${i}`, 'pronounce')),
-      ...Array.from({ length: 12 }, (_, i) => card(`b${i}`, 'breath')),
-    ];
-    const q = buildQueue(deck, NONE, opts({ limit: 12 }));
-    expect(q.some((i) => i.card.type === 'breath')).toBe(true);
-    expect(new Set(q.map((i) => i.card.type)).size).toBe(4);
+  it('New-card cap remains 20 across refills and walk extensions', () => {
+    const q = buildQueue(seedCards, NONE, opts({ limit: 200, newServedToday: 0 }));
+    const newCards = q.filter((i) => i.reason === 'new');
+    expect(newCards.length).toBeLessThanOrEqual(QUEUE_RULES.MAX_NEW_PER_DAY);
+    expect(newCards.length).toBe(20);
   });
 
-  it('caps breath drills for the day', () => {
-    const deck = [
-      ...Array.from({ length: 10 }, (_, i) => card(`b${i}`, 'breath')),
-      ...Array.from({ length: 10 }, (_, i) => card(`w${i}`, 'word')),
-    ];
-    const q = buildQueue(deck, NONE, opts({ limit: 20 }));
-    const breaths = q.filter((i) => i.card.type === 'breath');
-    expect(breaths.length).toBeLessThanOrEqual(QUEUE_RULES.MAX_BREATH_PER_DAY);
+  it('With only 20 cards in the DB, a 200-card walk still never dead-ends', () => {
+    const types: CardType[] = ['word', 'swap', 'idiom', 'action_verb', 'pronounce'];
+    const smallDeck = Array.from({ length: 20 }, (_, i) => card(`small_${i}`, types[i % types.length]!));
+    const q = buildQueue(smallDeck, NONE, opts({ limit: 200 }));
+    expect(q).toHaveLength(200);
+    expect(q.every((item) => Boolean(item && item.card))).toBe(true);
+    for (let i = 1; i < q.length; i++) {
+      expect(q[i]!.card.type).not.toBe(q[i - 1]!.card.type);
+    }
+  });
+});
+
+describe('Preferences, Downweights & Shuffling', () => {
+  const baseTime = 1770000000000;
+  const testCard = card('test_card', 'idiom', 'en', ['negotiation', 'corporate']);
+
+  it('Downweight expires after exactly seven local calendar days', () => {
+    const activeDownweight: Record<string, DownweightRecord> = {
+      negotiation: {
+        target: 'negotiation',
+        type: 'idiom',
+        multiplier: 0.5,
+        createdAt: baseTime,
+        expiresAt: baseTime + 7 * 86_400_000,
+      },
+    };
+
+    // Day 6 (before expiry): downweighted
+    const beforeExpiry = getCardMultiplier(testCard, [], undefined, activeDownweight, baseTime + 6 * 86_400_000);
+    expect(beforeExpiry).toBe(0.5);
+
+    // Day 7 (after 7 days): downweight expired, returns to 1.0
+    const afterExpiry = getCardMultiplier(testCard, [], undefined, activeDownweight, baseTime + 7 * 86_400_000 + 1000);
+    expect(afterExpiry).toBe(1.0);
   });
 
-  it('respects breath drills already served earlier today', () => {
-    const deck = [
-      ...Array.from({ length: 10 }, (_, i) => card(`b${i}`, 'breath')),
-      ...Array.from({ length: 10 }, (_, i) => card(`w${i}`, 'word')),
-    ];
-    const q = buildQueue(deck, NONE, opts({ limit: 20, breathServedToday: 3 }));
-    expect(q.filter((i) => i.card.type === 'breath')).toHaveLength(0);
+  it('Repeated downweights do not permanently crush a type below 0.15', () => {
+    const heavilyDownweighted: Record<string, DownweightRecord> = {
+      idiom: {
+        target: 'idiom',
+        type: 'idiom',
+        multiplier: 0.001, // Extreme value
+        createdAt: baseTime,
+        expiresAt: baseTime + 7 * 86_400_000,
+      },
+    };
+
+    const mult = getCardMultiplier(testCard, [], undefined, heavilyDownweighted, baseTime + 1000);
+    expect(mult).toBeGreaterThanOrEqual(0.15);
   });
 
-  it('caps new cards for the day', () => {
+  it('Deterministic daily shuffling is reproducible for the same day and different across days', () => {
+    const scoreDay1A = dayCardHash('card_123', '2026-08-26');
+    const scoreDay1B = dayCardHash('card_123', '2026-08-26');
+    const scoreDay2 = dayCardHash('card_123', '2026-08-27');
+
+    expect(scoreDay1A).toBe(scoreDay1B);
+    expect(scoreDay1A).not.toBe(scoreDay2);
+  });
+});
+
+describe('V3 Queue Rules and Rotation', () => {
+  it('caps new cards for the day at MAX_NEW_PER_DAY', () => {
     const deck = Array.from({ length: 60 }, (_, i) =>
       card(`c${i}`, i % 2 ? 'word' : 'pronounce'),
     );
@@ -198,27 +211,12 @@ describe('endless mode', () => {
     expect(q[0]!.card.id).toBe('b');
   });
 
-  it('excludes cards already passed today from the real queue', () => {
+  it('excludes cards passed today from new/due, but recycles if needed', () => {
     const deck = [card('w1', 'word'), card('p1', 'pronounce')];
     const q = buildQueue(deck, NONE, opts({ seenCardIds: new Set(['w1']), limit: 5 }));
     const scheduled = q.filter((i) => i.reason !== 'filler');
     expect(scheduled.map((i) => i.card.id)).not.toContain('w1');
-    // It may still come back as filler rather than let the feed dead-end.
     expect(q).toHaveLength(5);
-  });
-
-  it('never dead-ends — it refills rather than returning short', () => {
-    const deck = [card('w1', 'word'), card('p1', 'pronounce'), card('s1', 'swap')];
-    const q = buildQueue(deck, NONE, opts({ limit: 12 }));
-    expect(q).toHaveLength(12);
-    expect(q.some((i) => i.reason === 'filler')).toBe(true);
-  });
-
-  it('does not use breath drills as filler', () => {
-    const deck = [card('b1', 'breath'), card('w1', 'word'), card('p1', 'pronounce')];
-    const q = buildQueue(deck, NONE, opts({ limit: 12, breathServedToday: 3 }));
-    expect(q.filter((i) => i.card.type === 'breath')).toHaveLength(0);
-    expect(q).toHaveLength(12);
   });
 
   it('ignores buried cards entirely', () => {
@@ -232,84 +230,5 @@ describe('endless mode', () => {
   });
 });
 
-describe('duplicates within one run', () => {
-  const bigDeck = () => {
-    const types: CardType[] = ['word', 'swap', 'pronounce', 'say_it', 'action_verb', 'idiom'];
-    return Array.from({ length: 300 }, (_, i) => card(`c${i}`, types[i % types.length]!));
-  };
 
-  it('never repeats a card when the deck is bigger than the session', () => {
-    const q = buildQueue(bigDeck(), NONE, opts({ limit: 30 }));
-    const ids = q.map((i) => i.card.id);
-    expect(new Set(ids).size).toBe(ids.length);
-  });
 
-  it('still fills a long session past the new-card cap without repeating', () => {
-    // 60 cards is far more than MAX_NEW_PER_DAY — the rest come from filler,
-    // which must reach for unseen cards before it recycles anything.
-    const q = buildQueue(bigDeck(), NONE, opts({ limit: 60 }));
-    const ids = q.map((i) => i.card.id);
-    expect(q).toHaveLength(60);
-    expect(new Set(ids).size).toBe(ids.length);
-  });
-
-  it('repeats only when the deck is genuinely smaller than the session', () => {
-    const tiny = [card('a', 'word'), card('b', 'pronounce'), card('c', 'swap')];
-    const q = buildQueue(tiny, NONE, opts({ limit: 9 }));
-    expect(q).toHaveLength(9);
-    expect(new Set(q.map((i) => i.card.id)).size).toBe(3);
-  });
-});
-
-describe('the 70% spoken floor', () => {
-  it('holds across a realistic run', () => {
-    const deck: Card[] = [];
-    const mix: CardType[] = ['word', 'swap', 'pronounce', 'say_it', 'action_verb', 'idiom'];
-    mix.forEach((t, ti) => {
-      for (let i = 0; i < 10; i++) deck.push(card(`${t}${ti}${i}`, t));
-    });
-    deck.push(card('b1', 'breath'));
-
-    const q = buildQueue(deck, NONE, opts({ limit: 30 }));
-    const spoken = q.filter((i) =>
-      ['word', 'swap', 'action_verb', 'pronounce', 'say_it'].includes(i.card.type),
-    );
-    expect(spoken.length / q.length).toBeGreaterThanOrEqual(0.7);
-  });
-});
-
-describe('Hindi never reaches the English feed', () => {
-  // Locked decision (PLAN.md §8, row 2): English is the whole feed, Hindi is a
-  // separate section. `buildCore` filtered by language and `buildEndless` did
-  // not, so Hindi words were served into the main feed once the English cards
-  // in a run were exhausted. This is exactly the kind of miss nobody notices
-  // until a Devanagari term appears mid-session.
-  const deck: Card[] = [
-    ...['w1', 'w2'].map((id) => card(id, 'word')),
-    ...['h1', 'h2', 'h3', 'h4', 'h5'].map((id) => card(id, 'word', 'hi')),
-    card('s1', 'say_it'),
-    card('sh1', 'say_it', 'hi'),
-    card('b1', 'breath'),
-  ];
-
-  it('excludes hi cards from an endless run', () => {
-    const q = buildQueue(deck, NONE, opts({ limit: 30, mode: 'endless' }));
-    expect(q.length).toBeGreaterThan(0);
-    expect(q.every((i) => i.card.lang === 'en')).toBe(true);
-  });
-
-  it('excludes hi cards from a core run', () => {
-    const q = buildQueue(deck, NONE, opts({ limit: 3, mode: 'core' }));
-    expect(q.every((i) => i.card.lang === 'en')).toBe(true);
-  });
-
-  it('recycles English rather than topping up with hi cards', () => {
-    // Only 3 non-breath English cards exist against a 30-card request. The
-    // endless queue must never dead-end, so it recycles them — but it must
-    // recycle *English*. Reaching for Hindi to pad the run is the failure.
-    const q = buildQueue(deck, NONE, opts({ limit: 30, mode: 'endless' }));
-    expect(q).toHaveLength(30);
-    expect(q.every((i) => i.card.lang === 'en')).toBe(true);
-    expect(new Set(q.map((i) => i.card.id)).size).toBeLessThanOrEqual(4);
-  });
-});

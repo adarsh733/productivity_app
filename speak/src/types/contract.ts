@@ -46,7 +46,13 @@ export type CardType =
   | 'action_verb' // concrete physical verbs: tripped, stumbled, lurched
   | 'pronounce' // hear it, say it, check the stress
   | 'say_it' // read a line aloud at a controlled pace
-  | 'breath'; // breath-support drill, stopwatch-driven in Phase 0
+  | 'breath' // breath-support drill, stopwatch-driven in Phase 0
+  | 'phrase' // "say this instead of that" — phrasing, not vocabulary
+  | 'feeling' // precise words for emotional states
+  | 'story_move' // a storytelling technique: hook, turn, landing
+  | 'describe' // an image or scene to describe out loud
+  | 'explain' // a topic to explain in 60s (news, history, philosophy)
+  | 'teach_back'; // something you learned, explained back
 
 interface CardBase {
   id: string;
@@ -128,6 +134,58 @@ export interface SayItCard extends CardBase {
   targetWpm: number;
 }
 
+export interface PhraseCard extends CardBase {
+  type: 'phrase';
+  weak: string; // what people usually say
+  strong: string; // the version that lands
+  why: string; // one sentence on why it lands. Never more.
+  register: 'office' | 'friends' | 'presenting';
+}
+
+export interface FeelingCard extends CardBase {
+  type: 'feeling';
+  term: string;
+  meaning: string;
+  /** How it differs from the nearest word people reach for instead. */
+  contrast: string;
+  example: string;
+}
+
+export interface StoryMoveCard extends CardBase {
+  type: 'story_move';
+  move: string; // "Land the ending on a short sentence."
+  why: string;
+  example: string;
+  heardIn?: string; // "Radio hosts closing a segment."
+}
+
+export interface DescribeCard extends CardBase {
+  type: 'describe';
+  /** Path under `public/describe/`. Ships with the app. */
+  imagePath: string;
+  alt: string;
+  prompt: string; // "Tell me what's happening — and how it feels."
+  beats: [string, string, string];
+  targetVocab: string[]; // 3–5 words
+  targetSec: number;
+}
+
+export interface ExplainCard extends CardBase {
+  type: 'explain';
+  topic: string;
+  angle: string; // the specific question, not the broad subject
+  beats: [string, string, string];
+  targetVocab: string[];
+  targetSec: number;
+}
+
+export interface TeachBackCard extends CardBase {
+  type: 'teach_back';
+  prompt: string;
+  beats: [string, string, string];
+  targetSec: number;
+}
+
 export type BreathDrill = 'mpt' | 'ladder' | 'box' | 'straw';
 
 export interface BreathCard extends CardBase {
@@ -153,16 +211,43 @@ export type Card =
   | ActionVerbCard
   | PronounceCard
   | SayItCard
-  | BreathCard;
+  | BreathCard
+  | PhraseCard
+  | FeelingCard
+  | StoryMoveCard
+  | DescribeCard
+  | ExplainCard
+  | TeachBackCard;
 
-/** Card types that require speaking out loud. Must stay ≥70% of the feed. */
+/**
+ * Spoken card types. In V3, the microphone is optional and never a feed gate;
+ * these are card types that support optional spoken attempts.
+ * (Obsolete ≥70% spoken-feed rule removed).
+ */
 export const SPOKEN_TYPES: readonly CardType[] = [
   'word',
   'swap',
   'action_verb',
   'pronounce',
   'say_it',
+  'describe',
+  'explain',
+  'teach_back',
 ] as const;
+
+/** User's chosen daily target. Nothing is lost by missing it. */
+export type DailyGoal = 'casual' | 'regular' | 'serious';
+
+export const GAMIFICATION = {
+  XP: { cardSeen: 1, cardSaved: 3, spokenRep: 10, describeRep: 25 },
+  GOAL_XP: { casual: 10, regular: 30, serious: 60 },
+  /** Streak holds on 5 cards OR 1 spoken rep. A 30-second day must count. */
+  STREAK_CARDS: 5,
+  FREEZES_PER_MONTH: 2,
+  /** How long a "less of this" swipe suppresses a card type. */
+  DOWNWEIGHT_DAYS: 7,
+} as const;
+
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Scheduling (SM-2 state)
@@ -188,28 +273,112 @@ export interface Review {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Logging
+// Logging & Production Events
 // ─────────────────────────────────────────────────────────────────────────────
 
-export type FeedMode = 'core' | 'endless';
+export type FeedMode = 'endless';
 
-export interface CardEvent {
+export type ProductionEventType =
+  | 'card_viewed'
+  | 'card_saved'
+  | 'card_unsaved'
+  | 'card_downweighted'
+  | 'spoken_rep_completed'
+  | 'describe_rep_completed'
+  | 'recall_graded';
+
+export interface BaseProductionEvent {
   id: string;
-  cardId: string;
-  cardType: CardType;
+  type: ProductionEventType;
   at: Millis;
-  grade: Grade;
-  msSpent: number;
-  mode: FeedMode;
-  /** Breath drills only: seconds held, or how far he counted. */
-  measure?: number;
+  date?: DayKey;
 }
 
+export interface CardViewedEvent extends BaseProductionEvent {
+  type: 'card_viewed';
+  cardId: string;
+  cardType: CardType;
+  msSpent?: number;
+  mode?: FeedMode;
+}
+
+export interface CardSavedEvent extends BaseProductionEvent {
+  type: 'card_saved';
+  cardId: string;
+  cardType?: CardType;
+}
+
+export interface CardUnsavedEvent extends BaseProductionEvent {
+  type: 'card_unsaved';
+  cardId: string;
+  cardType?: CardType;
+}
+
+export interface CardDownweightedEvent extends BaseProductionEvent {
+  type: 'card_downweighted';
+  cardId?: string;
+  cardType?: CardType;
+  target: string;
+  multiplier: number;
+  expiresAt: Millis;
+}
+
+export interface SpokenRepCompletedEvent extends BaseProductionEvent {
+  type: 'spoken_rep_completed';
+  recordingId: string;
+  drillTitle: string;
+  durationSec: number;
+  xpEarned: number;
+  transcript?: string;
+}
+
+export interface DescribeRepCompletedEvent extends BaseProductionEvent {
+  type: 'describe_rep_completed';
+  recordingId: string;
+  drillTitle: string;
+  durationSec: number;
+  xpEarned: number;
+  transcript?: string;
+}
+
+export interface RecallGradedEvent extends BaseProductionEvent {
+  type: 'recall_graded';
+  cardId: string;
+  cardType: CardType;
+  grade: Grade;
+  msSpent?: number;
+}
+
+export type ProductionEvent =
+  | CardViewedEvent
+  | CardSavedEvent
+  | CardUnsavedEvent
+  | CardDownweightedEvent
+  | SpokenRepCompletedEvent
+  | DescribeRepCompletedEvent
+  | RecallGradedEvent;
+
 /**
- * One row per calendar day. The streak reads `coreThreeDone` and nothing else —
- * a three-minute day must never break it.
+ * Standard ProductionEvent stored in `db.events`.
+ * Preserves optional legacy fields for index and Supabase sync compatibility.
+ */
+export type CardEvent = ProductionEvent & {
+  cardId?: string;
+  cardType?: CardType;
+  grade?: Grade;
+  msSpent?: number;
+  mode?: FeedMode;
+  measure?: number;
+};
+
+/**
+ * One row per calendar day. Day completion (`isDayComplete`) requires
+ * 5 cards viewed OR 1 valid spoken rep.
+ * `coreThreeDone` is preserved as a boolean for backwards compatibility with
+ * existing stored data, reflecting whether the day is complete.
  */
 export interface DayRecord {
+
   date: DayKey;
   coreThreeDone: boolean;
   cardsCompleted: number;
@@ -222,6 +391,10 @@ export interface DayRecord {
   labSessionDone?: boolean;
   /** Phase 1: seconds spent in the Lab today, partial sessions included. */
   labSeconds?: number;
+  /** XP earned today. */
+  xp?: number;
+  /** Spoken reps completed today across feed, gym and drills. */
+  spokenReps?: number;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -242,13 +415,37 @@ export interface InboxItem {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Profile
+// Profile & Preferences
 // ─────────────────────────────────────────────────────────────────────────────
+
+export interface DownweightRecord {
+  target: string;
+  type?: CardType;
+  multiplier: number;
+  expiresAt: Millis;
+  createdAt: Millis;
+}
+
+export interface FreezeRecord {
+  month: string; // "YYYY-MM"
+  usedDates: DayKey[];
+  remaining: number;
+}
 
 export interface Profile {
   /** Always the string `me`. Single-row table. */
   id: 'me';
   createdAt: Millis;
+  /** User's chosen daily target. */
+  dailyGoal?: DailyGoal;
+  /** Selected interests from onboarding / settings. */
+  interests?: string[];
+  /** Relative weights per card type based on preferences and left-swipes. */
+  typeWeights?: Record<string, number>;
+  /** Tag/category-based downweights with expiration timestamps. */
+  downweights?: Record<string, DownweightRecord>;
+  /** Card IDs that have already been awarded bookmark XP to prevent toggle farming. */
+  bookmarkXpAwarded?: string[];
   /** Measured in Phase 1. Until then `say_it` cards use their authored default. */
   baselineWpm?: number;
   /** Stepped down ~10% at a time from the baseline — never a fixed 140. */
@@ -312,7 +509,7 @@ export interface MicProfile {
 // ─────────────────────────────────────────────────────────────────────────────
 
 /** Why this card was chosen. Shown in the debug overlay, not to the user. */
-export type QueueReason = 'core' | 'due' | 'new' | 'filler';
+export type QueueReason = 'due' | 'new' | 'filler';
 
 export interface QueueItem {
   card: Card;
@@ -333,8 +530,11 @@ export interface QueueOptions {
   newServedToday: number;
   /** How many items to return. */
   limit: number;
-  /** `core` returns exactly the Core 3, in order. `endless` returns a mixed run. */
-  mode: FeedMode;
+  mode?: FeedMode;
+  /** Biases which card types are served. */
+  interests?: string[];
+  /** Relative multiplier per card type. */
+  typeWeights?: Record<string, number>;
 }
 
 /** Hard caps the queue must respect. */
@@ -345,9 +545,8 @@ export const QUEUE_RULES = {
   MAX_CONSECUTIVE_SAME_TYPE: 1,
   /** Ceiling on brand-new cards per day, so reviews don't get buried. */
   MAX_NEW_PER_DAY: 20,
-  /** Core 3, in this order. Changing this changes what the streak means. */
-  CORE_SEQUENCE: ['breath', 'say_it', 'word'] as readonly CardType[],
 } as const;
+
 
 // ─────────────────────────────────────────────────────────────────────────────
 // AI proxy — the Netlify Function contract (Phase 1+, shipped dark in Phase 0)
@@ -368,14 +567,14 @@ export interface AiRequest {
   /** Task-specific payload. Validated server-side per task. */
   payload: unknown;
   /** Provider hint. The function may override on quota failure. */
-  prefer?: 'gemini' | 'groq';
+  prefer?: 'gemini' | 'groq' | 'anthropic';
 }
 
 export interface AiResponse<T = unknown> {
   ok: boolean;
   task: AiTask;
   /** Which provider actually served it — recorded so quota use is visible. */
-  provider?: 'gemini' | 'groq';
+  provider?: 'gemini' | 'groq' | 'anthropic';
   data?: T;
   error?: string;
 }
@@ -517,6 +716,8 @@ export interface Recording {
   blob: Blob;
   /** Mean dBFS over the attempt. Undefined when the mic was denied. */
   avgDb?: number;
+  /** Optional speech recognition transcript captured during the attempt. */
+  transcript?: string;
 }
 
 /**

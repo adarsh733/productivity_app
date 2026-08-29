@@ -1,0 +1,1142 @@
+[
+  {
+    "id": "exp-distributed-caching",
+    "type": "explain",
+    "topic": "Distributed Caching",
+    "angle": "Explain how Redis caching prevents database exhaustion to a non-technical product manager.",
+    "beats": [
+      "The physical bookshelf analogy (hot books on the desk vs dusty archives in the basement)",
+      "How cache hits reduce latency from 200ms to 2ms",
+      "The trade-off: cache invalidation and eventual consistency"
+    ],
+    "targetVocab": [
+      "invalidation",
+      "throughput",
+      "latency",
+      "bottleneck",
+      "staleness"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "tech",
+      "analogy"
+    ]
+  },
+  {
+    "id": "exp-rate-limiting",
+    "type": "explain",
+    "topic": "API Rate Limiting",
+    "angle": "Explain the Token Bucket algorithm to an engineering intern.",
+    "beats": [
+      "Water dripping into a bucket at a constant rate",
+      "Burst allowance when bucket is full",
+      "Dropping requests with HTTP 429 when empty"
+    ],
+    "targetVocab": [
+      "capacity",
+      "burst",
+      "refill rate",
+      "throttle",
+      "backoff"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "tech",
+      "architecture"
+    ]
+  },
+  {
+    "id": "exp-technical-debt",
+    "type": "explain",
+    "topic": "Technical Debt",
+    "angle": "Explain why paying down technical debt accelerates feature velocity to a business stakeholder.",
+    "beats": [
+      "The financial credit card analogy: compounding interest on shortcuts",
+      "How high debt slows down new feature deployments",
+      "The pragmatic balance: strategic borrowing vs reckless accumulation"
+    ],
+    "targetVocab": [
+      "velocity",
+      "compounding",
+      "refactor",
+      "drag",
+      "pragmatic"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "leadership",
+      "business"
+    ]
+  },
+  {
+    "id": "exp-indexing",
+    "type": "explain",
+    "topic": "Database Indexes",
+    "angle": "Explain why adding indexes speeds up reads but slows down writes.",
+    "beats": [
+      "The textbook index analogy at the back of a physical book",
+      "Instant pointer lookup for SELECT queries",
+      "The overhead of reordering the index tree on every INSERT"
+    ],
+    "targetVocab": [
+      "overhead",
+      "b-tree",
+      "lookup",
+      "throughput",
+      "mutation"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "database",
+      "fundamentals"
+    ]
+  },
+  {
+    "id": "exp-idempotency",
+    "type": "explain",
+    "lang": "en",
+    "topic": "API Idempotency",
+    "angle": "Explain why payment APIs must be idempotent using the elevator button analogy.",
+    "beats": [
+      "Pressing an elevator button ten times still results in the elevator arriving once at your floor",
+      "How duplicate network retries can charge a credit card twice without unique idempotency keys",
+      "The technical solution: caching request IDs on the server to return the original transaction response safely"
+    ],
+    "targetVocab": [
+      "idempotent",
+      "duplicate",
+      "retry",
+      "mutation",
+      "deterministic"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "api",
+      "systems"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-cap-theorem",
+    "type": "explain",
+    "lang": "en",
+    "topic": "The CAP Theorem",
+    "angle": "Explain the fundamental trade-off between Consistency, Availability, and Partition Tolerance to a non-technical PM.",
+    "beats": [
+      "The ATM network partition analogy: what happens when an ATM loses network connection to the bank",
+      "Why you can never guarantee both fresh global consistency and 100% availability during network splits",
+      "How modern distributed systems pragmatically choose between CP (banking) and AP (social media feeds)"
+    ],
+    "targetVocab": [
+      "partition",
+      "consistency",
+      "availability",
+      "trade_off",
+      "distributed"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "distributed_systems",
+      "architecture"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-event-driven-architecture",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Event-Driven Architecture",
+    "angle": "Explain the difference between synchronous HTTP calls and asynchronous event publishing using a restaurant kitchen.",
+    "beats": [
+      "Synchronous blocking: a waiter standing frozen at the stove waiting for the chef to cook before taking the next order",
+      "Event-driven: the waiter pins an order ticket on the kitchen board and immediately moves to serve another table",
+      "Benefits: decoupling producers from consumers, buffering traffic spikes, and independent microservice scaling"
+    ],
+    "targetVocab": [
+      "asynchronous",
+      "decoupling",
+      "throughput",
+      "consumer",
+      "backlog"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "architecture",
+      "backend"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-unit-economics",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Unit Economics",
+    "angle": "Explain Customer Acquisition Cost (CAC) versus Lifetime Value (LTV) using a gym membership model.",
+    "beats": [
+      "CAC is what you spend on marketing flyers and sales staff to sign up one new member",
+      "LTV is the total subscription revenue that member pays over the eighteen months before they churn",
+      "The golden ratio: healthy businesses aim for an LTV at least three times greater than CAC"
+    ],
+    "targetVocab": [
+      "acquisition",
+      "retention",
+      "margin",
+      "payback",
+      "sustainability"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "business",
+      "finance"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-database-sharding",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Database Sharding",
+    "angle": "Explain horizontal database sharding using a multi-cabinet filing system analogy.",
+    "beats": [
+      "When a single filing cabinet overflows with folders, you split files across cabinets by customer surname (A-M, N-Z)",
+      "How sharding distributes read/write IOPS across multiple physical server nodes",
+      "The architectural challenge: executing cross-shard joins and balancing data hotspots"
+    ],
+    "targetVocab": [
+      "horizontal",
+      "partitioning",
+      "hotspot",
+      "shard_key",
+      "scalability"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "database",
+      "scalability"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-latency-vs-throughput",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Latency vs Throughput",
+    "angle": "Explain the difference between latency and throughput using highway traffic versus vehicle speed.",
+    "beats": [
+      "Latency is how many minutes it takes a single car to travel from origin to destination",
+      "Throughput is the total volume of vehicles passing under a bridge every hour (highway width)",
+      "Why optimizing one does not automatically fix the other (e.g. a wide highway with a slow speed limit)"
+    ],
+    "targetVocab": [
+      "latency",
+      "throughput",
+      "bandwidth",
+      "bottleneck",
+      "propagation"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "performance",
+      "networking"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-load-balancing",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Load Balancing",
+    "angle": "Explain Round-Robin and Least-Connections load balancing using airport security checkpoint lanes.",
+    "beats": [
+      "The airport queue coordinator directing passengers to available screening gates",
+      "Round-robin distribution versus dynamic routing based on current line depth and server health",
+      "How load balancers prevent single-point-of-failure crashes by auto-detecting degraded instances"
+    ],
+    "targetVocab": [
+      "distribution",
+      "resilience",
+      "failover",
+      "health_check",
+      "traffic"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "networking",
+      "infrastructure"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-public-key-cryptography",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Asymmetric Cryptography",
+    "angle": "Explain public and private key encryption using an open padlock analogy.",
+    "beats": [
+      "The public key is an open padlock anyone can snap shut around a confidential package",
+      "The private key is the unique physical key held only by the recipient that can unlock the box",
+      "How this enables secure, encrypted internet banking without ever transmitting the secret key over the wire"
+    ],
+    "targetVocab": [
+      "asymmetric",
+      "encryption",
+      "ciphertext",
+      "decryption",
+      "integrity"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "security",
+      "cryptography"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-ab-testing-significance",
+    "type": "explain",
+    "lang": "en",
+    "topic": "A/B Test Statistical Significance",
+    "angle": "Explain statistical significance in product A/B tests using coin flip probability.",
+    "beats": [
+      "Flipping a coin three times and getting heads does not prove the coin is biased (random variance)",
+      "Why you need sufficient sample size and confidence intervals (p < 0.05) before declaring a button color won",
+      "The risk of false positives: calling a winner too early during weekly seasonality swings"
+    ],
+    "targetVocab": [
+      "significance",
+      "variance",
+      "hypothesis",
+      "sample_size",
+      "confidence"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "data",
+      "product"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-garbage-collection",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Memory Garbage Collection",
+    "angle": "Explain automatic garbage collection in modern runtimes using an office recycling cleaner.",
+    "beats": [
+      "Objects created in code are like scratch papers placed on a worker’s desk",
+      "When an object is no longer referenced anywhere, the runtime marks it as unreachable junk",
+      "The cleaner sweeps through periodically to reclaim memory, trading occasional CPU pauses for memory safety"
+    ],
+    "targetVocab": [
+      "allocation",
+      "reachability",
+      "overhead",
+      "pause_time",
+      "reclamation"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "runtime",
+      "memory"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-bullwhip-effect",
+    "type": "explain",
+    "lang": "en",
+    "topic": "The Bullwhip Effect in Supply Chains",
+    "angle": "Explain how small shifts in retail customer demand cause massive upstream factory overproduction.",
+    "beats": [
+      "A grocery store sells 5% more diapers this week and orders 10% extra from the regional distributor just in case",
+      "The distributor panics and orders 20% extra from the wholesaler, who demands 40% more from the factory",
+      "How slight demand noise amplifies into severe inventory whiplash without transparent real-time data sharing"
+    ],
+    "targetVocab": [
+      "amplification",
+      "distortion",
+      "inventory",
+      "forecasting",
+      "whiplash"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "supply_chain",
+      "systems"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-compound-interest",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Compound Interest",
+    "angle": "Explain the exponential snowball effect of compounding interest versus linear arithmetic growth.",
+    "beats": [
+      "Linear growth: earning interest only on your original principal deposit year after year",
+      "Compounding: earning interest on your interest, creating an accelerating exponential curve over decades",
+      "The critical variable: time and consistency matter exponentially more than initial capital size"
+    ],
+    "targetVocab": [
+      "exponential",
+      "principal",
+      "compounding",
+      "trajectory",
+      "yield"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "finance",
+      "math"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-sql-vs-nosql",
+    "type": "explain",
+    "lang": "en",
+    "topic": "SQL vs NoSQL Databases",
+    "angle": "Explain when to use structured relational tables versus flexible document stores.",
+    "beats": [
+      "Relational SQL: rigid Excel spreadsheets with strict column types and foreign key relationships (financial ledgers)",
+      "Document NoSQL: flexible JSON folders where each record can carry different dynamic properties (e-commerce catalogs)",
+      "The engineering trade-off: ACID transaction integrity versus horizontal write scalability and schema flexibility"
+    ],
+    "targetVocab": [
+      "relational",
+      "schema",
+      "integrity",
+      "flexibility",
+      "normalization"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "database",
+      "tradeoffs"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-cdn-edge-caching",
+    "type": "explain",
+    "lang": "en",
+    "topic": "CDN Edge Caching",
+    "angle": "Explain Content Delivery Networks using local neighborhood convenience stores.",
+    "beats": [
+      "Instead of every customer in Tokyo ordering milk directly from a dairy farm in Switzerland, stock it in local convenience stores",
+      "How CDNs replicate static images, video chunks, and frontend bundles to hundreds of edge servers worldwide",
+      "The dramatic reduction in round-trip latency and origin server compute load"
+    ],
+    "targetVocab": [
+      "edge",
+      "replication",
+      "latency",
+      "cache_hit",
+      "geographic"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "networking",
+      "web"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-concurrency-vs-parallelism",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Concurrency vs Parallelism",
+    "angle": "Explain concurrency versus parallelism using a single chef juggling dishes versus multiple chefs.",
+    "beats": [
+      "Concurrency: one chef chopping onions while checking a simmering soup—interleaving progress on multiple tasks on one core",
+      "Parallelism: four chefs standing at four stoves simultaneously cooking four independent meals on multiple CPU cores",
+      "Concurrency is about structural design; parallelism is about simultaneous physical execution"
+    ],
+    "targetVocab": [
+      "interleaving",
+      "simultaneous",
+      "multi_core",
+      "scheduling",
+      "execution"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "concurrency",
+      "cs_fundamentals"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-churn-and-ltv",
+    "type": "explain",
+    "lang": "en",
+    "topic": "SaaS Churn Rate Dynamics",
+    "angle": "Explain why reducing monthly churn by 2% has a compounding impact on company valuation.",
+    "beats": [
+      "The leaky bucket analogy: adding new water (leads) is futile if water leaks out the bottom continuously",
+      "How monthly churn compounds over twelve months to cap maximum achievable recurring revenue",
+      "Why retention improvements increase customer lifetime value without increasing marketing spend"
+    ],
+    "targetVocab": [
+      "churn",
+      "compounding",
+      "retention",
+      "recurring",
+      "leakage"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "business",
+      "metrics"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-circuit-breaker",
+    "type": "explain",
+    "lang": "en",
+    "topic": "The Circuit Breaker Pattern",
+    "angle": "Explain microservice circuit breakers using household electrical fuses.",
+    "beats": [
+      "When an external service experiences an outage, continuing to bombard it with requests exhausts your own connection pool",
+      "The circuit breaker trips open after five consecutive errors, immediately returning safe cached fallbacks",
+      "Periodic half-open canary probes test if the remote service has recovered before restoring full traffic"
+    ],
+    "targetVocab": [
+      "resilience",
+      "fallback",
+      "cascade",
+      "timeout",
+      "canary"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "architecture",
+      "resilience"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-graphql-vs-rest",
+    "type": "explain",
+    "lang": "en",
+    "topic": "GraphQL vs REST APIs",
+    "angle": "Explain over-fetching and under-fetching using a customized buffet versus a fixed set menu.",
+    "beats": [
+      "REST set menu: calling /users/123 returns 50 database fields when the mobile app only needed the user’s name and avatar",
+      "GraphQL buffet: the client sends a precise query specifying only the exact fields required for that screen",
+      "Trade-offs: reduced payload size and single-roundtrip flexibility versus query complexity and server caching challenges"
+    ],
+    "targetVocab": [
+      "over_fetching",
+      "payload",
+      "schema",
+      "query",
+      "round_trip"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "api",
+      "web"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-git-dag-internals",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Git Internal Architecture",
+    "angle": "Explain Git commits as a Directed Acyclic Graph (DAG) of immutable snapshots.",
+    "beats": [
+      "Git does not store diffs; each commit is a complete snapshot snapshot tree hashed with SHA-1",
+      "Branches are simply lightweight 40-byte pointers pointing to a specific commit hash in the graph",
+      "Why rebasing rewrites history by replaying commits with new parent pointers, while merging preserves both lines"
+    ],
+    "targetVocab": [
+      "immutable",
+      "snapshot",
+      "directed_graph",
+      "hash",
+      "pointer"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "git",
+      "cs_fundamentals"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-jwt-vs-cookies",
+    "type": "explain",
+    "lang": "en",
+    "topic": "JWTs vs Server Session Cookies",
+    "angle": "Explain stateless JSON Web Tokens versus stateful server sessions using a passport visa versus a coat check ticket.",
+    "beats": [
+      "Session cookie: a numbered coat-check ticket where the server must query a central database on every request to look up the owner",
+      "JWT: a digitally signed passport carrying encrypted user permissions self-contained inside the token payload",
+      "The trade-off: horizontal stateless scalability versus the difficulty of instant token revocation before expiration"
+    ],
+    "targetVocab": [
+      "stateless",
+      "cryptographic",
+      "signature",
+      "revocation",
+      "payload"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "auth",
+      "security"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-oauth2-flow",
+    "type": "explain",
+    "lang": "en",
+    "topic": "OAuth 2.0 Authorization Code Flow",
+    "angle": "Explain \"Sign in with Google\" using a hotel valet key analogy.",
+    "beats": [
+      "A valet key allows the hotel attendant to park the car without opening the locked glove compartment or trunk",
+      "How authorization code flow grants third-party apps limited scoped access without ever sharing your master password",
+      "The security handshake: exchange of temporary authorization code on a secure backchannel for an access token"
+    ],
+    "targetVocab": [
+      "delegation",
+      "scoped",
+      "handshake",
+      "token",
+      "authorization"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "security",
+      "auth"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-zero-downtime-deployments",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Zero-Downtime Blue/Green Deployments",
+    "angle": "Explain Blue/Green and Rolling deployments using twin airport runways.",
+    "beats": [
+      "Blue environment runs live customer traffic while Green environment deploys and verifies the new release in isolation",
+      "Once health checks pass, the router flips traffic from Blue to Green instantaneously",
+      "If errors spike, the router flips back immediately without having to rebuild from source"
+    ],
+    "targetVocab": [
+      "cutover",
+      "rollback",
+      "isolation",
+      "traffic_routing",
+      "continuity"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "devops",
+      "deployment"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-containers-vs-vms",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Containers vs Virtual Machines",
+    "angle": "Explain Docker containers versus hypervisor VMs using an apartment building versus independent houses.",
+    "beats": [
+      "Virtual Machine: building an entirely separate house with its own plumbing, foundation, and full guest operating system",
+      "Docker container: renting an apartment in a shared building that shares the underlying host Linux kernel and hardware",
+      "Why containers spin up in 200 milliseconds and use a fraction of memory compared to multi-gigabyte VM images"
+    ],
+    "targetVocab": [
+      "isolation",
+      "kernel",
+      "overhead",
+      "virtualization",
+      "portability"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "devops",
+      "docker"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-database-deadlocks",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Database Deadlocks",
+    "angle": "Explain transactional deadlocks using a one-lane bridge standoff.",
+    "beats": [
+      "Transaction A locks Row 1 and wants Row 2; Transaction B locks Row 2 and wants Row 1",
+      "Neither transaction can proceed forward, creating an infinite circular dependency freeze",
+      "How database engines detect circular wait graphs and automatically abort one transaction to allow the other to finish"
+    ],
+    "targetVocab": [
+      "concurrency",
+      "circular_dependency",
+      "lock_contention",
+      "abort",
+      "rollback"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "database",
+      "concurrency"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-search-inverted-index",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Search Engine Inverted Index",
+    "angle": "Explain how Elasticsearch finds keywords across millions of articles in milliseconds.",
+    "beats": [
+      "Forward scan: reading every book from cover to cover to see if the word \"database\" appears (slow O(N))",
+      "Inverted index: the alphabetical glossary at the back of a textbook mapping every word to an exact list of page numbers",
+      "How posting lists allow instant intersection queries (e.g. articles containing both \"React\" AND \"Performance\")"
+    ],
+    "targetVocab": [
+      "inverted_index",
+      "lookup",
+      "posting_list",
+      "tokenization",
+      "retrieval"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "search",
+      "algorithms"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-eventual-consistency",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Eventual Consistency",
+    "angle": "Explain eventual consistency using viral social media like counters.",
+    "beats": [
+      "When an influencer posts a photo, showing the exact same like count simultaneously in Tokyo and London requires slow cross-globe locking",
+      "Eventual consistency allows local servers to update immediately and propagate changes asynchronously in the background",
+      "The guarantee: in the absence of new updates, all replica nodes will eventually converge to the exact same state"
+    ],
+    "targetVocab": [
+      "convergence",
+      "propagation",
+      "asynchronous",
+      "replica",
+      "staleness"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "distributed_systems",
+      "architecture"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-bloom-filters",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Bloom Filters",
+    "angle": "Explain probabilistic data structures using a fast nightclub guestlist check.",
+    "beats": [
+      "A bouncer checking a tiny memory bit-array can tell you with 100% certainty if your name is NOT on the list",
+      "If the filter says \"Maybe\", you execute a full disk database lookup to confirm",
+      "How Bloom filters eliminate 99% of expensive disk lookups for non-existent keys using minimal RAM"
+    ],
+    "targetVocab": [
+      "probabilistic",
+      "bit_array",
+      "false_positive",
+      "hashing",
+      "efficiency"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "algorithms",
+      "data_structures"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-stream-backpressure",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Backpressure in Data Streams",
+    "angle": "Explain reactive backpressure using a funnel overflowing with water.",
+    "beats": [
+      "When a fast producer sends 10,000 events/sec to a slow database consumer that can only process 1,000 events/sec, memory buffers explode",
+      "Backpressure signals the upstream producer to slow down emission rate until downstream queues drain",
+      "The architecture choice: rate throttling, disk-buffered message queues (Kafka), or selective drop strategies"
+    ],
+    "targetVocab": [
+      "backpressure",
+      "throughput",
+      "buffer_overflow",
+      "throttling",
+      "flow_control"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "streaming",
+      "architecture"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-tcp-vs-udp",
+    "type": "explain",
+    "lang": "en",
+    "topic": "TCP vs UDP Protocols",
+    "angle": "Explain certified registered mail versus live FM radio broadcast.",
+    "beats": [
+      "TCP: registered mail with tracking numbers, sequence verification, and automatic retransmission if an envelope is dropped",
+      "UDP: live radio broadcast where missing a split-second audio packet is preferable to pausing the live show to retransmit",
+      "Why web browsing uses TCP (correctness matters) and multiplayer video games use UDP (speed matters)"
+    ],
+    "targetVocab": [
+      "reliability",
+      "handshake",
+      "retransmission",
+      "packet_loss",
+      "latency"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "networking",
+      "protocols"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-dns-lifecycle",
+    "type": "explain",
+    "lang": "en",
+    "topic": "DNS Resolution Lifecycle",
+    "angle": "Explain typing a URL in a browser to the global telephone directory lookup.",
+    "beats": [
+      "Your browser checks local cache, asks the operating system resolver, and queries the recursive ISP server",
+      "The recursive resolver traverses root nameservers, TLD servers (.com), and the authoritative nameserver for the domain",
+      "The authoritative server returns the IP address (e.g. 142.250.190.46), which is cached according to TTL records"
+    ],
+    "targetVocab": [
+      "resolution",
+      "authoritative",
+      "recursive",
+      "ttl",
+      "ip_address"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "networking",
+      "dns"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-api-gateway",
+    "type": "explain",
+    "lang": "en",
+    "topic": "The API Gateway Pattern",
+    "angle": "Explain microservice API gateways using a luxury hotel concierge desk.",
+    "beats": [
+      "Instead of guests contacting the laundry, kitchen, security, and billing departments separately, they call the front desk",
+      "The API gateway centralizes authentication, SSL termination, rate limiting, and request routing in one entrypoint",
+      "Why this protects internal microservices from direct public internet exposure"
+    ],
+    "targetVocab": [
+      "reverse_proxy",
+      "aggregation",
+      "routing",
+      "centralization",
+      "perimeter"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "architecture",
+      "microservices"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-raft-consensus",
+    "type": "explain",
+    "lang": "en",
+    "topic": "The Raft Consensus Algorithm",
+    "angle": "Explain distributed leader election using parliamentary voting rules.",
+    "beats": [
+      "Nodes in a cluster elect one Leader; if the leader heartbeat fails, nodes step up as Candidates and vote for a new leader",
+      "All database writes flow through the Leader, who replicates entries to a majority quorum before committing",
+      "How Raft ensures cluster consistency even if one node crashes or drops off the network"
+    ],
+    "targetVocab": [
+      "consensus",
+      "quorum",
+      "election",
+      "heartbeat",
+      "fault_tolerance"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "distributed_systems",
+      "algorithms"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-pagerank-basics",
+    "type": "explain",
+    "lang": "en",
+    "topic": "PageRank Algorithm",
+    "angle": "Explain web authority ranking using academic peer-reviewed citations.",
+    "beats": [
+      "A research paper cited by fifty renowned scientists carries vastly more authority than a paper cited by two students",
+      "PageRank models a random web surfer clicking hyperlinks: pages with links from authoritative sites inherit high rank",
+      "The feedback loop: high-authority nodes pass higher vote weight downstream across the web graph"
+    ],
+    "targetVocab": [
+      "authority",
+      "hyperlink",
+      "graph_traversal",
+      "damping_factor",
+      "eigenvector"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "search",
+      "algorithms"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-websockets-vs-polling",
+    "type": "explain",
+    "lang": "en",
+    "topic": "WebSockets vs HTTP Polling",
+    "angle": "Explain persistent bidirectional sockets versus checking your mailbox every thirty seconds.",
+    "beats": [
+      "Short polling: repeatedly asking the server \"Is there new data yet?\" every two seconds, wasting 99% of HTTP headers",
+      "WebSockets: opening a permanent two-way telephone call where the server pushes new events instantly as they occur",
+      "Ideal for real-time chat, collaborative document editing, and financial trading charts"
+    ],
+    "targetVocab": [
+      "bidirectional",
+      "persistent",
+      "overhead",
+      "real_time",
+      "full_duplex"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "web",
+      "protocols"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-connection-pooling",
+    "type": "explain",
+    "lang": "en",
+    "topic": "Database Connection Pooling",
+    "angle": "Explain connection pools using shared fleet rental cars versus buying a new car for every trip.",
+    "beats": [
+      "Opening a new TCP and TLS database connection on every user click takes 50ms of CPU handshake latency",
+      "A connection pool maintains 20 pre-authenticated warm connections ready in memory to borrow and return immediately",
+      "Why connection pooling protects PostgreSQL and MySQL from out-of-memory connection thrashing"
+    ],
+    "targetVocab": [
+      "handshake",
+      "overhead",
+      "reusability",
+      "thrashing",
+      "concurrency"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "database",
+      "performance"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "exp-b-tree-vs-lsm-tree",
+    "type": "explain",
+    "lang": "en",
+    "topic": "B-Trees vs LSM-Trees",
+    "angle": "Explain why write-heavy databases like Cassandra use LSM-Trees while read-heavy databases like PostgreSQL use B-Trees using a library ledger analogy.",
+    "beats": [
+      "B-Trees update records directly in-place on disk pages, delivering fast single-seek reads but causing random write fragmentation",
+      "LSM-Trees append all new writes sequentially into an immutable in-memory MemTable, eliminating random disk write overhead",
+      "Background compaction passes merge sorted string tables (SSTables) in the background to keep read queries fast"
+    ],
+    "targetVocab": [
+      "immutable",
+      "compaction",
+      "sequential",
+      "fragmentation",
+      "throughput"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "explain",
+      "database",
+      "storage_engines"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  }
+]

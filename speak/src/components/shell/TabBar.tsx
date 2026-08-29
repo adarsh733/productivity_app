@@ -1,33 +1,35 @@
-import type { ResetTab } from '../../features/reset/sessionState';
-import { CoachIcon, PracticeIcon, ProgressIcon, TodayIcon } from './Icons';
+import { BrowseIcon, FeedIcon, SpeakIcon, YouIcon } from './Icons';
+
+export type AppTab = 'feed' | 'browse' | 'speak' | 'you';
 
 const TABS = [
-  { id: 'today', label: 'Today', Icon: TodayIcon },
-  { id: 'coach', label: 'Coach', Icon: CoachIcon },
-  { id: 'practice', label: 'Practice', Icon: PracticeIcon },
-  { id: 'progress', label: 'Progress', Icon: ProgressIcon },
+  { id: 'feed' as const, label: 'Feed', Icon: FeedIcon },
+  { id: 'browse' as const, label: 'Browse', Icon: BrowseIcon },
+  { id: 'speak' as const, label: 'Speak', Icon: SpeakIcon },
+  { id: 'you' as const, label: 'You', Icon: YouIcon },
 ] as const;
 
 export default function TabBar({
   active,
   onChange,
 }: {
-  active: ResetTab;
-  onChange: (tab: ResetTab) => void;
+  active: AppTab;
+  onChange: (tab: AppTab) => void;
 }) {
   return (
-    <nav className="reset-tabbar" aria-label="Primary navigation">
+    <nav className="reset-tabbar tabs" aria-label="Primary navigation">
       {TABS.map(({ id, label, Icon }) => {
         const isActive = id === active;
         return (
           <button
             key={id}
             type="button"
-            className={`reset-tab tap${isActive ? ' is-active' : ''}`}
+            className={`reset-tab tab tap${isActive ? ' is-active on' : ''}`}
             aria-current={isActive ? 'page' : undefined}
             onClick={() => onChange(id)}
+            aria-label={`${label} tab`}
           >
-            <Icon />
+            <Icon className="tab-icon" />
             <span>{label}</span>
           </button>
         );
@@ -35,4 +37,3 @@ export default function TabBar({
     </nav>
   );
 }
-

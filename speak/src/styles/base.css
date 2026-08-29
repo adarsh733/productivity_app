@@ -1,0 +1,266 @@
+/* -- SPEAK — Base Shell & Typography ---------------------------------------- */
+
+.app,
+.reset-app-shell,
+.v3-app-shell {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+
+.reset-app-body,
+.app-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.screen {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--gutter);
+  position: relative;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.screen.center {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.h1s {
+  font-family: var(--serif);
+  font-size: var(--fs-6);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.sub {
+  font-size: var(--fs-2);
+  color: var(--ink-2);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.kicker {
+  font-size: var(--fs-1);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-weight: var(--fw-bold);
+}
+
+.sechd b {
+  display: block;
+  font-size: var(--fs-3);
+  font-family: var(--serif);
+  color: var(--ink);
+  margin-bottom: var(--s-2);
+}
+
+/* -- Skip to Content Link --------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 10px 16px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-2);
+  font-weight: var(--fw-bold);
+  z-index: 9999;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: top var(--dur-fast) var(--ease);
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* -- Focus Visible Rings ---------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* -- Global Primary Action Button ------------------------------------------- */
+.prim {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: none;
+  border-radius: var(--r-pill);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-3);
+  font-weight: var(--fw-bold);
+  width: 100%;
+  box-shadow: var(--shadow-accent);
+  cursor: pointer;
+  transition: opacity var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+
+.prim:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.prim:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* -- Live Toast Notification ------------------------------------------------ */
+.toast {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(var(--tabbar-h) + 16px);
+  background: var(--ink);
+  color: #fff;
+  border-radius: var(--r-pill);
+  padding: 10px 18px;
+  font-size: var(--fs-2);
+  font-weight: var(--fw-bold);
+  box-shadow: 0 8px 24px rgba(21, 23, 26, 0.2);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  z-index: 100;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: toastFadeIn var(--dur) var(--ease);
+}
+
+@keyframes toastFadeIn {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* -- Primary Tab Bar -------------------------------------------------------- */
+.tabs.reset-tabbar,
+.tabbar {
+  flex: none;
+  height: var(--tabbar-h);
+  background: var(--card);
+  border-top: 1px solid var(--line);
+  padding-bottom: var(--safe-bottom);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  z-index: 10;
+  box-shadow: 0 -2px 8px rgba(21, 23, 26, 0.03);
+}
+
+.tab,
+.reset-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: var(--fs-1);
+  font-weight: var(--fw-bold);
+  color: var(--ink-3);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.tab .tab-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.tab.on,
+.tab.is-active {
+  color: var(--accent);
+}
+
+/* -- Floating Capture Action Button (FAB) ----------------------------------- */
+.fab {
+  position: absolute;
+  right: var(--gutter);
+  bottom: calc(var(--tabbar-h) + 12px + var(--safe-bottom));
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: var(--r-pill);
+  padding: 10px 16px;
+  font-size: var(--fs-2);
+  font-weight: var(--fw-bold);
+  box-shadow: 0 8px 24px rgba(21, 23, 26, 0.18);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  z-index: 25;
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.fab:active {
+  transform: scale(0.96);
+}
+
+/* -- Reusable List Row Item ------------------------------------------------- */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  box-shadow: 0 1px 3px rgba(21, 23, 26, 0.04);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+
+.row:hover {
+  border-color: var(--accent-line);
+}
+
+.row .g {
+  font-size: 20px;
+  flex: 0 0 auto;
+}
+
+.row .t {
+  flex: 1;
+  min-width: 0;
+}
+
+.row .t b {
+  display: block;
+  font-size: var(--fs-3);
+  color: var(--ink);
+}
+
+.row .t small {
+  display: block;
+  color: var(--ink-2);
+  font-size: var(--fs-2);
+  margin-top: 2px;
+}
+
+.row .arw {
+  color: var(--ink-3);
+  font-size: 16px;
+}

@@ -30,6 +30,7 @@ export function pickMimeType(
 }
 
 export interface CapturedAudio {
+  id?: string;
   blob: Blob;
   mimeType: string;
 }
@@ -116,7 +117,8 @@ export function useMissionAudio(): MissionAudioApi {
     const chunks = chunksRef.current;
     chunksRef.current = [];
     if (chunks.length === 0) return null;
-    return { blob: new Blob(chunks, { type: mimeType }), mimeType };
+    const id = `rec-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+    return { id, blob: new Blob(chunks, { type: mimeType }), mimeType };
   }, []);
 
   useEffect(() => () => cancel(), [cancel]);

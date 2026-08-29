@@ -1,0 +1,882 @@
+[
+  {
+    "id": "dsc-monsoon-cafe",
+    "type": "describe",
+    "imagePath": "/assets/scenes/monsoon_cafe.jpg",
+    "alt": "Steaming cup of filter coffee beside a rain-streaked window in a bustling Bengaluru cafe.",
+    "prompt": "Paint the sensory atmosphere of a cozy tech cafe during a heavy evening downpour.",
+    "beats": [
+      "The sound of torrential rain drumming against the glass",
+      "The warm aroma of roasted coffee and wet asphalt",
+      "The quiet murmur of engineers huddled over laptop glow"
+    ],
+    "targetVocab": [
+      "torrential",
+      "aroma",
+      "huddled",
+      "ambient",
+      "steaming"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "sensory",
+      "storytelling"
+    ]
+  },
+  {
+    "id": "dsc-midnight-datacenter",
+    "type": "describe",
+    "imagePath": "/assets/scenes/datacenter.jpg",
+    "alt": "Endless rows of black server racks with blinking green and amber LEDs in a chilled room.",
+    "prompt": "Describe walking through a high-security server room during a critical midnight deployment.",
+    "beats": [
+      "The bone-chilling hum of industrial HVAC blowers",
+      "The hypnotic rhythmic pulse of fiber optic LEDs",
+      "The tactile chill of powder-coated steel rack cages"
+    ],
+    "targetVocab": [
+      "rhythmic",
+      "hypnotic",
+      "subdued",
+      "chilled",
+      "hum"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "tech",
+      "atmosphere"
+    ]
+  },
+  {
+    "id": "dsc-metro-commute",
+    "type": "describe",
+    "imagePath": "/assets/scenes/metro.jpg",
+    "alt": "Crowded morning metro train arriving at an elevated station platform in the morning mist.",
+    "prompt": "Describe the electric energy and choreography of peak morning rush hour.",
+    "beats": [
+      "The metallic screech of brakes on polished rails",
+      "The focused sea of commuters glancing at notification feeds",
+      "The sudden gust of wind as automatic doors slide open"
+    ],
+    "targetVocab": [
+      "surge",
+      "choreography",
+      "dense",
+      "glance",
+      "commute"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "everyday",
+      "observation"
+    ]
+  },
+  {
+    "id": "dsc-war-room",
+    "type": "describe",
+    "imagePath": "/assets/scenes/war_room.jpg",
+    "alt": "A whiteboard covered in red markers, empty coffee mugs, and laptop screens showing Grafana charts.",
+    "prompt": "Describe the intensity inside an incident response war room five minutes after an outage begins.",
+    "beats": [
+      "The rapid clatter of mechanical keyboards and hushed audio dials",
+      "The red jagged spikes on dashboard monitoring screens",
+      "The tense focus and measured calmness under fire"
+    ],
+    "targetVocab": [
+      "frenetic",
+      "poise",
+      "clatter",
+      "jagged",
+      "escalation"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "workplace",
+      "intensity"
+    ]
+  },
+  {
+    "id": "dsc-airport-boarding-gate",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the atmosphere at a crowded airport boarding gate during an unexpected three-hour weather delay.",
+    "beats": [
+      "The sea of tired travelers slumped over charging stations and carry-on suitcases",
+      "The crackle of the gate agent microphone delivering another apologetic announcement",
+      "The quiet hum of rain washing across the dark runway tarmac outside the panoramic glass"
+    ],
+    "targetVocab": [
+      "weary",
+      "ambient",
+      "monotonous",
+      "tarmac",
+      "resigned"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "travel",
+      "observation"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-startup-all-hands",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the electric energy inside a startup warehouse office immediately after announcing a Series A fundraise.",
+    "beats": [
+      "The sudden erupting cheer and clinking of paper cups across crowded wooden trestle tables",
+      "The founders beaming on a makeshift stage beside a projector showing customer growth curves",
+      "The buzzing excitement as engineers and designers huddle to discuss scaling the roadmap"
+    ],
+    "targetVocab": [
+      "ebullient",
+      "makeshift",
+      "resonate",
+      "milestone",
+      "jubilant"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "startup",
+      "celebration"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-old-delhi-spice-market",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Paint the sensory richness of walking through the narrow alleys of Khari Baoli spice market at noon.",
+    "beats": [
+      "The sharp, stinging scent of crushed red chilies and roasted cumin hanging thick in the air",
+      "The rhythmic shouts of porters balancing burlap sacks through narrow sunlit brick corridors",
+      "The dazzling mountain heaps of golden turmeric, cardamom pods, and star anise in wooden crates"
+    ],
+    "targetVocab": [
+      "pungent",
+      "labyrinth",
+      "vibrant",
+      "aroma",
+      "burlap"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "sensory",
+      "cultural"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-monsoon-traffic-gridlock",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the tense choreography of evening gridlock traffic on a flooded arterial tech corridor.",
+    "beats": [
+      "The endless red ribbon of brake lights reflecting off deep oily puddles on cracked asphalt",
+      "The persistent chorus of vehicle horns competing with the heavy roar of cascading monsoon rain",
+      "The determined delivery riders in neon ponchos weaving through stationary city buses"
+    ],
+    "targetVocab": [
+      "gridlock",
+      "torrential",
+      "cacophony",
+      "refracted",
+      "staunch"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "city",
+      "everyday"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-midnight-hackathon",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the final hour of a 36-hour hackathon as teams race to submit prototypes before the countdown expires.",
+    "beats": [
+      "The frantic clatter of mechanical keyboards amid mountains of empty energy drink cans and pizza boxes",
+      "The red blinking digital countdown clock projected across the auditorium wall",
+      "The exhausted but determined focus of teammates debugging one last API integration"
+    ],
+    "targetVocab": [
+      "frenetic",
+      "exhaustion",
+      "tenacious",
+      "adrenaline",
+      "countdown"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "tech",
+      "intensity"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-chai-stall-standup",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the informal morning ritual around a roadside tea stall outside a major technology park.",
+    "beats": [
+      "The steaming brass kettle bubbling with ginger and crushed cardamom over a blue gas flame",
+      "The circle of engineers in lanyards debating architecture while holding hot glass tumblers",
+      "The crisp morning breeze carrying the aroma of fresh bun-maska and roasted spices"
+    ],
+    "targetVocab": [
+      "steaming",
+      "camaraderie",
+      "aroma",
+      "tumbler",
+      "brisk"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "social",
+      "workplace"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-diwali-office-decor",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe an engineering office transformed on the eve of Diwali celebration.",
+    "beats": [
+      "Intricate floral rangolis and flickering clay diyas lining the glass lobby entrance",
+      "Colleagues dressed in vibrant silk kurtas exchanging boxes of handmade sweets across desk cubicles",
+      "The warm golden glow of fairy lights draped over monitors and whiteboard architecture diagrams"
+    ],
+    "targetVocab": [
+      "festive",
+      "intricate",
+      "luminous",
+      "vibrant",
+      "warmth"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "culture",
+      "celebration"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-cafeteria-cricket-match",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the electric atmosphere in the company cafeteria during the final over of a tense cricket World Cup match.",
+    "beats": [
+      "A hundred employees on the edge of their chairs staring at the giant projector screen in absolute silence",
+      "The collective gasp and sudden roar as the batter hits a boundary through mid-wicket",
+      "Colleagues from rival teams high-fiving and embracing as the winning runs are scored"
+    ],
+    "targetVocab": [
+      "palpable",
+      "suspense",
+      "unison",
+      "exuberance",
+      "crescendo"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "sports",
+      "energy"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-mumbai-local-rush",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the intense momentum of catching a peak-hour morning local train at Dadar station.",
+    "beats": [
+      "The dense surge of thousands of commuters flowing down the concrete footbridge in synchronization",
+      "The screech of steel wheels and the sudden rush of cool morning air as the 12-car train pulls in",
+      "The effortless athletic agility of seasoned commuters boarding before the carriage comes to a halt"
+    ],
+    "targetVocab": [
+      "torrent",
+      "synchronized",
+      "momentum",
+      "commute",
+      "pulsating"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "city",
+      "observation"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-quiet-library-hall",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the peaceful concentration inside a historic university library late on a rainy afternoon.",
+    "beats": [
+      "The gentle rustle of turning textbook pages and the soft scratching of fountain pens on paper",
+      "The warm golden pools of light cast by green banker lamps across polished oak study tables",
+      "The towering cedar shelves filled with thousands of leather-bound volumes reaching into high vaulted shadows"
+    ],
+    "targetVocab": [
+      "sanctuary",
+      "subdued",
+      "scholarly",
+      "vaulted",
+      "tranquility"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "peaceful",
+      "study"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-product-launch-greenroom",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the tense atmosphere in the backstage green room two minutes before the CEO delivers a flagship product keynote.",
+    "beats": [
+      "The production stage manager whispering countdown cues into a headset while checking wireless mic packs",
+      "The CEO pacing slowly, sipping warm lemon water and rehearsing the opening three sentences",
+      "The muffled bass vibration of the audience walk-in track thumping through the heavy velvet curtain"
+    ],
+    "targetVocab": [
+      "anticipation",
+      "hushed",
+      "poise",
+      "reverberation",
+      "cue"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "executive",
+      "keynote"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-rooftop-bengaluru-dusk",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe standing on a high-rise office terrace looking out over the city skyline at twilight.",
+    "beats": [
+      "The sky shifting from dusky violet to deep indigo as glass tech towers light up across the horizon",
+      "The cool evening breeze carrying the distant hum of urban life and scent of night-blooming jasmine",
+      "Clusters of colleagues chatting softly over coffee mugs as the first evening stars appear"
+    ],
+    "targetVocab": [
+      "panoramic",
+      "twilight",
+      "silhouette",
+      "serenity",
+      "ambient"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "nature",
+      "city"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-boardroom-negotiation-table",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the charged silence across a glass boardroom table during a high-stakes partnership negotiation.",
+    "beats": [
+      "Lawyers and executives studying the final revised clause on paper contracts in deliberate silence",
+      "The quiet condensation dripping down crystal water glasses onto polished dark walnut veneer",
+      "The measured eye contact across the table before the lead investor picks up a pen to sign"
+    ],
+    "targetVocab": [
+      "scrutiny",
+      "deliberate",
+      "unspoken",
+      "gravity",
+      "pivotal"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "executive",
+      "negotiation"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-rainy-midnight-cab",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the contemplative mood inside a yellow cab driving through rain-washed city avenues past midnight.",
+    "beats": [
+      "The rhythmic sweep of windshield wipers clearing blurred neon reflections of traffic signals",
+      "The soothing hum of the car engine and the distant hiss of tires rolling over wet tarmac",
+      "The quiet relief of unwinding after a grueling 14-hour product deployment sprint"
+    ],
+    "targetVocab": [
+      "contemplative",
+      "rhythmic",
+      "refracted",
+      "solitude",
+      "unwind"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "night",
+      "mood"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-night-street-food-market",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Paint the bustling energy of a late-night street food lane crowded with night-shift workers.",
+    "beats": [
+      "The fierce hiss of hot oil in giant cast-iron woks tossing spicy noodles and parathas under halogen lights",
+      "The lively banter between street chefs calling out order numbers to eager crowds gathered on the sidewalk",
+      "The rich mingling aromas of roasted garlic, sizzling butter, and fresh cilantro in the night air"
+    ],
+    "targetVocab": [
+      "sizzling",
+      "effervescent",
+      "culinary",
+      "bustle",
+      "invigorating"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "food",
+      "nightlife"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-morning-office-unlock",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the serene stillness inside an open-plan office during the first fifteen minutes of the workday.",
+    "beats": [
+      "The long slanted rays of morning sunlight cutting across rows of clean, dark dual-monitor desks",
+      "The gentle hum of the central HVAC starting up as the aroma of freshly ground espresso fills the pantry",
+      "The calm potential of an unwritten day before the first calendar meetings and notifications begin"
+    ],
+    "targetVocab": [
+      "pristine",
+      "tranquility",
+      "uncluttered",
+      "nascent",
+      "potential"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "morning",
+      "workplace"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-client-pitch-hiccup",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the moment during a live software demo when an unexpected error dialog suddenly pops up.",
+    "beats": [
+      "The sudden split-second freeze across the room as the red error modal flashes on the projector",
+      "The presenter maintaining a calm, reassuring smile while seamlessly explaining the underlying resilience mechanism",
+      "The quiet, measured poise of the engineering lead typing a clean workaround command without panic"
+    ],
+    "targetVocab": [
+      "composure",
+      "anomaly",
+      "unfazed",
+      "seamless",
+      "agility"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "presentation",
+      "composure"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-sunday-balcony-downpour",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe sipping hot coffee on an apartment balcony while a torrential weekend thunderstorm drenches the city.",
+    "beats": [
+      "The cool fine spray of mist drifting onto the balcony floor as heavy raindrops drum on the tin awning",
+      "The swaying canopy of rain-washed gulmohar trees bending against gusty monsoon winds",
+      "The soothing warmth of the ceramic mug cradled between cold palms as thunder rumbles in the distance"
+    ],
+    "targetVocab": [
+      "tempest",
+      "cascading",
+      "soothing",
+      "petrichor",
+      "respite"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "peace",
+      "nature"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-design-studio-critique",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe an intense design sprint review inside a glass-walled collaborative studio.",
+    "beats": [
+      "Floor-to-ceiling glass whiteboards covered in colorful wireframe post-its, user journey maps, and red marker annotations",
+      "Designers and engineers gathered around a tablet device debating the micro-interactions of a navigation drawer",
+      "The focused, analytical creative energy as the team strips away unnecessary visual noise to reach pure simplicity"
+    ],
+    "targetVocab": [
+      "iterative",
+      "minimalism",
+      "scrutiny",
+      "ergonomic",
+      "collaborative"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "design",
+      "creativity"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-weekend-organic-market",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the cheerful morning atmosphere at a community weekend open-air farmers market.",
+    "beats": [
+      "Wooden stalls shaded by striped canvas canopies displaying crisp leafy greens, heirloom tomatoes, and artisanal honey",
+      "Neighbors greeting each other with cloth tote bags while acoustic guitar music drifts from a corner booth",
+      "The earthy fragrance of fresh soil, crushed mint, and freshly baked sourdough loaves on wooden crates"
+    ],
+    "targetVocab": [
+      "bountiful",
+      "artisanal",
+      "convivial",
+      "fragrance",
+      "wholesome"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "community",
+      "weekend"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-server-cooling-alert",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the sensory urgency inside a server hosting facility when a secondary cooling unit trips.",
+    "beats": [
+      "Amber warning beacons rotating silently along the ceiling gantry above black server cabinets",
+      "The palpable rising wall of dry heat emanating from high-density GPU computing clusters",
+      "Facilities technicians in reflective vests systematically routing chilled emergency ducting with calm precision"
+    ],
+    "targetVocab": [
+      "thermal",
+      "criticality",
+      "systematic",
+      "beacon",
+      "contingency"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "datacenter",
+      "urgency"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-midnight-delivery-rider",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe a food delivery rider navigating deserted suburban streets under orange sodium lamps past midnight.",
+    "beats": [
+      "The solitary motorcycle engine echoing down quiet tree-lined avenues as autumn leaves flutter across the road",
+      "The bright smartphone mounted on the handlebars illuminating the glowing navigation route map",
+      "The quiet dedication and resilience of delivering warm meals to late-night apartment doorsteps in the silence"
+    ],
+    "targetVocab": [
+      "solitary",
+      "nocturnal",
+      "resilience",
+      "illuminated",
+      "subdued"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "empathy",
+      "city"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-interview-waiting-lounge",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the quiet tension inside a corporate candidate waiting lounge before executive final rounds.",
+    "beats": [
+      "Candidates in sharp formal attire reviewing resume notes on tablets or staring thoughtfully out panoramic glass windows",
+      "The soft clicking of the reception desk clock measuring out the minutes before panel introductions",
+      "The sudden polite call of a recruiter opening the frosted glass door to invite the next candidate inside"
+    ],
+    "targetVocab": [
+      "anticipation",
+      "composed",
+      "hushed",
+      "poised",
+      "inflection"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "career",
+      "interview"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-coworking-terrace-coffee",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the relaxed creative banter on a rooftop coworking garden during Friday evening golden hour.",
+    "beats": [
+      "Potted palm trees and fairy light canopies framing wooden picnic tables crowded with laptops and coffee carafes",
+      "Founders, freelancers, and engineers sharing war stories of product launches and weekend prototypes",
+      "The golden sunset light washing over glass facades as the working week gracefully winds down"
+    ],
+    "targetVocab": [
+      "communal",
+      "golden",
+      "unwind",
+      "camaraderie",
+      "serendipity"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "coworking",
+      "community"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-diwali-panoramic-skyline",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the panoramic nighttime view of a bustling metropolis celebrating Diwali from a 30th-floor terrace.",
+    "beats": [
+      "The sprawling carpet of city lights punctuated by brilliant bursts of emerald and gold fireworks in the distance",
+      "The faint crackle and boom of celebration rolling up into the cool night breeze high above the streets",
+      "Every balcony across miles of residential towers sparkling with rows of warm clay lamps and decorative lanterns"
+    ],
+    "targetVocab": [
+      "panoramic",
+      "constellation",
+      "spectacle",
+      "glimmering",
+      "radiance"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "celebration",
+      "cityscape"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "dsc-telemetry-turns-green",
+    "type": "describe",
+    "lang": "en",
+    "imagePath": "",
+    "alt": "",
+    "prompt": "Describe the collective relief in an engineering war room as live monitoring charts stabilize from red back to green.",
+    "beats": [
+      "The jagged red spike on the primary error dashboard abruptly smoothing down into a flat green baseline",
+      "The collective sigh of relief and spontaneous applause breaking the silence across thirty muted video squares",
+      "Tired engineers leaning back in their chairs, smiling, and finally reaching for their cold coffee mugs"
+    ],
+    "targetVocab": [
+      "stabilization",
+      "plateau",
+      "catharsis",
+      "resilient",
+      "baseline"
+    ],
+    "targetSec": 45,
+    "tags": [
+      "describe",
+      "engineering",
+      "triumph"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  }
+]

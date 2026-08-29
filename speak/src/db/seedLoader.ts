@@ -30,7 +30,14 @@ const REQUIRED_BY_TYPE: Record<CardType, string[]> = {
   pronounce: ['term', 'syllables', 'stressIndex'],
   say_it: ['line', 'marked', 'targetWpm'],
   breath: ['drill', 'title', 'instructions', 'logUnit'],
+  phrase: ['weak', 'strong', 'why', 'register'],
+  feeling: ['term', 'meaning', 'contrast', 'example'],
+  story_move: ['move', 'why', 'example'],
+  describe: ['imagePath', 'alt', 'prompt', 'beats', 'targetVocab', 'targetSec'],
+  explain: ['topic', 'angle', 'beats', 'targetVocab', 'targetSec'],
+  teach_back: ['prompt', 'beats', 'targetSec'],
 };
+
 
 const TYPES = Object.keys(REQUIRED_BY_TYPE) as CardType[];
 

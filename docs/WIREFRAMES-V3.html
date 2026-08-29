@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>V3 Wireframes — The Casual Rebuild</title>
+<style>
+:root{
+  --paper:#FBF9F5; --bg-page:#F3EFEA; --card:#FFFFFF; --raised:#F4F0E8; --sunken:#ECE7DD;
+  --line:#E5DFC5; --line-light:#EFECE3; --line-strong:#D1C9BA;
+  --ink:#16171A; --ink-secondary:#585D69; --ink-muted:#8E95A2; --ink-faint:#BCC2CC;
+  --accent:#1D4ED8; --accent-soft:#EFF6FF; --accent-border:#BFDBFE;
+  --heat:#D97706; --heat-soft:#FEF3C7; --success:#059669; --success-soft:#ECFDF5;
+  --danger:#B91C1C; --danger-soft:#FEE2E2;
+  --c-idiom:#B45309; --c-idiom-bg:#FEF3C7;
+  --c-swap:#6D28D9; --c-swap-bg:#EDE9FE;
+  --c-verb:#BE185D; --c-verb-bg:#FCE7F3;
+  --c-hindi:#0D9488; --c-hindi-bg:#CCFBF1;
+  --c-scenario:#2563EB; --c-scenario-bg:#DBEAFE;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,"Charter","Iowan Old Style","Georgia",serif;
+  --r-sm:8px; --r-md:16px; --r-lg:24px; --r-pill:9999px;
+  --sh-sm:0 1px 3px rgba(22,23,26,.04),0 2px 8px rgba(22,23,26,.04);
+  --sh-md:0 4px 14px rgba(22,23,26,.07),0 1px 3px rgba(22,23,26,.03);
+  --sh-lg:0 12px 32px rgba(22,23,26,.10),0 2px 6px rgba(22,23,26,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg-page);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1640px;margin:0 auto;padding:48px 32px 140px}
+
+/* ---------- doc chrome ---------- */
+.doc-head{border-bottom:2px solid var(--ink);padding-bottom:28px;margin-bottom:14px}
+.doc-head h1{font-family:var(--serif);font-size:44px;line-height:1.1;letter-spacing:-.02em}
+.doc-head .sub{color:var(--ink-secondary);margin-top:12px;max-width:760px;font-size:16px}
+.kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);font-weight:700}
+.banner{background:var(--card);border:1px solid var(--line-strong);border-left:4px solid var(--danger);border-radius:var(--r-md);padding:18px 22px;margin:28px 0 8px;box-shadow:var(--sh-sm)}
+.banner.ok{border-left-color:var(--success)}
+.banner h3{font-size:15px;margin-bottom:6px}
+.banner p{color:var(--ink-secondary);font-size:14px}
+.banner p+p{margin-top:8px}
+h2.sec{font-family:var(--serif);font-size:30px;margin:64px 0 6px;letter-spacing:-.01em}
+h2.sec+.secsub{color:var(--ink-secondary);margin-bottom:30px;max-width:820px}
+.rail{display:flex;flex-wrap:wrap;gap:34px;align-items:flex-start}
+
+/* ---------- phone frame ---------- */
+.fig{width:375px}
+.figcap{margin-top:12px}
+.figcap b{display:block;font-size:14px}
+.figcap span{display:block;color:var(--ink-secondary);font-size:13px;margin-top:3px}
+.phone{width:375px;height:812px;background:var(--paper);border:1px solid var(--line-strong);border-radius:28px;box-shadow:var(--sh-lg);overflow:hidden;position:relative;display:flex;flex-direction:column}
+.status{height:44px;flex:0 0 44px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;color:var(--ink-muted);font-weight:600}
+.body{flex:1;overflow:hidden;position:relative;display:flex;flex-direction:column}
+.pad{padding:0 20px}
+
+/* ---------- tabbar ---------- */
+.tabs{flex:0 0 64px;height:64px;border-top:1px solid var(--line);background:var(--card);display:grid;grid-template-columns:repeat(4,1fr)}
+.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;font-weight:600;color:var(--ink-faint)}
+.tab .g{font-size:17px;line-height:1}
+.tab.on{color:var(--accent)}
+.fab{position:absolute;right:16px;bottom:78px;background:var(--ink);color:#fff;border-radius:var(--r-pill);padding:11px 17px;font-size:12px;font-weight:700;box-shadow:var(--sh-lg);display:flex;gap:7px;align-items:center;z-index:5}
+
+/* ---------- feed ---------- */
+.topbar{flex:0 0 46px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+.streak{display:flex;align-items:center;gap:6px;background:var(--heat-soft);color:var(--heat);border-radius:var(--r-pill);padding:5px 11px;font-size:12px;font-weight:700}
+.xp{font-size:12px;font-weight:700;color:var(--ink-muted)}
+.fcard{margin:6px 20px 0;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--sh-md);flex:1;display:flex;flex-direction:column;padding:22px;position:relative;overflow:hidden}
+.badge{display:inline-flex;align-items:center;gap:5px;border-radius:var(--r-pill);padding:5px 11px;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;align-self:flex-start}
+.b-word{background:var(--c-idiom-bg);color:var(--c-idiom)}
+.b-idiom{background:var(--c-idiom-bg);color:var(--c-idiom)}
+.b-swap{background:var(--c-swap-bg);color:var(--c-swap)}
+.b-verb{background:var(--c-verb-bg);color:var(--c-verb)}
+.b-hindi{background:var(--c-hindi-bg);color:var(--c-hindi)}
+.b-scn{background:var(--c-scenario-bg);color:var(--c-scenario)}
+.hero{font-family:var(--serif);font-size:42px;line-height:1.08;letter-spacing:-.02em;margin:auto 0 0}
+.hero.sm{font-size:31px}
+.hero.xs{font-size:25px;line-height:1.25}
+.pos{color:var(--ink-muted);font-size:13px;margin-top:8px;font-style:italic}
+.gloss{color:var(--ink-secondary);font-size:16px;margin-top:12px}
+.spacer{flex:1}
+.hint{color:var(--ink-faint);font-size:12px;text-align:center;padding-top:16px;border-top:1px dashed var(--line);margin-top:16px}
+.block{margin-top:14px}
+.block .lbl{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:4px}
+.block .val{font-size:14.5px;color:var(--ink)}
+.quote{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink);background:var(--raised);border-left:3px solid var(--line-strong);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:12px 14px;margin-top:14px}
+.actions{flex:0 0 auto;display:flex;gap:10px;padding:12px 20px 8px;align-items:center}
+.abtn{height:48px;border-radius:var(--r-pill);border:1px solid var(--line-strong);background:var(--card);display:flex;align-items:center;justify-content:center;gap:7px;font-size:14px;font-weight:700;box-shadow:var(--sh-sm)}
+.abtn.ico{width:48px;flex:0 0 48px;font-size:18px}
+.abtn.mic{flex:1;border-color:var(--accent-border);background:var(--accent-soft);color:var(--accent)}
+.abtn.star.on{background:var(--heat-soft);border-color:var(--heat);color:var(--heat)}
+
+/* swipe annotation overlay */
+.gest{position:absolute;inset:0;pointer-events:none;z-index:4}
+.ga{position:absolute;background:rgba(29,78,216,.94);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.04em;padding:6px 10px;border-radius:var(--r-pill);white-space:nowrap;box-shadow:var(--sh-md)}
+.ga.dim{background:rgba(22,23,26,.86)}
+.arrow{position:absolute;color:var(--accent);font-size:26px;font-weight:900;text-shadow:0 1px 4px rgba(255,255,255,.9)}
+
+/* toast */
+.toast{position:absolute;left:50%;transform:translateX(-50%);bottom:150px;background:var(--ink);color:#fff;border-radius:var(--r-pill);padding:11px 20px;font-size:13px;font-weight:700;box-shadow:var(--sh-lg);display:flex;gap:8px;align-items:center;z-index:6}
+
+/* ---------- generic UI atoms ---------- */
+.h1s{font-family:var(--serif);font-size:27px;letter-spacing:-.01em}
+.search{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line-strong);border-radius:var(--r-pill);padding:12px 16px;margin-top:14px;color:var(--ink-faint);font-size:14px;box-shadow:var(--sh-sm)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.deck{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:14px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;gap:7px;min-height:132px}
+.deck .g{font-size:21px}
+.deck b{font-size:13.5px;line-height:1.25}
+.deck small{color:var(--ink-muted);font-size:11px}
+.ring{margin-top:auto;display:flex;align-items:center;gap:7px}
+.ringbar{flex:1;height:5px;background:var(--sunken);border-radius:var(--r-pill);overflow:hidden}
+.ringbar i{display:block;height:100%;background:var(--accent);border-radius:var(--r-pill)}
+.ring small{font-size:10px;font-weight:700;color:var(--ink-muted)}
+.row{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:13px 14px;box-shadow:var(--sh-sm);margin-top:10px}
+.row .g{font-size:20px;flex:0 0 auto}
+.row .t{flex:1;min-width:0}
+.row .t b{display:block;font-size:14px}
+.row .t small{display:block;color:var(--ink-secondary);font-size:12px;margin-top:2px}
+.row .arw{color:var(--ink-faint);font-size:18px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.chip{border:1px solid var(--line-strong);background:var(--card);border-radius:var(--r-pill);padding:8px 13px;font-size:12.5px;font-weight:600}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip.vocab{background:var(--accent-soft);border-color:var(--accent-border);color:var(--accent);font-weight:700}
+.chip.vocab.hit{background:var(--success-soft);border-color:var(--success);color:var(--success)}
+.prim{background:var(--accent);color:#fff;border:none;border-radius:var(--r-pill);height:52px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:800;box-shadow:var(--sh-md);width:100%}
+.ghost{background:var(--card);border:1px solid var(--line-strong);color:var(--ink);border-radius:var(--r-pill);height:48px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:700;width:100%}
+.sechd{margin-top:22px}
+.sechd b{display:block;font-size:16px;font-family:var(--serif);margin-top:2px}
+
+/* photo placeholder */
+.photo{border-radius:var(--r-md);border:1px solid var(--line-strong);background:
+  repeating-linear-gradient(45deg,var(--sunken) 0 12px,var(--raised) 12px 24px);
+  height:210px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--ink-muted);margin-top:14px}
+.photo b{font-size:13px;color:var(--ink-secondary)}
+.photo small{font-size:11px}
+
+/* live recording */
+.reclive{flex:1;display:flex;flex-direction:column;padding:0 20px}
+.recdot{display:flex;align-items:center;justify-content:center;gap:8px;color:var(--danger);font-size:11px;font-weight:800;letter-spacing:.12em;margin-top:6px}
+.recdot i{width:9px;height:9px;border-radius:50%;background:var(--danger);display:block}
+.wave{height:74px;display:flex;align-items:center;justify-content:center;gap:3px;margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:0 12px}
+.wave i{width:4px;border-radius:2px;background:var(--accent);display:block}
+.clock{text-align:center;font-family:var(--serif);font-size:36px;font-weight:700;margin-top:14px}
+.clock small{display:block;font-size:11px;font-weight:600;color:var(--ink-muted);letter-spacing:.1em;text-transform:uppercase;font-family:var(--sans);margin-top:2px}
+.keep{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:14px;margin-top:14px}
+.keep .lbl{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
+.keep p{font-size:15px;margin-top:6px;line-height:1.4}
+.beat{display:flex;gap:9px;align-items:flex-start;margin-top:9px;font-size:13px;color:var(--ink-secondary)}
+.beat u{flex:0 0 20px;height:20px;border-radius:50%;background:var(--sunken);color:var(--ink-secondary);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.beat.now u{background:var(--accent);color:#fff}
+.beat.now{color:var(--ink);font-weight:600}
+
+/* measured feedback */
+.metric{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line-light);font-size:14px}
+.metric:last-child{border-bottom:none}
+.metric b{font-variant-numeric:tabular-nums}
+.metric .good{color:var(--success);font-weight:700}
+.metric .warn{color:var(--heat);font-weight:700}
+.fbcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:14px;margin-top:12px;box-shadow:var(--sh-sm)}
+.fbcard.win{border-left:3px solid var(--success)}
+.fbcard.fix{border-left:3px solid var(--heat)}
+.fbcard h4{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:5px}
+.fbcard p{font-size:14px;line-height:1.45}
+.src{font-size:10.5px;color:var(--ink-faint);margin-top:10px;text-align:center;letter-spacing:.04em}
+.player{background:var(--ink);color:#fff;border-radius:var(--r-md);padding:13px 15px;display:flex;align-items:center;gap:12px;margin-top:14px}
+.player .pl{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;font-size:14px}
+.player .wv{flex:1;height:26px;display:flex;align-items:center;gap:2px}
+.player .wv i{width:3px;border-radius:2px;background:rgba(255,255,255,.55);display:block}
+.player small{font-size:11px;opacity:.7;font-variant-numeric:tabular-nums}
+
+/* you tab */
+.stat3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:13px 10px;text-align:center;box-shadow:var(--sh-sm)}
+.stat b{display:block;font-family:var(--serif);font-size:25px;line-height:1}
+.stat small{display:block;font-size:10px;color:var(--ink-muted);margin-top:5px;letter-spacing:.04em}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:12px}
+.cal i{aspect-ratio:1;border-radius:6px;background:var(--sunken);display:block}
+.cal i.on{background:var(--heat)}
+.cal i.frz{background:var(--accent-border)}
+.recap{background:var(--accent-soft);border:1px solid var(--accent-border);border-radius:var(--r-md);padding:15px;margin-top:14px}
+.recap b{display:block;font-size:13px;color:var(--accent);margin-bottom:6px}
+.recap p{font-size:14px;color:var(--ink);line-height:1.5}
+
+/* onboarding */
+.ob{flex:1;display:flex;flex-direction:column;padding:0 24px}
+.ob .big{font-family:var(--serif);font-size:33px;line-height:1.15;letter-spacing:-.02em;margin-top:auto}
+.ob .lead{color:var(--ink-secondary);margin-top:12px;font-size:15px}
+
+/* before/after table */
+table.cmp{width:100%;border-collapse:collapse;margin-top:18px;background:var(--card);border:1px solid var(--line-strong);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--sh-sm)}
+table.cmp th,table.cmp td{padding:13px 16px;text-align:left;font-size:14px;border-bottom:1px solid var(--line-light);vertical-align:top}
+table.cmp th{background:var(--raised);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted);font-weight:800}
+table.cmp tr:last-child td{border-bottom:none}
+table.cmp td.was{color:var(--danger);width:38%}
+table.cmp td.now{color:var(--success);font-weight:600;width:38%}
+.foot{margin-top:80px;padding-top:26px;border-top:1px solid var(--line-strong);color:var(--ink-muted);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="doc-head">
+  <span class="kicker">Wireframes · V3 · 2026-08-19</span>
+  <h1>The casual rebuild</h1>
+  <p class="sub">Same theme, same tokens, same 368 authored cards. Different shape.
+  The feed becomes the product, the microphone becomes optional, and nothing on screen
+  claims anything the app did not measure. Frames are drawn at 1:1, 375×812.
+  Read alongside <b>docs/PRODUCT-V3.md</b>.</p>
+</div>
+
+<div class="banner">
+  <h3>What these frames are fixing</h3>
+  <p><b>The app dead-ends after three cards.</b> Daily runs a 3-item "Core" queue and never hands off to endless — tap through it and you sit on "Loading today's deck…" forever. The counter reads "Core 4/3" on the way there.</p>
+  <p><b>The feedback is fabricated.</b> Every recording returns the same two hardcoded sentences over a CSS waveform, and "Save &amp; Done" saves nothing. The 30-second Rapid Rep never opens the microphone at all.</p>
+  <p><b>The first card is a breath drill</b> captioned "Tap to reveal workplace meaning &amp; context", with the raw enum <code>straw</code> printed as its subtitle.</p>
+</div>
+
+<div class="banner ok">
+  <h3>What is kept</h3>
+  <p>The token palette and every visual style below is the current one. The SM-2 scheduler, the queue's anti-repetition rules, Dexie + outbox + sync, <code>audioMeter.ts</code> and its calibration math, <code>useMissionAudio</code>, TTS, and all 368 authored cards carry over untouched.</p>
+</div>
+
+<h2 class="sec">1 · Onboarding — one question, then the feed</h2>
+<p class="secsub">Today: four screens about noise floors, automatic gain control and 30&nbsp;cm phone placement before you meet a single word. That is a voice-clinic intake. It moves to Speak → Settings and is asked the first time a recording needs measuring. What remains is one question that weights the queue.</p>
+
+<div class="rail">
+
+  <div class="fig">
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>▮▮▮ ⌁</span></div>
+      <div class="body">
+        <div class="ob">
+          <span class="kicker" style="margin-top:auto">Step 1 of 1</span>
+          <div class="big" style="margin-top:10px">What do you want<br>more of?</div>
+          <p class="lead">Pick any. You can change this later, and the feed will drift towards whatever you actually keep.</p>
+          <div class="chips" style="margin-top:22px">
+            <span class="chip on">💼 Office English</span>
+            <span class="chip on">📖 Everyday words</span>
+            <span class="chip">🇮🇳 Practical Hindi</span>
+            <span class="chip on">🎙️ Speaking</span>
+            <span class="chip">📚 Storytelling</span>
+            <span class="chip">🧠 Ideas &amp; opinions</span>
+          </div>
+          <div class="spacer"></div>
+          <div class="prim" style="margin-bottom:14px">Start scrolling →</div>
+          <div style="text-align:center;color:var(--ink-faint);font-size:12px;margin-bottom:22px">No microphone needed. Ever, if you don't want it.</div>
+        </div>
+      </div>
+    </div>
+    <div class="figcap"><b>1 · The whole of onboarding</b>
+      <span>Three taps to content. No mic permission, no calibration, no disclaimer wall.</span></div>
+  </div>
+
+  <div class="fig">
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>▮▮▮ ⌁</span></div>
+      <div class="body">
+        <div class="topbar">
+          <span class="streak">🔥 1</span>
+          <span class="xp">3 / 30 XP</span>
+        </div>
+        <div class="fcard">
+          <span class="badge b-word">📖 Vocabulary</span>
+          <div class="hero">abrupt</div>
+          <div class="pos">adjective</div>
+          <div class="gloss">Sudden, and often rude because of it.</div>
+          <div class="spacer"></div>
+          <div class="hint">Tap for context &nbsp;·&nbsp; Swipe up for next</div>
+        </div>
+        <div class="actions">
+          <div class="abtn ico">⭐</div>
+          <div class="abtn ico">🔊</div>
+          <div class="abtn mic">🎙️ Say it</div>
+        </div>
+        <div class="fab">✏️ Capture</div>
+      </div>
+      <div class="tabs">
+        <div class="tab on"><span class="g">🗂️</span>Feed</div>
+        <div class="tab"><span class="g">🔍</span>Browse</div>
+        <div class="tab"><span class="g">🎙️</span>Speak</div>
+        <div class="tab"><span class="g">👤</span>You</div>
+      </div>
+    </div>
+    <div class="figcap"><b>2 · Card one, day one</b>
+      <span>A word — never a breath drill. No "Core 2/3". The mic is one of three optional actions and the smallest commitment on screen is doing nothing.</span></div>
+  </div>
+
+  <div class="fig">
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>▮▮▮ ⌁</span></div>
+      <div class="body">
+        <div class="topbar"><span class="streak">🔥 1</span><span class="xp">3 / 30 XP</span></div>
+        <div class="fcard">
+          <span class="badge b-word">📖 Vocabulary</span>
+          <div class="hero sm" style="margin-top:16px">abrupt</div>
+          <div class="block">
+            <div class="lbl">Meaning</div>
+            <div class="val">(adj.) Sudden, and often rude because of it.</div>
+          </div>
+          <div class="block">
+            <div class="lbl">Where you'd use it</div>
+            <div class="val">A call that ends without a goodbye. A reply with no greeting. A decision announced with no warning.</div>
+          </div>
+          <div class="quote">"The call ended so abruptly that I thought the line had dropped."</div>
+          <div class="block">
+            <div class="lbl">Instead of</div>
+            <div class="val" style="color:var(--accent);font-weight:600">"really sudden and kind of rude"</div>
+          </div>
+          <div class="spacer"></div>
+          <div class="hint">Tap to flip back</div>
+        </div>
+        <div class="actions">
+          <div class="abtn ico star on">⭐</div>
+          <div class="abtn ico">🔊</div>
+          <div class="abtn mic">🎙️ Say it</div>
+        </div>
+      </div>
+      <div class="tabs">
+        <div class="tab on"><span class="g">🗂️</span>Feed</div>
+        <div class="tab"><span class="g">🔍</span>Browse</div>
+        <div class="tab"><span class="g">🎙️</span>Speak</div>
+        <div class="tab"><span class="g">👤</span>You</div>
+      </div>
+    </div>
+    <div class="figcap"><b>3 · Tapped — the detail side</b>
+      <span>"Where you'd use it" replaces the generic "workplace meaning &amp; context" caption, and is authored per card type rather than shared across all seven.</span></div>
+  </div>
+
+</div>
+
+<h2 class="sec">2 · The Feed — gestures and card types</h2>
+<p class="secsub">One endless swipeable stack. <code>useCardGestures.ts</code> already exists and is currently wired only to an orphaned screen — it comes back here. The feed refills before it empties and never dead-ends.</p>
+
+<div class="rail">
+
+  <div class="fig">
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>▮▮▮ ⌁</span></div>
+      <div class="body">
+        <div class="topbar"><span class="streak">🔥 6</span><span class="xp">14 / 30 XP</span></div>
+        <div class="fcard" style="opacity:.35">
+          <span class="badge b-idiom">💼 Office Idiom</span>
+          <div class="hero sm">move the needle</div>
+          <div class="gloss">To make a difference big enough to be visible in the numbers.</div>
+          <div class="spacer"></div>
+        </div>
+        <div class="actions" style="opacity:.35">
+          <div class="abtn ico">⭐</div><div class="abtn ico">🔊</div><div class="abtn mic">🎙️ Say it</div>
+        </div>
+        <div class="gest">
+          <div class="arrow" style="left:172px;top:96px">▲</div>
+          <div class="ga" style="left:96px;top:52px">SWIPE UP · next card</div>
+          <div class="arrow" style="right:22px;top:352px">▶</div>
+          <div class="ga" style="right:56px;top:348px">SWIPE RIGHT · save ⭐</div>
+          <div class="arrow" style="left:22px;top:452px">◀</div>
+          <div class="ga dim" style="left:56px;top:448px">SWIPE LEFT · less of this</div>
+          <div class="ga dim" style="left:112px;top:560px">TAP · flip to detail</div>
+          <div class="arrow" style="left:172px;top:640px">▼</div>
+          <div class="ga dim" style="left:88px;top:684px">SWIPE DOWN · previous</div>
+        </div>
+      </div>
+      <div class="tabs">
+        <div class="tab on"><span class="g">🗂️</span>Feed</div>
+        <div class="tab"><span class="g">🔍</span>Browse</div>
+        <div class="tab"><span class="g">🎙️</span>Speak</div>
+        <div class="tab"><span class="g">👤</span>You</div>
+      </div>
+    </div>
+    <div class="figcap"><b>4 · Gesture map</b>
+      <span>Swipe left is a preference, not a grade — it down-weights that card type for a week. Nothing in the feed is scored, so nothing can be failed.</span></div>
+  </div>
+
+  <div class="fig">
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>▮▮▮ ⌁</span></div>
+      <div class="body">
+        <div class="topbar"><span class="streak">🔥 6</span><span class="xp">15 / 30 XP</span></div>
+        <div class="fcard">
+          <span class="badge b-hindi">🇮🇳 Practical Hindi</span>
+          <div class="hero sm">टाल-मटोल</div>
+          <div class="pos">taal-matol · noun</div>
+          <div class="gloss">Dodging a thing you've already agreed to do — with excuses, not a refusal.</div>
+          <div class="quote" style="font-family:var(--sans);font-style:normal;font-size:15px">"यार सीधा बोल दे ना, ये टाल-मटोल मत कर।"</div>
+          <div class="spacer"></div>
+          <div class="hint">Roughly 1 in 8 feed cards is Hindi</div>
+        </div>
+        <div class="actions">
+          <div class="abtn ico">⭐</div><div class="abtn ico">🔊</div><div class="abtn mic">🎙️ Say it</div>
+        </div>
+        <div class="toast">⭐ Saved to You</div>
+      </div>
+      <div class="tabs">
+        <div class="tab on"><span class="g">🗂️</span>Feed</div>
+        <div class="tab"><span class="g">🔍</span>Browse</div>
+        <div class="tab"><span class="g">🎙️</span>Speak</div>
+        <div class="tab"><span class="g">👤</span>You</div>
+      </div>
+    </div>
+    <div class="figcap"><b>5 · Hindi card + save confirmation</b>
+      <span>Conversational register, not textbook. Hindi is mixed into the feed <i>and</i> browsable as its own deck.</span></div>
+  </div>
+
+  <div class="fig">
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>▮▮▮ ⌁</span></div>
+      <div class="body">
+        <div class="topbar"><span class="streak">🔥 6</span><span class="xp">15 / 30 XP</span></div>
+        <div class="fcard">
+          <span class="badge b-scn">💭 Say This Instead</span>
+          <div class="hero xs" style="color:var(--ink-muted);text-decoration:line-through;font-size:22px">"I think maybe we should probably push it"</div>
+          <div style="text-align:center;font-size:20px;color:var(--ink-faint);margin:14px 0">↓</div>
+          <div class="hero xs" style="margin:0;color:var(--accent)">"I'd move the date. Here's the trade-off."</div>
+          <div class="block" style="margin-top:20px">
+            <div class="lbl">Why it lands</div>
+            <div class="val">Hedges stack up and read as uncertainty. One clear recommendation plus the cost of it reads as judgement.</div>
+          </div>
+          <div class="spacer"></div>
+          <div class="hint">Swipe up for next</div>
+        </div>
+        <div class="actions">
+          <div class="abtn ico">⭐</div><div class="abtn ico">🔊</div><div class="abtn mic">🎙️ Say it</div>
+        </div>
+      </div>
+      <div class="tabs">
+        <div class="tab on"><span class="g">🗂️</span>Feed</div>
+        <div class="tab"><span class="g">🔍</span>Browse</div>
+        <div class="tab"><span class="g">🎙️</span>Speak</div>
+        <div class="tab"><span class="g">👤</span>You</div>
+      </div>
+    </div>
+    <div class="figcap"><b>6 · New card type — "Say this instead"</b>
+      <span>Phrasing, not vocabulary. One of the eight lanes that currently has no content at all.</span></div>
+  </div>
+
+  <div class="fig">
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>▮▮▮ ⌁</span></div>
+      <div class="body">
+        <div class="topbar"><span class="streak">🔥 6</span><span class="xp">15 / 30 XP</span></div>
+        <div class="fcard">
+          <span class="badge b-verb">🎬 Story Craft</span>
+          <div class="hero xs" style="margin-top:14px">Land the ending on a short sentence.</div>
+          <div class="block">
+            <div class="lbl">The move</div>
+            <div class="val">Long sentences build. Short ones close. If your last line is the longest one, the story leaks out instead of stopping.</div>
+          </div>
+          <div class="quote">"…and we'd rebuilt the whole thing over a weekend, on three hours of sleep, arguing the entire time. It shipped."</div>
+          <div class="block">
+            <div class="lbl">Heard in</div>
+            <div class="val">Radio hosts, closing a segment. Think School, ending an explainer.</div>
+          </div>
+          <div class="spacer"></div>
+          <div class="hint">Tap 🎙️ to try it on a story of your own</div>
+        </div>
+        <div class="actions">
+          <div class="abtn ico">⭐</div><div class="abtn ico">🔊</div><div class="abtn mic">🎙️ Try it</div>
+        </div>
+      </div>
+      <div class="tabs">
+        <div class="tab on"><span class="g">🗂️</span>Feed</div>
+        <div class="tab"><span class="g">🔍</span>Browse</div>
+        <div class="tab"><span class="g">🎙️</span>Speak</div>
+        <div class="tab"><span class="g">👤</span>You</div>
+      </div>
+    </div>
+    <div class="figcap"><b>7 · New card type — Story Craft</b>
+      <span>Hooks, turns, landings — the RJ / Palki Sharma / Think School references become content rather than a line in a document.</span></div>
+  </div>
+
+</div>
+
+<h2 class="sec">3 · Browse — search first, decks second</h2>
+<p class="secsub">The strongest screen in the current app, kept almost as-is. Two changes: deck detail becomes the same swipeable stack as the feed instead of a modal with <code>›</code> buttons, and every deck carries a progress ring.</p>
+
+<div class="rail">
+
+  <div class="fig">
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>▮▮▮ ⌁</span></div>
+      <div class="body">
+        <div class="pad" style="overflow:hidden;flex:1">
+          <div style="margin-top:12px"><span class="kicker">Everything in one place</span>
+          <div class="h1s">Browse</div></div>
+          <div class="search">🔍 <span>Search words, idioms, Hindi, phrases…</span></div>
+          <div class="grid2">
+            <div class="deck"><span class="g">💼</span><b>Office Jargon &amp; Idioms</b><small>51 cards</small>
+              <div class="ring"><div class="ringbar"><i style="width:62%"></i></div><small>62%</small></div></div>
+            <div class="deck"><span class="g">💭</span><b>Phrases That Land</b><small>120 cards · new</small>
+              <div class="ring"><div class="ringbar"><i style="width:4%"></i></div><small>4%</small></div></div>
+            <div class="deck"><span class="g">❤️</span><b>Feelings, Precisely</b><small>100 cards · new</small>
+              <div class="ring"><div class="ringbar"><i style="width:0"></i></div><small>0%</small></div></div>
+            <div class="deck"><span class="g">⚡</span><b>Smart Word Swaps</b><small>46 cards</small>
+              <div class="ring"><div class="ringbar"><i style="width:41%"></i></div><small>41%</small></div></div>
+            <div class="deck"><span class="g">🏃</span><b>Action &amp; Dynamic Verbs</b><small>46 cards</small>
+              <div class="ring"><div class="ringbar"><i style="width:28%"></i></div><small>28%</small></div></div>
+            <div class="deck"><span class="g">🇮🇳</span><b>Modern Practical Hindi</b><small>40 cards</small>
+              <div class="ring"><div class="ringbar"><i style="width:55%"></i></div><small>55%</small></div></div>
+          </div>
+        </div>
+        <div class="fab">✏️ Capture</div>
+      </div>
+      <div class="tabs">
+        <div class="tab"><span class="g">🗂️</span>Feed</div>
+        <div class="tab on"><span class="g">🔍</span>Browse</div>
+        <div class="tab"><span class="g">🎙️</span>Speak</div>
+        <div class="tab"><span class="g">👤</span>You</div>
+      </div>
+    </div>
+    <div class="figcap"><b>8 · Browse</b>
+      <span>Scrolls on past Story Craft, Ideas &amp; Opinions, Pace &amp; Pronunciation, Teach It Back. Rings show progress without imposing a deadline.</span></div>
+  </div>
+
+  <div class="fig">
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>▮▮▮ ⌁</span></div>
+      <div class="body">
+        <div class="topbar" style="padding:0 16px">
+          <span style="font-size:19px">✕</span>
+          <span style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted)">Office Idioms · 32 / 51</span>
+          <span style="font-size:19px">🔍</span>
+        </div>
+        <div style="padding:0 20px"><div class="ringbar"><i style="width:62%"></i></div></div>
+        <div class="fcard">
+          <span class="badge b-idiom">💼 Office Idiom</span>
+          <div class="hero sm">in the weeds</div>
+          <div class="gloss">Lost in detail small enough that it has stopped mattering.</div>
+          <div class="block">
+            <div class="lbl">Use it when</div>
+            <div class="val">A review has spent twenty minutes on a button colour and the release date hasn't been discussed.</div>
+          </div>
+          <div class="quote">"We're in the weeds — can we come back to the date?"</div>
+          <div class="spacer"></div>
+          <div class="hint">Swipe up · card 32 of 51</div>
+        </div>
+        <div class="actions">
+          <div class="abtn ico">⭐</div><div class="abtn ico">🔊</div><div class="abtn mic">🎙️ Say it</div>
+        </div>
+      </div>
+      <div class="tabs">
+        <div class="tab"><span class="g">🗂️</span>Feed</div>
+        <div class="tab on"><span class="g">🔍</span>Browse</div>
+        <div class="tab"><span class="g">🎙️</span>Speak</div>
+        <div class="tab"><span class="g">👤</span>You</div>
+      </div>
+    </div>
+    <div class="figcap"><b>9 · Inside a deck</b>
+      <span>Identical card and gestures to the Feed — one card component, two hosts. Today this is a modal you advance with a chevron.</span></div>
+  </div>
+
+</div>
+
+<h2 class="sec">4 · Speak — every microphone in the app lives here</h2>
+<p class="secsub">Consolidated: the seven scenarios, the describe-this prompts, the 30–60&nbsp;s drills, the breath work that used to appear in the feed, and the optional 12-minute deep session. Calibration and the mic self-test sit in Settings and are asked for when they are first needed.</p>
+
+<div class="rail">
+
+  <div class="fig">
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>▮▮▮ ⌁</span></div>
+      <div class="body">
+        <div class="pad" style="flex:1;overflow:hidden">
+          <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:flex-start">
+            <div><span class="kicker">Optional, always</span><div class="h1s">Speak</div></div>
+            <span style="font-size:19px;margin-top:8px">⚙️</span>
+          </div>
+          <div class="sechd"><span class="kicker">Describe this</span><b>Look at it. Tell me what's happening.</b></div>
+          <div class="photo">🖼️<b>A crowded railway platform, monsoon</b><small>30 seconds · tap to open</small></div>
+          <div class="sechd"><span class="kicker">Situations</span><b>Say the hard thing well</b></div>
+          <div class="row"><span class="g">📊</span><div class="t"><b>Explain a launch delay</b><small>45s · calm, non-defensive update</small></div><span class="arw">›</span></div>
+          <div class="row"><span class="g">😐</span><div class="t"><b>Describe how that actually felt</b><small>45s · new</small></div><span class="arw">›</span></div>
+          <div class="row"><span class="g">🗞️</span><div class="t"><b>Explain one thing in the news</b><small>60s · new</small></div><span class="arw">›</span></div>
+          <div class="sechd"><span class="kicker">Micro-drills</span><b>60 seconds or less</b></div>
+          <div class="row"><span class="g">🐢</span><div class="t"><b>Slow it down</b><small>Pace &amp; pauses · 45s</small></div><span class="arw">›</span></div>
+          <div class="row"><span class="g">🧘</span><div class="t"><b>Composure reset</b><small>Breath &amp; jaw · 30s</small></div><span class="arw">›</span></div>
+        </div>
+      </div>
+      <div class="tabs">
+        <div class="tab"><span class="g">🗂️</span>Feed</div>
+        <div class="tab"><span class="g">🔍</span>Browse</div>
+        <div class="tab on"><span class="g">🎙️</span>Speak</div>
+        <div class="tab"><span class="g">👤</span>You</div>
+      </div>
+    </div>
+    <div class="figcap"><b>10 · The gym</b>
+      <span>Scrolls on to "Deep session · 12 min", clearly labelled optional and never surfaced on the home tab.</span></div>
+  </div>
+
+  <div class="fig">
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>▮▮▮ ⌁</span></div>
+      <div class="body">
+        <div class="topbar" style="padding:0 16px">
+          <span style="font-size:19px">✕</span>
+          <span style="font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted)">Describe this · 30s</span>
+          <span style="width:19px"></span>
+        </div>
+        <div class="pad" style="flex:1">
+          <div class="photo" style="height:250px">🖼️<b>A crowded railway platform, monsoon</b><small>Curated image pack · ships with the app</small></div>
+          <div class="keep" style="margin-top:16px">
+            <div class="lbl">Your job</div>
+            <p>Tell me what's happening — and what it feels like to be standing there.</p>
+          </div>
+          <div class="sechd"><span class="kicker">Try to use</span></div>
+          <div class="chips">
+            <span class="chip vocab">jostling</span><span class="chip vocab">sheltering</span>
+            <span class="chip vocab">brimming</span><span class="chip vocab">resigned</span>
+          </div>
+          <div class="spacer"></div>
+          <div class="prim" style="margin-bottom:8px">🎙️ Record 30 seconds</div>
+          <div style="text-align:center;color:var(--ink-faint);font-size:11.5px;margin-bottom:18px">Audio stays on this device unless you ask for AI feedback.</div>
+        </div>
+      </div>
+      <div class="tabs">
+        <div class="tab"><span class="g">🗂️</span>Feed</div>
+        <div class="tab"><span class="g">🔍</span>Browse</div>
+        <div class="tab on"><span class="g">🎙️</span>Speak</div>
+        <div class="tab"><span class="g">👤</span>You</div>
+      </div>
+    </div>
+    <div class="figcap"><b>11 · Describe this — the prompt</b>
+      <span>You asked for exactly this. Recommendation is a curated static image pack: free, instant, offline, and every picture is guaranteed to have something in it worth saying.</span></div>
+  </div>
+
+  <div class="fig">
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>▮▮▮ ⌁</span></div>
+      <div class="body">
+        <div class="reclive">
+          <div class="recdot"><i></i> RECORDING</div>
+          <div class="photo" style="height:132px;margin-top:10px">🖼️<b>Crowded railway platform, monsoon</b></div>
+          <div class="keep">
+            <div class="lbl">Say what's happening — and how it feels</div>
+            <div class="beat"><u>1</u><span>Set the scene</span></div>
+            <div class="beat now"><u>2</u><span>What's actually happening</span></div>
+            <div class="beat"><u>3</u><span>How it feels to stand there</span></div>
+          </div>
+          <div class="chips" style="justify-content:center">
+            <span class="chip vocab hit">jostling ✓</span><span class="chip vocab">sheltering</span>
+            <span class="chip vocab hit">brimming ✓</span><span class="chip vocab">resigned</span>
+          </div>
+          <div class="wave">
+            <i style="height:22%"></i><i style="height:54%"></i><i style="height:88%"></i><i style="height:41%"></i>
+            <i style="height:70%"></i><i style="height:96%"></i><i style="height:33%"></i><i style="height:61%"></i>
+            <i style="height:80%"></i><i style="height:28%"></i><i style="height:52%"></i><i style="height:74%"></i>
+            <i style="height:44%"></i><i style="height:90%"></i><i style="height:36%"></i><i style="height:58%"></i>
+            <i style="height:66%"></i><i style="height:25%"></i><i style="height:48%"></i><i style="height:82%"></i>
+          </div>
+          <div class="clock">0:18<small>18 seconds left</small></div>
+          <div class="spacer"></div>
+          <div class="ghost" style="margin-bottom:18px">⏹ Done</div>
+        </div>
+      </div>
+      <div class="tabs">
+        <div class="tab"><span class="g">🗂️</span>Feed</div>
+        <div class="tab"><span class="g">🔍</span>Browse</div>
+        <div class="tab on"><span class="g">🎙️</span>Speak</div>
+        <div class="tab"><span class="g">👤</span>You</div>
+      </div>
+    </div>
+    <div class="figcap"><b>12 · Recording — the fix for "where do I speak?"</b>
+      <span>The prompt, the image, the three beats with the current one highlighted, the target words ticking off live, a <b>real</b> analyser waveform, and the clock — all on one screen, no scrolling. If a mic is open and this screen can't answer "what do I say now", it's broken.</span></div>
+  </div>
+
+  <div class="fig">
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>▮▮▮ ⌁</span></div>
+      <div class="body">
+        <div class="pad" style="flex:1;overflow:hidden">
+          <div style="margin-top:14px"><span class="kicker">Attempt 1</span><div class="h1s">Here's what I heard</div></div>
+          <div class="player">
+            <span class="pl">▶</span>
+            <span class="wv"><i style="height:30%"></i><i style="height:62%"></i><i style="height:90%"></i><i style="height:44%"></i><i style="height:72%"></i><i style="height:96%"></i><i style="height:38%"></i><i style="height:66%"></i><i style="height:84%"></i><i style="height:30%"></i><i style="height:56%"></i><i style="height:78%"></i><i style="height:46%"></i><i style="height:92%"></i><i style="height:34%"></i><i style="height:60%"></i></span>
+            <small>0:29</small>
+          </div>
+          <div style="background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:4px 15px;margin-top:14px;box-shadow:var(--sh-sm)">
+            <div class="metric"><span>Length</span><b>29s</b></div>
+            <div class="metric"><span>Pace</span><b class="warn">168 wpm · fast</b></div>
+            <div class="metric"><span>Pauses</span><b>2</b></div>
+            <div class="metric"><span>Target words used</span><b class="good">2 of 4</b></div>
+            <div class="metric"><span>Volume vs your usual</span><b class="good">−5 dB</b></div>
+          </div>
+          <div class="src">Measured on this device. Nothing uploaded.</div>
+          <div class="fbcard win">
+            <h4>What worked</h4>
+            <p>You opened with the scene before the action — "the platform was <i>brimming</i>" — so the listener knew where they were standing before anything happened.</p>
+          </div>
+          <div class="fbcard fix">
+            <h4>One thing to change</h4>
+            <p>168 wpm with 2 pauses across 29 seconds. Try it again and stop fully after "…and the train still hadn't come."</p>
+          </div>
+          <div class="src">Feedback from your transcript · Gemini</div>
+          <div style="display:flex;gap:10px;margin-top:16px">
+            <div class="ghost">↻ Try again</div>
+            <div class="prim" style="height:48px">Save</div>
+          </div>
+        </div>
+      </div>
+      <div class="tabs">
+        <div class="tab"><span class="g">🗂️</span>Feed</div>
+        <div class="tab"><span class="g">🔍</span>Browse</div>
+        <div class="tab on"><span class="g">🎙️</span>Speak</div>
+        <div class="tab"><span class="g">👤</span>You</div>
+      </div>
+    </div>
+    <div class="figcap"><b>13 · Review — measured, and labelled with its source</b>
+      <span>Every number is derived from the attempt. Both feedback cards quote your actual words back. Two source lines say where each half came from. If the AI call fails, the metrics and the playback still show and <b>nothing</b> is invented to fill the gap.</span></div>
+  </div>
+
+</div>
+
+<h2 class="sec">5 · You — saved, streak, and only honest numbers</h2>
+
+<div class="rail">
+
+  <div class="fig">
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>▮▮▮ ⌁</span></div>
+      <div class="body">
+        <div class="pad" style="flex:1;overflow:hidden">
+          <div style="margin-top:12px"><span class="kicker">Six days in</span><div class="h1s">You</div></div>
+          <div class="stat3">
+            <div class="stat"><b>🔥6</b><small>DAY STREAK</small></div>
+            <div class="stat"><b>147</b><small>CARDS SEEN</small></div>
+            <div class="stat"><b>11</b><small>SPOKEN REPS</small></div>
+          </div>
+          <div class="cal">
+            <i class="on"></i><i class="on"></i><i class="frz"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
+            <i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div style="font-size:11px;color:var(--ink-muted);margin-top:7px">🔥 active &nbsp;·&nbsp; ▪ freeze used (2 left this month)</div>
+          <div class="recap">
+            <b>THIS WEEK</b>
+            <p>You met <b>34</b> new words and used <b>6</b> of them out loud. You opened this instead of something else <b>9</b> times.</p>
+          </div>
+          <div class="sechd"><span class="kicker">Saved · 23</span><b>Ready before a call</b></div>
+          <div class="row"><span class="g">💼</span><div class="t"><b>in the weeds</b><small>Office Idiom</small></div><span class="arw">›</span></div>
+          <div class="row"><span class="g">🇮🇳</span><div class="t"><b>टाल-मटोल</b><small>Practical Hindi</small></div><span class="arw">›</span></div>
+          <div class="sechd"><span class="kicker">Recordings · 11</span><b>Hear yourself six days ago</b></div>
+          <div class="row"><span class="g">▶</span><div class="t"><b>Railway platform</b><small>Aug 19 · 29s</small></div><span class="arw">›</span></div>
+        </div>
+        <div class="fab">✏️ Capture</div>
+      </div>
+      <div class="tabs">
+        <div class="tab"><span class="g">🗂️</span>Feed</div>
+        <div class="tab"><span class="g">🔍</span>Browse</div>
+        <div class="tab"><span class="g">🎙️</span>Speak</div>
+        <div class="tab on"><span class="g">👤</span>You</div>
+      </div>
+    </div>
+    <div class="figcap"><b>14 · You</b>
+      <span>"Opened this instead" is the one number the app already collects honestly, and it is the real north-star. Streak = 5 cards <i>or</i> 1 spoken rep, so a thirty-second day keeps it.</span></div>
+  </div>
+
+  <div class="fig" style="width:560px">
+    <h3 style="font-family:var(--serif);font-size:21px;margin-bottom:2px">Before / after, screen by screen</h3>
+    <table class="cmp">
+      <tr><th>Moment</th><th>Today</th><th>V3</th></tr>
+      <tr><td>First launch</td><td class="was">4 screens: noise floor, AGC, 30&nbsp;cm placement, medical disclaimer</td><td class="now">1 question, then the feed</td></tr>
+      <tr><td>First card</td><td class="was">Breath drill titled "straw", "Core 2/3"</td><td class="now">A word or an idiom. No counter.</td></tr>
+      <tr><td>Fourth card</td><td class="was">"Loading today's deck…" forever</td><td class="now">The fourth card</td></tr>
+      <tr><td>Reading vocab</td><td class="was">6 taps, ends in a modal with a chevron</td><td class="now">Open the app. It's already there.</td></tr>
+      <tr><td>Main action on a word</td><td class="was">"Got It · Next Card" — grading yourself on a word you just met</td><td class="now">Swipe. Nothing to pass or fail.</td></tr>
+      <tr><td>Advancing a card</td><td class="was">A button</td><td class="now">A swipe</td></tr>
+      <tr><td>Tapping the mic</td><td class="was">A countdown that records nothing, labelled "Recording…"</td><td class="now">Real capture, prompt on screen throughout</td></tr>
+      <tr><td>After recording</td><td class="was">Two hardcoded sentences over a CSS waveform. Nothing saved.</td><td class="now">Measured numbers + feedback quoting your words, each labelled with its source</td></tr>
+      <tr><td>Breath drills</td><td class="was">Interleaved into the vocabulary feed</td><td class="now">In Speak, where you go on purpose</td></tr>
+      <tr><td>Content depth</td><td class="was">368 cards · ~3 weeks</td><td class="now">1,500+, verified before serving</td></tr>
+      <tr><td>Missing lanes</td><td class="was">8 of your 20 asks have no content</td><td class="now">8 new decks authored</td></tr>
+      <tr><td>Streak</td><td class="was">Complete the 3-card Core sequence</td><td class="now">5 cards or 1 spoken rep. 2 freezes a month.</td></tr>
+    </table>
+
+    <div class="banner" style="border-left-color:var(--accent)">
+      <h3>Two decisions before Antigravity starts</h3>
+      <p><b>1 · The name.</b> Recommendation: <b>Articulate</b>, with Speak surviving as one tab. Nothing in the build depends on it.</p>
+      <p><b>2 · Describe-this images.</b> Recommendation: a curated static pack of ~150 images shipped with the app — free, instant, offline, and reliably worth describing — rather than runtime generation, which costs per view and adds 3–8&nbsp;s of latency to a casual app.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="foot">
+  Frames are 1:1 at 375×812. Palette, type and shadows are the current tokens — no theme change is proposed.<br>
+  Spec: <b>docs/PRODUCT-V3.md</b> · Build brief: <b>.claude/briefs/AG-004-v3-rebuild.md</b>
+</div>
+
+</div>
+</body>
+</html>

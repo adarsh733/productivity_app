@@ -1,0 +1,313 @@
+/* -- SPEAK — Card Anatomy & Types ------------------------------------------ */
+
+.fcard {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+}
+
+.card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex: none;
+}
+
+.card-hear-btn {
+  background: transparent;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--r-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.card-hear-btn:active {
+  transform: scale(1.15);
+}
+
+.card-inner-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  outline: none;
+  cursor: pointer;
+}
+
+/* -- Badges ----------------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: var(--r-pill);
+  padding: 4px 10px;
+  font-size: var(--fs-1);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+.b-word { background: #fef3c7; color: var(--t-idiom); }
+.b-idiom { background: #fef3c7; color: var(--t-idiom); }
+.b-swap { background: #ede9fe; color: var(--t-swap); }
+.b-verb { background: #fce7f3; color: var(--t-action_verb); }
+.b-hindi { background: #ccfbf1; color: var(--t-pronounce); }
+.b-scn { background: var(--accent-soft); color: var(--accent); }
+.b-breath { background: #f1f5f9; color: var(--t-breath); }
+.b-describe { background: #fef3c7; color: #b45309; }
+.b-explain { background: #dbeafe; color: #1d4ed8; }
+.b-teach { background: #dcfce7; color: #15803d; }
+.b-pace { background: var(--accent-soft); color: var(--accent); }
+
+/* -- Card Typography -------------------------------------------------------- */
+.hero {
+  font-family: var(--serif);
+  font-size: var(--fs-7);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.02em;
+  margin-top: auto;
+  color: var(--ink);
+}
+
+.hero.sm {
+  font-size: var(--fs-6);
+}
+
+.hero.xs {
+  font-size: var(--fs-5);
+  line-height: 1.25;
+}
+
+.card-hero-detail {
+  margin-top: var(--s-2);
+}
+
+.pos {
+  color: var(--ink-3);
+  font-size: var(--fs-2);
+  margin-top: 6px;
+  font-style: italic;
+}
+
+.gloss {
+  color: var(--ink-2);
+  font-size: var(--fs-4);
+  margin-top: 10px;
+  line-height: var(--lh-body);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.hint {
+  color: var(--ink-3);
+  font-size: var(--fs-1);
+  text-align: center;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  margin-top: 12px;
+  flex: none;
+  cursor: pointer;
+}
+
+.block {
+  margin-top: 12px;
+}
+
+.block .lbl {
+  font-size: var(--fs-1);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 3px;
+}
+
+.block .val {
+  font-size: var(--fs-3);
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--fs-3);
+  color: var(--ink);
+  background: var(--raised);
+  border-left: 3px solid var(--ink-3);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  padding: 10px 12px;
+  margin-top: 12px;
+  line-height: var(--lh-body);
+}
+
+/* -- Specific Card Presentation Classes ------------------------------------- */
+.card-say-highlight {
+  color: var(--accent);
+  font-weight: var(--fw-bold);
+}
+
+.card-scenario-block {
+  margin-top: 14px;
+}
+
+.card-swap-weak {
+  color: var(--ink-3);
+  text-decoration: line-through;
+}
+
+.card-swap-arrow {
+  text-align: center;
+  font-size: 20px;
+  color: var(--ink-3);
+  margin: 8px 0;
+}
+
+.card-swap-strong {
+  color: var(--accent);
+  font-weight: var(--fw-bold);
+}
+
+.card-options-block {
+  margin-top: 16px;
+}
+
+.card-phrase-why-block {
+  margin-top: 16px;
+}
+
+.card-contrast-highlight {
+  color: var(--heat);
+  font-weight: var(--fw-bold);
+}
+
+.card-story-move-title {
+  margin-top: 10px;
+}
+
+.card-action-contrast-block {
+  margin-top: 12px;
+}
+
+.card-syllables-box {
+  margin-top: 16px;
+  font-size: 20px;
+  font-family: var(--sans);
+  font-weight: var(--fw-medium);
+  color: var(--ink-2);
+}
+
+.card-syllables-box .stressed {
+  font-weight: var(--fw-bold);
+  color: var(--accent);
+}
+
+.card-pronounce-error-block {
+  margin-top: 16px;
+}
+
+.card-danger-highlight {
+  color: var(--bad);
+  font-weight: var(--fw-medium);
+}
+
+.card-sayit-quote {
+  font-size: var(--fs-4);
+  margin-top: 16px;
+}
+
+.card-breath-steps {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-breath-step-item {
+  font-size: var(--fs-3);
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.card-describe-image-box {
+  width: 100%;
+  max-height: 180px;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  margin-bottom: 12px;
+  background: var(--raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-describe-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-describe-prompt {
+  margin-top: 4px;
+  font-weight: var(--fw-medium);
+}
+
+.card-describe-beats-block {
+  margin-top: 12px;
+}
+
+.card-beats-list {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card-beats-list li {
+  font-size: var(--fs-2);
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+.card-describe-vocab-block {
+  margin-top: 12px;
+}
+
+.card-vocab-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.card-vocab-chip {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent-line);
+  border-radius: var(--r-pill);
+  padding: 3px 10px;
+  font-size: var(--fs-1);
+  font-weight: var(--fw-bold);
+}

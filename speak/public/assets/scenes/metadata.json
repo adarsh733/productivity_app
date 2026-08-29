@@ -1,0 +1,44 @@
+{
+  "scenes": [
+    {
+      "id": "monsoon_cafe",
+      "file": "monsoon_cafe.jpg",
+      "path": "/assets/scenes/monsoon_cafe.jpg",
+      "title": "Bengaluru Monsoon Cafe",
+      "alt": "Steaming cup of filter coffee beside a rain-streaked window in a bustling Bengaluru cafe.",
+      "dimensions": { "width": 800, "height": 600, "aspectRatio": "4:3" },
+      "license": "Curated workspace asset / CC0 Public Domain",
+      "source": "Internal Articulate Scene Library"
+    },
+    {
+      "id": "datacenter",
+      "file": "datacenter.jpg",
+      "path": "/assets/scenes/datacenter.jpg",
+      "title": "Midnight Data Center",
+      "alt": "Endless rows of black server racks with blinking green and amber LEDs in a chilled room.",
+      "dimensions": { "width": 800, "height": 600, "aspectRatio": "4:3" },
+      "license": "Curated workspace asset / CC0 Public Domain",
+      "source": "Internal Articulate Scene Library"
+    },
+    {
+      "id": "metro",
+      "file": "metro.jpg",
+      "path": "/assets/scenes/metro.jpg",
+      "title": "Peak Morning Metro Commute",
+      "alt": "Crowded morning metro train arriving at an elevated station platform in the morning mist.",
+      "dimensions": { "width": 800, "height": 600, "aspectRatio": "4:3" },
+      "license": "Curated workspace asset / CC0 Public Domain",
+      "source": "Internal Articulate Scene Library"
+    },
+    {
+      "id": "war_room",
+      "file": "war_room.jpg",
+      "path": "/assets/scenes/war_room.jpg",
+      "title": "Incident Response War Room",
+      "alt": "A whiteboard covered in red markers, empty coffee mugs, and laptop screens showing Grafana charts.",
+      "dimensions": { "width": 800, "height": 600, "aspectRatio": "4:3" },
+      "license": "Curated workspace asset / CC0 Public Domain",
+      "source": "Internal Articulate Scene Library"
+    }
+  ]
+}

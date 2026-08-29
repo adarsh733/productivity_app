@@ -1,22 +1,221 @@
 import { describe, expect, it } from 'vitest';
-import { coreThreeComplete, currentStreak, emptyDay, isPass } from './day';
+import {
+  isDayComplete,
+  currentStreak,
+  emptyDay,
+  isPass,
+  validateSpeakingAttempt,
+  applySpeakingCompletion,
+  applyCardView,
+  applyBookmarkToggle,
+  getMonthlyFreezeStatus,
+} from './day';
 import type { DayKey, DayRecord } from '../../types/contract';
+import { GAMIFICATION } from '../../types/contract';
+import { addDays, parseDayKey, toDayKey } from '../../lib/date';
 
 function days(done: DayKey[]): Map<DayKey, DayRecord> {
   const m = new Map<DayKey, DayRecord>();
-  for (const d of done) m.set(d, { ...emptyDay(d), coreThreeDone: true });
+  for (const d of done) m.set(d, { ...emptyDay(d), cardsCompleted: 5 });
   return m;
 }
 
-describe('coreThreeComplete', () => {
-  it('needs all three types', () => {
-    expect(coreThreeComplete(['breath', 'say_it', 'word'])).toBe(true);
-    expect(coreThreeComplete(['breath', 'say_it'])).toBe(false);
-    expect(coreThreeComplete(['word', 'word', 'word'])).toBe(false);
+describe('Speaking attempt validation and completion', () => {
+  it('Null audio does not credit a spoken rep or XP', () => {
+    const initial = emptyDay('2026-08-26');
+    const res = applySpeakingCompletion(initial, null, 30, 10);
+    expect(res.credited).toBe(false);
+    expect(res.day.spokenReps).toBe(0);
+    expect(res.day.xp).toBe(0);
+    expect(res.day.cardsCompleted).toBe(0);
+    expect(res.day.coreThreeDone).toBe(false);
   });
 
-  it('ignores extra types', () => {
-    expect(coreThreeComplete(['idiom', 'breath', 'swap', 'say_it', 'word'])).toBe(true);
+  it('Empty audio blob does not credit a spoken rep or XP', () => {
+    const initial = emptyDay('2026-08-26');
+    const emptyBlob = new Blob([], { type: 'audio/webm' });
+    const res = applySpeakingCompletion(initial, { blob: emptyBlob }, 30, 10);
+    expect(res.credited).toBe(false);
+    expect(res.day.spokenReps).toBe(0);
+    expect(res.day.xp).toBe(0);
+  });
+
+  it('Audio duration under 2 seconds does not credit a spoken rep or XP', () => {
+    const initial = emptyDay('2026-08-26');
+    const validBlob = new Blob(['sample-audio-data-chunk'], { type: 'audio/webm' });
+    const res = applySpeakingCompletion(initial, { blob: validBlob }, 1, 10);
+    expect(res.credited).toBe(false);
+    expect(res.day.spokenReps).toBe(0);
+    expect(res.day.xp).toBe(0);
+  });
+
+  it('One valid standard recording credits 10 XP and completes the day', () => {
+    const initial = emptyDay('2026-08-26');
+    const validBlob = new Blob(['sample-audio-data-chunk'], { type: 'audio/webm' });
+    const res = applySpeakingCompletion(initial, { blob: validBlob }, 30, GAMIFICATION.XP.spokenRep);
+    expect(res.credited).toBe(true);
+    expect(res.day.spokenReps).toBe(1);
+    expect(res.day.xp).toBe(10);
+    expect(res.day.secondsActive).toBe(30);
+    expect(res.day.cardsCompleted).toBe(1);
+    expect(res.day.coreThreeDone).toBe(true);
+    expect(isDayComplete(res.day)).toBe(true);
+  });
+
+  it('One valid Describe recording credits 25 XP and completes the day', () => {
+    const initial = emptyDay('2026-08-26');
+    const validBlob = new Blob(['sample-audio-data-chunk'], { type: 'audio/webm' });
+    const res = applySpeakingCompletion(initial, { blob: validBlob }, 45, GAMIFICATION.XP.describeRep);
+    expect(res.credited).toBe(true);
+    expect(res.day.spokenReps).toBe(1);
+    expect(res.day.xp).toBe(25);
+    expect(res.day.secondsActive).toBe(45);
+    expect(res.day.coreThreeDone).toBe(true);
+  });
+
+  it('validateSpeakingAttempt rejects invalid inputs and accepts valid audio >= 2s', () => {
+    expect(validateSpeakingAttempt(null, 5)).toBe(false);
+    expect(validateSpeakingAttempt(undefined, 5)).toBe(false);
+    expect(validateSpeakingAttempt({ blob: new Blob([]) }, 5)).toBe(false);
+    expect(validateSpeakingAttempt({ blob: new Blob(['audio']) }, 1)).toBe(false);
+    expect(validateSpeakingAttempt({ blob: new Blob(['audio']) }, 2)).toBe(true);
+  });
+});
+
+describe('XP Rules & Anti-Farming', () => {
+  it('1 XP per UNIQUE card viewed per day; repeated views on same day earn 0 XP', () => {
+    let day = emptyDay('2026-08-26');
+    const seen = new Set<string>();
+
+    // First view of card-A -> 1 XP
+    const view1 = applyCardView(day, 'card-A', seen, { msSpent: 3000 });
+    expect(view1.isUnique).toBe(true);
+    expect(view1.xpEarned).toBe(1);
+    expect(view1.day.xp).toBe(1);
+    expect(view1.day.cardsCompleted).toBe(1);
+    seen.add('card-A');
+    day = view1.day;
+
+    // Second view of card-A on the same day -> 0 XP, cardsCompleted does not increment
+    const view2 = applyCardView(day, 'card-A', seen, { msSpent: 2000 });
+    expect(view2.isUnique).toBe(false);
+    expect(view2.xpEarned).toBe(0);
+    expect(view2.day.xp).toBe(1);
+    expect(view2.day.cardsCompleted).toBe(1);
+    expect(view2.day.secondsActive).toBe(5);
+
+    // View of card-B -> 1 XP
+    const view3 = applyCardView(view2.day, 'card-B', seen, { msSpent: 4000 });
+    expect(view3.isUnique).toBe(true);
+    expect(view3.xpEarned).toBe(1);
+    expect(view3.day.xp).toBe(2);
+    expect(view3.day.cardsCompleted).toBe(2);
+  });
+
+  it('Bookmark toggle awards 3 XP the first time; prevents toggle farming', () => {
+    let day = emptyDay('2026-08-26');
+    const awarded = new Set<string>();
+
+    // First time bookmarking card-1 -> +3 XP
+    const bm1 = applyBookmarkToggle(day, 'card-1', true, awarded);
+    expect(bm1.newlyAwarded).toBe(true);
+    expect(bm1.xpEarned).toBe(3);
+    expect(bm1.day.xp).toBe(3);
+    awarded.add('card-1');
+    day = bm1.day;
+
+    // Unsaving card-1 -> 0 XP change
+    const bm2 = applyBookmarkToggle(day, 'card-1', false, awarded);
+    expect(bm2.newlyAwarded).toBe(false);
+    expect(bm2.xpEarned).toBe(0);
+    expect(bm2.day.xp).toBe(3);
+    day = bm2.day;
+
+    // Re-bookmarking card-1 -> 0 XP (anti-farming protected)
+    const bm3 = applyBookmarkToggle(day, 'card-1', true, awarded);
+    expect(bm3.newlyAwarded).toBe(false);
+    expect(bm3.xpEarned).toBe(0);
+    expect(bm3.day.xp).toBe(3);
+  });
+
+  it('Silent feed browsing never increments spoken reps', () => {
+    let day = emptyDay('2026-08-26');
+    const seen = new Set<string>();
+    for (let i = 0; i < 10; i++) {
+      const res = applyCardView(day, `card-${i}`, seen, { msSpent: 5000 });
+      seen.add(`card-${i}`);
+      day = res.day;
+    }
+    expect(day.cardsCompleted).toBe(10);
+    expect(day.spokenReps).toBe(0);
+    expect(day.xp).toBe(10);
+    expect(isDayComplete(day)).toBe(true);
+  });
+});
+
+describe('Freeze Ledger & Proven Availability', () => {
+  it('Evaluates 2 available freezes when no missed days have occurred', () => {
+    const today = '2026-08-10';
+    const m = days(['2026-08-08', '2026-08-09', '2026-08-10']);
+    const status = getMonthlyFreezeStatus(m, today);
+
+    expect(status.month).toBe('2026-08');
+    expect(status.usedDates).toHaveLength(0);
+    expect(status.remaining).toBe(2);
+  });
+
+  it('Proves 1 remaining freeze when 1 day was missed and protected by streak', () => {
+    const today = '2026-08-10';
+    // 2026-08-08 was missed and absorbed
+    const m = days(['2026-08-07', '2026-08-09', '2026-08-10']);
+    const status = getMonthlyFreezeStatus(m, today);
+
+    expect(status.usedDates).toEqual(['2026-08-08']);
+    expect(status.remaining).toBe(1);
+  });
+
+  it('Proves 0 remaining freezes when 2 days were missed and does not resurrect', () => {
+    const today = '2026-08-10';
+    // 2026-08-06 and 2026-08-08 were missed and absorbed
+    const m = days(['2026-08-05', '2026-08-07', '2026-08-09', '2026-08-10']);
+    const status = getMonthlyFreezeStatus(m, today);
+
+    expect(status.usedDates).toEqual(['2026-08-08', '2026-08-06']);
+    expect(status.remaining).toBe(0);
+  });
+});
+
+describe('Asia/Kolkata Timezone Boundary Tests', () => {
+  it('Parses and handles local calendar days consistently around midnight', () => {
+    const d1 = parseDayKey('2026-08-26');
+    expect(toDayKey(d1)).toBe('2026-08-26');
+
+    const d2 = parseDayKey(addDays('2026-08-26', 1));
+    expect(toDayKey(d2)).toBe('2026-08-27');
+
+    const dPrev = parseDayKey(addDays('2026-08-26', -1));
+    expect(toDayKey(dPrev)).toBe('2026-08-25');
+  });
+
+  it('Month boundary rollover transitions cleanly across local calendar days', () => {
+    expect(addDays('2026-08-31', 1)).toBe('2026-09-01');
+    expect(addDays('2026-09-01', -1)).toBe('2026-08-31');
+  });
+});
+
+describe('isDayComplete', () => {
+  it('is true when 5 cards completed', () => {
+    expect(isDayComplete({ ...emptyDay('2026-08-11'), cardsCompleted: 5 })).toBe(true);
+    expect(isDayComplete({ ...emptyDay('2026-08-11'), cardsCompleted: 10 })).toBe(true);
+  });
+
+  it('is true when 1 spoken rep completed', () => {
+    expect(isDayComplete({ ...emptyDay('2026-08-11'), cardsCompleted: 1, spokenReps: 1 })).toBe(true);
+  });
+
+  it('is false when under threshold', () => {
+    expect(isDayComplete({ ...emptyDay('2026-08-11'), cardsCompleted: 4, spokenReps: 0 })).toBe(false);
+    expect(isDayComplete(undefined)).toBe(false);
   });
 });
 
@@ -41,15 +240,12 @@ describe('currentStreak', () => {
   });
 
   it('absorbs up to two missed days in a month', () => {
-    // 5th missed, 8th missed — both inside the allowance.
     const m = days(['2026-08-04', '2026-08-06', '2026-08-07', '2026-08-09', '2026-08-10']);
     expect(currentStreak(m, '2026-08-10')).toBe(5);
   });
 
   it('breaks on the third miss in a month', () => {
     const m = days(['2026-08-01', '2026-08-03', '2026-08-05', '2026-08-07', '2026-08-09']);
-    // Walking back from the 9th: 8th and 6th are absorbed by the two grace
-    // days, the 4th is the third miss and ends it — so 9th, 7th, 5th count.
     expect(currentStreak(m, '2026-08-09')).toBe(3);
   });
 
@@ -58,7 +254,6 @@ describe('currentStreak', () => {
   });
 
   it('does not spend grace before the streak has started', () => {
-    // Nothing done for days — this is not a 2-day streak on credit.
     const m = days(['2026-08-01']);
     expect(currentStreak(m, '2026-08-11')).toBe(0);
   });
@@ -67,3 +262,4 @@ describe('currentStreak', () => {
     expect(currentStreak(days(['2020-01-01']), '2026-08-11')).toBe(0);
   });
 });
+

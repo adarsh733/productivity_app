@@ -1,0 +1,855 @@
+[
+  {
+    "id": "feel-apprehensive",
+    "type": "feeling",
+    "term": "Apprehensive",
+    "meaning": "Anxious or fearful that something bad or unpleasant will happen soon.",
+    "contrast": "Not panic or terror; it is a quiet, anticipatory dread before an uncertain outcome.",
+    "example": "I felt apprehensive walking into the quarterly board review after our infrastructure migration slipped.",
+    "tags": [
+      "emotion",
+      "presence",
+      "workplace"
+    ]
+  },
+  {
+    "id": "feel-vindicated",
+    "type": "feeling",
+    "term": "Vindicated",
+    "meaning": "Feeling cleared of blame or proven right after being doubted.",
+    "contrast": "Not gloating or petty; it is the quiet relief of objective reality confirming your original conviction.",
+    "example": "When the stress test passed under 100k concurrent users, the caching team felt completely vindicated.",
+    "tags": [
+      "emotion",
+      "validation"
+    ]
+  },
+  {
+    "id": "feel-exasperated",
+    "type": "feeling",
+    "term": "Exasperated",
+    "meaning": "Intensely irritated, frustrated, and fatigued by repeated friction.",
+    "contrast": "Beyond standard annoyance; you have tried multiple solutions and are out of patience.",
+    "example": "After the third meeting where we relitigated the same resolved API spec, she was visibly exasperated.",
+    "tags": [
+      "emotion",
+      "workplace"
+    ]
+  },
+  {
+    "id": "feel-ambivalent",
+    "type": "feeling",
+    "term": "Ambivalent",
+    "meaning": "Having simultaneous conflicting feelings or contradictory attitudes about something.",
+    "contrast": "Not apathy (not caring); it is caring strongly in two opposing directions at once.",
+    "example": "I'm ambivalent about taking the manager track—I love team coaching, but I'll miss hands-on architecture.",
+    "tags": [
+      "emotion",
+      "career"
+    ]
+  },
+  {
+    "id": "feel-complacent",
+    "type": "feeling",
+    "term": "Complacent",
+    "meaning": "Smug self-satisfaction accompanied by an unawareness of impending danger or competition.",
+    "contrast": "Different from confident; confidence is grounded in rigor, complacency is blinded by past wins.",
+    "example": "Dominating the market for three years made leadership complacent about mobile UX innovation.",
+    "tags": [
+      "emotion",
+      "strategy"
+    ]
+  },
+  {
+    "id": "feel-demoralized",
+    "type": "feeling",
+    "term": "Demoralized",
+    "meaning": "Having lost confidence, hope, or enthusiasm after repeated setbacks.",
+    "contrast": "Deeper than tired; your internal belief in the project's eventual success has eroded.",
+    "example": "Canceling the product line two weeks before release left the engineering squad deeply demoralized.",
+    "tags": [
+      "emotion",
+      "leadership"
+    ]
+  },
+  {
+    "id": "feel-buoyant",
+    "type": "feeling",
+    "term": "Buoyant",
+    "meaning": "Cheerful, resilient, and optimistically energetic despite headwinds.",
+    "contrast": "Not manic optimism; it is the resilient ability to bounce back when pressure mounts.",
+    "example": "Despite the tight deadline, the design team maintained a buoyant, collaborative mood.",
+    "tags": [
+      "emotion",
+      "culture"
+    ]
+  },
+  {
+    "id": "feel-wary",
+    "type": "feeling",
+    "term": "Wary",
+    "meaning": "Feeling or showing keen caution about possible dangers or hidden traps.",
+    "contrast": "Not cowardice; it is calculated, tactical vigilance before committing resources.",
+    "example": "Senior engineers were wary of adopting the unproven database framework for primary billing.",
+    "tags": [
+      "emotion",
+      "engineering"
+    ]
+  },
+  {
+    "id": "feel-disillusioned",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Disillusioned",
+    "meaning": "Disappointed upon discovering that something is not as good, honest, or noble as once believed.",
+    "contrast": "Beyond temporary sadness; it is the erosion of an earlier idealistic belief.",
+    "example": "After seeing leadership ignore systemic security findings for a year, senior engineers felt deeply disillusioned.",
+    "tags": [
+      "emotion",
+      "workplace",
+      "realism"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-rattled",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Rattled",
+    "meaning": "Momentarily flustered, shaken, or unnerved by an unexpected confrontation or crisis.",
+    "contrast": "Not paralyzed terror; it is a temporary loss of composure under sudden sharp friction.",
+    "example": "She was visibly rattled when the client aggressively challenged our financial projections in front of the board.",
+    "tags": [
+      "emotion",
+      "pressure",
+      "composure"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-indignant",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Indignant",
+    "meaning": "Feeling or showing justifiable anger provoked by unfair treatment or injustice.",
+    "contrast": "Not petty annoyance; indignation is rooted in a violation of shared principles or equity.",
+    "example": "The team was indignant when management took credit for the open-source library they built over weekends.",
+    "tags": [
+      "emotion",
+      "justice",
+      "culture"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-resolute",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Resolute",
+    "meaning": "Admirably purposeful, determined, and unwavering in commitment.",
+    "contrast": "Not blind stubbornness; resolute conviction comes from grounded clarity of purpose.",
+    "example": "Despite intense pushback from legacy stakeholders, she remained resolute about retiring the monolithic codebase.",
+    "tags": [
+      "emotion",
+      "leadership",
+      "resolve"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-overwhelmed",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Overwhelmed",
+    "meaning": "Completely submerged by an excessive volume of demands, sensations, or tasks.",
+    "contrast": "Deeper than simply being busy; cognitive processing capacity is maxed out and triage is needed.",
+    "example": "Handling three production outages while fielding nonstop Slack pings left the on-call engineer completely overwhelmed.",
+    "tags": [
+      "emotion",
+      "capacity",
+      "stress"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-invigorated",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Invigorated",
+    "meaning": "Filled with renewed energy, enthusiasm, and vitality.",
+    "contrast": "Not frantic hyperactivity; it is a clean, focused surge of renewed motivation after a breakthrough.",
+    "example": "Cracking the zero-copy buffer architecture left the whole systems team feeling invigorated.",
+    "tags": [
+      "emotion",
+      "energy",
+      "triumph"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-guarded",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Guarded",
+    "meaning": "Cautious, reserved, and deliberately withholding vulnerability in conversation.",
+    "contrast": "Different from shyness; guardedness is a conscious defensive posture to protect leverage or security.",
+    "example": "During vendor contract negotiations, his answers regarding our fallback timeline were polite but strictly guarded.",
+    "tags": [
+      "emotion",
+      "negotiation",
+      "presence"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-sullen",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Sullen",
+    "meaning": "Bad-tempered, gloomy, and silently resentful.",
+    "contrast": "Beyond quietness; sullen silence radiates passive resistance and unresolved friction.",
+    "example": "After his architectural proposal was rejected by the committee, he sat through the rest of the sprint sync in sullen silence.",
+    "tags": [
+      "emotion",
+      "team",
+      "friction"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-nonchalant",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Nonchalant",
+    "meaning": "Appearing calm, casual, and completely unconcerned under pressure.",
+    "contrast": "Not genuine negligence; nonchalance is often a deliberate display of unruffled executive ease.",
+    "example": "While the rest of the room panicked over the broken build, the principal architect remained nonchalant as he drafted the hotfix.",
+    "tags": [
+      "emotion",
+      "presence",
+      "composure"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-chagrined",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Chagrined",
+    "meaning": "Distressed, irritated, or embarrassed by failure or humiliation.",
+    "contrast": "Not devastating shame; it is the stinging annoyance of realizing an avoidable mistake happened publicly.",
+    "example": "She was chagrined to discover that the broken link on the live homepage was due to a typo in her own pull request.",
+    "tags": [
+      "emotion",
+      "accountability",
+      "mistakes"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-mortified",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Mortified",
+    "meaning": "Extremely embarrassed, humiliated, or ashamed.",
+    "contrast": "Far stronger than mild awkwardness; it feels like wishing the ground would swallow you whole.",
+    "example": "He was mortified when he accidentally shared his private compensation spreadsheet during an all-hands presentation.",
+    "tags": [
+      "emotion",
+      "embarrassment",
+      "social"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-exhilarated",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Exhilarated",
+    "meaning": "Filled with thrilling, energized joy and high spirits.",
+    "contrast": "Higher octane than mild satisfaction; it is the physical rush of a hard-won high-stakes victory.",
+    "example": "Watching our app hit number one on the App Store charts left the founders feeling exhilarated.",
+    "tags": [
+      "emotion",
+      "triumph",
+      "energy"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-crestfallen",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Crestfallen",
+    "meaning": "Sad, dejected, and visibly deflated after high expectations are suddenly dashed.",
+    "contrast": "Specifically tied to the sharp drop from optimistic hope to sudden disappointment.",
+    "example": "The intern looked crestfallen when told his favorite prototype feature was cut from the final release scope.",
+    "tags": [
+      "emotion",
+      "disappointment",
+      "empathy"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-disquieted",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Disquieted",
+    "meaning": "Feeling an uneasy, subtle sense of worry, anxiety, or lurking danger.",
+    "contrast": "Not acute panic; it is a quiet nagging intuition that something fundamental is off balance.",
+    "example": "The sudden silence from the client following our pricing proposal left the account lead disquieted.",
+    "tags": [
+      "emotion",
+      "intuition",
+      "caution"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-defiant",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Defiant",
+    "meaning": "Openly resisting, challenging, or refusing to comply with unjust authority.",
+    "contrast": "Not reckless aggression; defiance is purposeful resistance against unfair constraints.",
+    "example": "Despite executive pressure to ship untested code before the holiday, the QA lead took a defiant stance.",
+    "tags": [
+      "emotion",
+      "integrity",
+      "courage"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-remorseful",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Remorseful",
+    "meaning": "Filled with genuine, deep, and painful regret for having caused harm or error.",
+    "contrast": "Deeper than saying sorry for politeness; remorse involves internal empathy and desire for restitution.",
+    "example": "The developer was deeply remorseful after an unreviewed database script dropped three hours of customer audit logs.",
+    "tags": [
+      "emotion",
+      "accountability",
+      "empathy"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-complaisant",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Complaisant",
+    "meaning": "Willing to please others or comply with requests without challenge.",
+    "contrast": "Distinct from thoughtful collaboration; complaisance risks agreeing to flawed demands to avoid conflict.",
+    "example": "The junior lead was too complaisant with unreasonable client requests, leading to severe team burnout.",
+    "tags": [
+      "emotion",
+      "boundaries",
+      "assertiveness"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-flustered",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Flustered",
+    "meaning": "Agitated, confused, and thrown off stride by sudden interruptions or unexpected pressure.",
+    "contrast": "Not incompetence; it is a temporary scatter of focus when multiple things happen at once.",
+    "example": "When the projector disconnected in the middle of his demo, he became momentarily flustered.",
+    "tags": [
+      "emotion",
+      "speaking",
+      "composure"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-restive",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Restive",
+    "meaning": "Unable to remain still or silent; becoming impatient and difficult to control under restraint.",
+    "contrast": "Not lively energy; restiveness comes from mounting frustration with stagnation or delays.",
+    "example": "After two hours of circular corporate debate with no clear action items, the engineering team grew restive.",
+    "tags": [
+      "emotion",
+      "meetings",
+      "impatience"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-smug",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Smug",
+    "meaning": "Having or showing an excessive, annoying pride in one’s achievements or correct guesses.",
+    "contrast": "Different from humble satisfaction; smugness seeks validation by rubbing success in others’ faces.",
+    "example": "He had a smug expression after his prediction about the cloud provider outage turned out to be exactly right.",
+    "tags": [
+      "emotion",
+      "ego",
+      "presence"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-humbled",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Humbled",
+    "meaning": "Feeling modest, small, and profoundly aware of one’s limitations after witnessing greatness or experiencing a setback.",
+    "contrast": "Not humiliation; being humbled is a healthy, grounded calibration of ego that fuels real learning.",
+    "example": "Pair-programming with the original compiler author was a deeply humbling experience for our senior engineers.",
+    "tags": [
+      "emotion",
+      "growth",
+      "humility"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-tenacious",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Tenacious",
+    "meaning": "Holding fast; persistent, stubborn in pursuing a goal despite intense difficulty.",
+    "contrast": "Not mindless rigidity; tenacity is resilient grit that keeps trying new angles until the problem cracks.",
+    "example": "Her tenacious debugging over four days finally tracked the memory corruption to an obscure third-party C library.",
+    "tags": [
+      "emotion",
+      "grit",
+      "problem_solving"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-weary",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Weary",
+    "meaning": "Feeling exhausted in strength, patience, or endurance after sustained friction.",
+    "contrast": "Deeper than physical sleepiness; weariness is mental and emotional fatigue from prolonged uphill struggles.",
+    "example": "The team was weary after six consecutive weeks of emergency weekend deployments.",
+    "tags": [
+      "emotion",
+      "burnout",
+      "leadership"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-impassive",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Impassive",
+    "meaning": "Giving no sign of feeling or emotion; expressionless and calm.",
+    "contrast": "Not internal numbness; impassive delivery is an intentional executive choice during high-stakes negotiation.",
+    "example": "The VP remained completely impassive as the opposing counsel laid out their aggressive settlement demands.",
+    "tags": [
+      "emotion",
+      "executive",
+      "presence"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-petulant",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Petulant",
+    "meaning": "Childishly sulky, bad-tempered, or peevish over trivial setbacks.",
+    "contrast": "Different from legitimate grievance; petulance is reactive self-pity over minor inconveniences.",
+    "example": "He gave a petulant response when asked to adhere to the team’s standard code formatting guidelines.",
+    "tags": [
+      "emotion",
+      "maturity",
+      "culture"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-trepidatious",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Trepidatious",
+    "meaning": "Apprehensive and nervous with trembling anticipation before a high-stakes moment.",
+    "contrast": "Not cowardice; it is the natural adrenaline tremor before stepping onto an unfamiliar stage.",
+    "example": "She felt trepidatious as she walked to the podium to present the turnaround plan to two thousand employees.",
+    "tags": [
+      "emotion",
+      "speaking",
+      "courage"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-serene",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Serene",
+    "meaning": "Calm, peaceful, and untroubled by surrounding noise or chaotic urgency.",
+    "contrast": "Not passive detachment; serenity is centered poise that allows clear thinking amid turbulence.",
+    "example": "In the middle of the frantic outage escalation, the incident commander maintained a remarkably serene tone.",
+    "tags": [
+      "emotion",
+      "leadership",
+      "poise"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-gleeful",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Gleeful",
+    "meaning": "Exuberantly or triumphantly joyful.",
+    "contrast": "More playful and effervescent than quiet satisfaction; it feels like childhood delight at an unexpected win.",
+    "example": "The engineers were gleeful when their tiny two-line regex optimization sped up the ingest pipeline tenfold.",
+    "tags": [
+      "emotion",
+      "joy",
+      "celebration"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-distraught",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Distraught",
+    "meaning": "Deeply agitated, heartbroken, and unable to think clearly due to grief or catastrophe.",
+    "contrast": "Far beyond everyday worry; distraught states represent acute emotional crisis requiring support.",
+    "example": "The founder was visibly distraught when the lead investor pulled their term sheet 24 hours before payroll.",
+    "tags": [
+      "emotion",
+      "crisis",
+      "support"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-ebullient",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Ebullient",
+    "meaning": "Cheerful, full of energy, and overflowing with enthusiastic warmth.",
+    "contrast": "Not artificial cheer; ebullient enthusiasm is contagious and lifts the morale of everyone nearby.",
+    "example": "Her ebullient kickoff presentation energized the squad after a grueling quarter.",
+    "tags": [
+      "emotion",
+      "energy",
+      "culture"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-disconcerted",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Disconcerted",
+    "meaning": "Unsettled, confused, and thrown off balance by something unexpected.",
+    "contrast": "Not sheer terror; it is the awkward psychological stumble when reality clashes with expectations.",
+    "example": "The product manager was disconcerted when user interviews revealed that nobody understood the flagship feature.",
+    "tags": [
+      "emotion",
+      "discovery",
+      "realism"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-forlorn",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Forlorn",
+    "meaning": "Pitifully sad, abandoned, or lonely in appearance or mood.",
+    "contrast": "Not ordinary gloom; forlornness carries the poignant sting of neglect and desertion.",
+    "example": "The abandoned legacy office floor looked forlorn after the entire division migrated to remote hubs.",
+    "tags": [
+      "emotion",
+      "environment",
+      "atmosphere"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-magnanimous",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Magnanimous",
+    "meaning": "Generous or forgiving, especially toward a rival or less powerful person.",
+    "contrast": "Far above mere politeness; magnanimity is the noble grace of refusing to gloat in victory.",
+    "example": "After winning the competitive contract, she was magnanimous in praising the competing agency’s creative work.",
+    "tags": [
+      "emotion",
+      "nobility",
+      "leadership"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-vexed",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Vexed",
+    "meaning": "Frustrated, annoyed, and intellectually baffled by a recurring tricky problem.",
+    "contrast": "Not explosive rage; vexation is the persistent mental itch of a puzzle that resists clean resolution.",
+    "example": "The architects spent three weeks vexed by a nondeterministic race condition in the messaging queue.",
+    "tags": [
+      "emotion",
+      "debugging",
+      "frustration"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-fervent",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Fervent",
+    "meaning": "Having or displaying a passionate, sincere, and burning intensity of belief.",
+    "contrast": "Deeper than casual excitement; fervent dedication is rooted in heartfelt moral or technical conviction.",
+    "example": "He gave a fervent defense of user privacy standards during the cross-functional product council.",
+    "tags": [
+      "emotion",
+      "conviction",
+      "passion"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-jaded",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Jaded",
+    "meaning": "Cynical, tired, or unenthusiastic after having had too much of something.",
+    "contrast": "Different from laziness; jadedness is the defense mechanism of experienced veterans who have seen too many fads.",
+    "example": "Having survived four corporate re-brandings in five years, the senior staff were understandably jaded.",
+    "tags": [
+      "emotion",
+      "cynicism",
+      "experience"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-placid",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Placid",
+    "meaning": "Not easily upset or excited; calm, peaceful, and steady.",
+    "contrast": "Not sluggish or dumb; placidity is the calm, steady surface of an unshakeable lake.",
+    "example": "Even as the press peppered him with provocative questions, the spokesperson remained placid and on-message.",
+    "tags": [
+      "emotion",
+      "presence",
+      "calm"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-stoic",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Stoic",
+    "meaning": "Enduring pain, stress, or hardship without showing feelings or complaining.",
+    "contrast": "Not emotional death; stoicism is the disciplined mastery of one’s outward response to adversity.",
+    "example": "He remained stoic throughout the grueling restructuring process, focusing entirely on supporting his team.",
+    "tags": [
+      "emotion",
+      "discipline",
+      "leadership"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-jubilant",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Jubilant",
+    "meaning": "Feeling or expressing great happiness, triumph, and celebration.",
+    "contrast": "The peak collective roar of victory after an arduous team effort.",
+    "example": "The engineering floor was jubilant the moment the Mars rover landing telemetry stream began rendering.",
+    "tags": [
+      "emotion",
+      "victory",
+      "celebration"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-leery",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Leery",
+    "meaning": "Cautious or wary due to realistic suspicions or past painful experiences.",
+    "contrast": "Not irrational paranoia; being leery is prudent skepticism based on historical evidence.",
+    "example": "Senior engineers were leery of the vendor’s claim of 100% automated schema migrations.",
+    "tags": [
+      "emotion",
+      "prudence",
+      "tech"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-fretful",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Fretful",
+    "meaning": "Feeling or expressing distress, irritation, and restless worry over details.",
+    "contrast": "Not constructive analysis; fretfulness is unproductive worrying that burns mental energy.",
+    "example": "The launch manager spent the entire night in a fretful state, endlessly refreshing server telemetry.",
+    "tags": [
+      "emotion",
+      "anxiety",
+      "operations"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "feel-galvanized",
+    "type": "feeling",
+    "lang": "en",
+    "term": "Galvanized",
+    "meaning": "Shocked, excited, or spurred into sudden, focused, and purposeful collective action.",
+    "contrast": "More immediate and dynamic than vague inspiration; galvanization shocks a passive group into motion.",
+    "example": "The security breach report galvanized the entire organization into implementing multi-factor authentication overnight.",
+    "tags": [
+      "emotion",
+      "action",
+      "urgency"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  }
+]

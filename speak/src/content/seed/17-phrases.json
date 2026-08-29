@@ -1,0 +1,1011 @@
+[
+  {
+    "id": "phr-revert-back",
+    "type": "phrase",
+    "weak": "I will revert back to you by end of day.",
+    "strong": "I will get back to you by 5 PM.",
+    "why": "'Revert' means to return to a previous state, not to reply. 'Revert back' is redundant and a common Indian corporate calque.",
+    "register": "corporate",
+    "tags": [
+      "office",
+      "email",
+      "swap"
+    ]
+  },
+  {
+    "id": "phr-prepone-meeting",
+    "type": "phrase",
+    "weak": "Can we prepone tomorrow's sync?",
+    "strong": "Can we move tomorrow's sync earlier / bring it forward?",
+    "why": "'Prepone' is understood across India but unfamiliar in international boardrooms. 'Move up' or 'bring forward' are standard globally.",
+    "register": "corporate",
+    "tags": [
+      "office",
+      "scheduling"
+    ]
+  },
+  {
+    "id": "phr-do-the-needful",
+    "type": "phrase",
+    "weak": "Please do the needful at your end.",
+    "strong": "Could you please review the attached draft and confirm approval?",
+    "why": "'Do the needful' is archaic Victorian English that sounds vague and passive. State the exact requested action directly.",
+    "register": "corporate",
+    "tags": [
+      "office",
+      "clarity"
+    ]
+  },
+  {
+    "id": "phr-out-of-pocket",
+    "type": "phrase",
+    "weak": "I am out of station this week.",
+    "strong": "I will be traveling / away from my desk this week.",
+    "why": "'Out of station' is colonial-era terminology. 'Away from desk', 'traveling', or 'out of office' are modern international standards.",
+    "register": "corporate",
+    "tags": [
+      "office",
+      "travel"
+    ]
+  },
+  {
+    "id": "phr-discuss-about",
+    "type": "phrase",
+    "weak": "Let's discuss about the sprint priorities.",
+    "strong": "Let's discuss the sprint priorities.",
+    "why": "'Discuss' is a transitive verb that directly takes an object. Adding 'about' is redundant.",
+    "register": "corporate",
+    "tags": [
+      "office",
+      "grammar"
+    ]
+  },
+  {
+    "id": "phr-tell-me-one-thing",
+    "type": "phrase",
+    "weak": "Tell me one thing, why was this delayed?",
+    "strong": "Could you help me understand what caused the delay?",
+    "why": "'Tell me one thing' is a literal translation of 'ek baat batao' and can sound confrontational in executive meetings.",
+    "register": "corporate",
+    "tags": [
+      "office",
+      "diplomacy"
+    ]
+  },
+  {
+    "id": "phr-same-pinch",
+    "type": "phrase",
+    "weak": "Same pinch! I was thinking the same thing.",
+    "strong": "Great minds think alike / We are on the exact same page.",
+    "why": "'Same pinch' is schoolyard slang. In professional settings, affirm shared perspective with executive presence.",
+    "register": "corporate",
+    "tags": [
+      "office",
+      "presence"
+    ]
+  },
+  {
+    "id": "phr-doubt-clarification",
+    "type": "phrase",
+    "weak": "I have a few doubts on this architecture diagram.",
+    "strong": "I have a few questions about this architecture diagram.",
+    "why": "'Doubt' implies skepticism or mistrust. 'Questions' or 'clarifications' convey constructive curiosity.",
+    "register": "corporate",
+    "tags": [
+      "office",
+      "tech"
+    ]
+  },
+  {
+    "id": "phr-pass-out",
+    "type": "phrase",
+    "weak": "I passed out from IIT Delhi in 2020.",
+    "strong": "I graduated from IIT Delhi in 2020.",
+    "why": "'Pass out' means to faint or lose consciousness in standard English. Use 'graduated' or 'completed my degree'.",
+    "register": "formal",
+    "tags": [
+      "education",
+      "intro"
+    ]
+  },
+  {
+    "id": "phr-co-brother",
+    "type": "phrase",
+    "weak": "My cousin brother works in fintech.",
+    "strong": "My cousin works in fintech.",
+    "why": "'Cousin brother' and 'cousin sister' are Indian English coinages. English uses simply 'cousin'.",
+    "register": "casual",
+    "tags": [
+      "everyday",
+      "family"
+    ]
+  },
+  {
+    "id": "phr-give-an-exam",
+    "type": "phrase",
+    "weak": "I am giving an exam tomorrow.",
+    "strong": "I am taking / sitting for an exam tomorrow.",
+    "why": "In standard English, the teacher *gives* (administers) the exam; the student *takes* or *sits for* the exam.",
+    "register": "formal",
+    "tags": [
+      "education",
+      "grammar"
+    ]
+  },
+  {
+    "id": "phr-today-morning",
+    "type": "phrase",
+    "weak": "Today morning we had an outage.",
+    "strong": "This morning we had an outage.",
+    "why": "Standard English uses 'this morning', 'this afternoon', or 'tonight', never 'today morning'.",
+    "register": "corporate",
+    "tags": [
+      "office",
+      "grammar"
+    ]
+  },
+  {
+    "id": "phr-ping-me",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Ping me on WhatsApp once you finish.",
+    "strong": "Drop me a quick update on Slack once you finish.",
+    "why": "Keeps workplace communication in official searchable channels rather than fragmented personal apps.",
+    "register": "office",
+    "tags": [
+      "office",
+      "slack",
+      "communication"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-myself-intro",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Myself Rahul from the frontend team.",
+    "strong": "I'm Rahul from the frontend team.",
+    "why": "'Myself [Name]' is grammatically incorrect in standard English. Reflexive pronouns cannot be sentence subjects.",
+    "register": "office",
+    "tags": [
+      "office",
+      "grammar",
+      "intro"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-kindly-arrange",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Kindly arrange a sync for this.",
+    "strong": "Could you please schedule 15 minutes for us to connect?",
+    "why": "'Kindly arrange' is passive bureaucratic phrasing. Specific requests with time estimates convey executive clarity.",
+    "register": "office",
+    "tags": [
+      "office",
+      "scheduling",
+      "clarity"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-do-one-thing",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Do one thing, pull the latest branch.",
+    "strong": "Here's what I suggest: let's pull the latest branch.",
+    "why": "'Do one thing' is a direct calque of Hindi 'ek kaam karo'. Professional suggestions land better with collaborative framing.",
+    "register": "office",
+    "tags": [
+      "office",
+      "collaboration",
+      "calque"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-sleep-over-it",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Let's sleep over this decision.",
+    "strong": "Let's sleep on this decision and confirm tomorrow morning.",
+    "why": "The standard idiom is 'sleep on' (take time overnight to reflect), not 'sleep over' (stay at someone's house).",
+    "register": "office",
+    "tags": [
+      "office",
+      "idiom",
+      "decision"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-keep-in-loop",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Keep me in the loop for any small change.",
+    "strong": "Please flag any blocking changes or timeline risks to me.",
+    "why": "Focuses communication on high-signal blockers rather than micro-managing trivial commits.",
+    "register": "office",
+    "tags": [
+      "office",
+      "management",
+      "signal"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-share-the-screen",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "You please share the screen.",
+    "strong": "Would you mind sharing your screen so we can walk through it together?",
+    "why": "Polite, inclusive framing establishes rapport during virtual technical reviews.",
+    "register": "office",
+    "tags": [
+      "office",
+      "meetings",
+      "remote"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-can-you-hear-me",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Am I audible to everyone present?",
+    "strong": "Can everyone hear me clearly?",
+    "why": "'Am I audible' is overly formal and prevalent in Indian teleconferences; 'Can everyone hear me' is natural and direct.",
+    "register": "office",
+    "tags": [
+      "office",
+      "meetings",
+      "register"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-pass-the-buck",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Don't pass the blame to the DevOps team.",
+    "strong": "Let's focus on root-cause remediation rather than assigning blame.",
+    "why": "Shifts tone from accusatory defensiveness to constructive systemic ownership.",
+    "register": "office",
+    "tags": [
+      "office",
+      "culture",
+      "postmortem"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-give-a-heads-up",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Tell me beforehand if server goes down.",
+    "strong": "Please give me a heads-up before initiating the database migration.",
+    "why": "'Give me a heads-up' is natural professional idiom for proactive advance notification.",
+    "register": "office",
+    "tags": [
+      "office",
+      "ops",
+      "clarity"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-call-it-a-day",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Let's close the office work now.",
+    "strong": "Let's call it a day and pick this up first thing tomorrow.",
+    "why": "'Call it a day' is the standard conversational wrap-up phrase when diminishing returns set in.",
+    "register": "office",
+    "tags": [
+      "office",
+      "team",
+      "cadence"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-circle-back",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "We will talk about this later sometime.",
+    "strong": "Let's circle back on this once the A/B test results are finalized.",
+    "why": "Specifies a clear trigger event for returning to the discussion rather than leaving it unresolved.",
+    "register": "office",
+    "tags": [
+      "office",
+      "followup",
+      "clarity"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-touch-base",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "I want to speak with you for two minutes.",
+    "strong": "Let's touch base for five minutes before the client demo.",
+    "why": "'Touch base' crisply signals a brief alignment check without implying an escalation.",
+    "register": "office",
+    "tags": [
+      "office",
+      "alignment",
+      "meetings"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-pushback-deadline",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "This deadline is totally impossible for my team.",
+    "strong": "Given our current velocity, delivering this scope by Friday risks technical debt.",
+    "why": "Frames pushback around objective delivery risk and craft standards rather than personal capacity.",
+    "register": "office",
+    "tags": [
+      "office",
+      "pushback",
+      "executive"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-offline-discussion",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Stop talking about this in the group call.",
+    "strong": "Let's take this offline so we can keep today's review focused on core roadmap items.",
+    "why": "Politely parks tangent discussions without invalidating the team member.",
+    "register": "office",
+    "tags": [
+      "office",
+      "facilitation",
+      "meetings"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-bandwidth-constraint",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "I have too much pending work to take this.",
+    "strong": "I don't have the bandwidth this sprint without trading off the payments milestone.",
+    "why": "Demonstrates prioritization maturity by explicitly linking capacity to trade-offs.",
+    "register": "office",
+    "tags": [
+      "office",
+      "bandwidth",
+      "prioritization"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-align-expectations",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "We are not matching our thoughts.",
+    "strong": "Let's align on the acceptance criteria before opening PRs.",
+    "why": "Replaces vague emotional misalignment with concrete technical milestones.",
+    "register": "office",
+    "tags": [
+      "office",
+      "engineering",
+      "alignment"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-ballpark-estimate",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Give me some rough guess for timing.",
+    "strong": "Could you share a ballpark estimate for the auth refactor?",
+    "why": "'Ballpark estimate' clearly requests order-of-magnitude sizing without demanding premature precision.",
+    "register": "office",
+    "tags": [
+      "office",
+      "planning",
+      "estimates"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-flag-risks",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "There can be big issues later.",
+    "strong": "I want to flag a potential concurrency risk with this Redis lock design.",
+    "why": "Direct, calm risk-flagging prompts engineering problem solving instead of generalized anxiety.",
+    "register": "office",
+    "tags": [
+      "office",
+      "architecture",
+      "risk"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-close-the-loop",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Did that issue get solved or what?",
+    "strong": "Just closing the loop on the memory leak we diagnosed yesterday.",
+    "why": "'Closing the loop' communicates disciplined operational closure.",
+    "register": "office",
+    "tags": [
+      "office",
+      "followup",
+      "operations"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-hard-stop",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "I have to leave right now at 4.",
+    "strong": "I have a hard stop at 4:00 PM for an architectural review.",
+    "why": "Clearly sets boundaries in advance so meetings don't spill over.",
+    "register": "office",
+    "tags": [
+      "office",
+      "boundaries",
+      "time"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-take-away",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "What is the main thing you learned from this?",
+    "strong": "My primary takeaway is that user drop-off is driven by onboarding latency.",
+    "why": "'Takeaway' isolates the actionable thesis from pages of raw data.",
+    "register": "office",
+    "tags": [
+      "office",
+      "synthesis",
+      "insights"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-move-the-needle",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "This will help our product a lot.",
+    "strong": "Optimizing cold-start latency will directly move the needle on user retention.",
+    "why": "'Move the needle' specifies meaningful, measurable impact on key business metrics.",
+    "register": "office",
+    "tags": [
+      "office",
+      "metrics",
+      "impact"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-low-hanging-fruit",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Let's do the easy small tasks first.",
+    "strong": "Let's capture the low-hanging fruit in the backlog while design finalizes mockups.",
+    "why": "Identifies quick, high-ROI wins to build momentum during blocked phases.",
+    "register": "office",
+    "tags": [
+      "office",
+      "strategy",
+      "execution"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-table-the-topic",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Let's stop talking on this right now.",
+    "strong": "Let's table this topic until we have production telemetry data.",
+    "why": "Professional parliamentary phrasing for pausing debate until requisite evidence arrives.",
+    "register": "office",
+    "tags": [
+      "office",
+      "decision",
+      "governance"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-drill-down",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Look more deeply into the numbers.",
+    "strong": "Let's drill down into the p99 latency spikes occurring between 2 and 4 PM.",
+    "why": "Signals focused analytical investigation into specific root anomalies.",
+    "register": "office",
+    "tags": [
+      "office",
+      "analytics",
+      "debugging"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-boil-the-ocean",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Don't try to build every single feature on day one.",
+    "strong": "We don't need to boil the ocean for v1; let's ship the core loop first.",
+    "why": "Vividly warns against excessive scope creep and over-engineering initial releases.",
+    "register": "office",
+    "tags": [
+      "office",
+      "product",
+      "scope"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-sanitize-data",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Clean the user input before saving.",
+    "strong": "Ensure we sanitize and validate all payload parameters at the ingress boundary.",
+    "why": "Precise engineering vocabulary for input security and defensive coding.",
+    "register": "office",
+    "tags": [
+      "office",
+      "security",
+      "engineering"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-context-switching",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Jumping between different tickets is making me tired.",
+    "strong": "Frequent context switching between on-call interrupts and roadmap work is hurting team throughput.",
+    "why": "Articulates cognitive overhead in terms of engineering productivity.",
+    "register": "office",
+    "tags": [
+      "office",
+      "productivity",
+      "engineering"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-double-click",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Explain that specific point in more detail.",
+    "strong": "Let's double-click on why staging database metrics diverged from production.",
+    "why": "Modern conversational cue to zoom into a specific line item without losing high-level context.",
+    "register": "office",
+    "tags": [
+      "office",
+      "analysis",
+      "communication"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-play-devil-advocate",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "I am arguing just to oppose your idea.",
+    "strong": "Playing devil's advocate for a moment: what happens if the third-party webhook fails silently?",
+    "why": "Invites rigorous stress-testing of assumptions without personal animus.",
+    "register": "office",
+    "tags": [
+      "office",
+      "reasoning",
+      "stress_test"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-on-the-same-page",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Are we thinking identical things?",
+    "strong": "I want to ensure we're on the same page regarding the rollout sequence.",
+    "why": "Standard executive check to ensure cross-functional understanding before kickoff.",
+    "register": "office",
+    "tags": [
+      "office",
+      "alignment",
+      "clarity"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-buy-in",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "We need to get their agreement.",
+    "strong": "We need stakeholder buy-in before freezing the quarterly roadmap.",
+    "why": "Captures genuine alignment and commitment rather than passive compliance.",
+    "register": "office",
+    "tags": [
+      "office",
+      "leadership",
+      "stakeholders"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-knowledge-transfer",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "I will teach them how to run this code.",
+    "strong": "I will schedule a knowledge transfer session with the on-call team before handoff.",
+    "why": "Standard formal term for structured operational training and documentation handover.",
+    "register": "office",
+    "tags": [
+      "office",
+      "handoff",
+      "documentation"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-action-items",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Who will do what now?",
+    "strong": "Let's recap the agreed action items and owners before we adjourn.",
+    "why": "Drives meeting accountability with clear assignments and delivery expectations.",
+    "register": "office",
+    "tags": [
+      "office",
+      "meetings",
+      "execution"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-surface-concerns",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Tell if you are unhappy with the plan.",
+    "strong": "Please surface any architectural concerns early so we can adapt the design doc.",
+    "why": "Encourages proactive, blameless feedback during early design phases.",
+    "register": "office",
+    "tags": [
+      "office",
+      "culture",
+      "feedback"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-timebox-task",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Spend only 3 hours on this experiment.",
+    "strong": "Let's timebox this spike to three hours; if unresolved, we escalate to the lead.",
+    "why": "Prevents rabbit holes and enforces disciplined research spikes.",
+    "register": "office",
+    "tags": [
+      "office",
+      "discipline",
+      "time"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-level-set",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Let everyone remember the background first.",
+    "strong": "Let's level-set on our Q3 deliverables before diving into individual updates.",
+    "why": "Aligns baseline context across disparate attendees before detailed debate.",
+    "register": "office",
+    "tags": [
+      "office",
+      "alignment",
+      "meetings"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-iron-out",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Fix all the small remaining problems.",
+    "strong": "We have a few minor styling edge cases to iron out before the client demo.",
+    "why": "Conversational idiom for smoothing out minor rough spots in an otherwise solid build.",
+    "register": "office",
+    "tags": [
+      "office",
+      "polish",
+      "execution"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-north-star",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Our main top aim for this product.",
+    "strong": "Our north star metric is reducing mean time to recovery during incidents.",
+    "why": "Provides an unambiguous primary indicator of team success.",
+    "register": "office",
+    "tags": [
+      "office",
+      "strategy",
+      "metrics"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-sweet-spot",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "The best balanced point between two things.",
+    "strong": "This architecture hits the sweet spot between low cost and sub-second latency.",
+    "why": "Describes optimal trade-off resolution where competing forces balance out.",
+    "register": "office",
+    "tags": [
+      "office",
+      "tradeoffs",
+      "architecture"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-sanity-check",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Check if this calculation makes sense.",
+    "strong": "Let me do a quick sanity check on these database read replica IOPS figures.",
+    "why": "Informal verification to confirm that numbers or logic are plausible before publishing.",
+    "register": "office",
+    "tags": [
+      "office",
+      "verification",
+      "analytics"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-silver-bullet",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "This tool will solve all our problems instantly.",
+    "strong": "Kubernetes is powerful, but it is not a silver bullet for poor application architecture.",
+    "why": "Classic warning against the illusion of effortless, all-encompassing technical panaceas.",
+    "register": "office",
+    "tags": [
+      "office",
+      "realism",
+      "architecture"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-bottleneck-resolution",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Where is the work getting stuck right now?",
+    "strong": "Manual QA validation has become the primary bottleneck in our release cadence.",
+    "why": "Identifies systemic throughput constraints rather than blaming individuals.",
+    "register": "office",
+    "tags": [
+      "office",
+      "process",
+      "systems"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-push-the-envelope",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "Try something very daring and advanced.",
+    "strong": "This prototype pushes the envelope on real-time on-device audio transcription.",
+    "why": "Recognizes innovative engineering that expands existing technical boundaries.",
+    "register": "office",
+    "tags": [
+      "office",
+      "innovation",
+      "engineering"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-drop-the-ball",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "We made a silly mistake on our side.",
+    "strong": "We dropped the ball on notifying the client ahead of the scheduled maintenance window.",
+    "why": "Accepts clear, unevasive organizational accountability without deflecting.",
+    "register": "office",
+    "tags": [
+      "office",
+      "accountability",
+      "ownership"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-pivot-strategy",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "We will change our whole direction now.",
+    "strong": "Based on early conversion data, we are pivoting our strategy toward enterprise tier accounts.",
+    "why": "Communicates deliberate strategic agility grounded in market evidence.",
+    "register": "office",
+    "tags": [
+      "office",
+      "strategy",
+      "agility"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "phr-skin-in-the-game",
+    "type": "phrase",
+    "lang": "en",
+    "weak": "They must also face risk if this fails.",
+    "strong": "Having engineering leads carry the on-call pager ensures real skin in the game for reliability.",
+    "why": "Conveys genuine shared stakes and aligned incentives.",
+    "register": "office",
+    "tags": [
+      "office",
+      "incentives",
+      "ownership"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  }
+]

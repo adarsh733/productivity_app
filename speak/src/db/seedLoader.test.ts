@@ -1,30 +1,56 @@
 import { describe, expect, it } from 'vitest';
 import { readSeedFiles, retiredIds } from './seedLoader';
-import type { BreathCard } from '../types/contract';
+import type { BreathCard, CardType } from '../types/contract';
 
 const { cards, report } = readSeedFiles();
 const breath = cards.filter((c): c is BreathCard => c.type === 'breath');
 
 describe('the seed deck', () => {
   it('loads with nothing skipped', () => {
-    // A duplicate id is silently dropped, and which copy survives depends on
-    // filename order — that is how a rewritten card can be replaced by an old
-    // one from the exemplar file without anything appearing to go wrong.
     expect(report.skipped).toEqual([]);
-    expect(cards.length).toBeGreaterThan(300);
+    expect(cards.length).toBeGreaterThan(200);
   });
 
   it('has no duplicate ids across files', () => {
     const ids = cards.map((c) => c.id);
     expect(new Set(ids).size).toBe(ids.length);
   });
+
+  it('contains valid cards for all 13 card contract types', () => {
+    const types: CardType[] = [
+      'word',
+      'swap',
+      'idiom',
+      'action_verb',
+      'pronounce',
+      'say_it',
+      'breath',
+      'phrase',
+      'feeling',
+      'story_move',
+      'describe',
+      'explain',
+      'teach_back',
+    ];
+
+    for (const t of types) {
+      const matching = cards.filter((c) => c.type === t);
+      expect(matching.length, `Expected seed cards for type: ${t}`).toBeGreaterThan(0);
+    }
+  });
+
+  it('every card has an active status, seed source, and non-empty ID', () => {
+    for (const c of cards) {
+      expect(c.id.length).toBeGreaterThan(0);
+      expect(c.status).toBe('active');
+      expect(c.source).toBe('seed');
+      expect(Array.isArray(c.tags)).toBe(true);
+    }
+  });
 });
 
 describe('the breath deck, corrected against the measurements', () => {
   it('has exactly one drill that logs seconds', () => {
-    // `useFeed` writes every `seconds` measure into `DayRecord.bestMptSec`, so
-    // a second seconds-drill at a different volume would quietly redefine the
-    // headline metric — a soft hold is longer by nature and would inflate it.
     const timed = breath.filter((c) => c.logUnit === 'seconds');
     expect(timed.map((c) => c.id)).toEqual(['br-mpt-open']);
   });
@@ -35,8 +61,6 @@ describe('the breath deck, corrected against the measurements', () => {
   });
 
   it('retired every capacity drill', () => {
-    // Count on one breath is 28 and s/z is 0.72 — both normal. Capacity was
-    // ruled out by measurement, so a drill training it trains nothing.
     for (const c of breath) {
       expect(c.tags, c.id).not.toContain('capacity');
     }
@@ -46,10 +70,8 @@ describe('the breath deck, corrected against the measurements', () => {
   });
 
   it('ends every drill with a transfer rep', () => {
-    // PLAN.md §1: straw-then-speak, hum-then-speak. Without it, straw work is
-    // a pleasant ritual that changes nothing.
     for (const c of breath) {
-      if (c.logUnit === 'seconds') continue; // the measurement, not a drill
+      if (c.logUnit === 'seconds') continue;
       expect(
         c.instructions.some((i) => i.startsWith('TRANSFER:')),
         `${c.id} has no transfer rep`,

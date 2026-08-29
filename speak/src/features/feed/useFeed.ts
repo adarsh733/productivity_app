@@ -1,40 +1,41 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type {
   Card,
-  CardEvent,
+  CardType,
   DayRecord,
   FeedMode,
   Grade,
+  ProductionEvent,
+  Profile,
   QueueItem,
   Review,
 } from '../../types/contract';
+import { GAMIFICATION } from '../../types/contract';
 import { db, enqueue } from '../../db/db';
 import { buildQueue } from '../../srs/queue';
-import { grade as gradeReview, newReview } from '../../srs/scheduler';
-import { coreThreeComplete, currentStreak, emptyDay, isPass } from '../session/day';
+import { applyCardView, currentStreak, emptyDay } from '../session/day';
 import { todayKey } from '../../lib/date';
 
 /**
- * The feed's state machine. Components render what this returns and call
- * `submit` — they never touch the database, the scheduler or the queue.
+ * The feed's state machine.
  *
- * Two behaviours worth knowing before you build against it:
- *  - `again` puts the card back into this session a few positions later. It is
- *    not "skip"; it is "I failed that, show me again".
- *  - the endless queue tops itself up before it runs out, so `item` is never
- *    null once `ready` is true.
+ * Core Principles:
+ *  - Browsing exposure is NEVER an SM-2 grade.
+ *  - Advancing cards creates `card_viewed` production events.
+ *  - Downweighting creates `card_downweighted` events and stores 7-day expiring weights.
+ *  - 1 XP per unique card viewed per day; repeated views on the same day earn view XP once.
+ *  - Swipe down / goPrevious returns the previous card without emitting duplicate events.
+ *  - Feed header and You screen read the exact same persisted day.xp value.
  */
 
 const ENDLESS_CHUNK = 24;
 const REFILL_WHEN_LEFT = 6;
-/** How many cards later a failed card comes back. */
-const REQUEUE_GAP = 3;
 
 export interface FeedApi {
   ready: boolean;
   mode: FeedMode;
   item: QueueItem | null;
-  /** 1-based position within the current run, for the progress dots. */
+  /** 1-based position within the current run, for the progress counter. */
   position: number;
   /** Length of the current run. In endless mode this grows. */
   total: number;
@@ -42,13 +43,20 @@ export interface FeedApi {
   streak: number;
   cardsToday: number;
   urgesToday: number;
+  todayXp: number;
+  canGoBack: boolean;
   setMode(mode: FeedMode): void;
-  submit(grade: Grade, opts?: { msSpent?: number; measure?: number }): Promise<void>;
+  advanceCard(opts?: { msSpent?: number }): Promise<void>;
+  submit(grade?: Grade, opts?: { msSpent?: number; measure?: number }): Promise<void>;
+  downvoteCard(card: Card): Promise<void>;
+  downvoteType(type: CardType): Promise<void>;
+  goPrevious(): void;
   logUrge(): Promise<void>;
+  reload(): Promise<void>;
 }
 
-export function useFeed(initialMode: FeedMode = 'core'): FeedApi {
-  const [mode, setModeState] = useState<FeedMode>(initialMode);
+export function useFeed(_initialMode: FeedMode = 'endless'): FeedApi {
+  const [mode] = useState<FeedMode>('endless');
   const [ready, setReady] = useState(false);
   const [queue, setQueue] = useState<QueueItem[]>([]);
   const [position, setPosition] = useState(0);
@@ -57,17 +65,18 @@ export function useFeed(initialMode: FeedMode = 'core'): FeedApi {
 
   const cardsRef = useRef<Card[]>([]);
   const reviewsRef = useRef<Map<string, Review>>(new Map());
-  const passedTypesRef = useRef<Set<string>>(new Set());
-  const seenRef = useRef<Set<string>>(new Set());
+  const profileRef = useRef<Profile | null>(null);
+  const seenTodayRef = useRef<Set<string>>(new Set());
   const breathTodayRef = useRef(0);
   const newTodayRef = useRef(0);
   const today = todayKey();
 
   // ── load ──────────────────────────────────────────────────────────────────
   const load = useCallback(async () => {
-    const [cards, reviews, dayRow, allDays, todayEvents] = await Promise.all([
+    const [cards, reviews, profile, dayRow, allDays, todayEvents] = await Promise.all([
       db.cards.toArray(),
       db.reviews.toArray(),
+      db.profile.get('me'),
       db.days.get(today),
       db.days.toArray(),
       db.events.toArray(),
@@ -75,37 +84,27 @@ export function useFeed(initialMode: FeedMode = 'core'): FeedApi {
 
     cardsRef.current = cards;
     reviewsRef.current = new Map(reviews.map((r) => [r.cardId, r]));
+    profileRef.current = profile ?? null;
 
-    const cardById = new Map(cards.map((c) => [c.id, c]));
-    const passedTypes = new Set<string>();
-    const seen = new Set<string>();
+    const seenToday = new Set<string>();
     let breath = 0;
     let fresh = 0;
 
     for (const e of todayEvents) {
-      if (todayKey(new Date(e.at)) !== today) continue;
-      if (isPass(e.grade)) {
-        passedTypes.add(e.cardType);
-        seen.add(e.cardId);
+      if (e.date !== today && todayKey(new Date(e.at)) !== today) continue;
+      if (e.cardId) {
+        seenToday.add(e.cardId);
       }
       if (e.cardType === 'breath') breath++;
-      if (cardById.has(e.cardId)) fresh++;
     }
 
-    passedTypesRef.current = passedTypes;
-    seenRef.current = seen;
+    seenTodayRef.current = seenToday;
     breathTodayRef.current = breath;
     newTodayRef.current = fresh;
 
     const record = dayRow ?? emptyDay(today);
     setDay(record);
     setStreak(currentStreak(new Map(allDays.map((d) => [d.date, d])), today));
-
-    // Mode is derived from today, not from how the component happened to mount.
-    // Without this, coming back to the feed from another tab restarts "CORE
-    // 1/3" on a day that is already done — which reads as if the streak reset.
-    if (record.coreThreeDone) setModeState('endless');
-
     setReady(true);
   }, [today]);
 
@@ -115,131 +114,175 @@ export function useFeed(initialMode: FeedMode = 'core'): FeedApi {
 
   // ── queue building ────────────────────────────────────────────────────────
   const build = useCallback(
-    (m: FeedMode, limit: number): QueueItem[] =>
+    (limit: number): QueueItem[] =>
       buildQueue(cardsRef.current, reviewsRef.current, {
         today,
-        seenCardIds: seenRef.current,
+        seenCardIds: seenTodayRef.current,
         breathServedToday: breathTodayRef.current,
         newServedToday: newTodayRef.current,
         limit,
-        mode: m,
+        mode: 'endless',
+        interests: profileRef.current?.interests,
+        typeWeights: profileRef.current?.typeWeights,
       }),
     [today],
   );
 
   useEffect(() => {
     if (!ready) return;
-    setQueue(build(mode, mode === 'core' ? 3 : ENDLESS_CHUNK));
+    setQueue(build(ENDLESS_CHUNK));
     setPosition(0);
-  }, [ready, mode, build]);
+  }, [ready, build]);
 
-  const setMode = useCallback((m: FeedMode) => setModeState(m), []);
+  const setMode = useCallback((_m: FeedMode) => {}, []);
 
-  // ── grading ───────────────────────────────────────────────────────────────
-  const submit = useCallback(
-    async (g: Grade, opts?: { msSpent?: number; measure?: number }) => {
+  // ── downweighting ─────────────────────────────────────────────────────────
+  const downvoteCard = useCallback(
+    async (card: Card) => {
+      const prof = (await db.profile.get('me')) ?? { id: 'me' as const, createdAt: Date.now() };
+      const currentDownweights = prof.downweights ?? {};
+      const now = Date.now();
+
+      // Downweight primarily by primary tag/category if present, or type
+      const targetKey = (card.tags && card.tags[0] ? card.tags[0] : card.type).toLowerCase();
+      const existing = currentDownweights[targetKey];
+      const prevMult = existing && existing.expiresAt > now ? existing.multiplier : 1.0;
+      const nextMult = Math.max(0.15, prevMult * 0.7);
+      const expiresAt = now + GAMIFICATION.DOWNWEIGHT_DAYS * 86_400_000;
+
+      const updatedDownweights = {
+        ...currentDownweights,
+        [targetKey]: {
+          target: targetKey,
+          type: card.type,
+          multiplier: nextMult,
+          expiresAt,
+          createdAt: now,
+        },
+      };
+
+      const updatedProf: Profile = {
+        ...prof,
+        downweights: updatedDownweights,
+      };
+
+      profileRef.current = updatedProf;
+      await db.profile.put(updatedProf);
+      await enqueue('profile', 'me');
+
+      // Record production event
+      const downEvent: ProductionEvent = {
+        id: `evt-dwn-${card.id}-${now}`,
+        type: 'card_downweighted',
+        cardId: card.id,
+        cardType: card.type,
+        target: targetKey,
+        multiplier: nextMult,
+        expiresAt,
+        at: now,
+        date: today,
+      };
+      await db.events.put(downEvent as any);
+      await enqueue('events', downEvent.id);
+    },
+    [today],
+  );
+
+  const downvoteType = useCallback(
+    async (type: CardType) => {
+      const dummyCard: Card = { id: `type-${type}`, type, lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0 } as any;
+      await downvoteCard(dummyCard);
+    },
+    [downvoteCard],
+  );
+
+  // ── card view advancement ─────────────────────────────────────────────────
+  const advanceCard = useCallback(
+    async (opts?: { msSpent?: number }) => {
       const current = queue[position];
       if (!current) return;
 
       const card = current.card;
       const now = Date.now();
-      const prev = reviewsRef.current.get(card.id) ?? newReview(card.id, today);
-      const { review, requeueNow } = gradeReview(prev, g, today, now);
-      reviewsRef.current.set(card.id, review);
 
-      const event: CardEvent = {
-        id: `${card.id}:${now}`,
-        cardId: card.id,
-        cardType: card.type,
-        at: now,
-        grade: g,
-        msSpent: opts?.msSpent ?? 0,
-        mode,
-        ...(opts?.measure !== undefined ? { measure: opts.measure } : {}),
-      };
+      // 1. Calculate XP and unique card tracking using domain function
+      const { day: nextDay, isUnique } = applyCardView(
+        day,
+        card.id,
+        seenTodayRef.current,
+        { msSpent: opts?.msSpent },
+      );
 
-      if (isPass(g)) {
-        passedTypesRef.current.add(card.type);
-        seenRef.current.add(card.id);
+      seenTodayRef.current.add(card.id);
+      if (current.reason === 'new' && isUnique) {
+        newTodayRef.current++;
       }
-      if (card.type === 'breath') breathTodayRef.current++;
-      if (current.reason === 'new') newTodayRef.current++;
-
-      const nextDay: DayRecord = {
-        ...day,
-        cardsCompleted: day.cardsCompleted + 1,
-        secondsActive: day.secondsActive + Math.round((opts?.msSpent ?? 0) / 1000),
-        coreThreeDone:
-          day.coreThreeDone || coreThreeComplete([...passedTypesRef.current] as never),
-        // Only stopwatch drills feed the seconds figure. A counting ladder
-        // reports "I reached 34", which is not 34 seconds — merging them makes
-        // the one number he'll actually watch improve a lie.
-        ...(card.type === 'breath' && card.logUnit === 'seconds' && opts?.measure !== undefined
-          ? { bestMptSec: Math.max(day.bestMptSec ?? 0, opts.measure) }
-          : {}),
-      };
 
       setDay(nextDay);
 
-      await db.transaction('rw', db.reviews, db.events, db.days, db.outbox, async () => {
-        await db.reviews.put(review);
-        await db.events.put(event);
+      // 2. Record production event (NO SM-2 review modification)
+      const event: ProductionEvent = {
+        id: `evt-view-${card.id}-${now}`,
+        type: 'card_viewed',
+        cardId: card.id,
+        cardType: card.type,
+        at: now,
+        date: today,
+        msSpent: opts?.msSpent ?? 0,
+        mode: 'endless',
+      };
+
+      await db.transaction('rw', db.events, db.days, db.outbox, async () => {
+        await db.events.put(event as any);
         await db.days.put(nextDay);
-        await enqueue('reviews', review.cardId);
         await enqueue('events', event.id);
         await enqueue('days', nextDay.date);
       });
 
-      // The moment the Core 3 land, today starts counting. Recomputing rather
-      // than incrementing keeps this correct across grace days and midnight.
-      if (!day.coreThreeDone && nextDay.coreThreeDone) {
-        const allDays = await db.days.toArray();
-        setStreak(currentStreak(new Map(allDays.map((d) => [d.date, d])), today));
-      }
+      const allDays = await db.days.toArray();
+      setStreak(currentStreak(new Map(allDays.map((d) => [d.date, d])), today));
 
-      // Advance, re-inserting the card a few positions on if he failed it.
-      setQueue((q) => {
-        const next = [...q];
-        if (requeueNow) {
-          const at = Math.min(position + 1 + REQUEUE_GAP, next.length);
-          next.splice(at, 0, current);
-        }
-        return next;
-      });
       setPosition((p) => p + 1);
     },
-    [queue, position, mode, today, day],
+    [queue, position, today, day],
   );
+
+  const submit = useCallback(
+    async (_grade?: Grade, opts?: { msSpent?: number; measure?: number }) => {
+      await advanceCard(opts);
+    },
+    [advanceCard],
+  );
+
+  // ── previous card navigation (swipe down) ─────────────────────────────────
+  const goPrevious = useCallback(() => {
+    if (position > 0) {
+      setPosition((p) => p - 1);
+    }
+  }, [position]);
 
   // ── keep endless endless ──────────────────────────────────────────────────
   useEffect(() => {
-    if (!ready || mode !== 'endless') return;
+    if (!ready) return;
     if (queue.length - position > REFILL_WHEN_LEFT) return;
 
-    const more = build('endless', ENDLESS_CHUNK);
+    const more = build(ENDLESS_CHUNK);
     if (more.length === 0) return;
 
     setQueue((q) => {
-      // `build` has no memory of what is already queued, and this effect can
-      // fire against a stale length (React 18 runs effects twice in dev, and
-      // the mode switch replaces the queue underneath it). Without this the
-      // same card lands in one run twice.
       const present = new Set(q.map((i) => i.card.id));
       const fresh = more.filter((i) => !present.has(i.card.id));
-      if (fresh.length === 0) return q;
+      const additions = fresh.length > 0 ? fresh : more;
 
-      // Each chunk is built without knowledge of the one before it, so the
-      // join is the one place a same-type pair can slip through. Rotate the
-      // new chunk by one rather than let the seam show.
       const tailType = q[q.length - 1]?.card.type;
-      if (fresh.length > 1 && fresh[0]!.card.type === tailType) {
-        const at = fresh.findIndex((i) => i.card.type !== tailType);
-        if (at > 0) fresh.unshift(...fresh.splice(at, 1));
+      if (additions.length > 1 && additions[0]!.card.type === tailType) {
+        const at = additions.findIndex((i) => i.card.type !== tailType);
+        if (at > 0) additions.unshift(...additions.splice(at, 1));
       }
 
-      return [...q, ...fresh];
+      return [...q, ...additions];
     });
-  }, [ready, mode, queue.length, position, build]);
+  }, [ready, queue.length, position, build]);
 
   const logUrge = useCallback(async () => {
     const next = { ...day, urgesRedirected: day.urgesRedirected + 1 };
@@ -247,6 +290,12 @@ export function useFeed(initialMode: FeedMode = 'core'): FeedApi {
     await db.days.put(next);
     await enqueue('days', next.date);
   }, [day]);
+
+  const reload = useCallback(async () => {
+    await load();
+    setQueue(build(ENDLESS_CHUNK));
+    setPosition(0);
+  }, [load, build]);
 
   const item = useMemo(() => queue[position] ?? null, [queue, position]);
 
@@ -260,8 +309,17 @@ export function useFeed(initialMode: FeedMode = 'core'): FeedApi {
     streak,
     cardsToday: day.cardsCompleted,
     urgesToday: day.urgesRedirected,
+    todayXp: day.xp ?? 0,
+    canGoBack: position > 0,
     setMode,
+    advanceCard,
     submit,
+    downvoteCard,
+    downvoteType,
+    goPrevious,
     logUrge,
+    reload,
   };
 }
+
+

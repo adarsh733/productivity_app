@@ -176,3 +176,94 @@ describe('LAB_RULES', () => {
     expect(LAB_RULES.MPT_GAP_TARGET_SEC).toBeLessThan(LAB_RULES.MPT_GAP_BASELINE_SEC);
   });
 });
+
+describe('calculateWpm', () => {
+  it('calculates WPM accurately based on word count and measured duration', async () => {
+    const { calculateWpm } = await import('./audioMeter');
+
+    // 30 words in 15 seconds = 120 WPM
+    expect(calculateWpm(30, 15)).toBe(120);
+
+    // 60 words in 30 seconds = 120 WPM
+    expect(calculateWpm(60, 30)).toBe(120);
+
+    // 10 words in 5 seconds (early stop) = 120 WPM
+    expect(calculateWpm(10, 5)).toBe(120);
+
+    // Edge cases: non-positive duration or words
+    expect(calculateWpm(0, 30)).toBeUndefined();
+    expect(calculateWpm(30, 0)).toBeUndefined();
+    expect(calculateWpm(-5, 20)).toBeUndefined();
+  });
+});
+
+describe('findTargetVocabMatches', () => {
+  it('matches target words case-insensitively and lists missing words', async () => {
+    const { findTargetVocabMatches } = await import('./audioMeter');
+    const targetVocab = ['trade-off', 'latency', 'resilience', 'throughput'];
+    const transcript = 'We evaluated the trade-off between network latency and throughput.';
+
+    const result = findTargetVocabMatches(transcript, targetVocab);
+    expect(result.matched).toEqual(['trade-off', 'latency', 'throughput']);
+    expect(result.missing).toEqual(['resilience']);
+  });
+
+  it('returns all missing when transcript is empty', async () => {
+    const { findTargetVocabMatches } = await import('./audioMeter');
+    const targetVocab = ['focus', 'precision'];
+    const result = findTargetVocabMatches('', targetVocab);
+    expect(result.matched).toEqual([]);
+    expect(result.missing).toEqual(['focus', 'precision']);
+  });
+});
+
+describe('computePauseCount', () => {
+  it('computes pause count using real sample timestamps and silence floor', async () => {
+    const { computePauseCount } = await import('./audioMeter');
+
+    // Timeline:
+    // 0ms..500ms: Speech (-20 dB)
+    // 500ms..1100ms: Silence (-60 dB for 600ms >= 400ms threshold) -> PAUSE 1
+    // 1100ms..2000ms: Speech (-22 dB)
+    // 2000ms..2200ms: Brief dip (-58 dB for 200ms < 400ms threshold) -> NO PAUSE
+    // 2200ms..3000ms: Speech (-18 dB)
+    // 3000ms..3600ms: Silence (-60 dB for 600ms >= 400ms threshold) -> PAUSE 2
+    // 3600ms..4200ms: Speech (-25 dB)
+
+    const samples: Array<{ db: number; atMs: number }> = [
+      { db: -20, atMs: 0 },
+      { db: -20, atMs: 500 },
+      { db: -60, atMs: 600 },
+      { db: -60, atMs: 1100 },
+      { db: -22, atMs: 1200 },
+      { db: -22, atMs: 2000 },
+      { db: -58, atMs: 2100 },
+      { db: -18, atMs: 2200 },
+      { db: -18, atMs: 3000 },
+      { db: -60, atMs: 3100 },
+      { db: -60, atMs: 3600 },
+      { db: -25, atMs: 3700 },
+      { db: -25, atMs: 4200 },
+    ];
+
+    const pauseCount = computePauseCount(samples, -55, 400);
+    expect(pauseCount).toBe(2);
+  });
+
+  it('ignores pre-speech and trailing silence', async () => {
+    const { computePauseCount } = await import('./audioMeter');
+
+    const samples: Array<{ db: number; atMs: number }> = [
+      { db: -60, atMs: 0 },
+      { db: -60, atMs: 1000 }, // Pre-speech lead-in silence
+      { db: -20, atMs: 1100 },
+      { db: -20, atMs: 2000 },
+      { db: -60, atMs: 2100 },
+      { db: -60, atMs: 3500 }, // Post-speech trailing silence
+    ];
+
+    const pauseCount = computePauseCount(samples, -55, 400);
+    expect(pauseCount).toBe(0);
+  });
+});
+

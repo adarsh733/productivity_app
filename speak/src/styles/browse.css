@@ -1,0 +1,147 @@
+/* -- SPEAK — Browse Screen ------------------------------------------------- */
+
+.browse-screen {
+  flex: 1;
+  padding: 16px var(--gutter) calc(var(--tabbar-h) + 24px + var(--safe-bottom));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.browse-header {
+  margin-bottom: var(--s-3);
+  padding-top: var(--safe-top);
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 10px 14px;
+  margin-top: 12px;
+  color: var(--ink-3);
+  font-size: var(--fs-3);
+  box-shadow: 0 1px 3px rgba(21, 23, 26, 0.04);
+}
+
+.browse-search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  flex: 1;
+  font-size: var(--fs-3);
+  color: var(--ink);
+}
+
+.browse-clear-btn {
+  background: transparent;
+  border: none;
+  color: var(--ink-3);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-results-section {
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
+
+.search-cards-list {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.search-card-row {
+  cursor: pointer;
+}
+
+.search-card-badge {
+  font-size: 9px;
+  padding: 2px 6px;
+  flex: none;
+}
+
+.browse-decks-section {
+  margin-top: 16px;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.deck {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 14px;
+  box-shadow: 0 1px 3px rgba(21, 23, 26, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 125px;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+
+.deck:hover {
+  border-color: var(--accent-line);
+}
+
+.deck:active {
+  transform: scale(0.98);
+}
+
+.deck .g {
+  font-size: 22px;
+}
+
+.deck b {
+  font-size: var(--fs-2);
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.deck small {
+  color: var(--ink-3);
+  font-size: var(--fs-1);
+}
+
+.ring {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ringbar {
+  flex: 1;
+  height: 4px;
+  background: var(--raised);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.ringbar i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  border-radius: var(--r-pill);
+}
+
+.ring small {
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  color: var(--ink-3);
+}

@@ -101,6 +101,105 @@ export function noiseFloorFromDbs(dbs: readonly number[]): number {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Metrics & Analysis (WPM, Vocab Matching, Pause Analysis)
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Calculate Words Per Minute (WPM) based on word count and measured elapsed seconds.
+ * Returns undefined if durationSec <= 0 or wordCount <= 0.
+ */
+export function calculateWpm(wordCount: number, durationSec: number): number | undefined {
+  if (typeof wordCount !== 'number' || typeof durationSec !== 'number') return undefined;
+  if (wordCount <= 0 || durationSec <= 0) return undefined;
+  return Math.round((wordCount / durationSec) * 60);
+}
+
+/**
+ * Identify which target vocabulary terms appear in the transcript.
+ * Matches case-insensitively.
+ */
+export function findTargetVocabMatches(
+  transcript: string | undefined | null,
+  targetVocab: readonly string[] | string[],
+): { matched: string[]; missing: string[] } {
+  if (!targetVocab || targetVocab.length === 0) {
+    return { matched: [], missing: [] };
+  }
+  const cleanTranscript = (transcript ?? '').trim().toLowerCase();
+  if (!cleanTranscript) {
+    return { matched: [], missing: [...targetVocab] };
+  }
+
+  const matched: string[] = [];
+  const missing: string[] = [];
+
+  for (const term of targetVocab) {
+    const cleanTerm = term.trim().toLowerCase();
+    if (!cleanTerm) continue;
+    const escaped = cleanTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`\\b${escaped}\\b`, 'i');
+    if (regex.test(cleanTranscript) || cleanTranscript.includes(cleanTerm)) {
+      matched.push(term);
+    } else {
+      missing.push(term);
+    }
+  }
+
+  return { matched, missing };
+}
+
+/**
+ * Compute the number of natural pauses from real analyser timestamped samples.
+ * A pause is defined as a contiguous silence interval (dB <= silenceThresholdDb)
+ * lasting at least minPauseDurationMs between voiced sections.
+ */
+export function computePauseCount(
+  samples: Array<{ db: number; atMs: number }>,
+  silenceThresholdDb = LAB_RULES.SILENCE_FLOOR_DB,
+  minPauseDurationMs = 400,
+): number {
+  if (!samples || samples.length < 2) return 0;
+
+  // Find first voiced sample to ignore pre-speech lead-in
+  const firstVoicedIdx = samples.findIndex((s) => s.db > silenceThresholdDb);
+  if (firstVoicedIdx === -1) return 0;
+
+  // Find last voiced sample to ignore post-speech trailing silence
+  let lastVoicedIdx = -1;
+  for (let i = samples.length - 1; i >= 0; i--) {
+    if (samples[i]!.db > silenceThresholdDb) {
+      lastVoicedIdx = i;
+      break;
+    }
+  }
+  if (lastVoicedIdx <= firstVoicedIdx) return 0;
+
+  let pauseCount = 0;
+  let inPause = false;
+  let pauseStartMs = 0;
+
+  for (let i = firstVoicedIdx; i <= lastVoicedIdx; i++) {
+    const sample = samples[i]!;
+    if (sample.db <= silenceThresholdDb) {
+      if (!inPause) {
+        inPause = true;
+        pauseStartMs = sample.atMs;
+      }
+    } else {
+      if (inPause) {
+        inPause = false;
+        const pauseDuration = sample.atMs - pauseStartMs;
+        if (pauseDuration >= minPauseDurationMs) {
+          pauseCount++;
+        }
+      }
+    }
+  }
+
+  return pauseCount;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Session averaging
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -362,10 +461,18 @@ export class AudioMeterController {
       cancelAnimationFrame(this.animId);
       this.animId = null;
     }
-    this.stream?.getTracks().forEach((t) => t.stop());
-    this.stream = null;
+    if (this.stream) {
+      this.stream.getTracks().forEach((t) => {
+        try {
+          t.stop();
+        } catch {}
+      });
+      this.stream = null;
+    }
     if (this.audioCtx) {
-      void this.audioCtx.close();
+      try {
+        void this.audioCtx.close();
+      } catch {}
       this.audioCtx = null;
     }
     this.analyser = null;

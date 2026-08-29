@@ -1,0 +1,184 @@
+/* -- SPEAK — Modal & Sheet Overlays ---------------------------------------- */
+
+.deck-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(21, 23, 26, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  animation: overlayFadeIn var(--dur) var(--ease);
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.deck-modal-container {
+  background: var(--paper);
+  border-top-left-radius: var(--r-lg);
+  border-top-right-radius: var(--r-lg);
+  height: 90dvh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 -8px 32px rgba(21, 23, 26, 0.16);
+  position: relative;
+  overflow: hidden;
+  max-width: 480px;
+  margin: 0 auto;
+  width: 100%;
+  outline: none;
+  animation: modalSlideUp var(--dur) cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes modalSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.card-detail-container {
+  height: 85dvh;
+}
+
+.deck-modal-empty-container {
+  height: auto;
+  max-height: 60dvh;
+}
+
+.deck-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px var(--gutter) 12px;
+  border-bottom: 1px solid var(--line);
+  flex: none;
+}
+
+.deck-modal-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.deck-modal-title-group .g {
+  font-size: 24px;
+}
+
+.deck-modal-title-group h2 {
+  font-size: var(--fs-4);
+  font-family: var(--serif);
+  margin: 0;
+  color: var(--ink);
+}
+
+.deck-modal-counter {
+  font-size: var(--fs-1);
+  color: var(--ink-3);
+  font-weight: var(--fw-bold);
+}
+
+.deck-modal-close-btn {
+  background: var(--raised);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease);
+}
+
+.deck-modal-close-btn:hover {
+  background: var(--line);
+}
+
+.deck-modal-card-body {
+  flex: 1;
+  padding: 16px var(--gutter) 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.card-detail-body {
+  padding-bottom: 8px;
+}
+
+.deck-modal-actions {
+  padding: 12px var(--gutter) calc(16px + var(--safe-bottom));
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+  flex: none;
+}
+
+.card-detail-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.card-detail-say-btn {
+  flex: 1;
+}
+
+.deck-modal-empty {
+  padding: 32px var(--gutter);
+  text-align: center;
+  color: var(--ink-2);
+}
+
+.modal-back-btn {
+  margin-top: 16px;
+}
+
+/* -- Saved Cards List in BookmarksDrawer ------------------------------------ */
+.saved-cards-list-container {
+  padding: 16px var(--gutter) calc(20px + var(--safe-bottom));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+}
+
+.saved-cards-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.saved-card-row-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.saved-card-row {
+  flex: 1;
+}
+
+.saved-card-badge {
+  font-size: 9px;
+  padding: 2px 6px;
+}
+
+.saved-card-remove-btn {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #d97706;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: var(--r-pill);
+}
+
+.saved-cards-hint {
+  color: var(--ink-3);
+  display: block;
+  margin-top: 4px;
+}

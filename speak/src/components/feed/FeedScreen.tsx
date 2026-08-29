@@ -1,67 +1,119 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useFeed } from '../../features/feed/useFeed';
-import CardView from '../cards/CardView';
-import CoreDots from './CoreDots';
-import CardActions from './CardActions';
+import { useBookmarks } from '../../features/bookmarks/useBookmarks';
+import { useProfile } from '../../features/profile/useProfile';
+import CardFace from '../cards/CardFace';
 import { useCardGestures } from './useCardGestures';
-import type { Grade } from '../../types/contract';
+import type { Card } from '../../types/contract';
+import { GAMIFICATION } from '../../types/contract';
+import { MicrophoneIcon } from '../shell/Icons';
 
-export default function FeedScreen() {
-  const feed = useFeed('core');
-  const [measure, setMeasure] = useState<number | undefined>();
-  const [showHandoff, setShowHandoff] = useState(false);
+export interface FeedScreenProps {
+  onOpenSpeakWithCard?: (card: Card) => void;
+}
+
+export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
+  const feed = useFeed();
+  const { isBookmarked, toggleBookmark } = useBookmarks();
+  const { dailyGoal } = useProfile();
+
+  const [isDetail, setIsDetail] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [showGoalBanner, setShowGoalBanner] = useState(false);
+
+  const targetGoalXp = GAMIFICATION.GOAL_XP[dailyGoal];
 
   const shownAt = useRef<number>(Date.now());
   const busy = useRef<boolean>(false);
-  /** null until the first observation, so a reopen mid-day is not "just finished". */
-  const prevCoreDone = useRef<boolean | null>(null);
+  const prevGoalAchieved = useRef<boolean | null>(null);
 
-  const cardId = feed.item?.card.id;
+  const card = feed.item?.card;
+  const cardId = card?.id;
+  const bookmarked = cardId ? isBookmarked(cardId) : false;
 
+  // Reset detail on card change
   useEffect(() => {
     shownAt.current = Date.now();
-    setMeasure(undefined);
+    setIsDetail(false);
     busy.current = false;
   }, [cardId]);
 
-  // Core 3 is a floor, not a finish line. The moment it lands the queue has to
-  // become endless by itself â€” the core queue is only 3 items long, so without
-  // this the feed runs dry and shows a spinner forever. A dead end here is the
-  // one failure this app cannot have.
-  const { ready, coreThreeDone, mode, setMode } = feed;
-  useEffect(() => {
-    if (ready && coreThreeDone && mode === 'core') setMode('endless');
-  }, [ready, coreThreeDone, mode, setMode]);
+  const { ready, todayXp } = feed;
 
-  // The handoff banner marks the transition, so it may only fire on a genuine
-  // false â†’ true edge. Firing on mount would congratulate him every time he
-  // reopens the app later the same day.
+  // Daily goal celebration banner based on selected XP goal
   useEffect(() => {
     if (!ready) return;
-    const was = prevCoreDone.current;
-    prevCoreDone.current = coreThreeDone;
-    if (was === false && coreThreeDone) {
-      setShowHandoff(true);
-      const timer = setTimeout(() => setShowHandoff(false), 3000);
+    const isGoalDone = todayXp >= targetGoalXp;
+    const was = prevGoalAchieved.current;
+    prevGoalAchieved.current = isGoalDone;
+
+    if (was === false && isGoalDone) {
+      setShowGoalBanner(true);
+      const timer = setTimeout(() => setShowGoalBanner(false), 3500);
       return () => clearTimeout(timer);
     }
-  }, [ready, coreThreeDone]);
+  }, [ready, todayXp, targetGoalXp]);
 
-  const submit = useCallback(
-    async (g: Grade) => {
-      if (busy.current) return;
-      busy.current = true;
-      const msSpent = Date.now() - shownAt.current;
-      await feed.submit(g, { msSpent, measure });
-    },
-    [feed, measure],
-  );
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => {
+      setToastMessage((cur) => (cur === msg ? null : cur));
+    }, 2000);
+  };
+
+  const handleToggleBookmark = async (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (!card) return;
+    try {
+      const res = await toggleBookmark(card.id, card.type);
+      if (res.isBookmarked) {
+        showToast(res.xpEarned > 0 ? `? Saved to You (+${res.xpEarned} XP)` : '? Saved to You');
+      } else {
+        showToast('Bookmark removed');
+      }
+    } catch (err) {
+      console.error('Error toggling bookmark:', err);
+    }
+  };
+
+  const handleAdvance = useCallback(async () => {
+    if (busy.current) return;
+    busy.current = true;
+    const msSpent = Date.now() - shownAt.current;
+    await feed.advanceCard({ msSpent });
+  }, [feed]);
+
+  const handleDownvote = useCallback(async () => {
+    if (busy.current) return;
+    busy.current = true;
+    if (card) {
+      await feed.downvoteCard(card);
+    }
+    showToast('Less of this topic for 7 days');
+    const msSpent = Date.now() - shownAt.current;
+    await feed.advanceCard({ msSpent });
+  }, [card, feed]);
+
+  const handleSwipeDown = useCallback(() => {
+    if (feed.canGoBack) {
+      feed.goPrevious();
+      showToast('Previous card');
+    }
+  }, [feed]);
 
   const { dragOffset, leavingDirection, showHint, bindGestures } = useCardGestures(
     cardId,
-    (grade) => {
-      void submit(grade);
+    (_grade, direction) => {
+      if (direction === 'left' && card) {
+        void feed.downvoteCard(card);
+        showToast('Less of this topic for 7 days');
+      } else if (direction === 'right') {
+        void handleToggleBookmark();
+      }
+      const msSpent = Date.now() - shownAt.current;
+      void feed.advanceCard({ msSpent });
     },
+    handleSwipeDown,
   );
 
   if (!feed.ready) {
@@ -74,13 +126,21 @@ export default function FeedScreen() {
     );
   }
 
-  // Fallback if queue somehow yields no item (feed tops up, so should not happen)
   if (!feed.item) {
     return (
       <div className="screen feed">
         <div className="feed-empty">
-          <p className="meaning">Loading feed...</p>
-          <span className="spinner" aria-label="loading" />
+          <h2 className="feed-empty-title">You're all caught up!</h2>
+          <p className="meaning feed-empty-desc">
+            All active cards have been served today. Refilling endless queue…
+          </p>
+          <button
+            type="button"
+            className="prim tap feed-empty-refresh-btn"
+            onClick={() => void feed.reload()}
+          >
+            Refresh Feed
+          </button>
         </div>
       </div>
     );
@@ -89,39 +149,49 @@ export default function FeedScreen() {
   const transformStyle =
     leavingDirection === 'up'
       ? 'translateY(-100vh)'
-      : leavingDirection === 'left'
-        ? 'translateX(-100vw)'
-        : dragOffset.x || dragOffset.y
-          ? `translate3d(${dragOffset.x}px, ${dragOffset.y}px, 0)`
-          : undefined;
+      : leavingDirection === 'down'
+        ? 'translateY(100vh)'
+        : leavingDirection === 'left'
+          ? 'translateX(-100vw)'
+          : leavingDirection === 'right'
+            ? 'translateX(100vw)'
+            : dragOffset.x || dragOffset.y
+              ? `translate3d(${dragOffset.x}px, ${dragOffset.y}px, 0)`
+              : undefined;
 
   return (
-    <div className="screen feed">
-      <header className="feed-head">
-        <div className="feed-head-row">
-          <span className="feed-mode-label">{feed.mode === 'core' ? 'CORE' : 'ENDLESS'}</span>
-
-          {feed.streak > 0 && (
-            <div className="streak">
-              <span className="streak-flame" aria-hidden="true">
-                ðŸ”¥
-              </span>
-              <span>{feed.streak}</span>
-            </div>
+    <div className="screen feed-screen">
+      <header className="topbar">
+        <div className="brand-group">
+          <span className="feed-brand-title">SPEAK</span>
+          {feed.streak > 0 ? (
+            <span className="streak" aria-label={`${feed.streak} day streak`}>
+              ?? {feed.streak}
+            </span>
+          ) : (
+            <span className="streak is-zero" aria-label="0 day streak">
+              ?? 0
+            </span>
           )}
         </div>
 
-        <div className="feed-subhead-row">
-          {feed.mode === 'core' ? (
-            <CoreDots position={feed.position} coreThreeDone={feed.coreThreeDone} />
-          ) : (
-            <span className="feed-cards-done">{feed.cardsToday} done today</span>
-          )}
+        <div className="xp-group">
+          <span className="xp" aria-label={`${feed.todayXp} XP earned today`}>
+            {feed.todayXp} XP today
+          </span>
         </div>
       </header>
 
-      {showHandoff && (
-        <div className="handoff-banner">Core 3 done. Streak {feed.streak}.</div>
+      {showGoalBanner && (
+        <div className="handoff-banner" role="status" aria-live="polite">
+          ?? Daily XP goal reached! ({feed.todayXp}/{targetGoalXp} XP) · Streak: {feed.streak} day{feed.streak === 1 ? '' : 's'}.
+        </div>
+      )}
+
+      {toastMessage && (
+        <div className="toast" role="status" aria-live="polite">
+          {toastMessage}
+        </div>
       )}
 
       <div
@@ -129,27 +199,54 @@ export default function FeedScreen() {
         style={{ transform: transformStyle }}
         {...bindGestures}
       >
-        <CardView card={feed.item.card} onMeasure={setMeasure} />
-
-        {showHint && (
-          <div className="swipe-hint" aria-hidden="true">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="18 15 12 9 6 15" />
-            </svg>
-          </div>
-        )}
+        <CardFace
+          card={feed.item.card}
+          isDetail={isDetail}
+          onToggleDetail={() => setIsDetail((d) => !d)}
+          showSwipeHint={showHint}
+        />
       </div>
 
-      <CardActions onSubmit={(g) => void submit(g)} onLogUrge={feed.logUrge} />
+      <nav className="actions" aria-label="Card actions">
+        <button
+          type="button"
+          className={`abtn ico star ${bookmarked ? 'on' : ''} tap`}
+          onClick={(e) => void handleToggleBookmark(e)}
+          aria-label={bookmarked ? 'Remove bookmark' : 'Bookmark card'}
+        >
+          {bookmarked ? '?' : '?'}
+        </button>
+
+        <button
+          type="button"
+          className="abtn ico tap"
+          onClick={() => void handleDownvote()}
+          aria-label="Less of this card type"
+          title="Less of this type"
+        >
+          ?
+        </button>
+
+        {onOpenSpeakWithCard && card && (
+          <button
+            type="button"
+            className="abtn mic tap"
+            onClick={() => onOpenSpeakWithCard(card)}
+            aria-label="Practice speaking this card"
+          >
+            <MicrophoneIcon /> <span>Say it</span>
+          </button>
+        )}
+
+        <button
+          type="button"
+          className="abtn got-it tap"
+          onClick={() => void handleAdvance()}
+          aria-label="Advance to next card"
+        >
+          Got it ?
+        </button>
+      </nav>
     </div>
   );
 }

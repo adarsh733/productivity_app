@@ -1,0 +1,652 @@
+[
+  {
+    "id": "stm-the-hook",
+    "type": "story_move",
+    "move": "The Inverted Hook",
+    "why": "Start with the climactic crisis or final metric before stepping back to the timeline. Grabs immediate attention in updates.",
+    "example": "At 2 AM on Diwali night, 40% of our payment transactions silently failed. Here is how we uncovered why.",
+    "tags": [
+      "storytelling",
+      "hook",
+      "presentation"
+    ]
+  },
+  {
+    "id": "stm-the-pivot",
+    "type": "story_move",
+    "move": "The Uncomfortable Pivot",
+    "why": "Signals a sharp shift from smooth assumptions to sudden reality without rambling.",
+    "example": "The initial beta numbers looked phenomenal—until we checked retention on day seven.",
+    "tags": [
+      "storytelling",
+      "pivot",
+      "contrast"
+    ]
+  },
+  {
+    "id": "stm-the-rule-of-three",
+    "type": "story_move",
+    "move": "The Tricolon Cadence",
+    "why": "Groups three crisp points with matching rhythm. People remember three items naturally.",
+    "example": "We cut latency in half, doubled test coverage, and shipped on time.",
+    "tags": [
+      "storytelling",
+      "rhythm",
+      "persuasion"
+    ]
+  },
+  {
+    "id": "stm-the-zoom-in",
+    "type": "story_move",
+    "move": "The Micro-Detail Zoom",
+    "why": "Grounds high-level abstractions in one visceral, specific physical moment.",
+    "example": "Instead of talking about poor UX, look at this: a customer had to tap sixteen buttons just to download their receipt.",
+    "tags": [
+      "storytelling",
+      "detail",
+      "clarity"
+    ]
+  },
+  {
+    "id": "stm-the-landing",
+    "type": "story_move",
+    "move": "The Crisp Landing",
+    "why": "Stops speaking immediately after delivering the key takeaway. Prevents conversational fizzle.",
+    "example": "The lesson wasn't about caching. It was about assuming clean input from third-party APIs.",
+    "tags": [
+      "storytelling",
+      "conclusion",
+      "presence"
+    ]
+  },
+  {
+    "id": "stm-the-vulnerability",
+    "type": "story_move",
+    "move": "The Honest Admission",
+    "why": "Admitting an early mistake builds deep credibility and makes the eventual solution persuasive.",
+    "example": "We spent the first two weeks optimizing the database before realizing the network socket was the real bottleneck.",
+    "tags": [
+      "storytelling",
+      "authenticity",
+      "leadership"
+    ]
+  },
+  {
+    "id": "stm-the-contrast-frame",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Stark Contrast Frame",
+    "why": "Juxtaposing an old painful baseline with the new frictionless reality makes value instantly obvious.",
+    "example": "Six months ago, onboarding a new merchant took 14 days and four manual phone calls. Today, it takes 90 seconds on a phone.",
+    "tags": [
+      "storytelling",
+      "contrast",
+      "impact"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-stakes-escalation",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Stakes Escalation",
+    "why": "Explains what is lost if we do nothing, transforming a technical request into an urgent mission.",
+    "example": "This isn’t just about database query latency. If our checkout delay exceeds 300ms, we lose 20,000 orders every single Diwali flash sale.",
+    "tags": [
+      "storytelling",
+      "urgency",
+      "stakes"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-callback-loop",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Narrative Callback",
+    "why": "Revisiting a small detail or anecdote from the opening creates a satisfying sense of complete closure.",
+    "example": "Remember that confused coffee shop owner I mentioned at the start? Last night, she processed her 10,000th order through our new dashboard.",
+    "tags": [
+      "storytelling",
+      "structure",
+      "closure"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-sensory-anchor",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Sensory Anchor",
+    "why": "Anchors an abstract problem in tangible physical sensations to make the memory visceral.",
+    "example": "It wasn’t just a server alert. It was the physical chill of walking into the server basement at 3 AM while cooling fans screamed at maximum RPM.",
+    "tags": [
+      "storytelling",
+      "sensory",
+      "detail"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-rhetorical-pause",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Two-Second Rhetorical Pause",
+    "why": "Inserting total silence before your core takeaway forces listeners to look up and absorb the weight.",
+    "example": "We analyzed every possible bottleneck in the architecture. [Pause 2s] The problem wasn’t our database. It was our assumptions.",
+    "tags": [
+      "storytelling",
+      "pacing",
+      "presence"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-relatable-confession",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Relatable Confession",
+    "why": "Sharing an unvarnished initial doubt or human reaction dismantles defensive cynicism in the room.",
+    "example": "When the design team first proposed removing the search bar entirely, I honestly thought it was the worst idea I’d ever heard.",
+    "tags": [
+      "storytelling",
+      "authenticity",
+      "trust"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-parallel-structure",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Parallel Cadence",
+    "why": "Repeating an identical grammatical cadence across short sentences builds irresistible momentum.",
+    "example": "We scoped it in a morning. We prototyped it in an afternoon. We tested it with twenty users before dinner.",
+    "tags": [
+      "storytelling",
+      "rhythm",
+      "cadence"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-understatement",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Powerful Understatement",
+    "why": "Letting an extraordinary milestone speak quietly without hyperbole conveys deep confidence.",
+    "example": "Our payment engine processed ten billion rupees yesterday without dropping a single packet. It was a good Tuesday.",
+    "tags": [
+      "storytelling",
+      "presence",
+      "confidence"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-show-dont-tell",
+    "type": "story_move",
+    "lang": "en",
+    "move": "Show, Don’t Summarize",
+    "why": "Sharing verbatim customer quotes or actions is ten times more persuasive than presenting generalized adjectives.",
+    "example": "Instead of calling the UX confusing, consider this: a customer called support in tears because she couldn’t find the cancel button.",
+    "tags": [
+      "storytelling",
+      "empathy",
+      "evidence"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-metaphor-bridge",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Everyday Metaphor Bridge",
+    "why": "Translates high-dimensional technical abstractions into familiar daily mechanics anyone understands.",
+    "example": "Think of our caching layer like a restaurant waiter keeping water glasses pre-filled instead of running to the kitchen tap every single time.",
+    "tags": [
+      "storytelling",
+      "clarity",
+      "analogy"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-turning-point",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Precise Inflection Moment",
+    "why": "Pinpointing the exact minute the trajectory changed transforms a routine status update into drama.",
+    "example": "At 4:15 PM on Thursday, we changed one line in the connection pooling configuration—and the error rate flatlined to zero.",
+    "tags": [
+      "storytelling",
+      "inflection",
+      "drama"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-cliffhanger-drop",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Strategic Cliffhanger",
+    "why": "Stopping at peak tension before revealing the breakthrough locks full audience attention.",
+    "example": "With fifteen minutes left before market open, the replica refused to sync. We had exactly two options.",
+    "tags": [
+      "storytelling",
+      "tension",
+      "engagement"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-voice-shift",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Controlled Deceleration",
+    "why": "Dropping volume and slowing pace right before your crucial sentence commands total room silence.",
+    "example": "Everyone was arguing about deadlines and budget. But here is the quiet truth: if we ship this bug, our users won’t come back.",
+    "tags": [
+      "storytelling",
+      "delivery",
+      "voice"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-shared-enemy",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Externalized Obstacle",
+    "why": "Framing friction as a shared external hurdle unites teams rather than turning teammates against each other.",
+    "example": "The enemy isn’t the backend team or the marketing timeline. The enemy is the 12-second load time driving customers away.",
+    "tags": [
+      "storytelling",
+      "culture",
+      "unity"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-future-pacing",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Vivid Future Pace",
+    "why": "Describing what next year feels like once this hard work succeeds inspires long-term persistence.",
+    "example": "Imagine next Diwali: zero manual on-call pages, automated failover in two seconds, and the engineering team enjoying dinner with family.",
+    "tags": [
+      "storytelling",
+      "vision",
+      "inspiration"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-three-sentence-arc",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Three-Sentence Micro Arc",
+    "why": "Delivers context, conflict, and resolution in under twenty seconds for lightning-fast executive updates.",
+    "example": "We launched the new checkout flow at noon. Conversion spiked 18% immediately, but payment timeouts surged on mobile networks. We reverted the auth middleware in ten minutes and stabilized the stream.",
+    "tags": [
+      "storytelling",
+      "brevity",
+      "updates"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-counterintuitive-anomaly",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Counterintuitive Anomaly",
+    "why": "Opening with a fact that contradicts common sense immediately provokes curiosity.",
+    "example": "When we increased the price of our premium tier by 40%, signups actually doubled. Here is why.",
+    "tags": [
+      "storytelling",
+      "curiosity",
+      "hook"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-triad-progression",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Triad Progression",
+    "why": "Takes the listener through past mistake, present realization, and future standard.",
+    "example": "In 2024, we built fast. In 2025, we stabilized. In 2026, we scale with zero compromises.",
+    "tags": [
+      "storytelling",
+      "progression",
+      "strategy"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-direct-spotlight",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Direct Listener Spotlight",
+    "why": "Puts the listener directly into the protagonist’s shoes to build immediate empathy.",
+    "example": "Put yourself in the shoes of an intern who just ran an inadvertent DROP TABLE in production on their first Friday.",
+    "tags": [
+      "storytelling",
+      "empathy",
+      "engagement"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-thematic-repetition",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Thematic Motif",
+    "why": "Repeating a three-word anchor phrase throughout a presentation cements it in listeners’ memories.",
+    "example": "Clarity over cleverness. When designing APIs: clarity over cleverness. When writing incident reports: clarity over cleverness.",
+    "tags": [
+      "storytelling",
+      "memory",
+      "anchor"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-unvarnished-metric",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Unvarnished Data Anchor",
+    "why": "Leading with a raw, unvarnished number cuts through polite corporate fluff.",
+    "example": "Seventy-two percent of our mobile users drop off before completing step two. That is the only metric that matters today.",
+    "tags": [
+      "storytelling",
+      "candor",
+      "metrics"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-hero-shift",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Hero Shift",
+    "why": "Positioning the customer as the hero and your product as their helpful guide builds deep resonance.",
+    "example": "We aren’t the heroes of this case study. The hero is the rural warehouse supervisor who managed inventory without internet.",
+    "tags": [
+      "storytelling",
+      "humility",
+      "framing"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-analogy-subversion",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Subverted Analogy",
+    "why": "Taking a cliché analogy and flipping it upside down wakes up a tired audience.",
+    "example": "People say software is like building a skyscraper. But software isn’t concrete. Software is gardening: if you don’t prune daily, weeds choke the fruit.",
+    "tags": [
+      "storytelling",
+      "creativity",
+      "insight"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-silence-bracket",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Silence Bracket",
+    "why": "Surrounding your pivotal sentence with one second of stillness before and after.",
+    "example": "[Silence] We chose to turn down the million-dollar client because they demanded we compromise user encryption. [Silence]",
+    "tags": [
+      "storytelling",
+      "presence",
+      "weight"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-napkin-sketch-origin",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Origin Spark",
+    "why": "Recalling the informal, humble beginning of a major project makes the current achievement inspiring.",
+    "example": "This multi-region payments engine started as three lines of pseudocode scribbled on the back of a chai cup receipt.",
+    "tags": [
+      "storytelling",
+      "origin",
+      "humility"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-pacing-shift",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Acceleration-Deceleration Shift",
+    "why": "Speaking rapidly during the crisis narrative, then slowing way down for the solution.",
+    "example": "Pagers were ringing, Slack was flooding, the dashboard was bleeding red—and then our senior SRE sat down, took a breath, and typed three words.",
+    "tags": [
+      "storytelling",
+      "cadence",
+      "drama"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-constraint-reframing",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Constraint as Catalyst",
+    "why": "Reframing a severe limitation as the secret ingredient that forced an elegant design.",
+    "example": "Having only a $500 monthly cloud budget wasn’t a curse; it forced us to write the most efficient C++ caching engine in the company.",
+    "tags": [
+      "storytelling",
+      "resilience",
+      "creativity"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-verbatim-dialogue",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Verbatim Customer Voice",
+    "why": "Enacting actual conversational dialogue brings real human stakes directly into the boardroom.",
+    "example": "I asked the driver, \"Why aren’t you using our GPS navigation?\" He looked at me and said, \"Sir, your app drains my battery in 20 minutes.\"",
+    "tags": [
+      "storytelling",
+      "voice",
+      "dialogue"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-physical-stillness",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Physical Stillness Anchor",
+    "why": "Planting your feet and staying completely still while making an executive recommendation projects authority.",
+    "example": "When recommending we cancel the legacy product line, don’t fidget or pace. Stand still, look the CEO in the eye, and deliver the recommendation.",
+    "tags": [
+      "storytelling",
+      "body_language",
+      "executive"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-unintended-second-problem",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Second-Order Discovery",
+    "why": "Sharing how solving problem A unexpectedly revealed a fascinating problem B keeps listeners curious.",
+    "example": "Once we fixed the query latency, our throughput doubled—which immediately exposed that our downstream payment gateway was throttling us.",
+    "tags": [
+      "storytelling",
+      "systems",
+      "curiosity"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-lingering-question",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Lingering Challenge Question",
+    "why": "Ending your presentation with a pointed question forces the audience to ponder it for days.",
+    "example": "If our biggest competitor launched this feature tomorrow, would we be proud of our current response speed?",
+    "tags": [
+      "storytelling",
+      "closing",
+      "provocation"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-grit-over-genius",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Grit Over Genius Framing",
+    "why": "Highlighting patient persistence rather than effortless brilliance makes achievements relatable and reproducible.",
+    "example": "We didn’t have a miraculous flash of genius. We just tested 140 different machine learning models until number 141 beat the baseline.",
+    "tags": [
+      "storytelling",
+      "persistence",
+      "authenticity"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-rhythmic-sentence-length",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Varied Sentence Cadence",
+    "why": "Mixing short 4-word punchy lines with one lush flowing narrative sentence creates hypnotic auditory flow.",
+    "example": "It failed. We regrouped. We rewrote the kernel from scratch over three sleepless nights under the humming fluorescent lights of the Bangalore office.",
+    "tags": [
+      "storytelling",
+      "cadence",
+      "music"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  },
+  {
+    "id": "stm-the-shared-baton-handover",
+    "type": "story_move",
+    "lang": "en",
+    "move": "The Collective Baton Handover",
+    "why": "Concluding by inviting the audience to take ownership of the next chapter.",
+    "example": "The architecture is verified and the foundation is solid. What we build on top of it over the next twelve months is entirely in our collective hands.",
+    "tags": [
+      "storytelling",
+      "conclusion",
+      "leadership"
+    ],
+    "source": "seed",
+    "status": "active",
+    "createdAt": 1787746004355,
+    "batchId": "batch-v3-quality-target-20260826"
+  }
+]
