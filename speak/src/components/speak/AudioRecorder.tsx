@@ -1,6 +1,9 @@
 ﻿import { useCallback, useEffect, useRef, useState } from 'react';
 import type { CapturedAudio } from '../../features/reset/useMissionAudio';
 import { useSpeakingAttempt, type SpeakingAttemptResult } from '../../features/speak/useSpeakingAttempt';
+import { DriftDetector, effectiveBand } from '../../features/lab/calibration';
+import { DEFAULT_TARGET_BAND, dbToPercent } from '../../lib/audioMeter';
+import { db } from '../../db/db';
 
 export interface AudioRecorderProps {
   durationSec: number;
@@ -30,6 +33,27 @@ export default function AudioRecorder({
   const [elapsedSec, setElapsedSec] = useState(0);
   const [volumePercent, setVolumePercent] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const [band, setBand] = useState(DEFAULT_TARGET_BAND);
+  const [calibrated, setCalibrated] = useState(false);
+  const [softer, setSofter] = useState(false);
+  const driftRef = useRef(new DriftDetector(DEFAULT_TARGET_BAND));
+  const aboveRef = useRef(0);
+  const totalRef = useRef(0);
+
+  useEffect(() => {
+    void db.profile.get('me').then((p) => {
+      const b = effectiveBand({
+        baselineDb: p?.baselineDb,
+        calibrationSamples: p?.calibrationSamples,
+        targetBandDb: p?.targetBandDb,
+      });
+      setBand(b);
+      driftRef.current.setBand(b);
+      setCalibrated(
+        p?.baselineDb !== undefined && (p?.calibrationSamples ?? 0) >= 7,
+      );
+    });
+  }, []);
 
   const attempt = useSpeakingAttempt({
     durationSec,
@@ -37,26 +61,41 @@ export default function AudioRecorder({
     cardLang,
     onComplete: (result: SpeakingAttemptResult) => {
       setState('processing');
-      onComplete(result.audio, result.durationSec, result.transcript, result);
+      const total = totalRef.current;
+      const above = aboveRef.current;
+      onComplete(
+        result.audio,
+        result.durationSec,
+        result.transcript,
+        total > 0 ? { ...result, pctAboveBand: Math.round((above / total) * 100) } : result,
+      );
     },
   });
 
   const timerRef = useRef<number | null>(null);
 
-  // Sync state
+  // Sync state + live drift (calm: no sound, no vibration)
   useEffect(() => {
     if (attempt.state === 'recording') {
       setState('recording');
       setElapsedSec(attempt.elapsedSec);
       setVolumePercent(attempt.volumePercent);
+      totalRef.current += 1;
+      const drift = driftRef.current.push(attempt.db, performance.now());
+      if (attempt.db > -55 && attempt.db > band.maxDb) aboveRef.current += 1;
+      setSofter(drift === 'over');
     } else if (attempt.state === 'error') {
       setState('error');
       setError(attempt.error ?? 'Microphone is blocked.');
     }
-  }, [attempt.state, attempt.elapsedSec, attempt.volumePercent, attempt.error]);
+  }, [attempt.state, attempt.elapsedSec, attempt.volumePercent, attempt.error, attempt.db, band.maxDb]);
 
   const handleStart = async () => {
     setError(null);
+    setSofter(false);
+    aboveRef.current = 0;
+    totalRef.current = 0;
+    driftRef.current.reset();
     const ok = await attempt.start();
     if (!ok) {
       setError(attempt.error ?? 'Could not access microphone.');
@@ -166,13 +205,32 @@ export default function AudioRecorder({
               <span className="audio-recorder-elapsed">({elapsedSec}s elapsed)</span>
             </div>
 
-            {/* Real audio meter driven by Web Audio analyser */}
-            <div className="audio-recorder-meter" role="progressbar" aria-label="Microphone volume level" aria-valuenow={volumePercent} aria-valuemin={0} aria-valuemax={100}>
+            {/* Live loudness bar with target zone shaded; amber + "Softer" after 1.5 s above */}
+            <div
+              className={`audio-recorder-meter${softer ? ' is-over' : ''}`}
+              role="progressbar"
+              aria-label={calibrated ? 'Live loudness with target zone' : 'Live loudness (raw level, not calibrated)'}
+              aria-valuenow={volumePercent}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              style={{
+                background: `linear-gradient(to right, transparent ${dbToPercent(band.minDb)}%, rgba(80,200,120,.35) ${dbToPercent(band.minDb)}% ${dbToPercent(band.maxDb)}%, transparent ${dbToPercent(band.maxDb)}%)`,
+              }}
+            >
               <div
                 className="audio-recorder-meter-bar"
-                style={{ width: `${Math.max(volumePercent, 2)}%` }}
+                style={{
+                  width: `${Math.max(volumePercent, 2)}%`,
+                  background: softer ? 'var(--amber, #b7791f)' : undefined,
+                }}
               />
             </div>
+            {softer && (
+              <p className="audio-recorder-error" role="alert">Softer</p>
+            )}
+            {!calibrated && (
+              <p className="sub">Raw level — calibrate for a target zone.</p>
+            )}
 
             {/* Live speech transcription display */}
             {attempt.transcript ? (

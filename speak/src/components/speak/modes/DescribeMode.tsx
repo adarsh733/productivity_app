@@ -71,6 +71,7 @@ export default function DescribeMode({ onClose }: DescribeModeProps) {
         pauseCount={completed.result?.pauseCount}
         avgDb={completed.result?.avgDb}
         voicedSec={completed.result?.voicedSec}
+        pctAboveBand={completed.result?.pctAboveBand}
         recordingId={completed.result?.id}
         isDescribe
         targetVocab={scene.targetVocab}

@@ -190,6 +190,7 @@ export async function creditSpeakingAttempt(
     audio: { blob: Blob; mimeType?: string } | null | undefined;
     elapsedSec: number;
     voicedSec?: number;
+    avgDb?: number;
     xpReward?: number;
     drillTitle: string;
     isDescribe?: boolean;
@@ -230,6 +231,7 @@ export async function creditSpeakingAttempt(
       durationSec: params.elapsedSec,
       mimeType: params.audio!.mimeType ?? 'audio/webm',
       blob: params.audio!.blob!,
+      ...(params.avgDb !== undefined ? { avgDb: params.avgDb } : {}),
       ...(params.transcript ? { transcript: params.transcript } : {}),
     };
 

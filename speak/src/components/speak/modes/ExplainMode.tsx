@@ -27,6 +27,7 @@ export default function ExplainMode({ onClose }: { onClose: () => void }) {
         pauseCount={completed.result?.pauseCount}
         avgDb={completed.result?.avgDb}
         voicedSec={completed.result?.voicedSec}
+        pctAboveBand={completed.result?.pctAboveBand}
         recordingId={completed.result?.id}
         onDone={onClose}
         onRedo={() => setCompleted(null)}

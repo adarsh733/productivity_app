@@ -5,6 +5,9 @@ import { useSpokenRepCredit } from '../../features/session/useSpokenRep';
 import { currentStreak } from '../../features/session/day';
 import { db } from '../../db/db';
 import { todayKey } from '../../lib/date';
+import { isCalibrated } from '../../features/lab/calibration';
+import { appendPaceSample, paceBaseline, paceTarget } from '../../features/speak/pace';
+import { classifyLadderLevel } from '../../features/lab/drills';
 
 export interface PlaybackReviewProps {
   audio: CapturedAudio | null;
@@ -17,12 +20,18 @@ export interface PlaybackReviewProps {
   pauseCount?: number;
   avgDb?: number;
   voicedSec?: number;
+  pctAboveBand?: number;
   recordingId?: string;
   isDescribe?: boolean;
   targetVocab?: string[];
   targetVocabMatches?: string[];
   onDone: () => void;
   onRedo?: () => void;
+}
+
+function levelLabel(deltaDb: number): string {
+  const lvl = classifyLadderLevel(deltaDb);
+  return `level ${lvl}`;
 }
 
 export default function PlaybackReview({
@@ -36,6 +45,7 @@ export default function PlaybackReview({
   pauseCount,
   avgDb,
   voicedSec,
+  pctAboveBand,
   recordingId,
   isDescribe,
   targetVocab,
@@ -46,6 +56,10 @@ export default function PlaybackReview({
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
   const [streakCount, setStreakCount] = useState<number | null>(null);
+  const [baselineDb, setBaselineDb] = useState<number | undefined>(undefined);
+  const [calibrated, setCalibrated] = useState(false);
+  const [paceTargetWpm, setPaceTargetWpm] = useState(140);
+  const [paceStarter, setPaceStarter] = useState(true);
 
   const {
     loading: aiLoading,
@@ -76,12 +90,37 @@ export default function PlaybackReview({
     isSavingRef.current = true;
 
     async function persist() {
+      const profile = await db.profile.get('me');
+      setBaselineDb(profile?.baselineDb);
+      setCalibrated(isCalibrated({ baselineDb: profile?.baselineDb, calibrationSamples: profile?.calibrationSamples }));
+
+      // Pace: record valid attempts (≥20 s), recompute baseline weekly from stored samples.
+      let target = { target: 140, starter: true };
+      if (wpm !== undefined && wpm > 0 && elapsedSec >= 20) {
+        const all = appendPaceSample({ wpm, durationSec: elapsedSec, at: Date.now() });
+        const baseline = paceBaseline(all);
+        target = paceTarget(baseline ?? profile?.baselineWpm);
+        const nextBaseline = baseline ?? profile?.baselineWpm;
+        if (nextBaseline !== profile?.baselineWpm || target.target !== profile?.targetWpm) {
+          await db.profile.put({
+            ...(profile ?? { id: 'me' as const, createdAt: Date.now() }),
+            baselineWpm: nextBaseline,
+            targetWpm: target.target,
+          });
+        }
+      } else {
+        target = paceTarget(profile?.baselineWpm);
+      }
+      setPaceTargetWpm(target.target);
+      setPaceStarter(target.starter);
+
       const id = recordingId ?? audio?.id ?? `rec-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
       const didCredit = await credit({
         recordingId: id,
         audio,
         elapsedSec,
         voicedSec,
+        avgDb,
         xpReward,
         drillTitle,
         isDescribe,
@@ -100,7 +139,7 @@ export default function PlaybackReview({
     }
 
     void persist();
-  }, [audio, elapsedSec, voicedSec, xpReward, drillTitle, isDescribe, transcript, recordingId, credit]);
+  }, [audio, elapsedSec, voicedSec, avgDb, wpm, xpReward, drillTitle, isDescribe, transcript, recordingId, credit]);
 
   const handleGetAiFeedback = () => {
     if (!transcript) return;
@@ -147,8 +186,8 @@ export default function PlaybackReview({
 
         {wpm !== undefined && wpm > 0 ? (
           <div className="stat-pill">
-            <b>{Math.round(wpm)}</b>
-            <small>Words / min · measured on this phone</small>
+            <b>{Math.round(wpm)} vs {paceTargetWpm}</b>
+            <small>Words / min vs your {paceStarter ? 'starter target' : 'target'} · measured on this phone</small>
           </div>
         ) : (
           <div className="stat-pill">
@@ -164,15 +203,32 @@ export default function PlaybackReview({
           </div>
         )}
 
-        {avgDb !== undefined ? (
+        {avgDb !== undefined && baselineDb !== undefined ? (
+          <div className="stat-pill">
+            <b>{avgDb > baselineDb ? '+' : ''}{Math.round((avgDb - baselineDb) * 10) / 10} dB{calibrated ? ` · ${levelLabel(avgDb - baselineDb)}` : ''}</b>
+            <small>Avg loudness vs your normal · measured on this phone</small>
+          </div>
+        ) : avgDb !== undefined ? (
           <div className="stat-pill">
             <b>{avgDb} dB</b>
-            <small>Avg loudness · measured on this phone</small>
+            <small>Avg loudness · measured on this phone (not calibrated)</small>
           </div>
         ) : (
           <div className="stat-pill">
             <b>—</b>
             <small>Avg loudness · mic unavailable</small>
+          </div>
+        )}
+
+        {pctAboveBand !== undefined ? (
+          <div className="stat-pill">
+            <b>{pctAboveBand}%</b>
+            <small>Time above target zone · measured on this phone</small>
+          </div>
+        ) : (
+          <div className="stat-pill">
+            <b>—</b>
+            <small>Time above zone · {calibrated ? 'no meter data' : 'not calibrated'}</small>
           </div>
         )}
 

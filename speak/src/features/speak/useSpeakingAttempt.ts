@@ -31,6 +31,8 @@ export interface SpeakingAttemptResult {
   avgDb?: number;
   voicedSec?: number;
   noiseFloorDb?: number;
+  /** % of voiced frames above the live target band. Set by the recorder when a band exists. */
+  pctAboveBand?: number;
   targetVocabMatches?: { matched: string[]; missing: string[] };
 }
 

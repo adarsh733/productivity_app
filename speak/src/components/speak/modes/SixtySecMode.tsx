@@ -71,6 +71,7 @@ export default function SixtySecMode({ onClose }: SixtySecModeProps) {
         pauseCount={completed.result?.pauseCount}
         avgDb={completed.result?.avgDb}
         voicedSec={completed.result?.voicedSec}
+        pctAboveBand={completed.result?.pctAboveBand}
         recordingId={completed.result?.id}
         targetVocab={story.targetVocab}
         targetVocabMatches={completed.result?.targetVocabMatches?.matched}

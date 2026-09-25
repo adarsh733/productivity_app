@@ -13,6 +13,7 @@ export interface SpokenRepCreditInput {
   audio: CapturedAudio | null | undefined;
   elapsedSec: number;
   voicedSec?: number;
+  avgDb?: number;
   xpReward: number;
   drillTitle: string;
   isDescribe?: boolean;
@@ -31,6 +32,7 @@ export function useSpokenRepCredit() {
         audio: input.audio,
         elapsedSec: input.elapsedSec,
         voicedSec: input.voicedSec,
+        avgDb: input.avgDb,
         xpReward: input.xpReward,
         drillTitle: input.drillTitle,
         isDescribe: input.isDescribe,
