@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Card } from '../../types/contract';
 import type { CategoryDeck } from '../../features/browse/categories';
 import CardFace from '../cards/CardFace';
 import { useBookmarks } from '../../features/bookmarks/useBookmarks';
+import { useDeckSeen } from '../../features/browse/useDeckSeen';
+import { useCardGestures } from '../feed/useCardGestures';
 import { useModalTrap } from '../../lib/useModalTrap';
 import { ArrowLeftIcon, CloseIcon, MicrophoneIcon, StarIcon } from '../shell/Icons';
 
@@ -24,6 +26,8 @@ export default function DeckModal({
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const { isBookmarked, toggleBookmark } = useBookmarks();
+  const { seeCard } = useDeckSeen();
+  const seenRef = useRef<Set<string>>(new Set());
 
   const { containerRef, handleBackdropClick } = useModalTrap<HTMLDivElement>({
     isOpen: true,
@@ -36,6 +40,13 @@ export default function DeckModal({
   useEffect(() => {
     setIsDetail(false);
   }, [currentCard]);
+
+  // Deck views count as seen + XP, same as the Feed.
+  useEffect(() => {
+    if (!currentCard || seenRef.current.has(currentCard.id)) return;
+    seenRef.current.add(currentCard.id);
+    void seeCard(currentCard, seenRef.current);
+  }, [currentCard, seeCard]);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -58,6 +69,28 @@ export default function DeckModal({
       setIndex((i) => i - 1);
     }
   };
+
+  const handleSwipeDown = () => {
+    if (index > 0) {
+      setIndex((i) => i - 1);
+      return true;
+    }
+    return false;
+  };
+
+  const { dragOffset, leavingDirection, bindGestures } = useCardGestures(
+    currentCard?.id,
+    (_grade, direction) => {
+      if (direction === 'right' && currentCard) {
+        if (!isBookmarked(currentCard.id)) void handleToggleBookmark();
+        else showToast('Already saved');
+      }
+      if (direction === 'up' || direction === 'left' || direction === 'right') {
+        handleNext();
+      }
+    },
+    handleSwipeDown,
+  );
 
   const handleToggleBookmark = async (e?: React.MouseEvent) => {
     e?.stopPropagation();
@@ -146,7 +179,24 @@ export default function DeckModal({
           </div>
         )}
 
-        <div className="deck-modal-card-body">
+        <div
+          className={`deck-modal-card-body${leavingDirection ? ' is-leaving' : ''}`}
+          style={{
+            transform:
+              leavingDirection === 'up'
+                ? 'translateY(-100vh)'
+                : leavingDirection === 'down'
+                  ? 'translateY(100vh)'
+                  : leavingDirection === 'left'
+                    ? 'translateX(-100vw)'
+                    : leavingDirection === 'right'
+                      ? 'translateX(100vw)'
+                      : dragOffset.x || dragOffset.y
+                        ? `translate3d(${dragOffset.x}px, ${dragOffset.y}px, 0)`
+                        : undefined,
+          }}
+          {...bindGestures}
+        >
           <CardFace
             card={currentCard}
             isDetail={isDetail}

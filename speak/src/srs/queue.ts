@@ -35,6 +35,7 @@ export const FEED_TYPES: readonly CardType[] = [
   'phrase',
   'feeling',
   'story_move',
+  'situation',
 ] as const;
 
 const TIER_DUE = 0;
@@ -98,7 +99,6 @@ export function getCardMultiplier(
   // 2. Interest-based boosts using shared interest IDs
   if (interests && interests.length > 0) {
     const interestSet = new Set(interests.map((i) => i.toLowerCase().trim()));
-
     if (
       (interestSet.has('office') || interestSet.has('office english') || interestSet.has('💼 office english')) &&
       (card.type === 'idiom' || card.type === 'phrase' || card.type === 'swap')
@@ -131,6 +131,20 @@ export function getCardMultiplier(
     }
     if (interestSet.has('hindi') && card.lang === 'hi') {
       mult *= 1.6;
+    }
+  }
+
+  // Situations ride low in the feed (~1 in 15) unless storytelling/speaking focus is on.
+  if (card.type === 'situation') {
+    mult *= 0.65;
+    if (interests && interests.length > 0) {
+      const s = new Set(interests.map((i) => i.toLowerCase().trim()));
+      if (
+        s.has('storytelling') || s.has('story') || s.has('📚 storytelling') ||
+        s.has('speaking') || s.has('presence') || s.has('🎙️ speaking') || s.has('🎙️ speaking with presence')
+      ) {
+        mult *= 1.8;
+      }
     }
   }
 
@@ -271,7 +285,14 @@ function pickCandidate(
   const available = pool.filter(eligible);
   if (available.length === 0) return null;
 
-  const tiers = [...new Set(available.map((p) => p.tier))].sort((a, b) => a - b);
+  // Due reviews come first, capped at ~1 in 3: on every third slot prefer due,
+  // otherwise prefer new (when available). Keeps reviews flowing without burying novelty.
+  const hasDue = available.some((p) => p.tier === TIER_DUE);
+  const hasNew = available.some((p) => p.tier === TIER_NEW);
+  let tiers = [...new Set(available.map((p) => p.tier))].sort((a, b) => a - b);
+  if (hasDue && hasNew) {
+    tiers = currentPosition % 3 === 0 ? [TIER_DUE, TIER_NEW] : [TIER_NEW, TIER_DUE];
+  }
 
   for (const tier of tiers) {
     let inTier = available.filter((p) => p.tier === tier);

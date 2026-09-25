@@ -13,6 +13,7 @@ import type {
 import { GAMIFICATION } from '../../types/contract';
 import { db, enqueue } from '../../db/db';
 import { buildQueue } from '../../srs/queue';
+import { grade, newReview } from '../../srs/scheduler';
 import { applyCardView, currentStreak, emptyDay } from '../session/day';
 import { todayKey } from '../../lib/date';
 
@@ -198,6 +199,8 @@ export function useFeed(_initialMode: FeedMode = 'endless'): FeedApi {
   );
 
   // ── card view advancement ─────────────────────────────────────────────────
+  // First sighting: create newReview + grade `good` (back tomorrow). Never ask
+  // him to grade a first meeting. Due returns are graded via submit().
   const advanceCard = useCallback(
     async (opts?: { msSpent?: number }) => {
       const current = queue[position];
@@ -221,7 +224,7 @@ export function useFeed(_initialMode: FeedMode = 'endless'): FeedApi {
 
       setDay(nextDay);
 
-      // 2. Record production event (NO SM-2 review modification)
+      // 2. Record production event + first-seen scheduling (due tomorrow)
       const event: ProductionEvent = {
         id: `evt-view-${card.id}-${now}`,
         type: 'card_viewed',
@@ -233,11 +236,24 @@ export function useFeed(_initialMode: FeedMode = 'endless'): FeedApi {
         mode: 'endless',
       };
 
-      await db.transaction('rw', db.events, db.days, db.outbox, async () => {
+      const existingReview = reviewsRef.current.get(card.id);
+      const isFirstSight = !existingReview || (existingReview.state === 'new' && existingReview.reps === 0 && !existingReview.lastSeenAt);
+
+      await db.transaction('rw', db.events, db.days, db.reviews, db.outbox, async () => {
         await db.events.put(event as any);
         await db.days.put(nextDay);
         await enqueue('events', event.id);
         await enqueue('days', nextDay.date);
+        if (isFirstSight) {
+          const { review } = grade(newReview(card.id, today), 'good', today, now);
+          await db.reviews.put(review);
+          await enqueue('reviews', card.id);
+          reviewsRef.current.set(card.id, review);
+        } else if (existingReview && !existingReview.lastSeenAt) {
+          const touched: Review = { ...existingReview, lastSeenAt: now };
+          await db.reviews.put(touched);
+          reviewsRef.current.set(card.id, touched);
+        }
       });
 
       const allDays = await db.days.toArray();
@@ -249,10 +265,46 @@ export function useFeed(_initialMode: FeedMode = 'endless'): FeedApi {
   );
 
   const submit = useCallback(
-    async (_grade?: Grade, opts?: { msSpent?: number; measure?: number }) => {
+    async (gradeValue?: Grade, opts?: { msSpent?: number; measure?: number }) => {
+      const current = queue[position];
+      if (!current || !gradeValue || gradeValue === 'hard') {
+        await advanceCard(opts);
+        return;
+      }
+      const card = current.card;
+      const now = Date.now();
+      const existing = reviewsRef.current.get(card.id) ?? newReview(card.id, today);
+      const { review, requeueNow } = grade(existing, gradeValue, today, now);
+      await db.transaction('rw', db.reviews, db.events, db.outbox, async () => {
+        await db.reviews.put(review);
+        await db.events.put({
+          id: `evt-grade-${card.id}-${now}`,
+          type: 'recall_graded',
+          cardId: card.id,
+          cardType: card.type,
+          grade: gradeValue,
+          at: now,
+          date: today,
+        } as never);
+        await enqueue('events', `evt-grade-${card.id}-${now}`);
+        await enqueue('reviews', card.id);
+      });
+      reviewsRef.current.set(card.id, review);
+
+      if (gradeValue === 'again' && requeueNow) {
+        // Reappear within ~10 cards: splice back in ahead, and do NOT mark seen today.
+        setQueue((q) => {
+          const at = Math.min(q.length, position + 1 + 5 + Math.floor(Math.random() * 4));
+          const copy = [...q];
+          copy.splice(at, 0, { card, reason: 'due' });
+          return copy;
+        });
+      } else {
+        seenTodayRef.current.add(card.id);
+      }
       await advanceCard(opts);
     },
-    [advanceCard],
+    [advanceCard, queue, position, today],
   );
 
   // ── previous card navigation (swipe down) ─────────────────────────────────

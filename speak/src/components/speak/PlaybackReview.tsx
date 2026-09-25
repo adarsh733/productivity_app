@@ -8,6 +8,8 @@ import { todayKey } from '../../lib/date';
 import { isCalibrated } from '../../features/lab/calibration';
 import { appendPaceSample, paceBaseline, paceTarget } from '../../features/speak/pace';
 import { classifyLadderLevel } from '../../features/lab/drills';
+import { useReview } from '../../features/srs/useReview';
+import type { CardType } from '../../types/contract';
 
 export interface PlaybackReviewProps {
   audio: CapturedAudio | null;
@@ -23,6 +25,8 @@ export interface PlaybackReviewProps {
   pctAboveBand?: number;
   recordingId?: string;
   isDescribe?: boolean;
+  cardId?: string;
+  cardType?: CardType;
   targetVocab?: string[];
   targetVocabMatches?: string[];
   onDone: () => void;
@@ -48,6 +52,8 @@ export default function PlaybackReview({
   pctAboveBand,
   recordingId,
   isDescribe,
+  cardId,
+  cardType,
   targetVocab,
   targetVocabMatches = [],
   onDone,
@@ -68,6 +74,7 @@ export default function PlaybackReview({
     requestFeedback,
   } = useAiFeedback();
   const { credited, credit } = useSpokenRepCredit();
+  const { gradeEasy } = useReview();
 
   const isSavingRef = useRef(false);
 
@@ -127,6 +134,18 @@ export default function PlaybackReview({
         transcript,
       });
 
+      // Using a word out loud counts: target word detected → grade `easy`.
+      if (
+        didCredit &&
+        cardId &&
+        cardType &&
+        (cardType === 'word' || cardType === 'idiom' || cardType === 'phrase' || cardType === 'feeling' || cardType === 'action_verb') &&
+        targetVocabMatches &&
+        targetVocabMatches.length > 0
+      ) {
+        await gradeEasy(cardId);
+      }
+
       if (didCredit) {
         const date = todayKey();
         const allDays = await db.days.toArray();
@@ -139,7 +158,7 @@ export default function PlaybackReview({
     }
 
     void persist();
-  }, [audio, elapsedSec, voicedSec, avgDb, wpm, xpReward, drillTitle, isDescribe, transcript, recordingId, credit]);
+  }, [audio, elapsedSec, voicedSec, avgDb, wpm, xpReward, drillTitle, isDescribe, transcript, recordingId, cardId, cardType, targetVocabMatches, credit, gradeEasy]);
 
   const handleGetAiFeedback = () => {
     if (!transcript) return;

@@ -92,6 +92,13 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
     await feed.advanceCard({ msSpent });
   }, [feed]);
 
+  const handleGrade = useCallback(async (g: 'again' | 'good') => {
+    if (busy.current) return;
+    busy.current = true;
+    const msSpent = Date.now() - shownAt.current;
+    await feed.submit(g, { msSpent });
+  }, [feed]);
+
   const handleDownvote = useCallback(async () => {
     if (busy.current) return;
     busy.current = true;
@@ -210,6 +217,9 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
         style={{ transform: transformStyle }}
         {...bindGestures}
       >
+        {feed.item?.reason === 'due' && (
+          <span className="badge b-pace" aria-label="Review card">Review</span>
+        )}
         <CardFace
           card={feed.item.card}
           isDetail={isDetail}
@@ -249,14 +259,35 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
           </button>
         )}
 
-        <button
-          type="button"
-          className="abtn got-it tap"
-          onClick={() => void handleAdvance()}
-          aria-label="Advance to next card"
-        >
-          Got it →
-        </button>
+        {feed.item?.reason === 'due' ? (
+          <>
+            <button
+              type="button"
+              className="abtn tap"
+              onClick={() => void handleGrade('again')}
+              aria-label="Show again soon"
+            >
+              Show again soon
+            </button>
+            <button
+              type="button"
+              className="abtn tap"
+              onClick={() => void handleGrade('good')}
+              aria-label="Knew it"
+            >
+              Knew it
+            </button>
+          </>
+        ) : (
+          <button
+            type="button"
+            className="abtn got-it tap"
+            onClick={() => void handleAdvance()}
+            aria-label="Advance to next card"
+          >
+            Got it →
+          </button>
+        )}
       </nav>
     </div>
   );

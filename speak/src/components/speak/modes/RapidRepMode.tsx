@@ -157,6 +157,8 @@ export default function RapidRepMode({ initialCard, onClose }: RapidRepModeProps
         voicedSec={completed.result?.voicedSec}
         pctAboveBand={completed.result?.pctAboveBand}
         recordingId={completed.result?.id}
+        cardId={initialCard?.id}
+        cardType={initialCard?.type}
         targetVocab={details.targetVocab}
         targetVocabMatches={completed.result?.targetVocabMatches?.matched}
         onDone={onClose}
