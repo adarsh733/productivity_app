@@ -80,6 +80,30 @@ export const CATEGORY_DECKS: CategoryDeck[] = [
     description: 'Phrasing cadence, emphasis, and pause marks',
     match: (c) => c.type === 'say_it',
   },
+  {
+    id: 'situations',
+    name: 'Situations',
+    icon: '🎙️',
+    badge: 'Situation',
+    description: 'Incidents, office calls, feelings, opinions, life stories',
+    match: (c) => c.type === 'situation',
+  },
+  {
+    id: 'ideas',
+    name: 'Ideas',
+    icon: '💡',
+    badge: '60s Explainer',
+    description: 'History, geopolitics, philosophy and psychology in 60 seconds',
+    match: (c) => c.type === 'explain',
+  },
+  {
+    id: 'feelings',
+    name: 'Feelings',
+    icon: '🎭',
+    badge: 'Emotional Precision',
+    description: 'Precise words for emotional states',
+    match: (c) => c.type === 'feeling',
+  },
 ];
 
 export function getDeckCards(cards: Card[], deckId: string): Card[] {

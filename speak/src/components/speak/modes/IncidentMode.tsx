@@ -2,31 +2,18 @@
 import type { CapturedAudio } from '../../../features/reset/useMissionAudio';
 import type { SpeakingAttemptResult } from '../../../features/speak/useSpeakingAttempt';
 import { GAMIFICATION } from '../../../types/contract';
+import type { SituationKind } from '../../../types/contract';
+import { useSituationCards } from '../../../features/speak/useModeCards';
 import AudioRecorder from '../AudioRecorder';
 import PlaybackReview from '../PlaybackReview';
 
-const SCENARIOS = [
-  {
-    id: 'pushback-scope',
-    title: 'Pushing Back on Scope Creep',
-    situation: 'A product manager requests adding three new features 4 days before release without shifting the deadline.',
-    challenge: 'Politely reject the addition while proposing a structured phase-two follow-up.',
-    targetVocab: ['trade-off', 'bandwidth', 'milestone', 'prioritize'],
-  },
-  {
-    id: 'outage-update',
-    title: 'Executive Outage Briefing',
-    situation: 'Payment processing dropped by 40% due to an upstream database lock issue.',
-    challenge: 'Explain the root cause, immediate mitigation, and permanent fix in 45 seconds without panic.',
-    targetVocab: ['mitigation', 'root cause', 'stability', 'failover'],
-  },
-  {
-    id: 'feedback-junior',
-    title: 'Constructive Code Review Pushback',
-    situation: 'A peer submitted a 2,000-line PR that bypasses core architectural layers.',
-    challenge: 'Ask them to decompose the PR respectfully while explaining the risk of unisolated state.',
-    targetVocab: ['decouple', 'maintainability', 'incremental', 'isolate'],
-  },
+const KINDS: Array<{ id: SituationKind | 'all'; label: string }> = [
+  { id: 'all', label: 'All' },
+  { id: 'incident', label: 'Incident' },
+  { id: 'office_call', label: 'Office call' },
+  { id: 'feeling', label: 'Feeling' },
+  { id: 'opinion', label: 'Opinion' },
+  { id: 'life_story', label: 'Life story' },
 ];
 
 export interface IncidentModeProps {
@@ -34,7 +21,7 @@ export interface IncidentModeProps {
 }
 
 export default function IncidentMode({ onClose }: IncidentModeProps) {
-  const [scenarioIndex, setScenarioIndex] = useState(0);
+  const situations = useSituationCards('all');
   const [completed, setCompleted] = useState<{
     audio: CapturedAudio | null;
     elapsedSec: number;
@@ -42,7 +29,7 @@ export default function IncidentMode({ onClose }: IncidentModeProps) {
     result?: SpeakingAttemptResult;
   } | null>(null);
 
-  const scenario = SCENARIOS[scenarioIndex % SCENARIOS.length]!;
+  const scenario = situations.current;
 
   const handleComplete = (
     audio: CapturedAudio | null,
@@ -55,7 +42,7 @@ export default function IncidentMode({ onClose }: IncidentModeProps) {
 
   const handleRedo = () => {
     setCompleted(null);
-    setScenarioIndex((i) => i + 1);
+    situations.next();
   };
 
   if (completed) {
@@ -64,8 +51,8 @@ export default function IncidentMode({ onClose }: IncidentModeProps) {
         audio={completed.audio}
         elapsedSec={completed.elapsedSec}
         xpReward={GAMIFICATION.XP.spokenRep}
-        drillTitle={`Incident: ${scenario.title}`}
-        promptText={`${scenario.situation} Challenge: ${scenario.challenge}`}
+        drillTitle={scenario ? `Situation: ${scenario.title}` : 'Situations'}
+        promptText={scenario?.prompt ?? 'Tell a real story from your week.'}
         transcript={completed.transcript}
         wpm={completed.result?.wpm}
         pauseCount={completed.result?.pauseCount}
@@ -73,7 +60,9 @@ export default function IncidentMode({ onClose }: IncidentModeProps) {
         voicedSec={completed.result?.voicedSec}
         pctAboveBand={completed.result?.pctAboveBand}
         recordingId={completed.result?.id}
-        targetVocab={scenario.targetVocab}
+        cardId={scenario?.id}
+        cardType="situation"
+        targetVocab={scenario?.targetVocab}
         targetVocabMatches={completed.result?.targetVocabMatches?.matched}
         onDone={onClose}
         onRedo={handleRedo}
@@ -81,11 +70,35 @@ export default function IncidentMode({ onClose }: IncidentModeProps) {
     );
   }
 
+  if (!situations.ready) {
+    return (
+      <div className="speak-drill-runner">
+        <p className="sub">Loading situations…</p>
+      </div>
+    );
+  }
+
+  if (!scenario) {
+    return (
+      <div className="speak-drill-runner">
+        <header className="speak-drill-header">
+          <div className="speak-drill-title-group">
+            <span className="badge b-scn">Situations</span>
+            <h2>No prompts yet</h2>
+          </div>
+          <button type="button" className="deck-modal-close-btn tap" onClick={onClose} aria-label="Close drill">✕</button>
+        </header>
+        <p className="sub">Situation prompts are on their way — check back soon. Browsing still works fully.</p>
+        <button type="button" className="prim tap" onClick={onClose}>Back</button>
+      </div>
+    );
+  }
+
   return (
     <div className="speak-drill-runner">
       <header className="speak-drill-header">
         <div className="speak-drill-title-group">
-          <span className="badge b-scn">💼 Incident Rep (45s)</span>
+          <span className="badge b-scn">Situations ({situations.count})</span>
           <h2>{scenario.title}</h2>
         </div>
         <button
@@ -98,23 +111,40 @@ export default function IncidentMode({ onClose }: IncidentModeProps) {
         </button>
       </header>
 
+      <div className="chips" role="group" aria-label="Situation kind">
+        {KINDS.map((k) => (
+          <button
+            key={k.id}
+            type="button"
+            className={`chip tap${situations.kind === k.id ? ' on' : ''}`}
+            aria-pressed={situations.kind === k.id}
+            onClick={() => situations.setKind(k.id)}
+          >
+            {k.label}
+          </button>
+        ))}
+      </div>
+
       <AudioRecorder
-        durationSec={45}
+        durationSec={scenario.targetSec}
         targetVocab={scenario.targetVocab}
         onComplete={handleComplete}
         onCancel={onClose}
         promptNode={
           <div className="speak-prompt-box">
             <div className="speak-incident-situation">
-              <b>Situation:</b>
-              <p>{scenario.situation}</p>
+              <b>Talk about:</b>
+              <p>{scenario.prompt}</p>
             </div>
-            <div className="speak-incident-challenge">
-              <b>Your Challenge:</b>
-              <p>{scenario.challenge}</p>
+            <div className="speak-story-anchors">
+              {scenario.beats.map((b, i) => (
+                <div key={i} className="speak-anchor-pill">
+                  {i + 1}. {b}
+                </div>
+              ))}
             </div>
             <small className="speak-prompt-hint">
-              Keep your delivery measured, concise, and executive-ready.
+              Speak for ~{scenario.targetSec}s. Keep it measured and executive-ready.
             </small>
           </div>
         }

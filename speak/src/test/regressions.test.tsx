@@ -221,22 +221,34 @@ describe('Articulate V3 Release-Hardening & Regressions Suite', () => {
   });
 
   // 9. Regression 9: Asset Integrity
-  it('Regression 9: All scene images and manifest icon assets physically exist on disk', () => {
+  it('Regression 9: manifest icons exist; scene images are optional (text-only scenes)', () => {
     const publicDir = path.resolve(__dirname, '../../public');
     const requiredAssets = [
       'icon-192.png',
       'icon-512.png',
       'icon.svg',
-      'assets/scenes/datacenter.jpg',
-      'assets/scenes/metro.jpg',
-      'assets/scenes/monsoon_cafe.jpg',
-      'assets/scenes/war_room.jpg',
       'assets/scenes/metadata.json',
     ];
 
     for (const asset of requiredAssets) {
       const fullPath = path.join(publicDir, asset);
       expect(fs.existsSync(fullPath), `Missing asset: ${asset}`).toBe(true);
+    }
+
+    // Placeholder scene photos were removed (Stage 5): describe cards ship
+    // text-only scenes. If a seed card references an image, it must exist —
+    // but zero image references is valid.
+    const { cards } = readSeedFiles();
+    const withImages = cards.filter(
+      (c) =>
+        c.type === 'describe' &&
+        (c as Extract<Card, { type: 'describe' }>).imagePath &&
+        (c as Extract<Card, { type: 'describe' }>).imagePath!.trim() !== '',
+    );
+    for (const card of withImages) {
+      const imagePath = (card as Extract<Card, { type: 'describe' }>).imagePath as string;
+      const cleanPath = imagePath.replace(/^\//, '');
+      expect(fs.existsSync(path.join(publicDir, cleanPath)), `Missing scene image: ${imagePath}`).toBe(true);
     }
   });
 

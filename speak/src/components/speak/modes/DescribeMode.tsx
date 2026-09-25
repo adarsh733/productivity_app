@@ -2,39 +2,16 @@
 import type { CapturedAudio } from '../../../features/reset/useMissionAudio';
 import type { SpeakingAttemptResult } from '../../../features/speak/useSpeakingAttempt';
 import { GAMIFICATION } from '../../../types/contract';
+import { useDescribeCards } from '../../../features/speak/useModeCards';
 import AudioRecorder from '../AudioRecorder';
 import PlaybackReview from '../PlaybackReview';
-
-const SCENES = [
-  {
-    id: 'rainy-cafe',
-    title: 'Bengaluru Monsoon Cafe',
-    focus: 'A warm, crowded coffee shop during a sudden monsoon downpour. Laptop screens glowing, steam rising, rain drumming on the glass.',
-    hints: ['Sound of torrential rain on glass', 'Rich aroma of roasted coffee', 'Engineers huddled over laptop screens'],
-    targetVocab: ['torrential', 'aroma', 'ambient', 'huddled'],
-  },
-  {
-    id: 'midnight-dc',
-    title: 'Midnight Data Center',
-    focus: 'Cold aisle in a server farm. Blinking green LEDs, freezing blast from HVAC cooling vents, hum of thousands of hard drives.',
-    hints: ['Bone-chilling air current', 'Hypnotic pulse of green fiber LEDs', 'Mechanical hum of cooling blowers'],
-    targetVocab: ['rhythmic', 'chilled', 'hypnotic', 'hum'],
-  },
-  {
-    id: 'airport-dawn',
-    title: 'Airport Terminal at Dawn',
-    focus: 'Terminal 2 at 5:30 AM. Polished stone floors reflecting orange dawn light, soft chime of gate announcements, hurried footsteps.',
-    hints: ['Golden morning light through floor-to-ceiling glass', 'Distant chime of flight calls', 'Quiet choreography of sleepy travelers'],
-    targetVocab: ['choreography', 'golden', 'stride', 'echoing'],
-  },
-];
 
 export interface DescribeModeProps {
   onClose: () => void;
 }
 
 export default function DescribeMode({ onClose }: DescribeModeProps) {
-  const [sceneIndex, setSceneIndex] = useState(0);
+  const describe = useDescribeCards();
   const [completed, setCompleted] = useState<{
     audio: CapturedAudio | null;
     elapsedSec: number;
@@ -42,7 +19,7 @@ export default function DescribeMode({ onClose }: DescribeModeProps) {
     result?: SpeakingAttemptResult;
   } | null>(null);
 
-  const scene = SCENES[sceneIndex % SCENES.length]!;
+  const scene = describe.current;
 
   const handleComplete = (
     audio: CapturedAudio | null,
@@ -55,7 +32,7 @@ export default function DescribeMode({ onClose }: DescribeModeProps) {
 
   const handleRedo = () => {
     setCompleted(null);
-    setSceneIndex((i) => i + 1);
+    describe.next();
   };
 
   if (completed) {
@@ -64,8 +41,8 @@ export default function DescribeMode({ onClose }: DescribeModeProps) {
         audio={completed.audio}
         elapsedSec={completed.elapsedSec}
         xpReward={GAMIFICATION.XP.describeRep}
-        drillTitle={`Describe: ${scene.title}`}
-        promptText={scene.focus}
+        drillTitle={scene ? `Describe: ${scene.title ?? 'this scene'}` : 'Describe This'}
+        promptText={scene?.prompt ?? 'Describe what you see.'}
         transcript={completed.transcript}
         wpm={completed.result?.wpm}
         pauseCount={completed.result?.pauseCount}
@@ -74,7 +51,7 @@ export default function DescribeMode({ onClose }: DescribeModeProps) {
         pctAboveBand={completed.result?.pctAboveBand}
         recordingId={completed.result?.id}
         isDescribe
-        targetVocab={scene.targetVocab}
+        targetVocab={scene?.targetVocab}
         targetVocabMatches={completed.result?.targetVocabMatches?.matched}
         onDone={onClose}
         onRedo={handleRedo}
@@ -82,12 +59,38 @@ export default function DescribeMode({ onClose }: DescribeModeProps) {
     );
   }
 
+  if (!describe.ready) {
+    return (
+      <div className="speak-drill-runner">
+        <p className="sub">Loading scenes…</p>
+      </div>
+    );
+  }
+
+  if (!scene) {
+    return (
+      <div className="speak-drill-runner">
+        <header className="speak-drill-header">
+          <div className="speak-drill-title-group">
+            <span className="badge b-verb">Describe This</span>
+            <h2>No prompts yet</h2>
+          </div>
+          <button type="button" className="deck-modal-close-btn tap" onClick={onClose} aria-label="Close drill">✕</button>
+        </header>
+        <p className="sub">Scene prompts are on their way — check back soon.</p>
+        <button type="button" className="prim tap" onClick={onClose}>Back</button>
+      </div>
+    );
+  }
+
+  const hasImage = Boolean(scene.imagePath && scene.imagePath.trim() !== '');
+
   return (
     <div className="speak-drill-runner">
       <header className="speak-drill-header">
         <div className="speak-drill-title-group">
-          <span className="badge b-verb">🎨 Describe This</span>
-          <h2>{scene.title}</h2>
+          <span className="badge b-verb">Describe This ({describe.count})</span>
+          <h2>{scene.title ?? 'Describe this scene'}</h2>
         </div>
         <button
           type="button"
@@ -100,24 +103,30 @@ export default function DescribeMode({ onClose }: DescribeModeProps) {
       </header>
 
       <AudioRecorder
-        durationSec={45}
+        durationSec={scene.targetSec}
         targetVocab={scene.targetVocab}
         onComplete={handleComplete}
         onCancel={onClose}
         promptNode={
           <div className="speak-prompt-box">
-            <p className="speak-prompt-content compact">
-              {scene.focus}
-            </p>
+            {hasImage ? (
+              <img src={scene.imagePath} alt={scene.alt} className="speak-scene-image" />
+            ) : (
+              <div className="speak-scene-text" role="img" aria-label={scene.alt}>
+                {scene.title && <b>{scene.title}</b>}
+                {scene.scene && <p>{scene.scene}</p>}
+              </div>
+            )}
+            <p className="speak-prompt-content compact">{scene.prompt}</p>
             <div className="speak-story-anchors">
-              {scene.hints.map((h, i) => (
+              {scene.beats.map((h, i) => (
                 <div key={i} className="speak-anchor-pill">
                   • {h}
                 </div>
               ))}
             </div>
             <small className="speak-prompt-hint">
-              Paint the visual details using concrete sensory words. (+25 XP)
+              Paint the details using concrete sensory words. (+25 XP)
             </small>
           </div>
         }

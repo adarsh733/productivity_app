@@ -2,17 +2,35 @@ import { useState } from 'react';
 import type { CapturedAudio } from '../../../features/reset/useMissionAudio';
 import type { SpeakingAttemptResult } from '../../../features/speak/useSpeakingAttempt';
 import { GAMIFICATION } from '../../../types/contract';
+import { useTeachBackCards } from '../../../features/speak/useModeCards';
 import AudioRecorder from '../AudioRecorder';
 import PlaybackReview from '../PlaybackReview';
 
-/** Teach it back. Stage 5 replaces the fallback with teach_back cards. */
+/** Teach it back — teach_back cards from the database. */
 export default function TeachBackMode({ onClose }: { onClose: () => void }) {
+  const teach = useTeachBackCards();
   const [completed, setCompleted] = useState<{
     audio: CapturedAudio | null;
     elapsedSec: number;
     transcript?: string;
     result?: SpeakingAttemptResult;
   } | null>(null);
+
+  const card = teach.current;
+
+  const handleComplete = (
+    audio: CapturedAudio | null,
+    elapsedSec: number,
+    transcript?: string,
+    result?: SpeakingAttemptResult,
+  ) => {
+    setCompleted({ audio, elapsedSec, transcript, result });
+  };
+
+  const handleRedo = () => {
+    setCompleted(null);
+    teach.next();
+  };
 
   if (completed) {
     return (
@@ -21,7 +39,7 @@ export default function TeachBackMode({ onClose }: { onClose: () => void }) {
         elapsedSec={completed.elapsedSec}
         xpReward={GAMIFICATION.XP.spokenRep}
         drillTitle="Teach it back"
-        promptText="Teach back something you learned, in your own words."
+        promptText={card?.prompt ?? 'Teach back something you learned.'}
         transcript={completed.transcript}
         wpm={completed.result?.wpm}
         pauseCount={completed.result?.pauseCount}
@@ -30,8 +48,32 @@ export default function TeachBackMode({ onClose }: { onClose: () => void }) {
         pctAboveBand={completed.result?.pctAboveBand}
         recordingId={completed.result?.id}
         onDone={onClose}
-        onRedo={() => setCompleted(null)}
+        onRedo={handleRedo}
       />
+    );
+  }
+
+  if (!teach.ready) {
+    return (
+      <div className="speak-drill-runner">
+        <p className="sub">Loading teach-backs…</p>
+      </div>
+    );
+  }
+
+  if (!card) {
+    return (
+      <div className="speak-drill-runner">
+        <header className="speak-drill-header">
+          <div className="speak-drill-title-group">
+            <span className="badge b-verb">Teach-back</span>
+            <h2>No prompts yet</h2>
+          </div>
+          <button type="button" className="deck-modal-close-btn tap" onClick={onClose} aria-label="Close drill">✕</button>
+        </header>
+        <p className="sub">No prompts yet — teach back one thing you learned recently, as if to a friend.</p>
+        <button type="button" className="prim tap" onClick={onClose}>Back</button>
+      </div>
     );
   }
 
@@ -39,18 +81,26 @@ export default function TeachBackMode({ onClose }: { onClose: () => void }) {
     <div className="speak-drill-runner">
       <header className="speak-drill-header">
         <div className="speak-drill-title-group">
-          <span className="badge b-verb">Teach-back</span>
+          <span className="badge b-verb">Teach-back ({teach.count})</span>
           <h2>Teach it back</h2>
         </div>
         <button type="button" className="deck-modal-close-btn tap" onClick={onClose} aria-label="Close drill">✕</button>
       </header>
       <AudioRecorder
-        durationSec={60}
-        onComplete={(audio, elapsedSec, transcript, result) => setCompleted({ audio, elapsedSec, transcript, result })}
+        durationSec={card.targetSec}
+        onComplete={handleComplete}
         onCancel={onClose}
         promptNode={
           <div className="speak-prompt-box">
-            <p className="speak-prompt-content">No prompts yet — teach back one thing you learned recently, as if to a friend.</p>
+            <p className="speak-prompt-content">{card.prompt}</p>
+            <div className="speak-story-anchors">
+              {card.beats.map((b, i) => (
+                <div key={i} className="speak-anchor-pill">
+                  {i + 1}. {b}
+                </div>
+              ))}
+            </div>
+            <small className="speak-prompt-hint">~{card.targetSec}s. Cover the three beats.</small>
           </div>
         }
       />
