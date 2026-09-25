@@ -3,13 +3,16 @@ import { render, screen, fireEvent, act } from '@testing-library/react';
 import SpeakScreen from './SpeakScreen';
 
 describe('SpeakScreen Real RTL Component Suite', () => {
-  it('renders all 4 speaking mode cards with time targets and XP badges', () => {
+  it('renders routine, drills, weekly check and all 6 speaking modes', () => {
     render(<SpeakScreen />);
 
+    expect(screen.getByText(/12-minute voice routine/i)).toBeInTheDocument();
     expect(screen.getByText(/Rapid Rep/i)).toBeInTheDocument();
     expect(screen.getByText(/60-Second Story/i)).toBeInTheDocument();
-    expect(screen.getByText(/Incident Drill/i)).toBeInTheDocument();
+    expect(screen.getByText(/Situations/i)).toBeInTheDocument();
     expect(screen.getByText(/Describe This/i)).toBeInTheDocument();
+    expect(screen.getByText(/Explain an idea/i)).toBeInTheDocument();
+    expect(screen.getByText(/Teach it back/i)).toBeInTheDocument();
   });
 
   it('opens Rapid Rep mode when its card is clicked and allows closing', async () => {
