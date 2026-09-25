@@ -84,3 +84,25 @@ holding a breath is not the intended experience.
 explicitly forbade touching the seed JSON. It gets fixed with the Phase 1 breath
 rewrite, where four of the eight drills are being retired anyway for training a
 ruled-out cause — see `PROBLEM-MAP.md` §6.
+
+---
+
+## AG-005 (2026-09-25) — judged not worth fixing now
+
+- **Pause-drill keyword alignment is a proxy.** Without word-level timestamps
+  from SpeechRecognition, "pause before the key word" is measured as longest
+  pause + peak-over-average per rep. Honest and labelled, but not true keyword
+  timing. Worth revisiting only with on-device forced alignment.
+- **Pace history lives in localStorage, not IndexedDB.** The 5-sample baseline
+  heuristic (`articulate.paceSamples.v1`) survives normal use but not profile
+  restore. Acceptable: baseline recomputes from new samples within a week.
+- **Restored `MptTracker`/`VolumeLadder`/`LiveDbMeter` (parent commit) are
+  superseded, not wired.** `WeeklyCheck` + `Drills` replace them using the same
+  math. The old files build but nothing imports them; kept as reference, not product.
+- **No 375×812 browser walk was possible in this session.** Build + 261 tests
+  green, encoding checks pass, but four-tab sideways-scroll and console-error
+  verification on a real viewport remains owed before review sign-off.
+- **FeedScreen gesture test is a logic replica.** `useCardGestures.test.ts`
+  re-implements swipe math with stale thresholds instead of driving the hook.
+  Passes, but proves less than it claims. Worth replacing with hook-level tests
+  when pointer handling is next touched.

@@ -30,14 +30,13 @@ issue is missing — add the issue first.
 
 | Layer | Issues it owns | Built? |
 |---|---|---|
-| **Habit shell** — feed, streak, urge, capture | P1 | Shipped, never used in real life (not deployed) |
-| **Language half** — words, verbs, idioms, Hindi, articulation | P4 P5 P6 P7 | Mostly shipped; **articulation missing entirely** |
-| **Voice half** — mic, meters, drills | P2 P3 · V1–V7 | **Nothing built. No mic code exists** |
-| **Interface** — the shell's look and structure | U1–U12 | Spec'd in `WIREFRAMES.html`, not built |
+| **Habit shell** — feed, streak, urge, capture | P1 | Shipped with SRS memory + urge counting; not deployed |
+| **Language half** — words, verbs, idioms, Hindi, articulation | P4 P5 P6 P7 | Shipped; situations/explain/teach-back modes DB-backed (AG-006 content in flight) |
+| **Voice half** — mic, meters, drills | P2 P3 · V1–V7 | **Shipped (AG-005 2026-09-25):** routine A–E, 6 drills, weekly MPT, per-recording volume + pace, calibration. Mic measured, never a gate |
+| **Interface** — the shell's look and structure | U1–U12 | Shipped V3 shell; 375×812 browser verification still owed |
 
-**The headline:** 9 of the 26 live issues have running code against them. All 9
-are habit or vocabulary. Every voice issue — the ones with measurements behind
-them — is at zero.
+**The headline (2026-09-25):** voice issues now have running code (routine, drills,
+MPT, meters, calibration, pace). Remaining: real-device verification and content completion.
 
 ---
 

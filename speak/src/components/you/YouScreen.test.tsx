@@ -25,7 +25,7 @@ describe('YouScreen Real RTL Component Suite', () => {
 
     expect(screen.getByText(/Feed Focus/i)).toBeInTheDocument();
     expect(screen.getByText(/Saved & Bookmarks/i)).toBeInTheDocument();
-    expect(screen.getByText(/Streak/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Streak/i).length).toBeGreaterThan(0);
   });
 
   it('allows changing daily goal tier', async () => {

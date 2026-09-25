@@ -11,8 +11,8 @@ import type { Card, Review } from '../../types/contract';
 describe('Browse & Categories Comprehensive Suite', () => {
   const seedCards = readSeedFiles().cards;
 
-  it('All 8 category decks are defined with icons and descriptions', () => {
-    expect(CATEGORY_DECKS).toHaveLength(8);
+  it('All 11 category decks are defined with icons and descriptions', () => {
+    expect(CATEGORY_DECKS).toHaveLength(11);
 
     const expectedDeckIds = [
       'office',
@@ -23,6 +23,9 @@ describe('Browse & Categories Comprehensive Suite', () => {
       'phrases',
       'pronounce',
       'pace',
+      'situations',
+      'ideas',
+      'feelings',
     ];
 
     for (const id of expectedDeckIds) {

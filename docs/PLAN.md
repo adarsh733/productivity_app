@@ -5,6 +5,14 @@
 *inferred*; it has since been *measured*, and the measurement contradicted it.
 Do not cite v1 for anything.
 
+**AG-005 status (2026-09-25):** the voice half is now built — 12-minute routine
+(A–E with transfer enforcement), six quick drills with live meters, weekly MPT
+check writing VoiceSamples, per-recording volume + pace numbers, calibration
+against his own baseline, pace baseline (median of first 5 valid ≥20 s attempts,
+target ×0.9, 140 starter). Feed has SRS memory (first sight → tomorrow, dues
+~1 in 3, `again` within ~10). Mic is measured everywhere, never a gate. Browser
+verification at 375×812 and AG-006 content completion remain.
+
 A single PWA that replaces the phone-unlock reflex with speech, vocabulary and
 storytelling training. Installed to the iPhone home screen from Safari, hosted on
 Netlify, free at every layer.
