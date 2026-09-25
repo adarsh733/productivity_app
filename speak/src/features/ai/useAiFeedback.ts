@@ -18,9 +18,30 @@ export interface RequestAiFeedbackParams {
 }
 
 /**
- * Validates the raw JSON returned from the AI model.
- * Strict validation: rejects incomplete responses without using fallback defaults.
+ * Quote check: the feedback must quote his actual words. A double- or
+ * single-quoted phrase in the feedback that does not appear in the transcript
+ * (case-insensitive) is fabricated — the whole feedback is dropped, never shown.
  */
+export function quotesIn(text: string): string[] {
+  const out: string[] = [];
+  const re = /["“”'‘’]([^"“”'‘’]{2,}?)["“”'‘’]/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    const phrase = m[1]!.trim();
+    if (phrase) out.push(phrase);
+  }
+  return out;
+}
+
+export function containsFabricatedQuote(feedback: AiFeedbackResult, transcript: string): boolean {
+  const lower = transcript.toLowerCase();
+  for (const field of [feedback.summary, feedback.strongPoint, feedback.oneCorrection, feedback.suggestedAlternative ?? '']) {
+    for (const q of quotesIn(field)) {
+      if (!lower.includes(q.toLowerCase())) return true;
+    }
+  }
+  return false;
+}
 export function validateAiFeedback(raw: unknown): AiFeedbackResult {
   if (!raw || typeof raw !== 'object') {
     throw new Error('Malformed AI feedback response: expected an object');
@@ -57,6 +78,8 @@ export function useAiFeedback() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<AiFeedbackResult | null>(null);
+  /** True when the failure means no key or no connection — UI shows one grey line. */
+  const [unavailable, setUnavailable] = useState(false);
   const abortCtrlRef = useRef<AbortController | null>(null);
 
   const cancel = useCallback(() => {
@@ -72,6 +95,7 @@ export function useAiFeedback() {
       cancel();
       setFeedback(null);
       setError(null);
+      setUnavailable(false);
 
       const transcript = params.transcript?.trim();
       if (!transcript) {
@@ -90,6 +114,7 @@ export function useAiFeedback() {
       abortCtrlRef.current = abortCtrl;
 
       try {
+        // Transcript only — never audio.
         const res = await fetch('/.netlify/functions/ai', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
@@ -97,13 +122,7 @@ export function useAiFeedback() {
           body: JSON.stringify({
             task: 'review_recording',
             prefer: params.prefer,
-            payload: {
-              transcript,
-              promptText: params.promptText,
-              drillTitle: params.drillTitle,
-              elapsedSec: params.elapsedSec,
-              targetVocab: params.targetVocab,
-            },
+            payload: { transcript },
           }),
         });
 
@@ -114,12 +133,19 @@ export function useAiFeedback() {
         }
 
         if (!res.ok) {
-          let errorMsg = `AI feedback unavailable (HTTP ${res.status})`;
+          // Never surface raw provider errors. No key / offline → unavailable.
+          let serverError = '';
           try {
             const errData = (await res.json()) as AiResponse;
-            if (errData.error) errorMsg = errData.error;
+            serverError = errData.error ?? '';
           } catch {}
-          throw new Error(errorMsg);
+          if (/not configured|failed to fetch|network|offline/i.test(serverError)) {
+            setUnavailable(true);
+          } else {
+            setError('AI feedback unavailable right now.');
+          }
+          setLoading(false);
+          return null;
         }
 
         const data = (await res.json()) as AiResponse;
@@ -129,10 +155,23 @@ export function useAiFeedback() {
         }
 
         if (!data.ok || !data.data) {
-          throw new Error(data.error ?? 'AI feedback unavailable');
+          const serverError = data.error ?? '';
+          if (/not configured|failed to fetch|network|offline/i.test(serverError)) {
+            setUnavailable(true);
+          } else {
+            setError('AI feedback unavailable right now.');
+          }
+          setLoading(false);
+          return null;
         }
 
         const validated = validateAiFeedback(data.data);
+        // Quote check: drop fabricated quotes, never show them.
+        if (containsFabricatedQuote(validated, transcript)) {
+          setFeedback(null);
+          setLoading(false);
+          return null;
+        }
         if (!abortCtrl.signal.aborted) {
           setFeedback(validated);
           setLoading(false);
@@ -144,8 +183,13 @@ export function useAiFeedback() {
           return null;
         }
 
-        const message = (err as Error).message || 'AI feedback unavailable';
-        setError(message);
+        // Network failure (offline) → unavailable, not a raw error.
+        const message = (err as Error).message || '';
+        if (/failed to fetch|network|offline|not configured/i.test(message)) {
+          setUnavailable(true);
+        } else {
+          setError('AI feedback unavailable right now.');
+        }
         setFeedback(null);
         setLoading(false);
         return null;
@@ -158,6 +202,7 @@ export function useAiFeedback() {
     loading,
     error,
     feedback,
+    unavailable,
     requestFeedback,
     cancel,
   };

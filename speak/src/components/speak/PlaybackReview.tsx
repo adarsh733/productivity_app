@@ -71,6 +71,7 @@ export default function PlaybackReview({
     loading: aiLoading,
     error: aiError,
     feedback: aiFeedback,
+    unavailable: aiUnavailable,
     requestFeedback,
   } = useAiFeedback();
   const { credited, credit } = useSpokenRepCredit();
@@ -316,72 +317,78 @@ export default function PlaybackReview({
 
       {/* Tier 1 AI Feedback via Proxy */}
       <div className="ai-feedback-section">
-        {!hasTranscript && (
-          <div className="ai-feedback-no-transcript">
-            <p className="ai-feedback-hint-text">
-              AI feedback needs a transcript. Listen back to your recording.
-            </p>
-          </div>
-        )}
-
-        {hasTranscript && wordCount < 5 && !aiFeedback && (
-          <div className="ai-feedback-too-short">
-            <p className="ai-feedback-hint-text">
-              AI feedback requires at least 5 words spoken. Keep practicing!
-            </p>
-          </div>
-        )}
-
-        {hasTranscript && wordCount >= 5 && !aiFeedback && !aiLoading && !aiError && (
-          <button
-            type="button"
-            className="prim tap ai-feedback-trigger-btn"
-            onClick={handleGetAiFeedback}
-          >
-            <span>Get 1-Win / 1-Polish AI Coach Feedback</span>
-          </button>
-        )}
-
-        {aiLoading && (
-          <div className="ai-feedback-loading-card">
-            <div className="ai-loading-spinner" aria-hidden="true" />
-            <p className="sub">
-              Analyzing transcript against executive delivery standards…
-            </p>
-          </div>
-        )}
-
-        {aiError && (
-          <div className="ai-feedback-error-card">
-            <p className="ai-feedback-error-text">
-              {aiError}
-            </p>
-          </div>
-        )}
-
-        {aiFeedback && (
-          <div className="ai-feedback-result-card">
-            <div className="ai-feedback-badge">
-              <span aria-hidden="true">Coach Feedback</span>
-            </div>
-            <p className="ai-summary">{aiFeedback.summary}</p>
-            <div className="ai-points-grid">
-              <div className="ai-point-box positive">
-                <b>1 Key Win</b>
-                <p>{aiFeedback.strongPoint}</p>
-              </div>
-              <div className="ai-point-box correction">
-                <b>1 Polish Opportunity</b>
-                <p>{aiFeedback.oneCorrection}</p>
-              </div>
-            </div>
-            {aiFeedback.suggestedAlternative && (
-              <div className="ai-alternative-box">
-                <b>Crisper Phrasing:</b>
-                <p>"{aiFeedback.suggestedAlternative}"</p>
+        {aiUnavailable ? (
+          <p className="sub" style={{ color: 'var(--muted, #888)' }}>AI notes need internet.</p>
+        ) : (
+          <>
+            {!hasTranscript && (
+              <div className="ai-feedback-no-transcript">
+                <p className="ai-feedback-hint-text">
+                  AI feedback needs a transcript. Listen back to your recording.
+                </p>
               </div>
             )}
-          </div>
+
+            {hasTranscript && wordCount < 5 && !aiFeedback && (
+              <div className="ai-feedback-too-short">
+                <p className="ai-feedback-hint-text">
+                  AI feedback requires at least 5 words spoken. Keep practicing!
+                </p>
+              </div>
+            )}
+
+            {hasTranscript && wordCount >= 5 && !aiFeedback && !aiLoading && !aiError && (
+              <button
+                type="button"
+                className="prim tap ai-feedback-trigger-btn"
+                onClick={handleGetAiFeedback}
+              >
+                <span>Get 1-Win / 1-Polish AI Coach Feedback</span>
+              </button>
+            )}
+
+            {aiLoading && (
+              <div className="ai-feedback-loading-card">
+                <div className="ai-loading-spinner" aria-hidden="true" />
+                <p className="sub">
+                  Analyzing transcript against executive delivery standards…
+                </p>
+              </div>
+            )}
+
+            {aiError && (
+              <div className="ai-feedback-error-card">
+                <p className="ai-feedback-error-text">
+                  {aiError}
+                </p>
+              </div>
+            )}
+
+            {aiFeedback && (
+              <div className="ai-feedback-result-card">
+                <div className="ai-feedback-badge">
+                  <span aria-hidden="true">Coach Feedback</span>
+                </div>
+                <p className="ai-summary">{aiFeedback.summary}</p>
+                <div className="ai-points-grid">
+                  <div className="ai-point-box positive">
+                    <b>1 Key Win</b>
+                    <p>{aiFeedback.strongPoint}</p>
+                  </div>
+                  <div className="ai-point-box correction">
+                    <b>1 Polish Opportunity</b>
+                    <p>{aiFeedback.oneCorrection}</p>
+                  </div>
+                </div>
+                {aiFeedback.suggestedAlternative && (
+                  <div className="ai-alternative-box">
+                    <b>Crisper Phrasing:</b>
+                    <p>"{aiFeedback.suggestedAlternative}"</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </>
         )}
       </div>
 

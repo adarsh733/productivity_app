@@ -68,9 +68,9 @@ const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; syst
   },
 };
 
-type Provider = 'anthropic' | 'gemini' | 'groq';
+type Provider = 'gemini' | 'groq' | 'anthropic';
 
-const ANTHROPIC_MODEL = 'claude-3-5-haiku-20241022';
+const ANTHROPIC_MODEL = 'claude-haiku-4-5';
 const GEMINI_MODEL = 'gemini-2.5-flash';
 const GROQ_MODEL = 'llama-3.3-70b-versatile';
 
@@ -190,8 +190,9 @@ export default async function handler(req: Request): Promise<Response> {
     return json({ ok: false, task: body.task, error: 'payload too large' }, 413);
   }
 
-  // Determine provider order, honoring body.prefer if specified
-  const allProviders: Provider[] = ['anthropic', 'gemini', 'groq'];
+  // Provider order is Gemini → Groq → Anthropic (locked decision).
+  // Anthropic stays only as a last fallback. `prefer` can still override.
+  const allProviders: Provider[] = ['gemini', 'groq', 'anthropic'];
   const preferred = body.prefer && allProviders.includes(body.prefer) ? body.prefer : undefined;
   const order: Provider[] = preferred
     ? [preferred, ...allProviders.filter((p) => p !== preferred)]

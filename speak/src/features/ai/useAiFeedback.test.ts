@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { validateAiFeedback, type AiFeedbackResult } from './useAiFeedback';
+import { containsFabricatedQuote, validateAiFeedback, type AiFeedbackResult } from './useAiFeedback';
 
 describe('AI Coaching Feedback Suite', () => {
   it('Structured AI feedback matches contract schema when all fields are present', () => {
@@ -143,5 +143,32 @@ describe('AI Coaching Feedback Suite', () => {
     // Zero coaching claims must be produced
     expect(feedbackState).toBeNull();
     expect(errorState).toBe('Failed to fetch (Network Error)');
+  });
+
+  it('Quote check: a quoted phrase missing from the transcript is fabricated', () => {
+    const transcript = 'We will ship the migration on Friday after the review';
+    const honest: AiFeedbackResult = {
+      summary: 'Crisp update.',
+      strongPoint: 'You said "ship the migration on Friday" with a clean landing.',
+      oneCorrection: 'Pause before the date.',
+    };
+    expect(containsFabricatedQuote(honest, transcript)).toBe(false);
+
+    const fabricated: AiFeedbackResult = {
+      summary: 'Crisp update.',
+      strongPoint: 'You said "synergize the paradigm shift" with confidence.',
+      oneCorrection: 'Pause before the date.',
+    };
+    expect(containsFabricatedQuote(fabricated, transcript)).toBe(true);
+  });
+
+  it('Quote check is case-insensitive', () => {
+    const transcript = 'We Will Ship On Friday';
+    const feedback: AiFeedbackResult = {
+      summary: 'Good.',
+      strongPoint: 'Loved "will ship on friday".',
+      oneCorrection: 'Slow down.',
+    };
+    expect(containsFabricatedQuote(feedback, transcript)).toBe(false);
   });
 });

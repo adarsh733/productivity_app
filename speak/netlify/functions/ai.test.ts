@@ -81,21 +81,13 @@ describe('Netlify AI Function Handler Suite', () => {
   });
 
   it('Fails over to second provider when first provider returns invalid JSON/schema', async () => {
-    process.env.ANTHROPIC_API_KEY = 'mock-anthropic-key';
     process.env.GEMINI_API_KEY = 'mock-gemini-key';
+    process.env.GROQ_API_KEY = 'mock-groq-key';
 
     const fetchSpy = vi.fn();
     global.fetch = fetchSpy as any;
 
-    // 1st call (Anthropic): returns invalid schema (missing strongPoint)
-    fetchSpy.mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({
-        content: [{ text: JSON.stringify({ summary: 'Invalid missing fields' }) }],
-      }),
-    } as any);
-
-    // 2nd call (Gemini): returns valid schema
+    // 1st call (Gemini, first in order): returns invalid schema (missing strongPoint)
     fetchSpy.mockResolvedValueOnce({
       ok: true,
       json: async () => ({
@@ -103,14 +95,26 @@ describe('Netlify AI Function Handler Suite', () => {
           {
             content: {
               parts: [
-                {
-                  text: JSON.stringify({
-                    summary: 'Excellent concise status update.',
-                    strongPoint: 'You clearly framed "trade-off" in the second sentence.',
-                    oneCorrection: 'Breathe at the midpoint.',
-                  }),
-                },
+                { text: JSON.stringify({ summary: 'Invalid missing fields' }) },
               ],
+            },
+          },
+        ],
+      }),
+    } as any);
+
+    // 2nd call (Groq): returns valid schema
+    fetchSpy.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        choices: [
+          {
+            message: {
+              content: JSON.stringify({
+                summary: 'Excellent concise status update.',
+                strongPoint: 'You clearly framed "trade-off" in the second sentence.',
+                oneCorrection: 'Breathe at the midpoint.',
+              }),
             },
           },
         ],
@@ -135,38 +139,34 @@ describe('Netlify AI Function Handler Suite', () => {
     expect(res.status).toBe(200);
     const data = (await res.json()) as any;
     expect(data.ok).toBe(true);
-    expect(data.provider).toBe('gemini'); // Successfully failed over to Gemini!
+    expect(data.provider).toBe('groq'); // Successfully failed over to Groq!
     expect(data.data.summary).toBe('Excellent concise status update.');
   });
 
   it('Fails over to next provider when first provider times out / aborts', async () => {
-    process.env.ANTHROPIC_API_KEY = 'mock-anthropic-key';
     process.env.GEMINI_API_KEY = 'mock-gemini-key';
+    process.env.GROQ_API_KEY = 'mock-groq-key';
 
     const fetchSpy = vi.fn();
     global.fetch = fetchSpy as any;
 
-    // 1st call: simulate abort / timeout error
+    // 1st call (Gemini): simulate abort / timeout error
     const abortError = new Error('The operation was aborted');
     abortError.name = 'AbortError';
     fetchSpy.mockRejectedValueOnce(abortError);
 
-    // 2nd call: success
+    // 2nd call (Groq): success
     fetchSpy.mockResolvedValueOnce({
       ok: true,
       json: async () => ({
-        candidates: [
+        choices: [
           {
-            content: {
-              parts: [
-                {
-                  text: JSON.stringify({
-                    summary: 'Pacing was steady throughout.',
-                    strongPoint: 'Referenced "production outage" directly.',
-                    oneCorrection: 'Add a 1-second pause.',
-                  }),
-                },
-              ],
+            message: {
+              content: JSON.stringify({
+                summary: 'Pacing was steady throughout.',
+                strongPoint: 'Referenced "production outage" directly.',
+                oneCorrection: 'Add a 1-second pause.',
+              }),
             },
           },
         ],
@@ -191,7 +191,7 @@ describe('Netlify AI Function Handler Suite', () => {
     expect(res.status).toBe(200);
     const data = (await res.json()) as any;
     expect(data.ok).toBe(true);
-    expect(data.provider).toBe('gemini');
+    expect(data.provider).toBe('groq');
     expect(data.data.strongPoint).toContain('production outage');
   });
 
