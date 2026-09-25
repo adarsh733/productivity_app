@@ -39,7 +39,7 @@ export default function SpeakScreen({ initialCard, onCloseDrill }: SpeakScreenPr
   }> = [
     {
       id: 'rapid',
-      icon: '?',
+      icon: '⚡',
       title: 'Rapid Rep',
       time: '30s',
       desc: 'One prompt. Continuous stream of speech without hesitation.',
@@ -48,7 +48,7 @@ export default function SpeakScreen({ initialCard, onCloseDrill }: SpeakScreenPr
     },
     {
       id: 'story',
-      icon: '??',
+      icon: '📚',
       title: '60-Second Story',
       time: '60s',
       desc: 'Structure a hook, turning point, and landing in one minute.',
@@ -57,7 +57,7 @@ export default function SpeakScreen({ initialCard, onCloseDrill }: SpeakScreenPr
     },
     {
       id: 'incident',
-      icon: '??',
+      icon: '🚨',
       title: 'Incident Drill',
       time: '45s',
       desc: 'High-stakes workplace scenarios, trade-off framing & polite pushback.',
@@ -66,7 +66,7 @@ export default function SpeakScreen({ initialCard, onCloseDrill }: SpeakScreenPr
     },
     {
       id: 'describe',
-      icon: '??',
+      icon: '🎨',
       title: 'Describe This',
       time: '45s',
       desc: 'Paint a scene using sensory, concrete, and expressive vocabulary.',
@@ -129,7 +129,7 @@ export default function SpeakScreen({ initialCard, onCloseDrill }: SpeakScreenPr
               </div>
               <small className="speak-mode-desc">{m.desc}</small>
             </div>
-            <span className="arw" aria-hidden="true">�</span>
+            <span className="arw" aria-hidden="true">›</span>
           </div>
         ))}
       </div>

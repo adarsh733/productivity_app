@@ -43,6 +43,8 @@ function card(id: string, type: CardType, lang: 'en' | 'hi' = 'en', tags: string
       return { ...base, type, topic: id, angle: '', beats: ['', '', ''], targetVocab: [], targetSec: 60 };
     case 'teach_back':
       return { ...base, type, prompt: id, beats: ['', '', ''], targetSec: 60 };
+    case 'situation':
+      return { ...base, type, kind: 'incident', title: id, prompt: id, beats: ['', '', ''], targetVocab: [], targetSec: 60 };
   }
 }
 
@@ -227,6 +229,22 @@ describe('V3 Queue Rules and Rotation', () => {
 
   it('returns an empty queue for an empty deck instead of looping', () => {
     expect(buildQueue([], NONE, opts({ limit: 10 }))).toEqual([]);
+  });
+
+  it('downweighted type shows up measurably less often across a 200-card queue', () => {
+    const deck: Card[] = [];
+    for (let i = 0; i < 40; i++) deck.push(card(`w${i}`, 'word'));
+    for (let i = 0; i < 40; i++) deck.push(card(`i${i}`, 'idiom'));
+    for (let i = 0; i < 40; i++) deck.push(card(`p${i}`, 'pronounce'));
+    const now = Date.now();
+    const down: Record<string, DownweightRecord> = {
+      idiom: { target: 'idiom', type: 'idiom', multiplier: 0.15, expiresAt: now + 7 * 86_400_000, createdAt: now },
+    };
+    const plain = buildQueue(deck, NONE, opts({ limit: 200 }));
+    const downQ = buildQueue(deck, NONE, opts({ limit: 200, downweights: down }));
+    const plainIdioms = plain.filter((i) => i.card.type === 'idiom').length;
+    const downIdioms = downQ.filter((i) => i.card.type === 'idiom').length;
+    expect(downIdioms).toBeLessThan(plainIdioms);
   });
 });
 

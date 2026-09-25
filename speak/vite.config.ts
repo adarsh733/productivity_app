@@ -12,8 +12,8 @@ export default defineConfig({
       },
       includeAssets: ['icon.svg'],
       manifest: {
-        name: 'SPEAK',
-        short_name: 'SPEAK',
+        name: 'Articulate',
+        short_name: 'Articulate',
         description: 'Delivery, vocabulary and storytelling reps.',
         theme_color: '#0b0d10',
         background_color: '#0b0d10',

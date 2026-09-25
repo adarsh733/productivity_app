@@ -25,7 +25,7 @@ export default function YouScreen({ onOpenSpeakWithCard }: YouScreenProps) {
             </p>
           </div>
           <span className="badge b-pace you-xp-badge">
-            ?? {todayXp} XP today
+            ⚡ {todayXp} XP today
           </span>
         </div>
       </header>
@@ -78,12 +78,12 @@ export default function YouScreen({ onOpenSpeakWithCard }: YouScreenProps) {
           }}
           aria-label={`View bookmarked cards (${bookmarkCount} saved)`}
         >
-          <span className="g" aria-hidden="true">?</span>
+          <span className="g" aria-hidden="true">🔖</span>
           <div className="t">
             <b>Bookmarked Cards</b>
             <small>{bookmarkCount} saved cards</small>
           </div>
-          <span className="arw" aria-hidden="true">�</span>
+          <span className="arw" aria-hidden="true">›</span>
         </div>
       </div>
 

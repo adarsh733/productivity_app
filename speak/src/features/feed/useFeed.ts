@@ -124,6 +124,7 @@ export function useFeed(_initialMode: FeedMode = 'endless'): FeedApi {
         mode: 'endless',
         interests: profileRef.current?.interests,
         typeWeights: profileRef.current?.typeWeights,
+        downweights: profileRef.current?.downweights,
       }),
     [today],
   );

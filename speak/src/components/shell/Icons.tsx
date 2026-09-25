@@ -176,3 +176,52 @@ export function CloseIcon(props: IconProps) {
     </IconFrame>
   );
 }
+
+export function BookmarkIcon({ filled, ...props }: IconProps & { filled?: boolean }) {
+  return (
+    <IconFrame {...props} fill={filled ? 'currentColor' : 'none'}>
+      <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Z" />
+    </IconFrame>
+  );
+}
+
+export function ArrowLeftIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <path d="M15 5l-7 7 7 7" />
+    </IconFrame>
+  );
+}
+
+export function ArrowRightIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <path d="m9 5 7 7-7 7" />
+    </IconFrame>
+  );
+}
+
+export function CheckIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <path d="m4 12.5 5 5L20 6.5" />
+    </IconFrame>
+  );
+}
+
+export function ThumbsDownIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <path d="M7 11v9H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3Zm2 9h8.5a2 2 0 0 0 2-1.6l1.5-6A2 2 0 0 0 19 9h-5l1-5a2 2 0 0 0-3.9-1L9 10v10Z" />
+    </IconFrame>
+  );
+}
+
+export function VolumeIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <path d="M4 9v6h4l5 4V5L8 9H4Z" />
+      <path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11" />
+    </IconFrame>
+  );
+}

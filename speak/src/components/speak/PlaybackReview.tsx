@@ -1,10 +1,10 @@
 ﻿import { useEffect, useMemo, useRef, useState } from 'react';
 import type { CapturedAudio } from '../../features/reset/useMissionAudio';
 import { useAiFeedback } from '../../features/ai/useAiFeedback';
-import { currentStreak, emptyDay } from '../../features/session/day';
-import { db, enqueue, saveRecording } from '../../db/db';
+import { useSpokenRepCredit } from '../../features/session/useSpokenRep';
+import { currentStreak } from '../../features/session/day';
+import { db } from '../../db/db';
 import { todayKey } from '../../lib/date';
-import type { DayRecord, ProductionEvent, Recording } from '../../types/contract';
 
 export interface PlaybackReviewProps {
   audio: CapturedAudio | null;
@@ -15,6 +15,10 @@ export interface PlaybackReviewProps {
   transcript?: string;
   wpm?: number;
   pauseCount?: number;
+  avgDb?: number;
+  voicedSec?: number;
+  recordingId?: string;
+  isDescribe?: boolean;
   targetVocab?: string[];
   targetVocabMatches?: string[];
   onDone: () => void;
@@ -30,6 +34,10 @@ export default function PlaybackReview({
   transcript,
   wpm,
   pauseCount,
+  avgDb,
+  voicedSec,
+  recordingId,
+  isDescribe,
   targetVocab,
   targetVocabMatches = [],
   onDone,
@@ -37,7 +45,7 @@ export default function PlaybackReview({
 }: PlaybackReviewProps) {
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
-  const [streakCount, setStreakCount] = useState<number>(0);
+  const [streakCount, setStreakCount] = useState<number | null>(null);
 
   const {
     loading: aiLoading,
@@ -45,83 +53,54 @@ export default function PlaybackReview({
     feedback: aiFeedback,
     requestFeedback,
   } = useAiFeedback();
+  const { credited, credit } = useSpokenRepCredit();
 
   const isSavingRef = useRef(false);
 
   // Generate object URL for playback
   useEffect(() => {
-    if (audio?.blob) {
+    if (audio?.blob && typeof URL !== 'undefined' && typeof URL.createObjectURL === 'function') {
       const url = URL.createObjectURL(audio.blob);
       setAudioUrl(url);
       return () => {
-        URL.revokeObjectURL(url);
+        try {
+          URL.revokeObjectURL(url);
+        } catch {}
       };
     }
   }, [audio]);
 
-  // Save attempt and award XP once
+  // Honest crediting via hook: ≥2 s AND ≥1.5 s voiced. Idempotent by recordingId.
   useEffect(() => {
     if (isSavingRef.current) return;
     isSavingRef.current = true;
 
     async function persist() {
-      const date = todayKey();
-      const now = Date.now();
-      const id = `rec-${now}-${Math.random().toString(36).slice(2, 6)}`;
+      const id = recordingId ?? audio?.id ?? `rec-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
+      const didCredit = await credit({
+        recordingId: id,
+        audio,
+        elapsedSec,
+        voicedSec,
+        xpReward,
+        drillTitle,
+        isDescribe,
+        transcript,
+      });
 
-      if (audio?.blob) {
-        const rec: Recording = {
-          id,
-          sessionId: id,
-          attempt: 1,
-          missionId: 'drill',
-          missionTitle: drillTitle,
-          date,
-          at: now,
-          durationSec: elapsedSec,
-          mimeType: audio.mimeType,
-          blob: audio.blob,
-          transcript,
-        };
-        await saveRecording(rec);
-      }
-
-      // Record spoken rep credit & XP in day record
-      if (elapsedSec >= 2) {
-        const existingDay = (await db.days.get(date)) ?? emptyDay(date);
-        const nextDay: DayRecord = {
-          ...existingDay,
-          spokenReps: (existingDay.spokenReps || 0) + 1,
-          secondsActive: existingDay.secondsActive + elapsedSec,
-          xp: (existingDay.xp || 0) + xpReward,
-        };
-        await db.days.put(nextDay);
-        await enqueue('days', date);
-
-        const prodEvent: ProductionEvent = {
-          id: `evt-speak-${now}`,
-          type: 'spoken_rep_completed',
-          at: now,
-          date,
-          recordingId: id,
-          drillTitle,
-          durationSec: elapsedSec,
-          xpEarned: xpReward,
-          transcript,
-        };
-        await db.events.put(prodEvent as any);
-        await enqueue('events', prodEvent.id);
-
+      if (didCredit) {
+        const date = todayKey();
         const allDays = await db.days.toArray();
         const dayMap = new Map(allDays.map((d) => [d.date, d]));
         setStreakCount(currentStreak(dayMap, date));
+      } else {
+        setStreakCount(null);
       }
-
       setSaved(true);
     }
 
     void persist();
-  }, [audio, elapsedSec, xpReward, drillTitle, transcript, wpm]);
+  }, [audio, elapsedSec, voicedSec, xpReward, drillTitle, isDescribe, transcript, recordingId, credit]);
 
   const handleGetAiFeedback = () => {
     if (!transcript) return;
@@ -138,45 +117,77 @@ export default function PlaybackReview({
   }, [transcript]);
 
   const hasTranscript = Boolean(transcript && transcript.trim().length > 0);
+  const tooShort = elapsedSec < 2;
+  const notVoiced = !tooShort && typeof voicedSec === 'number' && voicedSec < 1.5;
+  const counted = credited === true;
 
   return (
     <div className="playback-review-card">
       <header className="playback-review-header">
-        <span className="badge b-pace">
-          ⚡ Rep Complete (+{xpReward} XP)
-        </span>
+        {counted ? (
+          <span className="badge b-pace">
+            Rep counted (+{xpReward} XP)
+          </span>
+        ) : saved ? (
+          <span className="badge b-weak">
+            Not counted — {tooShort ? 'under 2 seconds' : notVoiced ? 'no clear voice detected' : 'already saved'}
+          </span>
+        ) : (
+          <span className="badge b-pace">Saving…</span>
+        )}
         <h2>{drillTitle}</h2>
       </header>
 
-      {/* Tier 0 Honest On-Device Metrics */}
+      {/* Measured numbers only — each labelled "measured on this phone" */}
       <div className="playback-review-stats">
         <div className="stat-pill highlight">
           <b>{elapsedSec}s</b>
-          <small>Duration</small>
+          <small>Duration · measured on this phone</small>
         </div>
 
         {wpm !== undefined && wpm > 0 ? (
           <div className="stat-pill">
             <b>{Math.round(wpm)}</b>
-            <small>Words / min (Pace)</small>
+            <small>Words / min · measured on this phone</small>
           </div>
         ) : (
           <div className="stat-pill">
-            <b>{wordCount}</b>
-            <small>Words spoken</small>
+            <b>—</b>
+            <small>Words / min · no recognition</small>
           </div>
         )}
 
         {pauseCount !== undefined && (
           <div className="stat-pill">
             <b>{pauseCount}</b>
-            <small>Natural pauses</small>
+            <small>Natural pauses · measured on this phone</small>
+          </div>
+        )}
+
+        {avgDb !== undefined ? (
+          <div className="stat-pill">
+            <b>{avgDb} dB</b>
+            <small>Avg loudness · measured on this phone</small>
+          </div>
+        ) : (
+          <div className="stat-pill">
+            <b>—</b>
+            <small>Avg loudness · mic unavailable</small>
           </div>
         )}
 
         <div className="stat-pill">
-          <b>🔥 {streakCount > 0 ? streakCount : 1}</b>
-          <small>Day streak</small>
+          {streakCount !== null && streakCount > 0 ? (
+            <>
+              <b>{streakCount}</b>
+              <small>Day streak</small>
+            </>
+          ) : (
+            <>
+              <b>—</b>
+              <small>{counted ? 'Streak · first day' : 'Streak · no rep counted'}</small>
+            </>
+          )}
         </div>
       </div>
 
@@ -252,7 +263,7 @@ export default function PlaybackReview({
             className="prim tap ai-feedback-trigger-btn"
             onClick={handleGetAiFeedback}
           >
-            <span>🤖 Get 1-Win / 1-Polish AI Coach Feedback</span>
+            <span>Get 1-Win / 1-Polish AI Coach Feedback</span>
           </button>
         )}
 
@@ -276,16 +287,16 @@ export default function PlaybackReview({
         {aiFeedback && (
           <div className="ai-feedback-result-card">
             <div className="ai-feedback-badge">
-              <span aria-hidden="true">🤖</span> Coach Feedback
+              <span aria-hidden="true">Coach Feedback</span>
             </div>
             <p className="ai-summary">{aiFeedback.summary}</p>
             <div className="ai-points-grid">
               <div className="ai-point-box positive">
-                <b>💡 1 Key Win</b>
+                <b>1 Key Win</b>
                 <p>{aiFeedback.strongPoint}</p>
               </div>
               <div className="ai-point-box correction">
-                <b>🎯 1 Polish Opportunity</b>
+                <b>1 Polish Opportunity</b>
                 <p>{aiFeedback.oneCorrection}</p>
               </div>
             </div>
@@ -301,7 +312,8 @@ export default function PlaybackReview({
 
       <div className="playback-review-note">
         <p>
-          Recorded attempt saved locally on this device. Speaking reps count towards your daily habit goal.
+          Recorded attempt saved locally on this device. Only attempts with at least
+          2 seconds and clear voice count towards your daily habit goal.
         </p>
       </div>
 

@@ -4,7 +4,7 @@ import type { CategoryDeck } from '../../features/browse/categories';
 import CardFace from '../cards/CardFace';
 import { useBookmarks } from '../../features/bookmarks/useBookmarks';
 import { useModalTrap } from '../../lib/useModalTrap';
-import { CloseIcon, MicrophoneIcon } from '../shell/Icons';
+import { ArrowLeftIcon, CloseIcon, MicrophoneIcon, StarIcon } from '../shell/Icons';
 
 export interface DeckModalProps {
   deck: CategoryDeck;
@@ -65,7 +65,7 @@ export default function DeckModal({
     try {
       const res = await toggleBookmark(currentCard.id, currentCard.type);
       if (res.isBookmarked) {
-        showToast(res.xpEarned > 0 ? `? Saved to You (+${res.xpEarned} XP)` : '? Saved to You');
+        showToast(res.xpEarned > 0 ? `Saved to You (+${res.xpEarned} XP)` : 'Saved to You');
       } else {
         showToast('Bookmark removed');
       }
@@ -159,9 +159,9 @@ export default function DeckModal({
             type="button"
             className={`abtn ico star ${bookmarked ? 'on' : ''} tap`}
             onClick={(e) => void handleToggleBookmark(e)}
-            aria-label={bookmarked ? 'Remove bookmark' : 'Bookmark card'}
+            aria-label={bookmarked ? 'Saved (tap to remove bookmark)' : 'Bookmark card'}
           >
-            {bookmarked ? '?' : '?'}
+            <StarIcon filled={bookmarked} aria-hidden="true" />
           </button>
 
           <button
@@ -171,7 +171,7 @@ export default function DeckModal({
             disabled={index === 0}
             aria-label="Previous card in deck"
           >
-            ?
+            <ArrowLeftIcon aria-hidden="true" />
           </button>
 
           {onOpenSpeakWithCard && (
@@ -191,7 +191,7 @@ export default function DeckModal({
             onClick={handleNext}
             aria-label={index === cards.length - 1 ? 'Finish deck' : 'Next card in deck'}
           >
-            {index === cards.length - 1 ? 'Done ?' : 'Next ?'}
+            {index === cards.length - 1 ? 'Done ✓' : 'Next →'}
           </button>
         </nav>
       </div>

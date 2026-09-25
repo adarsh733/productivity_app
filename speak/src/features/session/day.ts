@@ -112,21 +112,25 @@ export function applyBookmarkToggle(
 
 /**
  * Validates whether a speaking attempt produced legitimate captured audio.
- * Must have a non-empty audio blob and duration >= 2 seconds.
+ * Must have a non-empty audio blob, duration >= 2 s, and >= 1.5 s of voiced
+ * audio (frames at least 10 dB above the measured noise floor).
  */
 export function validateSpeakingAttempt(
   audio: { blob?: Blob } | null | undefined,
   durationSec: number,
+  voicedSec?: number,
 ): boolean {
   if (!audio || !audio.blob) return false;
   if (typeof audio.blob.size !== 'number' || audio.blob.size <= 0) return false;
   if (typeof durationSec !== 'number' || durationSec < 2) return false;
+  if (typeof voicedSec === 'number' && voicedSec < 1.5) return false;
   return true;
 }
 
 /**
  * Pure domain function to apply a speaking completion.
- * Only credits spokenReps and XP if the attempt is valid (non-empty audio, duration >= 2s).
+ * Only credits spokenReps and XP if the attempt is valid (non-empty audio,
+ * duration >= 2 s, voiced >= 1.5 s when measured).
  * If invalid (e.g. null audio), returns the unmodified DayRecord and credited: false.
  */
 export function applySpeakingCompletion(
@@ -134,8 +138,9 @@ export function applySpeakingCompletion(
   audio: { blob?: Blob } | null | undefined,
   elapsedSec: number,
   xpReward: number,
+  voicedSec?: number,
 ): { day: DayRecord; credited: boolean } {
-  if (!validateSpeakingAttempt(audio, elapsedSec)) {
+  if (!validateSpeakingAttempt(audio, elapsedSec, voicedSec)) {
     return { day, credited: false };
   }
 
@@ -184,6 +189,7 @@ export async function creditSpeakingAttempt(
     recordingId: string;
     audio: { blob: Blob; mimeType?: string } | null | undefined;
     elapsedSec: number;
+    voicedSec?: number;
     xpReward?: number;
     drillTitle: string;
     isDescribe?: boolean;
@@ -198,7 +204,7 @@ export async function creditSpeakingAttempt(
     params.xpReward ??
     (params.isDescribe ? GAMIFICATION.XP.describeRep : GAMIFICATION.XP.spokenRep);
 
-  if (!validateSpeakingAttempt(params.audio, params.elapsedSec)) {
+  if (!validateSpeakingAttempt(params.audio, params.elapsedSec, params.voicedSec)) {
     const current = (await database.days.get(dateKey)) ?? emptyDay(dateKey);
     return { credited: false, day: current };
   }
@@ -234,6 +240,7 @@ export async function creditSpeakingAttempt(
       params.audio,
       params.elapsedSec,
       xpReward,
+      params.voicedSec,
     );
 
     // Write production event
@@ -316,7 +323,7 @@ export function evaluateStreak(
 
     const month = cursor.slice(0, 7);
     const usedList = monthlyFreezes.get(month) ?? [];
-    if (usedList.length < GAMIFICATION.FREEZES_PER_MONTH && streak > 0) {
+    if (usedList.length < GAMIFICATION.FREEZES_PER_MONTH) {
       usedList.push(cursor);
       monthlyFreezes.set(month, usedList);
       cursor = addDays(cursor, -1);

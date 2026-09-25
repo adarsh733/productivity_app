@@ -69,6 +69,9 @@ export default function IncidentMode({ onClose }: IncidentModeProps) {
         transcript={completed.transcript}
         wpm={completed.result?.wpm}
         pauseCount={completed.result?.pauseCount}
+        avgDb={completed.result?.avgDb}
+        voicedSec={completed.result?.voicedSec}
+        recordingId={completed.result?.id}
         targetVocab={scenario.targetVocab}
         targetVocabMatches={completed.result?.targetVocabMatches?.matched}
         onDone={onClose}

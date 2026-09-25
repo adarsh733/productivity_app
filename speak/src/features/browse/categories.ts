@@ -189,6 +189,13 @@ export function searchCards(cards: Card[], query: string): Card[] {
           c.prompt.toLowerCase().includes(q) ||
           c.beats.some((b) => b.toLowerCase().includes(q))
         );
+      case 'situation':
+        return (
+          c.title.toLowerCase().includes(q) ||
+          c.prompt.toLowerCase().includes(q) ||
+          c.beats.some((b) => b.toLowerCase().includes(q)) ||
+          c.targetVocab.some((v) => v.toLowerCase().includes(q))
+        );
       case 'breath':
         return (
           c.title.toLowerCase().includes(q) ||

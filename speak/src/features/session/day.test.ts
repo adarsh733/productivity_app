@@ -8,6 +8,7 @@ import {
   applySpeakingCompletion,
   applyCardView,
   applyBookmarkToggle,
+  creditSpeakingAttempt,
   getMonthlyFreezeStatus,
 } from './day';
 import type { DayKey, DayRecord } from '../../types/contract';
@@ -79,6 +80,69 @@ describe('Speaking attempt validation and completion', () => {
     expect(validateSpeakingAttempt({ blob: new Blob([]) }, 5)).toBe(false);
     expect(validateSpeakingAttempt({ blob: new Blob(['audio']) }, 1)).toBe(false);
     expect(validateSpeakingAttempt({ blob: new Blob(['audio']) }, 2)).toBe(true);
+  });
+
+  it('silence does not credit: 30 s with 0 s voiced earns nothing', () => {
+    const initial = emptyDay('2026-08-26');
+    const validBlob = new Blob(['sample-audio-data-chunk'], { type: 'audio/webm' });
+    const res = applySpeakingCompletion(initial, { blob: validBlob }, 30, 10, 0);
+    expect(res.credited).toBe(false);
+    expect(res.day.spokenReps).toBe(0);
+    expect(res.day.xp).toBe(0);
+  });
+
+  it('short voice does not credit: 5 s with 1.0 s voiced earns nothing', () => {
+    const initial = emptyDay('2026-08-26');
+    const validBlob = new Blob(['sample-audio-data-chunk'], { type: 'audio/webm' });
+    const res = applySpeakingCompletion(initial, { blob: validBlob }, 5, 10, 1.0);
+    expect(res.credited).toBe(false);
+  });
+
+  it('real speech credits: 5 s with 2.0 s voiced earns XP', () => {
+    const initial = emptyDay('2026-08-26');
+    const validBlob = new Blob(['sample-audio-data-chunk'], { type: 'audio/webm' });
+    const res = applySpeakingCompletion(initial, { blob: validBlob }, 5, 10, 2.0);
+    expect(res.credited).toBe(true);
+    expect(res.day.spokenReps).toBe(1);
+  });
+
+  it('crediting the same attempt twice is impossible (idempotent by recordingId)', async () => {
+    const store = new Map<string, unknown>();
+    const dayStore = new Map<string, DayRecord>();
+    const mockDb = {
+      recordings: {
+        get: async (id: string) => store.get(id) as never,
+        put: async (r: never) => {
+          store.set((r as { id: string }).id, r);
+        },
+      },
+      days: {
+        get: async (d: string) => dayStore.get(d),
+        put: async (d: DayRecord) => {
+          dayStore.set(d.date, d);
+        },
+      },
+      transaction: async (_mode: string, ..._args: unknown[]) => {
+        // emulate the real transaction body by invoking it directly
+        const fn = _args[_args.length - 1] as () => Promise<{ credited: boolean; day: DayRecord }>;
+        return fn();
+      },
+    };
+    const blob = new Blob(['audio'], { type: 'audio/webm' });
+    const noop = async () => {};
+    const first = await creditSpeakingAttempt(
+      { recordingId: 'rec-same', audio: { blob }, elapsedSec: 10, voicedSec: 8, drillTitle: 'T', date: '2026-08-26' },
+      mockDb as never,
+      noop as never,
+    );
+    expect(first.credited).toBe(true);
+    const second = await creditSpeakingAttempt(
+      { recordingId: 'rec-same', audio: { blob }, elapsedSec: 10, voicedSec: 8, drillTitle: 'T', date: '2026-08-26' },
+      mockDb as never,
+      noop as never,
+    );
+    expect(second.credited).toBe(false);
+    expect(second.day.spokenReps).toBe(1);
   });
 });
 
@@ -232,6 +296,12 @@ describe('currentStreak', () => {
   it('counts consecutive completed days', () => {
     const m = days(['2026-08-09', '2026-08-10', '2026-08-11']);
     expect(currentStreak(m, '2026-08-11')).toBe(3);
+  });
+
+  it('morning after one missed day: freeze covers it, streak does not show 0', () => {
+    // Completed 08-09, missed 08-10, morning of 08-11 (today not done yet).
+    const m = days(['2026-08-09']);
+    expect(currentStreak(m, '2026-08-11')).toBe(1);
   });
 
   it('does not zero out just because today is not done yet', () => {

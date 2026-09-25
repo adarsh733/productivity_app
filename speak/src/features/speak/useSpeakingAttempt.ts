@@ -3,7 +3,9 @@ import {
   AudioMeterController,
   calculateWpm,
   computePauseCount,
+  computeVoicedSec,
   findTargetVocabMatches,
+  noiseFloorFromDbs,
   type VolumeMeasurement,
 } from '../../lib/audioMeter';
 import { LAB_RULES } from '../../types/contract';
@@ -27,6 +29,8 @@ export interface SpeakingAttemptResult {
   wpm?: number;
   pauseCount: number;
   avgDb?: number;
+  voicedSec?: number;
+  noiseFloorDb?: number;
   targetVocabMatches?: { matched: string[]; missing: string[] };
 }
 
@@ -35,6 +39,7 @@ export interface UseSpeakingAttemptOptions {
   targetVocab?: string[];
   drillTitle?: string;
   promptText?: string;
+  cardLang?: 'en' | 'hi';
   onComplete?: (result: SpeakingAttemptResult) => void;
   onStateChange?: (state: SpeakingAttemptState) => void;
 }
@@ -80,6 +85,7 @@ export class SpeakingAttemptSession {
   private samples: Array<{ db: number; atMs: number }> = [];
   private recognition: any = null;
   private transcript = '';
+  private finalTranscriptParts: string[] = [];
   private stopPromise: Promise<SpeakingAttemptResult | null> | null = null;
 
   constructor(
@@ -141,6 +147,7 @@ export class SpeakingAttemptSession {
     this.audioChunks = [];
     this.samples = [];
     this.transcript = '';
+    this.finalTranscriptParts = [];
     this.stopPromise = null;
 
     this.volumePercent = 0;
@@ -156,6 +163,7 @@ export class SpeakingAttemptSession {
     this.audioChunks = [];
     this.samples = [];
     this.transcript = '';
+    this.finalTranscriptParts = [];
     this.stopPromise = null;
 
     this.elapsedSec = 0;
@@ -192,7 +200,8 @@ export class SpeakingAttemptSession {
       });
 
       if (!started || !meter.mediaStream) {
-        this.error = 'Microphone permission required. Tap again to allow.';
+        this.error =
+          'Microphone is blocked. In iOS Safari: Settings › Safari › Microphone › Allow — then tap Back and try again.';
         this.state = 'error';
         meter.stop();
         this.meter = null;
@@ -239,6 +248,7 @@ export class SpeakingAttemptSession {
 
       // Initialize SpeechRecognition if supported
       this.transcript = '';
+      this.finalTranscriptParts = [];
       this.liveTranscript = '';
       const SpeechRecognition =
         typeof window !== 'undefined'
@@ -250,16 +260,26 @@ export class SpeakingAttemptSession {
           const recognition = new SpeechRecognition();
           recognition.continuous = true;
           recognition.interimResults = true;
-          recognition.lang = 'en-US';
+          recognition.lang = this.options.cardLang === 'hi' ? 'hi-IN' : 'en-IN';
 
           recognition.onresult = (event: any) => {
-            let full = '';
-            for (let i = 0; i < event.results.length; i++) {
-              full += event.results[i][0].transcript + ' ';
+            // Keep finalised text across restarts: accumulate finals, show interim live.
+            let interim = '';
+            for (let i = event.resultIndex ?? 0; i < event.results.length; i++) {
+              const res = event.results[i];
+              const text = res[0]?.transcript ?? '';
+              if (res.isFinal) {
+                const cleanFinal = text.trim();
+                if (cleanFinal) this.finalTranscriptParts.push(cleanFinal);
+              } else {
+                interim += text + ' ';
+              }
             }
-            const clean = full.trim();
-            this.transcript = clean;
-            this.liveTranscript = clean;
+            const finals = this.finalTranscriptParts.join(' ').trim();
+            const cleanInterim = interim.trim();
+            const full = [finals, cleanInterim].filter(Boolean).join(' ').trim();
+            this.transcript = full;
+            this.liveTranscript = full;
             this.notify();
           };
 
@@ -391,10 +411,12 @@ export class SpeakingAttemptSession {
       this.db = -60;
 
       // 6. Compute metrics
+      // WPM is measured only when recognition produced words; never estimated.
+      const hasRecognition = this.isRecognitionSupported;
       const transcript = this.transcript.trim() || undefined;
       const wordCount = transcript ? transcript.split(/\s+/).filter(Boolean).length : 0;
       const wpm =
-        transcript && wordCount > 0
+        hasRecognition && transcript && wordCount > 0
           ? calculateWpm(wordCount, measuredDurationSec)
           : undefined;
 
@@ -409,6 +431,12 @@ export class SpeakingAttemptSession {
             ) / 10
           : undefined;
 
+      const noiseFloorDb =
+        this.samples.length > 0
+          ? Math.round(noiseFloorFromDbs(this.samples.map((s) => s.db)) * 10) / 10
+          : undefined;
+      const voicedSec = computeVoicedSec(this.samples, noiseFloorDb);
+
       const targetVocabMatches =
         transcript && this.options.targetVocab && this.options.targetVocab.length > 0
           ? findTargetVocabMatches(transcript, this.options.targetVocab)
@@ -422,6 +450,8 @@ export class SpeakingAttemptSession {
         wpm,
         pauseCount,
         avgDb,
+        voicedSec,
+        noiseFloorDb,
         targetVocabMatches,
       };
 

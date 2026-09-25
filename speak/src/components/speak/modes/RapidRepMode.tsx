@@ -87,6 +87,36 @@ export default function RapidRepMode({ initialCard, onClose }: RapidRepModeProps
           prompt: initialCard.angle,
           targetVocab: initialCard.targetVocab,
         };
+      case 'action_verb':
+        return {
+          title: `Drill: ${initialCard.verb}`,
+          prompt: `Use "${initialCard.verb}" in a sentence about your commute. (${initialCard.meaning} — not ${initialCard.contrast})`,
+          targetVocab: [initialCard.verb],
+        };
+      case 'story_move':
+        return {
+          title: 'Story Move Drill',
+          prompt: `Apply this move in a 30 s story: ${initialCard.move} — ${initialCard.why}`,
+          targetVocab: undefined,
+        };
+      case 'teach_back':
+        return {
+          title: 'Teach-Back Drill',
+          prompt: `${initialCard.prompt} Cover: ${initialCard.beats.join(' → ')} (${initialCard.targetSec}s)`,
+          targetVocab: undefined,
+        };
+      case 'breath':
+        return {
+          title: initialCard.title,
+          prompt: `${initialCard.instructions[0] ?? initialCard.title} — breath drills now live inside the voice routine (Speak tab).`,
+          targetVocab: undefined,
+        };
+      case 'situation':
+        return {
+          title: initialCard.title,
+          prompt: `${initialCard.prompt} Cover: ${initialCard.beats.join(' → ')}`,
+          targetVocab: initialCard.targetVocab,
+        };
       default:
         return {
           title: 'Rapid Speaking Rep',
@@ -123,6 +153,9 @@ export default function RapidRepMode({ initialCard, onClose }: RapidRepModeProps
         transcript={completed.transcript}
         wpm={completed.result?.wpm}
         pauseCount={completed.result?.pauseCount}
+        avgDb={completed.result?.avgDb}
+        voicedSec={completed.result?.voicedSec}
+        recordingId={completed.result?.id}
         targetVocab={details.targetVocab}
         targetVocabMatches={completed.result?.targetVocabMatches?.matched}
         onDone={onClose}
@@ -151,6 +184,7 @@ export default function RapidRepMode({ initialCard, onClose }: RapidRepModeProps
       <AudioRecorder
         durationSec={30}
         targetVocab={details.targetVocab}
+        cardLang={initialCard?.lang}
         onComplete={handleComplete}
         onCancel={onClose}
         promptNode={

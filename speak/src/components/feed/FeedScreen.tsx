@@ -6,7 +6,7 @@ import CardFace from '../cards/CardFace';
 import { useCardGestures } from './useCardGestures';
 import type { Card } from '../../types/contract';
 import { GAMIFICATION } from '../../types/contract';
-import { MicrophoneIcon } from '../shell/Icons';
+import { MicrophoneIcon, StarIcon, ThumbsDownIcon } from '../shell/Icons';
 
 export interface FeedScreenProps {
   onOpenSpeakWithCard?: (card: Card) => void;
@@ -67,13 +67,22 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
     try {
       const res = await toggleBookmark(card.id, card.type);
       if (res.isBookmarked) {
-        showToast(res.xpEarned > 0 ? `? Saved to You (+${res.xpEarned} XP)` : '? Saved to You');
+        showToast(res.xpEarned > 0 ? `Saved to You (+${res.xpEarned} XP)` : 'Saved to You');
       } else {
         showToast('Bookmark removed');
       }
     } catch (err) {
       console.error('Error toggling bookmark:', err);
     }
+  };
+
+  const handleSaveOnly = async () => {
+    if (!card) return;
+    if (isBookmarked(card.id)) {
+      showToast('Already saved');
+      return;
+    }
+    await handleToggleBookmark();
   };
 
   const handleAdvance = useCallback(async () => {
@@ -98,7 +107,9 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
     if (feed.canGoBack) {
       feed.goPrevious();
       showToast('Previous card');
+      return true;
     }
+    return false;
   }, [feed]);
 
   const { dragOffset, leavingDirection, showHint, bindGestures } = useCardGestures(
@@ -108,7 +119,7 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
         void feed.downvoteCard(card);
         showToast('Less of this topic for 7 days');
       } else if (direction === 'right') {
-        void handleToggleBookmark();
+        void handleSaveOnly();
       }
       const msSpent = Date.now() - shownAt.current;
       void feed.advanceCard({ msSpent });
@@ -132,7 +143,7 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
         <div className="feed-empty">
           <h2 className="feed-empty-title">You're all caught up!</h2>
           <p className="meaning feed-empty-desc">
-            All active cards have been served today. Refilling endless queue�
+            All active cards have been served today. Refilling endless queue…
           </p>
           <button
             type="button"
@@ -163,14 +174,14 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
     <div className="screen feed-screen">
       <header className="topbar">
         <div className="brand-group">
-          <span className="feed-brand-title">SPEAK</span>
+          <span className="feed-brand-title">Articulate</span>
           {feed.streak > 0 ? (
             <span className="streak" aria-label={`${feed.streak} day streak`}>
-              ?? {feed.streak}
+              🔥 {feed.streak}
             </span>
           ) : (
             <span className="streak is-zero" aria-label="0 day streak">
-              ?? 0
+              🔥 0
             </span>
           )}
         </div>
@@ -184,7 +195,7 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
 
       {showGoalBanner && (
         <div className="handoff-banner" role="status" aria-live="polite">
-          ?? Daily XP goal reached! ({feed.todayXp}/{targetGoalXp} XP) � Streak: {feed.streak} day{feed.streak === 1 ? '' : 's'}.
+          🎉 Daily XP goal reached! ({feed.todayXp}/{targetGoalXp} XP) · Streak: {feed.streak} day{feed.streak === 1 ? '' : 's'}.
         </div>
       )}
 
@@ -212,9 +223,9 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
           type="button"
           className={`abtn ico star ${bookmarked ? 'on' : ''} tap`}
           onClick={(e) => void handleToggleBookmark(e)}
-          aria-label={bookmarked ? 'Remove bookmark' : 'Bookmark card'}
+          aria-label={bookmarked ? 'Saved (tap to remove bookmark)' : 'Bookmark card'}
         >
-          {bookmarked ? '?' : '?'}
+          <StarIcon filled={bookmarked} aria-hidden="true" />
         </button>
 
         <button
@@ -224,7 +235,7 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
           aria-label="Less of this card type"
           title="Less of this type"
         >
-          ?
+          <ThumbsDownIcon aria-hidden="true" />
         </button>
 
         {onOpenSpeakWithCard && card && (
@@ -244,7 +255,7 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
           onClick={() => void handleAdvance()}
           aria-label="Advance to next card"
         >
-          Got it ?
+          Got it →
         </button>
       </nav>
     </div>

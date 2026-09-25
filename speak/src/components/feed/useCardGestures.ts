@@ -29,7 +29,7 @@ function incrementCardsSeenCount(): number {
 export function useCardGestures(
   cardId: string | undefined,
   onSubmitGrade: (grade: Grade, direction: 'up' | 'left' | 'right') => void,
-  onSwipeDown?: () => void,
+  onSwipeDown?: () => boolean | void,
 ) {
   const [dragOffset, setDragOffset] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [leavingDirection, setLeavingDirection] = useState<'up' | 'down' | 'left' | 'right' | null>(null);
@@ -153,8 +153,13 @@ export function useCardGestures(
         triggerGrade('good', 'up');
         return;
       } else if (dy > 0 && topPullAllowed() && onSwipeDown && (absDy > DISTANCE_THRESHOLD || velY > VELOCITY_THRESHOLD)) {
+        const handled = onSwipeDown();
+        if (handled === false) {
+          // First card: spring back into place, never fly off-screen.
+          setDragOffset({ x: 0, y: 0 });
+          return;
+        }
         setLeavingDirection('down');
-        onSwipeDown();
         return;
       }
     }

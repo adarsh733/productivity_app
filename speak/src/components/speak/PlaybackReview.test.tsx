@@ -10,11 +10,14 @@ describe('PlaybackReview Real RTL Component Suite', () => {
     await db.events.clear();
   });
 
-  it('renders drill metrics including duration, WPM, and XP earned', () => {
+  it('renders drill metrics including duration, WPM, and XP earned', async () => {
+    const blob = new Blob(['fake-audio'], { type: 'audio/webm' });
     render(
       <PlaybackReview
-        audio={null}
+        audio={{ id: 'rec-test-1', blob, mimeType: 'audio/webm' }}
         elapsedSec={35}
+        voicedSec={20}
+        recordingId="rec-test-1"
         xpReward={10}
         drillTitle="Rapid Rep: articulate"
         promptText="Say this clearly"
@@ -30,7 +33,27 @@ describe('PlaybackReview Real RTL Component Suite', () => {
     expect(screen.getByText(/Rapid Rep: articulate/i)).toBeInTheDocument();
     expect(screen.getByText(/35s/i)).toBeInTheDocument();
     expect(screen.getByText(/130/i)).toBeInTheDocument(); // WPM
-    expect(screen.getByText(/\+10 XP/i)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText(/Rep counted/i)).toBeInTheDocument();
+    });
+  });
+
+  it('does not credit silence: null audio shows Not counted and no fake streak', async () => {
+    render(
+      <PlaybackReview
+        audio={null}
+        elapsedSec={35}
+        xpReward={10}
+        drillTitle="Rapid Rep: silence"
+        onDone={vi.fn()}
+      />
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText(/Not counted/i)).toBeInTheDocument();
+    });
+    // Never show a fabricated streak of 1 when nothing was counted.
+    expect(screen.queryByText(/🔥 1/)).not.toBeInTheDocument();
   });
 
   it('invokes onDone and onRedo handlers when user clicks respective buttons', async () => {

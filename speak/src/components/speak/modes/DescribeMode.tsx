@@ -69,6 +69,10 @@ export default function DescribeMode({ onClose }: DescribeModeProps) {
         transcript={completed.transcript}
         wpm={completed.result?.wpm}
         pauseCount={completed.result?.pauseCount}
+        avgDb={completed.result?.avgDb}
+        voicedSec={completed.result?.voicedSec}
+        recordingId={completed.result?.id}
+        isDescribe
         targetVocab={scene.targetVocab}
         targetVocabMatches={completed.result?.targetVocabMatches?.matched}
         onDone={onClose}

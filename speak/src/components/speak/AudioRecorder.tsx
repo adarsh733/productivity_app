@@ -6,6 +6,7 @@ export interface AudioRecorderProps {
   durationSec: number;
   targetVocab?: string[];
   promptNode?: React.ReactNode;
+  cardLang?: 'en' | 'hi';
   onComplete: (
     audio: CapturedAudio | null,
     elapsedSec: number,
@@ -15,12 +16,13 @@ export interface AudioRecorderProps {
   onCancel: () => void;
 }
 
-export type RecorderState = 'idle' | 'recording' | 'processing' | 'cancelled';
+export type RecorderState = 'idle' | 'recording' | 'processing' | 'cancelled' | 'error';
 
 export default function AudioRecorder({
   durationSec,
   targetVocab,
   promptNode,
+  cardLang,
   onComplete,
   onCancel,
 }: AudioRecorderProps) {
@@ -32,6 +34,7 @@ export default function AudioRecorder({
   const attempt = useSpeakingAttempt({
     durationSec,
     targetVocab,
+    cardLang,
     onComplete: (result: SpeakingAttemptResult) => {
       setState('processing');
       onComplete(result.audio, result.durationSec, result.transcript, result);
@@ -46,16 +49,18 @@ export default function AudioRecorder({
       setState('recording');
       setElapsedSec(attempt.elapsedSec);
       setVolumePercent(attempt.volumePercent);
+    } else if (attempt.state === 'error') {
+      setState('error');
+      setError(attempt.error ?? 'Microphone is blocked.');
     }
-  }, [attempt.state, attempt.elapsedSec, attempt.volumePercent]);
+  }, [attempt.state, attempt.elapsedSec, attempt.volumePercent, attempt.error]);
 
   const handleStart = async () => {
     setError(null);
-    try {
-      await attempt.start();
-    } catch (err: any) {
-      setError(err?.message || 'Could not access microphone.');
-      setState('idle');
+    const ok = await attempt.start();
+    if (!ok) {
+      setError(attempt.error ?? 'Could not access microphone.');
+      setState('error');
     }
   };
 
@@ -112,7 +117,7 @@ export default function AudioRecorder({
             <button
               type="button"
               className="prim tap audio-recorder-start-btn"
-              onClick={handleStart}
+              onClick={() => void handleStart()}
               aria-label="Start speaking and recording"
             >
               Start speaking
@@ -123,6 +128,32 @@ export default function AudioRecorder({
               onClick={handleCancel}
             >
               Cancel
+            </button>
+          </div>
+        )}
+
+        {state === 'error' && (
+          <div className="audio-recorder-ready">
+            <p className="audio-recorder-error" role="alert">
+              {error ?? 'Microphone is blocked.'}
+            </p>
+            <p className="sub">
+              You can keep browsing — the mic is never required. To enable it: iOS
+              Settings › Safari › Microphone › Allow.
+            </p>
+            <button
+              type="button"
+              className="prim tap audio-recorder-start-btn"
+              onClick={() => void handleStart()}
+            >
+              Try again
+            </button>
+            <button
+              type="button"
+              className="audio-recorder-cancel-btn tap"
+              onClick={handleCancel}
+            >
+              Back
             </button>
           </div>
         )}

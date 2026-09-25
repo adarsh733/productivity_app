@@ -18,15 +18,19 @@ describe('PWA & Describe Mode Asset Integrity', () => {
 
   it('contains all Describe card image assets referenced in seed content', () => {
     expect(fs.existsSync(seedFile), 'Describe seed content file exists').toBe(true);
-    const content = JSON.parse(fs.readFileSync(seedFile, 'utf8')) as Array<{ imagePath: string }>;
+    const raw = JSON.parse(fs.readFileSync(seedFile, 'utf8')) as
+      | Array<{ imagePath?: string }>
+      | { cards?: Array<{ imagePath?: string }> };
+    const content = Array.isArray(raw) ? raw : (raw.cards ?? []);
     expect(content.length).toBeGreaterThan(0);
 
+    // Text-only scenes (no imagePath, or empty) are valid per contract — only
+    // check assets for cards that actually reference an image.
     const imageCards = content.filter((c) => Boolean(c.imagePath && c.imagePath.trim() !== ''));
-    expect(imageCards.length).toBeGreaterThan(0);
 
     for (const card of imageCards) {
       // Remove leading slash to resolve relative to public/
-      const cleanPath = card.imagePath.replace(/^\//, '');
+      const cleanPath = (card.imagePath ?? '').replace(/^\//, '');
       const assetPath = path.join(publicDir, cleanPath);
       expect(fs.existsSync(assetPath), `Missing Describe image asset: ${card.imagePath}`).toBe(true);
       const stat = fs.statSync(assetPath);

@@ -149,6 +149,8 @@ function getCardTitle(card: Card): string {
       return card.topic;
     case 'teach_back':
       return card.prompt;
+    case 'situation':
+      return card.title;
     default: {
       const _exhaustive: never = card;
       return (_exhaustive as { id?: string })?.id ?? '';

@@ -17,9 +17,9 @@ describe('FirstRun Onboarding Component Suite', () => {
     expect(screen.getByText(/What do you want/)).toBeDefined();
     expect(screen.getByText('Office English')).toBeDefined();
     expect(screen.getByText('Practical Hindi')).toBeDefined();
-    expect(screen.getByText('Casual')).toBeDefined();
-    expect(screen.getByText('Regular')).toBeDefined();
-    expect(screen.getByText('Serious')).toBeDefined();
+    expect(screen.getByText(/Casual/)).toBeDefined();
+    expect(screen.getByText(/Regular/)).toBeDefined();
+    expect(screen.getByText(/Serious/)).toBeDefined();
     expect(screen.getByText(/Start scrolling/)).toBeDefined();
   });
 

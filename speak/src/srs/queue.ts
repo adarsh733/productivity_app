@@ -307,8 +307,8 @@ function pickCandidate(
     candidateTypes.sort(([typeA], [typeB]) => {
       const sampleA = byType.get(typeA)![0]!.card;
       const sampleB = byType.get(typeB)![0]!.card;
-      const multA = getCardMultiplier(sampleA, opts.interests, opts.typeWeights);
-      const multB = getCardMultiplier(sampleB, opts.interests, opts.typeWeights);
+      const multA = getCardMultiplier(sampleA, opts.interests, opts.typeWeights, opts.downweights);
+      const multB = getCardMultiplier(sampleB, opts.interests, opts.typeWeights, opts.downweights);
       const lastA = typeLastIndex.get(typeA) ?? -100;
       const lastB = typeLastIndex.get(typeB) ?? -100;
 
@@ -365,11 +365,31 @@ function fillRefill(
   let lastType = lastTypeIn;
   let cardsSinceHindi = initialCardsSinceHindi;
 
+  const multOf = (c: Card): number =>
+    getCardMultiplier(c, opts.interests, opts.typeWeights, opts.downweights);
+
+  // Among ring indices matching `pred`, return the one with the highest
+  // interest/downweight multiplier (ties → earliest in ring order).
+  const bestIndex = (pred: (r: (typeof ring)[number]) => boolean): number => {
+    let best = -1;
+    let bestMult = -Infinity;
+    for (let i = 0; i < ring.length; i++) {
+      const r = ring[i]!;
+      if (!pred(r)) continue;
+      const m = multOf(r.card);
+      if (m > bestMult) {
+        bestMult = m;
+        best = i;
+      }
+    }
+    return best;
+  };
+
   while (out.length < opts.limit) {
     const wantHindi = cardsSinceHindi >= 7;
 
     // 1. Candidate matching different type and target language
-    let idx = ring.findIndex(
+    let idx = bestIndex(
       (r) =>
         r.card.type !== lastType &&
         (wantHindi ? r.card.lang === 'hi' : r.card.lang === 'en'),
@@ -377,19 +397,19 @@ function fillRefill(
 
     // 2. Fallback: candidate with different type in any language
     if (idx === -1) {
-      idx = ring.findIndex((r) => r.card.type !== lastType);
+      idx = bestIndex((r) => r.card.type !== lastType);
     }
 
     // 3. Fallback: any candidate matching language
     if (idx === -1) {
-      idx = ring.findIndex(
+      idx = bestIndex(
         (r) => (wantHindi ? r.card.lang === 'hi' : r.card.lang === 'en'),
       );
     }
 
     // 4. Ultimate fallback if constrained
     if (idx === -1) {
-      idx = 0;
+      idx = bestIndex(() => true);
     }
 
     const [chosen] = ring.splice(idx, 1);

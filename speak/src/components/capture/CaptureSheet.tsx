@@ -44,13 +44,13 @@ export default function CaptureSheet({ capture }: CaptureSheetProps) {
         </header>
         <section className="deck-modal-card-body capture-sheet-body">
           <p className="capture-sheet-lead">
-            Save the raw thought now. SPEAK will show what it becomes later.
+            Save the raw thought now. Articulate will show what it becomes later.
           </p>
           <textarea
             className="capture-field"
             rows={5}
             value={draft}
-            placeholder="I could not explain why today’s launch delay was necessary."
+            placeholder="I could not explain why todayâ€™s launch delay was necessary."
             onChange={(event) => setDraft(event.target.value)}
             aria-label="Your captured thought"
           />
@@ -77,7 +77,7 @@ export default function CaptureSheet({ capture }: CaptureSheetProps) {
                       <small>
                         {item.status === 'processed'
                           ? 'Mission created'
-                          : 'Saved locally · waiting for mission assembly'}
+                          : 'Saved locally Â· waiting for mission assembly'}
                       </small>
                     </div>
                     <button

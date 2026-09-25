@@ -1,5 +1,6 @@
 import type { Card } from '../../types/contract';
 import { speak } from '../../lib/speech';
+import { VolumeIcon } from '../shell/Icons';
 
 export interface CardFaceProps {
   card: Card;
@@ -10,45 +11,47 @@ export interface CardFaceProps {
 
 function getBadge(card: Card): { label: string; className: string } {
   if (card.lang === 'hi') {
-    return { label: '???? Practical Hindi', className: 'b-hindi' };
+    return { label: '🇮🇳 Practical Hindi', className: 'b-hindi' };
   }
   switch (card.type) {
     case 'word':
-      return { label: '?? Vocabulary', className: 'b-word' };
+      return { label: '📖 Vocabulary', className: 'b-word' };
     case 'idiom':
-      return { label: '?? Office Idiom', className: 'b-idiom' };
+      return { label: '💼 Office Idiom', className: 'b-idiom' };
     case 'swap':
-      return { label: '?? Say This Instead', className: 'b-swap' };
+      return { label: '🔄 Say This Instead', className: 'b-swap' };
     case 'phrase':
       return {
         label:
           card.register === 'office'
-            ? '?? Office Phrase'
+            ? '💼 Office Phrase'
             : card.register === 'presenting'
-              ? '?? Presenting Phrase'
-              : '?? Phrasing Upgrade',
+              ? '🎙️ Presenting Phrase'
+              : '✨ Phrasing Upgrade',
         className: 'b-scn',
       };
     case 'action_verb':
-      return { label: '?? Dynamic Verb', className: 'b-verb' };
+      return { label: '🏃 Dynamic Verb', className: 'b-verb' };
     case 'feeling':
-      return { label: '?? Emotional Precision', className: 'b-scn' };
+      return { label: '🎭 Emotional Precision', className: 'b-scn' };
     case 'story_move':
-      return { label: '?? Story Craft', className: 'b-verb' };
+      return { label: '📚 Story Craft', className: 'b-verb' };
     case 'pronounce':
-      return { label: '??? Pronunciation', className: 'b-word' };
+      return { label: '🗣️ Pronunciation', className: 'b-word' };
     case 'say_it':
-      return { label: '??? Speech Pace', className: 'b-scn' };
+      return { label: '⏱️ Speech Pace', className: 'b-scn' };
     case 'breath':
-      return { label: '?? Composure Reset', className: 'b-breath' };
+      return { label: '🌬️ Composure Reset', className: 'b-breath' };
     case 'describe':
       return card.imagePath && card.imagePath.trim() !== ''
         ? { label: '🎨 Describe This', className: 'b-describe' }
         : { label: '🎬 Describe a Scene', className: 'b-describe' };
     case 'explain':
-      return { label: '?? 60s Explainer', className: 'b-explain' };
+      return { label: '💡 60s Explainer', className: 'b-explain' };
     case 'teach_back':
-      return { label: '?? Teach It Back', className: 'b-teach' };
+      return { label: '🎓 Teach It Back', className: 'b-teach' };
+    case 'situation':
+      return { label: '🎙️ Situation', className: 'b-situation' };
     default: {
       const _exhaustive: never = card;
       throw new Error(`Unhandled badge for card type: ${JSON.stringify(_exhaustive)}`);
@@ -88,6 +91,8 @@ export default function CardFace({
       textToSpeak = `${card.topic}. ${card.angle}`;
     } else if (card.type === 'teach_back') {
       textToSpeak = card.prompt;
+    } else if (card.type === 'situation') {
+      textToSpeak = card.prompt;
     }
     if (textToSpeak) {
       speak(textToSpeak, { lang: card.lang, rate: card.type === 'pronounce' ? 0.8 : 1.0 });
@@ -107,7 +112,7 @@ export default function CardFace({
             onClick={handleHearIt}
             aria-label="Hear pronunciation audio"
           >
-            <span aria-hidden="true">??</span>
+            <VolumeIcon aria-hidden="true" />
           </button>
         )}
       </div>
@@ -132,8 +137,8 @@ export default function CardFace({
         {isDetail
           ? 'Tap card to flip back'
           : showSwipeHint
-            ? 'Swipe up/right to advance � Tap for detail'
-            : 'Tap for detail � Swipe to advance'}
+            ? 'Swipe up/right to advance · Tap for detail'
+            : 'Tap for detail · Swipe to advance'}
       </div>
     </article>
   );
@@ -223,7 +228,7 @@ function renderCardContent(
             "{card.weak}"
           </div>
           <div className="card-swap-arrow" aria-hidden="true">
-            ?
+            ➔
           </div>
           <div className="hero xs card-swap-strong">
             "{card.answers[0]}"
@@ -246,7 +251,7 @@ function renderCardContent(
             "{card.weak}"
           </div>
           <div className="card-swap-arrow" aria-hidden="true">
-            ?
+            ➔
           </div>
           <div className="hero xs card-swap-strong">
             "{card.strong}"
@@ -313,14 +318,14 @@ function renderCardContent(
     }
 
     case 'pronounce': {
-      const parts = card.syllables.split('�');
+      const parts = card.syllables.split('·');
       return (
         <>
           <div className={`hero ${isLong(card.term) ? 'sm' : ''}`}>{card.term}</div>
           <div className="syllables card-syllables-box">
             {parts.map((s, i) => (
               <span key={i}>
-                {i > 0 && <span className="syllables-dot"> � </span>}
+                {i > 0 && <span className="syllables-dot"> · </span>}
                 <span className={i === card.stressIndex ? 'stressed' : 'unstressed'}>{s}</span>
               </span>
             ))}
@@ -457,6 +462,40 @@ function renderCardContent(
           <div className="block">
             <div className="lbl">Target Time</div>
             <div className="val">Deliver smoothly in ~{card.targetSec} seconds</div>
+          </div>
+          <div className="spacer" />
+        </>
+      );
+    }
+
+    case 'situation': {
+      return (
+        <>
+          <div className="hero xs card-describe-prompt">{card.title}</div>
+          <div className="meaning">{card.prompt}</div>
+          <div className="block card-describe-beats-block">
+            <div className="lbl">Structure</div>
+            <ol className="card-beats-list">
+              {card.beats.map((beat, idx) => (
+                <li key={idx}>{beat}</li>
+              ))}
+            </ol>
+          </div>
+          {card.targetVocab.length > 0 && (
+            <div className="block card-describe-vocab-block">
+              <div className="lbl">Worth using</div>
+              <div className="card-vocab-chips">
+                {card.targetVocab.map((v, i) => (
+                  <span key={i} className="card-vocab-chip">
+                    {v}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+          <div className="block">
+            <div className="lbl">Target Time</div>
+            <div className="val">Speak for ~{card.targetSec} seconds</div>
           </div>
           <div className="spacer" />
         </>

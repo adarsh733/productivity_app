@@ -3,7 +3,7 @@ import type { Card } from '../../types/contract';
 import CardFace from './CardFace';
 import { useBookmarks } from '../../features/bookmarks/useBookmarks';
 import { useModalTrap } from '../../lib/useModalTrap';
-import { CloseIcon, MicrophoneIcon } from '../shell/Icons';
+import { CloseIcon, MicrophoneIcon, StarIcon } from '../shell/Icons';
 
 export interface CardDetailSheetProps {
   card: Card;
@@ -40,7 +40,7 @@ export default function CardDetailSheet({
     try {
       const res = await toggleBookmark(card.id, card.type);
       if (res.isBookmarked) {
-        showToast(res.xpEarned > 0 ? `? Saved to You (+${res.xpEarned} XP)` : '? Saved to You');
+        showToast(res.xpEarned > 0 ? `Saved to You (+${res.xpEarned} XP)` : 'Saved to You');
       } else {
         showToast('Bookmark removed');
       }
@@ -65,7 +65,7 @@ export default function CardDetailSheet({
       <div className="deck-modal-container card-detail-container" ref={containerRef} tabIndex={-1}>
         <header className="deck-modal-header">
           <div className="deck-modal-title-group">
-            <span className="g" aria-hidden="true">??</span>
+            <span className="g" aria-hidden="true">📇</span>
             <div>
               <h2 id="card-detail-title">Card Detail</h2>
               <span className="deck-modal-counter">{card.id}</span>
@@ -100,9 +100,9 @@ export default function CardDetailSheet({
             type="button"
             className={`abtn ico star ${bookmarked ? 'on' : ''} tap`}
             onClick={(e) => void handleToggleBookmark(e)}
-            aria-label={bookmarked ? 'Remove bookmark' : 'Bookmark card'}
+            aria-label={bookmarked ? 'Saved (tap to remove bookmark)' : 'Bookmark card'}
           >
-            {bookmarked ? '?' : '?'}
+            <StarIcon filled={bookmarked} aria-hidden="true" />
           </button>
 
           {onOpenSpeakWithCard && (

@@ -52,7 +52,8 @@ export type CardType =
   | 'story_move' // a storytelling technique: hook, turn, landing
   | 'describe' // an image or scene to describe out loud
   | 'explain' // a topic to explain in 60s (news, history, philosophy)
-  | 'teach_back'; // something you learned, explained back
+  | 'teach_back' // something you learned, explained back
+  | 'situation'; // a real-life speaking prompt: incident, office call, feeling, opinion, life story
 
 interface CardBase {
   id: string;
@@ -161,8 +162,9 @@ export interface StoryMoveCard extends CardBase {
 
 export interface DescribeCard extends CardBase {
   type: 'describe';
-  /** Path under `public/describe/`. Ships with the app. */
-  imagePath: string;
+  imagePath?: string;   // was required; text-only scenes ship without images
+  title?: string;       // ≤ 40 chars
+  scene?: string;       // 1–3 sentences painting the scene when there is no image
   alt: string;
   prompt: string; // "Tell me what's happening — and how it feels."
   beats: [string, string, string];
@@ -177,6 +179,8 @@ export interface ExplainCard extends CardBase {
   beats: [string, string, string];
   targetVocab: string[];
   targetSec: number;
+  /** 2–3 plain sentences of stable, well-established background. Read before explaining. */
+  primer?: string;
 }
 
 export interface TeachBackCard extends CardBase {
@@ -184,6 +188,18 @@ export interface TeachBackCard extends CardBase {
   prompt: string;
   beats: [string, string, string];
   targetSec: number;
+}
+
+export type SituationKind = 'incident' | 'office_call' | 'feeling' | 'opinion' | 'life_story';
+
+export interface SituationCard extends CardBase {
+  type: 'situation';
+  kind: SituationKind;
+  title: string;                    // ≤ 40 chars, e.g. "The missed flight"
+  prompt: string;                   // second person, ≤ 200 chars: what to talk about
+  beats: [string, string, string];  // the three-part structure to follow
+  targetVocab: string[];            // 0–4 words or phrases worth using
+  targetSec: 30 | 45 | 60 | 90;
 }
 
 export type BreathDrill = 'mpt' | 'ladder' | 'box' | 'straw';
@@ -217,7 +233,8 @@ export type Card =
   | StoryMoveCard
   | DescribeCard
   | ExplainCard
-  | TeachBackCard;
+  | TeachBackCard
+  | SituationCard;
 
 /**
  * Spoken card types. In V3, the microphone is optional and never a feed gate;
@@ -535,6 +552,8 @@ export interface QueueOptions {
   interests?: string[];
   /** Relative multiplier per card type. */
   typeWeights?: Record<string, number>;
+  /** Expiring tag/type suppressions from "less of this" swipes. */
+  downweights?: Record<string, DownweightRecord>;
 }
 
 /** Hard caps the queue must respect. */

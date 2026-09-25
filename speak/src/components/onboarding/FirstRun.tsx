@@ -28,9 +28,9 @@ export function setFirstRunCompleted(): void {
 }
 
 const GOAL_OPTIONS: { id: DailyGoal; label: string; time: string }[] = [
-  { id: 'casual', label: 'Casual', time: '3 min/day' },
-  { id: 'regular', label: 'Regular', time: '7 min/day' },
-  { id: 'serious', label: 'Serious', time: '15 min/day' },
+  { id: 'casual', label: 'Casual · 10 XP', time: '~3 min/day' },
+  { id: 'regular', label: 'Regular · 30 XP', time: '~7 min/day' },
+  { id: 'serious', label: 'Serious · 60 XP', time: '~15 min/day' },
 ];
 
 export interface FirstRunProps {
@@ -120,7 +120,7 @@ export default function FirstRun({ onComplete }: FirstRunProps) {
             onClick={handleStart}
             disabled={isSaving}
           >
-            {isSaving ? 'Starting�' : 'Start scrolling ?'}
+            {isSaving ? 'Starting…' : 'Start scrolling →'}
           </button>
           <p className="ob-disclaimer">
             No microphone needed. Ever, if you don't want it.

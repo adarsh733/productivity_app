@@ -33,9 +33,10 @@ const REQUIRED_BY_TYPE: Record<CardType, string[]> = {
   phrase: ['weak', 'strong', 'why', 'register'],
   feeling: ['term', 'meaning', 'contrast', 'example'],
   story_move: ['move', 'why', 'example'],
-  describe: ['imagePath', 'alt', 'prompt', 'beats', 'targetVocab', 'targetSec'],
+  describe: ['alt', 'prompt', 'beats', 'targetVocab', 'targetSec'],
   explain: ['topic', 'angle', 'beats', 'targetVocab', 'targetSec'],
   teach_back: ['prompt', 'beats', 'targetSec'],
+  situation: ['kind', 'title', 'prompt', 'beats', 'targetVocab', 'targetSec'],
 };
 
 
@@ -69,6 +70,47 @@ function validate(raw: unknown): { ok: true; card: Card } | { ok: false; reason:
     const idx = o.stressIndex;
     if (typeof idx !== 'number' || idx < 0 || idx >= parts.length) {
       return { ok: false, reason: 'stressIndex out of range for syllables' };
+    }
+  }
+  if (type === 'describe') {
+    const hasImage = typeof o.imagePath === 'string' && (o.imagePath as string).trim() !== '';
+    const hasScene = typeof o.scene === 'string' && (o.scene as string).trim() !== '';
+    if (!hasImage && !hasScene) {
+      return { ok: false, reason: 'describe needs imagePath or scene' };
+    }
+    if (o.imagePath !== undefined && typeof o.imagePath !== 'string') {
+      return { ok: false, reason: 'imagePath must be a string' };
+    }
+    if (o.title !== undefined && typeof o.title !== 'string') {
+      return { ok: false, reason: 'title must be a string' };
+    }
+    if (o.scene !== undefined && typeof o.scene !== 'string') {
+      return { ok: false, reason: 'scene must be a string' };
+    }
+  }
+  if (type === 'explain' && o.primer !== undefined && typeof o.primer !== 'string') {
+    return { ok: false, reason: 'primer must be a string' };
+  }
+  if (type === 'situation') {
+    const kinds = ['incident', 'office_call', 'feeling', 'opinion', 'life_story'];
+    if (typeof o.kind !== 'string' || !kinds.includes(o.kind)) {
+      return { ok: false, reason: `unknown situation kind ${String(o.kind)}` };
+    }
+    if (typeof o.title !== 'string' || o.title.length === 0 || o.title.length > 40) {
+      return { ok: false, reason: 'situation title must be 1–40 chars' };
+    }
+    if (typeof o.prompt !== 'string' || o.prompt.length === 0 || o.prompt.length > 200) {
+      return { ok: false, reason: 'situation prompt must be 1–200 chars' };
+    }
+    if (!Array.isArray(o.beats) || o.beats.length !== 3 || !(o.beats as unknown[]).every((b) => typeof b === 'string')) {
+      return { ok: false, reason: 'situation beats must be exactly three strings' };
+    }
+    if (!Array.isArray(o.targetVocab) || (o.targetVocab as unknown[]).length > 4 || !(o.targetVocab as unknown[]).every((w) => typeof w === 'string')) {
+      return { ok: false, reason: 'situation targetVocab must be 0–4 strings' };
+    }
+    const allowedSecs = [30, 45, 60, 90];
+    if (typeof o.targetSec !== 'number' || !allowedSecs.includes(o.targetSec)) {
+      return { ok: false, reason: 'situation targetSec must be 30|45|60|90' };
     }
   }
 

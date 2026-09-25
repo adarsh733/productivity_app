@@ -7,9 +7,9 @@ export interface GoalSelectorProps {
 }
 
 const GOALS: Array<{ id: DailyGoal; label: string; xp: number; desc: string }> = [
-  { id: 'casual', label: 'Casual', xp: GAMIFICATION.GOAL_XP.casual, desc: '~2 mins / day' },
-  { id: 'regular', label: 'Regular', xp: GAMIFICATION.GOAL_XP.regular, desc: '~5 mins / day' },
-  { id: 'serious', label: 'Serious', xp: GAMIFICATION.GOAL_XP.serious, desc: '~10 mins / day' },
+  { id: 'casual', label: 'Casual', xp: GAMIFICATION.GOAL_XP.casual, desc: '10 XP · ~3 mins / day' },
+  { id: 'regular', label: 'Regular', xp: GAMIFICATION.GOAL_XP.regular, desc: '30 XP · ~7 mins / day' },
+  { id: 'serious', label: 'Serious', xp: GAMIFICATION.GOAL_XP.serious, desc: '60 XP · ~15 mins / day' },
 ];
 
 export default function GoalSelector({ currentGoal }: GoalSelectorProps) {

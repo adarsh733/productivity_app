@@ -348,6 +348,36 @@ export class PhonationDetector {
   }
 }
 
+/**
+ * Voiced seconds: frames at least 10 dB above the measured noise floor.
+ *
+ * Used by spoken-rep crediting — a 2 s attempt of silence must not count.
+ * Pure and testable: driven by pushed samples, no browser types.
+ */
+export function computeVoicedSec(
+  samples: Array<{ db: number; atMs: number }>,
+  noiseFloorDb?: number,
+): number {
+  if (!samples || samples.length === 0) return 0;
+  const dbs = samples.map((s) => s.db);
+  const floor = noiseFloorDb ?? noiseFloorFromDbs(dbs);
+  const threshold = floor + 10;
+  const voiced = samples.filter((s) => s.db >= threshold);
+  if (voiced.length === 0) return 0;
+  if (samples.length === 1) return 0;
+  const first = samples[0]!.atMs;
+  const last = samples[samples.length - 1]!.atMs;
+  const totalMs = Math.max(0, last - first);
+  const avgFrameMs = totalMs / Math.max(1, samples.length - 1);
+  // Each voiced frame contributes one average frame interval.
+  const voicedMs = voiced.length * (avgFrameMs || 0);
+  return Math.round((voicedMs / 1000) * 10) / 10;
+}
+
+/**
+ * Whether an attempt meets the honest credit bar: ≥2 s total and ≥1.5 s voiced.
+ */
+
 // ─────────────────────────────────────────────────────────────────────────────
 // The device
 // ─────────────────────────────────────────────────────────────────────────────

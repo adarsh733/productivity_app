@@ -5,6 +5,7 @@ import {
   PhonationDetector,
   calculateRms,
   classifyVolumeBand,
+  computeVoicedSec,
   dbToPercent,
   noiseFloorFromDbs,
   rmsToDb,
@@ -264,6 +265,20 @@ describe('computePauseCount', () => {
 
     const pauseCount = computePauseCount(samples, -55, 400);
     expect(pauseCount).toBe(0);
+  });
+
+  it('silence yields 0 voiced seconds; speech yields measured seconds', () => {
+    const silent = Array.from({ length: 30 }, (_, i) => ({ db: -55, atMs: i * 100 }));
+    expect(computeVoicedSec(silent, -55)).toBe(0);
+
+    // 3 s span, half the frames 20 dB above floor → ~1.5 s voiced.
+    const mixed: Array<{ db: number; atMs: number }> = [];
+    for (let i = 0; i < 30; i++) {
+      mixed.push({ db: i % 2 === 0 ? -20 : -55, atMs: i * 100 });
+    }
+    const voiced = computeVoicedSec(mixed, -50);
+    expect(voiced).toBeGreaterThanOrEqual(1.4);
+    expect(voiced).toBeLessThanOrEqual(1.6);
   });
 });
 
