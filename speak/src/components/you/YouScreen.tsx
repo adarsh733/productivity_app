@@ -5,6 +5,9 @@ import WeeklyDots from './WeeklyDots';
 import BookmarksDrawer from './BookmarksDrawer';
 import GoalSelector from './GoalSelector';
 import InterestsManager from './InterestsManager';
+import VoiceProgress from './VoiceProgress';
+import RecordingsList from './RecordingsList';
+import NotesList from './NotesList';
 
 export interface YouScreenProps {
   onOpenSpeakWithCard?: (card: Card) => void;
@@ -12,7 +15,7 @@ export interface YouScreenProps {
 
 export default function YouScreen({ onOpenSpeakWithCard }: YouScreenProps) {
   const [showBookmarks, setShowBookmarks] = useState(false);
-  const { profile, daysList, streak, totalCards, totalReps, todayXp, bookmarkCount, today } = useYou();
+  const { profile, daysList, streak, totalCards, totalReps, todayXp, bookmarkCount, today, voiceSamples, recordings, inbox, week } = useYou();
 
   return (
     <div className="screen you-screen">
@@ -58,6 +61,29 @@ export default function YouScreen({ onOpenSpeakWithCard }: YouScreenProps) {
           You have read <b>{totalCards}</b> cards and recorded <b>{totalReps}</b> spoken reps.
           Short, daily reps build durable speech reflexes without cognitive fatigue.
         </p>
+      </div>
+
+      <div className="you-section-spacer">
+        <VoiceProgress samples={voiceSamples} />
+      </div>
+
+      <div className="you-section-spacer">
+        <div className="sechd"><b>This week</b></div>
+        <p className="sub">
+          {week.newCards} new cards · {week.reviewed} reviewed · {week.wordsOutLoud} words out loud ·{' '}
+          {week.spokenReps} spoken reps · {week.routineDays} routine days · streak {streak}
+        </p>
+        <p className="sub">
+          You opened Articulate instead of scrolling {week.urges} time{week.urges === 1 ? '' : 's'} this week.
+        </p>
+      </div>
+
+      <div className="you-section-spacer">
+        <RecordingsList recordings={recordings} />
+      </div>
+
+      <div className="you-section-spacer">
+        <NotesList items={inbox} />
       </div>
 
       {/* Bookmarked Cards Section */}

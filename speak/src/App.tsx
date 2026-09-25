@@ -7,9 +7,11 @@ import SpeakScreen from './components/speak/SpeakScreen';
 import YouScreen from './components/you/YouScreen';
 import CaptureSheet from './components/capture/CaptureSheet';
 import { useCapture } from './features/capture/useCapture';
+import { useAppOpen } from './features/you/useAppOpen';
 import type { Card } from './types/contract';
 
 export default function App() {
+  useAppOpen();
   const [activeTab, setActiveTab] = useState<AppTab>('feed');
   const [showFirstRun, setShowFirstRun] = useState(!isFirstRunCompleted());
   const [speakCard, setSpeakCard] = useState<Card | null>(null);
