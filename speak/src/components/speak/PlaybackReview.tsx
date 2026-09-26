@@ -10,6 +10,8 @@ import { appendPaceSample, paceBaseline, paceTarget } from '../../features/speak
 import { classifyLadderLevel } from '../../features/lab/drills';
 import { useReview } from '../../features/srs/useReview';
 import type { CardType } from '../../types/contract';
+import { findWatchHits, type WatchEntry } from '../../features/coach/pipeline';
+import { useWatchList } from '../../features/coach/useCoach';
 
 export interface PlaybackReviewProps {
   audio: CapturedAudio | null;
@@ -29,6 +31,8 @@ export interface PlaybackReviewProps {
   cardType?: CardType;
   targetVocab?: string[];
   targetVocabMatches?: string[];
+  /** His known mistakes. Local no-AI check only; defaults to the coach list. */
+  watch?: WatchEntry[];
   onDone: () => void;
   onRedo?: () => void;
 }
@@ -56,6 +60,7 @@ export default function PlaybackReview({
   cardType,
   targetVocab,
   targetVocabMatches = [],
+  watch,
   onDone,
   onRedo,
 }: PlaybackReviewProps) {
@@ -76,6 +81,13 @@ export default function PlaybackReview({
   } = useAiFeedback();
   const { credited, credit } = useSpokenRepCredit();
   const { gradeEasy } = useReview();
+  const storedWatch = useWatchList();
+  const effectiveWatch = watch ?? storedWatch;
+
+  const watchHits = useMemo(
+    () => findWatchHits(transcript ?? '', effectiveWatch),
+    [transcript, effectiveWatch],
+  );
 
   const isSavingRef = useRef(false);
 
@@ -302,6 +314,17 @@ export default function PlaybackReview({
               );
             })}
           </div>
+        </div>
+      )}
+
+      {/* Local coach-mistake check (no AI): word boundaries, case-insensitive */}
+      {watchHits.length > 0 && (
+        <div className="playback-watch-feedback" role="status" aria-label="Coach mistake check">
+          {watchHits.map((hit) => (
+            <p key={hit.wrong} className="playback-watch-hit">
+              You said &lsquo;{hit.wrong}&rsquo; — try &lsquo;{hit.right}&rsquo;.
+            </p>
+          ))}
         </div>
       )}
 

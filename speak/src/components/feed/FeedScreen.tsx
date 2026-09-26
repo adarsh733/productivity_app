@@ -4,6 +4,7 @@ import { useBookmarks } from '../../features/bookmarks/useBookmarks';
 import { useProfile } from '../../features/profile/useProfile';
 import CardFace from '../cards/CardFace';
 import { useCardGestures } from './useCardGestures';
+import CoachBox from '../../features/coach/CoachBox';
 import type { Card } from '../../types/contract';
 import { GAMIFICATION } from '../../types/contract';
 import { MicrophoneIcon, StarIcon, ThumbsDownIcon } from '../shell/Icons';
@@ -20,6 +21,8 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
   const [isDetail, setIsDetail] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [showGoalBanner, setShowGoalBanner] = useState(false);
+  // AG-007 stage 3: coach box entry. Overlay only — feed logic untouched.
+  const [showCoach, setShowCoach] = useState(false);
 
   const targetGoalXp = GAMIFICATION.GOAL_XP[dailyGoal];
 
@@ -217,8 +220,22 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
           <span className="xp" aria-label={`${feed.todayXp} XP earned today`}>
             {feed.todayXp} XP today
           </span>
+          <button
+            type="button"
+            className="abtn tap"
+            onClick={() => setShowCoach(true)}
+            aria-label="Tell the coach"
+          >
+            💬 Coach
+          </button>
         </div>
       </header>
+
+      {showCoach && (
+        <div className="coach-overlay" role="dialog" aria-modal="true" aria-label="Tell the coach">
+          <CoachBox onDone={() => setShowCoach(false)} onSaved={() => setShowCoach(false)} />
+        </div>
+      )}
 
       {showGoalBanner && (
         <div className="handoff-banner" role="status" aria-live="polite">

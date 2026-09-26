@@ -8,6 +8,8 @@ import InterestsManager from './InterestsManager';
 import VoiceProgress from './VoiceProgress';
 import RecordingsList from './RecordingsList';
 import NotesList from './NotesList';
+import CoachList from './CoachList';
+import CoachBoxRow from './CoachBoxRow';
 
 export interface YouScreenProps {
   onOpenSpeakWithCard?: (card: Card) => void;
@@ -80,6 +82,14 @@ export default function YouScreen({ onOpenSpeakWithCard }: YouScreenProps) {
 
       <div className="you-section-spacer">
         <RecordingsList recordings={recordings} />
+      </div>
+
+      <div className="you-section-spacer">
+        <CoachBoxRow />
+      </div>
+
+      <div className="you-section-spacer">
+        <CoachList />
       </div>
 
       <div className="you-section-spacer">

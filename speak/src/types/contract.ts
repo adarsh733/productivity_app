@@ -287,6 +287,8 @@ export interface Review {
   lapses: number;
   lastGrade?: Grade;
   lastSeenAt?: Millis;
+  /** Set when he scrolled past a new card without engaging. Not "learned". */
+  skippedAt?: Millis;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -412,6 +414,29 @@ export interface DayRecord {
   xp?: number;
   /** Spoken reps completed today across feed, gym and drills. */
   spokenReps?: number;
+  challenge?: DailyChallenge;
+  challengeResult?: ChallengeResult;
+}
+
+// ── Daily challenge ──
+export type VoiceGoal = 'softer' | 'slower' | 'pause_first';
+export interface DailyChallenge {
+  date: DayKey;
+  title: string;                 // plain words, ≤ 70 chars
+  situationCardId?: string;      // what to talk about
+  useWord?: string;              // one of his coach words, else a word card he engaged with
+  avoidPhrase?: string;          // one of his coach mistakes (the "wrong" side)
+  voiceGoal: VoiceGoal;
+  targetSec: 30 | 45 | 60;
+}
+export interface ChallengeResult {
+  recordingId: string;
+  longEnough: boolean;
+  /** null = could not check (no speech recognition) — show "—", never guess. */
+  usedWord: boolean | null;
+  avoidedPhrase: boolean | null;
+  voiceGoalMet: boolean | null;
+  done: boolean;                 // longEnough && voiceGoalMet !== false && usedWord !== false && avoidedPhrase !== false
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -419,6 +444,8 @@ export interface DayRecord {
 // ─────────────────────────────────────────────────────────────────────────────
 
 export type InboxStatus = 'raw' | 'queued' | 'processed' | 'discarded';
+
+export type CoachKind = 'word' | 'mistake' | 'topic' | 'other';
 
 export interface InboxItem {
   id: string;
@@ -429,6 +456,49 @@ export interface InboxItem {
   processedAt?: Millis;
   /** Phase 2: cards this dump produced. */
   generatedCardIds?: string[];
+  kind?: CoachKind;
+  /** word: the word/phrase he liked. mistake: what he says wrong. topic: the topic. */
+  subject?: string;
+  /** mistake only: the better version. */
+  fix?: string;
+  /** Plain-language reason the last processing attempt added nothing. */
+  failReason?: string;
+  /** Processing attempts so far; stop auto-retrying at 3. */
+  attempts?: number;
+}
+
+// ── Coach box: AI payloads ─────────────────────────────────────────────────
+export interface ClassifyInboxPayload {
+  text: string;
+}
+export interface ClassifyInboxResult {
+  kind: CoachKind;
+  subject: string;
+  fix?: string;
+  /** Drafts only — never stored before verify_batch passes. Shapes = WordCard,
+   *  PhraseCard, ExplainCard minus CardBase fields (id, lang, tags, source, status, createdAt). */
+  cards: Array<
+    | Omit<WordCard, keyof CardBase> & { type: 'word' }
+    | Omit<PhraseCard, keyof CardBase> & { type: 'phrase' }
+    | Omit<ExplainCard, keyof CardBase> & { type: 'explain' }
+  >;
+}
+export interface VerifyBatchPayload {
+  items: Array<{ key: string; card: unknown }>;
+}
+export interface VerifyBatchResult {
+  results: Array<{ key: string; ok: boolean; reason: string }>;
+}
+
+/** review_recording payload. `watch` = his known mistakes; feedback must check these first. Max 10. */
+export interface ReviewRecordingPayload {
+  transcript: string;
+  promptText?: string;
+  drillTitle?: string;
+  elapsedSec?: number;
+  targetVocab?: string[];
+  /** His known mistakes. Feedback must check for these first. Max 10. */
+  watch?: Array<{ wrong: string; right: string }>;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

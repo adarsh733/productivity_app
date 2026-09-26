@@ -2,12 +2,14 @@ import { useCallback } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 import type { InboxItem } from '../../types/contract';
 import { db, enqueue } from '../../db/db';
+import { processInboxItem } from '../coach/pipeline';
 
 /**
  * The 3AM box. One field, no categories, no tags, no confirmation step.
- * It saves raw and gets out of the way — the classifier that turns these into
- * cards lands in Phase 2, and until then the value is simply that the thought
- * stopped being lost.
+ * It saves raw and gets out of the way — the coach pipeline
+ * (`features/coach/pipeline`) classifies in the background: raw →
+ * classify_inbox → verify_batch every draft → dedupe → inbox-sourced cards.
+ * Unverified ⇒ nothing added; failures keep `raw` with a plain failReason.
  */
 export function useInbox() {
   const items = useLiveQuery(
@@ -24,9 +26,12 @@ export function useInbox() {
       createdAt: Date.now(),
       text: trimmed,
       status: 'raw',
+      attempts: 0,
     };
     await db.inbox.put(item);
     await enqueue('inbox', item.id);
+    // Background classify; failures stay `raw` with a plain failReason.
+    void processInboxItem(item.id).catch(() => {});
   }, []);
 
   const discard = useCallback(async (id: string) => {

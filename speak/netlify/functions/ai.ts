@@ -39,7 +39,9 @@ const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; syst
       'You are a strict verifier. For each item, answer whether it is real,',
       'standard, and natural in everyday professional English.',
       'Reject invented idioms, unnatural collocations, and calques from Hindi.',
-      'When in doubt, reject. Return ONLY JSON.',
+      'Also reject any claim that is contested, outdated, medically or legally',
+      'risky, or not well established. Reject slurs or words with an offensive',
+      'second meaning. When in doubt, reject. Return ONLY JSON.',
     ].join(' '),
   },
   classify_inbox: {
@@ -64,6 +66,8 @@ const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; syst
       '3. "oneCorrection": One high-leverage delivery or phrasing tweak for next time.',
       '4. "suggestedAlternative": An upgraded sentence showing better executive presence or phrasing.',
       'Never invent quotes. Never comment on accent or pronunciation quirks. Focus on pacing, executive presence, and word precision.',
+      'If a "watch" list of known mistakes is provided, check the transcript for each watched phrase first;',
+      'when the transcript contains one, the correction must address it.',
     ].join(' '),
   },
 };
@@ -105,6 +109,97 @@ export interface ReviewRecordingResponse {
  * Validates provider output against exact schema for the task.
  * Returns validated data object, or throws Error if invalid.
  */
+export function validateClassifyInbox(raw: unknown): unknown {
+  if (!raw || typeof raw !== 'object') throw new Error('Classifier response must be an object');
+  const c = raw as Record<string, unknown>;
+  const kinds = ['word', 'mistake', 'topic', 'other'];
+  if (typeof c.kind !== 'string' || !kinds.includes(c.kind)) throw new Error('Missing or invalid "kind"');
+  if (typeof c.subject !== 'string' || !c.subject.trim()) throw new Error('Missing or empty "subject"');
+  if (c.fix !== undefined && (typeof c.fix !== 'string' || !c.fix.trim())) {
+    throw new Error('Invalid "fix"');
+  }
+  if (!Array.isArray(c.cards)) throw new Error('Missing "cards" array');
+  const cards = (c.cards as unknown[]).map((d, i) => validateClassifyDraft(d, i));
+  return {
+    kind: c.kind,
+    subject: (c.subject as string).trim(),
+    ...(typeof c.fix === 'string' && c.fix.trim() ? { fix: c.fix.trim() } : {}),
+    cards,
+  };
+}
+
+function validateClassifyDraft(d: unknown, i: number): unknown {
+  if (!d || typeof d !== 'object') throw new Error(`Draft ${i}: must be an object`);
+  const r = d as Record<string, unknown>;
+  if (r.type === 'word') {
+    for (const f of ['term', 'pos', 'meaning', 'say'] as const) {
+      if (typeof r[f] !== 'string' || !(r[f] as string).trim()) throw new Error(`Draft ${i}: missing "${f}"`);
+    }
+    if (!Array.isArray(r.examples) || (r.examples as unknown[]).length !== 2) {
+      throw new Error(`Draft ${i}: "examples" must have exactly 2 entries`);
+    }
+    return {
+      type: 'word',
+      term: (r.term as string).trim(),
+      pos: (r.pos as string).trim(),
+      meaning: (r.meaning as string).trim(),
+      examples: [(r.examples as string[])[0]!.trim(), (r.examples as string[])[1]!.trim()],
+      say: (r.say as string).trim(),
+    };
+  }
+  if (r.type === 'phrase') {
+    for (const f of ['weak', 'strong', 'why', 'register'] as const) {
+      if (typeof r[f] !== 'string' || !(r[f] as string).trim()) throw new Error(`Draft ${i}: missing "${f}"`);
+    }
+    if (!['office', 'friends', 'presenting'].includes(r.register as string)) {
+      throw new Error(`Draft ${i}: invalid "register"`);
+    }
+    return {
+      type: 'phrase',
+      weak: (r.weak as string).trim(),
+      strong: (r.strong as string).trim(),
+      why: (r.why as string).trim(),
+      register: r.register,
+    };
+  }
+  if (r.type === 'explain') {
+    for (const f of ['topic', 'angle'] as const) {
+      if (typeof r[f] !== 'string' || !(r[f] as string).trim()) throw new Error(`Draft ${i}: missing "${f}"`);
+    }
+    if (!Array.isArray(r.beats) || (r.beats as unknown[]).length !== 3) {
+      throw new Error(`Draft ${i}: "beats" must have exactly 3 entries`);
+    }
+    if (!Array.isArray(r.targetVocab)) throw new Error(`Draft ${i}: missing "targetVocab"`);
+    if (typeof r.targetSec !== 'number') throw new Error(`Draft ${i}: missing "targetSec"`);
+    const out: Record<string, unknown> = {
+      type: 'explain',
+      topic: (r.topic as string).trim(),
+      angle: (r.angle as string).trim(),
+      beats: (r.beats as string[]).slice(0, 3),
+      targetVocab: r.targetVocab,
+      targetSec: r.targetSec,
+    };
+    if (typeof r.primer === 'string' && r.primer.trim()) out.primer = r.primer.trim();
+    return out;
+  }
+  throw new Error(`Draft ${i}: unknown type`);
+}
+
+export function validateVerifyBatch(raw: unknown): unknown {
+  if (!raw || typeof raw !== 'object') throw new Error('Verifier response must be an object');
+  const c = raw as Record<string, unknown>;
+  if (!Array.isArray(c.results)) throw new Error('Missing "results" array');
+  const results = (c.results as unknown[]).map((r, i) => {
+    if (!r || typeof r !== 'object') throw new Error(`Result ${i}: must be an object`);
+    const o = r as Record<string, unknown>;
+    if (typeof o.key !== 'string' || !o.key) throw new Error(`Result ${i}: missing "key"`);
+    if (typeof o.ok !== 'boolean') throw new Error(`Result ${i}: missing "ok"`);
+    if (typeof o.reason !== 'string' || !o.reason.trim()) throw new Error(`Result ${i}: missing "reason"`);
+    return { key: o.key, ok: o.ok, reason: o.reason.trim() };
+  });
+  return { results };
+}
+
 export function validateProviderOutput(task: AiTask, raw: unknown): unknown {
   if (!raw || typeof raw !== 'object') {
     throw new Error('Provider response must be an object');
@@ -139,6 +234,14 @@ export function validateProviderOutput(task: AiTask, raw: unknown): unknown {
     return validated;
   }
 
+  if (task === 'classify_inbox') {
+    return validateClassifyInbox(raw);
+  }
+
+  if (task === 'verify_batch') {
+    return validateVerifyBatch(raw);
+  }
+
   return raw;
 }
 
@@ -166,6 +269,20 @@ export default async function handler(req: Request): Promise<Response> {
   }
 
   // Task-specific payload validation
+  if (body.task === 'classify_inbox') {
+    const payload = body.payload as Record<string, unknown> | undefined;
+    if (!payload || typeof payload !== 'object' || typeof payload.text !== 'string' || !payload.text.trim()) {
+      return json({ ok: false, task: body.task, error: 'AI sorting needs the note text' }, 400);
+    }
+  }
+
+  if (body.task === 'verify_batch') {
+    const payload = body.payload as Record<string, unknown> | undefined;
+    if (!payload || typeof payload !== 'object' || !Array.isArray(payload.items)) {
+      return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
+    }
+  }
+
   if (body.task === 'review_recording') {
     const payload = body.payload as Record<string, unknown> | undefined;
     if (!payload || typeof payload !== 'object') {
@@ -181,6 +298,13 @@ export default async function handler(req: Request): Promise<Response> {
         { ok: false, task: body.task, error: 'Transcript too short for AI review (minimum 5 words)' },
         400,
       );
+    }
+    // `watch` is optional: his known mistakes (max 10). Never a hard error.
+    const watch = (payload as { watch?: unknown }).watch;
+    if (watch !== undefined) {
+      if (!Array.isArray(watch) || watch.length > 10) {
+        return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
+      }
     }
   }
 
@@ -234,7 +358,7 @@ export default async function handler(req: Request): Promise<Response> {
     }
   }
 
-  return json({ ok: false, task: body.task, error: errors.join(' | ') || 'All providers failed' }, 502);
+  return json({ ok: false, task: body.task, error: 'AI is unavailable right now (offline or no key). Saved — I will try again when you are online.' }, 502);
 }
 
 async function callWithTimeout(

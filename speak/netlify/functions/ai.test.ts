@@ -195,7 +195,7 @@ describe('Netlify AI Function Handler Suite', () => {
     expect(data.data.strongPoint).toContain('production outage');
   });
 
-  it('Returns explicit 502 unavailable response when all providers fail (zero generic coaching)', async () => {
+  it('Returns a plain unavailable message (never raw errors) when all providers fail', async () => {
     process.env.ANTHROPIC_API_KEY = 'mock-anthropic-key';
     process.env.GEMINI_API_KEY = 'mock-gemini-key';
     process.env.GROQ_API_KEY = 'mock-groq-key';
@@ -221,6 +221,117 @@ describe('Netlify AI Function Handler Suite', () => {
     const data = (await res.json()) as any;
     expect(data.ok).toBe(false);
     expect(data.data).toBeUndefined(); // Zero fake coaching data returned
-    expect(data.error).toBeDefined();
+    expect(data.error).toMatch(/unavailable/i);
+    expect(data.error).not.toMatch(/http \d+/);
+  });
+
+  it('Validates classify_inbox output strictly (kind, subject, drafts)', () => {
+    const good = {
+      kind: 'word',
+      subject: 'nuance',
+      cards: [
+        {
+          type: 'word',
+          term: 'nuance',
+          pos: 'noun',
+          meaning: 'a small difference in meaning',
+          examples: ['There is a nuance here.', 'He explained the nuance to the client.'],
+          say: 'Explain the nuance in one line.',
+        },
+      ],
+    };
+    const v = validateProviderOutput('classify_inbox', good) as any;
+    expect(v.kind).toBe('word');
+    expect(v.cards).toHaveLength(1);
+    expect(() => validateProviderOutput('classify_inbox', { kind: 'nope', subject: 'x', cards: [] })).toThrow(
+      /kind/,
+    );
+    expect(() => validateProviderOutput('classify_inbox', { kind: 'word', cards: [] })).toThrow(/subject/);
+    expect(() =>
+      validateProviderOutput('classify_inbox', {
+        kind: 'word',
+        subject: 'x',
+        cards: [{ type: 'word', term: 'x' }],
+      }),
+    ).toThrow(/Draft 0/);
+  });
+
+  it('Validates verify_batch output strictly (key, ok, reason)', () => {
+    const good = { results: [{ key: 'd0', ok: true, reason: 'real and natural' }] };
+    const v = validateProviderOutput('verify_batch', good) as any;
+    expect(v.results[0].ok).toBe(true);
+    expect(() => validateProviderOutput('verify_batch', { results: [{ key: 'd0', ok: true }] })).toThrow(
+      /reason/,
+    );
+    expect(() => validateProviderOutput('verify_batch', {})).toThrow(/results/);
+  });
+
+  it('Rejects classify_inbox with empty text and verify_batch with bad payload', async () => {
+    const badClassify = new Request('http://localhost/.netlify/functions/ai', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ task: 'classify_inbox', payload: { text: '   ' } }),
+    });
+    expect((await handler(badClassify)).status).toBe(400);
+
+    const badVerify = new Request('http://localhost/.netlify/functions/ai', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ task: 'verify_batch', payload: {} }),
+    });
+    expect((await handler(badVerify)).status).toBe(400);
+  });
+
+  it('Accepts a watch list (max 10) on review_recording payloads', async () => {
+    process.env.GEMINI_API_KEY = 'mock-gemini-key';
+    const fetchSpy = vi.fn();
+    global.fetch = fetchSpy as any;
+    fetchSpy.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        candidates: [
+          {
+            content: {
+              parts: [
+                {
+                  text: JSON.stringify({
+                    summary: 'Good update.',
+                    strongPoint: 'You said "trade-off" clearly.',
+                    oneCorrection: 'Pause before the close.',
+                  }),
+                },
+              ],
+            },
+          },
+        ],
+      }),
+    } as any);
+
+    const req = new Request('http://localhost/.netlify/functions/ai', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        task: 'review_recording',
+        payload: {
+          transcript: 'Here is my five word speaking rep now.',
+          watch: [{ wrong: 'revert back', right: 'revert' }],
+        },
+      }),
+    });
+    const res = await handler(req);
+    expect(res.status).toBe(200);
+
+    const tooMany = new Request('http://localhost/.netlify/functions/ai', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        task: 'review_recording',
+        payload: {
+          transcript: 'Here is my five word speaking rep now.',
+          watch: Array.from({ length: 11 }, (_, i) => ({ wrong: `w${i}`, right: `r${i}` })),
+        },
+      }),
+    });
+    expect((await handler(tooMany)).status).toBe(400);
   });
 });
