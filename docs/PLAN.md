@@ -13,6 +13,14 @@ target ×0.9, 140 starter). Feed has SRS memory (first sight → tomorrow, dues
 ~1 in 3, `again` within ~10). Mic is measured everywhere, never a gate. Browser
 verification at 375×812 and AG-006 content completion remain.
 
+**AG-007 status (2026-09-26):** feed repeats fixed (refill guards), repetition
+is engaged-only (XP gate, 14-day skim skip), coach box turns Capture dumps into
+verified cards (classify → verify → dedupe, watch-list + queue-jump + try-words
+wiring), a daily challenge ships (Today card, 30/45/60 s, word + avoid-phrase +
+voice-goal checks), and Speak/You tabs are simpler (Today card + plain-words
+groups; 4 stats + 8-week chart). Coach/challenge fields are local-only — not
+backed up (see `known-issues.md`). 313 tests green ×5, build passes.
+
 A single PWA that replaces the phone-unlock reflex with speech, vocabulary and
 storytelling training. Installed to the iPhone home screen from Safari, hosted on
 Netlify, free at every layer.
@@ -383,5 +391,7 @@ part of the module either way.
 | v1 | 2026-08-11 | Second opinion reconciled; Groq added; Core-3/Endless adopted; §6 expansion loop + gate added; six decisions locked |
 | **v3** | **2026-08-26** | **V3 Rules Authorized & Truthfulness Repair.** Microphone is optional and never a feed gate; browsing a card never credits spoken reps; Hindi allowed in feed at ~12.5%; obsolete ≥70% spoken rule removed; Core Three replaced with day complete (5 cards OR 1 spoken rep); AI coaching stripped of all canned/offline fallbacks; transcript required for AI feedback; speaking attempt updates made idempotent by recording ID |
 | **v2.1** | **2026-08-13** | **Phase 1 opened.** Contract extended for the Speaking Lab (`LabStep`/`LabBlock`/`LabSession`/`VoiceSample`, `LAB_RULES`, calibration fields on `Profile`), Dexie v2, Supabase `lab_sessions` + `voice_samples`. M8–M11 logic shipped and under test; UI delegated as AG-003. Decisions 16–19 locked. Breath deck rewritten: the four capacity drills retired, SOVT set expanded to nine, transfer rep on every card, one `seconds` drill so `bestMptSec` means one thing |
+| **v2.1** | **2026-08-13** | **Phase 1 opened.** Contract extended for the Speaking Lab (`LabStep`/`LabBlock`/`LabSession`/`VoiceSample`, `LAB_RULES`, calibration fields on `Profile`), Dexie v2, Supabase `lab_sessions` + `voice_samples`. M8–M11 logic shipped and under test; UI delegated as AG-003. Decisions 16–19 locked. Breath deck rewritten: the four capacity drills retired, SOVT set expanded to nine, transfer rep on every card, one `seconds` drill so `bestMptSec` means one thing |
 | **v2** | **2026-08-12** | **Root cause corrected against measurement** — over-drive, not breath capacity; roadmap reordered off it. Speaking Lab promoted to its own surface and specified as M8–M16. **Articulation gap closed** — M25 describe and M26 explain added, new issue P8. **M30 live voice partner** specified. Module catalogue with permanent IDs introduced. UI rebuild split out as Phase 0.5 |
+| **AG-007** | **2026-09-26** | **Coach box + daily challenge + engaged-only repetition + simpler Speak/You.** 8 commits on `v4-usable`: repeat-bug refill guards + 150-card no-dupe test (0bc84dd); engaged-only repetition pure functions (b193e82) + `useFeed` `markEngaged` wiring follow-up (f0375ed); coach pipeline classify/verify/dedupe/watch/batch-removal (4c66de7) + watch/queue-jump/try-words wiring follow-up (984e305); daily challenge build/check/card/result (285b69d); simpler Speak (1aca5ab); simpler You (e7355c8). Docs + report in stage 7 |
 

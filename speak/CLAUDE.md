@@ -27,9 +27,9 @@ don't reopen them.
 | `netlify/functions/ai.ts` | The only path to a model. Gemini → Groq → Anthropic (haiku-4-5 last). Transcript only. |
 | `supabase/schema.sql` | Tables + RLS. `user_id` on everything from day one. |
 
-## What exists (2026-09-25, AG-005)
+## What exists (2026-09-26, AG-007)
 
-Endless feed with SRS (first sight schedules tomorrow, due gets "Show again soon"/"Knew it", `again` requeues within ~10), swipeable Browse decks with real progress rings, 12-minute voice routine with pause/resume and transfer enforcement, six quick drills with live meters, weekly MPT check saving VoiceSamples, every recording training volume + pace with honest numbers, DB-backed speaking modes, truthful You tab, tidy AI proxy with quote check, silent Supabase backup. Breath cards stay out of feed/Browse; their drills live in the routine.
+Endless feed with SRS (first sight schedules tomorrow, due gets "Show again soon"/"Knew it", `again` requeues within ~10) plus repeat-bug refill guards and engaged-only repetition (XP gate, 14-day skim skip, `markEngaged` signals), swipeable Browse decks with real progress rings, coach box turning Capture dumps into verified cards (classify → verify → dedupe, mistake watch-list, coach queue-jump, try-words wiring), a daily challenge (Today card, 30/45/60 s, use-word + avoid-phrase + voice-goal checks with honest nulls), simpler Speak (Today card + 3 plain-words groups) and simpler You (4 stats, 8-week chart, rows), 12-minute voice routine with pause/resume and transfer enforcement, six quick drills with live meters, weekly MPT check saving VoiceSamples, every recording training volume + pace with honest numbers, DB-backed speaking modes, tidy AI proxy with quote check, silent Supabase backup. Breath cards stay out of feed/Browse; their drills live in the routine. Coach/challenge fields are local-only — not backed up (see `../docs/known-issues.md`).
 
 ## The two mechanics that matter
 
@@ -43,9 +43,9 @@ per-recording volume + pace numbers. The mic is never a gate: everything works d
 
 ## Phase
 
-Shipped through AG-005 (2026-09-25): shell, feed + SRS, seeded cards, inbox,
-local DB, backup push, AI proxy with quote check, full voice lab (routine,
-drills, MPT, calibration, pace), DB-backed speaking modes, truthful You tab.
+Shipped through AG-007 (2026-09-26): everything AG-005 had, plus
+repeat-bug refill guards, engaged-only repetition, coach box pipeline with
+watch/queue-jump/try-words wiring, daily challenge, and simpler Speak/You tabs.
 The microphone is optional and measured everywhere it is used.
 
 Open technical risk carried forward: **live WPM depends on

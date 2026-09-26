@@ -87,6 +87,23 @@ ruled-out cause — see `PROBLEM-MAP.md` §6.
 
 ---
 
+## AG-007 (2026-09-26) — judged not worth fixing now
+
+- **New coach/challenge fields are local-only, not backed up.** `Review.skippedAt`,
+  `DayRecord.challenge`/`challengeResult`, and `InboxItem.kind`/`subject`/`fix`/
+  `failReason`/`attempts` ride inside existing Dexie rows, but the sync
+  `materialise()` mappers in `speak/src/sync/supabase.ts` (`reviewRow`, `dayRow`,
+  `inboxRow`) do not include them — so they are dropped on push and lost on
+  restore. Verified in code 2026-09-26. **Why left:** Supabase columns are fixed
+  and `supabase/schema.sql` belongs to Claude's slice; widening the mappers
+  without the columns would push-fail. Belongs with a schema migration.
+- **`PlaybackReview.test.tsx` flakes ~1 in full-suite runs, passes solo.**
+  Reported by earlier AG-007 stages; not observed in this stage's 5 full-suite
+  runs (5/5 green, 39 files / 313 tests). Outside the AG-007 slice, untouched —
+  same class as AG-005 item 8.
+
+---
+
 ## AG-005 (2026-09-25) — judged not worth fixing now
 
 - **Pause-drill keyword alignment is a proxy.** Without word-level timestamps
