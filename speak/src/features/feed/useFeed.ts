@@ -315,25 +315,36 @@ export function useFeed(_initialMode: FeedMode = 'endless'): FeedApi {
   }, [position]);
 
   // ── keep endless endless ──────────────────────────────────────────────────
+  // Guard 1: never run before the first build lands (queue empty on the first
+  // render would rebuild the same 24 cards and append them again).
+  // Guard 2: never append a card already in the queue. When nothing fresh is
+  // left, stop refilling so the feed drains to the "caught up" state.
   useEffect(() => {
     if (!ready) return;
+    if (queue.length === 0) return;
     if (queue.length - position > REFILL_WHEN_LEFT) return;
 
     const more = build(ENDLESS_CHUNK);
     if (more.length === 0) return;
 
+    const present = new Set(queue.map((i) => i.card.id));
+    const fresh = more.filter((i) => !present.has(i.card.id));
+    if (fresh.length === 0) return;
+
+    const additions = [...fresh];
+
     setQueue((q) => {
-      const present = new Set(q.map((i) => i.card.id));
-      const fresh = more.filter((i) => !present.has(i.card.id));
-      const additions = fresh.length > 0 ? fresh : more;
+      const inQueue = new Set(q.map((i) => i.card.id));
+      const deduped = additions.filter((i) => !inQueue.has(i.card.id));
+      if (deduped.length === 0) return q;
 
       const tailType = q[q.length - 1]?.card.type;
-      if (additions.length > 1 && additions[0]!.card.type === tailType) {
-        const at = additions.findIndex((i) => i.card.type !== tailType);
-        if (at > 0) additions.unshift(...additions.splice(at, 1));
+      if (deduped.length > 1 && deduped[0]!.card.type === tailType) {
+        const at = deduped.findIndex((i) => i.card.type !== tailType);
+        if (at > 0) deduped.unshift(...deduped.splice(at, 1));
       }
 
-      return [...q, ...additions];
+      return [...q, ...deduped];
     });
   }, [ready, queue.length, position, build]);
 

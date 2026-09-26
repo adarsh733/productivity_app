@@ -1,6 +1,10 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, beforeEach, afterEach } from 'vitest';
+import { renderHook, act, waitFor, cleanup } from '@testing-library/react';
 import { getTypeMultiplier } from '../../srs/queue';
 import { applyCardCompletion, emptyDay, isDayComplete, isPass } from '../session/day';
+import { db } from '../../db/db';
+import { useFeed } from './useFeed';
+import type { Card } from '../../types/contract';
 
 describe('useFeed State Machine & Logic', () => {
   it('emptyDay initializes day record with 0 completed cards, 0 spoken reps, and 0 XP', () => {
@@ -72,5 +76,66 @@ describe('useFeed State Machine & Logic', () => {
     expect(getTypeMultiplier('feeling', ['Ideas & opinions'])).toBeCloseTo(1.6, 1);
     expect(getTypeMultiplier('phrase', ['🧠 Ideas & opinions'])).toBeCloseTo(1.6, 1);
   });
+});
+
+describe('useFeed endless repetition (AG-007 stage 1)', () => {
+  const TYPES = [
+    'word',
+    'idiom',
+    'phrase',
+    'swap',
+    'feeling',
+    'action_verb',
+    'pronounce',
+    'say_it',
+    'story_move',
+    'situation',
+  ] as const;
+
+  beforeEach(async () => {
+    await db.cards.clear();
+    await db.reviews.clear();
+    await db.events.clear();
+    await db.days.clear();
+    await db.outbox.clear();
+    await db.profile.clear();
+    // 200 synthetic cards: large enough for 150 unique serves, small enough
+    // to keep the test fast. Never asserts seed counts (AG-007 §2).
+    const cards: Card[] = Array.from({ length: 200 }, (_, i) => ({
+      id: `t-repeat-${i}`,
+      type: TYPES[i % TYPES.length]!,
+      lang: i % 8 === 7 ? 'hi' : 'en',
+      tags: [],
+      source: 'seed',
+      status: 'active',
+      createdAt: Date.now(),
+    }) as unknown as Card);
+    await db.cards.bulkPut(cards);
+  });
+
+  afterEach(() => {
+    cleanup();
+  });
+
+  it('serves 150 cards on a fresh day with no grades and zero duplicate ids', async () => {
+    const { result, unmount } = renderHook(() => useFeed());
+
+    await waitFor(() => expect(result.current.ready).toBe(true), { timeout: 10000 });
+    await waitFor(() => expect(result.current.item).not.toBeNull(), { timeout: 10000 });
+
+    const seen = new Set<string>();
+    for (let n = 0; n < 150; n++) {
+      const item = result.current.item;
+      expect(item, `queue drained at card ${n}`).not.toBeNull();
+      const id = item!.card.id;
+      expect(seen.has(id), `card ${id} repeated at position ${n}`).toBe(false);
+      seen.add(id);
+      await act(async () => {
+        await result.current.advanceCard();
+      });
+    }
+    expect(seen.size).toBe(150);
+    unmount();
+  }, 60000);
 });
 
