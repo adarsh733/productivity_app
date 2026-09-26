@@ -180,6 +180,7 @@ export default function PlaybackReview({
       promptText: promptText || drillTitle,
       drillTitle,
       targetVocab,
+      watch: effectiveWatch.slice(0, 10),
     });
   };
 

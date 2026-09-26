@@ -1,6 +1,18 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useLiveQuery } from 'dexie-react-hooks';
 import type { Card, SituationKind } from '../../types/contract';
 import { db } from '../../db/db';
+import { getCoachWords, getTryWords } from '../coach/pipeline';
+
+/**
+ * Coach words for "Try to use" in speaking prompts (AG-007 stage 3).
+ * Up to 2, newest first. Empty when he has told the coach no words yet.
+ */
+export function useTryWords(): string[] {
+  const items =
+    useLiveQuery(() => db.inbox.orderBy('createdAt').reverse().toArray(), [], []) ?? [];
+  return getTryWords(getCoachWords(items));
+}
 
 /** Random-without-repeat from the database. Never crashes when content is missing. */
 function useCardsOfType<T extends Card>(type: T['type']) {

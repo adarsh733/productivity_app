@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { CapturedAudio } from '../../../features/reset/useMissionAudio';
 import type { SpeakingAttemptResult } from '../../../features/speak/useSpeakingAttempt';
 import { GAMIFICATION } from '../../../types/contract';
-import { useExplainCards } from '../../../features/speak/useModeCards';
+import { useExplainCards, useTryWords } from '../../../features/speak/useModeCards';
 import AudioRecorder from '../AudioRecorder';
 import PlaybackReview from '../PlaybackReview';
 
@@ -17,6 +17,7 @@ export default function ExplainMode({ onClose }: { onClose: () => void }) {
   } | null>(null);
 
   const card = explains.current;
+  const tryWords = useTryWords();
 
   const handleComplete = (
     audio: CapturedAudio | null,
@@ -102,6 +103,9 @@ export default function ExplainMode({ onClose }: { onClose: () => void }) {
               </div>
             )}
             <p className="speak-prompt-content compact">{card.angle}</p>
+            {tryWords.length > 0 && (
+              <p className="sub">Try to use: {tryWords.join(', ')}</p>
+            )}
             <div className="speak-story-anchors">
               {card.beats.map((b, i) => (
                 <div key={i} className="speak-anchor-pill">

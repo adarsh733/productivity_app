@@ -3,7 +3,7 @@ import type { CapturedAudio } from '../../../features/reset/useMissionAudio';
 import type { SpeakingAttemptResult } from '../../../features/speak/useSpeakingAttempt';
 import { GAMIFICATION } from '../../../types/contract';
 import type { SituationKind } from '../../../types/contract';
-import { useSituationCards } from '../../../features/speak/useModeCards';
+import { useSituationCards, useTryWords } from '../../../features/speak/useModeCards';
 import AudioRecorder from '../AudioRecorder';
 import PlaybackReview from '../PlaybackReview';
 
@@ -30,6 +30,7 @@ export default function IncidentMode({ onClose }: IncidentModeProps) {
   } | null>(null);
 
   const scenario = situations.current;
+  const tryWords = useTryWords();
 
   const handleComplete = (
     audio: CapturedAudio | null,
@@ -136,6 +137,9 @@ export default function IncidentMode({ onClose }: IncidentModeProps) {
               <b>Talk about:</b>
               <p>{scenario.prompt}</p>
             </div>
+            {tryWords.length > 0 && (
+              <p className="sub">Try to use: {tryWords.join(', ')}</p>
+            )}
             <div className="speak-story-anchors">
               {scenario.beats.map((b, i) => (
                 <div key={i} className="speak-anchor-pill">

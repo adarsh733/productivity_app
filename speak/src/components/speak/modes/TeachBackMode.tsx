@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { CapturedAudio } from '../../../features/reset/useMissionAudio';
 import type { SpeakingAttemptResult } from '../../../features/speak/useSpeakingAttempt';
 import { GAMIFICATION } from '../../../types/contract';
-import { useTeachBackCards } from '../../../features/speak/useModeCards';
+import { useTeachBackCards, useTryWords } from '../../../features/speak/useModeCards';
 import AudioRecorder from '../AudioRecorder';
 import PlaybackReview from '../PlaybackReview';
 
@@ -17,6 +17,7 @@ export default function TeachBackMode({ onClose }: { onClose: () => void }) {
   } | null>(null);
 
   const card = teach.current;
+  const tryWords = useTryWords();
 
   const handleComplete = (
     audio: CapturedAudio | null,
@@ -93,6 +94,9 @@ export default function TeachBackMode({ onClose }: { onClose: () => void }) {
         promptNode={
           <div className="speak-prompt-box">
             <p className="speak-prompt-content">{card.prompt}</p>
+            {tryWords.length > 0 && (
+              <p className="sub">Try to use: {tryWords.join(', ')}</p>
+            )}
             <div className="speak-story-anchors">
               {card.beats.map((b, i) => (
                 <div key={i} className="speak-anchor-pill">

@@ -244,5 +244,37 @@ describe('useFeed markEngaged wiring (AG-007 stage 2)', () => {
 
     unmount();
   }, 30000);
+
+  it('new coach cards jump within the first 10 of the next feed session (AG-007 stage 3)', async () => {
+    const coachCards: Card[] = [0, 1, 2].map(
+      (n) =>
+        ({
+          id: `t-coach-${n}`,
+          type: 'word',
+          lang: 'en',
+          tags: ['coach', 'word'],
+          source: 'inbox',
+          status: 'active',
+          createdAt: Date.now(),
+        }) as unknown as Card,
+    );
+    await db.cards.bulkPut(coachCards);
+
+    const { result, unmount } = renderHook(() => useFeed());
+    await waitFor(() => expect(result.current.ready).toBe(true), { timeout: 10000 });
+    await waitFor(() => expect(result.current.item).not.toBeNull(), { timeout: 10000 });
+
+    const firstTen: string[] = [];
+    for (let n = 0; n < 10; n++) {
+      firstTen.push(result.current.item!.card.id);
+      await act(async () => {
+        await result.current.advanceCard();
+      });
+    }
+    for (const c of coachCards) {
+      expect(firstTen).toContain(c.id);
+    }
+    unmount();
+  }, 30000);
 });
 

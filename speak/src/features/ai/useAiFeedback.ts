@@ -1,5 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import type { AiResponse } from '../../types/contract';
+import type { WatchEntry } from '../coach/pipeline';
 
 export interface AiFeedbackResult {
   summary: string;
@@ -14,6 +15,8 @@ export interface RequestAiFeedbackParams {
   drillTitle?: string;
   elapsedSec?: number;
   targetVocab?: string[];
+  /** His known mistakes. Sent as `watch` on every review_recording call, capped at 10. */
+  watch?: WatchEntry[];
   prefer?: 'gemini' | 'groq' | 'anthropic';
 }
 
@@ -122,7 +125,7 @@ export function useAiFeedback() {
           body: JSON.stringify({
             task: 'review_recording',
             prefer: params.prefer,
-            payload: { transcript },
+            payload: { transcript, watch: (params.watch ?? []).slice(0, 10) },
           }),
         });
 

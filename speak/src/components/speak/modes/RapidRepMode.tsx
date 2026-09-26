@@ -1,6 +1,7 @@
 ﻿import { useState } from 'react';
 import type { Card } from '../../../types/contract';
 import { GAMIFICATION } from '../../../types/contract';
+import { useTryWords } from '../../../features/speak/useModeCards';
 import type { CapturedAudio } from '../../../features/reset/useMissionAudio';
 import type { SpeakingAttemptResult } from '../../../features/speak/useSpeakingAttempt';
 import AudioRecorder from '../AudioRecorder';
@@ -127,6 +128,7 @@ export default function RapidRepMode({ initialCard, onClose }: RapidRepModeProps
   };
 
   const details = getPromptDetails();
+  const tryWords = useTryWords();
 
   const handleComplete = (
     audio: CapturedAudio | null,
@@ -194,6 +196,9 @@ export default function RapidRepMode({ initialCard, onClose }: RapidRepModeProps
           <div className="speak-prompt-box">
             <span className="speak-prompt-label">Prompt</span>
             <p className="speak-prompt-content">{details.prompt}</p>
+            {tryWords.length > 0 && (
+              <p className="sub">Try to use: {tryWords.join(', ')}</p>
+            )}
             <small className="speak-prompt-hint">
               Continuous stream of speech · Zero hesitation · Clean landing.
             </small>

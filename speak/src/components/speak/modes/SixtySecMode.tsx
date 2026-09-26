@@ -2,7 +2,7 @@
 import type { CapturedAudio } from '../../../features/reset/useMissionAudio';
 import type { SpeakingAttemptResult } from '../../../features/speak/useSpeakingAttempt';
 import { GAMIFICATION } from '../../../types/contract';
-import { useStoryMoveCards } from '../../../features/speak/useModeCards';
+import { useStoryMoveCards, useTryWords } from '../../../features/speak/useModeCards';
 import AudioRecorder from '../AudioRecorder';
 import PlaybackReview from '../PlaybackReview';
 
@@ -20,6 +20,7 @@ export default function SixtySecMode({ onClose }: SixtySecModeProps) {
   } | null>(null);
 
   const story = moves.current;
+  const tryWords = useTryWords();
 
   const handleComplete = (
     audio: CapturedAudio | null,
@@ -107,6 +108,9 @@ export default function SixtySecMode({ onClose }: SixtySecModeProps) {
               Apply this move in a 60 s story: {story.move}
             </p>
             <p className="sub">{story.why}</p>
+            {tryWords.length > 0 && (
+              <p className="sub">Try to use: {tryWords.join(', ')}</p>
+            )}
             {story.example && <p className="sub">Heard in: {story.example}</p>}
             <small className="speak-prompt-hint">
               15s Hook → 30s Turning Point → 15s Punchy Landing.

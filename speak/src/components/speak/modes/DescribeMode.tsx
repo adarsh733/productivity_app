@@ -2,7 +2,7 @@
 import type { CapturedAudio } from '../../../features/reset/useMissionAudio';
 import type { SpeakingAttemptResult } from '../../../features/speak/useSpeakingAttempt';
 import { GAMIFICATION } from '../../../types/contract';
-import { useDescribeCards } from '../../../features/speak/useModeCards';
+import { useDescribeCards, useTryWords } from '../../../features/speak/useModeCards';
 import AudioRecorder from '../AudioRecorder';
 import PlaybackReview from '../PlaybackReview';
 
@@ -20,6 +20,7 @@ export default function DescribeMode({ onClose }: DescribeModeProps) {
   } | null>(null);
 
   const scene = describe.current;
+  const tryWords = useTryWords();
 
   const handleComplete = (
     audio: CapturedAudio | null,
@@ -118,6 +119,9 @@ export default function DescribeMode({ onClose }: DescribeModeProps) {
               </div>
             )}
             <p className="speak-prompt-content compact">{scene.prompt}</p>
+            {tryWords.length > 0 && (
+              <p className="sub">Try to use: {tryWords.join(', ')}</p>
+            )}
             <div className="speak-story-anchors">
               {scene.beats.map((h, i) => (
                 <div key={i} className="speak-anchor-pill">

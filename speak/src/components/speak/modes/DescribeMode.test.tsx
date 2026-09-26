@@ -44,4 +44,21 @@ describe('DescribeMode Real RTL Component Suite', () => {
 
     expect(onClose).toHaveBeenCalled();
   });
+
+  it('shows up to 2 coach words as Try to use (AG-007 stage 3)', async () => {
+    await db.inbox.clear();
+    await db.inbox.bulkPut([
+      { id: 'tw-1', createdAt: 1, text: 'nuance', status: 'processed', kind: 'word', subject: 'nuance' },
+      { id: 'tw-2', createdAt: 2, text: 'trade-off', status: 'processed', kind: 'word', subject: 'trade-off' },
+      { id: 'tw-3', createdAt: 3, text: 'extra', status: 'processed', kind: 'word', subject: 'extra' },
+    ]);
+    render(<DescribeMode onClose={vi.fn()} />);
+
+    await waitFor(() => {
+      expect(screen.getByText(/Try to use/i)).toBeInTheDocument();
+    });
+    expect(screen.getByText(/extra, trade-off/i)).toBeInTheDocument();
+    expect(screen.queryByText(/nuance/)).not.toBeInTheDocument();
+    await db.inbox.clear();
+  });
 });

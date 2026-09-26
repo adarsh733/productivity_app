@@ -308,7 +308,38 @@ function buildEndless(
     fillRefill(out, cards, reviews, opts, lastType, cardsSinceLastHindi, newBudget, now);
   }
 
-  return out.slice(0, opts.limit);
+  return jumpCoachCards(out, cards, reviews, opts, now).slice(0, opts.limit);
+}
+
+// ── AG-007 stage 3: coach cards jump the queue ──────────────────────────────
+// New coach cards (`tags` include 'coach', never served, no fresh skim
+// reserve) land within the first 10 of the next feed session. Coach cards
+// that missed the chunk replace tail items; then all coach ids float front
+// (stable, cap 10). Decks without coach cards are untouched.
+function jumpCoachCards(
+  out: QueueItem[],
+  cards: readonly Card[],
+  reviews: ReadonlyMap<string, Review>,
+  opts: QueueOptions,
+  now: number,
+): QueueItem[] {
+  const isCoach = (i: QueueItem): boolean => i.card.tags.includes('coach');
+  const present = new Set(out.map((i) => i.card.id));
+  const missing: QueueItem[] = [];
+  const already = out.filter(isCoach).length;
+  for (const card of cards) {
+    if (already + missing.length >= 10) break;
+    if (present.has(card.id) || opts.seenCardIds.has(card.id)) continue;
+    if (!card.tags.includes('coach')) continue;
+    const r = reviews.get(card.id);
+    if (!isNew(r) || isSkimFresh(r, now)) continue;
+    missing.push({ card, reason: 'new' });
+  }
+  if (missing.length === 0) return out;
+  const merged = [...out, ...missing];
+  const coach = merged.filter(isCoach).slice(0, 10);
+  const rest = merged.filter((i) => !isCoach(i));
+  return [...coach, ...rest];
 }
 
 function pickCandidate(

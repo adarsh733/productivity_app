@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
-import { containsFabricatedQuote, validateAiFeedback, type AiFeedbackResult } from './useAiFeedback';
+import { act, renderHook } from '@testing-library/react';
+import { containsFabricatedQuote, useAiFeedback, validateAiFeedback, type AiFeedbackResult } from './useAiFeedback';
 
 describe('AI Coaching Feedback Suite', () => {
   it('Structured AI feedback matches contract schema when all fields are present', () => {
@@ -170,5 +171,40 @@ describe('AI Coaching Feedback Suite', () => {
       oneCorrection: 'Slow down.',
     };
     expect(containsFabricatedQuote(feedback, transcript)).toBe(false);
+  });
+
+  it('every review_recording call sends watch, capped at 10 (AG-007 stage 3)', async () => {
+    const bodies: Array<{ task: string; payload: { watch?: unknown } }> = [];
+    global.fetch = vi.fn().mockImplementation(async (_url: unknown, init: { body: string }) => {
+      bodies.push(JSON.parse(init.body));
+      return {
+        ok: true,
+        json: async () => ({
+          ok: true,
+          data: { summary: 'Crisp update.', strongPoint: 'Clean landing.', oneCorrection: 'Pause more.' },
+        }),
+      };
+    });
+
+    const { result } = renderHook(() => useAiFeedback());
+    const bigWatch = Array.from({ length: 12 }, (_, i) => ({ wrong: `wrong${i}`, right: `right${i}` }));
+    await act(async () => {
+      await result.current.requestFeedback({
+        transcript: 'This transcript has more than five spoken words in it.',
+        watch: bigWatch,
+      });
+    });
+    expect(bodies).toHaveLength(1);
+    expect(bodies[0]!.task).toBe('review_recording');
+    expect(bodies[0]!.payload.watch).toHaveLength(10);
+
+    // No watch passed → still sent, as an empty list.
+    await act(async () => {
+      await result.current.requestFeedback({
+        transcript: 'Another transcript with more than five spoken words here.',
+      });
+    });
+    expect(bodies).toHaveLength(2);
+    expect(bodies[1]!.payload.watch).toEqual([]);
   });
 });
