@@ -1,10 +1,11 @@
 import { describe, expect, it, beforeEach, afterEach } from 'vitest';
 import { renderHook, act, waitFor, cleanup } from '@testing-library/react';
-import { getTypeMultiplier } from '../../srs/queue';
+import { buildQueue, getTypeMultiplier } from '../../srs/queue';
 import { applyCardCompletion, emptyDay, isDayComplete, isPass } from '../session/day';
 import { db } from '../../db/db';
+import { addDays, todayKey } from '../../lib/date';
 import { useFeed } from './useFeed';
-import type { Card } from '../../types/contract';
+import type { Card, Review } from '../../types/contract';
 
 describe('useFeed State Machine & Logic', () => {
   it('emptyDay initializes day record with 0 completed cards, 0 spoken reps, and 0 XP', () => {
@@ -137,5 +138,111 @@ describe('useFeed endless repetition (AG-007 stage 1)', () => {
     expect(seen.size).toBe(150);
     unmount();
   }, 60000);
+});
+
+describe('useFeed markEngaged wiring (AG-007 stage 2)', () => {
+  const TYPES = [
+    'word',
+    'idiom',
+    'phrase',
+    'swap',
+    'feeling',
+    'action_verb',
+    'pronounce',
+    'say_it',
+    'story_move',
+    'situation',
+  ] as const;
+
+  beforeEach(async () => {
+    await db.cards.clear();
+    await db.reviews.clear();
+    await db.events.clear();
+    await db.days.clear();
+    await db.outbox.clear();
+    await db.profile.clear();
+    // Synthetic deck only — never asserts seed counts (AG-007 §2).
+    const cards: Card[] = Array.from({ length: 60 }, (_, i) => ({
+      id: `t-engaged-${i}`,
+      type: TYPES[i % TYPES.length]!,
+      lang: i % 8 === 7 ? 'hi' : 'en',
+      tags: [],
+      source: 'seed',
+      status: 'active',
+      createdAt: Date.now(),
+    }) as unknown as Card);
+    await db.cards.bulkPut(cards);
+  });
+
+  afterEach(() => {
+    cleanup();
+  });
+
+  it('engaged first sight grades good due tomorrow; skimmed first sight stays new with a 14-day reserve and earns no XP', async () => {
+    const { result, unmount } = renderHook(() => useFeed());
+
+    await waitFor(() => expect(result.current.ready).toBe(true), { timeout: 10000 });
+    await waitFor(() => expect(result.current.item).not.toBeNull(), { timeout: 10000 });
+
+    // markEngaged has a stable identity across renders (FeedScreen holds it in a ref).
+    const markEngagedFirst = result.current.markEngaged;
+    expect(typeof markEngagedFirst).toBe('function');
+
+    // Engaged first sight.
+    const engagedId = result.current.item!.card.id;
+    act(() => {
+      result.current.markEngaged(engagedId);
+    });
+    await act(async () => {
+      await result.current.advanceCard();
+    });
+    expect(result.current.markEngaged).toBe(markEngagedFirst);
+
+    // Skimmed first sight: served but never markEngaged before advance.
+    const skimId = result.current.item!.card.id;
+    expect(skimId).not.toBe(engagedId);
+    await act(async () => {
+      await result.current.advanceCard();
+    });
+
+    // Review rows: engaged keeps current behaviour, skim stays new with reps 0.
+    const reviews = await db.reviews.toArray();
+    const byId = new Map(reviews.map((r) => [r.cardId, r]));
+    const eng = byId.get(engagedId)!;
+    expect(eng.state).toBe('learning');
+    expect(eng.reps).toBe(1);
+    expect(eng.due).toBe(addDays(todayKey(), 1));
+    const skim = byId.get(skimId)! as Review & { skippedAt?: number };
+    expect(skim.state).toBe('new');
+    expect(skim.reps).toBe(0);
+    expect(skim.lastSeenAt).toBeDefined();
+    expect(skim.skippedAt).toBeDefined();
+
+    // XP and cards-today count the engaged card only.
+    expect(result.current.todayXp).toBe(1);
+    expect(result.current.cardsToday).toBe(1);
+
+    // Queue: the skimmed card is not served as new again within 14 days,
+    // while the engaged card is scheduled as due tomorrow.
+    const cards = await db.cards.toArray();
+    const baseOpts = {
+      seenCardIds: new Set<string>(),
+      breathServedToday: 0,
+      newServedToday: 0,
+      limit: 60,
+      mode: 'endless' as const,
+    };
+    const freshQueue = buildQueue(cards, byId, { ...baseOpts, today: todayKey() }, Date.now());
+    expect(freshQueue.map((i) => i.card.id)).not.toContain(skimId);
+    const tomorrowQueue = buildQueue(
+      cards,
+      byId,
+      { ...baseOpts, today: addDays(todayKey(), 1) },
+      Date.now(),
+    );
+    expect(tomorrowQueue.find((i) => i.card.id === engagedId)?.reason).toBe('due');
+
+    unmount();
+  }, 30000);
 });
 

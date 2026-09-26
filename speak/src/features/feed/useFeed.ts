@@ -12,7 +12,7 @@ import type {
 } from '../../types/contract';
 import { GAMIFICATION } from '../../types/contract';
 import { db, enqueue } from '../../db/db';
-import { buildQueue } from '../../srs/queue';
+import { buildQueue, skimReview } from '../../srs/queue';
 import { grade, newReview } from '../../srs/scheduler';
 import { applyCardView, currentStreak, emptyDay } from '../session/day';
 import { todayKey } from '../../lib/date';
@@ -47,6 +47,13 @@ export interface FeedApi {
   todayXp: number;
   canGoBack: boolean;
   setMode(mode: FeedMode): void;
+  /**
+   * Mark a card engaged for this session (AG-007 stage 2): ≥ 4 s on screen,
+   * opened/flipped/detail, saved, spoken ("say it" rep), or graded.
+   * FeedScreen calls this; `advanceCard` reads it to decide engaged vs skim
+   * first-sight scheduling. Stable identity across renders.
+   */
+  markEngaged(cardId: string): void;
   advanceCard(opts?: { msSpent?: number }): Promise<void>;
   submit(grade?: Grade, opts?: { msSpent?: number; measure?: number }): Promise<void>;
   downvoteCard(card: Card): Promise<void>;
@@ -68,6 +75,7 @@ export function useFeed(_initialMode: FeedMode = 'endless'): FeedApi {
   const reviewsRef = useRef<Map<string, Review>>(new Map());
   const profileRef = useRef<Profile | null>(null);
   const seenTodayRef = useRef<Set<string>>(new Set());
+  const engagedIdsRef = useRef<Set<string>>(new Set());
   const breathTodayRef = useRef(0);
   const newTodayRef = useRef(0);
   const today = todayKey();
@@ -138,6 +146,14 @@ export function useFeed(_initialMode: FeedMode = 'endless'): FeedApi {
 
   const setMode = useCallback((_m: FeedMode) => {}, []);
 
+  // ── engagement (AG-007 stage 2) ───────────────────────────────────────────
+  // Session-long set of card ids FeedScreen reported as engaged. `advanceCard`
+  // consumes the flag for the card leaving the screen, so a re-served card
+  // needs a fresh signal. Stable identity: FeedScreen holds it in a ref.
+  const markEngaged = useCallback((cardId: string) => {
+    engagedIdsRef.current.add(cardId);
+  }, []);
+
   // ── downweighting ─────────────────────────────────────────────────────────
   const downvoteCard = useCallback(
     async (card: Card) => {
@@ -199,8 +215,13 @@ export function useFeed(_initialMode: FeedMode = 'endless'): FeedApi {
   );
 
   // ── card view advancement ─────────────────────────────────────────────────
-  // First sighting: create newReview + grade `good` (back tomorrow). Never ask
-  // him to grade a first meeting. Due returns are graded via submit().
+  // Engaged first sight: current behaviour — newReview + grade `good` (due
+  // tomorrow). Never ask him to grade a first meeting.
+  // Skimmed first sight (served but never markEngaged before advance): review
+  // stays `new`, reps 0, lastSeenAt + skippedAt = now, so queue.ts withholds
+  // it as new for 14 days. A re-served skim that later engages graduates to
+  // the good-graded path; a re-skim refreshes the 14-day reserve.
+  // XP and cards-today count engaged cards only (via applyCardView).
   const advanceCard = useCallback(
     async (opts?: { msSpent?: number }) => {
       const current = queue[position];
@@ -208,13 +229,15 @@ export function useFeed(_initialMode: FeedMode = 'endless'): FeedApi {
 
       const card = current.card;
       const now = Date.now();
+      const engaged = engagedIdsRef.current.has(card.id);
+      engagedIdsRef.current.delete(card.id);
 
       // 1. Calculate XP and unique card tracking using domain function
       const { day: nextDay, isUnique } = applyCardView(
         day,
         card.id,
         seenTodayRef.current,
-        { msSpent: opts?.msSpent },
+        { msSpent: opts?.msSpent, engaged },
       );
 
       seenTodayRef.current.add(card.id);
@@ -237,18 +260,27 @@ export function useFeed(_initialMode: FeedMode = 'endless'): FeedApi {
       };
 
       const existingReview = reviewsRef.current.get(card.id);
-      const isFirstSight = !existingReview || (existingReview.state === 'new' && existingReview.reps === 0 && !existingReview.lastSeenAt);
+      // Unlearned = never graded into the schedule (fresh, or a skim that
+      // came back after its reserve and still has reps 0).
+      const isUnlearned =
+        !existingReview ||
+        (existingReview.state === 'new' && existingReview.reps === 0);
 
       await db.transaction('rw', db.events, db.days, db.reviews, db.outbox, async () => {
         await db.events.put(event as any);
         await db.days.put(nextDay);
         await enqueue('events', event.id);
         await enqueue('days', nextDay.date);
-        if (isFirstSight) {
+        if (isUnlearned && engaged) {
           const { review } = grade(newReview(card.id, today), 'good', today, now);
           await db.reviews.put(review);
           await enqueue('reviews', card.id);
           reviewsRef.current.set(card.id, review);
+        } else if (isUnlearned && !engaged) {
+          const skimmed = skimReview(card.id, today, now);
+          await db.reviews.put(skimmed);
+          await enqueue('reviews', card.id);
+          reviewsRef.current.set(card.id, skimmed);
         } else if (existingReview && !existingReview.lastSeenAt) {
           const touched: Review = { ...existingReview, lastSeenAt: now };
           await db.reviews.put(touched);
@@ -376,6 +408,7 @@ export function useFeed(_initialMode: FeedMode = 'endless'): FeedApi {
     todayXp: day.xp ?? 0,
     canGoBack: position > 0,
     setMode,
+    markEngaged,
     advanceCard,
     submit,
     downvoteCard,
