@@ -1,7 +1,15 @@
-import { useEffect, useState } from 'react';
-import type { Card } from '../../types/contract';
-import { db } from '../../db/db';
-import { todayKey } from '../../lib/date';
+import { useState } from 'react';
+import type { Card, ChallengeResult as ChallengeResultData } from '../../types/contract';
+import { useDailyChallenge } from '../../features/challenge/useDailyChallenge';
+import {
+  saveChallengeResult,
+  useSpeakOverview,
+} from '../../features/speak/useSpeakOverview';
+import type { SpeakingAttemptResult } from '../../features/speak/useSpeakingAttempt';
+import type { CapturedAudio } from '../../features/reset/useMissionAudio';
+import ChallengeCard from './ChallengeCard';
+import ChallengeResultView from './ChallengeResult';
+import AudioRecorder from './AudioRecorder';
 import RapidRepMode from './modes/RapidRepMode';
 import SixtySecMode from './modes/SixtySecMode';
 import IncidentMode from './modes/IncidentMode';
@@ -25,150 +33,396 @@ export interface SpeakScreenProps {
   onCloseDrill?: () => void;
 }
 
-export type SpeakModeId =
+type SpeakView =
   | 'rapid'
   | 'story'
   | 'incident'
   | 'describe'
   | 'explain'
   | 'teachback'
-  | 'routine';
+  | 'routine'
+  | 'challenge'
+  | 'soft'
+  | 'ladder'
+  | 'hold'
+  | 'pause'
+  | 'pacer'
+  | 'palette'
+  | 'weekly'
+  | 'normvoice';
+
+interface TalkRow {
+  view: SpeakView;
+  title: string;
+  time: string;
+  xp: number;
+  help: string;
+}
+
+interface PracticeRow {
+  view: SpeakView;
+  title: string;
+  time: string;
+  help: string;
+}
+
+/** Plain words only — no MPT, dB, calibrate, ms, or WPM anywhere here. */
+const TELL_A_STORY: TalkRow[] = [
+  {
+    view: 'incident',
+    title: 'Situations',
+    time: '45s',
+    xp: 10,
+    help: 'Talk through a real-life moment: a call, a feeling, or your view.',
+  },
+  {
+    view: 'story',
+    title: '60-second story',
+    time: '60s',
+    xp: 10,
+    help: 'A tiny story with a start, a turn, and an ending — in one minute.',
+  },
+  {
+    view: 'describe',
+    title: 'Describe what you see',
+    time: '45s',
+    xp: 25,
+    help: 'Describe a scene in words so someone else can picture it.',
+  },
+];
+
+const EXPLAIN: TalkRow[] = [
+  {
+    view: 'explain',
+    title: 'Explain an idea',
+    time: '60s',
+    xp: 10,
+    help: 'Read a short primer, then explain the idea in simple words.',
+  },
+  {
+    view: 'teachback',
+    title: 'Teach it back',
+    time: '60s',
+    xp: 10,
+    help: 'Explain something you learned, like teaching a friend.',
+  },
+];
+
+const QUICK_TALK: TalkRow[] = [
+  {
+    view: 'rapid',
+    title: 'Rapid rep',
+    time: '30s',
+    xp: 10,
+    help: 'One short prompt. Keep talking without stopping.',
+  },
+];
+
+/** Plain-words doors to the six voice drills + breath test + normal-voice setup. */
+const QUICK_DRILLS: PracticeRow[] = [
+  { view: 'soft', title: 'Speak softly', time: '2 min', help: 'Hold a soft voice for four short lines.' },
+  { view: 'ladder', title: 'Loud-to-soft ladder', time: '3 min', help: 'Say one line five times, from loud down to soft and back.' },
+  { view: 'hold', title: 'Long soft hold', time: 'up to 60 sec', help: 'Hold a soft voiced sound as long as you can. Never whisper.' },
+  { view: 'pause', title: 'Pause, don\u2019t push', time: '2 min', help: 'Stress one word with a short pause (a third of a second), not loudness.' },
+  { view: 'pacer', title: 'Steady speed reader', time: '2 min', help: 'Read as words light up at your target speed in words per minute.' },
+  { view: 'palette', title: 'Say it two ways', time: '1 min', help: 'One line in two moods. No score — just listen back.' },
+  { view: 'weekly', title: 'Weekly breath-hold test', time: 'once a week', help: 'Say \u201Caaah\u201D at normal volume, then soft. Best of three.' },
+  { view: 'normvoice', title: 'Set your normal voice', time: 'one time', help: 'Teach the app how loud your normal voice is, so meters match you.' },
+];
+
+function challengeHint(voiceGoal: 'softer' | 'slower' | 'pause_first'): string {
+  if (voiceGoal === 'softer') return 'Keep it soft.';
+  if (voiceGoal === 'slower') return 'Slow and clear.';
+  return 'Pause between ideas.';
+}
+
+function RowButton({
+  title,
+  time,
+  xp,
+  help,
+  onOpen,
+}: {
+  title: string;
+  time: string;
+  xp?: number;
+  help: string;
+  onOpen: () => void;
+}) {
+  const label = xp === undefined ? `${title}, ${time}` : `${title}, ${time}, +${xp} XP`;
+  return (
+    <div
+      className="row tap speak-mode-card"
+      role="button"
+      tabIndex={0}
+      onClick={onOpen}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onOpen();
+        }
+      }}
+      aria-label={label}
+    >
+      <div className="t">
+        <div className="speak-mode-row-top">
+          <b>{title}</b>
+          <span className="badge b-pace speak-time-badge">{time}</span>
+          {xp !== undefined && <span className="speak-xp-reward-tag">+{xp} XP</span>}
+        </div>
+        <small className="speak-mode-desc">{help}</small>
+      </div>
+      <span className="arw" aria-hidden="true">
+        ›
+      </span>
+    </div>
+  );
+}
+
+function BackButton({ onBack }: { onBack: () => void }) {
+  return (
+    <button type="button" className="tap" onClick={onBack} aria-label="Back to Speak">
+      ← Back
+    </button>
+  );
+}
 
 export default function SpeakScreen({ initialCard, onCloseDrill }: SpeakScreenProps) {
-  const [activeMode, setActiveMode] = useState<SpeakModeId | null>(
-    initialCard ? 'rapid' : null,
-  );
-  const [routineDays, setRoutineDays] = useState(0);
-  const [doneToday, setDoneToday] = useState(false);
+  const [active, setActive] = useState<SpeakView | null>(initialCard ? 'rapid' : null);
+  const overview = useSpeakOverview();
+  const { challenge, loading: challengeLoading } = useDailyChallenge();
+  const [savedResult, setSavedResult] = useState<ChallengeResultData | null>(null);
+  const [saving, setSaving] = useState(false);
 
-  useEffect(() => {
-    if (initialCard) {
-      setActiveMode('rapid');
-    }
-  }, [initialCard]);
+  const backToMenu = () => {
+    setActive(null);
+  };
 
-  useEffect(() => {
-    void db.days.toArray().then((days) => {
-      const done = days.filter((d) => d.labSessionDone).length;
-      setRoutineDays(done);
-      setDoneToday(days.some((d) => d.date === todayKey() && d.labSessionDone));
-    });
-  }, [activeMode]);
-
-  const handleClose = () => {
-    setActiveMode(null);
+  const handleCloseMode = () => {
+    setActive(null);
     onCloseDrill?.();
   };
 
-  if (activeMode === 'rapid') {
-    return <RapidRepMode initialCard={initialCard} onClose={handleClose} />;
+  const handleChallengeComplete = (
+    _audio: CapturedAudio | null,
+    _elapsedSec: number,
+    _transcript?: string,
+    result?: SpeakingAttemptResult,
+  ) => {
+    if (!challenge || !result) return;
+    setSaving(true);
+    void saveChallengeResult(challenge, result)
+      .then((graded) => {
+        setSavedResult(graded);
+        overview.refresh();
+      })
+      .catch(() => {
+        setSavedResult(null);
+      })
+      .finally(() => {
+        setSaving(false);
+      });
+  };
+
+  // ── Drill / mode detail views ─────────────────────────────────────────────
+  if (active === 'rapid') {
+    return <RapidRepMode initialCard={initialCard} onClose={handleCloseMode} />;
   }
-  if (activeMode === 'story') {
-    return <SixtySecMode onClose={handleClose} />;
+  if (active === 'story') {
+    return <SixtySecMode onClose={handleCloseMode} />;
   }
-  if (activeMode === 'incident') {
-    return <IncidentMode onClose={handleClose} />;
+  if (active === 'incident') {
+    return <IncidentMode onClose={handleCloseMode} />;
   }
-  if (activeMode === 'describe') {
-    return <DescribeMode onClose={handleClose} />;
+  if (active === 'describe') {
+    return <DescribeMode onClose={handleCloseMode} />;
   }
-  if (activeMode === 'explain') {
-    return <ExplainMode onClose={handleClose} />;
+  if (active === 'explain') {
+    return <ExplainMode onClose={handleCloseMode} />;
   }
-  if (activeMode === 'teachback') {
-    return <TeachBackMode onClose={handleClose} />;
+  if (active === 'teachback') {
+    return <TeachBackMode onClose={handleCloseMode} />;
   }
-  if (activeMode === 'routine') {
-    return <SessionRunner onClose={handleClose} />;
+  if (active === 'routine') {
+    return <SessionRunner onClose={handleCloseMode} />;
   }
 
-  const MODES: Array<{ id: SpeakModeId; icon: string; title: string; time: string; desc: string; xp: number }> = [
-    { id: 'rapid', icon: '⚡', title: 'Rapid Rep', time: '30s', desc: 'One prompt. Continuous speech without hesitation.', xp: 10 },
-    { id: 'story', icon: '📚', title: '60-Second Story', time: '60s', desc: 'Hook, turning point, landing in one minute.', xp: 10 },
-    { id: 'incident', icon: '🚨', title: 'Situations', time: '45s', desc: 'Incidents, office calls, feelings, opinions, life stories.', xp: 10 },
-    { id: 'describe', icon: '🎨', title: 'Describe This', time: '45s', desc: 'Paint a scene with sensory, concrete words.', xp: 25 },
-    { id: 'explain', icon: '💡', title: 'Explain an idea', time: '60s', desc: 'Read the primer, then explain the angle.', xp: 10 },
-    { id: 'teachback', icon: '🎓', title: 'Teach it back', time: '60s', desc: 'Explain back something you learned.', xp: 10 },
-  ];
+  if (active === 'challenge' && challenge) {
+    return (
+      <div className="screen speak-screen">
+        <BackButton onBack={backToMenu} />
+        <header className="speak-header">
+          <p className="kicker">Today&apos;s challenge</p>
+          <h1 className="h1s">{challenge.title}</h1>
+          <p className="sub speak-header-sub">
+            {challengeHint(challenge.voiceGoal)} About {challenge.targetSec} seconds. One try
+            counts.
+          </p>
+        </header>
+        {savedResult ? (
+          <>
+            <ChallengeResultView challenge={challenge} result={savedResult} />
+            <button type="button" className="prim tap" onClick={backToMenu}>
+              Done — back to Speak
+            </button>
+          </>
+        ) : saving ? (
+          <p className="sub">Saving your try…</p>
+        ) : (
+          <AudioRecorder
+            durationSec={challenge.targetSec}
+            targetVocab={challenge.useWord ? [challenge.useWord] : undefined}
+            onComplete={handleChallengeComplete}
+            onCancel={backToMenu}
+          />
+        )}
+      </div>
+    );
+  }
 
+  const drillDetail: Record<string, { title: string; help: string; node: React.ReactNode }> = {
+    soft: { title: 'Speak softly', help: 'Hold a soft voice for four short lines.', node: <QuietVoiceDrill /> },
+    ladder: { title: 'Loud-to-soft ladder', help: 'Say one line five times, from loud down to soft and back.', node: <VolumeLadderDrill /> },
+    hold: { title: 'Long soft hold', help: 'Hold a soft voiced sound as long as you can. Never whisper.', node: <Level1HoldDrill /> },
+    pause: { title: 'Pause, don\u2019t push', help: 'Stress one word with a short pause (a third of a second), not loudness.', node: <PauseDrill /> },
+    pacer: { title: 'Steady speed reader', help: 'Read as words light up at your target speed in words per minute.', node: <PacerDrill /> },
+    palette: { title: 'Say it two ways', help: 'One line in two moods. No score — just listen back.', node: <PaletteDrill /> },
+    weekly: { title: 'Weekly breath-hold test', help: 'Say \u201Caaah\u201D at normal volume, then soft. Best of three.', node: <WeeklyCheck /> },
+    normvoice: { title: 'Set your normal voice', help: 'Teach the app how loud your normal voice is, so meters match you.', node: <MicCalibrationRow /> },
+  };
+  const detail = active !== null ? drillDetail[active] : undefined;
+  if (detail) {
+    return (
+      <div className="screen speak-screen">
+        <BackButton onBack={backToMenu} />
+        <header className="speak-header">
+          <h1 className="h1s">{detail.title}</h1>
+          <p className="sub speak-header-sub">{detail.help}</p>
+        </header>
+        {detail.node}
+      </div>
+    );
+  }
+
+  // ── Main menu: Today card + 3 groups ──────────────────────────────────────
   return (
     <div className="screen speak-screen">
       <header className="speak-header">
         <h1 className="h1s">Speak</h1>
         <p className="sub speak-header-sub">
-          Timed speaking reps. Always measured with real audio.
+          Short speaking reps. The mic is optional — everything here works silent too.
         </p>
       </header>
 
-      <section className="you-section">
+      <section className="you-section" aria-label="Today">
+        {challengeLoading || !challenge ? (
+          <div className="card" aria-label="Today's challenge">
+            <p className="kicker">Today</p>
+            <p className="sub">Loading today&apos;s challenge…</p>
+          </div>
+        ) : (
+          <>
+            <ChallengeCard
+              challenge={challenge}
+              done={overview.challengeDone}
+              onStart={() => {
+                setSavedResult(overview.challengeResult);
+                setActive('challenge');
+              }}
+            />
+            {(savedResult ?? overview.challengeResult) && (
+              <ChallengeResultView
+                challenge={challenge}
+                result={(savedResult ?? overview.challengeResult)!}
+              />
+            )}
+          </>
+        )}
         <div
           className="row tap"
           role="button"
           tabIndex={0}
-          onClick={() => setActiveMode('routine')}
+          onClick={() => setActive('routine')}
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
-              setActiveMode('routine');
+              setActive('routine');
             }
           }}
-          aria-label={`12-minute voice routine, day ${routineDays + 1}`}
+          aria-label={`12-minute voice routine, day ${overview.routineDays + 1}`}
         >
-          <span className="g" aria-hidden="true">🎙️</span>
+          <span className="g" aria-hidden="true">
+            🎙️
+          </span>
           <div className="t">
-            <b>12-minute voice routine · Day {routineDays + 1} {doneToday && <span aria-label="done">✓</span>}</b>
-            <small>Release → straw work + transfer → volume ladder → resonance → pause and tone.</small>
+            <b>
+              12-minute voice routine · Day {overview.routineDays + 1}{' '}
+              {overview.routineDoneToday && <span aria-label="done">✓</span>}
+            </b>
+            <small>Loosen up, hum, glide loud to soft, then pause and tone.</small>
           </div>
-          <span className="arw" aria-hidden="true">›</span>
+          <span className="arw" aria-hidden="true">
+            ›
+          </span>
         </div>
       </section>
 
-      <section className="you-section">
-        <b>Quick voice drills</b>
-        <QuietVoiceDrill />
-        <VolumeLadderDrill />
-        <Level1HoldDrill />
-        <PauseDrill />
-        <PacerDrill />
-        <PaletteDrill />
-      </section>
-
-      <WeeklyCheck />
-
-      <section className="you-section">
-        <b>Talk it out</b>
+      <section className="you-section" aria-label="Tell a story">
+        <b>Tell a story</b>
         <div className="speak-modes-list">
-          {MODES.map((m) => (
-            <div
-              key={m.id}
-              className="row tap speak-mode-card"
-              role="button"
-              tabIndex={0}
-              onClick={() => setActiveMode(m.id)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  setActiveMode(m.id);
-                }
-              }}
-              aria-label={`${m.title}, ${m.time}, +${m.xp} XP`}
-            >
-              <span className="g" aria-hidden="true">{m.icon}</span>
-              <div className="t">
-                <div className="speak-mode-row-top">
-                  <b>{m.title}</b>
-                  <span className="badge b-pace speak-time-badge">{m.time}</span>
-                  <span className="speak-xp-reward-tag">+{m.xp} XP</span>
-                </div>
-                <small className="speak-mode-desc">{m.desc}</small>
-              </div>
-              <span className="arw" aria-hidden="true">›</span>
-            </div>
+          {TELL_A_STORY.map((m) => (
+            <RowButton
+              key={m.view}
+              title={m.title}
+              time={m.time}
+              xp={m.xp}
+              help={m.help}
+              onOpen={() => setActive(m.view)}
+            />
           ))}
         </div>
       </section>
 
-      <MicCalibrationRow />
+      <section className="you-section" aria-label="Explain an idea">
+        <b>Explain an idea</b>
+        <div className="speak-modes-list">
+          {EXPLAIN.map((m) => (
+            <RowButton
+              key={m.view}
+              title={m.title}
+              time={m.time}
+              xp={m.xp}
+              help={m.help}
+              onOpen={() => setActive(m.view)}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section className="you-section" aria-label="Quick practice">
+        <b>Quick practice</b>
+        <div className="speak-modes-list">
+          {QUICK_TALK.map((m) => (
+            <RowButton
+              key={m.view}
+              title={m.title}
+              time={m.time}
+              xp={m.xp}
+              help={m.help}
+              onOpen={() => setActive(m.view)}
+            />
+          ))}
+          {QUICK_DRILLS.map((d) => (
+            <RowButton
+              key={d.view}
+              title={d.title}
+              time={d.time}
+              help={d.help}
+              onOpen={() => setActive(d.view)}
+            />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
