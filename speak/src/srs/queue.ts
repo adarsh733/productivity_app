@@ -1,7 +1,9 @@
 import type {
   Card,
   CardType,
+  DayKey,
   DownweightRecord,
+  Millis,
   QueueItem,
   QueueOptions,
   QueueReason,
@@ -9,6 +11,7 @@ import type {
 } from '../types/contract';
 import { QUEUE_RULES } from '../types/contract';
 import { isDue } from '../lib/date';
+import { newReview } from './scheduler';
 
 /**
  * V3 Endless Feed Queue Engine
@@ -64,6 +67,43 @@ interface PoolCandidate {
 
 function isNew(review: Review | undefined): boolean {
   return review === undefined || (review.state === 'new' && review.reps === 0);
+}
+
+// ── AG-007 stage 2: engaged-only repetition ─────────────────────────────────
+// A first sighting with no engagement (skimmed past) leaves the review `new`
+// with `reps: 0` plus `lastSeenAt`/`skippedAt`. The queue then withholds the
+// card from the `new` pool for 14 days instead of counting it as learned.
+//
+// NOTE: `skippedAt` is intentionally NOT added to the contract `Review` type
+// (contract changes are out of scope for this pass), so it travels as an
+// optional extra field on the stored review row. IndexedDB/Dexie keeps
+// unknown fields on put; nothing else reads review rows positionally.
+
+/** A skimmed card is not served as new again for this long. */
+export const SKIP_RESERVE_DAYS = 14;
+
+export const SKIP_RESERVE_MS = SKIP_RESERVE_DAYS * 86_400_000;
+
+/** `Review` plus the AG-007 stage 2 skim marker (see note above). */
+export type ReviewWithSkip = Review & { skippedAt?: Millis };
+
+export function getSkippedAt(review: Review | undefined): Millis | undefined {
+  return (review as ReviewWithSkip | undefined)?.skippedAt;
+}
+
+/** True when the review is a fresh skim still inside its 14-day reserve. */
+export function isSkimFresh(review: Review | undefined, now: number = Date.now()): boolean {
+  const skippedAt = getSkippedAt(review);
+  if (skippedAt === undefined) return false;
+  return now - skippedAt < SKIP_RESERVE_MS;
+}
+
+/**
+ * Pure constructor for a skimmed first sighting: stays `new`, `reps: 0`,
+ * `lastSeenAt` + `skippedAt` = now. Not "learned".
+ */
+export function skimReview(cardId: string, today: DayKey, now: number = Date.now()): Review {
+  return { ...newReview(cardId, today), lastSeenAt: now, skippedAt: now } as Review;
 }
 
 export function getCardMultiplier(
@@ -172,6 +212,7 @@ export function buildQueue(
   cards: readonly Card[],
   reviews: ReadonlyMap<string, Review>,
   opts: QueueOptions,
+  now: number = Date.now(),
 ): QueueItem[] {
   if (opts.limit <= 0) return [];
 
@@ -181,13 +222,14 @@ export function buildQueue(
   );
   if (eligible.length === 0) return [];
 
-  return buildEndless(eligible, reviews, opts);
+  return buildEndless(eligible, reviews, opts, now);
 }
 
 function buildEndless(
   cards: readonly Card[],
   reviews: ReadonlyMap<string, Review>,
   opts: QueueOptions,
+  now: number,
 ): QueueItem[] {
   let newBudget = Math.max(0, QUEUE_RULES.MAX_NEW_PER_DAY - opts.newServedToday);
 
@@ -198,7 +240,7 @@ function buildEndless(
     const dailyScore = dayCardHash(card.id, opts.today);
     if (r && !isNew(r) && isDue(r.due, opts.today)) {
       pool.push({ card, reason: 'due', tier: TIER_DUE, rank: -r.lapses, dailyScore });
-    } else if (isNew(r)) {
+    } else if (isNew(r) && !isSkimFresh(r, now)) {
       pool.push({ card, reason: 'new', tier: TIER_NEW, rank: 0, dailyScore });
     }
   }
@@ -263,7 +305,7 @@ function buildEndless(
   }
 
   if (out.length < opts.limit) {
-    fillRefill(out, cards, reviews, opts, lastType, cardsSinceLastHindi, newBudget);
+    fillRefill(out, cards, reviews, opts, lastType, cardsSinceLastHindi, newBudget, now);
   }
 
   return out.slice(0, opts.limit);
@@ -359,10 +401,19 @@ function fillRefill(
   lastTypeIn: CardType | null,
   initialCardsSinceHindi: number,
   initialNewBudget: number,
+  now: number,
 ): void {
   let newBudget = initialNewBudget;
 
-  const pool = cards
+  // Fresh skims stay out of the refill ring while anything else remains, so a
+  // card skimmed today does not sneak back in as filler. Falls back to the
+  // full set when every card is a fresh skim — the feed never dead-ends.
+  const activeCards =
+    cards.filter((c) => !isSkimFresh(reviews.get(c.id), now)).length > 0
+      ? cards.filter((c) => !isSkimFresh(reviews.get(c.id), now))
+      : cards;
+
+  const pool = activeCards
     .map((c) => {
       const r = reviews.get(c.id);
       const isCardNew = isNew(r);

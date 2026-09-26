@@ -206,7 +206,7 @@ describe('XP Rules & Anti-Farming', () => {
     let day = emptyDay('2026-08-26');
     const seen = new Set<string>();
     for (let i = 0; i < 10; i++) {
-      const res = applyCardView(day, `card-${i}`, seen, { msSpent: 5000 });
+      const res = applyCardView(day, `card-${i}`, seen, { msSpent: 5000, engaged: true });
       seen.add(`card-${i}`);
       day = res.day;
     }
@@ -214,6 +214,47 @@ describe('XP Rules & Anti-Farming', () => {
     expect(day.spokenReps).toBe(0);
     expect(day.xp).toBe(10);
     expect(isDayComplete(day)).toBe(true);
+  });
+});
+
+describe('Engaged-only XP and streak (AG-007 stage 2)', () => {
+  it('a skimmed view earns 0 XP and does not advance cards today', () => {
+    const day = emptyDay('2026-08-26');
+    const res = applyCardView(day, 'card-A', new Set(), { msSpent: 1500, engaged: false });
+    expect(res.isUnique).toBe(false);
+    expect(res.xpEarned).toBe(0);
+    expect(res.day.xp).toBe(0);
+    expect(res.day.cardsCompleted).toBe(0);
+    // Active seconds still accrue — he did spend the time.
+    expect(res.day.secondsActive).toBe(2);
+  });
+
+  it('ten skims never complete the day; five engaged cards do', () => {
+    let day = emptyDay('2026-08-26');
+    const seen = new Set<string>();
+    for (let i = 0; i < 10; i++) {
+      const res = applyCardView(day, `skim-${i}`, seen, { msSpent: 1000, engaged: false });
+      day = res.day;
+    }
+    expect(day.cardsCompleted).toBe(0);
+    expect(day.xp).toBe(0);
+    expect(isDayComplete(day)).toBe(false);
+
+    for (let i = 0; i < 5; i++) {
+      const res = applyCardView(day, `eng-${i}`, seen, { msSpent: 5000, engaged: true });
+      seen.add(`eng-${i}`);
+      day = res.day;
+    }
+    expect(day.cardsCompleted).toBe(5);
+    expect(day.xp).toBe(5);
+    expect(isDayComplete(day)).toBe(true);
+  });
+
+  it('engagement defaults to counted when the caller cannot measure it', () => {
+    const day = emptyDay('2026-08-26');
+    const res = applyCardView(day, 'card-A', new Set());
+    expect(res.isUnique).toBe(true);
+    expect(res.xpEarned).toBe(GAMIFICATION.XP.cardSeen);
   });
 });
 

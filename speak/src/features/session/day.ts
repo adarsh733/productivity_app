@@ -15,6 +15,8 @@ import { db, enqueue, saveRecording } from '../../db/db';
  * definition of "a day counts".
  *
  * A day counts if: cardsCompleted >= 5 OR (spokenReps ?? 0) >= 1.
+ * `cardsCompleted` counts engaged cards only (AG-007 stage 2) — skims never
+ * reach it, so the streak rule ("5 cards") counts engaged cards.
  * A 30-second day at 11:50 PM is a full day.
  */
 
@@ -40,21 +42,30 @@ export function isPass(grade: Grade): boolean {
 }
 
 /**
- * Viewing a card:
- * - 1 XP per UNIQUE card viewed per day (GAMIFICATION.XP.cardSeen = 1).
+ * An ENGAGED card view (AG-007 stage 2):
+ * - 1 XP per UNIQUE engaged card per day (GAMIFICATION.XP.cardSeen = 1).
  * - Repeated views of the same card on the same day earn view XP once.
- * - Active seconds are always accumulated.
+ * - Skimmed views (scrolled past a new card without engaging) earn nothing
+ *   and do NOT advance `cardsCompleted` — XP, "cards today" and the streak
+ *   rule ("5 cards") all count engaged cards only.
+ * - Active seconds are always accumulated (he did spend the time).
  * - Spoken reps are NEVER incremented by browsing.
+ *
+ * `engaged` defaults to true so callers that cannot measure engagement
+ * (browse deck opens — an explicit open — and the legacy wrapper below) keep
+ * counting. The feed passes measured engagement explicitly.
  */
 export function applyCardView(
   day: DayRecord,
   cardId: string,
   seenCardIdsToday: ReadonlySet<string>,
-  opts?: { msSpent?: number },
+  opts?: { msSpent?: number; engaged?: boolean },
 ): { day: DayRecord; isUnique: boolean; xpEarned: number } {
+  const engaged = opts?.engaged ?? true;
   const isAlreadySeen = seenCardIdsToday.has(cardId);
-  const nextCards = isAlreadySeen ? day.cardsCompleted : day.cardsCompleted + 1;
-  const xpEarned = isAlreadySeen ? 0 : GAMIFICATION.XP.cardSeen;
+  const counts = engaged && !isAlreadySeen;
+  const nextCards = counts ? day.cardsCompleted + 1 : day.cardsCompleted;
+  const xpEarned = counts ? GAMIFICATION.XP.cardSeen : 0;
   const nextXp = (day.xp ?? 0) + xpEarned;
   const nextSeconds = day.secondsActive + Math.round((opts?.msSpent ?? 0) / 1000);
 
@@ -71,17 +82,22 @@ export function applyCardView(
     }),
   };
 
-  return { day: updated, isUnique: !isAlreadySeen, xpEarned };
+  return { day: updated, isUnique: counts, xpEarned };
 }
 
 /**
  * Legacy wrapper for backwards compatibility with tests that don't pass seen sets.
+ * Counts as engaged (pre-AG-007-stage-2 semantics): the feed passes measured
+ * engagement via `applyCardView` directly.
  */
 export function applyCardCompletion(
   day: DayRecord,
   opts?: { msSpent?: number },
 ): DayRecord {
-  return applyCardView(day, `legacy-${Date.now()}-${Math.random()}`, new Set(), opts).day;
+  return applyCardView(day, `legacy-${Date.now()}-${Math.random()}`, new Set(), {
+    msSpent: opts?.msSpent,
+    engaged: true,
+  }).day;
 }
 
 /**

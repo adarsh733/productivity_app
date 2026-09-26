@@ -31,11 +31,29 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
   const cardId = card?.id;
   const bookmarked = cardId ? isBookmarked(cardId) : false;
 
+  // AG-007 stage 2: engaged-only repetition. Engagement state lives in the
+  // feed hook (`markEngaged`, landing with the useFeed pass); this screen
+  // reports every engagement signal it can see — 4 s on screen, flip, save,
+  // say-it, grade — through an optional call so the screen stays green before
+  // and after the hook lands.
+  const feedRef = useRef(feed);
+  feedRef.current = feed;
+  const markEngaged = (id: string) => {
+    (feedRef.current as unknown as { markEngaged?: (cardId: string) => void }).markEngaged?.(id);
+  };
+
   // Reset detail on card change
   useEffect(() => {
     shownAt.current = Date.now();
     setIsDetail(false);
     busy.current = false;
+  }, [cardId]);
+
+  // ≥ 4 s on screen counts as engaged.
+  useEffect(() => {
+    if (!cardId) return;
+    const timer = setTimeout(() => markEngaged(cardId), 4000);
+    return () => clearTimeout(timer);
   }, [cardId]);
 
   const { ready, todayXp } = feed;
@@ -67,6 +85,7 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
     try {
       const res = await toggleBookmark(card.id, card.type);
       if (res.isBookmarked) {
+        markEngaged(card.id);
         showToast(res.xpEarned > 0 ? `Saved to You (+${res.xpEarned} XP)` : 'Saved to You');
       } else {
         showToast('Bookmark removed');
@@ -95,9 +114,10 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
   const handleGrade = useCallback(async (g: 'again' | 'good') => {
     if (busy.current) return;
     busy.current = true;
+    if (cardId) markEngaged(cardId);
     const msSpent = Date.now() - shownAt.current;
     await feed.submit(g, { msSpent });
-  }, [feed]);
+  }, [feed, cardId]);
 
   const handleDownvote = useCallback(async () => {
     if (busy.current) return;
@@ -223,7 +243,10 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
         <CardFace
           card={feed.item.card}
           isDetail={isDetail}
-          onToggleDetail={() => setIsDetail((d) => !d)}
+          onToggleDetail={() => {
+            if (cardId) markEngaged(cardId);
+            setIsDetail((d) => !d);
+          }}
           showSwipeHint={showHint}
         />
       </div>
@@ -252,7 +275,10 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
           <button
             type="button"
             className="abtn mic tap"
-            onClick={() => onOpenSpeakWithCard(card)}
+            onClick={() => {
+              markEngaged(card.id);
+              onOpenSpeakWithCard(card);
+            }}
             aria-label="Practice speaking this card"
           >
             <MicrophoneIcon /> <span>Say it</span>

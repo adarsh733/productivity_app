@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { buildQueue, dayCardHash, getCardMultiplier } from './queue';
-import { newReview } from './scheduler';
+import { buildQueue, dayCardHash, getCardMultiplier, skimReview } from './queue';
+import { grade, newReview } from './scheduler';
 import { QUEUE_RULES } from '../types/contract';
 import type { Card, CardType, DownweightRecord, QueueOptions, Review } from '../types/contract';
 import { readSeedFiles } from '../db/seedLoader';
@@ -262,8 +262,8 @@ describe('V3 Queue Rules and Rotation', () => {
     expect(progress.percent).toBe(33);
   });
 
-  it('downweighted type shows up measurably less often across a 200-card queue', () => {    const deck: Card[] = [];
-    for (let i = 0; i < 40; i++) deck.push(card(`w${i}`, 'word'));
+  it('downweighted type shows up measurably less often across a 200-card queue', () => {
+    const deck: Card[] = [];    for (let i = 0; i < 40; i++) deck.push(card(`w${i}`, 'word'));
     for (let i = 0; i < 40; i++) deck.push(card(`i${i}`, 'idiom'));
     for (let i = 0; i < 40; i++) deck.push(card(`p${i}`, 'pronounce'));
     const now = Date.now();
@@ -275,6 +275,73 @@ describe('V3 Queue Rules and Rotation', () => {
     const plainIdioms = plain.filter((i) => i.card.type === 'idiom').length;
     const downIdioms = downQ.filter((i) => i.card.type === 'idiom').length;
     expect(downIdioms).toBeLessThan(plainIdioms);
+  });
+});
+
+describe('Skimmed cards (AG-007 stage 2)', () => {
+  const NOW = new Date('2026-08-11T10:00:00Z').getTime();
+  const DAY = 86_400_000;
+
+  function skimmed(id: string, skippedAt: number): Review {
+    return { ...newReview(id, TODAY), lastSeenAt: skippedAt, skippedAt } as Review;
+  }
+
+  function deck6(): Card[] {
+    const types: CardType[] = ['word', 'idiom', 'phrase', 'swap', 'feeling', 'pronounce'];
+    return types.map((t, i) => card(`k${i}`, t));
+  }
+
+  it('skimReview() stays new with reps 0 and stamps lastSeenAt + skippedAt', () => {
+    const r = skimReview('c1', TODAY, NOW) as Review & { skippedAt?: number };
+    expect(r.state).toBe('new');
+    expect(r.reps).toBe(0);
+    expect(r.lastSeenAt).toBe(NOW);
+    expect(r.skippedAt).toBe(NOW);
+  });
+
+  it('a freshly skimmed card is not served as new again', () => {
+    const deck = deck6();
+    const reviews = new Map<string, Review>([['k2', skimmed('k2', NOW)]]);
+    const q = buildQueue(deck, reviews, opts({ limit: 5 }), NOW);
+    expect(q).toHaveLength(5);
+    expect(q.map((i) => i.card.id)).not.toContain('k2');
+    expect(q.every((i) => i.reason === 'new')).toBe(true);
+  });
+
+  it('a skim older than 14 days is served as new again', () => {
+    const deck = deck6();
+    const reviews = new Map<string, Review>([['k2', skimmed('k2', NOW - 15 * DAY)]]);
+    const q = buildQueue(deck, reviews, opts({ limit: 6 }), NOW);
+    const found = q.find((i) => i.card.id === 'k2');
+    expect(found).toBeDefined();
+    expect(found!.reason).toBe('new');
+  });
+
+  it('an engaged card (graded good, due today) is served as due', () => {
+    const deck = deck6();
+    const { review } = grade(newReview('k3', '2026-08-10'), 'good', '2026-08-10', NOW);
+    const reviews = new Map<string, Review>([['k3', review]]);
+    const q = buildQueue(deck, reviews, opts({ limit: 6 }), NOW);
+    expect(q[0]!.card.id).toBe('k3');
+    expect(q[0]!.reason).toBe('due');
+  });
+
+  it('fresh skims are not recycled as filler while other cards remain', () => {
+    const deck = [card('f0', 'word'), card('f1', 'idiom'), card('f2', 'phrase')];
+    const reviews = new Map<string, Review>([['f2', skimmed('f2', NOW)]]);
+    const q = buildQueue(deck, reviews, opts({ limit: 8 }), NOW);
+    expect(q).toHaveLength(8);
+    expect(q.map((i) => i.card.id)).not.toContain('f2');
+  });
+
+  it('an all-skimmed deck still never dead-ends', () => {
+    const deck = [card('g0', 'word'), card('g1', 'idiom')];
+    const reviews = new Map<string, Review>([
+      ['g0', skimmed('g0', NOW)],
+      ['g1', skimmed('g1', NOW)],
+    ]);
+    const q = buildQueue(deck, reviews, opts({ limit: 5 }), NOW);
+    expect(q).toHaveLength(5);
   });
 });
 
