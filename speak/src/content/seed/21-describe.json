@@ -1,882 +1,722 @@
 [
   {
-    "id": "dsc-monsoon-cafe",
+    "id": "dsc-platform-rush",
     "type": "describe",
-    "imagePath": "/assets/scenes/monsoon_cafe.jpg",
-    "alt": "Steaming cup of filter coffee beside a rain-streaked window in a bustling Bengaluru cafe.",
-    "prompt": "Paint the sensory atmosphere of a cozy tech cafe during a heavy evening downpour.",
-    "beats": [
-      "The sound of torrential rain drumming against the glass",
-      "The warm aroma of roasted coffee and wet asphalt",
-      "The quiet murmur of engineers huddled over laptop glow"
-    ],
-    "targetVocab": [
-      "torrential",
-      "aroma",
-      "huddled",
-      "ambient",
-      "steaming"
-    ],
+    "title": "Platform at rush hour",
+    "scene": "The 8:40 fast local is four minutes away and the platform is already shoulder to shoulder. Vendors shout over the announcement crackle while the steel rails start to hum.",
+    "alt": "A packed railway platform minutes before the morning fast train arrives.",
+    "prompt": "Describe this platform so a friend can hear it, smell it, and feel the push of the crowd.",
+    "beats": ["The crowd: who is packed in and how they stand", "The sounds and smells around you", "How the waiting feels: hurry, habit, or dread"],
+    "targetVocab": ["surge", "hum", "jostle", "dense"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "sensory",
-      "storytelling"
-    ]
+    "tags": ["describe", "everyday", "city"]
   },
   {
-    "id": "dsc-midnight-datacenter",
+    "id": "dsc-wedding-kitchen",
     "type": "describe",
-    "imagePath": "/assets/scenes/datacenter.jpg",
-    "alt": "Endless rows of black server racks with blinking green and amber LEDs in a chilled room.",
-    "prompt": "Describe walking through a high-security server room during a critical midnight deployment.",
-    "beats": [
-      "The bone-chilling hum of industrial HVAC blowers",
-      "The hypnotic rhythmic pulse of fiber optic LEDs",
-      "The tactile chill of powder-coated steel rack cages"
-    ],
-    "targetVocab": [
-      "rhythmic",
-      "hypnotic",
-      "subdued",
-      "chilled",
-      "hum"
-    ],
+    "title": "The wedding kitchen",
+    "scene": "In a courtyard behind the wedding hall, giant vessels steam over wood fires while two dozen relatives chop, stir, and taste. A grandmother in charge of nothing and everything inspects every tray.",
+    "alt": "A busy outdoor wedding kitchen with giant vessels and a supervising grandmother.",
+    "prompt": "Describe this kitchen so a friend can smell the ghee and feel the happy chaos.",
+    "beats": ["The scale: vessels, fires, and the army of helpers", "One or two people who run the show", "How it feels: chaos, warmth, or pressure"],
+    "targetVocab": ["steam", "bustle", "simmer", "command"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "tech",
-      "atmosphere"
-    ]
+    "tags": ["describe", "everyday", "family"]
   },
   {
-    "id": "dsc-metro-commute",
+    "id": "dsc-sunday-market",
     "type": "describe",
-    "imagePath": "/assets/scenes/metro.jpg",
-    "alt": "Crowded morning metro train arriving at an elevated station platform in the morning mist.",
-    "prompt": "Describe the electric energy and choreography of peak morning rush hour.",
-    "beats": [
-      "The metallic screech of brakes on polished rails",
-      "The focused sea of commuters glancing at notification feeds",
-      "The sudden gust of wind as automatic doors slide open"
-    ],
-    "targetVocab": [
-      "surge",
-      "choreography",
-      "dense",
-      "glance",
-      "commute"
-    ],
+    "title": "Sunday vegetable market",
+    "scene": "By nine the lane is a tunnel of carts piled with tomatoes, coriander, and mangoes in season. Shoppers squeeze past, pressing thumbs into brinjals while sellers chant their prices.",
+    "alt": "A crowded Sunday lane of vegetable carts with shouting sellers and squeezing shoppers.",
+    "prompt": "Describe this market so a friend can see the colours and hear the bargaining.",
+    "beats": ["The sights: colours and piles of produce", "The bargaining: voices, tactics, and humour", "How it feels: festive chore or weekly war"],
+    "targetVocab": ["heap", "chant", "bargain", "vibrant"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "everyday",
-      "observation"
-    ]
+    "tags": ["describe", "everyday", "market"]
   },
   {
-    "id": "dsc-war-room",
+    "id": "dsc-appraisal-day",
     "type": "describe",
-    "imagePath": "/assets/scenes/war_room.jpg",
-    "alt": "A whiteboard covered in red markers, empty coffee mugs, and laptop screens showing Grafana charts.",
-    "prompt": "Describe the intensity inside an incident response war room five minutes after an outage begins.",
-    "beats": [
-      "The rapid clatter of mechanical keyboards and hushed audio dials",
-      "The red jagged spikes on dashboard monitoring screens",
-      "The tense focus and measured calmness under fire"
-    ],
-    "targetVocab": [
-      "frenetic",
-      "poise",
-      "clatter",
-      "jagged",
-      "escalation"
-    ],
+    "title": "Office on appraisal day",
+    "scene": "The open floor is quieter than usual and every cabin door seems to close a little more firmly. People who normally laugh at lunch are rehearsing sentences in their heads.",
+    "alt": "A tense office floor on appraisal day with closed cabin doors and quiet staff.",
+    "prompt": "Describe this office so a friend can feel the tension without anyone saying a word.",
+    "beats": ["The quiet: what is different from a normal day", "The faces: how people carry the wait", "How it feels: fear, hope, or theatre"],
+    "targetVocab": ["tense", "hushed", "rehearse", "verdict"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "workplace",
-      "intensity"
-    ]
+    "tags": ["describe", "workplace", "observation"]
   },
   {
-    "id": "dsc-airport-boarding-gate",
+    "id": "dsc-monsoon-jam",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the atmosphere at a crowded airport boarding gate during an unexpected three-hour weather delay.",
-    "beats": [
-      "The sea of tired travelers slumped over charging stations and carry-on suitcases",
-      "The crackle of the gate agent microphone delivering another apologetic announcement",
-      "The quiet hum of rain washing across the dark runway tarmac outside the panoramic glass"
-    ],
-    "targetVocab": [
-      "weary",
-      "ambient",
-      "monotonous",
-      "tarmac",
-      "resigned"
-    ],
+    "title": "Monsoon traffic jam",
+    "scene": "Rain hammers the windscreens and the red brake lights stretch a kilometre ahead. An auto driver stands up on his seat to see over the bus while wipers squeak uselessly.",
+    "alt": "A rain-soaked traffic jam with brake lights stretching ahead and a standing auto driver.",
+    "prompt": "Describe this jam so a friend stuck at home can feel exactly what the drivers feel.",
+    "beats": ["The standstill: what you see in every direction", "The small dramas: one driver, one rider, one vendor", "How it feels: rage, surrender, or strange calm"],
+    "targetVocab": ["gridlock", "squeak", "stranded", "resigned"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "travel",
-      "observation"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "city"]
   },
   {
-    "id": "dsc-startup-all-hands",
+    "id": "dsc-bus-stand-dawn",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the electric energy inside a startup warehouse office immediately after announcing a Series A fundraise.",
-    "beats": [
-      "The sudden erupting cheer and clinking of paper cups across crowded wooden trestle tables",
-      "The founders beaming on a makeshift stage beside a projector showing customer growth curves",
-      "The buzzing excitement as engineers and designers huddle to discuss scaling the roadmap"
-    ],
-    "targetVocab": [
-      "ebullient",
-      "makeshift",
-      "resonate",
-      "milestone",
-      "jubilant"
-    ],
+    "title": "Small-town bus stand",
+    "scene": "At dawn the bus stand smells of diesel and first chai. Sleepy passengers guard steel trunks while the conductor slaps the bus side shouting a town name you half recognise.",
+    "alt": "A dawn bus stand with chai smoke, steel trunks, and a shouting conductor.",
+    "prompt": "Describe this bus stand so a friend can feel the sleepy early-morning wait.",
+    "beats": ["The morning: light, smoke, and first sounds", "The people: who waits and what they guard", "How it feels: sleepy hope or tired routine"],
+    "targetVocab": ["haze", "conductor", "trunk", "drowsy"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "startup",
-      "celebration"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "travel"]
   },
   {
-    "id": "dsc-old-delhi-spice-market",
+    "id": "dsc-chai-tapri-evening",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Paint the sensory richness of walking through the narrow alleys of Khari Baoli spice market at noon.",
-    "beats": [
-      "The sharp, stinging scent of crushed red chilies and roasted cumin hanging thick in the air",
-      "The rhythmic shouts of porters balancing burlap sacks through narrow sunlit brick corridors",
-      "The dazzling mountain heaps of golden turmeric, cardamom pods, and star anise in wooden crates"
-    ],
-    "targetVocab": [
-      "pungent",
-      "labyrinth",
-      "vibrant",
-      "aroma",
-      "burlap"
-    ],
+    "title": "Evening at the chai tapri",
+    "scene": "The tapri glows under one tube light as office workers loosen ties and argue about cricket over cutting chai. The vendor remembers everyone's order and nobody's name.",
+    "alt": "A glowing evening tea stall with office workers arguing over cutting chai.",
+    "prompt": "Describe this tapri so a friend can taste the chai and hear the debate.",
+    "beats": ["The stall: light, steam, and the vendor's rhythm", "The crowd: who stands there and what they argue", "How it feels: belonging or just a pause"],
+    "targetVocab": ["cutting", "banter", "steam", "regular"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "sensory",
-      "cultural"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "social"]
   },
   {
-    "id": "dsc-monsoon-traffic-gridlock",
+    "id": "dsc-barber-shop",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the tense choreography of evening gridlock traffic on a flooded arterial tech corridor.",
-    "beats": [
-      "The endless red ribbon of brake lights reflecting off deep oily puddles on cracked asphalt",
-      "The persistent chorus of vehicle horns competing with the heavy roar of cascading monsoon rain",
-      "The determined delivery riders in neon ponchos weaving through stationary city buses"
-    ],
-    "targetVocab": [
-      "gridlock",
-      "torrential",
-      "cacophony",
-      "refracted",
-      "staunch"
-    ],
+    "title": "The neighbourhood barber",
+    "scene": "Three chairs, one cracked mirror, and a radio playing old songs while the barber narrates every ball of the match to men waiting with newspapers folded into fans.",
+    "alt": "A small barber shop with a cracked mirror, old songs, and waiting customers.",
+    "prompt": "Describe this shop so a friend can hear the snip of scissors and the match commentary.",
+    "beats": ["The shop: chairs, mirror, and radio", "The barber: his talk and his craft", "How it feels: ritual, gossip, or rest"],
+    "targetVocab": ["snip", "narrate", "ritual", "folded"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "city",
-      "everyday"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "social"]
   },
   {
-    "id": "dsc-midnight-hackathon",
+    "id": "dsc-terrace-monsoon",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the final hour of a 36-hour hackathon as teams race to submit prototypes before the countdown expires.",
-    "beats": [
-      "The frantic clatter of mechanical keyboards amid mountains of empty energy drink cans and pizza boxes",
-      "The red blinking digital countdown clock projected across the auditorium wall",
-      "The exhausted but determined focus of teammates debugging one last API integration"
-    ],
-    "targetVocab": [
-      "frenetic",
-      "exhaustion",
-      "tenacious",
-      "adrenaline",
-      "countdown"
-    ],
+    "title": "Terrace in first rain",
+    "scene": "The first heavy shower drums on the tin roof as the whole building rushes upstairs. Children shriek under the downpour while someone's grandmother rescues the drying papads just in time.",
+    "alt": "A building terrace in the first monsoon shower with children and a rescuing grandmother.",
+    "prompt": "Describe this terrace so a friend can feel the first rain after the hot months.",
+    "beats": ["The rain arriving: sound, smell, and rush", "The people: who runs up and what they do", "How it feels: release, joy, or nostalgia"],
+    "targetVocab": ["downpour", "petrichor", "shriek", "rescue"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "tech",
-      "intensity"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "nature"]
   },
   {
-    "id": "dsc-chai-stall-standup",
+    "id": "dsc-sleepy-booking-counter",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the informal morning ritual around a roadside tea stall outside a major technology park.",
-    "beats": [
-      "The steaming brass kettle bubbling with ginger and crushed cardamom over a blue gas flame",
-      "The circle of engineers in lanyards debating architecture while holding hot glass tumblers",
-      "The crisp morning breeze carrying the aroma of fresh bun-maska and roasted spices"
-    ],
-    "targetVocab": [
-      "steaming",
-      "camaraderie",
-      "aroma",
-      "tumbler",
-      "brisk"
-    ],
+    "title": "The tatkal queue at 6 AM",
+    "scene": "Forty people stand in a line that has not moved in an hour, clutching ID cards and water bottles. The shutter is still down and everyone pretends not to count heads.",
+    "alt": "A long early-morning queue outside a shut railway booking counter.",
+    "prompt": "Describe this queue so a friend can feel the slow anxious arithmetic of it.",
+    "beats": ["The line: who stands there and what they hold", "The wait: small signs of hope and impatience", "How it feels: shared suffering or silent war"],
+    "targetVocab": ["queue", "clutch", "shutter", "count"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "social",
-      "workplace"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "travel"]
   },
   {
-    "id": "dsc-diwali-office-decor",
+    "id": "dsc-office-pantry-lunch",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe an engineering office transformed on the eve of Diwali celebration.",
-    "beats": [
-      "Intricate floral rangolis and flickering clay diyas lining the glass lobby entrance",
-      "Colleagues dressed in vibrant silk kurtas exchanging boxes of handmade sweets across desk cubicles",
-      "The warm golden glow of fairy lights draped over monitors and whiteboard architecture diagrams"
-    ],
-    "targetVocab": [
-      "festive",
-      "intricate",
-      "luminous",
-      "vibrant",
-      "warmth"
-    ],
+    "title": "Office pantry at lunch",
+    "scene": "Twelve lunch boxes open at once and the pantry fills with the smell of rajma, lemon rice, and someone's ambitious fish curry. The microwave queue becomes the real team meeting.",
+    "alt": "A crowded office pantry at lunch with open tiffins and a microwave queue.",
+    "prompt": "Describe this pantry so a friend can smell every lunch box and hear the queue talk.",
+    "beats": ["The food: smells that collide in one small room", "The queue: who waits and what gets discussed", "How it feels: family lunch or daily negotiation"],
+    "targetVocab": ["aroma", "tiffin", "queue", "swap"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "culture",
-      "celebration"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "workplace", "everyday"]
   },
   {
-    "id": "dsc-cafeteria-cricket-match",
+    "id": "dsc-night-shift-cab",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the electric atmosphere in the company cafeteria during the final over of a tense cricket World Cup match.",
-    "beats": [
-      "A hundred employees on the edge of their chairs staring at the giant projector screen in absolute silence",
-      "The collective gasp and sudden roar as the batter hits a boundary through mid-wicket",
-      "Colleagues from rival teams high-fiving and embracing as the winning runs are scored"
-    ],
-    "targetVocab": [
-      "palpable",
-      "suspense",
-      "unison",
-      "exuberance",
-      "crescendo"
-    ],
+    "title": "Cab ride at 1 AM",
+    "scene": "Empty flyovers slide past under yellow lights while the driver plays old ghazals low and asks which sector. The city you fight all day finally looks gentle.",
+    "alt": "A late-night cab gliding over empty flyovers with soft music playing.",
+    "prompt": "Describe this ride so a friend can feel the strange peace of the empty city.",
+    "beats": ["The city at night: what the empty roads look like", "The driver: his music and his one question", "How it feels: peace, loneliness, or relief"],
+    "targetVocab": ["glide", "deserted", "murmur", "gentle"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "sports",
-      "energy"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "city", "night"]
   },
   {
-    "id": "dsc-mumbai-local-rush",
+    "id": "dsc-society-meeting",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the intense momentum of catching a peak-hour morning local train at Dadar station.",
-    "beats": [
-      "The dense surge of thousands of commuters flowing down the concrete footbridge in synchronization",
-      "The screech of steel wheels and the sudden rush of cool morning air as the 12-car train pulls in",
-      "The effortless athletic agility of seasoned commuters boarding before the carriage comes to a halt"
-    ],
-    "targetVocab": [
-      "torrent",
-      "synchronized",
-      "momentum",
-      "commute",
-      "pulsating"
-    ],
+    "title": "The society meeting",
+    "scene": "Plastic chairs form a rough circle in the parking lot as the secretary reads last month's minutes. The parking dispute takes twenty minutes and the water issue takes two hours.",
+    "alt": "A housing society meeting in a parking lot with plastic chairs and a long agenda.",
+    "prompt": "Describe this meeting so a friend can hear the exact tone of every complaint.",
+    "beats": ["The setting: chairs, lights, and the secretary's register", "The flashpoint: the issue that wakes everyone up", "How it feels: democracy or daily soap"],
+    "targetVocab": ["minutes", "dispute", "allot", "grumble"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "city",
-      "observation"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "community"]
   },
   {
-    "id": "dsc-quiet-library-hall",
+    "id": "dsc-exam-hall-gate",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the peaceful concentration inside a historic university library late on a rainy afternoon.",
-    "beats": [
-      "The gentle rustle of turning textbook pages and the soft scratching of fountain pens on paper",
-      "The warm golden pools of light cast by green banker lamps across polished oak study tables",
-      "The towering cedar shelves filled with thousands of leather-bound volumes reaching into high vaulted shadows"
-    ],
-    "targetVocab": [
-      "sanctuary",
-      "subdued",
-      "scholarly",
-      "vaulted",
-      "tranquility"
-    ],
+    "title": "Outside the exam hall",
+    "scene": "Parents wait behind the barricade holding water bottles while students file in without looking back. Someone is still revising from a notebook at the gate until the bell cuts through.",
+    "alt": "Parents waiting behind a barricade as students file into an exam hall.",
+    "prompt": "Describe this gate so a friend can feel the last five minutes before the bell.",
+    "beats": ["The students: faces, steps, and last revision", "The parents: what they hold and how they wait", "How it feels: dread, focus, or surrender"],
+    "targetVocab": ["barricade", "file in", "cram", "bell"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "peaceful",
-      "study"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "observation"]
   },
   {
-    "id": "dsc-product-launch-greenroom",
+    "id": "dsc-street-tailor-shop",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the tense atmosphere in the backstage green room two minutes before the CEO delivers a flagship product keynote.",
-    "beats": [
-      "The production stage manager whispering countdown cues into a headset while checking wireless mic packs",
-      "The CEO pacing slowly, sipping warm lemon water and rehearsing the opening three sentences",
-      "The muffled bass vibration of the audience walk-in track thumping through the heavy velvet curtain"
-    ],
-    "targetVocab": [
-      "anticipation",
-      "hushed",
-      "poise",
-      "reverberation",
-      "cue"
-    ],
+    "title": "The street tailor's shop",
+    "scene": "A six-foot shop with one sewing machine, wall-to-wall shirt samples, and a tailor who measures you with a glance. The machine rattles non-stop while he pins your sleeve with his mouth full of pins.",
+    "alt": "A tiny tailor shop with a rattling machine and a tailor full of pins.",
+    "prompt": "Describe this shop so a friend can hear the machine and trust the tailor's eye.",
+    "beats": ["The shop: size, samples, and the machine's rattle", "The tailor: his glance-measurement and pin craft", "How it feels: cramped mastery or organised chaos"],
+    "targetVocab": ["rattle", "alter", "pin", "glance"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "executive",
-      "keynote"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "work"]
   },
   {
-    "id": "dsc-rooftop-bengaluru-dusk",
+    "id": "dsc-metro-last-coach",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe standing on a high-rise office terrace looking out over the city skyline at twilight.",
-    "beats": [
-      "The sky shifting from dusky violet to deep indigo as glass tech towers light up across the horizon",
-      "The cool evening breeze carrying the distant hum of urban life and scent of night-blooming jasmine",
-      "Clusters of colleagues chatting softly over coffee mugs as the first evening stars appear"
-    ],
-    "targetVocab": [
-      "panoramic",
-      "twilight",
-      "silhouette",
-      "serenity",
-      "ambient"
-    ],
+    "title": "Last metro coach at night",
+    "scene": "The last coach is half empty and everyone has a window seat. A tired nurse leans her head on the glass while two college students share one earphone and laugh too loud for the hour.",
+    "alt": "A half-empty last metro coach with sleepy passengers and laughing students.",
+    "prompt": "Describe this coach so a friend can feel the tired end-of-day quiet.",
+    "beats": ["The passengers: who rides this late and how they sit", "The sounds: what breaks the quiet", "How it feels: exhaustion, freedom, or safety"],
+    "targetVocab": ["half-empty", "lean", "hushed", "sway"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "nature",
-      "city"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "city", "night"]
   },
   {
-    "id": "dsc-boardroom-negotiation-table",
+    "id": "dsc-hospital-waiting",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the charged silence across a glass boardroom table during a high-stakes partnership negotiation.",
-    "beats": [
-      "Lawyers and executives studying the final revised clause on paper contracts in deliberate silence",
-      "The quiet condensation dripping down crystal water glasses onto polished dark walnut veneer",
-      "The measured eye contact across the table before the lead investor picks up a pen to sign"
-    ],
-    "targetVocab": [
-      "scrutiny",
-      "deliberate",
-      "unspoken",
-      "gravity",
-      "pivotal"
-    ],
+    "title": "Hospital waiting hall",
+    "scene": "Steel benches face a token display that moves one number every ten minutes. A family shares a tiffin in the corner while everyone watches everyone else's face when their number flashes.",
+    "alt": "A hospital waiting hall with steel benches and a slow token display.",
+    "prompt": "Describe this hall so a friend can feel the slow clock of waiting for news.",
+    "beats": ["The wait: tokens, benches, and the slow display", "One family: what they do to pass the time", "How it feels: fear managed by routine"],
+    "targetVocab": ["token", "sterile", "murmur", "wait"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "executive",
-      "negotiation"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "observation"]
   },
   {
-    "id": "dsc-rainy-midnight-cab",
+    "id": "dsc-cricket-gully-match",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the contemplative mood inside a yellow cab driving through rain-washed city avenues past midnight.",
-    "beats": [
-      "The rhythmic sweep of windshield wipers clearing blurred neon reflections of traffic signals",
-      "The soothing hum of the car engine and the distant hiss of tires rolling over wet tarmac",
-      "The quiet relief of unwinding after a grueling 14-hour product deployment sprint"
-    ],
-    "targetVocab": [
-      "contemplative",
-      "rhythmic",
-      "refracted",
-      "solitude",
-      "unwind"
-    ],
+    "title": "Gully cricket at dusk",
+    "scene": "A tennis ball, two bricks for stumps, and rules argued fresh every over. The whole lane stops when a car passes and restarts with the same ball and twice the shouting.",
+    "alt": "A lane cricket game at dusk with brick stumps and arguing children.",
+    "prompt": "Describe this game so a friend can hear the appeal for a clearly-not-out LBW.",
+    "beats": ["The pitch: bricks, walls, and the one car rule", "The argument: the appeal everyone knows is wrong", "How it feels: pure joy or street parliament"],
+    "targetVocab": ["appeal", "stumps", "argue", "dusk"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "night",
-      "mood"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "sport"]
   },
   {
-    "id": "dsc-night-street-food-market",
+    "id": "dsc-salon-sunday",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Paint the bustling energy of a late-night street food lane crowded with night-shift workers.",
-    "beats": [
-      "The fierce hiss of hot oil in giant cast-iron woks tossing spicy noodles and parathas under halogen lights",
-      "The lively banter between street chefs calling out order numbers to eager crowds gathered on the sidewalk",
-      "The rich mingling aromas of roasted garlic, sizzling butter, and fresh cilantro in the night air"
-    ],
-    "targetVocab": [
-      "sizzling",
-      "effervescent",
-      "culinary",
-      "bustle",
-      "invigorating"
-    ],
+    "title": "Salon on a Sunday",
+    "scene": "Every chair is full and the waiting bench holds three bridesmaids, one groom, and a toddler eating parle biscuits. Hairdryers roar while the owner assigns mirrors like air traffic control.",
+    "alt": "A packed Sunday salon with bridesmaids, a groom, and roaring dryers.",
+    "prompt": "Describe this salon so a friend can feel the festive pre-function rush.",
+    "beats": ["The crowd: who waits and what they munch", "The owner: how she runs the chairs and mirrors", "How it feels: celebration or beautiful panic"],
+    "targetVocab": ["roar", "assign", "mirror", "rush"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "food",
-      "nightlife"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "social"]
   },
   {
-    "id": "dsc-morning-office-unlock",
+    "id": "dsc-atm-queue-payday",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the serene stillness inside an open-plan office during the first fifteen minutes of the workday.",
-    "beats": [
-      "The long slanted rays of morning sunlight cutting across rows of clean, dark dual-monitor desks",
-      "The gentle hum of the central HVAC starting up as the aroma of freshly ground espresso fills the pantry",
-      "The calm potential of an unwritten day before the first calendar meetings and notifications begin"
-    ],
-    "targetVocab": [
-      "pristine",
-      "tranquility",
-      "uncluttered",
-      "nascent",
-      "potential"
-    ],
+    "title": "ATM queue on payday",
+    "scene": "The line spills onto the pavement and everyone watches the person inside take just a little too long. The guard nods people in one by one like a bouncer at a very boring club.",
+    "alt": "A long payday ATM queue spilling onto the pavement with a nodding guard.",
+    "prompt": "Describe this queue so a friend can feel the peculiar impatience of waiting for your own money.",
+    "beats": ["The line: where it spills and how it moves", "The watch: how everyone monitors the person inside", "How it feels: impatience mixed with relief"],
+    "targetVocab": ["spill", "monitor", "bouncer", "dispense"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "morning",
-      "workplace"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "city"]
   },
   {
-    "id": "dsc-client-pitch-hiccup",
+    "id": "dsc-monsoon-balcony-tea",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the moment during a live software demo when an unexpected error dialog suddenly pops up.",
-    "beats": [
-      "The sudden split-second freeze across the room as the red error modal flashes on the projector",
-      "The presenter maintaining a calm, reassuring smile while seamlessly explaining the underlying resilience mechanism",
-      "The quiet, measured poise of the engineering lead typing a clean workaround command without panic"
-    ],
-    "targetVocab": [
-      "composure",
-      "anomaly",
-      "unfazed",
-      "seamless",
-      "agility"
-    ],
+    "title": "Balcony tea in the rain",
+    "scene": "Rain slants past the balcony grill and the whole lane smells of wet earth. Two cups of ginger chai steam on the railing while thunder rolls somewhere behind the buildings.",
+    "alt": "A rainy balcony with two steaming cups of ginger chai on the railing.",
+    "prompt": "Describe this balcony so a friend can smell the wet earth and hold the warm cup.",
+    "beats": ["The rain: how it slants, sounds, and smells", "The chai: steam against the grey sky", "How it feels: romance, rest, or monsoon blues"],
+    "targetVocab": ["slant", "petrichor", "steam", "rumble"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "presentation",
-      "composure"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "nature"]
   },
   {
-    "id": "dsc-sunday-balcony-downpour",
+    "id": "dsc-office-friday-evening",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe sipping hot coffee on an apartment balcony while a torrential weekend thunderstorm drenches the city.",
-    "beats": [
-      "The cool fine spray of mist drifting onto the balcony floor as heavy raindrops drum on the tin awning",
-      "The swaying canopy of rain-washed gulmohar trees bending against gusty monsoon winds",
-      "The soothing warmth of the ceramic mug cradled between cold palms as thunder rumbles in the distance"
-    ],
-    "targetVocab": [
-      "tempest",
-      "cascading",
-      "soothing",
-      "petrichor",
-      "respite"
-    ],
+    "title": "Office on Friday evening",
+    "scene": "Laptops shut one by one like a wave and the week's tiredness lifts into weekend plans. Someone opens a packet of mixture and suddenly three teams are standing around one desk.",
+    "alt": "An office floor on Friday evening with shutting laptops and a shared snack packet.",
+    "prompt": "Describe this hour so a friend can feel the week's weight lifting off the floor.",
+    "beats": ["The wind-down: shutters, stretches, and plans", "The mixture moment: how snacks gather a crowd", "How it feels: release or unfinished business"],
+    "targetVocab": ["wind down", "buzz", "gather", "weekend"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "peace",
-      "nature"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "workplace", "everyday"]
   },
   {
-    "id": "dsc-design-studio-critique",
+    "id": "dsc-gym-january-rush",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe an intense design sprint review inside a glass-walled collaborative studio.",
-    "beats": [
-      "Floor-to-ceiling glass whiteboards covered in colorful wireframe post-its, user journey maps, and red marker annotations",
-      "Designers and engineers gathered around a tablet device debating the micro-interactions of a navigation drawer",
-      "The focused, analytical creative energy as the team strips away unnecessary visual noise to reach pure simplicity"
-    ],
-    "targetVocab": [
-      "iterative",
-      "minimalism",
-      "scrutiny",
-      "ergonomic",
-      "collaborative"
-    ],
+    "title": "Gym in first-week January",
+    "scene": "Every treadmill is taken and the trainer repeats the same induction for the tenth new face. The regulars exchange looks that say they will believe it in February.",
+    "alt": "A packed January gym with full treadmills and sceptical regulars.",
+    "prompt": "Describe this gym so a friend can smell the new-shoe optimism and the veterans' doubt.",
+    "beats": ["The crowd: new shoes versus old faithfuls", "The trainer: his tenth identical induction", "How it feels: hope, habit, or theatre"],
+    "targetVocab": ["cram", "induction", "regular", "resolve"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "design",
-      "creativity"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "observation"]
   },
   {
-    "id": "dsc-weekend-organic-market",
+    "id": "dsc-flower-market-dawn",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the cheerful morning atmosphere at a community weekend open-air farmers market.",
-    "beats": [
-      "Wooden stalls shaded by striped canvas canopies displaying crisp leafy greens, heirloom tomatoes, and artisanal honey",
-      "Neighbors greeting each other with cloth tote bags while acoustic guitar music drifts from a corner booth",
-      "The earthy fragrance of fresh soil, crushed mint, and freshly baked sourdough loaves on wooden crates"
-    ],
-    "targetVocab": [
-      "bountiful",
-      "artisanal",
-      "convivial",
-      "fragrance",
-      "wholesome"
-    ],
+    "title": "Flower market at dawn",
+    "scene": "Before sunrise the market is already orange with marigold heaps and wet with jasmine strings. Buyers hold buds to their noses while porters balance baskets taller than themselves.",
+    "alt": "A dawn flower market heaped with marigolds and jasmine strings.",
+    "prompt": "Describe this market so a friend can see the orange heaps and smell the jasmine.",
+    "beats": ["The colours: heaps, strings, and wet petals", "The buyers: how they test and bargain", "How it feels: devotion, business, or both"],
+    "targetVocab": ["heap", "string", "fragrant", "porter"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "community",
-      "weekend"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "market"]
   },
   {
-    "id": "dsc-server-cooling-alert",
+    "id": "dsc-interview-lobby",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the sensory urgency inside a server hosting facility when a secondary cooling unit trips.",
-    "beats": [
-      "Amber warning beacons rotating silently along the ceiling gantry above black server cabinets",
-      "The palpable rising wall of dry heat emanating from high-density GPU computing clusters",
-      "Facilities technicians in reflective vests systematically routing chilled emergency ducting with calm precision"
-    ],
-    "targetVocab": [
-      "thermal",
-      "criticality",
-      "systematic",
-      "beacon",
-      "contingency"
-    ],
+    "title": "Interview waiting lobby",
+    "scene": "Six candidates sit too straight on a leather sofa, each holding a file like a shield. The receptionist calls a name and five heads turn to study the one who stands.",
+    "alt": "An interview lobby with straight-backed candidates clutching files.",
+    "prompt": "Describe this lobby so a friend can feel the studied casualness of everyone.",
+    "beats": ["The candidates: posture, files, and stolen glances", "The call: what happens when a name is read", "How it feels: competition or camaraderie"],
+    "targetVocab": ["poised", "clutch", "study", "summon"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "datacenter",
-      "urgency"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "workplace", "observation"]
   },
   {
-    "id": "dsc-midnight-delivery-rider",
+    "id": "dsc-dhaba-highway-night",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe a food delivery rider navigating deserted suburban streets under orange sodium lamps past midnight.",
-    "beats": [
-      "The solitary motorcycle engine echoing down quiet tree-lined avenues as autumn leaves flutter across the road",
-      "The bright smartphone mounted on the handlebars illuminating the glowing navigation route map",
-      "The quiet dedication and resilience of delivering warm meals to late-night apartment doorsteps in the silence"
-    ],
-    "targetVocab": [
-      "solitary",
-      "nocturnal",
-      "resilience",
-      "illuminated",
-      "subdued"
-    ],
+    "title": "Highway dhaba at night",
+    "scene": "Trucks line up like resting elephants while the tandoor glows and rotis puff in seconds. Drivers wash their faces at a single tap before sitting cross-legged for dal that tastes of smoke.",
+    "alt": "A night highway dhaba with parked trucks, a glowing tandoor, and seated drivers.",
+    "prompt": "Describe this dhaba so a friend can taste the smoky dal and hear the highway.",
+    "beats": ["The trucks: how they park and rest", "The food: tandoor glow and the dal's smoke", "How it feels: refuge or routine halt"],
+    "targetVocab": ["glow", "puff", "cross-legged", "refuge"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "empathy",
-      "city"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "travel"]
   },
   {
-    "id": "dsc-interview-waiting-lounge",
+    "id": "dsc-park-morning-walkers",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the quiet tension inside a corporate candidate waiting lounge before executive final rounds.",
-    "beats": [
-      "Candidates in sharp formal attire reviewing resume notes on tablets or staring thoughtfully out panoramic glass windows",
-      "The soft clicking of the reception desk clock measuring out the minutes before panel introductions",
-      "The sudden polite call of a recruiter opening the frosted glass door to invite the next candidate inside"
-    ],
-    "targetVocab": [
-      "anticipation",
-      "composed",
-      "hushed",
-      "poised",
-      "inflection"
-    ],
+    "title": "Park at 6 AM",
+    "scene": "Retired uncles claim the walking track in formation while a laughter club cackles near the gate. A vendor sells nimbu pani to people who have just finished blaming sugar for everything.",
+    "alt": "A morning park with marching walkers, a laughter club, and a nimbu pani vendor.",
+    "prompt": "Describe this park so a friend can hear the cackle and the walking-stick taps.",
+    "beats": ["The walkers: formation, pace, and gossip", "The laughter club: what it sounds like at dawn", "How it feels: discipline, comedy, or both"],
+    "targetVocab": ["formation", "cackle", "lap", "ritual"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "career",
-      "interview"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "morning"]
   },
   {
-    "id": "dsc-coworking-terrace-coffee",
+    "id": "dsc-photocopy-shop",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the relaxed creative banter on a rooftop coworking garden during Friday evening golden hour.",
-    "beats": [
-      "Potted palm trees and fairy light canopies framing wooden picnic tables crowded with laptops and coffee carafes",
-      "Founders, freelancers, and engineers sharing war stories of product launches and weekend prototypes",
-      "The golden sunset light washing over glass facades as the working week gracefully winds down"
-    ],
-    "targetVocab": [
-      "communal",
-      "golden",
-      "unwind",
-      "camaraderie",
-      "serendipity"
-    ],
+    "title": "Photocopy shop near college",
+    "scene": "The machine never stops and the boy never looks up, feeding pages with one hand and taking money with the other. Students shout page numbers while notes pile like exam-season snow.",
+    "alt": "A busy college photocopy shop with a nonstop machine and shouting students.",
+    "prompt": "Describe this shop so a friend can hear the machine jam conversation.",
+    "beats": ["The machine: its rhythm and its jams", "The boy: his two-handed economy", "How it feels: panic outsourcing or student union"],
+    "targetVocab": ["feed", "jam", "pile", "shout"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "coworking",
-      "community"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "observation"]
   },
   {
-    "id": "dsc-diwali-panoramic-skyline",
+    "id": "dsc-movie-interval",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the panoramic nighttime view of a bustling metropolis celebrating Diwali from a 30th-floor terrace.",
-    "beats": [
-      "The sprawling carpet of city lights punctuated by brilliant bursts of emerald and gold fireworks in the distance",
-      "The faint crackle and boom of celebration rolling up into the cool night breeze high above the streets",
-      "Every balcony across miles of residential towers sparkling with rows of warm clay lamps and decorative lanterns"
-    ],
-    "targetVocab": [
-      "panoramic",
-      "constellation",
-      "spectacle",
-      "glimmering",
-      "radiance"
-    ],
+    "title": "Cinema hall at interval",
+    "scene": "Lights flood on mid-twist and three hundred people argue about the villain while queuing for samosas. The loudest debate is always between strangers who will never meet again.",
+    "alt": "A cinema hall at interval with arguing strangers and a samosa queue.",
+    "prompt": "Describe this interval so a friend can hear the stranger debate and smell the samosa.",
+    "beats": ["The lights-on moment: the freeze and the eruption", "The queue: samosa strategy and trailer talk", "How it feels: collective suspense or comedy"],
+    "targetVocab": ["flood", "erupt", "queue", "twist"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "celebration",
-      "cityscape"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "social"]
   },
   {
-    "id": "dsc-telemetry-turns-green",
+    "id": "dsc-hostel-terrace-night",
     "type": "describe",
-    "lang": "en",
-    "imagePath": "",
-    "alt": "",
-    "prompt": "Describe the collective relief in an engineering war room as live monitoring charts stabilize from red back to green.",
-    "beats": [
-      "The jagged red spike on the primary error dashboard abruptly smoothing down into a flat green baseline",
-      "The collective sigh of relief and spontaneous applause breaking the silence across thirty muted video squares",
-      "Tired engineers leaning back in their chairs, smiling, and finally reaching for their cold coffee mugs"
-    ],
-    "targetVocab": [
-      "stabilization",
-      "plateau",
-      "catharsis",
-      "resilient",
-      "baseline"
-    ],
+    "title": "Hostel terrace at midnight",
+    "scene": "Someone's speaker plays old Arijit songs low while four friends lie on a shared mattress counting planes. Tomorrow's test exists but tonight the sky gets the vote.",
+    "alt": "A midnight hostel terrace with friends on a mattress under the sky.",
+    "prompt": "Describe this terrace so a friend can feel the test-tomorrow versus sky-tonight trade.",
+    "beats": ["The setup: speaker, mattress, and the sky", "The talk: planes counted and futures debated", "How it feels: postponement or presence"],
+    "targetVocab": ["murmur", "sprawl", "count", "defer"],
     "targetSec": 45,
-    "tags": [
-      "describe",
-      "engineering",
-      "triumph"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["describe", "everyday", "youth"]
+  },
+  {
+    "id": "dsc-sweet-shop-diwali",
+    "type": "describe",
+    "title": "Sweet shop before Diwali",
+    "scene": "Trays of jalebi glisten under the bulbs while the queue bends around the counter. The owner shouts orders over the kadhai hiss and every child gets a free hot piece for tasting.",
+    "alt": "A sweet shop before Diwali with glistening jalebi trays and a bending queue.",
+    "prompt": "Describe this shop so a friend can taste the free hot jalebi and hear the hiss.",
+    "beats": ["The trays: what glistens and how it smells", "The queue: how it bends and who gets the free piece", "How it feels: festival commerce or generosity"],
+    "targetVocab": ["glisten", "hiss", "tray", "generous"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "festival"]
+  },
+  {
+    "id": "dsc-local-train-door",
+    "type": "describe",
+    "title": "Crowded train doorway",
+    "scene": "The train halts and the doorway is a wall of backs and bags. Passengers squeeze out sideways onto the platform while the incoming crowd pushes in, one shoe landing exactly on the yellow line.",
+    "alt": "A packed local train doorway at a station stop with passengers squeezing in and out.",
+    "prompt": "Describe this doorway so a friend can feel the crush of a station stop.",
+    "beats": ["The halt: the doorway becomes a wall of people", "The exchange: who squeezes out and who pushes in", "How it feels: routine crush or small victory"],
+    "targetVocab": ["squeeze", "crush", "halt", "shuffle"],
+    "targetSec": 45,
+    "tags": ["describe", "city", "travel"]
+  },
+  {
+    "id": "dsc-office-birthday",
+    "type": "describe",
+    "title": "Surprise office birthday",
+    "scene": "Someone dims the cabin lights at four and the team crowds behind a pillar with a cake that says the wrong name. The birthday person walks in, acts shocked for the fifth year running, and everyone loves it.",
+    "alt": "A surprise office birthday with a crowd behind a pillar and a misspelt cake.",
+    "prompt": "Describe this surprise so a friend can hear the off-key happy birthday.",
+    "beats": ["The setup: lights, pillar, and the wrong-name cake", "The entry: shock performed and enjoyed", "How it feels: ritual warmth or forced fun"],
+    "targetVocab": ["crowd", "off-key", "misspelt", "ritual"],
+    "targetSec": 45,
+    "tags": ["describe", "workplace", "social"]
+  },
+  {
+    "id": "dsc-rainy-school-dispersal",
+    "type": "describe",
+    "title": "School gate in the rain",
+    "scene": "The bell rings into a downpour and the gate becomes a forest of umbrellas. Auto drivers shout school names while children spot their ride and sprint through puddles screaming.",
+    "alt": "A school gate in heavy rain with umbrellas, shouting drivers, and sprinting children.",
+    "prompt": "Describe this gate so a friend can hear the bell drown in the rain.",
+    "beats": ["The gate: umbrellas blooming at once", "The pickup: shouts, spots, and puddle sprints", "How it feels: chaos with a timetable"],
+    "targetVocab": ["bloom", "sprint", "puddle", "drown"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "observation"]
+  },
+  {
+    "id": "dsc-old-book-stall",
+    "type": "describe",
+    "title": "Old book stall",
+    "scene": "Pavement stacks lean in towers of yellowed pages, priced by gut feel. The seller finds any book in ten seconds flat and quotes you a price based on your face, not the cover.",
+    "alt": "A pavement old-book stall with leaning towers of yellowed books.",
+    "prompt": "Describe this stall so a friend can smell the old pages and haggle by face-reading.",
+    "beats": ["The stacks: towers, yellowing, and gut-feel pricing", "The seller: his ten-second finding trick", "How it feels: treasure hunt or organised mess"],
+    "targetVocab": ["yellowed", "tower", "haggle", "gut feel"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "market"]
+  },
+  {
+    "id": "dsc-fish-market-morning",
+    "type": "describe",
+    "title": "Fish market at 7 AM",
+    "scene": "Ice melts under silver heaps while buyers press gills and argue freshness with sellers who have heard it all. The bargaining is loud, fast, and weirdly affectionate.",
+    "alt": "An early fish market with silver heaps on melting ice and loud bargaining.",
+    "prompt": "Describe this market so a friend can smell the ice and hear the affectionate shouting.",
+    "beats": ["The heaps: silver fish on melting ice", "The test: gills pressed and freshness argued", "How it feels: battle or morning theatre"],
+    "targetVocab": ["heap", "press", "freshness", "affectionate"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "market"]
+  },
+  {
+    "id": "dsc-apartment-lift",
+    "type": "describe",
+    "title": "Apartment lift at 9 AM",
+    "scene": "Eight neighbours ride down in silence, all watching the floor numbers like a shared exam result. Someone's tiffin leaks curry smell and three stomachs growl in confession.",
+    "alt": "A silent 9 AM apartment lift with neighbours watching floor numbers.",
+    "prompt": "Describe this lift ride so a friend can feel the polite shared silence.",
+    "beats": ["The silence: eyes fixed on floor numbers", "The smell: the tiffin that betrays everyone", "How it feels: strangers stacked or silent neighbours"],
+    "targetVocab": ["stacked", "confess", "aroma", "polite"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "observation"]
+  },
+  {
+    "id": "dsc-cricket-screening-cafe",
+    "type": "describe",
+    "title": "Cafe during a final",
+    "scene": "One giant screen, forty strangers, and a single held breath every ball. When the six lands, coffee sloshes and a man hugs the waiter he has been scolding all evening.",
+    "alt": "A cafe crowd watching a cricket final on one giant screen.",
+    "prompt": "Describe this cafe so a friend can feel the held breath before the six.",
+    "beats": ["The screen: forty strangers breathing as one", "The six: slosh, hug, and the scolded waiter", "How it feels: temporary nation or beautiful noise"],
+    "targetVocab": ["held breath", "slosh", "erupt", "stranger"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "sport"]
+  },
+  {
+    "id": "dsc-village-well-evening",
+    "type": "describe",
+    "title": "Village well at evening",
+    "scene": "Women lower brass pots on long ropes while buffaloes drink from the stone trough. The pulley squeaks in rhythm and the day's last light sits gold on the water.",
+    "alt": "A village well at evening with brass pots, buffaloes, and a squeaking pulley.",
+    "prompt": "Describe this well so a friend can hear the pulley and see the gold water.",
+    "beats": ["The work: ropes, pots, and the trough", "The rhythm: the pulley's squeak and the light", "How it feels: timeless chore or evening peace"],
+    "targetVocab": ["pulley", "trough", "squeak", "golden"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "village"]
+  },
+  {
+    "id": "dsc-startup-war-room",
+    "type": "describe",
+    "title": "Startup war room at 2 AM",
+    "scene": "Whiteboards wear yesterday's diagrams under today's corrections while cold pizza boxes tower by the dustbin. Two founders argue softly so the sleeping intern on the beanbag does not wake.",
+    "alt": "A startup office at 2 AM with corrected whiteboards and a sleeping intern.",
+    "prompt": "Describe this room so a friend can feel the tired stubbornness of 2 AM.",
+    "beats": ["The boards: yesterday's plans under today's ink", "The people: soft arguers and the sleeping intern", "How it feels: mission or madness"],
+    "targetVocab": ["scribble", "tower", "softly", "stubborn"],
+    "targetSec": 45,
+    "tags": ["describe", "workplace", "night"]
+  },
+  {
+    "id": "dsc-saree-shop",
+    "type": "describe",
+    "title": "Saree shop at noon",
+    "scene": "The salesman unfolds six sarees in sixty seconds, each landing with a silk sigh the customer pretends not to love. Her mother touches borders with expert fingers while the fan turns slowly above.",
+    "alt": "A saree shop with a fast-unfolding salesman and a border-checking mother.",
+    "prompt": "Describe this shop so a friend can hear the silk land and feel the slow fan.",
+    "beats": ["The unfolding: six sarees in sixty seconds", "The mother: fingers that read borders", "How it feels: theatre, duty, or delight"],
+    "targetVocab": ["unfold", "sigh", "border", "expert"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "market"]
+  },
+  {
+    "id": "dsc-police-verification",
+    "type": "describe",
+    "title": "Police verification visit",
+    "scene": "The constable sips the chai your mother insisted on while asking your neighbour how long you have lived here. Your documents sit in a neat pile, slightly trembling with you.",
+    "alt": "A home police verification with chai, a questioning constable, and neat documents.",
+    "prompt": "Describe this visit so a friend can feel the polite nervousness of it.",
+    "beats": ["The chai: hospitality as strategy", "The questions: neighbour quizzed, papers eyed", "How it feels: routine or quiet power"],
+    "targetVocab": ["insist", "quiz", "neat", "tremble"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "observation"]
+  },
+  {
+    "id": "dsc-college-canteen",
+    "type": "describe",
+    "title": "College canteen rush",
+    "scene": "Steel plates clang, the Maggi line bends past the juice counter, and one table hosts a full debate on movies while sharing two plates of fries. The owner extends credit with a nod and a name in his book.",
+    "alt": "A college canteen rush with clanging plates, a Maggi line, and a shared fries debate.",
+    "prompt": "Describe this canteen so a friend can hear the clang and taste the shared fries.",
+    "beats": ["The lines: Maggi bending past juice", "The table: one debate over two shared plates", "How it feels: broke luxury or loud belonging"],
+    "targetVocab": ["clang", "bend", "credit", "share"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "youth"]
+  },
+  {
+    "id": "dsc-monsoon-local-delay",
+    "type": "describe",
+    "title": "Delayed local in the rain",
+    "scene": "The indicator blinks the same four minutes for twenty minutes while the platform packs tighter. When the train finally crawls in, the cheer is louder than for any festival.",
+    "alt": "A rain-delayed platform packing tighter under a frozen indicator.",
+    "prompt": "Describe this delay so a friend can feel the frozen four minutes stretch.",
+    "beats": ["The board: four minutes frozen for twenty", "The packing: how the crowd thickens", "How it feels: despair flipping to cheer"],
+    "targetVocab": ["blink", "frozen", "pack", "cheer"],
+    "targetSec": 45,
+    "tags": ["describe", "city", "travel"]
+  },
+  {
+    "id": "dsc-gold-shop-akshaya",
+    "type": "describe",
+    "title": "Gold shop on Akshaya Tritiya",
+    "scene": "The shop opens early and is full by eight, with families buying a gram for luck. The goldsmith weighs hope on a scale older than the customers while trays glitter under new tube lights.",
+    "alt": "A gold shop crowded on Akshaya Tritiya with glittering trays and an old scale.",
+    "prompt": "Describe this morning so a friend can feel luck being weighed by the gram.",
+    "beats": ["The crowd: families buying a gram of luck", "The scale: hope weighed on old brass", "How it feels: faith, finance, or family ritual"],
+    "targetVocab": ["glitter", "weigh", "gram", "auspicious"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "festival"]
+  },
+  {
+    "id": "dsc-office-server-room",
+    "type": "describe",
+    "title": "Office server room",
+    "scene": "Behind the glass door the air is ten degrees colder and the racks blink green in the dark. The hum never pauses, guarding everyone's work while nobody ever visits.",
+    "alt": "A cold dark office server room with blinking green racks.",
+    "prompt": "Describe this room so a friend can feel the cold hum guarding everything.",
+    "beats": ["The cold: air ten degrees off from outside", "The blink: green lights in the dark", "How it feels: guardian or ghost room"],
+    "targetVocab": ["hum", "blink", "rack", "guard"],
+    "targetSec": 45,
+    "tags": ["describe", "workplace", "observation"]
+  },
+  {
+    "id": "dsc-pani-puri-stall",
+    "type": "describe",
+    "title": "Pani puri stall rush",
+    "scene": "The vendor's hands blur: crack, fill, dip, serve, while six customers count their puris out loud. The spicy water level drops visibly as the competition of who eats most begins.",
+    "alt": "A pani puri stall with blurring hands and customers counting puris aloud.",
+    "prompt": "Describe this stall so a friend can hear the crack and feel the spice hit.",
+    "beats": ["The hands: crack-fill-dip-serve at speed", "The count: customers tracking puris aloud", "How it feels: contest, craving, or street joy"],
+    "targetVocab": ["blur", "crack", "spicy", "count"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "food"]
+  },
+  {
+    "id": "dsc-newborn-hospital-corridor",
+    "type": "describe",
+    "title": "Corridor outside the nursery",
+    "scene": "Grandparents press foreheads to the glass while a nurse holds up the day's newest baby like a small trophy. Fathers film everything and forget to actually look.",
+    "alt": "Grandparents at a hospital nursery glass while a nurse holds up a newborn.",
+    "prompt": "Describe this corridor so a friend can feel the glass-pressed joy of it.",
+    "beats": ["The glass: foreheads pressed and fingers pointing", "The showing: the nurse's small trophy lift", "How it feels: pure arrival or happy chaos"],
+    "targetVocab": ["press", "trophy", "film", "arrival"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "family"]
+  },
+  {
+    "id": "dsc-traffic-cop-noon",
+    "type": "describe",
+    "title": "Traffic cop at noon",
+    "scene": "The constable stands on a melting podium at noon, white gloves conducting an orchestra that ignores him. His whistle cuts through horns while sweat draws lines through the dust on his face.",
+    "alt": "A traffic constable conducting noon traffic from a podium with white gloves.",
+    "prompt": "Describe this crossing so a friend can hear the whistle lose to the horns.",
+    "beats": ["The podium: melting island in a horn sea", "The gloves: conducting an ignoring orchestra", "How it feels: duty, futility, or quiet heroism"],
+    "targetVocab": ["conduct", "whistle", "ignore", "duty"],
+    "targetSec": 45,
+    "tags": ["describe", "city", "observation"]
+  },
+  {
+    "id": "dsc-dandiya-night",
+    "type": "describe",
+    "title": "Dandiya night",
+    "scene": "Two circles spin in opposite directions, sticks clacking in rhythm as mirror-work skirts flare. A beginner apologises with every missed beat while the dhol refuses to slow for anyone.",
+    "alt": "A dandiya night with spinning circles, clacking sticks, and flaring skirts.",
+    "prompt": "Describe this night so a friend can hear the clack and feel the spin.",
+    "beats": ["The circles: spinning opposite, sticks in rhythm", "The beginner: apologies at every missed beat", "How it feels: rhythm found or joyful mess"],
+    "targetVocab": ["spin", "clack", "rhythm", "flare"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "festival"]
+  },
+  {
+    "id": "dsc-cow-morning-lane",
+    "type": "describe",
+    "title": "Cow in the morning lane",
+    "scene": "A calm cow owns the middle of the lane while scooters squeeze past on both sides. The milkman finishes his round nearby, and nobody honks because everyone knows she will move when she moves.",
+    "alt": "A calm cow blocking a morning lane while scooters squeeze past.",
+    "prompt": "Describe this lane so a friend can feel the unhurried negotiation of it.",
+    "beats": ["The cow: calm ownership of the middle", "The squeeze: scooters threading past", "How it feels: acceptance, annoyance, or morning truth"],
+    "targetVocab": ["own", "squeeze", "unhurried", "thread"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "observation"]
+  },
+  {
+    "id": "dsc-office-gym-lunch",
+    "type": "describe",
+    "title": "Office gym at lunch",
+    "scene": "Four people lift, six scroll on benches, and the treadmill faces a window overlooking the lunch queue below. Protein shakers rattle like maracas while someone takes a client call on speaker between sets.",
+    "alt": "A small office gym at lunch with lifters, scrollers, and a window on the food queue.",
+    "prompt": "Describe this gym so a friend can hear the shaker maracas and the speakerphone.",
+    "beats": ["The split: lifters versus bench scrollers", "The view: treadmill overlooking lunch", "How it feels: fitness or performance"],
+    "targetVocab": ["rattle", "scroll", "overlook", "set"],
+    "targetSec": 45,
+    "tags": ["describe", "workplace", "everyday"]
+  },
+  {
+    "id": "dsc-railway-retiring-room",
+    "type": "describe",
+    "title": "Railway retiring room",
+    "scene": "The fan turns with a patient click, the bedsheet smells of sunlight and phenyl, and the station announcements arrive muffled like news from another country. Time here moves at platform speed.",
+    "alt": "A railway retiring room with a clicking fan and muffled station announcements.",
+    "prompt": "Describe this room so a friend can hear the fan's click and smell the phenyl sun.",
+    "beats": ["The fan and sheet: click, sunlight, and phenyl", "The announcements: news from another country", "How it feels: transit rest or timeless wait"],
+    "targetVocab": ["click", "muffled", "phenyl", "transit"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "travel"]
+  },
+  {
+    "id": "dsc-mela-ferris-wheel",
+    "type": "describe",
+    "title": "Fairground at night",
+    "scene": "The giant wheel drips coloured bulbs over candy floss stalls while the operator packs four strangers to a creaking cabin. Below, children drag parents from shooting balloons to screaming rides.",
+    "alt": "A night fairground with a bulb-dripped wheel and dragging children.",
+    "prompt": "Describe this fair so a friend can hear the creak and taste the candy floss.",
+    "beats": ["The wheel: bulbs dripping, cabins creaking", "The drag: children pulling parents ride to ride", "How it feels: magic, money, or motion sickness"],
+    "targetVocab": ["drip", "creak", "drag", "scream"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "festival"]
+  },
+  {
+    "id": "dsc-office-monday-standup",
+    "type": "describe",
+    "title": "Monday standup circle",
+    "scene": "The team circles with coffee cups at varying levels of awake while the board shows Friday's promises in red. One person reports done-done, one reports done-ish, and the intern reports everything with terrifying detail.",
+    "alt": "A Monday standup circle with coffee cups and a red-marked board.",
+    "prompt": "Describe this circle so a friend can hear the three flavours of done.",
+    "beats": ["The circle: cups and levels of awake", "The reports: done, done-ish, and terrifying detail", "How it feels: ritual reset or weekly theatre"],
+    "targetVocab": ["circle", "awake", "red", "report"],
+    "targetSec": 45,
+    "tags": ["describe", "workplace", "everyday"]
+  },
+  {
+    "id": "dsc-river-ghat-morning",
+    "type": "describe",
+    "title": "River ghat at sunrise",
+    "scene": "Bells ring from the temple steps as bathers slip into silver water and flower boats drift past. The sunrise arrives all at once, turning every ripple into a small lamp.",
+    "alt": "A river ghat at sunrise with bathers, bells, and flower boats.",
+    "prompt": "Describe this ghat so a friend can hear the bells and see the ripples light up.",
+    "beats": ["The steps: bells, bathers, and silver water", "The boats: flowers drifting past", "How it feels: devotion, calm, or waking city"],
+    "targetVocab": ["slip", "ripple", "drift", "lamp"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "nature"]
+  },
+  {
+    "id": "dsc-pharmacy-night",
+    "type": "describe",
+    "title": "Pharmacy at 11 PM",
+    "scene": "The shutter is half down and the pharmacist reads your prescription under a harsh tube light. Behind him, shelves of syrups glow while a street dog sleeps across the doorway like a second shutter.",
+    "alt": "A late-night pharmacy with a half-down shutter and a sleeping street dog.",
+    "prompt": "Describe this shop so a friend can feel the half-shutter urgency of a night prescription.",
+    "beats": ["The shutter: half-down commerce", "The shelves: syrups glowing behind glass", "How it feels: relief station or last hope"],
+    "targetVocab": ["harsh", "glow", "prescription", "relief"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "night"]
+  },
+  {
+    "id": "dsc-courtyard-wedding-lights",
+    "type": "describe",
+    "title": "Courtyard under wedding lights",
+    "scene": "Strings of bulbs turn the courtyard gold while aunties rank every arrangement loudly enough for the hosts to hear. Children chase each other between chairs as the dhol team tunes up behind the gate.",
+    "alt": "A courtyard under wedding light strings with ranking aunties and chasing children.",
+    "prompt": "Describe this courtyard so a friend can hear the auntie rankings and the dhol tuning.",
+    "beats": ["The lights: bulbs turning dust to gold", "The aunties: rankings delivered at volume", "How it feels: celebration or inspection"],
+    "targetVocab": ["string", "rank", "tune", "gold"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "family"]
+  },
+  {
+    "id": "dsc-office-cab-queue",
+    "type": "describe",
+    "title": "Office cab queue at six",
+    "scene": "Badges flash at the transport desk as routes are called like train platforms. Colleagues who never speak all day suddenly become seat-saving allies for the forty-minute ride home.",
+    "alt": "An office cab queue at six with called routes and new seat-saving allies.",
+    "prompt": "Describe this queue so a friend can hear the route calls and feel the alliance shift.",
+    "beats": ["The desk: badges and platform-style route calls", "The allies: strangers turning seat-savers", "How it feels: exodus or daily reunion"],
+    "targetVocab": ["flash", "route", "ally", "exodus"],
+    "targetSec": 45,
+    "tags": ["describe", "workplace", "everyday"]
+  },
+  {
+    "id": "dsc-coconut-vendor-noon",
+    "type": "describe",
+    "title": "Coconut vendor at noon",
+    "scene": "The vendor's machete flashes twice and the coconut is open, straw in, before you finish paying. Office workers queue in the thin shade of his umbrella, all pretending the traffic noise is the sea.",
+    "alt": "A noon coconut cart with a flashing machete and office workers in thin shade.",
+    "prompt": "Describe this cart so a friend can hear the machete flash and taste the first sip.",
+    "beats": ["The cut: two flashes and the straw is in", "The queue: workers borrowing shade and sea sounds", "How it feels: noon rescue or daily ritual"],
+    "targetVocab": ["flash", "shade", "sip", "rescue"],
+    "targetSec": 45,
+    "tags": ["describe", "everyday", "street"]
   }
 ]

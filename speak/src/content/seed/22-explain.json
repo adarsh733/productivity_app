@@ -1,1142 +1,651 @@
 [
   {
-    "id": "exp-distributed-caching",
+    "id": "exp-monsoon-economy",
     "type": "explain",
-    "topic": "Distributed Caching",
-    "angle": "Explain how Redis caching prevents database exhaustion to a non-technical product manager.",
-    "beats": [
-      "The physical bookshelf analogy (hot books on the desk vs dusty archives in the basement)",
-      "How cache hits reduce latency from 200ms to 2ms",
-      "The trade-off: cache invalidation and eventual consistency"
-    ],
-    "targetVocab": [
-      "invalidation",
-      "throughput",
-      "latency",
-      "bottleneck",
-      "staleness"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "tech",
-      "analogy"
-    ]
+    "topic": "The monsoon and the economy",
+    "angle": "Why does a weak monsoon still hurt the Indian economy even though farming is a small share of GDP?",
+    "primer": "About half of India's farmland has no irrigation and depends on the June-to-September rains. Most Indians still live in villages, and their spending drives demand for everything from bikes to cement.",
+    "beats": ["Rain decides village income: no rain means a poor harvest and less cash in hand", "Less village spending means slower sales for companies in cities too", "So a bad monsoon shows up on shop shelves months later"],
+    "targetVocab": ["harvest", "demand", "ripple effect", "rural"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "economy"]
   },
   {
-    "id": "exp-rate-limiting",
+    "id": "exp-green-revolution",
     "type": "explain",
-    "topic": "API Rate Limiting",
-    "angle": "Explain the Token Bucket algorithm to an engineering intern.",
-    "beats": [
-      "Water dripping into a bucket at a constant rate",
-      "Burst allowance when bucket is full",
-      "Dropping requests with HTTP 429 when empty"
-    ],
-    "targetVocab": [
-      "capacity",
-      "burst",
-      "refill rate",
-      "throttle",
-      "backoff"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "tech",
-      "architecture"
-    ]
+    "topic": "The Green Revolution",
+    "angle": "What did the Green Revolution actually change in India in the 1960s?",
+    "primer": "In the 1960s India faced food shortages and depended on imported grain. New high-yield wheat and rice seeds, plus fertiliser and irrigation, were introduced first in Punjab and Haryana.",
+    "beats": ["Before: India grew too little grain and imported food to feed itself", "The change: new seeds with water and fertiliser sharply raised wheat yields", "The result and the cost: food security, but tired soil and falling water tables"],
+    "targetVocab": ["yield", "self-sufficient", "irrigation", "trade-off"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "history"]
   },
   {
-    "id": "exp-technical-debt",
+    "id": "exp-1947-partition-economy",
     "type": "explain",
-    "topic": "Technical Debt",
-    "angle": "Explain why paying down technical debt accelerates feature velocity to a business stakeholder.",
-    "beats": [
-      "The financial credit card analogy: compounding interest on shortcuts",
-      "How high debt slows down new feature deployments",
-      "The pragmatic balance: strategic borrowing vs reckless accumulation"
-    ],
-    "targetVocab": [
-      "velocity",
-      "compounding",
-      "refactor",
-      "drag",
-      "pragmatic"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "leadership",
-      "business"
-    ]
+    "topic": "Partition's economic shock",
+    "angle": "Why did Partition in 1947 damage the economy on both sides beyond the human tragedy?",
+    "primer": "In 1947 British India was split into India and Pakistan, and millions crossed the new borders. The split cut through railways, markets, and canal systems that had worked as one unit.",
+    "beats": ["One market broke into two: jute mills landed on one side, jute farms on the other", "Refugees had to be housed and fed, stretching a new government thin", "Trade that once moved freely now crossed a hostile border"],
+    "targetVocab": ["disruption", "supply chain", "refugee", "strain"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "history"]
   },
   {
-    "id": "exp-indexing",
+    "id": "exp-why-inflation",
     "type": "explain",
-    "topic": "Database Indexes",
-    "angle": "Explain why adding indexes speeds up reads but slows down writes.",
-    "beats": [
-      "The textbook index analogy at the back of a physical book",
-      "Instant pointer lookup for SELECT queries",
-      "The overhead of reordering the index tree on every INSERT"
-    ],
-    "targetVocab": [
-      "overhead",
-      "b-tree",
-      "lookup",
-      "throughput",
-      "mutation"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "database",
-      "fundamentals"
-    ]
-  },
-  {
-    "id": "exp-idempotency",
-    "type": "explain",
-    "lang": "en",
-    "topic": "API Idempotency",
-    "angle": "Explain why payment APIs must be idempotent using the elevator button analogy.",
-    "beats": [
-      "Pressing an elevator button ten times still results in the elevator arriving once at your floor",
-      "How duplicate network retries can charge a credit card twice without unique idempotency keys",
-      "The technical solution: caching request IDs on the server to return the original transaction response safely"
-    ],
-    "targetVocab": [
-      "idempotent",
-      "duplicate",
-      "retry",
-      "mutation",
-      "deterministic"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "api",
-      "systems"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
-  },
-  {
-    "id": "exp-cap-theorem",
-    "type": "explain",
-    "lang": "en",
-    "topic": "The CAP Theorem",
-    "angle": "Explain the fundamental trade-off between Consistency, Availability, and Partition Tolerance to a non-technical PM.",
-    "beats": [
-      "The ATM network partition analogy: what happens when an ATM loses network connection to the bank",
-      "Why you can never guarantee both fresh global consistency and 100% availability during network splits",
-      "How modern distributed systems pragmatically choose between CP (banking) and AP (social media feeds)"
-    ],
-    "targetVocab": [
-      "partition",
-      "consistency",
-      "availability",
-      "trade_off",
-      "distributed"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "distributed_systems",
-      "architecture"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
-  },
-  {
-    "id": "exp-event-driven-architecture",
-    "type": "explain",
-    "lang": "en",
-    "topic": "Event-Driven Architecture",
-    "angle": "Explain the difference between synchronous HTTP calls and asynchronous event publishing using a restaurant kitchen.",
-    "beats": [
-      "Synchronous blocking: a waiter standing frozen at the stove waiting for the chef to cook before taking the next order",
-      "Event-driven: the waiter pins an order ticket on the kitchen board and immediately moves to serve another table",
-      "Benefits: decoupling producers from consumers, buffering traffic spikes, and independent microservice scaling"
-    ],
-    "targetVocab": [
-      "asynchronous",
-      "decoupling",
-      "throughput",
-      "consumer",
-      "backlog"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "architecture",
-      "backend"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
-  },
-  {
-    "id": "exp-unit-economics",
-    "type": "explain",
-    "lang": "en",
-    "topic": "Unit Economics",
-    "angle": "Explain Customer Acquisition Cost (CAC) versus Lifetime Value (LTV) using a gym membership model.",
-    "beats": [
-      "CAC is what you spend on marketing flyers and sales staff to sign up one new member",
-      "LTV is the total subscription revenue that member pays over the eighteen months before they churn",
-      "The golden ratio: healthy businesses aim for an LTV at least three times greater than CAC"
-    ],
-    "targetVocab": [
-      "acquisition",
-      "retention",
-      "margin",
-      "payback",
-      "sustainability"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "business",
-      "finance"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
-  },
-  {
-    "id": "exp-database-sharding",
-    "type": "explain",
-    "lang": "en",
-    "topic": "Database Sharding",
-    "angle": "Explain horizontal database sharding using a multi-cabinet filing system analogy.",
-    "beats": [
-      "When a single filing cabinet overflows with folders, you split files across cabinets by customer surname (A-M, N-Z)",
-      "How sharding distributes read/write IOPS across multiple physical server nodes",
-      "The architectural challenge: executing cross-shard joins and balancing data hotspots"
-    ],
-    "targetVocab": [
-      "horizontal",
-      "partitioning",
-      "hotspot",
-      "shard_key",
-      "scalability"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "database",
-      "scalability"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
-  },
-  {
-    "id": "exp-latency-vs-throughput",
-    "type": "explain",
-    "lang": "en",
-    "topic": "Latency vs Throughput",
-    "angle": "Explain the difference between latency and throughput using highway traffic versus vehicle speed.",
-    "beats": [
-      "Latency is how many minutes it takes a single car to travel from origin to destination",
-      "Throughput is the total volume of vehicles passing under a bridge every hour (highway width)",
-      "Why optimizing one does not automatically fix the other (e.g. a wide highway with a slow speed limit)"
-    ],
-    "targetVocab": [
-      "latency",
-      "throughput",
-      "bandwidth",
-      "bottleneck",
-      "propagation"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "performance",
-      "networking"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
-  },
-  {
-    "id": "exp-load-balancing",
-    "type": "explain",
-    "lang": "en",
-    "topic": "Load Balancing",
-    "angle": "Explain Round-Robin and Least-Connections load balancing using airport security checkpoint lanes.",
-    "beats": [
-      "The airport queue coordinator directing passengers to available screening gates",
-      "Round-robin distribution versus dynamic routing based on current line depth and server health",
-      "How load balancers prevent single-point-of-failure crashes by auto-detecting degraded instances"
-    ],
-    "targetVocab": [
-      "distribution",
-      "resilience",
-      "failover",
-      "health_check",
-      "traffic"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "networking",
-      "infrastructure"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
-  },
-  {
-    "id": "exp-public-key-cryptography",
-    "type": "explain",
-    "lang": "en",
-    "topic": "Asymmetric Cryptography",
-    "angle": "Explain public and private key encryption using an open padlock analogy.",
-    "beats": [
-      "The public key is an open padlock anyone can snap shut around a confidential package",
-      "The private key is the unique physical key held only by the recipient that can unlock the box",
-      "How this enables secure, encrypted internet banking without ever transmitting the secret key over the wire"
-    ],
-    "targetVocab": [
-      "asymmetric",
-      "encryption",
-      "ciphertext",
-      "decryption",
-      "integrity"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "security",
-      "cryptography"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
-  },
-  {
-    "id": "exp-ab-testing-significance",
-    "type": "explain",
-    "lang": "en",
-    "topic": "A/B Test Statistical Significance",
-    "angle": "Explain statistical significance in product A/B tests using coin flip probability.",
-    "beats": [
-      "Flipping a coin three times and getting heads does not prove the coin is biased (random variance)",
-      "Why you need sufficient sample size and confidence intervals (p < 0.05) before declaring a button color won",
-      "The risk of false positives: calling a winner too early during weekly seasonality swings"
-    ],
-    "targetVocab": [
-      "significance",
-      "variance",
-      "hypothesis",
-      "sample_size",
-      "confidence"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "data",
-      "product"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
-  },
-  {
-    "id": "exp-garbage-collection",
-    "type": "explain",
-    "lang": "en",
-    "topic": "Memory Garbage Collection",
-    "angle": "Explain automatic garbage collection in modern runtimes using an office recycling cleaner.",
-    "beats": [
-      "Objects created in code are like scratch papers placed on a worker’s desk",
-      "When an object is no longer referenced anywhere, the runtime marks it as unreachable junk",
-      "The cleaner sweeps through periodically to reclaim memory, trading occasional CPU pauses for memory safety"
-    ],
-    "targetVocab": [
-      "allocation",
-      "reachability",
-      "overhead",
-      "pause_time",
-      "reclamation"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "runtime",
-      "memory"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
-  },
-  {
-    "id": "exp-bullwhip-effect",
-    "type": "explain",
-    "lang": "en",
-    "topic": "The Bullwhip Effect in Supply Chains",
-    "angle": "Explain how small shifts in retail customer demand cause massive upstream factory overproduction.",
-    "beats": [
-      "A grocery store sells 5% more diapers this week and orders 10% extra from the regional distributor just in case",
-      "The distributor panics and orders 20% extra from the wholesaler, who demands 40% more from the factory",
-      "How slight demand noise amplifies into severe inventory whiplash without transparent real-time data sharing"
-    ],
-    "targetVocab": [
-      "amplification",
-      "distortion",
-      "inventory",
-      "forecasting",
-      "whiplash"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "supply_chain",
-      "systems"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "Inflation in plain words",
+    "angle": "Why do prices keep rising a little every year, and who gets hurt most?",
+    "primer": "Inflation means money buys slightly less each year. A little inflation is normal in a growing economy; fast inflation wipes out savings. Eggs, rent, and bus fares all creeping up is inflation at work.",
+    "beats": ["Too much money chasing too few goods pushes prices up", "Fixed earners suffer most: salaries adjust slowly, prices adjust fast", "That is why central banks raise interest rates to cool spending"],
+    "targetVocab": ["purchasing power", "wages", "interest rates", "savings"],
+    "targetSec": 60,
+    "tags": ["explain", "economics", "everyday"]
   },
   {
     "id": "exp-compound-interest",
     "type": "explain",
-    "lang": "en",
-    "topic": "Compound Interest",
-    "angle": "Explain the exponential snowball effect of compounding interest versus linear arithmetic growth.",
-    "beats": [
-      "Linear growth: earning interest only on your original principal deposit year after year",
-      "Compounding: earning interest on your interest, creating an accelerating exponential curve over decades",
-      "The critical variable: time and consistency matter exponentially more than initial capital size"
-    ],
-    "targetVocab": [
-      "exponential",
-      "principal",
-      "compounding",
-      "trajectory",
-      "yield"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "finance",
-      "math"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "Compound interest",
+    "angle": "Why does starting to save early beat saving bigger amounts later?",
+    "primer": "Compound interest means you earn returns on your past returns, not just your original deposit. Time does the heavy lifting. A fixed deposit left alone for decades grows far beyond the money put in.",
+    "beats": ["Simple growth adds the same amount each year; compounding adds a growing amount", "Starting ten years earlier can matter more than doubling the monthly amount", "The catch: compounding needs patience and works against you in debt too"],
+    "targetVocab": ["principal", "returns", "exponential", "patience"],
+    "targetSec": 60,
+    "tags": ["explain", "economics", "money"]
   },
   {
-    "id": "exp-sql-vs-nosql",
+    "id": "exp-supply-demand",
     "type": "explain",
-    "lang": "en",
-    "topic": "SQL vs NoSQL Databases",
-    "angle": "Explain when to use structured relational tables versus flexible document stores.",
-    "beats": [
-      "Relational SQL: rigid Excel spreadsheets with strict column types and foreign key relationships (financial ledgers)",
-      "Document NoSQL: flexible JSON folders where each record can carry different dynamic properties (e-commerce catalogs)",
-      "The engineering trade-off: ACID transaction integrity versus horizontal write scalability and schema flexibility"
-    ],
-    "targetVocab": [
-      "relational",
-      "schema",
-      "integrity",
-      "flexibility",
-      "normalization"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "database",
-      "tradeoffs"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "Supply and demand",
+    "angle": "Why do tomato prices crash one month and shoot up the next?",
+    "primer": "Prices balance what sellers bring against what buyers want. Tomatoes cannot be stored long, so a bumper harvest floods the market and a bad one empties it. The price swings wildly either way.",
+    "beats": ["Bumper crop: supply floods in, sellers undercut each other, prices crash", "Failed crop: little arrives, buyers bid up, prices spike", "Middlemen and transport add their own cut on top of both swings"],
+    "targetVocab": ["supply", "demand", "perishable", "volatile"],
+    "targetSec": 60,
+    "tags": ["explain", "economics", "everyday"]
   },
   {
-    "id": "exp-cdn-edge-caching",
+    "id": "exp-why-brands",
     "type": "explain",
-    "lang": "en",
-    "topic": "CDN Edge Caching",
-    "angle": "Explain Content Delivery Networks using local neighborhood convenience stores.",
-    "beats": [
-      "Instead of every customer in Tokyo ordering milk directly from a dairy farm in Switzerland, stock it in local convenience stores",
-      "How CDNs replicate static images, video chunks, and frontend bundles to hundreds of edge servers worldwide",
-      "The dramatic reduction in round-trip latency and origin server compute load"
-    ],
-    "targetVocab": [
-      "edge",
-      "replication",
-      "latency",
-      "cache_hit",
-      "geographic"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "networking",
-      "web"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "Why brands charge more",
+    "angle": "Why do people pay double for a branded shirt when the cloth looks the same?",
+    "primer": "A brand is a promise that reduces risk for the buyer. You pay extra to avoid a bad surprise. Companies spend years building that trust through consistent quality and advertising.",
+    "beats": ["Trust: the brand removes the fear of wasting money on something bad", "Signal: wearing it tells others something about you", "Habit: once trusted, people stop comparing and just rebuy"],
+    "targetVocab": ["premium", "trust", "loyalty", "signal"],
+    "targetSec": 60,
+    "tags": ["explain", "business", "marketing"]
   },
   {
-    "id": "exp-concurrency-vs-parallelism",
+    "id": "exp-ola-uber-model",
     "type": "explain",
-    "lang": "en",
-    "topic": "Concurrency vs Parallelism",
-    "angle": "Explain concurrency versus parallelism using a single chef juggling dishes versus multiple chefs.",
-    "beats": [
-      "Concurrency: one chef chopping onions while checking a simmering soup—interleaving progress on multiple tasks on one core",
-      "Parallelism: four chefs standing at four stoves simultaneously cooking four independent meals on multiple CPU cores",
-      "Concurrency is about structural design; parallelism is about simultaneous physical execution"
-    ],
-    "targetVocab": [
-      "interleaving",
-      "simultaneous",
-      "multi_core",
-      "scheduling",
-      "execution"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "concurrency",
-      "cs_fundamentals"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "How cab apps make money",
+    "angle": "How do cab apps earn when the ride feels cheap and the driver still gets paid?",
+    "primer": "Cab apps are marketplaces: they own no cars and employ no drivers. They take a cut of every fare for matching riders with drivers. Early cheap rides were funded by investors to build the habit.",
+    "beats": ["Matching: the app's real product is finding you a cab in minutes", "Commission: a slice of each fare is the lasting revenue", "Scale: thin margins work only with lakhs of rides a day"],
+    "targetVocab": ["marketplace", "commission", "scale", "subsidy"],
+    "targetSec": 60,
+    "tags": ["explain", "business", "india"]
   },
   {
-    "id": "exp-churn-and-ltv",
+    "id": "exp-dabbawala-system",
     "type": "explain",
-    "lang": "en",
-    "topic": "SaaS Churn Rate Dynamics",
-    "angle": "Explain why reducing monthly churn by 2% has a compounding impact on company valuation.",
-    "beats": [
-      "The leaky bucket analogy: adding new water (leads) is futile if water leaks out the bottom continuously",
-      "How monthly churn compounds over twelve months to cap maximum achievable recurring revenue",
-      "Why retention improvements increase customer lifetime value without increasing marketing spend"
-    ],
-    "targetVocab": [
-      "churn",
-      "compounding",
-      "retention",
-      "recurring",
-      "leakage"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "business",
-      "metrics"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "Mumbai's dabbawalas",
+    "angle": "How do Mumbai's dabbawalas deliver lakhs of lunch boxes with almost no errors?",
+    "primer": "Dabbawalas have carried home-cooked lunch boxes across Mumbai for over a century, mostly without digital tools. Each box changes hands several times between home and office. Their error rate is famously tiny.",
+    "beats": ["Coding: simple colour and number marks route each box", "Relay: no one person carries far; the chain does the distance", "Discipline: fixed timings and fixed handoff points, six days a week"],
+    "targetVocab": ["relay", "routing", "discipline", "error rate"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "business"]
   },
   {
-    "id": "exp-circuit-breaker",
+    "id": "exp-amul-cooperative",
     "type": "explain",
-    "lang": "en",
-    "topic": "The Circuit Breaker Pattern",
-    "angle": "Explain microservice circuit breakers using household electrical fuses.",
-    "beats": [
-      "When an external service experiences an outage, continuing to bombard it with requests exhausts your own connection pool",
-      "The circuit breaker trips open after five consecutive errors, immediately returning safe cached fallbacks",
-      "Periodic half-open canary probes test if the remote service has recovered before restoring full traffic"
-    ],
-    "targetVocab": [
-      "resilience",
-      "fallback",
-      "cascade",
-      "timeout",
-      "canary"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "architecture",
-      "resilience"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "The Amul cooperative",
+    "angle": "How did a farmers' cooperative build one of India's biggest food brands?",
+    "primer": "Amul began in Gujarat in the 1940s when milk farmers united to sell directly instead of through middlemen. Each farmer owns a share of the cooperative. The network now collects milk from lakhs of villages daily.",
+    "beats": ["Cut the middleman: farmers kept the margin instead of traders", "Shared processing: village societies pool milk into district plants", "One brand: pooled milk sells under a single trusted name"],
+    "targetVocab": ["cooperative", "middleman", "pool", "margin"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "business"]
   },
   {
-    "id": "exp-graphql-vs-rest",
+    "id": "exp-jio-disruption",
     "type": "explain",
-    "lang": "en",
-    "topic": "GraphQL vs REST APIs",
-    "angle": "Explain over-fetching and under-fetching using a customized buffet versus a fixed set menu.",
-    "beats": [
-      "REST set menu: calling /users/123 returns 50 database fields when the mobile app only needed the user’s name and avatar",
-      "GraphQL buffet: the client sends a precise query specifying only the exact fields required for that screen",
-      "Trade-offs: reduced payload size and single-roundtrip flexibility versus query complexity and server caching challenges"
-    ],
-    "targetVocab": [
-      "over_fetching",
-      "payload",
-      "schema",
-      "query",
-      "round_trip"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "api",
-      "web"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "Cheap data in India",
+    "angle": "Why did mobile data become almost free in India after 2016?",
+    "primer": "Before 2016, a gigabyte of mobile data in India cost well over a hundred rupees. A new entrant built a data-only network and offered free voice and nearly free data to win users fast. Rivals had to match or die.",
+    "beats": ["New network: built for data from scratch, so costs per gigabyte were low", "Free entry pricing: crores of users joined in months", "Price war: every operator slashed rates, and data became a commodity"],
+    "targetVocab": ["disruption", "commodity", "subscriber", "price war"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "business"]
   },
   {
-    "id": "exp-git-dag-internals",
+    "id": "exp-why-gold",
     "type": "explain",
-    "lang": "en",
-    "topic": "Git Internal Architecture",
-    "angle": "Explain Git commits as a Directed Acyclic Graph (DAG) of immutable snapshots.",
-    "beats": [
-      "Git does not store diffs; each commit is a complete snapshot snapshot tree hashed with SHA-1",
-      "Branches are simply lightweight 40-byte pointers pointing to a specific commit hash in the graph",
-      "Why rebasing rewrites history by replaying commits with new parent pointers, while merging preserves both lines"
-    ],
-    "targetVocab": [
-      "immutable",
-      "snapshot",
-      "directed_graph",
-      "hash",
-      "pointer"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "git",
-      "cs_fundamentals"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "India's love for gold",
+    "angle": "Why do Indian families hold so much of their savings in gold?",
+    "primer": "Gold has been the trusted store of value in India for centuries, through kings, colonial rule, and bank failures. It needs no paperwork, never defaults, and can be sold in any town. Weddings keep the demand constant.",
+    "beats": ["Trust: gold holds value when banks and currencies have failed before", "Liquidity: it converts to cash anywhere, fast", "Culture: weddings and festivals make buying it a ritual, not just an investment"],
+    "targetVocab": ["store of value", "liquid", "hedge", "ritual"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "money"]
   },
   {
-    "id": "exp-jwt-vs-cookies",
+    "id": "exp-upi-success",
     "type": "explain",
-    "lang": "en",
-    "topic": "JWTs vs Server Session Cookies",
-    "angle": "Explain stateless JSON Web Tokens versus stateful server sessions using a passport visa versus a coat check ticket.",
-    "beats": [
-      "Session cookie: a numbered coat-check ticket where the server must query a central database on every request to look up the owner",
-      "JWT: a digitally signed passport carrying encrypted user permissions self-contained inside the token payload",
-      "The trade-off: horizontal stateless scalability versus the difficulty of instant token revocation before expiration"
-    ],
-    "targetVocab": [
-      "stateless",
-      "cryptographic",
-      "signature",
-      "revocation",
-      "payload"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "auth",
-      "security"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "Why UPI worked",
+    "angle": "Why did UPI succeed in India when card payments never took off the same way?",
+    "primer": "UPI lets any two bank accounts move money instantly using just a phone, free of charge. It runs as public infrastructure that every app can build on. Cards needed costly machines; UPI needs only a QR sticker.",
+    "beats": ["Zero cost to accept: a printed QR beats a card machine for small shops", "Instant settlement: the seller gets money immediately, building trust", "Open rails: every bank and app works together instead of competing wallets"],
+    "targetVocab": ["instant", "interoperable", "merchant", "adoption"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "technology"]
   },
   {
-    "id": "exp-oauth2-flow",
+    "id": "exp-roman-trade-india",
     "type": "explain",
-    "lang": "en",
-    "topic": "OAuth 2.0 Authorization Code Flow",
-    "angle": "Explain \"Sign in with Google\" using a hotel valet key analogy.",
-    "beats": [
-      "A valet key allows the hotel attendant to park the car without opening the locked glove compartment or trunk",
-      "How authorization code flow grants third-party apps limited scoped access without ever sharing your master password",
-      "The security handshake: exchange of temporary authorization code on a secure backchannel for an access token"
-    ],
-    "targetVocab": [
-      "delegation",
-      "scoped",
-      "handshake",
-      "token",
-      "authorization"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "security",
-      "auth"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "Rome's trade with India",
+    "angle": "Why did Roman emperors worry about gold flowing to India two thousand years ago?",
+    "primer": "Roman elites craved Indian pepper, spices, and cotton, shipped via the Red Sea and monsoon winds. Roman writers complained that this hunger drained gold eastward every year. Coins of Roman emperors are still dug up in south India.",
+    "beats": ["Demand: pepper and spices sold at huge mark-ups in Rome", "Winds: monsoon routes made the voyage fast and reliable", "Drain: Rome paid in gold for goods it consumed, so wealth flowed one way"],
+    "targetVocab": ["trade deficit", "monsoon winds", "luxury", "drain"],
+    "targetSec": 60,
+    "tags": ["explain", "history", "trade"]
   },
   {
-    "id": "exp-zero-downtime-deployments",
+    "id": "exp-ashoka-dhamma",
     "type": "explain",
-    "lang": "en",
-    "topic": "Zero-Downtime Blue/Green Deployments",
-    "angle": "Explain Blue/Green and Rolling deployments using twin airport runways.",
-    "beats": [
-      "Blue environment runs live customer traffic while Green environment deploys and verifies the new release in isolation",
-      "Once health checks pass, the router flips traffic from Blue to Green instantaneously",
-      "If errors spike, the router flips back immediately without having to rebuild from source"
-    ],
-    "targetVocab": [
-      "cutover",
-      "rollback",
-      "isolation",
-      "traffic_routing",
-      "continuity"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "devops",
-      "deployment"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "Ashoka after Kalinga",
+    "angle": "Why did Emperor Ashoka turn to non-violence after winning the Kalinga war?",
+    "primer": "Ashoka ruled most of the subcontinent in the third century BCE. His rock edicts say the suffering in the Kalinga war filled him with remorse. He then promoted dhamma, a code of moral conduct, carved on pillars across the land.",
+    "beats": ["The war's cost: the edicts describe massive death and deportation", "The turn: remorse pushed him toward moral rule instead of conquest", "The method: edicts on stone spread the message where criers could not reach"],
+    "targetVocab": ["remorse", "edict", "non-violence", "legacy"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "history"]
   },
   {
-    "id": "exp-containers-vs-vms",
+    "id": "exp-chola-navy",
     "type": "explain",
-    "lang": "en",
-    "topic": "Containers vs Virtual Machines",
-    "angle": "Explain Docker containers versus hypervisor VMs using an apartment building versus independent houses.",
-    "beats": [
-      "Virtual Machine: building an entirely separate house with its own plumbing, foundation, and full guest operating system",
-      "Docker container: renting an apartment in a shared building that shares the underlying host Linux kernel and hardware",
-      "Why containers spin up in 200 milliseconds and use a fraction of memory compared to multi-gigabyte VM images"
-    ],
-    "targetVocab": [
-      "isolation",
-      "kernel",
-      "overhead",
-      "virtualization",
-      "portability"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "devops",
-      "docker"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "The Chola sea voyages",
+    "angle": "How did a south Indian dynasty project power across the seas a thousand years ago?",
+    "primer": "The Cholas ruled from Tamil Nadu around the 11th century with a powerful navy. Their ships reached Sri Lanka and Southeast Asia. The great Brihadeeswara temple at Thanjavur still stands from their peak.",
+    "beats": ["Ships: a standing navy carried armies across the Bay of Bengal", "Trade: ports under Chola control taxed the spice routes", "Temples: conquest wealth funded monuments that advertised their power"],
+    "targetVocab": ["navy", "expedition", "tribute", "monument"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "history"]
   },
   {
-    "id": "exp-database-deadlocks",
+    "id": "exp-mughal-mansabdari",
     "type": "explain",
-    "lang": "en",
-    "topic": "Database Deadlocks",
-    "angle": "Explain transactional deadlocks using a one-lane bridge standoff.",
-    "beats": [
-      "Transaction A locks Row 1 and wants Row 2; Transaction B locks Row 2 and wants Row 1",
-      "Neither transaction can proceed forward, creating an infinite circular dependency freeze",
-      "How database engines detect circular wait graphs and automatically abort one transaction to allow the other to finish"
-    ],
-    "targetVocab": [
-      "concurrency",
-      "circular_dependency",
-      "lock_contention",
-      "abort",
-      "rollback"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "database",
-      "concurrency"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "How the Mughals ran an empire",
+    "angle": "How did a small ruling class govern millions across the subcontinent for centuries?",
+    "primer": "The Mughals ruled much of India from the 1500s, consolidated under Akbar. They ranked every officer with a mansab number fixing his cavalry and salary. Land revenue from peasants funded the whole machine.",
+    "beats": ["Ranks: every noble held a number that fixed his troops and pay", "Revenue: officials collected a share of each harvest as tax", "Loyalty: ranks could be raised or cut, keeping nobles dependent on the emperor"],
+    "targetVocab": ["bureaucracy", "revenue", "rank", "loyalty"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "history"]
   },
   {
-    "id": "exp-search-inverted-index",
+    "id": "exp-railways-british",
     "type": "explain",
-    "lang": "en",
-    "topic": "Search Engine Inverted Index",
-    "angle": "Explain how Elasticsearch finds keywords across millions of articles in milliseconds.",
-    "beats": [
-      "Forward scan: reading every book from cover to cover to see if the word \"database\" appears (slow O(N))",
-      "Inverted index: the alphabetical glossary at the back of a textbook mapping every word to an exact list of page numbers",
-      "How posting lists allow instant intersection queries (e.g. articles containing both \"React\" AND \"Performance\")"
-    ],
-    "targetVocab": [
-      "inverted_index",
-      "lookup",
-      "posting_list",
-      "tokenization",
-      "retrieval"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "search",
-      "algorithms"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "The railways under the British",
+    "angle": "Why did the British build one of the world's largest rail networks in India?",
+    "primer": "Rail construction in India began in the 1850s, funded by British investors with guaranteed returns. The network moved troops fast and carried cotton and grain to ports. Indians paid for it through taxes either way.",
+    "beats": ["Control: troops could reach any revolt within days instead of weeks", "Extraction: raw goods flowed to ports; finished goods flowed back in", "Unintended effect: Indians travelled, met, and organised across regions"],
+    "targetVocab": ["infrastructure", "extraction", "garrison", "unintended"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "history"]
   },
   {
-    "id": "exp-eventual-consistency",
+    "id": "exp-cold-war-nonalignment",
     "type": "explain",
-    "lang": "en",
-    "topic": "Eventual Consistency",
-    "angle": "Explain eventual consistency using viral social media like counters.",
-    "beats": [
-      "When an influencer posts a photo, showing the exact same like count simultaneously in Tokyo and London requires slow cross-globe locking",
-      "Eventual consistency allows local servers to update immediately and propagate changes asynchronously in the background",
-      "The guarantee: in the absence of new updates, all replica nodes will eventually converge to the exact same state"
-    ],
-    "targetVocab": [
-      "convergence",
-      "propagation",
-      "asynchronous",
-      "replica",
-      "staleness"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "distributed_systems",
-      "architecture"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "India and the Cold War",
+    "angle": "Why did newly independent India refuse to join either Cold War camp?",
+    "primer": "After 1947 the world split between American and Soviet blocs, each demanding allies. India under Nehru chose non-alignment: judging each issue on its own. The policy let India take aid and arms from both sides.",
+    "beats": ["Freedom first: joining a camp looked like swapping one master for another", "Bargaining: neutrality let India deal with both blocs", "Limits: wars and crises repeatedly tested how neutral India really was"],
+    "targetVocab": ["bloc", "sovereignty", "leverage", "neutral"],
+    "targetSec": 60,
+    "tags": ["explain", "geopolitics", "history"]
   },
   {
-    "id": "exp-bloom-filters",
+    "id": "exp-suez-crisis",
     "type": "explain",
-    "lang": "en",
-    "topic": "Bloom Filters",
-    "angle": "Explain probabilistic data structures using a fast nightclub guestlist check.",
-    "beats": [
-      "A bouncer checking a tiny memory bit-array can tell you with 100% certainty if your name is NOT on the list",
-      "If the filter says \"Maybe\", you execute a full disk database lookup to confirm",
-      "How Bloom filters eliminate 99% of expensive disk lookups for non-existent keys using minimal RAM"
-    ],
-    "targetVocab": [
-      "probabilistic",
-      "bit_array",
-      "false_positive",
-      "hashing",
-      "efficiency"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "algorithms",
-      "data_structures"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "The Suez Crisis",
+    "angle": "Why did a canal in Egypt trigger a global crisis in 1956?",
+    "primer": "The Suez Canal in Egypt was the shortcut between Europe and Asia, carrying oil tankers daily. When Egypt nationalised it in 1956, Britain, France, and Israel attacked. America and the Soviets forced them to stop.",
+    "beats": ["Chokepoint: whoever holds the canal taxes Europe's oil lifeline", "The gamble: old empires seized it back by force", "The verdict: superpower pressure ended it, proving empires were finished"],
+    "targetVocab": ["chokepoint", "nationalise", "superpower", "embargo"],
+    "targetSec": 60,
+    "tags": ["explain", "geopolitics", "history"]
   },
   {
-    "id": "exp-stream-backpressure",
+    "id": "exp-why-oil-matters",
     "type": "explain",
-    "lang": "en",
-    "topic": "Backpressure in Data Streams",
-    "angle": "Explain reactive backpressure using a funnel overflowing with water.",
-    "beats": [
-      "When a fast producer sends 10,000 events/sec to a slow database consumer that can only process 1,000 events/sec, memory buffers explode",
-      "Backpressure signals the upstream producer to slow down emission rate until downstream queues drain",
-      "The architecture choice: rate throttling, disk-buffered message queues (Kafka), or selective drop strategies"
-    ],
-    "targetVocab": [
-      "backpressure",
-      "throughput",
-      "buffer_overflow",
-      "throttling",
-      "flow_control"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "streaming",
-      "architecture"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "Why oil shapes wars",
+    "angle": "Why does the price of crude oil move politics in countries that pump no oil?",
+    "primer": "Oil fuels transport, farming, and industry everywhere, and few substitutes exist at scale. A handful of regions pump most of it. So a distant conflict can raise your bus fare within weeks.",
+    "beats": ["No substitute: trucks, tractors, and planes all run on it", "Concentrated supply: a few producers can squeeze the whole world", "Your wallet: fuel and food prices carry oil inside them"],
+    "targetVocab": ["crude", "supply shock", "subsidy", "pass-through"],
+    "targetSec": 60,
+    "tags": ["explain", "geopolitics", "economics"]
   },
   {
-    "id": "exp-tcp-vs-udp",
+    "id": "exp-taiwan-chip",
     "type": "explain",
-    "lang": "en",
-    "topic": "TCP vs UDP Protocols",
-    "angle": "Explain certified registered mail versus live FM radio broadcast.",
-    "beats": [
-      "TCP: registered mail with tracking numbers, sequence verification, and automatic retransmission if an envelope is dropped",
-      "UDP: live radio broadcast where missing a split-second audio packet is preferable to pausing the live show to retransmit",
-      "Why web browsing uses TCP (correctness matters) and multiplayer video games use UDP (speed matters)"
-    ],
-    "targetVocab": [
-      "reliability",
-      "handshake",
-      "retransmission",
-      "packet_loss",
-      "latency"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "networking",
-      "protocols"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "Taiwan and computer chips",
+    "angle": "Why does a small island matter so much to the world's phones and cars?",
+    "primer": "Taiwan's foundries make a large share of the world's most advanced computer chips, the brains inside phones, laptops, and cars. Building such plants costs billions and takes years. No quick replacement exists anywhere.",
+    "beats": ["Concentration: one island holds the hardest manufacturing on earth", "Dependence: every big tech firm queues up for its capacity", "Stakes: any disruption would freeze factories worldwide"],
+    "targetVocab": ["semiconductor", "foundry", "dependence", "bottleneck"],
+    "targetSec": 60,
+    "tags": ["explain", "geopolitics", "technology"]
   },
   {
-    "id": "exp-dns-lifecycle",
+    "id": "exp-un-veto",
     "type": "explain",
-    "lang": "en",
-    "topic": "DNS Resolution Lifecycle",
-    "angle": "Explain typing a URL in a browser to the global telephone directory lookup.",
-    "beats": [
-      "Your browser checks local cache, asks the operating system resolver, and queries the recursive ISP server",
-      "The recursive resolver traverses root nameservers, TLD servers (.com), and the authoritative nameserver for the domain",
-      "The authoritative server returns the IP address (e.g. 142.250.190.46), which is cached according to TTL records"
-    ],
-    "targetVocab": [
-      "resolution",
-      "authoritative",
-      "recursive",
-      "ttl",
-      "ip_address"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "networking",
-      "dns"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "The UN veto",
+    "angle": "Why can one country block the whole United Nations from acting?",
+    "primer": "The UN Security Council's five permanent members each hold a veto over its decisions. The rule was the price of getting great powers to join in 1945. It stops action against any of them or their friends.",
+    "beats": ["The deal: great powers joined only if they could never be overruled", "The block: one no vote kills any resolution", "The result: the UN acts where powers agree and freezes where they clash"],
+    "targetVocab": ["veto", "resolution", "deadlock", "consensus"],
+    "targetSec": 60,
+    "tags": ["explain", "geopolitics", "history"]
   },
   {
-    "id": "exp-api-gateway",
+    "id": "exp-singapore-story",
     "type": "explain",
-    "lang": "en",
-    "topic": "The API Gateway Pattern",
-    "angle": "Explain microservice API gateways using a luxury hotel concierge desk.",
-    "beats": [
-      "Instead of guests contacting the laundry, kitchen, security, and billing departments separately, they call the front desk",
-      "The API gateway centralizes authentication, SSL termination, rate limiting, and request routing in one entrypoint",
-      "Why this protects internal microservices from direct public internet exposure"
-    ],
-    "targetVocab": [
-      "reverse_proxy",
-      "aggregation",
-      "routing",
-      "centralization",
-      "perimeter"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "architecture",
-      "microservices"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "Singapore's rise",
+    "angle": "How did a tiny island with no resources become one of the richest places on earth?",
+    "primer": "Singapore became independent in 1965, a small port city with no minerals and little land. Its government bet on location, strict rule of law, and open trade. Ships and factories followed the stability.",
+    "beats": ["Port first: the location between oceans made trade natural", "Trust: clean courts and stable rules pulled foreign factories", "Skills: schooling and housing turned migrants into a middle class"],
+    "targetVocab": ["port", "rule of law", "foreign investment", "stability"],
+    "targetSec": 60,
+    "tags": ["explain", "geopolitics", "economics"]
   },
   {
-    "id": "exp-raft-consensus",
+    "id": "exp-japan-miracle",
     "type": "explain",
-    "lang": "en",
-    "topic": "The Raft Consensus Algorithm",
-    "angle": "Explain distributed leader election using parliamentary voting rules.",
-    "beats": [
-      "Nodes in a cluster elect one Leader; if the leader heartbeat fails, nodes step up as Candidates and vote for a new leader",
-      "All database writes flow through the Leader, who replicates entries to a majority quorum before committing",
-      "How Raft ensures cluster consistency even if one node crashes or drops off the network"
-    ],
-    "targetVocab": [
-      "consensus",
-      "quorum",
-      "election",
-      "heartbeat",
-      "fault_tolerance"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "distributed_systems",
-      "algorithms"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "Japan's post-war rise",
+    "angle": "How did a war-ruined Japan become an industrial giant within a generation?",
+    "primer": "In 1945 Japan's cities lay in ruins and its industry was shattered. American aid, land reform, and schooling rebuilt the base. Firms like Toyota then perfected quality manufacturing for export.",
+    "beats": ["Base: aid, land reform, and literacy restarted the economy", "Method: factories chased zero defects and exported worldwide", "Catch-up: copying the best, then improving past the original"],
+    "targetVocab": ["reconstruction", "exports", "quality", "catch-up"],
+    "targetSec": 60,
+    "tags": ["explain", "history", "economics"]
   },
   {
-    "id": "exp-pagerank-basics",
+    "id": "exp-berlin-wall",
     "type": "explain",
-    "lang": "en",
-    "topic": "PageRank Algorithm",
-    "angle": "Explain web authority ranking using academic peer-reviewed citations.",
-    "beats": [
-      "A research paper cited by fifty renowned scientists carries vastly more authority than a paper cited by two students",
-      "PageRank models a random web surfer clicking hyperlinks: pages with links from authoritative sites inherit high rank",
-      "The feedback loop: high-authority nodes pass higher vote weight downstream across the web graph"
-    ],
-    "targetVocab": [
-      "authority",
-      "hyperlink",
-      "graph_traversal",
-      "damping_factor",
-      "eigenvector"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "search",
-      "algorithms"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "The Berlin Wall",
+    "angle": "Why did a wall through one city become the symbol of a divided world?",
+    "primer": "After 1945 Germany split into a capitalist west and communist east, and Berlin sat deep inside the east, itself divided. In 1961 the east sealed its half with a wall to stop its people fleeing west. It fell in 1989.",
+    "beats": ["The leak: skilled workers kept escaping through Berlin", "The seal: a wall overnight turned escape into treason", "The fall: when guards stood aside, the division ended within months"],
+    "targetVocab": ["defection", "ideology", "reunification", "symbol"],
+    "targetSec": 60,
+    "tags": ["explain", "geopolitics", "history"]
   },
   {
-    "id": "exp-websockets-vs-polling",
+    "id": "exp-stoicism-control",
     "type": "explain",
-    "lang": "en",
-    "topic": "WebSockets vs HTTP Polling",
-    "angle": "Explain persistent bidirectional sockets versus checking your mailbox every thirty seconds.",
-    "beats": [
-      "Short polling: repeatedly asking the server \"Is there new data yet?\" every two seconds, wasting 99% of HTTP headers",
-      "WebSockets: opening a permanent two-way telephone call where the server pushes new events instantly as they occur",
-      "Ideal for real-time chat, collaborative document editing, and financial trading charts"
-    ],
-    "targetVocab": [
-      "bidirectional",
-      "persistent",
-      "overhead",
-      "real_time",
-      "full_duplex"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "web",
-      "protocols"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "Stoicism in one idea",
+    "angle": "What is the one Stoic idea that actually helps on a bad day at work?",
+    "primer": "Stoicism is a Greek philosophy that Rome's emperors and slaves both practised. Its core move is sorting life into what you control and what you do not. Marcus Aurelius wrote his notes on it while running a war.",
+    "beats": ["Sort: your effort and response are yours; outcomes and others are not", "Release: stop spending energy where you have no lever", "Act: put all of it into the part you control"],
+    "targetVocab": ["control", "acceptance", "judgement", "equanimity"],
+    "targetSec": 60,
+    "tags": ["explain", "philosophy", "everyday"]
   },
   {
-    "id": "exp-connection-pooling",
+    "id": "exp-ship-of-theseus",
     "type": "explain",
-    "lang": "en",
-    "topic": "Database Connection Pooling",
-    "angle": "Explain connection pools using shared fleet rental cars versus buying a new car for every trip.",
-    "beats": [
-      "Opening a new TCP and TLS database connection on every user click takes 50ms of CPU handshake latency",
-      "A connection pool maintains 20 pre-authenticated warm connections ready in memory to borrow and return immediately",
-      "Why connection pooling protects PostgreSQL and MySQL from out-of-memory connection thrashing"
-    ],
-    "targetVocab": [
-      "handshake",
-      "overhead",
-      "reusability",
-      "thrashing",
-      "concurrency"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "explain",
-      "database",
-      "performance"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "topic": "The ship of Theseus",
+    "angle": "If every part of a thing is replaced, is it still the same thing?",
+    "primer": "Philosophers ask: a ship has every plank replaced over years. Is it the same ship? The puzzle applies to companies, teams, and people. Much of your body is rebuilt over the years.",
+    "beats": ["The puzzle: same shape and name, zero original parts", "Two answers: sameness lives in continuity, or it lives in material", "Your life: you are more a pattern than a pile of parts"],
+    "targetVocab": ["identity", "continuity", "paradox", "essence"],
+    "targetSec": 60,
+    "tags": ["explain", "philosophy", "thinking"]
   },
   {
-    "id": "exp-b-tree-vs-lsm-tree",
+    "id": "exp-trolley-problem",
     "type": "explain",
-    "lang": "en",
-    "topic": "B-Trees vs LSM-Trees",
-    "angle": "Explain why write-heavy databases like Cassandra use LSM-Trees while read-heavy databases like PostgreSQL use B-Trees using a library ledger analogy.",
-    "beats": [
-      "B-Trees update records directly in-place on disk pages, delivering fast single-seek reads but causing random write fragmentation",
-      "LSM-Trees append all new writes sequentially into an immutable in-memory MemTable, eliminating random disk write overhead",
-      "Background compaction passes merge sorted string tables (SSTables) in the background to keep read queries fast"
-    ],
-    "targetVocab": [
-      "immutable",
-      "compaction",
-      "sequential",
-      "fragmentation",
-      "throughput"
-    ],
+    "topic": "The trolley problem",
+    "angle": "Why do philosophers argue about a runaway trolley that will never exist?",
+    "primer": "A runaway trolley will kill five people unless you pull a lever to divert it onto one person. Most say pull; fewer will push one person off a bridge to save five. The puzzle exposes how we really judge right and wrong.",
+    "beats": ["Pulling feels allowed: trading one life for five by redirecting harm", "Pushing feels wrong: using a person as a tool crosses a line", "The lesson: consequences and rules pull us in opposite directions"],
+    "targetVocab": ["dilemma", "consequences", "duty", "intuition"],
+    "targetSec": 60,
+    "tags": ["explain", "philosophy", "thinking"]
+  },
+  {
+    "id": "exp-occams-razor",
+    "type": "explain",
+    "topic": "Occam's razor",
+    "angle": "What does the simplest explanation rule actually say, and when does it fail?",
+    "primer": "Occam's razor says: prefer the explanation needing the fewest assumptions. The friar William of Ockham proposed it for debating theology. It is a tie-breaker between theories, not a proof of truth.",
+    "beats": ["The rule: fewer moving parts means fewer ways to be wrong", "The use: debugging, diagnosis, and detective work all lean on it", "The limit: reality is sometimes genuinely complicated"],
+    "targetVocab": ["assumption", "parsimony", "heuristic", "exception"],
     "targetSec": 45,
-    "tags": [
-      "explain",
-      "database",
-      "storage_engines"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["explain", "philosophy", "thinking"]
+  },
+  {
+    "id": "exp-karma-idea",
+    "type": "explain",
+    "topic": "Karma as philosophy",
+    "angle": "What does karma mean in Indian philosophy, beneath the pop-culture version?",
+    "primer": "Karma in Indian philosophy means action and its consequence, not cosmic revenge. The Bhagavad Gita teaches acting with full effort while releasing claim on the fruit. Intention shapes the weight of the act.",
+    "beats": ["Action: every deliberate act plants a consequence", "Intention: the same deed counts differently by motive", "Release: duty without clinging to results steadies the mind"],
+    "targetVocab": ["action", "intention", "duty", "detachment"],
+    "targetSec": 60,
+    "tags": ["explain", "philosophy", "india"]
+  },
+  {
+    "id": "exp-buddha-suffering",
+    "type": "explain",
+    "topic": "The Buddha on suffering",
+    "angle": "What did the Buddha actually say causes suffering?",
+    "primer": "The Buddha taught in India around the 5th century BCE that suffering comes from craving: wanting things to be other than they are. His eightfold path is a training in conduct, focus, and wisdom. Mindfulness is one spoke of that wheel.",
+    "beats": ["Craving: clinging to pleasure and pushing away pain both hurt", "Impermanence: nothing held stays, so gripping guarantees loss", "Practice: attention trained daily loosens the grip"],
+    "targetVocab": ["craving", "impermanence", "mindfulness", "practice"],
+    "targetSec": 60,
+    "tags": ["explain", "philosophy", "india"]
+  },
+  {
+    "id": "exp-sunk-cost",
+    "type": "explain",
+    "topic": "The sunk-cost trap",
+    "angle": "Why do smart people keep funding projects they know are failing?",
+    "primer": "A sunk cost is money or effort already spent and unrecoverable. Rational choice ignores it and weighs only the future. But admitting waste feels like failure, so people throw good money after bad.",
+    "beats": ["The trap: past spending feels like a reason to continue", "The truth: spent money is gone whatever you choose", "The fix: ask what you would do if you were starting today"],
+    "targetVocab": ["sunk cost", "cut losses", "rational", "admit"],
+    "targetSec": 45,
+    "tags": ["explain", "psychology", "decisions"]
+  },
+  {
+    "id": "exp-loss-aversion",
+    "type": "explain",
+    "topic": "Loss aversion",
+    "angle": "Why does losing a thousand rupees hurt more than gaining a thousand feels good?",
+    "primer": "Psychologists found losses tend to sting more than equal gains please. Sellers exploit it with free trials: once it feels yours, giving it up hurts.",
+    "beats": ["Asymmetry: the pain of loss outweighs the joy of gain", "Trials: free returns work because ownership kicks in fast", "Use: frame choices as what is kept, not what is gained"],
+    "targetVocab": ["asymmetry", "endowment", "risk", "framing"],
+    "targetSec": 45,
+    "tags": ["explain", "psychology", "decisions"]
+  },
+  {
+    "id": "exp-confirmation-bias",
+    "type": "explain",
+    "topic": "Confirmation bias",
+    "angle": "Why do arguments with data rarely change anyone's mind?",
+    "primer": "Confirmation bias is the mind's habit of welcoming agreeable evidence and dodging the rest. We all do it: two people read the same article and both feel proven right. Social feeds now automate the filtering.",
+    "beats": ["Seeking: we google the conclusion we already hold", "Dodging: contrary facts get explained away, not weighed", "Fix: steelman the other side before judging"],
+    "targetVocab": ["bias", "echo chamber", "evidence", "steelman"],
+    "targetSec": 45,
+    "tags": ["explain", "psychology", "thinking"]
+  },
+  {
+    "id": "exp-procrastination",
+    "type": "explain",
+    "topic": "Why we procrastinate",
+    "angle": "Why do we delay tasks we fully intend to do?",
+    "primer": "Procrastination is mood repair, not laziness: we dodge the task to dodge the bad feeling attached to it. Boredom, confusion, and fear of failure all trigger avoidance. The relief is instant and the cost arrives later.",
+    "beats": ["Trigger: the task carries a sting like boredom or self-doubt", "Escape: scrolling swaps the sting for quick relief", "Fix: shrink the first step until starting feels trivial"],
+    "targetVocab": ["avoidance", "trigger", "friction", "first step"],
+    "targetSec": 45,
+    "tags": ["explain", "psychology", "everyday"]
+  },
+  {
+    "id": "exp-habit-loop",
+    "type": "explain",
+    "topic": "How habits form",
+    "angle": "Why do habits beat motivation every time?",
+    "primer": "Habits run on a loop: a cue triggers a routine that earns a reward. Brushing, chai breaks, and phone checks all ride this loop. Motivation fades daily; a designed loop fires automatically.",
+    "beats": ["Cue: a time, place, or feeling fires the routine", "Routine: the behaviour itself, kept small enough to repeat", "Reward: the payoff that tells the brain to keep the loop"],
+    "targetVocab": ["cue", "routine", "reward", "automatic"],
+    "targetSec": 45,
+    "tags": ["explain", "psychology", "habits"]
+  },
+  {
+    "id": "exp-placebo-effect",
+    "type": "explain",
+    "topic": "The placebo effect",
+    "angle": "Why do sugar pills sometimes make people genuinely feel better?",
+    "primer": "A placebo is an inactive treatment that still helps because the patient expects help. Expectation triggers real chemistry: pain eases, symptoms fade. Drug trials must beat placebos to prove they work at all.",
+    "beats": ["Expectation: belief alone switches on relief pathways", "Ritual: the doctor, the pill, the care all amplify it", "Proof: every real drug is tested against this baseline"],
+    "targetVocab": ["expectation", "baseline", "trial", "genuine"],
+    "targetSec": 45,
+    "tags": ["explain", "psychology", "science"]
+  },
+  {
+    "id": "exp-memory-forgetting",
+    "type": "explain",
+    "topic": "Why we forget",
+    "angle": "Why does the brain delete most of what you learn within days?",
+    "primer": "Forgetting is mostly the brain's filter, not its failure. Memories fade fast unless recalled: recalling rebuilds them stronger. Spaced repetition works because each recall arrives just as fading starts.",
+    "beats": ["Decay: unused traces weaken within hours and days", "Recall: retrieving a memory re-locks it deeper", "Spacing: reviews timed at the edge of forgetting beat cramming"],
+    "targetVocab": ["recall", "decay", "spacing", "cramming"],
+    "targetSec": 45,
+    "tags": ["explain", "psychology", "learning"]
+  },
+  {
+    "id": "exp-evolution-eyes",
+    "type": "explain",
+    "topic": "How eyes evolved",
+    "angle": "How did something as complex as the eye evolve step by step?",
+    "primer": "Eyes look designed, but each stage survives on its own: light-sensitive patches, then cups, then lenses. Even a crude patch beats blindness for finding shade or food. Living animals show every stage still working.",
+    "beats": ["Patch: skin that tells light from dark already helps", "Cup: curving the patch adds direction to the light", "Lens: a clear bulge focuses the picture sharply"],
+    "targetVocab": ["evolution", "gradual", "advantage", "light-sensitive"],
+    "targetSec": 60,
+    "tags": ["explain", "science", "biology"]
+  },
+  {
+    "id": "exp-vaccines-work",
+    "type": "explain",
+    "topic": "How vaccines work",
+    "angle": "How does a tiny weakened dose protect you against the real disease?",
+    "primer": "Vaccines show the immune system a harmless preview of a germ, dead or weakened. The body builds defences and remembers them for years. When the real germ arrives, the response is fast instead of starting from zero.",
+    "beats": ["Preview: a safe dummy trains the defenders", "Memory: guard cells remember the enemy's shape", "Response: the real attack meets an army, not a village"],
+    "targetVocab": ["immune", "antibodies", "memory", "dose"],
+    "targetSec": 60,
+    "tags": ["explain", "science", "health"]
+  },
+  {
+    "id": "exp-why-sky-blue",
+    "type": "explain",
+    "topic": "Why the sky is blue",
+    "angle": "Why is the sky blue at noon and red in the evening?",
+    "primer": "Sunlight looks white but holds every colour. Air molecules scatter short blue waves in all directions while letting red pass straight. At sunset the light crosses more air, so only red survives the trip.",
+    "beats": ["Scatter: tiny air molecules throw blue light everywhere", "Noon: blue arrives from all over the sky", "Sunset: the long path strips away everything but red"],
+    "targetVocab": ["scatter", "wavelength", "atmosphere", "spectrum"],
+    "targetSec": 45,
+    "tags": ["explain", "science", "everyday"]
+  },
+  {
+    "id": "exp-antibiotics-resistance",
+    "type": "explain",
+    "topic": "Antibiotic resistance",
+    "angle": "Why do doctors warn that antibiotics may stop working?",
+    "primer": "Antibiotics kill bacteria, but some germs survive by chance mutation and pass resistance on. The safe rule: take them only when prescribed, exactly as told; overuse and misuse breed resistance.",
+    "beats": ["Kill: the drug wipes out the weak majority", "Survive: rare mutants live through it", "Spread: survivors multiply into a resistant strain"],
+    "targetVocab": ["mutation", "resistant", "course", "strain"],
+    "targetSec": 60,
+    "tags": ["explain", "science", "health"]
+  },
+  {
+    "id": "exp-plate-tectonics",
+    "type": "explain",
+    "topic": "Why earthquakes cluster",
+    "angle": "Why do earthquakes keep striking the same belts, like the Himalayas and Japan?",
+    "primer": "Earth's crust is cracked into plates that drift a few centimetres a year. India still rams into Asia, raising the Himalayas. Pressure builds where plates lock, then slips all at once as a quake.",
+    "beats": ["Drift: continents creep on slow plates", "Lock: stuck edges collect strain for decades", "Slip: the sudden release shakes everything above"],
+    "targetVocab": ["plate", "fault", "strain", "tremor"],
+    "targetSec": 60,
+    "tags": ["explain", "science", "earth"]
+  },
+  {
+    "id": "exp-why-moon-phases",
+    "type": "explain",
+    "topic": "Why the moon changes shape",
+    "angle": "Why does the moon look different every night of the month?",
+    "primer": "The moon makes no light of its own; it reflects the sun. As it circles earth, we see changing slices of its lit half. A full moon is the whole lit face; a new moon turns its dark side to us.",
+    "beats": ["Lit half: the sun always lights one side", "Orbit: our viewpoint circles around it monthly", "Phases: the visible slice grows and shrinks on schedule"],
+    "targetVocab": ["reflect", "orbit", "phase", "crescent"],
+    "targetSec": 45,
+    "tags": ["explain", "science", "everyday"]
+  },
+  {
+    "id": "exp-pasteur-germs",
+    "type": "explain",
+    "topic": "How germs were found",
+    "angle": "How did we learn that invisible germs cause disease?",
+    "primer": "For centuries people blamed bad air for plagues. In the 1800s Pasteur showed boiled broth stays sterile unless germs drift in. Lister then sterilised surgical tools, and deaths after operations collapsed.",
+    "beats": ["Broth: sealed flasks stayed clear; open ones spoiled", "Hands: washing and sterilising cut hospital deaths", "Milk: gentle heating killed germs without ruining food"],
+    "targetVocab": ["sterile", "germ", "pasteurise", "hygiene"],
+    "targetSec": 60,
+    "tags": ["explain", "science", "history"]
+  },
+  {
+    "id": "exp-interest-rates-rbi",
+    "type": "explain",
+    "topic": "What the repo rate does",
+    "angle": "When RBI raises its repo rate, why does your home loan get costlier?",
+    "primer": "The repo rate is what RBI charges banks for short loans. Banks pass their own costs to you. A hike makes every loan dearer, cooling borrowing and spending across the economy.",
+    "beats": ["RBI lends dearer to banks overnight", "Banks raise loan and deposit rates to protect margins", "Costlier loans slow houses, cars, and company expansion"],
+    "targetVocab": ["repo rate", "pass-through", "borrowing", "cooling"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "economics"]
+  },
+  {
+    "id": "exp-msp-farming",
+    "type": "explain",
+    "topic": "Minimum support prices",
+    "angle": "What is MSP, and why do farmers march for it?",
+    "primer": "MSP is the floor price the government announces for about two dozen crops. The government actually buys mainly wheat and rice, in some states. Critics say it skews planting toward water-hungry crops.",
+    "beats": ["Floor: a promised minimum price for about two dozen crops", "Buying: state agencies stock grain for rations from it", "Skew: assured prices pull farmers to the same two crops"],
+    "targetVocab": ["floor price", "procurement", "glut", "distortion"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "economics"]
+  },
+  {
+    "id": "exp-1991-reforms",
+    "type": "explain",
+    "topic": "India's 1991 reforms",
+    "angle": "What changed in India in 1991, and why did a crisis force it?",
+    "primer": "By 1991 India was nearly out of foreign exchange, with weeks of imports covered. The government pledged gold, took emergency loans, and opened the economy. Licences that controlled every factory began to go.",
+    "beats": ["Crisis: empty reserves forced emergency action", "Opening: imports, investment, and competition entered", "Effect: growth, jobs in services, and cheaper goods over decades"],
+    "targetVocab": ["reserves", "liberalisation", "licence", "competition"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "economics"]
+  },
+  {
+    "id": "exp-caste-reservation",
+    "type": "explain",
+    "topic": "Reservations explained",
+    "angle": "What are reservations in Indian education and jobs meant to do?",
+    "primer": "The Constitution reserves seats in colleges and government jobs for Scheduled Castes, Tribes, and Other Backward Classes; a 2019 amendment added a quota for economically weaker sections. The aim is representation for groups shut out for generations. The policy is debated but long settled in law.",
+    "beats": ["History: centuries of exclusion kept groups out of schools and offices", "Mechanism: fixed quotas guarantee entry, not outcomes", "Debate: supporters cite representation; critics raise merit and whether benefits reach the poorest within groups"],
+    "targetVocab": ["quota", "representation", "exclusion", "merit"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "society"]
+  },
+  {
+    "id": "exp-panchayati-raj",
+    "type": "explain",
+    "topic": "Village self-rule",
+    "angle": "How does the panchayat system give villages a say?",
+    "primer": "A 1992 constitutional change made elected village panchayats mandatory, with reserved seats for women and disadvantaged groups. Panchayats handle wells, roads, schools, and local disputes. Funds flow from state governments to them.",
+    "beats": ["Vote: every village elects its own council", "Work: water, lanes, and school buildings sit with it", "Voice: reserved seats put new faces in charge"],
+    "targetVocab": ["decentralised", "sarpanch", "quota", "local"],
+    "targetSec": 60,
+    "tags": ["explain", "india", "society"]
+  },
+  {
+    "id": "exp-why-startups-fail",
+    "type": "explain",
+    "topic": "Why startups die",
+    "angle": "What kills most startups: ideas, money, or something else?",
+    "primer": "Most startups die because nobody wants the product enough to pay, not because rivals beat them. Founders build for months before testing demand. Cash then runs out before a real customer base appears.",
+    "beats": ["No need: the product solves nobody's urgent pain", "Late truth: founders learn this after the money is spent", "Fix: sell a rough version early and let buyers steer"],
+    "targetVocab": ["product-market fit", "burn", "validate", "pivot"],
+    "targetSec": 60,
+    "tags": ["explain", "business", "startups"]
+  },
+  {
+    "id": "exp-network-effects",
+    "type": "explain",
+    "topic": "Network effects",
+    "angle": "Why does the tenth person joining a platform matter more than the first?",
+    "primer": "A network becomes more useful with every member: one telephone is useless, a billion are essential. Each joiner raises the value for all earlier ones. That is why platforms race to critical mass and then look unbeatable.",
+    "beats": ["Value grows: every new member adds connections for everyone", "Race: the first to critical mass pulls away fast", "Moat: leaving means abandoning everyone you know there"],
+    "targetVocab": ["network", "critical mass", "moat", "lock-in"],
+    "targetSec": 45,
+    "tags": ["explain", "business", "technology"]
+  },
+  {
+    "id": "exp-why-discounts",
+    "type": "explain",
+    "topic": "Why shops love discounts",
+    "angle": "If discounts cut profits, why do shops run sales all the time?",
+    "primer": "Discounts pull footfall, clear dead stock, and make shoppers feel clever. Many sale prices are set high first so the cut looks deep. The urgency of limited time stops comparison shopping.",
+    "beats": ["Traffic: a sale sign drags people inside", "Clearance: old stock converts to cash for new stock", "Urgency: deadlines kill second thoughts"],
+    "targetVocab": ["footfall", "margin", "urgency", "anchor"],
+    "targetSec": 45,
+    "tags": ["explain", "business", "marketing"]
+  },
+  {
+    "id": "exp-franchise-model",
+    "type": "explain",
+    "topic": "How franchises work",
+    "angle": "How do chains open hundreds of identical outlets without owning them?",
+    "primer": "In franchising, local owners pay to run outlets under one brand with fixed recipes and suppliers. The brand earns fees while owners risk their own capital. Uniform taste across cities is the product being sold.",
+    "beats": ["Brand lends its name, menu, and suppliers", "Owner invests money and runs daily operations", "Both win if volumes stay high and quality stays fixed"],
+    "targetVocab": ["franchise", "royalty", "uniform", "owner-operator"],
+    "targetSec": 45,
+    "tags": ["explain", "business", "everyday"]
+  },
+  {
+    "id": "exp-password-security",
+    "type": "explain",
+    "topic": "Passwords for everyone",
+    "angle": "Why is reusing one password everywhere dangerous, in plain words?",
+    "primer": "When any one site leaks, attackers try your password on banks and email automatically. A long unique password per site plus two-step verification blocks almost all of it. Password managers remember them so you do not have to.",
+    "beats": ["Leaks: breaches publish millions of passwords yearly", "Replay: bots replay them on every major site within hours", "Fix: unique passwords plus a second check stop the replay"],
+    "targetVocab": ["breach", "reuse", "two-step", "manager"],
+    "targetSec": 45,
+    "tags": ["explain", "technology", "safety"]
+  },
+  {
+    "id": "exp-how-planes-fly",
+    "type": "explain",
+    "topic": "How planes stay up",
+    "angle": "What actually holds a heavy plane up in the air?",
+    "primer": "Wings are shaped and tilted to push air down, so the air pushes the wing up. Engines only supply forward speed; the wing does the lifting. Moveable surfaces tilt that push to steer the plane.",
+    "beats": ["Speed: engines drive the plane forward through the air", "Lift: wings push air down, so air pushes the wing up", "Control: ailerons and rudder steer"],
+    "targetVocab": ["lift", "thrust", "drag", "rudder"],
+    "targetSec": 45,
+    "tags": ["explain", "science", "everyday"]
+  },
+  {
+    "id": "exp-why-salt",
+    "type": "explain",
+    "topic": "Salt and the body",
+    "angle": "Why does the body need salt, yet too much salt harms it?",
+    "primer": "Salt's sodium lets nerves fire and muscles contract, and the body cannot make it. Kidneys tune its level daily. Excess holds extra water in the blood, pushing pressure up over years.",
+    "beats": ["Need: nerves and muscles run on sodium signals", "Balance: kidneys flush or keep salt as needed", "Excess: too much retains water and strains vessels"],
+    "targetVocab": ["sodium", "pressure", "kidneys", "balance"],
+    "targetSec": 45,
+    "tags": ["explain", "science", "health"]
+  },
+  {
+    "id": "exp-how-heart-pumps",
+    "type": "explain",
+    "topic": "How the heart pumps",
+    "angle": "How does a fist-sized muscle move blood around your body all day without rest?",
+    "primer": "The heart is two pumps in one: the right side sends blood to the lungs for oxygen, the left fires it around the body. Valves keep the flow one-way. It beats about a lakh times a day without tiring.",
+    "beats": ["Two sides: right pump to lungs, left pump to body", "Valves: doors that slam shut so blood never flows back", "Rhythm: electricity times each squeeze, rest built into every beat"],
+    "targetVocab": ["valve", "circulation", "oxygen", "pulse"],
+    "targetSec": 45,
+    "tags": ["explain", "science", "health"]
   }
 ]

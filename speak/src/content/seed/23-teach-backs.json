@@ -1,617 +1,322 @@
 [
   {
-    "id": "tb-microservices-vs-monolith",
+    "id": "tb-compound-cousin",
     "type": "teach_back",
-    "prompt": "Teach back the core trade-offs between a Modular Monolith and Distributed Microservices to a junior engineer.",
-    "beats": [
-      "Monolith benefits: simpler local testing, atomic ACID transactions, lower operational overhead",
-      "Microservices inflection point: independent team deployment velocity vs network partition complexity",
-      "The practical recommendation: start monolithic and split boundaries along domain boundaries only when necessary"
-    ],
+    "prompt": "Explain compound interest to your younger cousin using pocket money as the example.",
+    "beats": ["The simple version: money earning money on itself", "An example: what happens to a small amount left alone for years", "Why it matters: starting early beats starting big"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "architecture",
-      "trade_off"
-    ]
+    "tags": ["teach_back", "money", "everyday"]
   },
   {
-    "id": "tb-git-rebase-vs-merge",
+    "id": "tb-book-idea",
     "type": "teach_back",
-    "prompt": "Explain when to use Git Rebase versus Git Merge during a code review sync.",
-    "beats": [
-      "Merge preserves historical chronological context with a dedicated merge commit",
-      "Rebase creates a linear, clean commit history by replaying local commits on top of main",
-      "The golden rule: never rebase public shared branches"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "git",
-      "workflow"
-    ]
+    "prompt": "Teach back one idea from a book or podcast you liked recently.",
+    "beats": ["The simple version: the idea in one line", "An example: where you saw it working in real life", "Why it matters: what you will do differently because of it"],
+    "targetSec": 60,
+    "tags": ["teach_back", "learning", "reflection"]
   },
   {
-    "id": "tb-zero-trust-security",
+    "id": "tb-why-procrastinate",
     "type": "teach_back",
-    "prompt": "Explain the philosophy of Zero Trust Architecture in under 45 seconds.",
-    "beats": [
-      "The obsolete castle-and-moat perimeter model",
-      "The core axiom: never trust, always verify every single request",
-      "Implementation pillars: mutual TLS, strict identity verification, and least privilege access"
-    ],
+    "prompt": "Explain why people procrastinate even on things they want to do.",
+    "beats": ["The simple version: we dodge the feeling, not the task", "An example: a task you delayed and what it felt like", "Why it matters: the tiny first step that breaks it"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "security",
-      "principles"
-    ]
+    "tags": ["teach_back", "psychology", "habits"]
   },
   {
-    "id": "tb-solid-principles",
+    "id": "tb-habit-stacking",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Teach back the Single Responsibility and Open/Closed SOLID principles to a junior engineer during a code review.",
-    "beats": [
-      "Single Responsibility: a class or function should have only one reason to change",
-      "Open/Closed: software entities should be open for extension via interfaces, but closed for direct modification",
-      "Practical takeaway: preventing massive 2,000-line God objects that break existing tests when new features are added"
-    ],
+    "prompt": "Teach back habit stacking: attaching a new habit to an old one.",
+    "beats": ["The simple version: after X, I will do Y", "An example: one stack that worked for you or could work", "Why it matters: no willpower needed once linked"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "oop",
-      "code_quality"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "habits", "everyday"]
   },
   {
-    "id": "tb-dependency-injection",
+    "id": "tb-active-recall",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Explain Dependency Injection and Inversion of Control to a teammate struggling with unit testing.",
-    "beats": [
-      "Hardcoded dependencies: a class instantiating its own live database connection inside its constructor",
-      "Injected dependencies: passing the database interface as a parameter from the outside during construction",
-      "The test win: easily passing mock databases in unit tests without touching production infrastructure"
-    ],
+    "prompt": "Explain why testing yourself beats re-reading when learning anything.",
+    "beats": ["The simple version: recall builds the memory, re-reading just warms it", "An example: a subject you learnt by quizzing yourself", "Why it matters: less time, better retention"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "testing",
-      "architecture"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "learning", "study"]
   },
   {
-    "id": "tb-virtual-dom-mechanics",
+    "id": "tb-sleep-memory",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Teach back how the React Virtual DOM diffing reconciliation algorithm works to an intern.",
-    "beats": [
-      "Real browser DOM mutations are computationally expensive and trigger layout reflows",
-      "React keeps a lightweight in-memory JavaScript tree of the UI and compares state changes with a reconciliation diff",
-      "React batches only the minimal necessary changes to the real DOM in a single efficient update pass"
-    ],
+    "prompt": "Teach back why sleep matters for memory and learning.",
+    "beats": ["The simple version: sleep files away what the day collected", "An example: the difference after a full night versus a short one", "Why it matters: an hour of sleep can beat an hour of cramming"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "react",
-      "frontend"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "health", "learning"]
   },
   {
-    "id": "tb-db-normalization-tradeoffs",
+    "id": "tb-opportunity-cost",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Explain when to normalize database tables and when to strategically denormalize for read speed.",
-    "beats": [
-      "3rd Normal Form: eliminating redundant duplicate data to prevent update anomalies and ensure storage integrity",
-      "Denormalization inflection: when complex multi-table SQL joins bottleneck high-frequency read dashboards",
-      "The rule of thumb: normalize for transaction write safety, denormalize selectively for heavy read performance"
-    ],
+    "prompt": "Explain opportunity cost using a weekend plan you had to choose between.",
+    "beats": ["The simple version: every choice costs the thing you gave up", "An example: two plans, one weekend, what each cost", "Why it matters: it makes hidden costs visible"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "database",
-      "tradeoffs"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "thinking", "decisions"]
   },
   {
-    "id": "tb-async-event-loop",
+    "id": "tb-80-20-rule",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Teach back how the single-threaded JavaScript Event Loop handles non-blocking asynchronous I/O.",
-    "beats": [
-      "The Call Stack executes synchronous JavaScript code one frame at a time",
-      "Asynchronous web APIs (fetch, timers) execute on background threads and place callbacks into the Task Queue",
-      "The Event Loop continuously checks if the call stack is empty before pushing queued tasks into execution"
-    ],
+    "prompt": "Teach back the 80-20 rule using your own work or studies as the example.",
+    "beats": ["The simple version: a few inputs cause most results", "An example: the 20 percent that gives you 80 percent", "Why it matters: do that part first, protect it fiercely"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "javascript",
-      "runtime"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "productivity", "work"]
   },
   {
-    "id": "tb-race-conditions-mutex",
+    "id": "tb-saying-no",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Explain race conditions and how mutex locks prevent data corruption in concurrent systems.",
-    "beats": [
-      "Race condition: two threads simultaneously read inventory count 1, decrement it, and write back 0 (double sell)",
-      "Mutex (Mutual Exclusion): a digital lock where only one thread can hold the key to the critical code section at a time",
-      "The trade-off: guaranteed consistency versus potential lock contention and throughput serialization"
-    ],
+    "prompt": "Explain why saying no nicely is a skill, and teach one line that does it.",
+    "beats": ["The simple version: every yes spends time you already promised elsewhere", "An example: a no you gave well, or wish you had", "Why it matters: a clean no protects the yeses that count"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "concurrency",
-      "systems"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "work", "communication"]
   },
   {
-    "id": "tb-clean-architecture-boundaries",
+    "id": "tb-feedback-sandwich",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Explain the Clean Architecture dependency rule: business domain logic must never depend on UI or databases.",
-    "beats": [
-      "Core domain business entities live in the innermost ring with zero external framework imports",
-      "Databases, web frameworks, and third-party SDKs sit on the outermost perimeter as swappable plugins",
-      "The Dependency Inversion Rule: source code dependencies must point only inward toward domain policies"
-    ],
+    "prompt": "Teach back how to give feedback that people can actually hear.",
+    "beats": ["The simple version: specific observation, effect, and one request", "An example: feedback you got that landed well", "Why it matters: people fix what is clear, not what is harsh"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "architecture",
-      "design"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "work", "communication"]
   },
   {
-    "id": "tb-semantic-versioning",
+    "id": "tb-first-principles",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Teach back SemVer (MAJOR.MINOR.PATCH) conventions to a team launching an open-source library.",
-    "beats": [
-      "PATCH (1.0.1): backwards-compatible bug fixes with zero API contract alterations",
-      "MINOR (1.1.0): backwards-compatible new functionality added to the public API",
-      "MAJOR (2.0.0): breaking API changes that require downstream consumers to update code"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "engineering",
-      "standards"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "prompt": "Explain first-principles thinking using a household expense as the example.",
+    "beats": ["The simple version: break it into parts you know are true", "An example: rebuilding the expense from zero", "Why it matters: it finds costs that habit hides"],
+    "targetSec": 60,
+    "tags": ["teach_back", "thinking", "money"]
   },
   {
-    "id": "tb-trunk-based-development",
+    "id": "tb-sunk-cost-life",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Explain the benefits of Trunk-Based Development over long-lived feature branches to an engineering team.",
-    "beats": [
-      "Long-lived branches create painful merge conflicts and delay integration feedback by weeks",
-      "Trunk-based workflow: engineers merge small, tested PRs into main multiple times a day",
-      "Feature flags safely hide incomplete capabilities in production while keeping code continuously integrated"
-    ],
+    "prompt": "Teach back the sunk-cost trap using a movie, course, or queue you sat through.",
+    "beats": ["The simple version: spent time is gone whatever you choose", "An example: the bad movie you finished anyway", "Why it matters: quitting early buys back your evening"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "git",
-      "devops"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "thinking", "decisions"]
   },
   {
-    "id": "tb-code-review-etiquette",
+    "id": "tb-margin-safety",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Teach back effective, constructive code review practices to a newly promoted senior engineer.",
-    "beats": [
-      "Distinguish between blocking correctness/security issues and non-blocking optional nits using clear prefixes",
-      "Ask clarifying architectural questions rather than issuing blunt commands (e.g. \"What was the trade-off here?\")",
-      "Explicitly praise elegant solutions and clean tests to build psychological safety on the team"
-    ],
+    "prompt": "Explain keeping a margin of safety: leaving buffer in time, money, and plans.",
+    "beats": ["The simple version: plan for things going slightly wrong", "An example: a buffer that once saved you", "Why it matters: buffers turn shocks into inconveniences"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "leadership",
-      "culture"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "planning", "life"]
   },
   {
-    "id": "tb-blameless-postmortems",
+    "id": "tb-deep-work",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Explain the philosophy of Blameless Incident Postmortems to a director after a major outage.",
-    "beats": [
-      "Assuming humans are competent: human error is the symptom of a systemic tool or guardrail failure, not the root cause",
-      "If you punish individuals for mistakes, engineers will hide incidents and silence warnings",
-      "Focusing exclusively on systemic improvements: automated rollback, better telemetry, and defense-in-depth"
-    ],
+    "prompt": "Teach back deep work: one focused block with the phone away.",
+    "beats": ["The simple version: ninety unbroken minutes beat four broken hours", "An example: what you finished in one silent block", "Why it matters: focus is the rarest input you have"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "culture",
-      "reliability"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "productivity", "work"]
   },
   {
-    "id": "tb-ci-pipeline-best-practices",
+    "id": "tb-two-minute-rule",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Teach back Continuous Integration essentials: fast feedback, test reliability, and pipeline determinism.",
-    "beats": [
-      "The 10-minute rule: CI pipelines must finish fast so developers stay in flow and don’t context-switch",
-      "Flaky tests are toxic: quarantined immediately because developers learn to ignore red test suites",
-      "Immutable build artifacts: build the production bundle once, test that exact binary, and promote across environments"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "devops",
-      "testing"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "prompt": "Explain the two-minute rule for small tasks that pile up.",
+    "beats": ["The simple version: if it takes under two minutes, do it now", "An example: three tiny tasks you cleared this week", "Why it matters: small clutter eats big attention"],
+    "targetSec": 30,
+    "tags": ["teach_back", "productivity", "everyday"]
   },
   {
-    "id": "tb-blue-green-vs-canary",
+    "id": "tb-why-walk",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Explain the difference between Blue/Green deployments and Canary rollouts to an operations team.",
-    "beats": [
-      "Blue/Green: instantaneous 100% traffic cutover from old fleet to new fleet behind a load balancer",
-      "Canary: routing 1% of live traffic to the new version first, monitoring error budgets, and gradually ramping to 100%",
-      "Canaries minimize blast radius by catching subtle production memory leaks before they impact all users"
-    ],
+    "prompt": "Teach back why a daily walk helps thinking, not just health.",
+    "beats": ["The simple version: walking unsticks thoughts that sitting traps", "An example: a problem you solved mid-walk", "Why it matters: the cheapest thinking tool you own"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "devops",
-      "deployment"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "health", "thinking"]
   },
   {
-    "id": "tb-observability-three-pillars",
+    "id": "tb-protein-basics",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Teach back the Three Pillars of Observability (Metrics, Logs, Traces) to a systems engineer.",
-    "beats": [
-      "Metrics (aggregates): high-level numeric health over time (CPU usage, error rates, p99 latency) to detect WHEN a problem occurs",
-      "Logs (discrete events): detailed contextual records of individual errors to understand WHAT failed",
-      "Traces (request journeys): following a single transaction across eight microservices to see WHERE latency was spent"
-    ],
+    "prompt": "Explain why protein matters in an ordinary Indian vegetarian diet.",
+    "beats": ["The simple version: dal, milk, and paneer rebuild what the day breaks", "An example: your own plate on a normal day", "Why it matters: small additions beat expensive powders"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "observability",
-      "systems"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "health", "food"]
   },
   {
-    "id": "tb-immutability-benefits",
+    "id": "tb-budget-50-30-20",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Explain why immutability in state management prevents subtle multi-threaded and UI bugs.",
-    "beats": [
-      "Mutable state allows any distant function to silently modify object properties, creating hard-to-trace side effects",
-      "Immutable state requires creating a new object copy on every change, making data flow strictly predictable and traceable",
-      "Enables fast shallow reference equality checks (prev !== next) instead of deep recursive object comparisons"
-    ],
+    "prompt": "Teach back a simple monthly budget: needs, wants, and savings split.",
+    "beats": ["The simple version: divide every salary into three buckets", "An example: your own last month in three numbers", "Why it matters: the savings bucket fills without willpower"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "functional_programming",
-      "state"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "money", "planning"]
   },
   {
-    "id": "tb-cors-mechanics",
+    "id": "tb-emergency-fund",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Teach back Cross-Origin Resource Sharing (CORS) and preflight requests to a junior web developer.",
-    "beats": [
-      "Same-Origin Policy: browsers block web pages from making unauthorized fetch requests to different domains for security",
-      "CORS headers: the server explicitly tells the browser \"I trust requests coming from app.example.com\"",
-      "Preflight OPTIONS request: the browser checks HTTP methods and headers before sending destructive POST/PUT payloads"
-    ],
+    "prompt": "Explain an emergency fund to a friend who spends the full salary.",
+    "beats": ["The simple version: a few months of expenses parked separately", "An example: the emergency that taught you or someone you know", "Why it matters: it turns a crisis into an inconvenience"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "security",
-      "web"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "money", "safety"]
   },
   {
-    "id": "tb-dry-vs-wet-abstractions",
+    "id": "tb-insurance-basics",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Explain why premature DRY abstractions can be more costly than slight code duplication (AHA programming).",
-    "beats": [
-      "Premature DRY: forcing two slightly similar features into one monster function with twenty confusing if/else flags",
-      "Duplication is cheaper than the wrong abstraction: allow code to duplicate until clear shared domain boundaries emerge",
-      "AHA (Avoid Hasty Abstractions): abstract only when the shared pattern is genuinely identical and stable"
-    ],
+    "prompt": "Teach back what term insurance is and who actually needs it.",
+    "beats": ["The simple version: cheap cover that pays family if you are gone", "An example: who in your circle needs it and who does not", "Why it matters: protection first, investment later"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "refactoring",
-      "clean_code"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "money", "family"]
   },
   {
-    "id": "tb-technical-interview-rubrics",
+    "id": "tb-credit-card-trap",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Teach back fair, objective technical interview evaluation rubrics to a hiring panel.",
-    "beats": [
-      "Avoid trivia trick questions; evaluate real-world problem decomposition, code cleanliness, and communication under ambiguity",
-      "Calibrate across standardized levels: junior (guidance needed), mid (independent execution), senior (architecture and trade-offs)",
-      "Write evaluation notes with verbatim quotes and concrete code observations before discussing candidates with other interviewers"
-    ],
+    "prompt": "Explain how credit card minimum dues trap people, in plain words.",
+    "beats": ["The simple version: paying the minimum keeps the debt alive for years", "An example: what a small balance becomes over time", "Why it matters: autopay the full amount, always"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "hiring",
-      "leadership"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "money", "caution"]
   },
   {
-    "id": "tb-mentoring-juniors",
+    "id": "tb-why-read",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Teach back the Socratic mentoring method for coaching junior software engineers.",
-    "beats": [
-      "Resist grabbing their keyboard to type the fix; ask guiding questions that help them discover the answer themselves",
-      "Normalize getting stuck as a standard part of engineering rather than a personal intellectual failure",
-      "Celebrate when they debug an issue end-to-end and encourage them to document the solution for the team wiki"
-    ],
+    "prompt": "Teach back why reading twenty pages a day compounds like interest.",
+    "beats": ["The simple version: small daily pages become dozens of books", "An example: one book that changed a habit of yours", "Why it matters: slow input beats intense weekend bursts"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "mentorship",
-      "leadership"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "learning", "habits"]
   },
   {
-    "id": "tb-feature-flags-strategy",
+    "id": "tb-note-taking",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Explain how feature flags decouple technical code deployment from business feature release.",
-    "beats": [
-      "Deploy code continuously to production in dark mode behind an inactive boolean flag",
-      "Product managers can turn on the feature for internal employees first, then 5% beta users, and finally 100% public",
-      "Provides an instantaneous emergency kill-switch in production without needing a hotfix deploy"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "devops",
-      "product"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "prompt": "Explain how to take notes you will actually re-read.",
+    "beats": ["The simple version: one page, your own words, one action", "An example: notes from a meeting that worked", "Why it matters: notes you never open are decoration"],
+    "targetSec": 30,
+    "tags": ["teach_back", "learning", "work"]
   },
   {
-    "id": "tb-chaos-engineering-intro",
+    "id": "tb-teach-to-learn",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Teach back Chaos Engineering principles to an infrastructure squad.",
-    "beats": [
-      "Instead of waiting for a production outage at 2 AM on Sunday, deliberately inject simulated faults during business hours",
-      "Terminate random container instances, inject artificial network packet loss, and verify that auto-healing works as designed",
-      "Build systemic confidence before real hardware failures occur in production"
-    ],
+    "prompt": "Teach back why explaining something is the fastest way to learn it.",
+    "beats": ["The simple version: teaching exposes the gaps reading hides", "An example: the topic that clicked only when you explained it", "Why it matters: if you cannot teach it, you do not know it"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "reliability",
-      "testing"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "learning", "study"]
   },
   {
-    "id": "tb-threat-modeling-stride",
+    "id": "tb-anger-pause",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Explain the STRIDE security threat modeling framework to a product development team.",
-    "beats": [
-      "Spoofing identity and Tampering with database records",
-      "Repudiation (denying an action) and Information disclosure (data leaks)",
-      "Denial of service and Elevation of unauthorized user privilege"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "security",
-      "architecture"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "prompt": "Explain the value of a short pause before replying when angry.",
+    "beats": ["The simple version: the first reply is the emotion talking", "An example: a message you were glad you did not send", "Why it matters: a pause protects relationships built over years"],
+    "targetSec": 30,
+    "tags": ["teach_back", "emotions", "relationships"]
   },
   {
-    "id": "tb-api-versioning-patterns",
+    "id": "tb-apology-well",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Teach back API versioning strategies (URI path vs Header versioning) to a backend team.",
-    "beats": [
-      "URI path versioning (/v1/users): explicit, easy to route and debug, but can lead to code duplication across controllers",
-      "Header versioning (Accept: application/vnd.app.v1+json): clean URLs, but requires specialized API gateway header routing",
-      "The golden rule: never introduce breaking schema changes without a graceful deprecation window and client notification"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "api",
-      "design"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "prompt": "Teach back how to apologise well in three sentences.",
+    "beats": ["The simple version: name it, own it, fix it", "An example: an apology you gave or received that worked", "Why it matters: clean apologies end fights, excuses extend them"],
+    "targetSec": 30,
+    "tags": ["teach_back", "relationships", "communication"]
   },
   {
-    "id": "tb-distributed-tracing-spans",
+    "id": "tb-listening-skill",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Explain Trace IDs and Spans in distributed telemetry (OpenTelemetry) to an SRE intern.",
-    "beats": [
-      "A global Trace ID is assigned at the API gateway and passed via HTTP headers (W3C tracecontext) across every downstream service",
-      "Each microservice creates a Span representing its own sub-operation duration (e.g. database query, redis cache read)",
-      "The telemetry dashboard stitches spans together into a single Gantt chart showing exact latency bottlenecks across services"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "telemetry",
-      "observability"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "prompt": "Explain what good listening looks like in a conversation.",
+    "beats": ["The simple version: understand first, reply second", "An example: someone who listened to you well", "Why it matters: people open up to those who listen fully"],
+    "targetSec": 30,
+    "tags": ["teach_back", "relationships", "communication"]
   },
   {
-    "id": "tb-sla-slo-sli-framework",
+    "id": "tb-gratitude-habit",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Teach back the difference between SLIs, SLOs, and SLAs to a product operations group.",
-    "beats": [
-      "SLI (Service Level Indicator): the real measured metric right now (e.g. 99.8% of requests succeed in under 200ms)",
-      "SLO (Service Level Objective): our internal engineering target (e.g. we aim for 99.9% uptime over any 30-day rolling window)",
-      "SLA (Service Level Agreement): the commercial contract with customers with financial penalties if missed (e.g. 99.5% uptime)"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "sre",
-      "metrics"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "prompt": "Teach back a two-minute gratitude habit and why people keep it.",
+    "beats": ["The simple version: name three specific good things daily", "An example: three from your own yesterday", "Why it matters: attention trains on what is working"],
+    "targetSec": 30,
+    "tags": ["teach_back", "habits", "mindset"]
   },
   {
-    "id": "tb-identifying-memory-leaks",
+    "id": "tb-phone-bedtime",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Teach back common memory leak root causes in Node.js and browser apps to a junior frontend developer.",
-    "beats": [
-      "Forgotten global event listeners (window.addEventListener) that never get removed when components unmount",
-      "Closures capturing large parent scope objects in long-lived background setInterval timers",
-      "Unbounded in-memory caches that grow indefinitely without eviction policies (LRU limits)"
-    ],
-    "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "performance",
-      "debugging"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "prompt": "Explain why the phone should sleep outside the bedroom.",
+    "beats": ["The simple version: the last scroll steals the first sleep", "An example: the difference on nights you kept it away", "Why it matters: mornings start the night before"],
+    "targetSec": 30,
+    "tags": ["teach_back", "habits", "health"]
   },
   {
-    "id": "tb-ddd-ubiquitous-language",
+    "id": "tb-meal-planning",
     "type": "teach_back",
-    "lang": "en",
-    "prompt": "Teach back Domain-Driven Design and Ubiquitous Language to an engineering team starting a greenfield project.",
-    "beats": [
-      "The translation trap: developers calling it \"TransactionEntity\" while business stakeholders call it \"PolicyRenewal\"",
-      "Ubiquitous Language: forging a single, shared, unambiguous glossary used identically in business meetings and source code variables",
-      "Eliminates costly misunderstandings and ensures software architecture directly models real-world business domains"
-    ],
+    "prompt": "Teach back planning the week's meals in ten minutes on Sunday.",
+    "beats": ["The simple version: fix the week once, eat well daily", "An example: your own repeat winners through the week", "Why it matters: decided food beats delivered food"],
+    "targetSec": 30,
+    "tags": ["teach_back", "food", "planning"]
+  },
+  {
+    "id": "tb-ldrs-fitness",
+    "type": "teach_back",
+    "prompt": "Explain why strength training twice a week matters for desk workers.",
+    "beats": ["The simple version: sitting weakens what lifting rebuilds", "An example: the back or knee that improved with basics", "Why it matters: two short sessions protect forty desk hours"],
     "targetSec": 45,
-    "tags": [
-      "teach_back",
-      "ddd",
-      "architecture"
-    ],
-    "source": "seed",
-    "status": "active",
-    "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "tags": ["teach_back", "health", "work"]
+  },
+  {
+    "id": "tb-water-habit",
+    "type": "teach_back",
+    "prompt": "Teach back drinking enough water through a desk job day.",
+    "beats": ["The simple version: a bottle on the desk beats reminders on the phone", "An example: your own refills through yesterday", "Why it matters: headaches and slumps often start with thirst"],
+    "targetSec": 30,
+    "tags": ["teach_back", "health", "everyday"]
+  },
+  {
+    "id": "tb-networking-give",
+    "type": "teach_back",
+    "prompt": "Explain networking as giving help first, not collecting contacts.",
+    "beats": ["The simple version: offer something useful before asking anything", "An example: help you gave that came back later", "Why it matters: givers get remembered when roles open"],
+    "targetSec": 45,
+    "tags": ["teach_back", "career", "relationships"]
+  },
+  {
+    "id": "tb-resume-one-page",
+    "type": "teach_back",
+    "prompt": "Teach back what makes a one-page resume get callbacks.",
+    "beats": ["The simple version: results with numbers, not duties listed", "An example: one bullet rewritten from duty to result", "Why it matters: recruiters scan for outcomes in seconds"],
+    "targetSec": 45,
+    "tags": ["teach_back", "career", "work"]
+  },
+  {
+    "id": "tb-interview-story",
+    "type": "teach_back",
+    "prompt": "Explain answering interview questions with short stories, not slogans.",
+    "beats": ["The simple version: situation, action, and result in a minute", "An example: your own story told that way", "Why it matters: stories are believed, claims are doubted"],
+    "targetSec": 45,
+    "tags": ["teach_back", "career", "storytelling"]
+  },
+  {
+    "id": "tb-negotiate-offer",
+    "type": "teach_back",
+    "prompt": "Teach back negotiating a job offer politely but firmly.",
+    "beats": ["The simple version: gratitude, evidence, and one clear ask", "An example: the line you would actually say", "Why it matters: starting pay compounds for years"],
+    "targetSec": 45,
+    "tags": ["teach_back", "career", "money"]
+  },
+  {
+    "id": "tb-mentor-find",
+    "type": "teach_back",
+    "prompt": "Explain how to find a mentor without ever saying the word mentor.",
+    "beats": ["The simple version: ask sharp questions, follow up, repeat", "An example: someone whose guidance you already use", "Why it matters: guidance compounds faster than solo trial"],
+    "targetSec": 45,
+    "tags": ["teach_back", "career", "learning"]
+  },
+  {
+    "id": "tb-side-project",
+    "type": "teach_back",
+    "prompt": "Teach back starting a tiny side project that survives your job.",
+    "beats": ["The simple version: one hour a week on one small thing", "An example: the project you would pick and why", "Why it matters: small bets create options big plans cannot"],
+    "targetSec": 45,
+    "tags": ["teach_back", "career", "growth"]
+  },
+  {
+    "id": "tb-public-speaking-start",
+    "type": "teach_back",
+    "prompt": "Explain how to start speaking up in meetings when you usually stay quiet.",
+    "beats": ["The simple version: one prepared line beats ten improvised ones", "An example: the line you will say in the next meeting", "Why it matters: visibility starts with a single sentence"],
+    "targetSec": 30,
+    "tags": ["teach_back", "work", "speaking"]
+  },
+  {
+    "id": "tb-document-work",
+    "type": "teach_back",
+    "prompt": "Teach back writing down your work so it speaks when you are absent.",
+    "beats": ["The simple version: decisions, reasons, and dates in one note", "An example: the note that saved a repeat argument", "Why it matters: written work gets credit, spoken work evaporates"],
+    "targetSec": 30,
+    "tags": ["teach_back", "work", "communication"]
   }
 ]
