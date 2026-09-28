@@ -143,6 +143,21 @@ create index if not exists voice_samples_kind_idx on public.voice_samples (user_
 alter table public.days add column if not exists lab_session_done boolean not null default false;
 alter table public.days add column if not exists lab_seconds      int not null default 0;
 
+-- ── AG-009 A3 — close the backup gap ────────────────────────────────────────
+-- The AG-007 fields (skipped_at, challenge, challenge_result, the inbox coach
+-- fields) rode inside Dexie rows but were never pushed, so a restore silently
+-- dropped them. xp/spoken_reps predate AG-007 and had the same hole.
+alter table public.reviews add column if not exists skipped_at      timestamptz;
+alter table public.days   add column if not exists challenge        jsonb;
+alter table public.days   add column if not exists challenge_result jsonb;
+alter table public.days   add column if not exists xp               int not null default 0;
+alter table public.days   add column if not exists spoken_reps      int not null default 0;
+alter table public.inbox  add column if not exists kind             text;
+alter table public.inbox  add column if not exists subject          text;
+alter table public.inbox  add column if not exists fix              text;
+alter table public.inbox  add column if not exists fail_reason      text;
+alter table public.inbox  add column if not exists attempts         int;
+
 -- ── RLS ─────────────────────────────────────────────────────────────────────
 alter table public.profile       enable row level security;
 alter table public.cards         enable row level security;

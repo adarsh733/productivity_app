@@ -188,7 +188,7 @@ async function materialise(row: OutboxRow, userId: string): Promise<Record<strin
   }
 }
 
-const reviewRow = (r: Review, userId: string) => ({
+export const reviewRow = (r: Review, userId: string) => ({
   user_id: userId,
   card_id: r.cardId,
   state: r.state,
@@ -199,6 +199,23 @@ const reviewRow = (r: Review, userId: string) => ({
   lapses: r.lapses,
   last_grade: r.lastGrade ?? null,
   last_seen_at: r.lastSeenAt ? new Date(r.lastSeenAt).toISOString() : null,
+  skipped_at: r.skippedAt ? new Date(r.skippedAt).toISOString() : null,
+});
+
+export type ReviewRow = ReturnType<typeof reviewRow>;
+
+/** Remote row → local. The one place restore() maps reviews, tested for round-trip. */
+export const reviewFromRow = (r: ReviewRow): Review => ({
+  cardId: r.card_id,
+  state: r.state,
+  due: r.due,
+  intervalDays: r.interval_days,
+  ease: Number(r.ease),
+  reps: r.reps,
+  lapses: r.lapses,
+  lastGrade: r.last_grade ?? undefined,
+  lastSeenAt: r.last_seen_at ? Date.parse(r.last_seen_at) : undefined,
+  skippedAt: r.skipped_at ? Date.parse(r.skipped_at) : undefined,
 });
 
 const eventRow = (e: CardEvent, userId: string) => ({
@@ -213,7 +230,7 @@ const eventRow = (e: CardEvent, userId: string) => ({
   measure: e.measure ?? null,
 });
 
-const dayRow = (d: DayRecord, userId: string) => ({
+export const dayRow = (d: DayRecord, userId: string) => ({
   user_id: userId,
   date: d.date,
   core_three_done: d.coreThreeDone,
@@ -223,6 +240,28 @@ const dayRow = (d: DayRecord, userId: string) => ({
   best_mpt_sec: d.bestMptSec ?? null,
   lab_session_done: d.labSessionDone ?? false,
   lab_seconds: d.labSeconds ?? 0,
+  xp: d.xp ?? 0,
+  spoken_reps: d.spokenReps ?? 0,
+  challenge: d.challenge ?? null,
+  challenge_result: d.challengeResult ?? null,
+});
+
+export type DayRow = ReturnType<typeof dayRow>;
+
+/** Remote row → local. The one place restore() maps days, tested for round-trip. */
+export const dayFromRow = (d: DayRow): DayRecord => ({
+  date: d.date,
+  coreThreeDone: d.core_three_done,
+  cardsCompleted: d.cards_completed,
+  secondsActive: d.seconds_active,
+  urgesRedirected: d.urges_redirected,
+  bestMptSec: d.best_mpt_sec ?? undefined,
+  labSessionDone: d.lab_session_done ?? undefined,
+  labSeconds: d.lab_seconds ?? undefined,
+  xp: d.xp ?? undefined,
+  spokenReps: d.spoken_reps ?? undefined,
+  challenge: d.challenge ?? undefined,
+  challengeResult: d.challenge_result ?? undefined,
 });
 
 const labSessionRow = (s: LabSession, userId: string) => ({
@@ -247,7 +286,7 @@ const voiceSampleRow = (v: VoiceSample, userId: string) => ({
   session_id: v.sessionId ?? null,
 });
 
-const inboxRow = (i: InboxItem, userId: string) => ({
+export const inboxRow = (i: InboxItem, userId: string) => ({
   user_id: userId,
   id: i.id,
   created_at: new Date(i.createdAt).toISOString(),
@@ -255,6 +294,28 @@ const inboxRow = (i: InboxItem, userId: string) => ({
   status: i.status,
   processed_at: i.processedAt ? new Date(i.processedAt).toISOString() : null,
   generated_card_ids: i.generatedCardIds ?? null,
+  kind: i.kind ?? null,
+  subject: i.subject ?? null,
+  fix: i.fix ?? null,
+  fail_reason: i.failReason ?? null,
+  attempts: i.attempts ?? null,
+});
+
+export type InboxRow = ReturnType<typeof inboxRow>;
+
+/** Remote row → local. The one place restore() maps inbox items, tested for round-trip. */
+export const inboxFromRow = (i: InboxRow): InboxItem => ({
+  id: i.id,
+  createdAt: Date.parse(i.created_at),
+  text: i.text,
+  status: i.status,
+  processedAt: i.processed_at ? Date.parse(i.processed_at) : undefined,
+  generatedCardIds: i.generated_card_ids ?? undefined,
+  kind: i.kind ?? undefined,
+  subject: i.subject ?? undefined,
+  fix: i.fix ?? undefined,
+  failReason: i.fail_reason ?? undefined,
+  attempts: i.attempts ?? undefined,
 });
 
 /**
@@ -283,49 +344,23 @@ export async function restore(): Promise<{
   ]);
 
   let reviews = 0;
-  for (const r of rv.data ?? []) {
+  for (const r of (rv.data ?? []) as ReviewRow[]) {
     if (await db.reviews.get(r.card_id)) continue;
-    await db.reviews.put({
-      cardId: r.card_id,
-      state: r.state,
-      due: r.due,
-      intervalDays: r.interval_days,
-      ease: Number(r.ease),
-      reps: r.reps,
-      lapses: r.lapses,
-      lastGrade: r.last_grade ?? undefined,
-      lastSeenAt: r.last_seen_at ? Date.parse(r.last_seen_at) : undefined,
-    });
+    await db.reviews.put(reviewFromRow(r));
     reviews++;
   }
 
   let days = 0;
-  for (const d of dy.data ?? []) {
+  for (const d of (dy.data ?? []) as DayRow[]) {
     if (await db.days.get(d.date)) continue;
-    await db.days.put({
-      date: d.date,
-      coreThreeDone: d.core_three_done,
-      cardsCompleted: d.cards_completed,
-      secondsActive: d.seconds_active,
-      urgesRedirected: d.urges_redirected,
-      bestMptSec: d.best_mpt_sec ?? undefined,
-      labSessionDone: d.lab_session_done ?? undefined,
-      labSeconds: d.lab_seconds ?? undefined,
-    });
+    await db.days.put(dayFromRow(d));
     days++;
   }
 
   let inbox = 0;
-  for (const i of ib.data ?? []) {
+  for (const i of (ib.data ?? []) as InboxRow[]) {
     if (await db.inbox.get(i.id)) continue;
-    await db.inbox.put({
-      id: i.id,
-      createdAt: Date.parse(i.created_at),
-      text: i.text,
-      status: i.status,
-      processedAt: i.processed_at ? Date.parse(i.processed_at) : undefined,
-      generatedCardIds: i.generated_card_ids ?? undefined,
-    });
+    await db.inbox.put(inboxFromRow(i));
     inbox++;
   }
 
