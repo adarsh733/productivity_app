@@ -48,7 +48,7 @@ export interface FeedApi {
   canGoBack: boolean;
   setMode(mode: FeedMode): void;
   /**
-   * Mark a card engaged for this session (AG-007 stage 2): ≥ 4 s on screen,
+   * Mark a card engaged for this session (AG-007 stage 2): ≥ 2 s on screen,
    * opened/flipped/detail, saved, spoken ("say it" rep), or graded.
    * FeedScreen calls this; `advanceCard` reads it to decide engaged vs skim
    * first-sight scheduling. Stable identity across renders.

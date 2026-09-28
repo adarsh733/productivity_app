@@ -36,7 +36,7 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
 
   // AG-007 stage 2: engaged-only repetition. Engagement state lives in the
   // feed hook (`markEngaged`, landing with the useFeed pass); this screen
-  // reports every engagement signal it can see — 4 s on screen, flip, save,
+  // reports every engagement signal it can see — 2 s on screen, flip, save,
   // say-it, grade — through an optional call so the screen stays green before
   // and after the hook lands.
   const feedRef = useRef(feed);
@@ -52,10 +52,10 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
     busy.current = false;
   }, [cardId]);
 
-  // ≥ 4 s on screen counts as engaged.
+  // ≥ 2 s on screen counts as engaged.
   useEffect(() => {
     if (!cardId) return;
-    const timer = setTimeout(() => markEngaged(cardId), 4000);
+    const timer = setTimeout(() => markEngaged(cardId), 2000);
     return () => clearTimeout(timer);
   }, [cardId]);
 
