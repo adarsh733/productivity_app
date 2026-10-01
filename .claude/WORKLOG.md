@@ -3,6 +3,27 @@
 Newest session first. One terse line per agenda item as it completes, plus any
 unplanned work. This is the month-end record of what got built.
 
+## Session — 2026-10-01 (Wed) · Antigravity (Sonnet 5) · AG-009 final pass + AG-008 AI upgrade
+
+**Agenda (AG-009 §4, items 1–7):** AG-006 content fixes → 2 s engaged rule → backup gap → AG-008 AI stages 1–6 → proof → report → release. Stop before push.
+
+**Done:**
+- [x] A1 (b0b498b): every AG-006 review fix applied, one of each duplicate pair dropped; `check-seed.mjs` PASS — 1032 cards excl. exemplars.
+- [x] A2 (f3e88f7): engaged = 2 s on screen (was 4 s) — FeedScreen timer + comments in FeedScreen/useFeed; no test assumed 4 s.
+- [x] A3 (d413f01): backup gap closed — `reviews.skipped_at`, `days.challenge`/`challenge_result`/`xp`/`spoken_reps`, inbox coach fields; schema ALTERs + both-way mappers + round-trip tests.
+- [x] AG-008 stage 1 (78fbdc0 + fix aac4779): coach makes every allowed type; verify runs on a *different* provider; one key ⇒ generate nothing + one plain You line.
+- [x] AG-008 stage 2 (5cece43): learns from 2nd misses (≤5/day) and recording mistakes (inbox `origin` round-trips); PlaybackReview flake fixed (90e7339).
+- [x] AG-008 stage 3 (425f55b): auto top-up (<30 unseen, 6 h gate, ≤3/day) behind shared 25-call/day local budget, clamped in code.
+- [x] AG-008 stage 4 (c6ea613): per-card "This is wrong" — 2nd flag purges the batch; rejected terms feed the avoid list (≤50).
+- [x] AG-008 stage 5 (d16b2fc): weekly `plan_week`; weights clamped 0.5–1.5 in code; Speak line + Undo; mapped both ways.
+- [x] AG-008 stage 6 (8a5f2f8): docs + AG-008 report; the missed `week_plan` schema ALTER added (§0.6 gap closed).
+- [x] Proof (item 5): `npm test` 45 files / 420 tests green ×3 + one final run (EXIT=0, 69.85 s); `npm run build` green; seed check PASS.
+- [x] Report (item 6, 733e36a): `.claude/reports/AG-009.md` — files, each done met, deviations, test output, ONE copy-paste SQL block (12 ALTERs).
+- [x] Owed, recorded in `docs/known-issues.md`: 375×812 visual walk (structural walk only — no visible viewport here); live AI + one-key plain line unverified until deploy.
+- [x] Stopped as instructed — no push, no merge, no deploy. Claude does one review pass off `git diff` + report, then asks Adarsh.
+
+---
+
 ## Session — 2026-08-26 (Wed, 16:51) · Antigravity · window C-20260826-1643-feed-queue-xp-correctness
 
 **Agenda (Feed, Queue, Preferences, Activity, XP, and Streak Correctness):**
@@ -720,3 +741,113 @@ pace/volume meters, real breath measurement) not started.
 Two decisions are Adarsh's before Antigravity starts: the product name, and
 whether "describe this image" ships as a curated static pack or runtime
 generation.
+
+## 2026-09-25 — Product audit after the V3 release (read-only)
+
+Agenda: "Is the product solving its purpose, or does it need improvement?"
+
+- [x] Ran 214 tests (all pass) and the type check (clean); walked all four tabs at 375×812.
+- [x] Verdict: habit loop works (endless feed, 1-screen onboarding, honest-ish Speak tab).
+      Learning and voice training do not — see below.
+- [x] Found: every emoji in 5 files is a literal "?" (encoding damage in a2b84f3).
+- [x] Found: nothing writes `db.reviews` — no memory of seen cards, SRS dead, deck rings stuck at 0%.
+- [x] Found: a2b84f3 deleted the voice lab (MPT, volume ladder, dB meter, deep session) — the measured
+      over-drive problem has no code against it. Spec said keep.
+- [x] Found: swipe-left "less of this" is saved but never read; impulse counter has no UI;
+      Supabase sync is imported by nothing; explain/teach-back decks are all software engineering.
+- [x] Found: PlaybackReview credits a spoken rep + XP for any 2 s attempt, even silence.
+
+**Open:** no code changed. Fix order proposed to Adarsh; awaiting his pick.
+- [x] Wrote OpenCode briefs to run in parallel (disjoint files):
+      `.claude/briefs/AG-005-usable-app-code.md` (fixes, spaced repetition, voice lab restored,
+      live volume + pace on every recording, honest You tab, AI tidy, optional backup) and
+      `.claude/briefs/AG-006-usable-app-content.md` (explain/teach-back rewrite, situations deck,
+      text scenes, +~270 words/phrases/Hindi/feelings/idioms). Next: Claude does one review pass off both reports.
+
+---
+
+## Session — 2026-09-25 · OpenCode · AG-006 usable-app content slice
+
+**Agenda (brief AG-006, content files only):** replace explain (60) + teach-backs (40),
+rewrite describes as 60 text scenes, new 130 situations, +100 words / +60 phrases /
++60 Hindi / +30 feelings / +20 idioms; structural check; staging review report; AG-006 report.
+
+**Done:**
+- [x] All 9 content targets hit (579 → 1039 seed cards, 0 duplicate ids): situations 130,
+      explain 60, describe 60, teach-backs 40, words +100, phrases +60, Hindi +60,
+      feelings +30, idioms +20. `00-exemplars.json` untouched.
+- [x] `speak/scripts/content-pipeline/check-seed.mjs` written; PASS on all files and caps.
+- [x] Cold read done: 0 dropped, 3 slips fixed (bad phrase id, unclean strong line, mismatched word id).
+- [x] `seedLoader.test.ts` 14/14 green with this content (AG-005's updated loader in tree).
+      Full `npm test`: 212/215 — 3 failures all outside content slice (assets test asserts ≥1
+      describe image; FirstRun/PlaybackReview UI churn from parallel AG-005 edits).
+- [x] Staging report overwritten at `speak/src/content/staging/review-report.md` (counts,
+      cold-read notes, 15 verbatim sample cards). Report at `.claude/reports/AG-006.md`.
+      Nothing committed (per brief; AG-005's code edits share the same working tree).
+
+## 2026-09-26 — Review of AG-005 (code) + AG-006 (content)
+
+- [x] Tests 261/261 (one flaky FeedScreen test fails ~1 in 2 full runs), build green, encoding clean, seed check PASS (1,039 cards).
+- [x] Walked fresh install at 375×812: icons fixed, Articulate name, save works, voice lab + drills + weekly check present.
+- [x] P0 found: first 24 feed cards repeat once every day (useFeed.ts: first-build effect and refill effect both fire on ready; refill appends `more` when `fresh` is empty).
+- [x] Found: every card scrolled past is scheduled as learned (273 in one test day → all due tomorrow).
+- [x] Found: AI only reviews recordings; expand_seed / verify_batch / classify_inbox exist server-side, zero callers. Captured notes are never processed. No daily challenge.
+- [x] Found: Speak tab = 14 items + jargon (MPT, dB, ≥300 ms, calibrated); You tab repeats one number 3×; "Session loudness target 0dB" is wrong.
+- [x] Content review: ~40 cards to fix or drop (placebo "cures", antibiotics advice, hi-chaalu slur, train-door scene, etc.).
+
+- [x] Adarsh approved the next round. Wrote OpenCode brief AG-007 (repeat bug, engaged-only repetition, coach box, daily challenge, simpler Speak + You) and handoff note.
+- [ ] Claude: fix ~40 flagged seed cards, commit AG-006 content.
+
+**Open:** v4-usable not merged or deployed (needs Adarsh's yes).
+
+---
+
+## Session — 2026-09-26 · OpenCode · AG-007 coach-challenge-simpler (code slice)
+
+**Agenda (brief `.claude/briefs/AG-007-coach-challenge-simpler.md`, handoff `2026-09-26-ag007-opencode.md`):** stage 1 repeat bug + flaky test · stage 2 engaged-only repetition · stage 3 coach box · stage 4 daily challenge · stage 5 simpler Speak · stage 6 simpler You · stage 7 docs + report. Branch v4-usable, commit per stage, never push. Disjoint with Claude seed-fix slice.
+
+**Done:**
+- [x] Stage 1 repeat bug + flaky FeedScreen test — refill guards, 150-card no-dupe hook test, FeedScreen cleanup/waitFor fix (0bc84dd).
+- [x] Stage 2 engaged-only repetition — engaged-flag XP, 14-day skim reserve in queue, markEngaged in useFeed + FeedScreen signals (b193e82 + f0375ed).
+- [x] Stage 3 coach box — contract §2.1, classify→verify→dedupe pipeline, CoachBox entry, watch in review_recording + local check, queue-jump + try-words (4c66de7 + 984e305).
+- [x] Stage 4 daily challenge — deterministic builder, 3 voice-goal branches, measured checks with null→"—", card + result screen (285b69d).
+- [x] Stage 5 simpler Speak — Today card + 3 plain-words groups, db reads moved to hook (1aca5ab).
+- [x] Stage 6 simpler You — 4 numbers once, 8-week chart with toggle, 0dB line dropped (e7355c8).
+- [x] Stage 7 docs + report — PLAN, known-issues (coach/challenge fields local-only, no backup), CLAUDE.md, `.claude/reports/AG-007.md` (0abf023).
+- [x] Final: `npm test` 5× 313/313 green, `npm run build` green. One-go run 2026-09-26-0753 COMPLETE 7/7 with per-pass verify records.
+- [x] Planning failures named in report §3: useFeed.ts split across passes (needed follow-up f0375ed); stage-3 wirings outside pass-3 slice (follow-up 984e305). Watchdog caught both (stale evidence) and passes 1–2 were re-proven over the final tree.
+- [x] Left for Adarsh: real-device check at 375×812 (2-screen fit, 44px targets); v4-usable has 9 AG-007 commits on top of AG-005's 9 — never pushed, not merged (no PENDING-PUSH.md in this project, same as AG-005).
+
+## 2026-09-26 (pm) — "Do your part + write the brief" → already done elsewhere
+
+- [x] Found AG-007 brief + handoff already written by another Claude chat; OpenCode built it (9 commits on v4-usable). Withdrew my overlapping claim; edited no seed/code files.
+- [x] Verified AG-007: 313/313 tests, build green, encoding clean. Browser: 60 cards, 0 repeats (bug fixed); coach box saves + honest offline message; daily challenge shows; Speak/You simpler, plain words.
+- [x] Flag: a card counts as "engaged" only after 4 s on screen — 6 cards at 3.5 s each earned 1 XP. Streak/XP likely too strict; Adarsh to decide.
+- [ ] Still open: ~40 seed-card fixes — held by the other Claude chat's claim, files untouched since 2026-09-25 20:21. Live AI untested (no keys locally, not deployed). Branch not merged or pushed.
+
+## 2026-09-27 — "Where do we stand + what's left + handoff"
+
+- [x] Status: AG-005 + AG-007 done on v4-usable; re-ran 313/313 tests + seed check PASS.
+- [x] Found: ~40 content fixes never applied (claiming chat never edited); fix list only lived in a transcript → saved to `.claude/reports/AG-006-content-review.md`.
+- [x] Adarsh decided: engaged rule 2 s · fix backup gap before live · stop and ask before push.
+- [x] Handoff: `.claude/handoffs/2026-09-27-finish-articulate.md` (Claude Code · Sonnet 5 · High).
+- [x] Rated the in-app AI 3/10; Adarsh approved all 3 upgrade steps at once. Wrote `.claude/briefs/AG-008-ai-auto-content.md`.
+- [x] Rewrote the handoff as ONE note: finish line → AG-008 → go-live ask (`.claude/handoffs/2026-09-27-finish-articulate.md`).
+
+## 2026-09-28 — Final pass: what's left → one brief for Antigravity
+
+- [x] Checked: nothing moved since 2026-09-27 (no commits; Part A/B/C all open; backup columns still missing; 4 s rule still at FeedScreen.tsx:58).
+- [x] Wrote `.claude/briefs/AG-009-final-pass-antigravity.md` — content fixes → 2 s rule → backup gap → AG-008 AI upgrade → proof + report, stop before push.
+- [x] Marked the stale 2026-09-26 seed-fix claim ABANDONED; marked the 2026-09-27 handoff SUPERSEDED.
+- [ ] Antigravity builds AG-009 → Claude one review pass → Adarsh's yes → merge + push.
+
+## 2026-10-01 — Review pass: is AG-009 (+ AG-008 AI upgrade) done? Ready to push?
+
+- [x] Re-ran myself: `npm test` 420/420 green, `npm run build` green, seed check PASS (1,032 cards).
+- [x] All 7 AG-009 items and all 6 AG-008 stages present in code (11 commits, b0b498b → 733e36a).
+- [x] Spot-checked AI safety rules in code: verifier must be a different AI than the writer, 25 AI calls/day cap, banned card types, weekly-plan limits — all there.
+- [x] Phone-size walk (375×812): onboarding → feed → Browse → Speak → You → coach box; no sideways scroll; coach fails politely offline.
+- [x] Small polish found (not blockers): You tab repeats "no session loudness measured yet" twice; coach note buttons "Try again" / "Delete note" have no gap.
+- [x] Polish fixes committed (pass 2 of 2): You loudness line shows once, coach-list-actions flex-wrapped with 8px gap.
+- [ ] Before go-live: run the 12-line SQL in `.claude/reports/AG-009.md` §5 on Supabase; confirm Netlify keys (Gemini + Groq); one live AI check after deploy.
+- [ ] Waiting on Adarsh's yes to push.
