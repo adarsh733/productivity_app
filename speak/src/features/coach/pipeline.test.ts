@@ -415,3 +415,38 @@ describe('saveRecordingMistake (AG-008 stage 2)', () => {
     expect(await db.inbox.count()).toBe(0);
   });
 });
+
+describe('rejected vocabulary rides along as avoid (AG-008 stage 4)', () => {
+  function firstPayload(fn: typeof fetch) {
+    const calls = (fn as unknown as { mock: { calls: Array<[string, RequestInit]> } }).mock.calls;
+    return (JSON.parse(calls[0]![1].body as string) as { payload: Record<string, unknown> }).payload;
+  }
+
+  it('classify_inbox carries the headlines of rejected cards', async () => {
+    await db.cards.put({
+      ...WORD_DRAFT,
+      term: 'cliche',
+      id: 'rej-1',
+      lang: 'en',
+      tags: [],
+      source: 'ai',
+      status: 'rejected',
+      createdAt: 1,
+      rejectedAt: 2,
+    } as unknown as Card);
+    await db.inbox.put({ id: 'in-avoid', createdAt: 1, text: 'a note', status: 'raw', attempts: 0 });
+    const fetchFn = classifyFetch('word', 'nuance', [WORD_DRAFT]);
+
+    const out = await processInboxItem('in-avoid', fetchFn);
+    expect(out.added).toBe(1);
+    expect(firstPayload(fetchFn).avoid).toEqual(['cliche']);
+  });
+
+  it('no rejections: the payload simply has no avoid key', async () => {
+    await db.inbox.put({ id: 'in-plain', createdAt: 1, text: 'a note', status: 'raw', attempts: 0 });
+    const fetchFn = classifyFetch('word', 'nuance', [WORD_DRAFT]);
+
+    await processInboxItem('in-plain', fetchFn);
+    expect('avoid' in firstPayload(fetchFn)).toBe(false);
+  });
+});

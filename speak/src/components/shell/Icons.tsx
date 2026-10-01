@@ -217,6 +217,15 @@ export function ThumbsDownIcon(props: IconProps) {
   );
 }
 
+export function FlagIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <path d="M5 21V4" />
+      <path d="M5 4h13l-4 4.5 4 4.5H5" />
+    </IconFrame>
+  );
+}
+
 export function VolumeIcon(props: IconProps) {
   return (
     <IconFrame {...props}>

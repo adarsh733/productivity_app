@@ -411,6 +411,24 @@ describe('Netlify AI Function Handler Suite', () => {
     });
     expect((await handler(badClassify)).status).toBe(400);
 
+    // `avoid` is optional, but when present it must be ≤50 non-empty strings.
+    const badAvoidShape = new Request('http://localhost/.netlify/functions/ai', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ task: 'classify_inbox', payload: { text: 'ok note', avoid: ['ok', 7] } }),
+    });
+    expect((await handler(badAvoidShape)).status).toBe(400);
+
+    const badAvoidCap = new Request('http://localhost/.netlify/functions/ai', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        task: 'classify_inbox',
+        payload: { text: 'ok note', avoid: Array.from({ length: 51 }, (_, i) => `a${i}`) },
+      }),
+    });
+    expect((await handler(badAvoidCap)).status).toBe(400);
+
     const badVerify = new Request('http://localhost/.netlify/functions/ai', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -522,10 +540,16 @@ describe('Netlify AI Function Handler Suite', () => {
         })
       ).status,
     ).toBe(400);
-    // topics/avoid: string arrays, at most 20 non-empty entries.
+    // topics (max 20) and avoid (max 50): string arrays of non-empty entries.
     expect((await post({ type: 'word', count: 2, topics: ['ok', 5] })).status).toBe(400);
     expect(
       (await post({ type: 'word', count: 2, topics: Array.from({ length: 21 }, (_, i) => `t${i}`) }))
+        .status,
+    ).toBe(400);
+    expect((await post({ type: 'word', count: 2, avoid: ['ok', 5] })).status).toBe(400);
+    expect((await post({ type: 'word', count: 2, avoid: ['  '] })).status).toBe(400);
+    expect(
+      (await post({ type: 'word', count: 2, avoid: Array.from({ length: 51 }, (_, i) => `a${i}`) }))
         .status,
     ).toBe(400);
   });

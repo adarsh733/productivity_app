@@ -68,6 +68,8 @@ interface CardBase {
   batchId?: string;
   /** The inbox item or card that seeded this one. */
   seedId?: string;
+  /** When he flagged this card wrong (AG-008 stage 4). */
+  rejectedAt?: Millis;
 }
 
 export interface WordCard extends CardBase {
@@ -472,6 +474,8 @@ export interface InboxItem {
 // ── Coach box: AI payloads ─────────────────────────────────────────────────
 export interface ClassifyInboxPayload {
   text: string;
+  /** Optional "do not produce" terms (his rejected vocabulary). */
+  avoid?: string[];
 }
 export interface ClassifyInboxResult {
   kind: CoachKind;

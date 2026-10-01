@@ -48,6 +48,8 @@ const CARD_SHAPES = [
   'situation {type:"situation",kind:"incident"|"office_call"|"feeling"|"opinion"|"life_story",title (max 40),prompt (max 200),beats:[3],targetVocab:[0-4],targetSec:30|45|60|90}.',
 ];
 const NEVER_PRODUCE = 'Never produce types: breath, pronounce, say_it, action_verb.';
+const AVOID_RULE =
+  'If the input contains an "avoid" list, never produce any card whose headline term matches, or closely paraphrases, an entry in it.';
 
 /** Per-task generation settings. `verify_batch` is deliberately cold. */
 const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; system: string }> = {
@@ -60,6 +62,7 @@ const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; syst
       'Produce siblings of the SAME type and skill as the seed card, but different wording —',
       'fresh angles, never paraphrases of the seed or of each other.',
       'When no seed card is given, produce fresh, standard cards of the requested type, grounded in the given topics when present.',
+      AVOID_RULE,
       'Everyday register, not literary. No rare or archaic words.',
       'Examples must be sentences a colleague would actually say out loud.',
       'Allowed card types and exact shapes:',
@@ -88,6 +91,7 @@ const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; syst
       'Allowed card types and exact shapes:',
       ...CARD_SHAPES,
       NEVER_PRODUCE,
+      AVOID_RULE,
       'Prefer 1-2 cards. Preserve what the user was actually curious about. Everyday register, never literary.',
     ].join(' '),
   },
@@ -232,6 +236,11 @@ function nearestSec(v: unknown): 30 | 45 | 60 | 90 {
 }
 
 const SITUATION_KINDS = ['incident', 'office_call', 'feeling', 'opinion', 'life_story'] as const;
+
+/** Optional payload lists (topics / avoid): non-empty strings, capped. */
+function validStringList(v: unknown, max: number): boolean {
+  return Array.isArray(v) && v.length <= max && v.every((s) => typeof s === 'string' && s.trim().length > 0);
+}
 
 function validateClassifyDraft(d: unknown, i: number): unknown {
   if (!d || typeof d !== 'object') throw new Error(`Draft ${i}: must be an object`);
@@ -486,6 +495,12 @@ export default async function handler(req: Request): Promise<Response> {
     if (!payload || typeof payload !== 'object' || typeof payload.text !== 'string' || !payload.text.trim()) {
       return json({ ok: false, task: body.task, error: 'AI sorting needs the note text' }, 400);
     }
+    // `avoid` is optional: his rejected headlines (max 50). Never a hard error to omit.
+    if (payload.avoid !== undefined) {
+      if (!validStringList(payload.avoid, 50)) {
+        return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
+      }
+    }
   }
 
   if (body.task === 'expand_seed') {
@@ -511,10 +526,11 @@ export default async function handler(req: Request): Promise<Response> {
         return json({ ok: false, task: body.task, error: 'Seed does not match card type' }, 400);
       }
     }
-    for (const f of ['topics', 'avoid'] as const) {
+    // `topics` (max 20) and `avoid` (max 50) are optional. Never a hard error to omit.
+    for (const [f, cap] of [['topics', 20], ['avoid', 50]] as const) {
       const v = payload[f];
       if (v === undefined) continue;
-      if (!Array.isArray(v) || v.length > 20 || !v.every((s) => typeof s === 'string' && s.trim())) {
+      if (!validStringList(v, cap)) {
         return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
       }
     }

@@ -17,6 +17,7 @@ import {
   type FetchFn,
 } from '../coach/pipeline';
 import { tryConsumeAiCall } from './budget';
+import { rejectedTerms } from './reject';
 
 /**
  * AG-008 stage 3 — keep every allowed type stocked without asking.
@@ -179,10 +180,16 @@ export async function maybeTopUp(fetchFn: FetchFn = fetch): Promise<number> {
 
     const inbox = [...inboxRaw].sort((a, b) => b.createdAt - a.createdAt);
     const topics = topUpTopics(profile?.interests ?? [], inbox);
+    const avoid = await rejectedTerms();
 
     const res = await aiPost<ExpandSeedResult>(
       'expand_seed',
-      { type, count: TOPUP_BATCH, ...(topics.length > 0 ? { topics } : {}) },
+      {
+        type,
+        count: TOPUP_BATCH,
+        ...(topics.length > 0 ? { topics } : {}),
+        ...(avoid.length > 0 ? { avoid } : {}),
+      },
       fetchFn,
     );
 

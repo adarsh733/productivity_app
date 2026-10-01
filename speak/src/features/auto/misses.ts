@@ -12,6 +12,7 @@ import {
   type FetchFn,
 } from '../coach/pipeline';
 import { tryConsumeAiCall } from './budget';
+import { rejectedTerms } from './reject';
 
 /**
  * AG-008 stage 2 — a card that missed twice gets siblings.
@@ -37,7 +38,7 @@ export function shouldSpawnSiblings(gradeValue: Grade | undefined, review: Revie
 /** The seed card minus storage bookkeeping (CardBase fields). */
 function seedOf(card: Card): Record<string, unknown> {
   const copy: Record<string, unknown> = { ...(card as unknown as Record<string, unknown>) };
-  for (const k of ['id', 'tags', 'source', 'status', 'createdAt', 'batchId', 'seedId']) {
+  for (const k of ['id', 'tags', 'source', 'status', 'createdAt', 'batchId', 'seedId', 'rejectedAt']) {
     delete copy[k];
   }
   return copy;
@@ -70,9 +71,15 @@ export async function maybeSpawnMissSiblings(
     // against the free tier.
     await setMeta(MISS_META, { date: today, count: used + 1 });
 
+    const avoid = await rejectedTerms();
     const res = await aiPost<ExpandSeedResult>(
       'expand_seed',
-      { type: card.type, count: MISS_SIBLINGS, seed: seedOf(card) },
+      {
+        type: card.type,
+        count: MISS_SIBLINGS,
+        seed: seedOf(card),
+        ...(avoid.length > 0 ? { avoid } : {}),
+      },
       fetchFn,
     );
 

@@ -440,5 +440,19 @@ describe('maybeTopUp (AG-008 stage 3)', () => {
 
     expect(await maybeTopUp(fetchFn)).toBe(TOPUP_BATCH);
     expect('topics' in callsOf(fetchFn)[0]!.payload).toBe(false);
+    expect('avoid' in callsOf(fetchFn)[0]!.payload).toBe(false);
+  });
+
+  it('rejected cards feed expand_seed an avoid list (AG-008 stage 4)', async () => {
+    await stock({ phrase: 5 });
+    await db.cards.put({
+      ...stubCard('rej-word-3', 'word', 3),
+      status: 'rejected',
+      rejectedAt: 5,
+    } as Card);
+    const fetchFn = topFetch();
+
+    expect(await maybeTopUp(fetchFn)).toBe(TOPUP_BATCH);
+    expect(callsOf(fetchFn)[0]!.payload.avoid).toEqual(['word-3']);
   });
 });

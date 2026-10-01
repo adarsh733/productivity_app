@@ -9,6 +9,7 @@ import type {
 } from '../../types/contract';
 import { db, enqueue, setMeta } from '../../db/db';
 import { tryConsumeAiCall } from '../auto/budget';
+import { rejectedTerms } from '../auto/reject';
 
 /**
  * AG-007 stage 3 — "Tell the coach" pipeline.
@@ -384,7 +385,12 @@ export async function processInboxItem(id: string, fetchFn: FetchFn = fetch): Pr
   }
 
   try {
-    const classified = await aiPost<ClassifyInboxResult>('classify_inbox', { text: item.text }, fetchFn);
+    const avoid = await rejectedTerms();
+    const classified = await aiPost<ClassifyInboxResult>(
+      'classify_inbox',
+      { text: item.text, ...(avoid.length > 0 ? { avoid } : {}) },
+      fetchFn,
+    );
     const drafts = classified.data.cards ?? [];
     const kind: CoachKind = classified.data.kind ?? 'other';
 

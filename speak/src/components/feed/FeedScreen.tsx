@@ -7,7 +7,8 @@ import { useCardGestures } from './useCardGestures';
 import CoachBox from '../../features/coach/CoachBox';
 import type { Card } from '../../types/contract';
 import { GAMIFICATION } from '../../types/contract';
-import { MicrophoneIcon, StarIcon, ThumbsDownIcon } from '../shell/Icons';
+import { FlagIcon, MicrophoneIcon, StarIcon, ThumbsDownIcon } from '../shell/Icons';
+import { rejectCard } from '../../features/auto/reject';
 
 export interface FeedScreenProps {
   onOpenSpeakWithCard?: (card: Card) => void;
@@ -129,6 +130,17 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
       await feed.downvoteCard(card);
     }
     showToast('Less of this topic for 7 days');
+    const msSpent = Date.now() - shownAt.current;
+    await feed.advanceCard({ msSpent });
+  }, [card, feed]);
+
+  // AG-008 stage 4: flag a wrong AI card. One tap drops the card; a second
+  // tap on its batch drops the batch. Whatever is rejected is never shown again.
+  const handleReject = useCallback(async () => {
+    if (busy.current || !card) return;
+    busy.current = true;
+    const result = await rejectCard(card);
+    if (result) showToast(result === 'batch' ? 'Whole batch removed' : 'Card removed');
     const msSpent = Date.now() - shownAt.current;
     await feed.advanceCard({ msSpent });
   }, [card, feed]);
@@ -287,6 +299,18 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
         >
           <ThumbsDownIcon aria-hidden="true" />
         </button>
+
+        {card && (card.source === 'ai' || card.source === 'inbox') && (
+          <button
+            type="button"
+            className="abtn ico tap"
+            onClick={() => void handleReject()}
+            aria-label="This is wrong"
+            title="This is wrong"
+          >
+            <FlagIcon aria-hidden="true" />
+          </button>
+        )}
 
         {onOpenSpeakWithCard && card && (
           <button

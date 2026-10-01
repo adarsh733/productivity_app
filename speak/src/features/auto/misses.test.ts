@@ -129,6 +129,21 @@ describe('maybeSpawnMissSiblings (AG-008 stage 2)', () => {
     expect(seedSent.term).toBe('nuance');
   });
 
+  it('rejected cards feed expand_seed an avoid list (AG-008 stage 4)', async () => {
+    const seed = wordCard('c-10');
+    await db.cards.put(seed);
+    await db.cards.put({
+      ...wordCard('rej-1', 'cliche'),
+      source: 'ai',
+      status: 'rejected',
+      rejectedAt: 5,
+    } as unknown as Card);
+    const fetchFn = missFetch([WORD_A]);
+
+    expect(await maybeSpawnMissSiblings(seed, fetchFn)).toBe(1);
+    expect(callsOf(fetchFn)[0]!.payload.avoid).toEqual(['cliche']);
+  });
+
   it('drops drafts that repeat the seed and drafts of another type before verify', async () => {
     const seed = wordCard('c-2');
     await db.cards.put(seed);
