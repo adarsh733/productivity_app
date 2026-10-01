@@ -109,6 +109,16 @@ describe('YouScreen stage-6 simpler tab', () => {
     });
   });
 
+  it('shows the empty loudness line once when nothing is measured', async () => {
+    await db.voiceSamples.clear();
+    render(<YouScreen />);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('stat-voice').textContent).toBe('—');
+    });
+    expect(screen.getAllByText(/no session loudness measured yet/i).length).toBe(1);
+  });
+
   it('keeps Coach, Saved, Recordings and Settings rows', async () => {
     render(<YouScreen />);
 

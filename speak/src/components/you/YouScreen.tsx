@@ -107,6 +107,8 @@ export default function YouScreen({ onOpenSpeakWithCard }: YouScreenProps) {
   } = useYou();
 
   const latestLoud = [...loudnessWeeks].reverse().find((p) => p.value !== null)?.value ?? null;
+  // When the chart already says "no session loudness measured yet", do not repeat it below.
+  const chartIsEmpty = latestLoud === null && normalDb === null;
   const loudVerdict =
     latestLoud === null
       ? 'No session loudness measured yet.'
@@ -179,7 +181,7 @@ export default function YouScreen({ onOpenSpeakWithCard }: YouScreenProps) {
                 reference={normalDb === null ? null : { value: normalDb, label: 'your normal' }}
                 emptyText="— no session loudness measured yet"
               />
-              <p className="sub">{loudVerdict}</p>
+              {chartIsEmpty ? null : <p className="sub">{loudVerdict}</p>}
             </>
           ) : (
             <TrendChart

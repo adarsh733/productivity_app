@@ -244,6 +244,13 @@
   gap: 8px;
 }
 
+.coach-list-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
 .chip {
   border: 1px solid var(--line);
   background: var(--card);
