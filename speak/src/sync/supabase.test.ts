@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { DayRecord, InboxItem, Review } from '../types/contract';
+import type { DayRecord, InboxItem, Review, WeekPlan } from '../types/contract';
 import {
   dayFromRow,
   dayRow,
@@ -7,6 +7,8 @@ import {
   inboxRow,
   reviewFromRow,
   reviewRow,
+  weekPlanFromRemote,
+  weekPlanToRemote,
 } from './supabase';
 
 // Round-trip: local → remote row → local must be identity for every field the
@@ -161,5 +163,67 @@ describe('inbox row round-trip', () => {
     expect(row.attempts).toBeNull();
     expect(row.origin).toBeNull();
     expect(inboxFromRow(row)).toEqual(item);
+  });
+});
+
+describe('week plan round-trip', () => {
+  const plan: WeekPlan = {
+    createdAt: 1787700000000,
+    typeWeights: { word: 1.3, idiom: 0.8 },
+    challengeFocus: 'slower',
+    focusWords: ['Hiring', 'budget review'],
+    note: 'Word reps first, then pauses.',
+    previousTypeWeights: { word: 1, idiom: 1 },
+  };
+
+  it('preserves every field through toRemote → fromRemote', () => {
+    const remote = weekPlanToRemote(plan);
+    expect(remote).toEqual(plan);
+    expect(weekPlanFromRemote(remote)).toEqual(plan);
+  });
+
+  it('maps no plan to null and back to undefined', () => {
+    expect(weekPlanToRemote(undefined)).toBeNull();
+    expect(weekPlanFromRemote(null)).toBeUndefined();
+  });
+
+  it('keeps a plan whose previousTypeWeights is an empty object', () => {
+    // applyPlanToProfile snapshots `{}` when the profile had no typeWeights,
+    // so an empty snapshot must not read as "malformed" on restore.
+    const fresh: WeekPlan = {
+      createdAt: 1787700000000,
+      typeWeights: { word: 1.2 },
+      note: 'Speak more words this week.',
+      previousTypeWeights: {},
+    };
+    expect(weekPlanFromRemote(weekPlanToRemote(fresh))).toEqual(fresh);
+  });
+
+  it('drops a malformed plan whole rather than half-restoring it', () => {
+    const good = weekPlanToRemote(plan);
+    expect(weekPlanFromRemote('nope')).toBeUndefined();
+    expect(weekPlanFromRemote([])).toBeUndefined();
+    expect(weekPlanFromRemote({ ...good, createdAt: 'x' })).toBeUndefined();
+    expect(weekPlanFromRemote({ ...good, note: '   ' })).toBeUndefined();
+    expect(weekPlanFromRemote({ ...good, typeWeights: undefined })).toBeUndefined();
+    expect(weekPlanFromRemote({ ...good, typeWeights: 'x' })).toBeUndefined();
+    expect(weekPlanFromRemote({ ...good, previousTypeWeights: undefined })).toBeUndefined();
+    expect(weekPlanFromRemote({ ...good, previousTypeWeights: [] })).toBeUndefined();
+  });
+
+  it('cleans loose values instead of trusting them', () => {
+    const loose = weekPlanFromRemote({
+      ...weekPlanToRemote(plan),
+      challengeFocus: 'louder',
+      focusWords: [' Hiring ', 7, 'budget', 'w3', 'w4', 'w5', 'w6'],
+      typeWeights: { word: 1.2, idiom: Number.NaN },
+    });
+    expect(loose).toEqual({
+      createdAt: plan.createdAt,
+      typeWeights: { word: 1.2 },
+      previousTypeWeights: plan.previousTypeWeights,
+      focusWords: ['Hiring', 'budget', 'w3', 'w4', 'w5'],
+      note: plan.note,
+    });
   });
 });

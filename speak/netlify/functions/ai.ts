@@ -18,6 +18,7 @@ const ALLOWED_TASKS: readonly AiTask[] = [
   'verify_batch',
   'classify_inbox',
   'review_recording',
+  'plan_week',
 ];
 
 /** Card types AI may ever draft (AG-008 §0.3) — mirrors `DraftCardType`. */
@@ -112,6 +113,21 @@ const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; syst
       'Never invent quotes. Never comment on accent or pronunciation quirks. Focus on pacing, executive presence, and word precision.',
       'If a "watch" list of known mistakes is provided, check the transcript for each watched phrase first;',
       'when the transcript contains one, the correction must address it.',
+    ].join(' '),
+  },
+  plan_week: {
+    temperature: 0.2,
+    maxTokens: 1024,
+    system: [
+      'You plan one week of speaking practice for one Indian English speaker in a corporate setting.',
+      'You get last week\'s per-type numbers (views, again rate, skips), voice numbers, and his recent coach subjects.',
+      'Return ONLY JSON: {"typeWeights":{...},"challengeFocus":"softer"|"slower"|"pause_first","focusWords":[...],"note":"..."}.',
+      `typeWeights keys must come only from: ${DRAFT_TYPES.join(', ')}. Any subset.`,
+      'Each weight is between 0.5 and 1.5. Raise a type whose numbers show he struggles with it (high again rate) or skips it; lower a type he already does well, so fresh practice gets room.',
+      'challengeFocus: exactly one of the three strings above. Choose by the voice numbers — "softer" when his recent level is above his normal, "slower" when his recent speed is above his target, "pause_first" otherwise.',
+      'focusWords: up to 5 items copied EXACTLY from the coach subjects list. Never invent words; omit the field when unsure.',
+      'note: ONE plain sentence, at most 90 characters, saying what to practice this week.',
+      'No jargon, no numbers-only notes, no emoji, no quotes, no markdown.',
     ].join(' '),
   },
 };
@@ -403,6 +419,53 @@ export function validateExpandSeed(raw: unknown): unknown {
   return { cards: (c.cards as unknown[]).map((d, i) => validateClassifyDraft(d, i)) };
 }
 
+/**
+ * plan_week output — structural check only. Bounds, allowed types, allowed
+ * branches and word counts are clamped in the client (`features/auto/plan.ts`),
+ * so one loose value here still can never reach the store unchecked.
+ * Throws when the plan has no usable field at all, so a junk response fails
+ * over to the next provider instead of being stored as an empty plan.
+ */
+export function validatePlanWeek(raw: unknown): unknown {
+  if (!raw || typeof raw !== 'object') throw new Error('Plan response must be an object');
+  const c = raw as Record<string, unknown>;
+
+  let typeWeights: Record<string, number> | undefined;
+  if (c.typeWeights && typeof c.typeWeights === 'object' && !Array.isArray(c.typeWeights)) {
+    const entries = Object.entries(c.typeWeights as Record<string, unknown>).filter(
+      (e): e is [string, number] => typeof e[1] === 'number' && Number.isFinite(e[1]),
+    );
+    if (entries.length > 0) typeWeights = Object.fromEntries(entries);
+  }
+
+  const challengeFocus =
+    typeof c.challengeFocus === 'string' && c.challengeFocus.trim()
+      ? c.challengeFocus.trim()
+      : undefined;
+
+  let focusWords: string[] | undefined;
+  if (Array.isArray(c.focusWords)) {
+    const words = c.focusWords
+      .filter((w): w is string => typeof w === 'string' && w.trim().length > 0)
+      .map((w) => w.trim())
+      .slice(0, 10);
+    if (words.length > 0) focusWords = words;
+  }
+
+  const note = typeof c.note === 'string' && c.note.trim() ? c.note.trim() : undefined;
+
+  if (!typeWeights && !challengeFocus && !focusWords && !note) {
+    throw new Error('Plan has no usable content');
+  }
+
+  return {
+    ...(typeWeights ? { typeWeights } : {}),
+    ...(challengeFocus ? { challengeFocus } : {}),
+    ...(focusWords ? { focusWords } : {}),
+    ...(note ? { note } : {}),
+  };
+}
+
 export function validateProviderOutput(task: AiTask, raw: unknown): unknown {
   if (!raw || typeof raw !== 'object') {
     throw new Error('Provider response must be an object');
@@ -461,6 +524,10 @@ export function validateProviderOutput(task: AiTask, raw: unknown): unknown {
 
   if (task === 'expand_seed') {
     return validateExpandSeed(raw);
+  }
+
+  if (task === 'plan_week') {
+    return validatePlanWeek(raw);
   }
 
   return raw;
@@ -539,6 +606,31 @@ export default async function handler(req: Request): Promise<Response> {
   if (body.task === 'verify_batch') {
     const payload = body.payload as Record<string, unknown> | undefined;
     if (!payload || typeof payload !== 'object' || !Array.isArray(payload.items)) {
+      return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
+    }
+  }
+
+  if (body.task === 'plan_week') {
+    const payload = body.payload as Record<string, unknown> | undefined;
+    if (!payload || typeof payload !== 'object') {
+      return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
+    }
+    if (!Array.isArray(payload.types) || payload.types.length === 0 || payload.types.length > 15) {
+      return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
+    }
+    for (const t of payload.types) {
+      if (!t || typeof t !== 'object' || typeof (t as Record<string, unknown>).type !== 'string') {
+        return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
+      }
+    }
+    if (
+      payload.voice !== undefined &&
+      (typeof payload.voice !== 'object' || payload.voice === null || Array.isArray(payload.voice))
+    ) {
+      return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
+    }
+    // `coachSubjects` is optional: his recent subjects (max 10). Never a hard error to omit.
+    if (payload.coachSubjects !== undefined && !validStringList(payload.coachSubjects, 10)) {
       return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
     }
   }

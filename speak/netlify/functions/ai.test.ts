@@ -647,4 +647,112 @@ describe('Netlify AI Function Handler Suite', () => {
     expect(same.mistake).toBeUndefined();
     expect(same.summary).toBe('Good.');
   });
+
+  it('Validates plan_week structurally; loose numbers pass through for the client clamp (AG-008 stage 5)', () => {
+    const manyWords = Array.from({ length: 11 }, (_, i) => `w${i}`);
+    const good = {
+      typeWeights: { word: 9, idiom: 0.1, nonsense: 1, swap: 'x' },
+      challengeFocus: '  softer  ',
+      focusWords: ['  Hiring ', '', 7, ...manyWords],
+      note: '  Push word gaps this week.  ',
+    };
+    const v = validateProviderOutput('plan_week', good) as any;
+    // Out-of-range and unknown types pass the structural check on purpose:
+    // `features/auto/plan.ts` clamps them before anything is stored.
+    expect(v.typeWeights).toEqual({ word: 9, idiom: 0.1, nonsense: 1 });
+    expect(v.challengeFocus).toBe('softer');
+    expect(v.focusWords).toHaveLength(10);
+    expect(v.focusWords[0]).toBe('Hiring');
+    expect(v.note).toBe('Push word gaps this week.');
+
+    const nonFinite = validateProviderOutput('plan_week', {
+      typeWeights: { word: Number.NaN, idiom: 1.2 },
+      note: 'Keep idiom reps.',
+    }) as any;
+    expect(nonFinite.typeWeights).toEqual({ idiom: 1.2 });
+
+    expect(() => validateProviderOutput('plan_week', {})).toThrow(/no usable content/);
+    expect(() => validateProviderOutput('plan_week', { typeWeights: {} })).toThrow(/no usable content/);
+    expect(() => validateProviderOutput('plan_week', { typeWeights: { word: Number.NaN } })).toThrow(
+      /no usable content/,
+    );
+    expect(() => validateProviderOutput('plan_week', { focusWords: [' ', 5] })).toThrow(/no usable content/);
+    expect(() => validateProviderOutput('plan_week', null)).toThrow(/must be an object/);
+  });
+
+  it('Rejects plan_week payloads with bad types, voice or coachSubjects shapes (AG-008 stage 5)', async () => {
+    // Unique IP per request: the shared 'anonymous' bucket is nearly spent by
+    // the rest of this suite, and these rejections never reach a provider.
+    let n = 0;
+    const post = (payload: unknown) => {
+      n++;
+      return handler(
+        new Request('http://localhost/.netlify/functions/ai', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json', 'x-forwarded-for': `10.99.0.${n}` },
+          body: JSON.stringify({ task: 'plan_week', payload }),
+        }),
+      );
+    };
+
+    const row = { type: 'word', unseen: 20, views: 5, againRate: 0.3, skips: 1 };
+    expect((await post({})).status).toBe(400); // types missing
+    expect((await post({ types: [] })).status).toBe(400);
+    expect((await post({ types: Array.from({ length: 16 }, () => row) })).status).toBe(400);
+    expect((await post({ types: [row, 'word'] })).status).toBe(400);
+    expect((await post({ types: [{ seen: 1 }] })).status).toBe(400); // entry without a string type
+    expect((await post({ types: [row], voice: ['soft'] })).status).toBe(400); // voice must be an object
+    expect(
+      (await post({ types: [row], coachSubjects: Array.from({ length: 11 }, (_, i) => `s${i}`) })).status,
+    ).toBe(400);
+    expect((await post({ types: [row], coachSubjects: ['ok', 3] })).status).toBe(400);
+  });
+
+  it('Accepts a valid plan_week request and returns the plan (AG-008 stage 5)', async () => {
+    process.env.GEMINI_API_KEY = 'mock-gemini-key';
+    const fetchSpy = vi.fn();
+    global.fetch = fetchSpy as any;
+    fetchSpy.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        candidates: [
+          {
+            content: {
+              parts: [
+                {
+                  text: JSON.stringify({
+                    typeWeights: { word: 1.3 },
+                    challengeFocus: 'pause_first',
+                    focusWords: ['Hiring'],
+                    note: 'Word reps first, then pauses.',
+                  }),
+                },
+              ],
+            },
+          },
+        ],
+      }),
+    } as any);
+
+    const req = new Request('http://localhost/.netlify/functions/ai', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'x-forwarded-for': '10.99.1.1' },
+      body: JSON.stringify({
+        task: 'plan_week',
+        payload: {
+          types: [{ type: 'word', unseen: 20, views: 5, againRate: 0.3, skips: 1 }],
+          voice: { calibrated: true, paceTarget: 120, recentWpm: 130 },
+          coachSubjects: ['Hiring', 'budget review'],
+        },
+      }),
+    });
+    const res = await handler(req);
+    expect(res.status).toBe(200);
+    const data = (await res.json()) as any;
+    expect(data.ok).toBe(true);
+    expect(data.provider).toBe('gemini');
+    expect(data.data.typeWeights).toEqual({ word: 1.3 });
+    expect(data.data.challengeFocus).toBe('pause_first');
+    expect(data.data.note).toBe('Word reps first, then pauses.');
+  });
 });

@@ -5,9 +5,13 @@ import type {
   DayRecord,
   InboxItem,
   LabSession,
+  Profile,
   Review,
+  VoiceGoal,
   VoiceSample,
+  WeekPlan,
 } from '../types/contract';
+import { VOICE_GOALS } from '../features/auto/plan';
 
 /**
  * Sync and backup. Never the read path — see src/db/db.ts.
@@ -157,6 +161,7 @@ async function materialise(row: OutboxRow, userId: string): Promise<Record<strin
         target_band_min_db: p.targetBandDb?.minDb ?? null,
         target_band_max_db: p.targetBandDb?.maxDb ?? null,
         calibrated_at: p.calibratedAt ? new Date(p.calibratedAt).toISOString() : null,
+        week_plan: weekPlanToRemote(p.weekPlan),
       };
     }
     case 'labSessions': {
@@ -320,6 +325,58 @@ export const inboxFromRow = (i: InboxRow): InboxItem => ({
   origin: (i.origin as InboxItem['origin']) ?? undefined,
 });
 
+/** `Profile.weekPlan` → `profile.week_plan` (jsonb). Null when there is no plan. */
+export const weekPlanToRemote = (p: WeekPlan | undefined): WeekPlan | null =>
+  p ? { ...p } : null;
+
+/**
+ * Remote `week_plan` jsonb → `Profile.weekPlan`. Structural only — a shape
+ * this backup never wrote is dropped whole rather than half-restored.
+ */
+export function weekPlanFromRemote(v: unknown): WeekPlan | undefined {
+  if (!v || typeof v !== 'object' || Array.isArray(v)) return undefined;
+  const c = v as Record<string, unknown>;
+  if (typeof c.createdAt !== 'number' || !Number.isFinite(c.createdAt)) return undefined;
+  if (typeof c.note !== 'string' || !c.note.trim()) return undefined;
+
+  // `{}` is legitimate — `applyPlanToProfile` snapshots an empty
+  // `previousTypeWeights` when the profile had none. Presence = plain object.
+  const weights = (raw: unknown): Record<string, number> | undefined => {
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return undefined;
+    const entries = Object.entries(raw as Record<string, unknown>).filter(
+      (e): e is [string, number] => typeof e[1] === 'number' && Number.isFinite(e[1]),
+    );
+    return Object.fromEntries(entries);
+  };
+  const typeWeights = weights(c.typeWeights);
+  const previousTypeWeights = weights(c.previousTypeWeights);
+  if (!typeWeights || !previousTypeWeights) return undefined;
+
+  const challengeFocus =
+    typeof c.challengeFocus === 'string' &&
+    (VOICE_GOALS as readonly string[]).includes(c.challengeFocus)
+      ? (c.challengeFocus as VoiceGoal)
+      : undefined;
+
+  let focusWords: string[] | undefined;
+  if (Array.isArray(c.focusWords)) {
+    const words = c.focusWords
+      .filter((w): w is string => typeof w === 'string' && w.trim().length > 0)
+      .map((w) => w.trim())
+      .slice(0, 5);
+    if (words.length > 0) focusWords = words;
+  }
+
+  return {
+    createdAt: c.createdAt,
+    typeWeights,
+    previousTypeWeights,
+    ...(challengeFocus ? { challengeFocus } : {}),
+    ...(focusWords ? { focusWords } : {}),
+    note: c.note.trim(),
+  };
+}
+
 /**
  * One-shot restore after signing in on a fresh device. Local rows win on
  * conflict, because the local copy is the one he has actually been using.
@@ -399,23 +456,34 @@ export async function restore(): Promise<{
     voiceSamples++;
   }
 
-  // Calibration follows the samples. Local wins if this device already has it.
+  // Calibration and the weekly plan follow the samples. Local wins if this
+  // device already has them.
   const local = await getProfile();
   const remote = pf.data as Record<string, unknown> | null;
-  if (remote && local.baselineDb === undefined && remote.baseline_db != null) {
-    await db.profile.put({
-      ...local,
-      baselineDb: Number(remote.baseline_db),
-      calibrationSamples: Number(remote.calibration_samples ?? 0),
-      targetBandDb:
+  if (remote) {
+    const next: Profile = { ...local };
+    let changed = false;
+    if (local.baselineDb === undefined && remote.baseline_db != null) {
+      next.baselineDb = Number(remote.baseline_db);
+      next.calibrationSamples = Number(remote.calibration_samples ?? 0);
+      next.targetBandDb =
         remote.target_band_min_db != null && remote.target_band_max_db != null
           ? {
               minDb: Number(remote.target_band_min_db),
               maxDb: Number(remote.target_band_max_db),
             }
-          : undefined,
-      calibratedAt: remote.calibrated_at ? Date.parse(String(remote.calibrated_at)) : undefined,
-    });
+          : undefined;
+      next.calibratedAt = remote.calibrated_at ? Date.parse(String(remote.calibrated_at)) : undefined;
+      changed = true;
+    }
+    if (local.weekPlan === undefined && remote.week_plan != null) {
+      const plan = weekPlanFromRemote(remote.week_plan);
+      if (plan) {
+        next.weekPlan = plan;
+        changed = true;
+      }
+    }
+    if (changed) await db.profile.put(next);
   }
 
   return { reviews, days, inbox, labSessions, voiceSamples };

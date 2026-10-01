@@ -27,6 +27,8 @@ export interface ChallengeVoiceInputs {
   paceTarget?: number;
   /** Recent measured WPM. */
   recentWpm?: number;
+  /** AG-008 §5 — the weekly plan's branch, when set. Overrides the computed goal. */
+  coachFocus?: VoiceGoal;
 }
 
 export interface ChallengeContentInputs {
@@ -107,7 +109,7 @@ export function makeTitle(voiceGoal: VoiceGoal, targetSec: 30 | 45 | 60, useWord
 
 export function buildDailyChallenge(date: DayKey, inputs: ChallengeInputs = {}): DailyChallenge {
   const hash = hashDate(date);
-  const voiceGoal = pickVoiceGoal(inputs);
+  const voiceGoal = inputs.coachFocus ?? pickVoiceGoal(inputs);
   const targetSec = TARGET_SECS[hash % TARGET_SECS.length] ?? 45;
 
   const coachWords = cleanWords(inputs.coachWords);

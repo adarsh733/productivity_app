@@ -51,6 +51,27 @@ describe('buildDailyChallenge', () => {
     expect(c.voiceGoal).toBe('pause_first');
   });
 
+  it('a coachFocus from the weekly plan overrides the picked voice goal (AG-008 stage 5)', () => {
+    // Voice data alone would pick 'softer'; the plan's branch wins.
+    const overridden = buildDailyChallenge('2026-09-26', {
+      calibrated: true,
+      baselineDb: -20,
+      recentAvgDb: -15,
+      coachFocus: 'slower',
+    });
+    expect(overridden.voiceGoal).toBe('slower');
+    expect(overridden.title).toBe(makeTitle('slower', overridden.targetSec, overridden.useWord));
+
+    // Even with no voice data at all, the plan's branch stands.
+    expect(buildDailyChallenge('2026-09-26', { coachFocus: 'softer' }).voiceGoal).toBe('softer');
+
+    // Without a coachFocus the picker still decides.
+    expect(
+      buildDailyChallenge('2026-09-26', { calibrated: true, baselineDb: -20, recentAvgDb: -15 })
+        .voiceGoal,
+    ).toBe('softer');
+  });
+
   it('titles stay plain and within 70 chars, even with a long word', () => {
     const titles = [
       makeTitle('softer', 45, 'nuance'),

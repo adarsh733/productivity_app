@@ -524,6 +524,33 @@ export interface ExpandSeedResult {
   cards: ClassifyInboxResult['cards'];
 }
 
+/** plan_week payload — last week's per-type stats, voice numbers, coach subjects. */
+export interface PlanWeekPayload {
+  types: Array<{ type: DraftCardType; views: number; againRate: number; skips: number }>;
+  voice?: {
+    calibrated?: boolean;
+    baselineDb?: number;
+    recentAvgDb?: number;
+    paceBaseline?: number;
+    paceTarget?: number;
+    recentWpm?: number;
+    mptGapSec?: number;
+  };
+  /** Recent coach subjects, newest first (max 10). */
+  coachSubjects?: string[];
+}
+
+/**
+ * plan_week raw output. Every field optional — the code clamp decides what
+ * survives, so a partial plan is valid.
+ */
+export interface PlanWeekResult {
+  typeWeights?: Record<string, number>;
+  challengeFocus?: string;
+  focusWords?: string[];
+  note?: string;
+}
+
 /** review_recording payload. `watch` = his known mistakes; feedback must check these first. Max 10. */
 export interface ReviewRecordingPayload {
   transcript: string;
@@ -551,6 +578,24 @@ export interface FreezeRecord {
   month: string; // "YYYY-MM"
   usedDates: DayKey[];
   remaining: number;
+}
+
+/**
+ * AG-008 §5 — the weekly coach plan. Built by AI, clamped and stored by
+ * `features/auto/plan.ts`. Undo restores `previousTypeWeights` and clears it.
+ */
+export interface WeekPlan {
+  createdAt: Millis;
+  /** Draftable types only, each within [0.5, 1.5]. */
+  typeWeights: Record<string, number>;
+  /** One of the existing voice-goal branches, else absent. */
+  challengeFocus?: VoiceGoal;
+  /** Max 5; each must already exist as a card. Fed to the daily challenge. */
+  focusWords?: string[];
+  /** One plain sentence, ≤ 90 chars. Shown on Speak. */
+  note: string;
+  /** Snapshot of `typeWeights` before this plan, for Undo. */
+  previousTypeWeights: Record<string, number>;
 }
 
 export interface Profile {
@@ -592,6 +637,8 @@ export interface Profile {
   calibratedAt?: Millis;
   /** Result of the in-app device test. Written on first successful mic use. */
   micProfile?: MicProfile;
+  /** AG-008 §5 — this week's coach plan. Undo clears it and restores weights. */
+  weekPlan?: WeekPlan;
 }
 
 /**
@@ -683,7 +730,8 @@ export type AiTask =
   | 'expand_seed' // one input → high-temperature variant cards
   | 'verify_batch' // temp 0: is each generated item real and natural?
   | 'classify_inbox' // raw dump → typed card stubs
-  | 'review_recording'; // Phase 2: judgment over a recording's transcript
+  | 'review_recording' // Phase 2: judgment over a recording's transcript
+  | 'plan_week'; // AG-008 §5: weekly coach plan over last week's stats
 
 export interface AiRequest {
   task: AiTask;

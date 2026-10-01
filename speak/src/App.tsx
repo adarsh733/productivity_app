@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import FirstRun, { isFirstRunCompleted } from './components/onboarding/FirstRun';
 import TabBar, { type AppTab } from './components/shell/TabBar';
 import FeedScreen from './components/feed/FeedScreen';
@@ -9,12 +9,14 @@ import CaptureSheet from './components/capture/CaptureSheet';
 import { useCapture } from './features/capture/useCapture';
 import { useAppOpen } from './features/you/useAppOpen';
 import { useAutoTopUp } from './features/auto/useAutoTopUp';
+import { useAutoPlan } from './features/auto/useAutoPlan';
 import { useSync } from './sync/useSync';
 import type { Card } from './types/contract';
 
 export default function App() {
   useAppOpen();
   useAutoTopUp();
+  useAutoPlan();
   useSync();
   const [activeTab, setActiveTab] = useState<AppTab>('feed');
   const [showFirstRun, setShowFirstRun] = useState(!isFirstRunCompleted());

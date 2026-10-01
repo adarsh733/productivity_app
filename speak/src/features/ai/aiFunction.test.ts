@@ -7,6 +7,7 @@ describe('Netlify AI Function Contract Suite', () => {
     'verify_batch',
     'classify_inbox',
     'review_recording',
+    'plan_week',
   ];
 
   const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number }> = {
@@ -26,13 +27,18 @@ describe('Netlify AI Function Contract Suite', () => {
       temperature: 0.3,
       maxTokens: 1024,
     },
+    plan_week: {
+      temperature: 0.2,
+      maxTokens: 1024,
+    },
   };
 
-  it('ALLOWED_TASKS includes all 4 system tasks and rejects arbitrary tasks', () => {
+  it('ALLOWED_TASKS includes all 5 system tasks and rejects arbitrary tasks', () => {
     expect(ALLOWED_TASKS).toContain('expand_seed');
     expect(ALLOWED_TASKS).toContain('verify_batch');
     expect(ALLOWED_TASKS).toContain('classify_inbox');
     expect(ALLOWED_TASKS).toContain('review_recording');
+    expect(ALLOWED_TASKS).toContain('plan_week');
 
     const isTaskAllowed = (task: string): boolean =>
       (ALLOWED_TASKS as readonly string[]).includes(task);

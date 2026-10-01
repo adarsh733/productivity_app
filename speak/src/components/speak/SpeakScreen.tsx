@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import type { Card, ChallengeResult as ChallengeResultData } from '../../types/contract';
 import { useDailyChallenge } from '../../features/challenge/useDailyChallenge';
+import type { ChallengeInputs } from '../../features/challenge/buildDailyChallenge';
+import { useWeekPlan } from '../../features/auto/useWeekPlan';
 import {
   saveChallengeResult,
   useSpeakOverview,
@@ -190,7 +192,12 @@ function BackButton({ onBack }: { onBack: () => void }) {
 export default function SpeakScreen({ initialCard, onCloseDrill }: SpeakScreenProps) {
   const [active, setActive] = useState<SpeakView | null>(initialCard ? 'rapid' : null);
   const overview = useSpeakOverview();
-  const { challenge, loading: challengeLoading } = useDailyChallenge();
+  const { plan, undo } = useWeekPlan();
+  const challengeInputs: ChallengeInputs = {
+    ...(plan?.focusWords ? { coachWords: plan.focusWords } : {}),
+    ...(plan?.challengeFocus ? { coachFocus: plan.challengeFocus } : {}),
+  };
+  const { challenge, loading: challengeLoading } = useDailyChallenge(challengeInputs);
   const [savedResult, setSavedResult] = useState<ChallengeResultData | null>(null);
   const [saving, setSaving] = useState(false);
 
@@ -313,6 +320,20 @@ export default function SpeakScreen({ initialCard, onCloseDrill }: SpeakScreenPr
           Short speaking reps. The mic is optional — everything here works silent too.
         </p>
       </header>
+
+      {plan && (
+        <section className="you-section" aria-label="This week's plan">
+          <div className="row">
+            <div className="t">
+              <b>This week</b>
+              <small>{plan.note}</small>
+            </div>
+            <button type="button" className="tap" onClick={() => void undo()}>
+              Undo
+            </button>
+          </div>
+        </section>
+      )}
 
       <section className="you-section" aria-label="Today">
         {challengeLoading || !challenge ? (
