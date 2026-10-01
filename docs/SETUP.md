@@ -53,7 +53,12 @@ now so Phase 1 has a proven path.
 
 ## Step 3 — Groq key (3 min)
 
-This is the backup provider, so one exhausted quota can't take the app down.
+Required for auto-cards, and as a backup so one exhausted quota can't take the
+app down. Auto-cards are drafted by one provider and checked by a different
+one — the app never lets a model verify its own work — so both this key and the
+Gemini key from step 2 must be set. With only one of the two, auto-cards stay
+off and the You tab shows one plain line: "Auto-cards need a second AI key
+(free Groq key — see SETUP)." Everything else works.
 
 1. Go to **https://console.groq.com/keys** → sign in with Google or GitHub.
 2. **Create API Key** → name it `speak`.
@@ -105,8 +110,8 @@ app is *not* at the root of the repo.
    |---|---|---|
    | `VITE_SUPABASE_URL` | your Project URL from step 1 | |
    | `VITE_SUPABASE_ANON_KEY` | your anon key from step 1 | |
-   | `GEMINI_API_KEY` | your key from step 2 | **no** `VITE_` prefix |
-   | `GROQ_API_KEY` | your key from step 3 | **no** `VITE_` prefix |
+   | `GEMINI_API_KEY` | your key from step 2 | **no** `VITE_` prefix — drafts auto-cards |
+   | `GROQ_API_KEY` | your key from step 3 | **no** `VITE_` prefix — checks auto-cards (a different provider than the drafter); auto-cards need both keys |
 
    > The `VITE_` prefix is not decoration. Vite inlines every `VITE_` variable
    > into the JavaScript that ships to the browser. Putting it on the Gemini or
@@ -191,7 +196,9 @@ repo (`git ls-files netlify`).
 
 - **No microphone.** Speaking cards are spoken and self-graded. Measurement —
   pace, volume, pause detection, real breath numbers — is Phase 1.
-- **No AI.** The proxy is deployed but nothing calls it. Inbox items sit as raw
-  text until the Phase 2 classifier.
+- **AI needs its two keys.** The coach box, auto top-up and the weekly plan
+  call the deployed proxy; without `GEMINI_API_KEY` + `GROQ_API_KEY` set in
+  Netlify they stay quiet (You shows one plain line for auto-cards) and
+  nothing errors.
 - **No sign-in.** Sync is wired but there's no sign-in button yet, so everything
   is on the device. Don't clear Safari's website data for the site.

@@ -95,10 +95,23 @@ ruled-out cause — see `PROBLEM-MAP.md` §6.
   columns in `supabase/schema.sql` and map both ways in `speak/src/sync/supabase.ts`, with
   round-trip tests in `speak/src/sync/supabase.test.ts`. Run the AG-009 ALTER block on the live
   project before relying on restore.
-- **`PlaybackReview.test.tsx` flakes ~1 in full-suite runs, passes solo.**
-  Reported by earlier AG-007 stages; not observed in this stage's 5 full-suite
-  runs (5/5 green, 39 files / 313 tests). Outside the AG-007 slice, untouched —
-  same class as AG-005 item 8.
+- **~~`PlaybackReview.test.tsx` flakes ~1 in full-suite runs, passes solo.~~ — CLOSED 2026-10-01 (90e7339).**
+  Extra headroom on the save wait under full-suite load. 420 tests green ×3 in
+  the AG-009 proof runs (45 files per run). Same class as AG-005 item 8.
+
+---
+
+## AG-009 (2026-10-01) — owed, not blocked
+
+- **375×812 visual walk still owed.** The proof pass walked the preview
+  structurally (onboarding → feed card advance → You → coach box open/close →
+  Speak; zero console errors, seed 1070 cards) but the build environment has no
+  visible browser pane — no screenshots, no typed input — so 4-tab
+  sideways-scroll, the coach-save plain-line path and console-on-viewport remain
+  visually unverified. Do it in Safari before the next phase claims "usable".
+- **Live AI unverified until deploy.** Netlify holds the only keys; locally the
+  functions server has none. After deploy: one note with two keys (verified card
+  or nothing), and one with a single key (one plain You line, nothing generated).
 
 ---
 

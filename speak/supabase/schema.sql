@@ -164,6 +164,11 @@ alter table public.inbox  add column if not exists attempts         int;
 -- ("Heard in a recording — now on watch") silently reverts on restore.
 alter table public.inbox  add column if not exists origin           text;
 
+-- ── AG-008 stage 5 — weekly coach plan ──────────────────────────────────────
+-- Profile.weekPlan rides in Dexie and is mapped both ways in sync/supabase.ts;
+-- without this column a restore would silently drop the plan. Null = no plan.
+alter table public.profile add column if not exists week_plan jsonb;
+
 -- ── RLS ─────────────────────────────────────────────────────────────────────
 alter table public.profile       enable row level security;
 alter table public.cards         enable row level security;

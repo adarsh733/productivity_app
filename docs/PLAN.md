@@ -21,6 +21,18 @@ voice-goal checks), and Speak/You tabs are simpler (Today card + plain-words
 groups; 4 stats + 8-week chart). Coach/challenge fields are local-only — not
 backed up (see `known-issues.md`). 313 tests green ×5, build passes.
 
+**AG-009 status (2026-10-01):** final pass + AG-008 AI upgrade. Content: every
+AG-006 review fix applied, duplicate pairs dropped (`check-seed.mjs` PASS).
+Feed: engaged = 2 s on screen (was 4 s). Backup gap closed — `skipped_at`,
+`challenge`/`challenge_result`, `xp`/`spoken_reps`, the inbox coach fields,
+`origin` and `week_plan` now have schema columns + both-way sync mappers with
+round-trip tests. AI (AG-008 stages 1–5): every draft verified on a *different*
+provider (one key ⇒ generate nothing + one plain You line), coach makes every
+allowed type, learns from misses + recordings, auto top-up behind a 25-call/day
+local budget (over ⇒ skip silently), per-card "This is wrong" (2 taps ⇒ batch
+purge), weekly `plan_week` with clamped weights (Speak line + Undo). 420 tests
+green ×3, build green. Owed: 375×812 browser walk, live AI verified after deploy.
+
 A single PWA that replaces the phone-unlock reflex with speech, vocabulary and
 storytelling training. Installed to the iPhone home screen from Safari, hosted on
 Netlify, free at every layer.
@@ -394,4 +406,5 @@ part of the module either way.
 | **v2.1** | **2026-08-13** | **Phase 1 opened.** Contract extended for the Speaking Lab (`LabStep`/`LabBlock`/`LabSession`/`VoiceSample`, `LAB_RULES`, calibration fields on `Profile`), Dexie v2, Supabase `lab_sessions` + `voice_samples`. M8–M11 logic shipped and under test; UI delegated as AG-003. Decisions 16–19 locked. Breath deck rewritten: the four capacity drills retired, SOVT set expanded to nine, transfer rep on every card, one `seconds` drill so `bestMptSec` means one thing |
 | **v2** | **2026-08-12** | **Root cause corrected against measurement** — over-drive, not breath capacity; roadmap reordered off it. Speaking Lab promoted to its own surface and specified as M8–M16. **Articulation gap closed** — M25 describe and M26 explain added, new issue P8. **M30 live voice partner** specified. Module catalogue with permanent IDs introduced. UI rebuild split out as Phase 0.5 |
 | **AG-007** | **2026-09-26** | **Coach box + daily challenge + engaged-only repetition + simpler Speak/You.** 8 commits on `v4-usable`: repeat-bug refill guards + 150-card no-dupe test (0bc84dd); engaged-only repetition pure functions (b193e82) + `useFeed` `markEngaged` wiring follow-up (f0375ed); coach pipeline classify/verify/dedupe/watch/batch-removal (4c66de7) + watch/queue-jump/try-words wiring follow-up (984e305); daily challenge build/check/card/result (285b69d); simpler Speak (1aca5ab); simpler You (e7355c8). Docs + report in stage 7 |
+| **AG-009** | **2026-10-01** | **Final pass + AI upgrade (AG-008 stages 1–6).** AG-006 content fixes + seed validator (b0b498b); engaged = 2 s (was 4 s) (f3e88f7); backup gap closed — `skipped_at`, `challenge`, `xp`/`spoken_reps`, inbox coach fields, `origin`, `week_plan` (d413f01). AI: draft→verify on a different provider, one key ⇒ generate nothing + one plain line (78fbdc0); coach makes every allowed type (aac4779/5cece43); learns from misses + recordings (90e7339/425f55b); auto top-up with 25-call/day local budget (c6ea613); per-card "This is wrong" + 2-tap batch purge; weekly `plan_week` clamped, Speak line + Undo (d16b2fc). Docs + report in stage 6 |
 
