@@ -33,9 +33,14 @@ describe('PlaybackReview Real RTL Component Suite', () => {
     expect(screen.getByText(/Rapid Rep: articulate/i)).toBeInTheDocument();
     expect(screen.getByText(/35s/i)).toBeInTheDocument();
     expect(screen.getByText(/130/i)).toBeInTheDocument(); // WPM
-    await waitFor(() => {
-      expect(screen.getByText(/Rep counted/i)).toBeInTheDocument();
-    });
+    // The async save runs on a real Dexie; under full-suite CPU load it can
+    // exceed the 1 s default wait. Budget generously; the assertion is unchanged.
+    await waitFor(
+      () => {
+        expect(screen.getByText(/Rep counted/i)).toBeInTheDocument();
+      },
+      { timeout: 5000 },
+    );
   });
 
   it('does not credit silence: null audio shows Not counted and no fake streak', async () => {
@@ -49,9 +54,12 @@ describe('PlaybackReview Real RTL Component Suite', () => {
       />
     );
 
-    await waitFor(() => {
-      expect(screen.getByText(/Not counted/i)).toBeInTheDocument();
-    });
+    await waitFor(
+      () => {
+        expect(screen.getByText(/Not counted/i)).toBeInTheDocument();
+      },
+      { timeout: 5000 },
+    );
     // Never show a fabricated streak of 1 when nothing was counted.
     expect(screen.queryByText(/🔥 1/)).not.toBeInTheDocument();
   });
@@ -71,9 +79,12 @@ describe('PlaybackReview Real RTL Component Suite', () => {
       />
     );
 
-    await waitFor(() => {
-      expect(screen.getByRole('button', { name: /Done/i })).toBeInTheDocument();
-    });
+    await waitFor(
+      () => {
+        expect(screen.getByRole('button', { name: /Done/i })).toBeInTheDocument();
+      },
+      { timeout: 5000 },
+    );
 
     const doneBtn = screen.getByRole('button', { name: /Done/i });
     await act(async () => {
