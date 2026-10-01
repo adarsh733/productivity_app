@@ -15,6 +15,7 @@ import {
   migrateNotesOnce,
   processInboxItem,
   removeCoachBatch,
+  saveRecordingMistake,
 } from './pipeline';
 
 const WORD_DRAFT = {
@@ -328,5 +329,58 @@ describe('coach pipeline (AG-007 stage 3)', () => {
     const out = await processInboxItem('in-ok', classifyFetch('word', 'nuance', [WORD_DRAFT]));
     expect(out.added).toBe(1);
     expect((await db.meta.get(AI_NEEDS_KEY_META))?.value).toBe(false);
+  });
+});
+
+describe('saveRecordingMistake (AG-008 stage 2)', () => {
+  it('stores a processed mistake note on the watch list and enqueues it', async () => {
+    const item = await saveRecordingMistake('r1', { wrong: 'revert back', right: 'revert' });
+    expect(item).not.toBeNull();
+    expect(item!.id).toBe('rec-r1');
+    expect(item!.status).toBe('processed');
+    expect(item!.kind).toBe('mistake');
+    expect(item!.origin).toBe('recording');
+    expect(item!.subject).toBe('revert back');
+    expect(item!.fix).toBe('revert');
+    expect(item!.text).toContain('revert back');
+    expect(await db.inbox.get('rec-r1')).toEqual(item);
+
+    const outbox = await db.outbox.toArray();
+    expect(outbox.some((o) => o.table === 'inbox' && o.key === 'rec-r1')).toBe(true);
+    const items = await db.inbox.toArray();
+    expect(getWatchList(items)).toEqual([{ wrong: 'revert back', right: 'revert' }]);
+  });
+
+  it('is idempotent per recording id — a second call returns null', async () => {
+    await saveRecordingMistake('r2', { wrong: 'discuss about', right: 'discuss' });
+    expect(await saveRecordingMistake('r2', { wrong: 'discuss about', right: 'discuss' })).toBeNull();
+    expect(await db.inbox.count()).toBe(1);
+  });
+
+  it('dedupes the same wrong phrase while it is watched, case-insensitively', async () => {
+    await saveRecordingMistake('r3', { wrong: 'revert back', right: 'revert' });
+    expect(await saveRecordingMistake('r4', { wrong: ' Revert Back ', right: 'revert' })).toBeNull();
+    expect(await db.inbox.count()).toBe(1);
+  });
+
+  it('a discarded note with the same wrong phrase permits re-adding', async () => {
+    await db.inbox.put({
+      id: 'old',
+      createdAt: 1,
+      text: 'x',
+      status: 'discarded',
+      kind: 'mistake',
+      subject: 'revert back',
+      fix: 'revert',
+    });
+    const item = await saveRecordingMistake('r5', { wrong: 'revert back', right: 'revert' });
+    expect(item).not.toBeNull();
+    expect(await db.inbox.count()).toBe(2);
+  });
+
+  it('rejects empty and identical wrong/right silently', async () => {
+    expect(await saveRecordingMistake('r6', { wrong: '   ', right: 'revert' })).toBeNull();
+    expect(await saveRecordingMistake('r7', { wrong: 'revert', right: ' REVERT ' })).toBeNull();
+    expect(await db.inbox.count()).toBe(0);
   });
 });

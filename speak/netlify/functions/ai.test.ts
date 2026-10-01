@@ -471,4 +471,156 @@ describe('Netlify AI Function Handler Suite', () => {
     });
     expect((await handler(tooMany)).status).toBe(400);
   });
+
+  it('Validates expand_seed with the shared draft clamps; never-produce types throw (AG-008 stage 2)', () => {
+    const good = {
+      cards: [
+        {
+          type: 'word',
+          term: 'cadence',
+          pos: 'noun',
+          meaning: 'rhythm in speech',
+          examples: ['His cadence is calm.', 'Vary your cadence.'],
+          say: 'Use cadence in one line.',
+        },
+      ],
+    };
+    const v = validateProviderOutput('expand_seed', good) as any;
+    expect(v.cards).toHaveLength(1);
+    expect(v.cards[0].term).toBe('cadence');
+    expect(() => validateProviderOutput('expand_seed', {})).toThrow(/cards/);
+    expect(() => validateProviderOutput('expand_seed', { cards: [{ type: 'word', term: 'x' }] })).toThrow(
+      /Draft 0/,
+    );
+    expect(() =>
+      validateProviderOutput('expand_seed', { cards: [{ type: 'pronounce', term: 'x' }] }),
+    ).toThrow(/unknown type/);
+  });
+
+  it('Rejects expand_seed payloads with a forbidden type, bad count, bad seed or bad topics (AG-008 stage 2)', async () => {
+    const post = (payload: unknown) =>
+      handler(
+        new Request('http://localhost/.netlify/functions/ai', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ task: 'expand_seed', payload }),
+        }),
+      );
+
+    expect((await post({ type: 'breath', count: 2 })).status).toBe(400);
+    expect((await post({ type: 'word', count: 99 })).status).toBe(400);
+    expect((await post({ type: 'word', count: 2.5 })).status).toBe(400);
+    expect((await post({ type: 'word' })).status).toBe(400);
+    // Seed must itself be a valid draft, and of the requested type.
+    expect((await post({ type: 'word', count: 2, seed: { type: 'word', term: 'x' } })).status).toBe(400);
+    expect(
+      (
+        await post({
+          type: 'word',
+          count: 2,
+          seed: { type: 'phrase', weak: 'a', strong: 'b', why: 'w', register: 'office' },
+        })
+      ).status,
+    ).toBe(400);
+    // topics/avoid: string arrays, at most 20 non-empty entries.
+    expect((await post({ type: 'word', count: 2, topics: ['ok', 5] })).status).toBe(400);
+    expect(
+      (await post({ type: 'word', count: 2, topics: Array.from({ length: 21 }, (_, i) => `t${i}`) }))
+        .status,
+    ).toBe(400);
+  });
+
+  it('Accepts a valid expand_seed request and returns the generated cards (AG-008 stage 2)', async () => {
+    process.env.GEMINI_API_KEY = 'mock-gemini-key';
+    const fetchSpy = vi.fn();
+    global.fetch = fetchSpy as any;
+    fetchSpy.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        candidates: [
+          {
+            content: {
+              parts: [
+                {
+                  text: JSON.stringify({
+                    cards: [
+                      {
+                        type: 'word',
+                        term: 'cadence',
+                        pos: 'noun',
+                        meaning: 'rhythm in speech',
+                        examples: ['His cadence is calm.', 'Vary your cadence when presenting.'],
+                        say: 'Use cadence in one line.',
+                      },
+                    ],
+                  }),
+                },
+              ],
+            },
+          },
+        ],
+      }),
+    } as any);
+
+    const req = new Request('http://localhost/.netlify/functions/ai', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        task: 'expand_seed',
+        payload: {
+          type: 'word',
+          count: 2,
+          seed: {
+            type: 'word',
+            term: 'nuance',
+            pos: 'noun',
+            meaning: 'a small difference in meaning',
+            examples: ['There is a nuance here.', 'He explained the nuance.'],
+            say: 'Explain the nuance.',
+          },
+          topics: ['office english'],
+          avoid: ['revert back'],
+        },
+      }),
+    });
+    const res = await handler(req);
+    expect(res.status).toBe(200);
+    const data = (await res.json()) as any;
+    expect(data.ok).toBe(true);
+    expect(data.provider).toBe('gemini');
+    expect(data.data.cards).toHaveLength(1);
+    expect(data.data.cards[0].term).toBe('cadence');
+  });
+
+  it('review_recording keeps a valid mistake trimmed and capped (AG-008 stage 2)', () => {
+    const base = { summary: 'Good.', strongPoint: 'Clear.', oneCorrection: 'Pause.' };
+    const v = validateProviderOutput('review_recording', {
+      ...base,
+      mistake: { wrong: '  revert back  ', right: '  revert  ' },
+    }) as any;
+    expect(v.mistake).toEqual({ wrong: 'revert back', right: 'revert' });
+
+    const long = validateProviderOutput('review_recording', {
+      ...base,
+      mistake: { wrong: 'w'.repeat(80), right: 'r'.repeat(80) },
+    }) as any;
+    expect(long.mistake.wrong).toHaveLength(60);
+    expect(long.mistake.right).toHaveLength(60);
+  });
+
+  it('review_recording drops malformed mistakes silently, never fatal (AG-008 stage 2)', () => {
+    const base = { summary: 'Good.', strongPoint: 'Clear.', oneCorrection: 'Pause.' };
+    expect((validateProviderOutput('review_recording', { ...base, mistake: null }) as any).mistake).toBeUndefined();
+    expect((validateProviderOutput('review_recording', { ...base, mistake: 'nope' }) as any).mistake).toBeUndefined();
+    expect(
+      (validateProviderOutput('review_recording', { ...base, mistake: { wrong: ' ', right: 'revert' } }) as any)
+        .mistake,
+    ).toBeUndefined();
+    const same = validateProviderOutput('review_recording', {
+      ...base,
+      mistake: { wrong: 'revert', right: 'REVERT' },
+    }) as any;
+    expect(same.mistake).toBeUndefined();
+    expect(same.summary).toBe('Good.');
+  });
 });

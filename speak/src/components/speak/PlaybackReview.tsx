@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { CapturedAudio } from '../../features/reset/useMissionAudio';
 import { useAiFeedback } from '../../features/ai/useAiFeedback';
 import { useSpokenRepCredit } from '../../features/session/useSpokenRep';
@@ -10,7 +10,7 @@ import { appendPaceSample, paceBaseline, paceTarget } from '../../features/speak
 import { classifyLadderLevel } from '../../features/lab/drills';
 import { useReview } from '../../features/srs/useReview';
 import type { CardType } from '../../types/contract';
-import { findWatchHits, type WatchEntry } from '../../features/coach/pipeline';
+import { findWatchHits, saveRecordingMistake, type WatchEntry } from '../../features/coach/pipeline';
 import { useWatchList } from '../../features/coach/useCoach';
 
 export interface PlaybackReviewProps {
@@ -175,12 +175,19 @@ export default function PlaybackReview({
 
   const handleGetAiFeedback = () => {
     if (!transcript) return;
+    const recId =
+      recordingId ?? audio?.id ?? `rec-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
     void requestFeedback({
       transcript,
       promptText: promptText || drillTitle,
       drillTitle,
       targetVocab,
       watch: effectiveWatch.slice(0, 10),
+    }).then((res) => {
+      // AG-008 stage 2 — a grounded slip becomes a watch item, no new AI call.
+      if (res?.mistake) {
+        void saveRecordingMistake(recId, res.mistake).catch(() => {});
+      }
     });
   };
 

@@ -32,7 +32,9 @@ export default function CoachList() {
               {n.status === 'processed'
                 ? made > 0
                   ? `Added ${made} card${made === 1 ? '' : 's'}`
-                  : 'Checked — nothing to add'
+                  : n.origin === 'recording'
+                    ? 'Heard in a recording — now on watch'
+                    : 'Checked — nothing to add'
                 : n.status === 'discarded'
                   ? 'Deleted'
                   : failed

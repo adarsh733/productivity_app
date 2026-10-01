@@ -16,6 +16,7 @@ import { buildQueue, skimReview } from '../../srs/queue';
 import { grade, newReview } from '../../srs/scheduler';
 import { applyCardView, currentStreak, emptyDay } from '../session/day';
 import { todayKey } from '../../lib/date';
+import { maybeSpawnMissSiblings, shouldSpawnSiblings } from '../auto/misses';
 
 /**
  * The feed's state machine.
@@ -322,6 +323,11 @@ export function useFeed(_initialMode: FeedMode = 'endless'): FeedApi {
         await enqueue('reviews', card.id);
       });
       reviewsRef.current.set(card.id, review);
+
+      // AG-008 stage 2: second lifetime miss → two siblings, in the background.
+      if (shouldSpawnSiblings(gradeValue, review)) {
+        void maybeSpawnMissSiblings(card).catch(() => {});
+      }
 
       if (gradeValue === 'again' && requeueNow) {
         // Reappear within ~10 cards: splice back in ahead, and do NOT mark seen today.

@@ -207,4 +207,66 @@ describe('AI Coaching Feedback Suite', () => {
     expect(bodies).toHaveLength(2);
     expect(bodies[1]!.payload.watch).toEqual([]);
   });
+
+  it('validateAiFeedback keeps a well-formed mistake trimmed and capped, drops bad ones (AG-008 stage 2)', () => {
+    const base = {
+      summary: 'Crisp update.',
+      strongPoint: 'Clean landing.',
+      oneCorrection: 'Pause more.',
+    };
+    const kept = validateAiFeedback({
+      ...base,
+      mistake: { wrong: '  revert back  ', right: '  revert  ' },
+    });
+    expect(kept.mistake).toEqual({ wrong: 'revert back', right: 'revert' });
+
+    const long = validateAiFeedback({
+      ...base,
+      mistake: { wrong: 'w'.repeat(80), right: 'r'.repeat(80) },
+    });
+    expect(long.mistake?.wrong).toHaveLength(60);
+    expect(long.mistake?.right).toHaveLength(60);
+
+    // Never fatal: a malformed mistake is dropped, the rest survives.
+    expect(validateAiFeedback({ ...base, mistake: null }).mistake).toBeUndefined();
+    expect(validateAiFeedback({ ...base, mistake: { wrong: ' ', right: 'revert' } }).mistake).toBeUndefined();
+    expect(validateAiFeedback({ ...base, mistake: { wrong: 'revert', right: 'REVERT' } }).mistake).toBeUndefined();
+  });
+
+  it('a mistake not present in the transcript is dropped; a grounded one is kept (AG-008 stage 2)', async () => {
+    const respond = (mistake: unknown) =>
+      vi.fn().mockImplementation(async () => ({
+        ok: true,
+        json: async () => ({
+          ok: true,
+          data: {
+            summary: 'Crisp update.',
+            strongPoint: 'Clean landing.',
+            oneCorrection: 'Pause more.',
+            mistake,
+          },
+        }),
+      }));
+
+    const transcript = 'I will Revert Back to this after the call with the client';
+
+    // Grounded, case-insensitively: kept.
+    global.fetch = respond({ wrong: 'revert back', right: 'revert' }) as unknown as typeof fetch;
+    const first = renderHook(() => useAiFeedback());
+    await act(async () => {
+      await first.result.current.requestFeedback({ transcript });
+    });
+    expect(first.result.current.feedback?.mistake).toEqual({ wrong: 'revert back', right: 'revert' });
+    first.unmount();
+
+    // Not in the transcript: dropped, rest of the feedback survives.
+    global.fetch = respond({ wrong: 'synergize the paradigm', right: 'align' }) as unknown as typeof fetch;
+    const second = renderHook(() => useAiFeedback());
+    await act(async () => {
+      await second.result.current.requestFeedback({ transcript });
+    });
+    expect(second.result.current.feedback?.mistake).toBeUndefined();
+    expect(second.result.current.feedback?.summary).toBe('Crisp update.');
+    second.unmount();
+  });
 });

@@ -120,7 +120,7 @@ describe('day row round-trip', () => {
 });
 
 describe('inbox row round-trip', () => {
-  it('preserves the coach fields kind, subject, fix, failReason, attempts', () => {
+  it('preserves the coach fields kind, subject, fix, failReason, attempts, origin', () => {
     const item: InboxItem = {
       id: 'ib-1',
       createdAt: 1787700000000,
@@ -133,6 +133,7 @@ describe('inbox row round-trip', () => {
       fix: 'revert',
       failReason: 'drafts failed verify',
       attempts: 2,
+      origin: 'recording',
     };
     const row = inboxRow(item, USER);
     expect(row.user_id).toBe(USER);
@@ -141,6 +142,7 @@ describe('inbox row round-trip', () => {
     expect(row.fix).toBe('revert');
     expect(row.fail_reason).toBe('drafts failed verify');
     expect(row.attempts).toBe(2);
+    expect(row.origin).toBe('recording');
     expect(inboxFromRow(row)).toEqual(item);
   });
 
@@ -157,6 +159,7 @@ describe('inbox row round-trip', () => {
     expect(row.fix).toBeNull();
     expect(row.fail_reason).toBeNull();
     expect(row.attempts).toBeNull();
+    expect(row.origin).toBeNull();
     expect(inboxFromRow(row)).toEqual(item);
   });
 });

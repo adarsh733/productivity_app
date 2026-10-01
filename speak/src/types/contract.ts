@@ -465,6 +465,8 @@ export interface InboxItem {
   failReason?: string;
   /** Processing attempts so far; stop auto-retrying at 3. */
   attempts?: number;
+  /** `recording`: learned from an AI-checked recording mistake (AG-008 stage 2). */
+  origin?: 'recording';
 }
 
 // ── Coach box: AI payloads ─────────────────────────────────────────────────
@@ -497,6 +499,25 @@ export interface VerifyBatchPayload {
 }
 export interface VerifyBatchResult {
   results: Array<{ key: string; ok: boolean; reason: string }>;
+}
+
+/** The card types AI may ever draft (AG-008 §0.3). */
+export type DraftCardType = ClassifyInboxResult['cards'][number]['type'];
+
+export interface ExpandSeedPayload {
+  /** Card type to produce siblings of — siblings must be this same type. */
+  type: DraftCardType;
+  /** How many siblings (1–10; misses ask for 2). */
+  count: number;
+  /** The seed card minus CardBase fields (validated with the classify draft rules). */
+  seed?: unknown;
+  /** Optional topic hints (top-up uses profile interests + coach subjects). */
+  topics?: string[];
+  /** Optional "do not produce" terms (his rejected vocabulary). */
+  avoid?: string[];
+}
+export interface ExpandSeedResult {
+  cards: ClassifyInboxResult['cards'];
 }
 
 /** review_recording payload. `watch` = his known mistakes; feedback must check these first. Max 10. */

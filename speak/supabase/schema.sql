@@ -158,6 +158,12 @@ alter table public.inbox  add column if not exists fix              text;
 alter table public.inbox  add column if not exists fail_reason      text;
 alter table public.inbox  add column if not exists attempts         int;
 
+-- ── AG-008 stage 2 — recording-origin mistake notes ─────────────────────────
+-- Inbox rows the coach learned from an AI-checked recording carry
+-- origin = 'recording'. Backup must round-trip it or the You-tab line
+-- ("Heard in a recording — now on watch") silently reverts on restore.
+alter table public.inbox  add column if not exists origin           text;
+
 -- ── RLS ─────────────────────────────────────────────────────────────────────
 alter table public.profile       enable row level security;
 alter table public.cards         enable row level security;

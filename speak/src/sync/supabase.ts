@@ -299,6 +299,7 @@ export const inboxRow = (i: InboxItem, userId: string) => ({
   fix: i.fix ?? null,
   fail_reason: i.failReason ?? null,
   attempts: i.attempts ?? null,
+  origin: i.origin ?? null,
 });
 
 export type InboxRow = ReturnType<typeof inboxRow>;
@@ -316,6 +317,7 @@ export const inboxFromRow = (i: InboxRow): InboxItem => ({
   fix: i.fix ?? undefined,
   failReason: i.fail_reason ?? undefined,
   attempts: i.attempts ?? undefined,
+  origin: (i.origin as InboxItem['origin']) ?? undefined,
 });
 
 /**

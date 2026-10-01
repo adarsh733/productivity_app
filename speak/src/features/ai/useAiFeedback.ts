@@ -7,6 +7,8 @@ export interface AiFeedbackResult {
   strongPoint: string;
   oneCorrection: string;
   suggestedAlternative?: string;
+  /** AG-008 stage 2 — one grounded slip from the transcript, when found. */
+  mistake?: { wrong: string; right: string };
 }
 
 export interface RequestAiFeedbackParams {
@@ -69,11 +71,24 @@ export function validateAiFeedback(raw: unknown): AiFeedbackResult {
     suggestedAlternative = candidate.suggestedAlternative.trim();
   }
 
+  // `mistake` is optional and never fatal: a malformed one is dropped, not thrown.
+  let mistake: { wrong: string; right: string } | undefined;
+  const m = candidate.mistake;
+  if (m && typeof m === 'object') {
+    const mm = m as Record<string, unknown>;
+    const wrong = typeof mm.wrong === 'string' ? mm.wrong.trim().slice(0, 60) : '';
+    const right = typeof mm.right === 'string' ? mm.right.trim().slice(0, 60) : '';
+    if (wrong && right && wrong.toLowerCase() !== right.toLowerCase()) {
+      mistake = { wrong, right };
+    }
+  }
+
   return {
     summary: candidate.summary.trim(),
     strongPoint: candidate.strongPoint.trim(),
     oneCorrection: candidate.oneCorrection.trim(),
     ...(suggestedAlternative ? { suggestedAlternative } : {}),
+    ...(mistake ? { mistake } : {}),
   };
 }
 
@@ -174,6 +189,14 @@ export function useAiFeedback() {
           setFeedback(null);
           setLoading(false);
           return null;
+        }
+        // AG-008 stage 2 — a mistake must be grounded: "wrong" has to be
+        // something he actually said. Ungrounded ⇒ drop the field, keep the rest.
+        if (
+          validated.mistake &&
+          !transcript.toLowerCase().includes(validated.mistake.wrong.toLowerCase())
+        ) {
+          delete validated.mistake;
         }
         if (!abortCtrl.signal.aborted) {
           setFeedback(validated);

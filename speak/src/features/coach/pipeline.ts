@@ -40,7 +40,7 @@ export const COACH_NEEDS_KEY_PLAIN =
 /** Local-only flag (db.meta). Never synced to Supabase. */
 export const AI_NEEDS_KEY_META = 'ai.needsSecondKey';
 
-class CoachNeedsKeyError extends Error {}
+export class CoachNeedsKeyError extends Error {}
 
 function otherProvider(p?: string): 'gemini' | 'groq' | 'anthropic' | undefined {
   if (p === 'gemini') return 'groq';
@@ -51,12 +51,12 @@ function otherProvider(p?: string): 'gemini' | 'groq' | 'anthropic' | undefined 
 
 export type FetchFn = typeof fetch;
 
-interface AiPostResult<T> {
+export interface AiPostResult<T> {
   data: T;
   provider?: 'gemini' | 'groq' | 'anthropic';
 }
 
-async function aiPost<T>(
+export async function aiPost<T>(
   task: string,
   payload: unknown,
   fetchFn: FetchFn,
@@ -82,6 +82,37 @@ async function aiPost<T>(
     throw new Error(COACH_FAIL_PLAIN);
   }
   return { data: data.data, provider: data.provider };
+}
+
+/**
+ * AG-008 §0.2 — every draft goes through `verify_batch` on a DIFFERENT
+ * provider than its generator. Same provider ⇒ throw CoachNeedsKeyError:
+ * one key only means generate nothing, no same-provider fallback ever.
+ * Cross-provider success clears the needs-key notice.
+ */
+export async function verifyDrafts(
+  drafts: readonly Draft[],
+  generatorProvider: string | undefined,
+  fetchFn: FetchFn,
+): Promise<Draft[]> {
+  if (drafts.length === 0) return [];
+  const verifyItems = drafts.map((card, i) => ({ key: `d${i}`, card }));
+  const verified = await aiPost<VerifyBatchResult>(
+    'verify_batch',
+    { items: verifyItems },
+    fetchFn,
+    otherProvider(generatorProvider),
+  );
+  if (generatorProvider && verified.provider && generatorProvider === verified.provider) {
+    throw new CoachNeedsKeyError();
+  }
+  if (generatorProvider && verified.provider) {
+    await setMeta(AI_NEEDS_KEY_META, false);
+  }
+  const verifiedKeys = new Set(
+    (verified.data.results ?? []).filter((r) => r.ok).map((r) => r.key),
+  );
+  return drafts.filter((_, i) => verifiedKeys.has(`d${i}`));
 }
 
 // ── Local, no-AI mistake check ─────────────────────────────────────────────
@@ -161,21 +192,86 @@ export function dedupeDrafts(drafts: readonly Draft[], existing: readonly Card[]
 }
 
 // ── Drafts → cards ─────────────────────────────────────────────────────────
-export function draftsToCards(kind: CoachKind, drafts: readonly Draft[], inboxId: string, now: number = Date.now()): Card[] {
-  const batchId = `coach-${inboxId}`;
+export interface BatchShape {
+  batchId: string;
+  source: 'ai' | 'inbox';
+  seedId: string;
+  tags: string[];
+}
+
+/** Verified, deduped drafts → storable cards. Same base for coach and AI batches. */
+export function draftsToBatchCards(
+  drafts: readonly Draft[],
+  shape: BatchShape,
+  now: number = Date.now(),
+): Card[] {
   return drafts.map((d, i) => {
     const base = {
-      id: `${batchId}-${i}`,
+      id: `${shape.batchId}-${i}`,
       lang: (d.type === 'word' && d.lang === 'hi' ? 'hi' : 'en') as 'en' | 'hi',
-      tags: ['coach', kind],
-      source: 'inbox' as const,
+      tags: [...shape.tags],
+      source: shape.source,
       status: 'active' as const,
       createdAt: now,
-      batchId,
-      seedId: inboxId,
+      batchId: shape.batchId,
+      seedId: shape.seedId,
     };
     return { ...base, ...d } as Card;
   });
+}
+
+export function draftsToCards(kind: CoachKind, drafts: readonly Draft[], inboxId: string, now: number = Date.now()): Card[] {
+  return draftsToBatchCards(
+    drafts,
+    { batchId: `coach-${inboxId}`, source: 'inbox', seedId: inboxId, tags: ['coach', kind] },
+    now,
+  );
+}
+
+// ── Recording mistakes (AG-008 stage 2) ────────────────────────────────────
+/**
+ * The AI found a clear mistake in a recording → one inbox note on the watch
+ * list. Idempotent per recording (`rec-<id>`), and skipped when the same
+ * `wrong` is already watched. Never an AI call, never a card.
+ */
+export async function saveRecordingMistake(
+  recordingId: string,
+  mistake: { wrong: string; right: string },
+): Promise<InboxItem | null> {
+  const wrong = mistake.wrong.trim();
+  const right = mistake.right.trim();
+  if (!wrong || !right || norm(wrong) === norm(right)) return null;
+
+  const id = `rec-${recordingId}`;
+  const existing = await db.inbox.toArray();
+  if (existing.some((i) => i.id === id)) return null;
+  if (
+    existing.some(
+      (i) =>
+        i.status !== 'discarded' &&
+        i.kind === 'mistake' &&
+        i.subject &&
+        norm(i.subject) === norm(wrong),
+    )
+  ) {
+    return null;
+  }
+
+  const now = Date.now();
+  const item: InboxItem = {
+    id,
+    createdAt: now,
+    text: `Recording mistake: "${wrong}" — say "${right}".`,
+    status: 'processed',
+    processedAt: now,
+    kind: 'mistake',
+    subject: wrong,
+    fix: right,
+    origin: 'recording',
+  };
+  await db.inbox.put(item);
+  await enqueue('inbox', id).catch(() => {});
+  return item;
 }
 
 // ── Queue / speaking helpers (pure; feed wires these in) ───────────────────
@@ -271,30 +367,7 @@ export async function processInboxItem(id: string, fetchFn: FetchFn = fetch): Pr
 
     // Every draft through verify_batch on a DIFFERENT provider. Drop failures —
     // unverified ⇒ nothing added. Same provider ⇒ discard everything (§0.2).
-    let verifiedKeys = new Set<string>();
-    if (drafts.length > 0) {
-      const verifyItems = drafts.map((card, i) => ({ key: `d${i}`, card }));
-      const verified = await aiPost<VerifyBatchResult>(
-        'verify_batch',
-        { items: verifyItems },
-        fetchFn,
-        otherProvider(classified.provider),
-      );
-      if (
-        classified.provider &&
-        verified.provider &&
-        classified.provider === verified.provider
-      ) {
-        throw new CoachNeedsKeyError();
-      }
-      if (classified.provider && verified.provider) {
-        await setMeta(AI_NEEDS_KEY_META, false);
-      }
-      verifiedKeys = new Set(
-        (verified.data.results ?? []).filter((r) => r.ok).map((r) => r.key),
-      );
-    }
-    const verifiedDrafts = drafts.filter((_, i) => verifiedKeys.has(`d${i}`));
+    const verifiedDrafts = await verifyDrafts(drafts, classified.provider, fetchFn);
 
     const existing = await db.cards.toArray();
     const fresh = dedupeDrafts(verifiedDrafts, existing);

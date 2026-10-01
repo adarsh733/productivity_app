@@ -20,6 +20,35 @@ const ALLOWED_TASKS: readonly AiTask[] = [
   'review_recording',
 ];
 
+/** Card types AI may ever draft (AG-008 §0.3) — mirrors `DraftCardType`. */
+const DRAFT_TYPES = [
+  'word',
+  'swap',
+  'idiom',
+  'phrase',
+  'feeling',
+  'story_move',
+  'describe',
+  'explain',
+  'teach_back',
+  'situation',
+] as const;
+
+/** Card shapes shared by the `classify_inbox` and `expand_seed` prompts. */
+const CARD_SHAPES = [
+  'word {type:"word",term,pos,meaning,examples:[two everyday sentences],say} — a Hindi word only: add "lang":"hi";',
+  'swap {type:"swap",weak,answers:[1-5 single words],timerSec:5-60};',
+  'idiom {type:"idiom",phrase,meaning,scenario,example,corporate:true|false};',
+  'phrase {type:"phrase",weak,strong,why,register:"office"|"friends"|"presenting"};',
+  'feeling {type:"feeling",term,meaning,contrast,example};',
+  'story_move {type:"story_move",move,why,example};',
+  'describe {type:"describe",title (max 40 chars),scene (max 280 chars),alt,prompt,beats:[3 short steps],targetVocab:[3-5 words],targetSec:15-120};',
+  'explain {type:"explain",topic,angle,beats:[3],targetVocab:[3 or more],targetSec:15-180,primer? (max 300 chars)};',
+  'teach_back {type:"teach_back",prompt,beats:[3],targetSec:15-180};',
+  'situation {type:"situation",kind:"incident"|"office_call"|"feeling"|"opinion"|"life_story",title (max 40),prompt (max 200),beats:[3],targetVocab:[0-4],targetSec:30|45|60|90}.',
+];
+const NEVER_PRODUCE = 'Never produce types: breath, pronounce, say_it, action_verb.';
+
 /** Per-task generation settings. `verify_batch` is deliberately cold. */
 const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; system: string }> = {
   expand_seed: {
@@ -27,9 +56,14 @@ const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; syst
     maxTokens: 2048,
     system: [
       'You generate vocabulary and delivery drill cards for one Indian English speaker',
-      'working in a corporate setting. Return ONLY JSON matching the schema given.',
+      'working in a corporate setting. Return ONLY JSON: {"cards":[...]}.',
+      'Produce siblings of the SAME type and skill as the seed card, but different wording —',
+      'fresh angles, never paraphrases of the seed or of each other.',
       'Everyday register, not literary. No rare or archaic words.',
       'Examples must be sentences a colleague would actually say out loud.',
+      'Allowed card types and exact shapes:',
+      ...CARD_SHAPES,
+      NEVER_PRODUCE,
     ].join(' '),
   },
   verify_batch: {
@@ -51,17 +85,8 @@ const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; syst
       'You turn a raw one-line thought into grounded drill cards for one Indian English speaker in a corporate setting.',
       'Return ONLY JSON: {"kind":"word"|"mistake"|"topic"|"other","subject":string,"fix"?:string,"cards":[...]}.',
       'Allowed card types and exact shapes:',
-      'word {type:"word",term,pos,meaning,examples:[two everyday sentences],say} — a Hindi word only: add "lang":"hi";',
-      'swap {type:"swap",weak,answers:[1-5 single words],timerSec:5-60};',
-      'idiom {type:"idiom",phrase,meaning,scenario,example,corporate:true|false};',
-      'phrase {type:"phrase",weak,strong,why,register:"office"|"friends"|"presenting"};',
-      'feeling {type:"feeling",term,meaning,contrast,example};',
-      'story_move {type:"story_move",move,why,example};',
-      'describe {type:"describe",title (max 40 chars),scene (max 280 chars),alt,prompt,beats:[3 short steps],targetVocab:[3-5 words],targetSec:15-120};',
-      'explain {type:"explain",topic,angle,beats:[3],targetVocab:[3 or more],targetSec:15-180,primer? (max 300 chars)};',
-      'teach_back {type:"teach_back",prompt,beats:[3],targetSec:15-180};',
-      'situation {type:"situation",kind:"incident"|"office_call"|"feeling"|"opinion"|"life_story",title (max 40),prompt (max 200),beats:[3],targetVocab:[0-4],targetSec:30|45|60|90}.',
-      'Never produce types: breath, pronounce, say_it, action_verb.',
+      ...CARD_SHAPES,
+      NEVER_PRODUCE,
       'Prefer 1-2 cards. Preserve what the user was actually curious about. Everyday register, never literary.',
     ].join(' '),
   },
@@ -72,12 +97,13 @@ const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; syst
       'You are an executive speech and communication coach for an Indian English speaker in tech.',
       'Review the user transcript, prompt context, and performance duration.',
       'Provide concise, high-signal, actionable feedback grounded strictly in what was said.',
-      'Return ONLY a valid JSON object matching this exact schema: {"summary": string, "strongPoint": string, "oneCorrection": string, "suggestedAlternative": string}.',
+      'Return ONLY a valid JSON object matching this exact schema: {"summary": string, "strongPoint": string, "oneCorrection": string, "suggestedAlternative": string, "mistake": {"wrong": string, "right": string} | null}.',
       'Rules:',
       '1. "summary": One crisp sentence evaluating the overall rep.',
       '2. "strongPoint": What worked well. You MUST quote or reference specific words or phrases that appear in the transcript.',
       '3. "oneCorrection": One high-leverage delivery or phrasing tweak for next time.',
       '4. "suggestedAlternative": An upgraded sentence showing better executive presence or phrasing.',
+      '5. "mistake": if the transcript contains ONE clear standard-English error (a non-native slip, not a style choice), set "wrong" to the exact phrase the speaker said and "right" to the fix — both max 60 chars. One error only; if none, null.',
       'Never invent quotes. Never comment on accent or pronunciation quirks. Focus on pacing, executive presence, and word precision.',
       'If a "watch" list of known mistakes is provided, check the transcript for each watched phrase first;',
       'when the transcript contains one, the correction must address it.',
@@ -116,6 +142,7 @@ export interface ReviewRecordingResponse {
   strongPoint: string;
   oneCorrection: string;
   suggestedAlternative?: string;
+  mistake?: { wrong: string; right: string };
 }
 
 /**
@@ -359,6 +386,13 @@ export function validateVerifyBatch(raw: unknown): unknown {
   return { results };
 }
 
+export function validateExpandSeed(raw: unknown): unknown {
+  if (!raw || typeof raw !== 'object') throw new Error('expand_seed response must be an object');
+  const c = raw as Record<string, unknown>;
+  if (!Array.isArray(c.cards)) throw new Error('Missing "cards" array');
+  return { cards: (c.cards as unknown[]).map((d, i) => validateClassifyDraft(d, i)) };
+}
+
 export function validateProviderOutput(task: AiTask, raw: unknown): unknown {
   if (!raw || typeof raw !== 'object') {
     throw new Error('Provider response must be an object');
@@ -384,11 +418,25 @@ export function validateProviderOutput(task: AiTask, raw: unknown): unknown {
       suggestedAlternative = candidate.suggestedAlternative.trim();
     }
 
+    // `mistake` is optional and never fatal: a malformed one is dropped,
+    // not thrown — feedback must survive a bad optional field.
+    let mistake: { wrong: string; right: string } | undefined;
+    const m = candidate.mistake;
+    if (m && typeof m === 'object') {
+      const mm = m as Record<string, unknown>;
+      const wrong = typeof mm.wrong === 'string' ? mm.wrong.trim().slice(0, 60) : '';
+      const right = typeof mm.right === 'string' ? mm.right.trim().slice(0, 60) : '';
+      if (wrong && right && wrong.toLowerCase() !== right.toLowerCase()) {
+        mistake = { wrong, right };
+      }
+    }
+
     const validated: ReviewRecordingResponse = {
       summary: candidate.summary.trim(),
       strongPoint: candidate.strongPoint.trim(),
       oneCorrection: candidate.oneCorrection.trim(),
       ...(suggestedAlternative ? { suggestedAlternative } : {}),
+      ...(mistake ? { mistake } : {}),
     };
     return validated;
   }
@@ -399,6 +447,10 @@ export function validateProviderOutput(task: AiTask, raw: unknown): unknown {
 
   if (task === 'verify_batch') {
     return validateVerifyBatch(raw);
+  }
+
+  if (task === 'expand_seed') {
+    return validateExpandSeed(raw);
   }
 
   return raw;
@@ -432,6 +484,38 @@ export default async function handler(req: Request): Promise<Response> {
     const payload = body.payload as Record<string, unknown> | undefined;
     if (!payload || typeof payload !== 'object' || typeof payload.text !== 'string' || !payload.text.trim()) {
       return json({ ok: false, task: body.task, error: 'AI sorting needs the note text' }, 400);
+    }
+  }
+
+  if (body.task === 'expand_seed') {
+    const payload = body.payload as Record<string, unknown> | undefined;
+    if (!payload || typeof payload !== 'object') {
+      return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
+    }
+    if (typeof payload.type !== 'string' || !(DRAFT_TYPES as readonly string[]).includes(payload.type)) {
+      return json({ ok: false, task: body.task, error: 'Invalid card type' }, 400);
+    }
+    const count = payload.count;
+    if (typeof count !== 'number' || !Number.isInteger(count) || count < 1 || count > 10) {
+      return json({ ok: false, task: body.task, error: 'Invalid count' }, 400);
+    }
+    if (payload.seed !== undefined) {
+      let seed: unknown;
+      try {
+        seed = validateClassifyDraft(payload.seed, 0);
+      } catch {
+        return json({ ok: false, task: body.task, error: 'Invalid seed card' }, 400);
+      }
+      if ((seed as { type?: string }).type !== payload.type) {
+        return json({ ok: false, task: body.task, error: 'Seed does not match card type' }, 400);
+      }
+    }
+    for (const f of ['topics', 'avoid'] as const) {
+      const v = payload[f];
+      if (v === undefined) continue;
+      if (!Array.isArray(v) || v.length > 20 || !v.every((s) => typeof s === 'string' && s.trim())) {
+        return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
+      }
     }
   }
 
