@@ -5,6 +5,7 @@ import { db } from '../../db/db';
 import { addDays, todayKey } from '../../lib/date';
 import { emptyDay } from '../../features/session/day';
 import { grade, newReview } from '../../srs/scheduler';
+import { AI_NEEDS_KEY_META } from '../../features/coach/pipeline';
 
 const today = todayKey();
 const now = Date.now();
@@ -60,6 +61,7 @@ describe('YouScreen stage-6 simpler tab', () => {
     await db.recordings.clear();
     await db.bookmarks.clear();
     await db.inbox.clear();
+    await db.meta.clear();
     await seedYouTab();
   });
 
@@ -150,5 +152,22 @@ describe('YouScreen stage-6 simpler tab', () => {
     });
 
     expect(screen.getAllByText(/Bookmarked Cards/i).length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('shows the second-AI-key line only after the coach pipeline flags it', async () => {
+    render(<YouScreen />);
+
+    await waitFor(() => {
+      expect(screen.getByLabelText('Tell the coach')).toBeInTheDocument();
+    });
+    expect(screen.queryByText(/second AI key/)).not.toBeInTheDocument();
+
+    await act(async () => {
+      await db.meta.put({ key: AI_NEEDS_KEY_META, value: true, updatedAt: Date.now() });
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText(/second AI key/)).toBeInTheDocument();
+    });
   });
 });

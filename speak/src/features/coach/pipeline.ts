@@ -6,7 +6,7 @@ import type {
   InboxItem,
   VerifyBatchResult,
 } from '../../types/contract';
-import { db, enqueue } from '../../db/db';
+import { db, enqueue, setMeta } from '../../db/db';
 
 /**
  * AG-007 stage 3 — "Tell the coach" pipeline.
@@ -18,6 +18,10 @@ import { db, enqueue } from '../../db/db';
  * Rules: AI unverified ⇒ nothing added. Offline/failure ⇒ keep `raw` with a
  * plain `failReason`, retry on app open, max 3 attempts. The mic never gates
  * (dictation only when SpeechRecognition exists, in CoachBox).
+ *
+ * AG-008 §0.2 — the verifier must run on a DIFFERENT provider than the
+ * draft generator. One key only ⇒ generate nothing, set the local notice
+ * flag, keep the note raw. No same-provider fallback ever.
  */
 
 export const COACH_MAX_ATTEMPTS = 3;
@@ -29,15 +33,41 @@ export const COACH_FAIL_PLAIN =
 export const COACH_CAPPED =
   "Couldn't add cards — tap to try again.";
 
+/** AG-008 §0.2 — verifier ≠ generator, so auto-cards need two providers. */
+export const COACH_NEEDS_KEY_PLAIN =
+  'Auto-cards need a second AI key (free Groq key — see SETUP).';
+
+/** Local-only flag (db.meta). Never synced to Supabase. */
+export const AI_NEEDS_KEY_META = 'ai.needsSecondKey';
+
+class CoachNeedsKeyError extends Error {}
+
+function otherProvider(p?: string): 'gemini' | 'groq' | 'anthropic' | undefined {
+  if (p === 'gemini') return 'groq';
+  if (p === 'groq') return 'gemini';
+  if (p === 'anthropic') return 'gemini';
+  return undefined;
+}
+
 export type FetchFn = typeof fetch;
 
-async function aiPost<T>(task: string, payload: unknown, fetchFn: FetchFn): Promise<T> {
+interface AiPostResult<T> {
+  data: T;
+  provider?: 'gemini' | 'groq' | 'anthropic';
+}
+
+async function aiPost<T>(
+  task: string,
+  payload: unknown,
+  fetchFn: FetchFn,
+  prefer?: 'gemini' | 'groq' | 'anthropic',
+): Promise<AiPostResult<T>> {
   let res: Response;
   try {
     res = await fetchFn('/.netlify/functions/ai', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ task, payload }),
+      body: JSON.stringify(prefer ? { task, payload, prefer } : { task, payload }),
     });
   } catch {
     throw new Error(COACH_FAIL_PLAIN);
@@ -51,7 +81,7 @@ async function aiPost<T>(task: string, payload: unknown, fetchFn: FetchFn): Prom
   if (!res.ok || !data.ok || data.data === undefined) {
     throw new Error(COACH_FAIL_PLAIN);
   }
-  return data.data;
+  return { data: data.data, provider: data.provider };
 }
 
 // ── Local, no-AI mistake check ─────────────────────────────────────────────
@@ -86,20 +116,47 @@ function norm(s: string): string {
 
 type Draft = ClassifyInboxResult['cards'][number];
 
-/** Drop drafts that already exist as cards (same term / weak / topic+angle). */
+/**
+ * One identity key per card type, prefix-namespaced so a word "close" never
+ * collides with a phrase "close". null = type the pipeline never creates.
+ */
+function dedupeKey(c: Draft | Card): string | null {
+  switch (c.type) {
+    case 'word':
+      return `word‖${norm(c.term)}`;
+    case 'swap':
+      return `swap‖${norm(c.weak)}`;
+    case 'idiom':
+      return `idiom‖${norm(c.phrase)}`;
+    case 'phrase':
+      return `phrase‖${norm(c.weak)}`;
+    case 'feeling':
+      return `feeling‖${norm(c.term)}`;
+    case 'story_move':
+      return `story_move‖${norm(c.move)}`;
+    case 'describe':
+      return `describe‖${norm(c.title ?? c.alt)}`;
+    case 'explain':
+      return `explain‖${norm(c.topic)}‖${norm(c.angle)}`;
+    case 'teach_back':
+      return `teach_back‖${norm(c.prompt)}`;
+    case 'situation':
+      return `situation‖${norm(c.title)}`;
+    default:
+      return null;
+  }
+}
+
+/** Drop drafts that already exist as cards (one identity key per type). */
 export function dedupeDrafts(drafts: readonly Draft[], existing: readonly Card[]): Draft[] {
-  const words = new Set<string>();
-  const weaks = new Set<string>();
-  const topics = new Set<string>();
+  const known = new Set<string>();
   for (const c of existing) {
-    if (c.type === 'word') words.add(norm(c.term));
-    if (c.type === 'phrase') weaks.add(norm(c.weak));
-    if (c.type === 'explain') topics.add(`${norm(c.topic)}‖${norm(c.angle)}`);
+    const k = dedupeKey(c);
+    if (k) known.add(k);
   }
   return drafts.filter((d) => {
-    if (d.type === 'word') return !words.has(norm(d.term));
-    if (d.type === 'phrase') return !weaks.has(norm(d.weak));
-    return !topics.has(`${norm(d.topic)}‖${norm(d.angle)}`);
+    const k = dedupeKey(d);
+    return k === null || !known.has(k);
   });
 }
 
@@ -109,7 +166,7 @@ export function draftsToCards(kind: CoachKind, drafts: readonly Draft[], inboxId
   return drafts.map((d, i) => {
     const base = {
       id: `${batchId}-${i}`,
-      lang: 'en' as const,
+      lang: (d.type === 'word' && d.lang === 'hi' ? 'hi' : 'en') as 'en' | 'hi',
       tags: ['coach', kind],
       source: 'inbox' as const,
       status: 'active' as const,
@@ -117,12 +174,6 @@ export function draftsToCards(kind: CoachKind, drafts: readonly Draft[], inboxId
       batchId,
       seedId: inboxId,
     };
-    if (d.type === 'word') {
-      return { ...base, ...d } as Card;
-    }
-    if (d.type === 'phrase') {
-      return { ...base, ...d } as Card;
-    }
     return { ...base, ...d } as Card;
   });
 }
@@ -215,16 +266,32 @@ export async function processInboxItem(id: string, fetchFn: FetchFn = fetch): Pr
 
   try {
     const classified = await aiPost<ClassifyInboxResult>('classify_inbox', { text: item.text }, fetchFn);
-    const drafts = classified.cards ?? [];
-    const kind: CoachKind = classified.kind ?? 'other';
+    const drafts = classified.data.cards ?? [];
+    const kind: CoachKind = classified.data.kind ?? 'other';
 
-    // Every draft through verify_batch. Drop failures — unverified ⇒ nothing added.
+    // Every draft through verify_batch on a DIFFERENT provider. Drop failures —
+    // unverified ⇒ nothing added. Same provider ⇒ discard everything (§0.2).
     let verifiedKeys = new Set<string>();
     if (drafts.length > 0) {
       const verifyItems = drafts.map((card, i) => ({ key: `d${i}`, card }));
-      const verified = await aiPost<VerifyBatchResult>('verify_batch', { items: verifyItems }, fetchFn);
+      const verified = await aiPost<VerifyBatchResult>(
+        'verify_batch',
+        { items: verifyItems },
+        fetchFn,
+        otherProvider(classified.provider),
+      );
+      if (
+        classified.provider &&
+        verified.provider &&
+        classified.provider === verified.provider
+      ) {
+        throw new CoachNeedsKeyError();
+      }
+      if (classified.provider && verified.provider) {
+        await setMeta(AI_NEEDS_KEY_META, false);
+      }
       verifiedKeys = new Set(
-        (verified.results ?? []).filter((r) => r.ok).map((r) => r.key),
+        (verified.data.results ?? []).filter((r) => r.ok).map((r) => r.key),
       );
     }
     const verifiedDrafts = drafts.filter((_, i) => verifiedKeys.has(`d${i}`));
@@ -242,8 +309,8 @@ export async function processInboxItem(id: string, fetchFn: FetchFn = fetch): Pr
         ...item,
         status: 'processed',
         kind,
-        subject: classified.subject,
-        ...(classified.fix ? { fix: classified.fix } : {}),
+        subject: classified.data.subject,
+        ...(classified.data.fix ? { fix: classified.data.fix } : {}),
         processedAt: Date.now(),
         generatedCardIds: cards.map((c) => c.id),
         failReason: undefined,
@@ -253,7 +320,15 @@ export async function processInboxItem(id: string, fetchFn: FetchFn = fetch): Pr
       await enqueue('inbox', item.id);
     });
     return { outcome: 'processed', added: cards.length };
-  } catch {
+  } catch (e) {
+    if (e instanceof CoachNeedsKeyError) {
+      // Missing second key is not a failure of this note — don't burn
+      // attempts on it. Flag the notice, keep the note raw for later.
+      await setMeta(AI_NEEDS_KEY_META, true);
+      await db.inbox.put({ ...item, failReason: COACH_NEEDS_KEY_PLAIN });
+      await enqueue('inbox', item.id).catch(() => {});
+      return { outcome: 'failed', added: 0 };
+    }
     const next: InboxItem = {
       ...item,
       attempts: attempts + 1,

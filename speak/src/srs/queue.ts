@@ -312,10 +312,11 @@ function buildEndless(
 }
 
 // ── AG-007 stage 3: coach cards jump the queue ──────────────────────────────
-// New coach cards (`tags` include 'coach', never served, no fresh skim
-// reserve) land within the first 10 of the next feed session. Coach cards
-// that missed the chunk replace tail items; then all coach ids float front
-// (stable, cap 10). Decks without coach cards are untouched.
+// New English coach cards (`tags` include 'coach', never served, no fresh skim
+// reserve) land within the first 10 of the next feed session. Hindi coach
+// cards never float — they ride the normal Hindi spacing slots in place.
+// Coach cards that missed the chunk replace tail items; then all coach ids
+// float front (stable, cap 10). Decks without coach cards are untouched.
 function jumpCoachCards(
   out: QueueItem[],
   cards: readonly Card[],
@@ -323,7 +324,8 @@ function jumpCoachCards(
   opts: QueueOptions,
   now: number,
 ): QueueItem[] {
-  const isCoach = (i: QueueItem): boolean => i.card.tags.includes('coach');
+  const isCoach = (i: QueueItem): boolean =>
+    i.card.tags.includes('coach') && i.card.lang !== 'hi';
   const present = new Set(out.map((i) => i.card.id));
   const missing: QueueItem[] = [];
   const already = out.filter(isCoach).length;
@@ -331,6 +333,7 @@ function jumpCoachCards(
     if (already + missing.length >= 10) break;
     if (present.has(card.id) || opts.seenCardIds.has(card.id)) continue;
     if (!card.tags.includes('coach')) continue;
+    if (card.lang === 'hi') continue;
     const r = reviews.get(card.id);
     if (!isNew(r) || isSkimFresh(r, now)) continue;
     missing.push({ card, reason: 'new' });

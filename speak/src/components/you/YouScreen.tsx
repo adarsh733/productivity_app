@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useLiveQuery } from 'dexie-react-hooks';
 import type { Card } from '../../types/contract';
 import { useYou, type WeekPoint } from '../../features/you/useYou';
+import { db } from '../../db/db';
+import { AI_NEEDS_KEY_META, COACH_NEEDS_KEY_PLAIN } from '../../features/coach/pipeline';
 import BookmarksDrawer from './BookmarksDrawer';
 import GoalSelector from './GoalSelector';
 import InterestsManager from './InterestsManager';
@@ -88,6 +91,8 @@ function TrendChart({
 export default function YouScreen({ onOpenSpeakWithCard }: YouScreenProps) {
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [chartMode, setChartMode] = useState<ChartMode>('loud');
+  const needsSecondKey =
+    useLiveQuery(() => db.meta.get(AI_NEEDS_KEY_META), [])?.value === true;
   const {
     profile,
     streak,
@@ -191,6 +196,11 @@ export default function YouScreen({ onOpenSpeakWithCard }: YouScreenProps) {
       {/* Coach rows: words / mistakes / topics become cards */}
       <div className="you-section-spacer">
         <CoachBoxRow />
+        {needsSecondKey && (
+          <p className="sub" role="status">
+            {COACH_NEEDS_KEY_PLAIN}
+          </p>
+        )}
       </div>
 
       <div className="you-section-spacer">

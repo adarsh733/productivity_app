@@ -475,12 +475,21 @@ export interface ClassifyInboxResult {
   kind: CoachKind;
   subject: string;
   fix?: string;
-  /** Drafts only — never stored before verify_batch passes. Shapes = WordCard,
-   *  PhraseCard, ExplainCard minus CardBase fields (id, lang, tags, source, status, createdAt). */
+  /** Drafts only — never stored before verify_batch passes. Every card shape
+   *  minus CardBase fields (id, tags, source, status, createdAt). AI may never
+   *  draft `pronounce`, `say_it`, `breath` or `action_verb`. Hindi only as
+   *  `word` with `lang: 'hi'` — those cards ride the normal Hindi slots. */
   cards: Array<
-    | Omit<WordCard, keyof CardBase> & { type: 'word' }
-    | Omit<PhraseCard, keyof CardBase> & { type: 'phrase' }
-    | Omit<ExplainCard, keyof CardBase> & { type: 'explain' }
+    | (Omit<WordCard, keyof CardBase> & { type: 'word'; lang?: 'hi' })
+    | (Omit<SwapCard, keyof CardBase> & { type: 'swap' })
+    | (Omit<IdiomCard, keyof CardBase> & { type: 'idiom' })
+    | (Omit<PhraseCard, keyof CardBase> & { type: 'phrase' })
+    | (Omit<FeelingCard, keyof CardBase> & { type: 'feeling' })
+    | (Omit<StoryMoveCard, keyof CardBase> & { type: 'story_move' })
+    | (Omit<DescribeCard, keyof CardBase> & { type: 'describe' })
+    | (Omit<ExplainCard, keyof CardBase> & { type: 'explain' })
+    | (Omit<TeachBackCard, keyof CardBase> & { type: 'teach_back' })
+    | (Omit<SituationCard, keyof CardBase> & { type: 'situation' })
   >;
 }
 export interface VerifyBatchPayload {

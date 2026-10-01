@@ -256,6 +256,143 @@ describe('Netlify AI Function Handler Suite', () => {
     ).toThrow(/Draft 0/);
   });
 
+  it('Validates the widened classify draft types with code clamps (AG-008 stage 1)', () => {
+    // swap — timerSec clamped into 5–60, loose answers trimmed and capped
+    const swap = validateProviderOutput('classify_inbox', {
+      kind: 'mistake',
+      subject: 'very tired',
+      cards: [
+        { type: 'swap', weak: 'very tired', answers: ['exhausted', 'drained'], timerSec: 999 },
+        { type: 'swap', weak: 'a lot of', answers: ['many', 'plenty', '', 'lots', 'masses', 'oodles'], timerSec: 1 },
+      ],
+    }) as any;
+    expect(swap.cards[0].timerSec).toBe(60);
+    expect(swap.cards[0].answers).toEqual(['exhausted', 'drained']);
+    expect(swap.cards[1].timerSec).toBe(5);
+    expect(swap.cards[1].answers).toHaveLength(5);
+
+    // idiom — corporate must be a real boolean
+    const idiom = validateProviderOutput('classify_inbox', {
+      kind: 'other',
+      subject: 'circle back',
+      cards: [
+        {
+          type: 'idiom',
+          phrase: 'circle back',
+          meaning: 'revisit later',
+          scenario: 'Ask your manager to revisit a decision.',
+          example: "Let's circle back on this.",
+          corporate: true,
+        },
+      ],
+    }) as any;
+    expect(idiom.cards[0].corporate).toBe(true);
+    expect(() =>
+      validateProviderOutput('classify_inbox', {
+        kind: 'other',
+        subject: 'circle back',
+        cards: [{ type: 'idiom', phrase: 'circle back', meaning: 'm', scenario: 's', example: 'e' }],
+      }),
+    ).toThrow(/corporate/);
+
+    // situation — kind must be one of five; targetSec snaps to 30|45|60|90; title sliced to 40
+    const situ = validateProviderOutput('classify_inbox', {
+      kind: 'topic',
+      subject: 'the missed flight',
+      cards: [
+        {
+          type: 'situation',
+          kind: 'incident',
+          title: 'The missed flight and everything that happened after it at the gate',
+          prompt: 'Tell the story of a flight you once missed and what happened next.',
+          beats: ['Set the scene', 'What went wrong', 'How it ended'],
+          targetVocab: [],
+          targetSec: 55,
+        },
+      ],
+    }) as any;
+    expect(situ.cards[0].targetSec).toBe(60);
+    expect(situ.cards[0].title).toHaveLength(40);
+    expect(() =>
+      validateProviderOutput('classify_inbox', {
+        kind: 'topic',
+        subject: 'x',
+        cards: [
+          {
+            type: 'situation',
+            kind: 'flight',
+            title: 't',
+            prompt: 'p',
+            beats: ['a', 'b', 'c'],
+            targetVocab: [],
+            targetSec: 60,
+          },
+        ],
+      }),
+    ).toThrow(/invalid "kind"/);
+
+    // describe — title/scene required, targetVocab needs at least 3
+    const describeGood = {
+      type: 'describe',
+      title: 'Busy kitchen',
+      scene: 'Steam rises over two cooks moving fast.',
+      alt: 'steam and motion',
+      prompt: 'Tell me what happens.',
+      beats: ['What you see', 'Who is doing what', 'The mood'],
+      targetVocab: ['steam', 'clatter', 'rush'],
+      targetSec: 60,
+    };
+    const desc = validateProviderOutput('classify_inbox', {
+      kind: 'topic',
+      subject: 'kitchen',
+      cards: [describeGood],
+    }) as any;
+    expect(desc.cards[0].title).toBe('Busy kitchen');
+    expect(() =>
+      validateProviderOutput('classify_inbox', {
+        kind: 'topic',
+        subject: 'kitchen',
+        cards: [{ ...describeGood, targetVocab: ['steam'] }],
+      }),
+    ).toThrow(/targetVocab/);
+
+    // teach_back — beats must be exactly 3
+    expect(() =>
+      validateProviderOutput('classify_inbox', {
+        kind: 'topic',
+        subject: 'indexes',
+        cards: [{ type: 'teach_back', prompt: 'Explain a database index.', beats: ['a', 'b'], targetSec: 60 }],
+      }),
+    ).toThrow(/exactly 3/);
+
+    // Hindi word — lang 'hi' passes through; any other lang throws
+    const hi = validateProviderOutput('classify_inbox', {
+      kind: 'word',
+      subject: 'जुगाड़',
+      cards: [
+        {
+          type: 'word',
+          term: 'जुगाड़',
+          pos: 'noun',
+          meaning: 'a clever workaround',
+          examples: ['यह एक जुगाड़ है।', 'उसने जुगाड़ लगाया।'],
+          say: 'जुगाड़',
+          lang: 'hi',
+        },
+      ],
+    }) as any;
+    expect(hi.cards[0].lang).toBe('hi');
+    expect(() =>
+      validateProviderOutput('classify_inbox', {
+        kind: 'word',
+        subject: 'x',
+        cards: [
+          { type: 'word', term: 'x', pos: 'n.', meaning: 'm', examples: ['a', 'b'], say: 's', lang: 'en' },
+        ],
+      }),
+    ).toThrow(/lang/);
+  });
+
   it('Validates verify_batch output strictly (key, ok, reason)', () => {
     const good = { results: [{ key: 'd0', ok: true, reason: 'real and natural' }] };
     const v = validateProviderOutput('verify_batch', good) as any;

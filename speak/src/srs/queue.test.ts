@@ -345,5 +345,26 @@ describe('Skimmed cards (AG-007 stage 2)', () => {
   });
 });
 
+describe('Coach cards (AG-008 stage 1)', () => {
+  it('English coach cards float within the first 3; a Hindi coach card rides normal spacing', () => {
+    const types: CardType[] = ['word', 'idiom', 'swap', 'phrase', 'feeling', 'pronounce'];
+    const deck: Card[] = Array.from({ length: 40 }, (_, i) => card(`mix${i}`, types[i % types.length]!));
+    deck.push(card('coach-en-1', 'word', 'en', ['coach']));
+    deck.push(card('coach-en-2', 'idiom', 'en', ['coach']));
+    deck.push(card('coach-hi-1', 'word', 'hi', ['coach']));
+
+    const q = buildQueue(deck, NONE, opts({ limit: 30 }));
+    const ids = q.map((i) => i.card.id);
+    const idxHi = ids.indexOf('coach-hi-1');
+
+    expect(ids.indexOf('coach-en-1')).toBeGreaterThanOrEqual(0);
+    expect(ids.indexOf('coach-en-1')).toBeLessThanOrEqual(2);
+    expect(ids.indexOf('coach-en-2')).toBeGreaterThanOrEqual(0);
+    expect(ids.indexOf('coach-en-2')).toBeLessThanOrEqual(2);
+    expect(idxHi).toBeGreaterThanOrEqual(0);
+    expect(idxHi).toBeGreaterThan(2);
+  });
+});
+
 
 

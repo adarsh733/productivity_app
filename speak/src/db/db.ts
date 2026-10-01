@@ -40,6 +40,8 @@ export class SpeakDB extends Dexie {
   bookmarks!: Table<BookmarkRecord, string>;
   /** Personal notes and captured phrases. */
   notes!: Table<NoteRecord, string>;
+  /** Local-only operational state (AI flags, budgets). Never synced. */
+  meta!: Table<MetaRecord, string>;
 
   constructor() {
     super('speak');
@@ -73,6 +75,13 @@ export class SpeakDB extends Dexie {
       bookmarks: 'cardId, createdAt',
       notes: 'id, createdAt',
     });
+
+    // v5 — local-only operational state (AI notice flags, daily budgets).
+    // NEVER enqueued for Supabase: `enqueue` only accepts the syncable-table
+    // union below, and `meta` is deliberately not in it.
+    this.version(5).stores({
+      meta: 'key',
+    });
   }
 }
 
@@ -86,6 +95,22 @@ export interface NoteRecord {
   text: string;
   createdAt: number;
   tags?: string[];
+}
+
+/** Local-only operational state (AI notice flags, counters). Not synced. */
+export interface MetaRecord {
+  key: string;
+  value: unknown;
+  updatedAt: number;
+}
+
+export async function getMeta<T = unknown>(key: string): Promise<T | undefined> {
+  const row = await db.meta.get(key);
+  return row?.value as T | undefined;
+}
+
+export async function setMeta(key: string, value: unknown): Promise<void> {
+  await db.meta.put({ key, value, updatedAt: Date.now() });
 }
 
 export interface SpeakDBExtended extends SpeakDB {

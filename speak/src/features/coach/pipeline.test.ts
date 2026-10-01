@@ -2,7 +2,9 @@ import { describe, expect, it, beforeEach, vi } from 'vitest';
 import { db } from '../../db/db';
 import type { Card } from '../../types/contract';
 import {
+  AI_NEEDS_KEY_META,
   COACH_FAIL_PLAIN,
+  COACH_NEEDS_KEY_PLAIN,
   coachFirst,
   dedupeDrafts,
   deleteCoachNote,
@@ -40,17 +42,109 @@ const PHRASE_B = {
   register: 'office' as const,
 };
 
-function okJson(data: unknown) {
-  return { ok: true, json: async () => ({ ok: true, task: 'x', data }) } as unknown as Response;
+const SWAP_DRAFT = {
+  type: 'swap' as const,
+  weak: 'very tired',
+  answers: ['exhausted', 'drained'],
+  timerSec: 10,
+};
+
+const IDIOM_DRAFT = {
+  type: 'idiom' as const,
+  phrase: 'circle back',
+  meaning: 'return to a topic at a later time',
+  scenario: 'Tell your manager you want to revisit a decision next week.',
+  example: "Let's circle back on this after the client call.",
+  corporate: true,
+};
+
+const FEELING_DRAFT = {
+  type: 'feeling' as const,
+  term: 'wary',
+  meaning: 'careful because something may go wrong',
+  contrast: 'Not as strong as afraid — it is alert, not scared.',
+  example: 'I am wary of promising a date before testing.',
+};
+
+const STORY_DRAFT = {
+  type: 'story_move' as const,
+  move: 'Land the ending on a short sentence.',
+  why: 'A short last line sticks in the room.',
+  example: 'We shipped it. Done.',
+};
+
+const DESCRIBE_DRAFT = {
+  type: 'describe' as const,
+  title: 'Busy kitchen',
+  scene: 'Steam climbs over two cooks moving fast between pans.',
+  alt: 'A small kitchen at dinner rush with steam and motion',
+  prompt: 'Tell me what is happening — and how it feels.',
+  beats: ['What you see first', 'Who is doing what', 'The mood'] as [string, string, string],
+  targetVocab: ['steam', 'clatter', 'rush'],
+  targetSec: 60,
+};
+
+const EXPLAIN_DRAFT = {
+  type: 'explain' as const,
+  topic: 'Monsoons',
+  angle: 'Why Indian farming depends on the monsoon arriving on time',
+  beats: ['What the monsoon is', 'What happens when it is late', 'Who feels it most'] as [string, string, string],
+  targetVocab: ['onset', 'yield', 'reservoir'],
+  targetSec: 90,
+};
+
+const TEACH_DRAFT = {
+  type: 'teach_back' as const,
+  prompt: 'Explain what a database index is, as if to a new teammate.',
+  beats: ['The problem without it', 'What it actually is', 'When not to add one'] as [string, string, string],
+  targetSec: 60,
+};
+
+const SITUATION_DRAFT = {
+  type: 'situation' as const,
+  kind: 'incident' as const,
+  title: 'The missed flight',
+  prompt: 'Tell the story of a flight you once missed and what happened next.',
+  beats: ['Set the scene', 'What went wrong', 'How it ended'] as [string, string, string],
+  targetVocab: [],
+  targetSec: 60,
+};
+
+const TYPE_DRAFTS: Array<{ type: string; draft: unknown }> = [
+  { type: 'word', draft: WORD_DRAFT },
+  { type: 'swap', draft: SWAP_DRAFT },
+  { type: 'idiom', draft: IDIOM_DRAFT },
+  { type: 'phrase', draft: PHRASE_A },
+  { type: 'feeling', draft: FEELING_DRAFT },
+  { type: 'story_move', draft: STORY_DRAFT },
+  { type: 'describe', draft: DESCRIBE_DRAFT },
+  { type: 'explain', draft: EXPLAIN_DRAFT },
+  { type: 'teach_back', draft: TEACH_DRAFT },
+  { type: 'situation', draft: SITUATION_DRAFT },
+];
+
+function okJson(data: unknown, provider?: string) {
+  return { ok: true, json: async () => ({ ok: true, task: 'x', provider, data }) } as unknown as Response;
 }
 
-function classifyFetch(kind: string, subject: string, cards: unknown[], verifyResults?: Array<{ key: string; ok: boolean; reason: string }>) {
+function classifyFetch(
+  kind: string,
+  subject: string,
+  cards: unknown[],
+  verifyResults?: Array<{ key: string; ok: boolean; reason: string }>,
+  providers: { classify?: string; verify?: string } = {},
+) {
+  const classifyProvider = providers.classify ?? 'gemini';
+  const verifyProvider = providers.verify ?? 'groq';
   return vi.fn(async (_url: string, init: RequestInit) => {
     const body = JSON.parse(init.body as string) as { task: string };
     if (body.task === 'classify_inbox') {
-      return okJson({ kind, subject, cards });
+      return okJson({ kind, subject, cards }, classifyProvider);
     }
-    return okJson({ results: verifyResults ?? (cards as unknown[]).map((_, i) => ({ key: `d${i}`, ok: true, reason: 'real' })) });
+    return okJson(
+      { results: verifyResults ?? (cards as unknown[]).map((_, i) => ({ key: `d${i}`, ok: true, reason: 'real' })) },
+      verifyProvider,
+    );
   }) as unknown as typeof fetch;
 }
 
@@ -59,6 +153,7 @@ beforeEach(async () => {
   await db.inbox.clear();
   await db.notes.clear();
   await db.outbox.clear();
+  await db.meta.clear();
 });
 
 describe('coach pipeline (AG-007 stage 3)', () => {
@@ -176,5 +271,62 @@ describe('coach pipeline (AG-007 stage 3)', () => {
       fix: `right${i}`,
     }));
     expect(getWatchList(items)).toHaveLength(10);
+  });
+
+  it('every allowed draft type goes draft → verify → stored card (AG-008 stage 1)', async () => {
+    for (const { type, draft } of TYPE_DRAFTS) {
+      const id = `in-type-${type}`;
+      await db.inbox.put({ id, createdAt: 1, text: `note about ${type}`, status: 'raw', attempts: 0 });
+      const out = await processInboxItem(id, classifyFetch('word', type, [draft]));
+      expect(out.outcome, type).toBe('processed');
+      expect(out.added, type).toBe(1);
+      const card = await db.cards.get(`coach-${id}-0`);
+      expect(card?.type, type).toBe(type);
+      expect(card?.tags, type).toEqual(['coach', 'word']);
+      expect(card?.source, type).toBe('inbox');
+      expect(card?.status, type).toBe('active');
+    }
+  });
+
+  it('an idiom typed into the coach yields an idiom card (AG-008 stage 1)', async () => {
+    await db.inbox.put({ id: 'in-idiom', createdAt: 1, text: 'People keep saying circle back', status: 'raw', attempts: 0 });
+    const out = await processInboxItem('in-idiom', classifyFetch('other', 'circle back', [IDIOM_DRAFT]));
+    expect(out.added).toBe(1);
+    const card = await db.cards.get('coach-in-idiom-0');
+    expect(card?.type).toBe('idiom');
+    if (card?.type === 'idiom') expect(card.phrase).toBe('circle back');
+  });
+
+  it('a Hindi word draft is stored lang "hi" — it rides the Hindi slots, never the English float (AG-008 stage 1)', async () => {
+    const hindiDraft = { ...WORD_DRAFT, term: 'जुगाड़', lang: 'hi' };
+    await db.inbox.put({ id: 'in-hi', createdAt: 1, text: 'I liked the word jugaad', status: 'raw', attempts: 0 });
+    const out = await processInboxItem('in-hi', classifyFetch('word', 'जुगाड़', [hindiDraft]));
+    expect(out.added).toBe(1);
+    const card = await db.cards.get('coach-in-hi-0');
+    expect(card?.lang).toBe('hi');
+    expect(card?.tags).toEqual(['coach', 'word']);
+  });
+
+  it('same provider generate + verify: nothing stored, plain needs-key line, no attempts burned (AG-008 §0.2)', async () => {
+    await db.inbox.put({ id: 'in-same', createdAt: 1, text: 'I liked the word nuance', status: 'raw', attempts: 0 });
+    const out = await processInboxItem(
+      'in-same',
+      classifyFetch('word', 'nuance', [WORD_DRAFT], undefined, { classify: 'gemini', verify: 'gemini' }),
+    );
+    expect(out).toEqual({ outcome: 'failed', added: 0 });
+    expect(await db.cards.count()).toBe(0);
+    const item = await db.inbox.get('in-same');
+    expect(item?.status).toBe('raw');
+    expect(item?.failReason).toBe(COACH_NEEDS_KEY_PLAIN);
+    expect(item?.attempts).toBe(0);
+    expect((await db.meta.get(AI_NEEDS_KEY_META))?.value).toBe(true);
+  });
+
+  it('a cross-provider run clears the needs-key notice (AG-008 §0.2)', async () => {
+    await db.meta.put({ key: AI_NEEDS_KEY_META, value: true, updatedAt: 1 });
+    await db.inbox.put({ id: 'in-ok', createdAt: 1, text: 'nuance', status: 'raw', attempts: 0 });
+    const out = await processInboxItem('in-ok', classifyFetch('word', 'nuance', [WORD_DRAFT]));
+    expect(out.added).toBe(1);
+    expect((await db.meta.get(AI_NEEDS_KEY_META))?.value).toBe(false);
   });
 });

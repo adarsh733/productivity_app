@@ -48,8 +48,21 @@ const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; syst
     temperature: 0.4,
     maxTokens: 2048,
     system: [
-      'You turn a raw one-line thought into one or more typed drill cards.',
-      'Preserve what the user was actually curious about. Return ONLY JSON.',
+      'You turn a raw one-line thought into grounded drill cards for one Indian English speaker in a corporate setting.',
+      'Return ONLY JSON: {"kind":"word"|"mistake"|"topic"|"other","subject":string,"fix"?:string,"cards":[...]}.',
+      'Allowed card types and exact shapes:',
+      'word {type:"word",term,pos,meaning,examples:[two everyday sentences],say} — a Hindi word only: add "lang":"hi";',
+      'swap {type:"swap",weak,answers:[1-5 single words],timerSec:5-60};',
+      'idiom {type:"idiom",phrase,meaning,scenario,example,corporate:true|false};',
+      'phrase {type:"phrase",weak,strong,why,register:"office"|"friends"|"presenting"};',
+      'feeling {type:"feeling",term,meaning,contrast,example};',
+      'story_move {type:"story_move",move,why,example};',
+      'describe {type:"describe",title (max 40 chars),scene (max 280 chars),alt,prompt,beats:[3 short steps],targetVocab:[3-5 words],targetSec:15-120};',
+      'explain {type:"explain",topic,angle,beats:[3],targetVocab:[3 or more],targetSec:15-180,primer? (max 300 chars)};',
+      'teach_back {type:"teach_back",prompt,beats:[3],targetSec:15-180};',
+      'situation {type:"situation",kind:"incident"|"office_call"|"feeling"|"opinion"|"life_story",title (max 40),prompt (max 200),beats:[3],targetVocab:[0-4],targetSec:30|45|60|90}.',
+      'Never produce types: breath, pronounce, say_it, action_verb.',
+      'Prefer 1-2 cards. Preserve what the user was actually curious about. Everyday register, never literary.',
     ].join(' '),
   },
   review_recording: {
@@ -128,25 +141,119 @@ export function validateClassifyInbox(raw: unknown): unknown {
   };
 }
 
+// ── classify_inbox draft validation ────────────────────────────────────────
+// Structural caps mirror `scripts/content-pipeline/check-seed.mjs`. Identity
+// fields throw when missing; sizes and ranges are clamped so one loose value
+// can never smuggle an out-of-contract card into the store.
+
+function draftStr(r: Record<string, unknown>, field: string, i: number): string {
+  const v = r[field];
+  if (typeof v !== 'string' || !v.trim()) throw new Error(`Draft ${i}: missing "${field}"`);
+  return v.trim();
+}
+
+function draftExamples(r: Record<string, unknown>, i: number): [string, string] {
+  if (
+    !Array.isArray(r.examples) ||
+    r.examples.length !== 2 ||
+    !r.examples.every((e) => typeof e === 'string' && e.trim())
+  ) {
+    throw new Error(`Draft ${i}: "examples" must have exactly 2 non-empty entries`);
+  }
+  const [a, b] = r.examples as [string, string];
+  return [a.trim(), b.trim()];
+}
+
+function draftBeats(r: Record<string, unknown>, i: number): [string, string, string] {
+  if (!Array.isArray(r.beats) || r.beats.length !== 3) {
+    throw new Error(`Draft ${i}: "beats" must have exactly 3 entries`);
+  }
+  for (const b of r.beats) {
+    if (typeof b !== 'string' || !b.trim()) {
+      throw new Error(`Draft ${i}: "beats" must be non-empty strings`);
+    }
+  }
+  const [a, b, c] = r.beats as [string, string, string];
+  return [a.trim(), b.trim(), c.trim()];
+}
+
+function draftVocab(r: Record<string, unknown>, min: number, max: number, i: number): string[] {
+  if (!Array.isArray(r.targetVocab)) throw new Error(`Draft ${i}: missing "targetVocab"`);
+  const vocab = r.targetVocab
+    .filter((v): v is string => typeof v === 'string' && v.trim().length > 0)
+    .map((v) => v.trim())
+    .slice(0, max);
+  if (vocab.length < min) throw new Error(`Draft ${i}: "targetVocab" needs at least ${min}`);
+  return vocab;
+}
+
+function clampNum(v: unknown, lo: number, hi: number, fallback: number): number {
+  const n = typeof v === 'number' && Number.isFinite(v) ? Math.round(v) : fallback;
+  return Math.min(hi, Math.max(lo, n));
+}
+
+/** Snap to the nearest allowed situation length (30 | 45 | 60 | 90). */
+function nearestSec(v: unknown): 30 | 45 | 60 | 90 {
+  const n = typeof v === 'number' && Number.isFinite(v) ? v : 60;
+  const secs = [30, 45, 60, 90] as const;
+  let best: (typeof secs)[number] = 60;
+  for (const s of secs) {
+    if (Math.abs(s - n) < Math.abs(best - n)) best = s;
+  }
+  return best;
+}
+
+const SITUATION_KINDS = ['incident', 'office_call', 'feeling', 'opinion', 'life_story'] as const;
+
 function validateClassifyDraft(d: unknown, i: number): unknown {
   if (!d || typeof d !== 'object') throw new Error(`Draft ${i}: must be an object`);
   const r = d as Record<string, unknown>;
+
   if (r.type === 'word') {
-    for (const f of ['term', 'pos', 'meaning', 'say'] as const) {
-      if (typeof r[f] !== 'string' || !(r[f] as string).trim()) throw new Error(`Draft ${i}: missing "${f}"`);
-    }
-    if (!Array.isArray(r.examples) || (r.examples as unknown[]).length !== 2) {
-      throw new Error(`Draft ${i}: "examples" must have exactly 2 entries`);
-    }
-    return {
+    const out: Record<string, unknown> = {
       type: 'word',
-      term: (r.term as string).trim(),
-      pos: (r.pos as string).trim(),
-      meaning: (r.meaning as string).trim(),
-      examples: [(r.examples as string[])[0]!.trim(), (r.examples as string[])[1]!.trim()],
-      say: (r.say as string).trim(),
+      term: draftStr(r, 'term', i),
+      pos: draftStr(r, 'pos', i),
+      meaning: draftStr(r, 'meaning', i),
+      examples: draftExamples(r, i),
+      say: draftStr(r, 'say', i),
+    };
+    if (r.lang !== undefined) {
+      if (r.lang !== 'hi') throw new Error(`Draft ${i}: "lang" must be "hi" when present`);
+      out.lang = 'hi';
+    }
+    return out;
+  }
+
+  if (r.type === 'swap') {
+    if (!Array.isArray(r.answers) || r.answers.length === 0) {
+      throw new Error(`Draft ${i}: missing "answers"`);
+    }
+    const answers = r.answers
+      .filter((a): a is string => typeof a === 'string' && a.trim().length > 0)
+      .map((a) => a.trim())
+      .slice(0, 5);
+    if (answers.length === 0) throw new Error(`Draft ${i}: "answers" must be non-empty strings`);
+    return {
+      type: 'swap',
+      weak: draftStr(r, 'weak', i),
+      answers,
+      timerSec: clampNum(r.timerSec, 5, 60, 15),
     };
   }
+
+  if (r.type === 'idiom') {
+    if (typeof r.corporate !== 'boolean') throw new Error(`Draft ${i}: missing "corporate"`);
+    return {
+      type: 'idiom',
+      phrase: draftStr(r, 'phrase', i),
+      meaning: draftStr(r, 'meaning', i),
+      scenario: draftStr(r, 'scenario', i),
+      example: draftStr(r, 'example', i),
+      corporate: r.corporate,
+    };
+  }
+
   if (r.type === 'phrase') {
     for (const f of ['weak', 'strong', 'why', 'register'] as const) {
       if (typeof r[f] !== 'string' || !(r[f] as string).trim()) throw new Error(`Draft ${i}: missing "${f}"`);
@@ -162,26 +269,78 @@ function validateClassifyDraft(d: unknown, i: number): unknown {
       register: r.register,
     };
   }
-  if (r.type === 'explain') {
-    for (const f of ['topic', 'angle'] as const) {
-      if (typeof r[f] !== 'string' || !(r[f] as string).trim()) throw new Error(`Draft ${i}: missing "${f}"`);
-    }
-    if (!Array.isArray(r.beats) || (r.beats as unknown[]).length !== 3) {
-      throw new Error(`Draft ${i}: "beats" must have exactly 3 entries`);
-    }
-    if (!Array.isArray(r.targetVocab)) throw new Error(`Draft ${i}: missing "targetVocab"`);
-    if (typeof r.targetSec !== 'number') throw new Error(`Draft ${i}: missing "targetSec"`);
-    const out: Record<string, unknown> = {
-      type: 'explain',
-      topic: (r.topic as string).trim(),
-      angle: (r.angle as string).trim(),
-      beats: (r.beats as string[]).slice(0, 3),
-      targetVocab: r.targetVocab,
-      targetSec: r.targetSec,
+
+  if (r.type === 'feeling') {
+    return {
+      type: 'feeling',
+      term: draftStr(r, 'term', i),
+      meaning: draftStr(r, 'meaning', i),
+      contrast: draftStr(r, 'contrast', i),
+      example: draftStr(r, 'example', i),
     };
-    if (typeof r.primer === 'string' && r.primer.trim()) out.primer = r.primer.trim();
+  }
+
+  if (r.type === 'story_move') {
+    const out: Record<string, unknown> = {
+      type: 'story_move',
+      move: draftStr(r, 'move', i),
+      why: draftStr(r, 'why', i),
+      example: draftStr(r, 'example', i),
+    };
+    if (typeof r.heardIn === 'string' && r.heardIn.trim()) out.heardIn = r.heardIn.trim();
     return out;
   }
+
+  if (r.type === 'describe') {
+    return {
+      type: 'describe',
+      title: draftStr(r, 'title', i).slice(0, 40),
+      scene: draftStr(r, 'scene', i).slice(0, 280),
+      alt: draftStr(r, 'alt', i),
+      prompt: draftStr(r, 'prompt', i),
+      beats: draftBeats(r, i),
+      targetVocab: draftVocab(r, 3, 5, i),
+      targetSec: clampNum(r.targetSec, 15, 120, 60),
+    };
+  }
+
+  if (r.type === 'explain') {
+    const out: Record<string, unknown> = {
+      type: 'explain',
+      topic: draftStr(r, 'topic', i),
+      angle: draftStr(r, 'angle', i),
+      beats: draftBeats(r, i),
+      targetVocab: draftVocab(r, 3, 5, i),
+      targetSec: clampNum(r.targetSec, 15, 180, 60),
+    };
+    if (typeof r.primer === 'string' && r.primer.trim()) out.primer = r.primer.trim().slice(0, 300);
+    return out;
+  }
+
+  if (r.type === 'teach_back') {
+    return {
+      type: 'teach_back',
+      prompt: draftStr(r, 'prompt', i),
+      beats: draftBeats(r, i),
+      targetSec: clampNum(r.targetSec, 15, 180, 60),
+    };
+  }
+
+  if (r.type === 'situation') {
+    if (!SITUATION_KINDS.includes(r.kind as (typeof SITUATION_KINDS)[number])) {
+      throw new Error(`Draft ${i}: invalid "kind"`);
+    }
+    return {
+      type: 'situation',
+      kind: r.kind,
+      title: draftStr(r, 'title', i).slice(0, 40),
+      prompt: draftStr(r, 'prompt', i).slice(0, 200),
+      beats: draftBeats(r, i),
+      targetVocab: draftVocab(r, 0, 4, i),
+      targetSec: nearestSec(r.targetSec),
+    };
+  }
+
   throw new Error(`Draft ${i}: unknown type`);
 }
 
