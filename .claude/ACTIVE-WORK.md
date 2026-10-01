@@ -119,3 +119,11 @@
 - **Status:** COMPLETED — claim released 2026-10-01
 - **Started:** 2026-10-01
 - **Files claimed:** `.claude/WORKLOG.md` (append only)
+
+---
+
+- **Agent:** Claude (Opus 5.5) — session 2026-10-01 (deploy fix)
+- **Task:** Netlify deploy fails — move ai.test.ts out of netlify/functions
+- **Status:** COMPLETED — claim released 2026-10-01
+- **Started:** 2026-10-01
+- **Files claimed:** `speak/netlify/functions/ai.test.ts` → `speak/netlify/tests/ai.test.ts`, `.claude/WORKLOG.md` (append)

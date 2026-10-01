@@ -1,5 +1,5 @@
 import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
-import handler, { validateProviderOutput } from './ai';
+import handler, { validateProviderOutput } from '../functions/ai';
 
 describe('Netlify AI Function Handler Suite', () => {
   const originalEnv = process.env;

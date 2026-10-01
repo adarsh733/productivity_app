@@ -857,3 +857,4 @@ rewrite describes as 60 text scenes, new 130 situations, +100 words / +60 phrase
 - [x] One-go run `2026-10-01-1902-finish-v4-usable-for-go` COMPLETE 2/2: You tab loudness line shown once; coach buttons spaced (67032d3); notes committed (8d898ec, ea1f164).
 - [x] Tests 420/420 + build + seed PASS (engine-verified). master fast-forwarded to v4-usable and pushed (a2b84f3 → ea1f164); v4-usable pushed too.
 - [ ] Found: `https://adarsh-speak.netlify.app` returns "site not found" — the Netlify site was never created (docs/SETUP.md §4). Adarsh: connect the repo in Netlify, add the 4 keys, run the 12-line SQL. Then one live AI check.
+- [x] Netlify build failed: it deployed `ai.test.ts` as a function. Moved it to `speak/netlify/tests/ai.test.ts` (19/19 pass, build green), pushed.
