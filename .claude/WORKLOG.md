@@ -851,3 +851,9 @@ rewrite describes as 60 text scenes, new 130 situations, +100 words / +60 phrase
 - [x] Polish fixes committed (pass 2 of 2): You loudness line shows once, coach-list-actions flex-wrapped with 8px gap.
 - [ ] Before go-live: run the 12-line SQL in `.claude/reports/AG-009.md` §5 on Supabase; confirm Netlify keys (Gemini + Groq); one live AI check after deploy.
 - [ ] Waiting on Adarsh's yes to push.
+
+## 2026-10-01 — /one-go: finish v4-usable + push (option B)
+
+- [x] One-go run `2026-10-01-1902-finish-v4-usable-for-go` COMPLETE 2/2: You tab loudness line shown once; coach buttons spaced (67032d3); notes committed (8d898ec, ea1f164).
+- [x] Tests 420/420 + build + seed PASS (engine-verified). master fast-forwarded to v4-usable and pushed (a2b84f3 → ea1f164); v4-usable pushed too.
+- [ ] Found: `https://adarsh-speak.netlify.app` returns "site not found" — the Netlify site was never created (docs/SETUP.md §4). Adarsh: connect the repo in Netlify, add the 4 keys, run the 12-line SQL. Then one live AI check.
