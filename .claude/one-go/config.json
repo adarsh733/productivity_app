@@ -1,0 +1,5 @@
+{
+  "_comment": "Productivity — claims feature is off (ACTIVE-WORK.md exists but has no '## Active claims' table today, so the engine already reads no claims there); every other feature is also off. Reproduces today's behaviour. No tier or host names: the core's built-in Claude defaults apply.",
+  "tiers": {},
+  "hosts": {}
+}
