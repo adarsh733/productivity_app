@@ -338,7 +338,11 @@ function jumpCoachCards(
     if (!isNew(r) || isSkimFresh(r, now)) continue;
     missing.push({ card, reason: 'new' });
   }
-  if (missing.length === 0) return out;
+  // Float whenever a fresh coach card is anywhere in the deck — including
+  // when they all already sit inside the chunk (missing empty): their natural
+  // day-hash positions drift past the first 10 on some days, and the comment
+  // above promises all coach ids float front.
+  if (missing.length === 0 && already === 0) return out;
   const merged = [...out, ...missing];
   const coach = merged.filter(isCoach).slice(0, 10);
   const rest = merged.filter((i) => !isCoach(i));
