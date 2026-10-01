@@ -2,6 +2,7 @@ import type { Card, ExpandSeedResult, Grade, Review } from '../../types/contract
 import { db, enqueue, getMeta, setMeta } from '../../db/db';
 import { todayKey } from '../../lib/date';
 import {
+  AI_DRAFT_TYPES,
   AI_NEEDS_KEY_META,
   CoachNeedsKeyError,
   aiPost,
@@ -10,6 +11,7 @@ import {
   verifyDrafts,
   type FetchFn,
 } from '../coach/pipeline';
+import { tryConsumeAiCall } from './budget';
 
 /**
  * AG-008 stage 2 — a card that missed twice gets siblings.
@@ -26,20 +28,6 @@ export const MISS_SIBLINGS = 2;
 
 /** Local-only counter (db.meta). Never synced. */
 export const MISS_META = 'ai.missBatches';
-
-/** Mirrors DraftCardType — the types AI may ever draft (AG-008 §0.3). */
-const MISS_ALLOWED_TYPES = new Set<string>([
-  'word',
-  'swap',
-  'idiom',
-  'phrase',
-  'feeling',
-  'story_move',
-  'describe',
-  'explain',
-  'teach_back',
-  'situation',
-]);
 
 /** Second lifetime `again` — the moment a card has visibly not stuck. */
 export function shouldSpawnSiblings(gradeValue: Grade | undefined, review: Review): boolean {
@@ -64,7 +52,7 @@ export async function maybeSpawnMissSiblings(
   fetchFn: FetchFn = fetch,
 ): Promise<number> {
   try {
-    if (!MISS_ALLOWED_TYPES.has(card.type)) return 0;
+    if (!(AI_DRAFT_TYPES as readonly string[]).includes(card.type)) return 0;
 
     const batchId = `miss-${card.id}`;
     const already = await db.cards.where('batchId').equals(batchId).count();
@@ -74,6 +62,9 @@ export async function maybeSpawnMissSiblings(
     const counter = await getMeta<{ date: string; count: number }>(MISS_META);
     const used = counter && counter.date === today ? counter.count : 0;
     if (used >= MISS_MAX_PER_DAY) return 0;
+
+    // AG-008 stage 3 — one shared daily budget for every generation path.
+    if (!(await tryConsumeAiCall())) return 0;
 
     // Counted before the network call: a failed ask still cost a request
     // against the free tier.

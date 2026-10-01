@@ -59,6 +59,7 @@ const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; syst
       'working in a corporate setting. Return ONLY JSON: {"cards":[...]}.',
       'Produce siblings of the SAME type and skill as the seed card, but different wording —',
       'fresh angles, never paraphrases of the seed or of each other.',
+      'When no seed card is given, produce fresh, standard cards of the requested type, grounded in the given topics when present.',
       'Everyday register, not literary. No rare or archaic words.',
       'Examples must be sentences a colleague would actually say out loud.',
       'Allowed card types and exact shapes:',

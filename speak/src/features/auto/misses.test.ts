@@ -4,6 +4,7 @@ import { todayKey } from '../../lib/date';
 import { grade, newReview } from '../../srs/scheduler';
 import type { Card, WordCard } from '../../types/contract';
 import { AI_NEEDS_KEY_META } from '../coach/pipeline';
+import { AI_BUDGET_META, AI_DAILY_CAP } from './budget';
 import { MISS_MAX_PER_DAY, MISS_META, maybeSpawnMissSiblings, shouldSpawnSiblings } from './misses';
 
 const WORD_A = {
@@ -184,6 +185,21 @@ describe('maybeSpawnMissSiblings (AG-008 stage 2)', () => {
     expect(await maybeSpawnMissSiblings(seed, fetchFn)).toBe(1);
     const counter = (await db.meta.get(MISS_META))?.value as { date: string; count: number };
     expect(counter).toEqual({ date: todayKey(), count: 1 });
+  });
+
+  it('over the shared daily budget: no request, no miss batch counted (AG-008 stage 3)', async () => {
+    const seed = wordCard('c-7');
+    await db.cards.put(seed);
+    await db.meta.put({
+      key: AI_BUDGET_META,
+      value: { date: todayKey(), count: AI_DAILY_CAP },
+      updatedAt: 1,
+    });
+    const fetchFn = missFetch([WORD_A]);
+
+    expect(await maybeSpawnMissSiblings(seed, fetchFn)).toBe(0);
+    expect(fetchFn).not.toHaveBeenCalled();
+    expect(await db.meta.get(MISS_META)).toBeUndefined();
   });
 
   it('same provider generate + verify: nothing stored, needs-key flag set, ask still counted', async () => {

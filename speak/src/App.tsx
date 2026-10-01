@@ -8,11 +8,13 @@ import YouScreen from './components/you/YouScreen';
 import CaptureSheet from './components/capture/CaptureSheet';
 import { useCapture } from './features/capture/useCapture';
 import { useAppOpen } from './features/you/useAppOpen';
+import { useAutoTopUp } from './features/auto/useAutoTopUp';
 import { useSync } from './sync/useSync';
 import type { Card } from './types/contract';
 
 export default function App() {
   useAppOpen();
+  useAutoTopUp();
   useSync();
   const [activeTab, setActiveTab] = useState<AppTab>('feed');
   const [showFirstRun, setShowFirstRun] = useState(!isFirstRunCompleted());

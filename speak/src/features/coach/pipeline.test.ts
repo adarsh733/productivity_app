@@ -1,6 +1,8 @@
 import { describe, expect, it, beforeEach, vi } from 'vitest';
 import { db } from '../../db/db';
+import { todayKey } from '../../lib/date';
 import type { Card } from '../../types/contract';
+import { AI_BUDGET_META, AI_DAILY_CAP, aiCallsUsed } from '../auto/budget';
 import {
   AI_NEEDS_KEY_META,
   COACH_FAIL_PLAIN,
@@ -329,6 +331,35 @@ describe('coach pipeline (AG-007 stage 3)', () => {
     const out = await processInboxItem('in-ok', classifyFetch('word', 'nuance', [WORD_DRAFT]));
     expect(out.added).toBe(1);
     expect((await db.meta.get(AI_NEEDS_KEY_META))?.value).toBe(false);
+  });
+});
+
+describe('daily AI budget (AG-008 stage 3)', () => {
+  it('one processed note spends exactly one slot from the shared budget', async () => {
+    await db.inbox.put({ id: 'in-b1', createdAt: 1, text: 'I liked the word nuance', status: 'raw', attempts: 0 });
+    expect(await aiCallsUsed()).toBe(0);
+    const out = await processInboxItem('in-b1', classifyFetch('word', 'nuance', [WORD_DRAFT]));
+    expect(out.added).toBe(1);
+    expect(await aiCallsUsed()).toBe(1);
+  });
+
+  it('over budget: silent wait — no request, no attempt burned, no message', async () => {
+    await db.meta.put({
+      key: AI_BUDGET_META,
+      value: { date: todayKey(), count: AI_DAILY_CAP },
+      updatedAt: 1,
+    });
+    await db.inbox.put({ id: 'in-b2', createdAt: 1, text: 'I liked the word nuance', status: 'raw', attempts: 0 });
+    const fetchFn = classifyFetch('word', 'nuance', [WORD_DRAFT]);
+
+    const out = await processInboxItem('in-b2', fetchFn);
+    expect(out).toEqual({ outcome: 'failed', added: 0 });
+    expect(fetchFn).not.toHaveBeenCalled();
+    const item = await db.inbox.get('in-b2');
+    expect(item?.status).toBe('raw');
+    expect(item?.attempts).toBe(0);
+    expect(item?.failReason).toBeUndefined();
+    expect(await aiCallsUsed()).toBe(AI_DAILY_CAP);
   });
 });
 

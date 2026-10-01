@@ -3,10 +3,12 @@ import type {
   Card,
   ClassifyInboxResult,
   CoachKind,
+  DraftCardType,
   InboxItem,
   VerifyBatchResult,
 } from '../../types/contract';
 import { db, enqueue, setMeta } from '../../db/db';
+import { tryConsumeAiCall } from '../auto/budget';
 
 /**
  * AG-007 stage 3 — "Tell the coach" pipeline.
@@ -147,6 +149,20 @@ function norm(s: string): string {
 
 type Draft = ClassifyInboxResult['cards'][number];
 
+/** Every card type the AI may ever draft (AG-008 §0.3) — mirrors `DraftCardType`. */
+export const AI_DRAFT_TYPES: readonly DraftCardType[] = [
+  'word',
+  'swap',
+  'idiom',
+  'phrase',
+  'feeling',
+  'story_move',
+  'describe',
+  'explain',
+  'teach_back',
+  'situation',
+];
+
 /**
  * One identity key per card type, prefix-namespaced so a word "close" never
  * collides with a phrase "close". null = type the pipeline never creates.
@@ -195,7 +211,8 @@ export function dedupeDrafts(drafts: readonly Draft[], existing: readonly Card[]
 export interface BatchShape {
   batchId: string;
   source: 'ai' | 'inbox';
-  seedId: string;
+  /** The inbox item or seed card this batch grew from; top-up batches have none. */
+  seedId?: string;
   tags: string[];
 }
 
@@ -214,7 +231,7 @@ export function draftsToBatchCards(
       status: 'active' as const,
       createdAt: now,
       batchId: shape.batchId,
-      seedId: shape.seedId,
+      ...(shape.seedId ? { seedId: shape.seedId } : {}),
     };
     return { ...base, ...d } as Card;
   });
@@ -358,6 +375,12 @@ export async function processInboxItem(id: string, fetchFn: FetchFn = fetch): Pr
   if (attempts >= COACH_MAX_ATTEMPTS) {
     await db.inbox.put({ ...item, failReason: COACH_CAPPED });
     return { outcome: 'capped', added: 0 };
+  }
+
+  // AG-008 stage 3 — one shared daily budget for every generation path. Over
+  // budget the note simply waits: no attempt burned, no request made.
+  if (!(await tryConsumeAiCall())) {
+    return { outcome: 'failed', added: 0 };
   }
 
   try {
