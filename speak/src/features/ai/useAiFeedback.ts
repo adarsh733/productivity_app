@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import type { AiResponse } from '../../types/contract';
-import type { WatchEntry } from '../coach/pipeline';
+import { AI_CLIENT_TIMEOUT_MS, type WatchEntry } from '../coach/pipeline';
 
 export interface AiFeedbackResult {
   summary: string;
@@ -130,6 +130,12 @@ export function useAiFeedback() {
       setLoading(true);
       const abortCtrl = new AbortController();
       abortCtrlRef.current = abortCtrl;
+      // A hung network ends as the plain "unavailable" line, never an endless spinner.
+      let timedOut = false;
+      const timer = setTimeout(() => {
+        timedOut = true;
+        abortCtrl.abort();
+      }, AI_CLIENT_TIMEOUT_MS);
 
       try {
         // Transcript only — never audio.
@@ -204,6 +210,11 @@ export function useAiFeedback() {
         }
         return validated;
       } catch (err: unknown) {
+        if (timedOut) {
+          setUnavailable(true);
+          setLoading(false);
+          return null;
+        }
         if ((err as Error).name === 'AbortError' || abortCtrl.signal.aborted) {
           setLoading(false);
           return null;
@@ -219,6 +230,8 @@ export function useAiFeedback() {
         setFeedback(null);
         setLoading(false);
         return null;
+      } finally {
+        clearTimeout(timer);
       }
     },
     [cancel],

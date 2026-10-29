@@ -9,7 +9,13 @@
     "prompt": "Tell a friend how you missed an early flight. What went wrong, and what did you do next?",
     "beats": ["Set the scene: the plan and the morning itself", "The moment it turned: when you knew it was gone", "How it ended and how you felt about it"],
     "targetVocab": ["hectic", "oversight", "rebook"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "My flight to Pune was at six, so I set two alarms. But I set both for 6 p.m., not 6 a.m. That was the oversight. I woke up at 5:40 to my mum calling. So I rebooked on the noon flight, paid the fee and spent a hectic morning explaining it to my team. Now I check a.m. and p.m. twice."
+    }
   },
   {
     "id": "sit-incident-02",
@@ -21,7 +27,13 @@
     "prompt": "Tell a friend about the time your bike skidded on a wet road. What happened exactly?",
     "beats": ["Set the scene: where you were and the weather", "The moment it turned: the skid itself", "How it ended and how you felt after"],
     "targetVocab": ["skid", "wobble", "shaken"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "I was riding home from work in the first rain of the season, going slowly near the flyover. But the road was oily, and when I braked, the back wheel started to wobble and then skid. I went down on my side. So I sat on the kerb for ten minutes, shaken but fine, with just a torn sleeve. I've ridden more slowly in the rain ever since."
+    }
   },
   {
     "id": "sit-incident-03",
@@ -33,7 +45,13 @@
     "prompt": "Tell a friend about a funny misunderstanding with your landlord. What did each of you think?",
     "beats": ["Set the scene: what the confusion was about", "The moment it turned: when you both realised", "How it ended and how you felt about it"],
     "targetVocab": ["ambiguous", "awkward", "sort out"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "My landlord texted, 'Please clear the terrace by Sunday.' It was a bit ambiguous, but I thought he meant my plants, so I spent Saturday carrying twenty pots down three floors. But on Sunday he came up and asked where my plants had gone. He'd meant the old furniture the last tenant left. It was awkward for a second. So we laughed, sorted it out, and carried the pots back up together."
+    }
   },
   {
     "id": "sit-incident-04",
@@ -45,7 +63,13 @@
     "prompt": "Tell a friend about a time you were served completely the wrong food. What did you do?",
     "beats": ["Set the scene: the place and who you were with", "The moment it turned: the wrong plate arriving", "How it ended and how you felt about it"],
     "targetVocab": ["mix-up", "flag it", "laugh it off"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "We were at a busy South Indian place near the office, and I'd ordered a plain dosa. But the waiter put down a huge plate of chole bhature. I almost started eating before I noticed. So I flagged it, he apologised for the mix-up, and my friend ate the chole while we waited. We laughed it off, and my dosa came ten minutes later."
+    }
   },
   {
     "id": "sit-incident-05",
@@ -57,7 +81,13 @@
     "prompt": "Tell a friend about the worst traffic jam you were ever stuck in. What was it like?",
     "beats": ["Set the scene: where you were headed and the rain", "The moment it turned: when you knew you were stuck", "How it ended and how you felt about it"],
     "targetVocab": ["gridlock", "restless", "crawl"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "It was a Friday evening in July, and I'd left the office at six to catch a movie. But the rain hit hard, and Outer Ring Road turned into total gridlock. We moved at a crawl, maybe one kilometre an hour. By nine, the cab driver and I were both restless and sharing my biscuits. So I missed the movie and reached home at ten. Now I check the weather before I make Friday plans."
+    }
   },
   {
     "id": "sit-incident-07",
@@ -69,7 +99,13 @@
     "prompt": "Tell a friend about the time an ATM swallowed your card. What happened step by step?",
     "beats": ["Set the scene: when and where you needed cash", "The moment it turned: the machine going silent", "How it ended and how you felt about it"],
     "targetVocab": ["panic", "helpline", "wait it out"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "I was at an ATM late at night, taking out cash for my rent. But the machine froze and kept my card. I felt a wave of panic, so I called the bank's helpline right there. They blocked the card in two minutes and said a new one would take a week. So I waited it out with UPI and borrowed some cash from my flatmate."
+    }
   },
   {
     "id": "sit-incident-08",
@@ -81,7 +117,13 @@
     "prompt": "Tell a friend about getting locked out of your own house. How did you get back in?",
     "beats": ["Set the scene: how it happened", "The moment it turned: realising no key, no help nearby", "How it ended and how you felt about it"],
     "targetVocab": ["stranded", "neighbour", "lesson"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "I stepped out to take the rubbish down at eleven at night, and the door shut behind me. Keys inside, phone inside. I was stranded on the stairs in my shorts. But my neighbour Arjun heard me and lent me his phone. So I called my landlord, who came with a spare key at midnight. Lesson learnt: Arjun now keeps a spare key for me."
+    }
   },
   {
     "id": "sit-incident-09",
@@ -93,7 +135,13 @@
     "prompt": "Tell a friend about boarding the wrong bus or train. When did you realise?",
     "beats": ["Set the scene: where you meant to go", "The moment it turned: spotting the wrong route", "How it ended and how you felt about it"],
     "targetVocab": ["doze off", "detour", "laugh it off"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "I got on the bus after a long day, put my headphones on and dozed off. But when I woke up, the shops outside looked completely new. It was the wrong bus, going the other way. So I got off, took an auto back, and turned a twenty-minute ride into a ninety-minute detour. My flatmates still laugh about it, and honestly, so do I."
+    }
   },
   {
     "id": "sit-incident-10",
@@ -105,7 +153,13 @@
     "prompt": "Tell a friend about a time you said something awkward not knowing the phone was on speaker.",
     "beats": ["Set the scene: who was on the call", "The moment it turned: when you found out", "How it ended and how you felt about it"],
     "targetVocab": ["mortified", "blurt out", "cover up"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "My cousin called me during her family lunch. Thinking it was just the two of us, I blurted out, 'Is Aunty still telling the same story?' But her phone was on speaker, and Aunty was sitting right next to her. Total silence. I tried to cover it up with a joke, and it didn't work. So I called Aunty that evening, still mortified, and said sorry properly."
+    }
   },
   {
     "id": "sit-incident-11",
@@ -117,7 +171,13 @@
     "prompt": "Tell a friend about a shop bill that was clearly wrong. How did you sort it out?",
     "beats": ["Set the scene: the shop and what you bought", "The moment it turned: spotting the wrong charge", "How it ended and how you felt about it"],
     "targetVocab": ["discrepancy", "receipt", "stand your ground"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "I bought groceries at the supermarket, and the bill felt high. So I checked the receipt in the car park and found they'd charged me for three packs of almonds, not one. I went back in, but the cashier said the system is never wrong. I stood my ground, calmly showed her the receipt and my bag, and the manager fixed the discrepancy in two minutes. Now I check before I leave the counter."
+    }
   },
   {
     "id": "sit-incident-12",
@@ -129,7 +189,13 @@
     "prompt": "Tell a friend about falling sick right before something important. What did you do?",
     "beats": ["Set the scene: the plan you were excited about", "The moment it turned: the fever hitting", "How it ended and how you felt about it"],
     "targetVocab": ["drained", "cancel", "gutted"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "We'd planned a Goa trip with college friends for six months. But two days before, I woke up with a high fever and felt completely drained. I waited a day, hoping it would pass, but it didn't. So I had to cancel, and I was gutted watching their photos from my bed. The good news: they've saved me a seat for the December trip."
+    }
   },
   {
     "id": "sit-incident-13",
@@ -141,7 +207,13 @@
     "prompt": "Tell a friend about being asked to say a few words at a wedding with zero notice.",
     "beats": ["Set the scene: whose wedding and where you sat", "The moment it turned: your name being called", "How it ended and how you felt after"],
     "targetVocab": ["rattled", "wing it", "relief"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "At my friend Rahul's wedding, I was happily eating when his dad handed me the mic and said, 'Say a few words.' I was totally rattled; I had nothing ready. So I winged it and told one story: Rahul getting lost on our college trip and asking a cow for directions. Everyone laughed, Rahul went red, and I sat down with huge relief."
+    }
   },
   {
     "id": "sit-incident-14",
@@ -153,7 +225,13 @@
     "prompt": "Tell a friend about a message you sent to the wrong person or group. What happened?",
     "beats": ["Set the scene: what you meant to send and to whom", "The moment it turned: hitting send and realising", "How it ended and how you felt about it"],
     "targetVocab": ["cringe", "damage control", "unsend"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "I meant to send my friend a meme about long meetings. But I sent it to the team group, right before our long meeting. I tried to unsend it, but my manager had already seen it. So I did some quick damage control and wrote, 'Wrong chat, but sadly accurate.' She replied with a laughing emoji. I still cringe when I think about it."
+    }
   },
   {
     "id": "sit-incident-16",
@@ -165,7 +243,13 @@
     "prompt": "Tell a friend about a time you tried cooking something and it went badly wrong.",
     "beats": ["Set the scene: what you tried to cook and for whom", "The moment it turned: the smell of burning", "How it ended and how you felt about it"],
     "targetVocab": ["charred", "smoke", "order in"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "I wanted to surprise my parents with paneer tikka on their anniversary. But I put the tray in the oven and went to take a call. Twenty minutes later, the kitchen was full of smoke, and the paneer was charred black. So we opened every window, laughed, and ordered in from their favourite place. Mum still calls it the best anniversary dinner I never made."
+    }
   },
   {
     "id": "sit-incident-17",
@@ -177,7 +261,13 @@
     "prompt": "Tell a friend about blanking out on a question in an interview. How did you recover?",
     "beats": ["Set the scene: the interview and the role", "The moment it turned: your mind going blank", "How it ended and how you felt after"],
     "targetVocab": ["blank out", "buy time", "recover"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "In my second interview round, the panel asked me to explain a project from my CV. But I blanked out completely; I couldn't remember a single detail. So I said, 'Give me a moment to pick the best example,' and took a breath to buy time. Then I started with the result, and the details came back. I recovered, and a week later I got the offer."
+    }
   },
   {
     "id": "sit-incident-18",
@@ -189,7 +279,13 @@
     "prompt": "Tell a friend about a power cut at the worst possible moment. What did everyone do?",
     "beats": ["Set the scene: what everyone was watching or doing", "The moment it turned: the lights going out", "How it ended and how you felt about it"],
     "targetVocab": ["groan", "candles", "wait it out"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "It was the last over of the final, and the whole family was around the TV. But just as the bowler ran in, the power went out. The whole building let out one big groan. So my dad lit candles, my cousin found the score on his phone, and we waited it out, all crowded around one tiny screen. We won, and we cheered in the dark."
+    }
   },
   {
     "id": "sit-incident-19",
@@ -201,7 +297,13 @@
     "prompt": "Tell a friend about water leaking into your flat late at night. What did you do first?",
     "beats": ["Set the scene: the time and the first sign", "The moment it turned: finding the source", "How it ended and how you felt about it"],
     "targetVocab": ["dripping", "bucket", "landlord"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "At two in the morning, I woke up to a strange sound: water dripping from the ceiling onto my bed. The flat upstairs had a burst pipe. But nobody upstairs was answering the door. So I put a bucket under the leak, moved my laptop and called the landlord, who woke them up. By three, the dripping stopped, and I slept on the sofa."
+    }
   },
   {
     "id": "sit-incident-20",
@@ -213,7 +315,13 @@
     "prompt": "Tell a friend about a train you nearly missed. What saved you?",
     "beats": ["Set the scene: the station and the plan", "The moment it turned: realising the time", "How it ended and how you felt about it"],
     "targetVocab": ["dash", "platform", "sheer luck"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "My train to Chennai was at 6:10, but my cab got stuck behind a wedding procession. I reached the station at 6:07. So I made a mad dash with my bag to platform five, up the stairs and down again. The train was already moving. But a guard held the door open, and I jumped in. It was sheer luck, and I've left an hour early ever since."
+    }
   },
   {
     "id": "sit-incident-21",
@@ -225,7 +333,13 @@
     "prompt": "Tell a friend about being mistaken for a stranger, or mistaking one yourself. What happened?",
     "beats": ["Set the scene: where it happened", "The moment it turned: the awkward recognition", "How it ended and how you felt about it"],
     "targetVocab": ["double take", "apologise", "laugh it off"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "I was at a café when I saw my old classmate Riya at the counter. So I walked up, tapped her shoulder and said, 'Riya! It's been years!' But she turned around, and it wasn't Riya at all. She did a double take, and I apologised about five times. Then she smiled and said, 'I get that a lot.' We both laughed it off."
+    }
   },
   {
     "id": "sit-incident-22",
@@ -237,7 +351,13 @@
     "prompt": "Tell a friend about a demo or video call that broke in front of important people.",
     "beats": ["Set the scene: who was watching", "The moment it turned: the thing breaking", "How it ended and how you felt after"],
     "targetVocab": ["glitch", "workaround", "composure"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "I was showing our new dashboard to the client's leadership on a video call. But right on the main screen, a glitch made every chart go blank. My heart was racing, but I kept my composure. So I said, 'Let me show you the version I tested this morning,' and used a recorded walkthrough as a workaround. We fixed the bug that evening, and the client approved it the next week."
+    }
   },
   {
     "id": "sit-incident-23",
@@ -249,7 +369,13 @@
     "prompt": "Tell a friend about a time you bargained hard at a market. Did it work out?",
     "beats": ["Set the scene: the shop and the price quoted", "The moment it turned: the final offer", "How it ended and how you felt about it"],
     "targetVocab": ["quote", "walk away", "deal"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "At a market in Jaipur, I liked a cotton bedsheet, and the seller quoted two thousand rupees. I offered six hundred, sure he'd meet me halfway. But he just smiled and folded it away. So I tried the oldest trick and walked away slowly. He didn't call me back. Ten minutes later, I went back and paid fifteen hundred. Not my best deal, but a great bedsheet."
+    }
   },
   {
     "id": "sit-incident-24",
@@ -261,7 +387,13 @@
     "prompt": "Tell a friend about a stray animal that followed you, or a pet doing something funny.",
     "beats": ["Set the scene: where you met the animal", "The moment it turned: it deciding to follow you", "How it ended and how you felt about it"],
     "targetVocab": ["stray", "trail", "soft spot"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "One night I bought a packet of biscuits on my way home and gave one to a stray near the shop. But she didn't stop at one. She trailed a few steps behind me all the way to my gate. So I sat on the step and fed her the rest. Now she waits there every evening, and the whole building has a soft spot for her."
+    }
   },
   {
     "id": "sit-incident-25",
@@ -273,7 +405,13 @@
     "prompt": "Tell a friend about preparing hard for the wrong thing before an exam or review.",
     "beats": ["Set the scene: what you prepared", "The moment it turned: seeing the actual paper or agenda", "How it ended and how you felt about it"],
     "targetVocab": ["sinking feeling", "wing it", "scrape through"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "Before my third-year exam, I studied chapter seven for two full days. But when the paper came, half the questions were from chapter eight. I got that sinking feeling right away. So I answered what I could, winged the rest with common sense, and scraped through with a pass. Since then, I always check the syllabus twice."
+    }
   },
   {
     "id": "sit-incident-26",
@@ -285,7 +423,13 @@
     "prompt": "Tell a friend about getting caught in sudden rain with no shelter. What did you do?",
     "beats": ["Set the scene: the sky before it broke", "The moment it turned: the downpour starting", "How it ended and how you felt about it"],
     "targetVocab": ["drenched", "take shelter", "downpour"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "I'd gone to buy vegetables on a sunny Sunday, without an umbrella. But on the way back, the sky turned dark, and a heavy downpour started in seconds. The only place to take shelter was a tiny bus stop that was already full. So I just walked home and got completely drenched, vegetables and all. My mum laughed and made me ginger tea."
+    }
   },
   {
     "id": "sit-incident-27",
@@ -297,7 +441,13 @@
     "prompt": "Tell a friend about checking into a room that was nothing like the photos. What did you do?",
     "beats": ["Set the scene: the booking and the arrival", "The moment it turned: opening the door", "How it ended and how you felt about it"],
     "targetVocab": ["cramped", "stuffy", "ask for a change"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "For our Munnar trip, I booked a hotel with photos of a big room and a valley view. But the room we got was cramped and stuffy, and the window faced a wall. So I went down to reception and politely asked for a change. They moved us to the top floor at no extra cost. The view was so good that we had breakfast on the balcony every day."
+    }
   },
   {
     "id": "sit-incident-28",
@@ -309,7 +459,13 @@
     "prompt": "Tell a friend about unexpected guests arriving right at dinner time. How did the house react?",
     "beats": ["Set the scene: the quiet evening plan", "The moment it turned: the doorbell ringing", "How it ended and how you felt about it"],
     "targetVocab": ["scramble", "stretch", "warmth"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "We'd just sat down to dinner when the doorbell rang. It was my dad's old friend with his whole family, six people. But we only had dal and rice for four. So everyone scrambled: Mum stretched the dal, I ran out for rotis, and my sister made a quick salad. It was crowded and noisy, but the warmth in that room is what I remember."
+    }
   },
   {
     "id": "sit-incident-29",
@@ -321,7 +477,13 @@
     "prompt": "Tell a friend about a game you nearly didn't watch that turned into something special.",
     "beats": ["Set the scene: why you almost skipped it", "The moment it turned: the play that pulled you in", "How it ended and how you felt about it"],
     "targetVocab": ["tune out", "edge of the seat", "glad"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "I almost skipped the IPL match my friends were watching; I was tired and wanted to tune out. But they dragged me along. With two overs left, our team needed thirty runs, and we were on the edge of our seats. Then the last ball went for six. We jumped so high we nearly broke the sofa. I'm so glad I went."
+    }
   },
   {
     "id": "sit-incident-30",
@@ -333,7 +495,13 @@
     "prompt": "Tell a friend about a stranger who helped you when you were stuck. What did they do?",
     "beats": ["Set the scene: the trouble you were in", "The moment it turned: the stranger stepping in", "How it ended and how you felt about it"],
     "targetVocab": ["stranded", "grateful", "pay it forward"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "try",
+      "answer": "I was driving back from Mysore when a tyre went flat on an empty highway. My spare was flat too, and my phone was at five percent. I was stranded. But a truck driver stopped, rolled the tyre to a puncture shop two kilometres away and came back with it fixed. He refused any money. I'm still grateful, so I try to pay it forward when I see someone stuck."
+    }
   },
   {
     "id": "sit-office-01",
@@ -345,7 +513,13 @@
     "prompt": "Give your manager a 30-second update: what you finished, what is next, and what is stuck.",
     "beats": ["The headline first: where things stand", "The reason: what moved and what blocked you", "The ask or next step: what happens this week"],
     "targetVocab": ["shipped", "blocked", "on track"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Quick update: the login page is shipped and has been live since Friday. Next is the payment screen, and that's on track for Thursday. One thing is blocked: I still need API access from the vendor. Could you nudge their lead today?"
+    }
   },
   {
     "id": "sit-office-02",
@@ -357,7 +531,13 @@
     "prompt": "Tell your manager the Friday deadline is not realistic. Be polite, give a reason and an option.",
     "beats": ["The headline first: the date is at risk", "The reason: what the work actually needs", "The ask or next step: your proposed date or scope cut"],
     "targetVocab": ["trade-off", "realistic", "propose"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 2,
+      "kind": "try",
+      "answer": "I don't think Friday is realistic for the full report. The data cleaning alone needs three more days. I'd propose two options: the summary by Friday and the full report next Wednesday, or everything on Wednesday. Which trade-off works better for you?"
+    }
   },
   {
     "id": "sit-office-03",
@@ -369,7 +549,13 @@
     "prompt": "Disagree politely with a senior's plan in a meeting. Respect first, then your view.",
     "beats": ["The headline first: agree on the goal, differ on the way", "The reason: the risk or cost you see", "The ask or next step: your alternative and a check"],
     "targetVocab": ["candid", "concern", "alternative"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 2,
+      "kind": "try",
+      "answer": "I agree we need to launch before the holidays. My one concern is launching in every city at once: if something breaks, support can't keep up. Can I suggest an alternative? We start with two cities next week and add the rest if the numbers hold."
+    }
   },
   {
     "id": "sit-office-04",
@@ -381,7 +567,13 @@
     "prompt": "Ask a busy teammate for help on something stuck. Keep it short and make it easy to say yes.",
     "beats": ["The headline first: exactly what you need", "The reason: what you already tried", "The ask or next step: ten minutes and when"],
     "targetVocab": ["stuck", "unblock", "ten minutes"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Hi Priya, I know you're busy. I'm stuck on the test server login, and you set it up. Could you give me ten minutes after lunch to unblock it? If today's bad, tomorrow morning works too."
+    }
   },
   {
     "id": "sit-office-05",
@@ -393,7 +585,13 @@
     "prompt": "Tell your manager something slipped before they hear it elsewhere. Own it and bring a plan.",
     "beats": ["The headline first: what slipped, in one line", "The reason: what caused it, no excuses", "The ask or next step: your fix and the new date"],
     "targetVocab": ["oversight", "own it", "recover"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 2,
+      "kind": "try",
+      "answer": "I want to flag something before you hear it from the client. I missed one of their changes in Monday's file, so the report they got was wrong. That's my oversight, and I own it. I've already fixed it, and I'll send the corrected version by four with a short note. I've also added a check so it doesn't happen again."
+    }
   },
   {
     "id": "sit-office-06",
@@ -405,7 +603,13 @@
     "prompt": "Ask your manager for two days off next week. Show that the work is covered.",
     "beats": ["The headline first: the dates you need", "The reason: cover arranged and nothing critical", "The ask or next step: confirm and hand over"],
     "targetVocab": ["covered", "hand over", "approve"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Could I take next Thursday and Friday off? Nothing is due on those days, and I'll hand over the client emails to Arjun on Wednesday. He's agreed to cover. If you approve it, I'll block my calendar today."
+    }
   },
   {
     "id": "sit-office-07",
@@ -417,7 +621,13 @@
     "prompt": "The client wants extra work in the same deadline. Push back politely with an option.",
     "beats": ["The headline first: what fits and what does not", "The reason: the cost to the current date", "The ask or next step: phased option or new date"],
     "targetVocab": ["scope", "phase", "implication"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 2,
+      "kind": "try",
+      "answer": "We'd love to add the reports, but not by the same deadline without risking quality. The implication is a two-week delay for everything. Here's an option: we launch the agreed scope on the 30th and deliver the reports as phase two by the middle of next month. Would that work for you?"
+    }
   },
   {
     "id": "sit-office-08",
@@ -429,7 +639,13 @@
     "prompt": "Ask your manager for honest feedback on your last month. Make it easy to be candid.",
     "beats": ["The headline first: you want one thing to improve", "The reason: where you felt unsure", "The ask or next step: one habit to change"],
     "targetVocab": ["candid", "blind spot", "improve"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Could you give me ten minutes of honest feedback on my last month? I really want to improve, so please be candid. If there's one thing I'm not seeing, a blind spot, that's what I most want to hear."
+    }
   },
   {
     "id": "sit-office-09",
@@ -441,7 +657,13 @@
     "prompt": "Hand over your task before a holiday. State what is done, what is pending, and who to call.",
     "beats": ["The headline first: the state of the work", "The reason: pending items and their owners", "The ask or next step: where the notes live"],
     "targetVocab": ["pending", "owner", "notes"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Here's where things stand before my leave. The vendor contract is done and signed. Two things are pending: the March invoices and the client's comments on the deck. Rahul is the owner for both while I'm away, and my notes are in the shared folder. For anything urgent, please call him first."
+    }
   },
   {
     "id": "sit-office-10",
@@ -453,7 +675,13 @@
     "prompt": "Decline a meeting that needs no input from you. Be warm, brief, and offer an alternative.",
     "beats": ["The headline first: you will skip, with thanks", "The reason: no open point needs you", "The ask or next step: notes or a short catch-up"],
     "targetVocab": ["skip", "notes", "loop me in"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Thanks for including me. I'll skip this one, since the agenda doesn't need input from my side. Could someone share the notes afterwards? And if a question for my team comes up, please loop me in, and I'll reply the same day."
+    }
   },
   {
     "id": "sit-office-11",
@@ -465,7 +693,13 @@
     "prompt": "Give an estimate you are not fully sure of. State the range and what could change it.",
     "beats": ["The headline first: the range, not one number", "The reason: the two biggest unknowns", "The ask or next step: when you will confirm"],
     "targetVocab": ["ballpark", "unknown", "confirm"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "My ballpark estimate is two to three weeks. The big unknown is the old payment code; I haven't opened it yet. If it's clean, it's two weeks; if not, three. I'll confirm a firm date by Wednesday, once I've looked."
+    }
   },
   {
     "id": "sit-office-12",
@@ -477,7 +711,13 @@
     "prompt": "Report a live issue on a call. State impact first, then cause, then the fix in progress.",
     "beats": ["The headline first: who is affected and how badly", "The reason: what you know so far", "The ask or next step: the fix and next update time"],
     "targetVocab": ["impact", "mitigate", "update"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 2,
+      "kind": "try",
+      "answer": "Impact first: since 10:15, about a third of our users can't log in on Android. The cause looks like this morning's app update. We're mitigating it now by rolling the update back, which should take twenty minutes. I'll send an update at eleven, or sooner if it's fixed."
+    }
   },
   {
     "id": "sit-office-13",
@@ -489,7 +729,13 @@
     "prompt": "Two people think the other owns a task. Raise it calmly and propose one clear owner.",
     "beats": ["The headline first: the gap, without blame", "The reason: how the confusion happened", "The ask or next step: one owner and a date"],
     "targetVocab": ["gap", "owner", "clarify"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "I think we have a gap on the vendor follow-up. Rahul and I both thought the other one had it, so nobody has sent it. Let's clarify now: I'll be the owner and send it today. Rahul, could you review it before it goes out?"
+    }
   },
   {
     "id": "sit-office-14",
@@ -501,7 +747,13 @@
     "prompt": "Thank a colleague who stayed late to help you. Name exactly what they did and its effect.",
     "beats": ["The headline first: what they did", "The reason: why it mattered to the outcome", "The ask or next step: return the favour"],
     "targetVocab": ["grateful", "made the difference", "credit"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Arjun, I'm really grateful you stayed late on Tuesday. You found the bug in the export, and that's why the client got their report on time. It made the difference. I've told our manager, and I'll give you the credit in Friday's review."
+    }
   },
   {
     "id": "sit-office-15",
@@ -513,7 +765,13 @@
     "prompt": "Apologise to the team for your delay. Keep it short, own it fully, and state the new date.",
     "beats": ["The headline first: the apology in one line", "The reason: what happened, briefly", "The ask or next step: the new date you will meet"],
     "targetVocab": ["acknowledge", "my miss", "commit"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "I want to acknowledge the delay on the test plan. That's my miss: I underestimated the review time. The new date is Thursday, end of day, and I commit to that. If anything changes, you'll hear it from me first."
+    }
   },
   {
     "id": "sit-office-16",
@@ -525,7 +783,13 @@
     "prompt": "Pitch a small process fix to your team. Name the pain, the fix, and the cost.",
     "beats": ["The headline first: the fix in one line", "The reason: the pain it removes", "The ask or next step: a one-week trial"],
     "targetVocab": ["friction", "trial", "payoff"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "A small idea for the team. Right now, every bug report needs three messages before anyone can start, and that friction slows us down. The fix is a five-line template, and it costs ten minutes to set up. Can we run a one-week trial and see if the payoff is real?"
+    }
   },
   {
     "id": "sit-office-17",
@@ -537,7 +801,13 @@
     "prompt": "Escalate an issue stuck for a week. State facts, show attempts, and ask for one decision.",
     "beats": ["The headline first: what is stuck and since when", "The reason: the two things you already tried", "The ask or next step: the one decision you need"],
     "targetVocab": ["stalled", "attempt", "escalate"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 2,
+      "kind": "try",
+      "answer": "I need to escalate one item. The data access request has stalled for a week. I've made three attempts, two emails and one call, with no reply. Without it, our testing can't start. Could you decide today: do we go to their head, or do we move the date?"
+    }
   },
   {
     "id": "sit-office-18",
@@ -549,7 +819,13 @@
     "prompt": "Ask to work from home on Friday. Give the reason and show availability stays the same.",
     "beats": ["The headline first: the day and the request", "The reason: why home works better that day", "The ask or next step: reachable hours and cover"],
     "targetVocab": ["available", "cover", "deliverable"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Could I work from home this Friday? A plumber is coming in the morning, and someone needs to be at home. I'll be available on chat and calls all day, as usual. The deliverable for Friday, the sales deck, will be ready by noon either way."
+    }
   },
   {
     "id": "sit-office-19",
@@ -561,7 +837,13 @@
     "prompt": "Explain to your manager why a number was missed. Facts first, then cause, then the fix.",
     "beats": ["The headline first: the miss in one line", "The reason: the one or two real causes", "The ask or next step: the fix and next check"],
     "targetVocab": ["miss", "cause", "correct course"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 2,
+      "kind": "try",
+      "answer": "We missed the sign-up target: 800 against a goal of 1,000. The main cause was the app store delay; we lost ten days of the campaign. To correct course, we're running the campaign for two extra weeks, starting Monday. I'll share the numbers every Friday."
+    }
   },
   {
     "id": "sit-office-20",
@@ -573,7 +855,13 @@
     "prompt": "Introduce yourself to a new teammate. Say what you do and offer one concrete help.",
     "beats": ["The headline first: your role in one line", "The reason: what you can help with", "The ask or next step: a time to walk them through"],
     "targetVocab": ["welcome", "point of contact", "walkthrough"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Welcome to the team! I'm Fatima, and I handle testing for the mobile app. I'll be your point of contact for anything about releases. Would a thirty-minute walkthrough of our tools tomorrow help? I'll send an invite."
+    }
   },
   {
     "id": "sit-office-21",
@@ -585,7 +873,13 @@
     "prompt": "Demo what you built in one minute. Show the result first, then one detail, then what is next.",
     "beats": ["The headline first: what it does now", "The reason: the one detail that matters", "The ask or next step: what you want feedback on"],
     "targetVocab": ["demo", "outcome", "feedback"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Here's the outcome first: you can now reorder past purchases in two taps. One detail I like: it remembers your usual delivery slot. Next, we'll test it with fifty users. I'd love your feedback after this demo."
+    }
   },
   {
     "id": "sit-office-22",
@@ -597,7 +891,13 @@
     "prompt": "Tell your manager you are overloaded. List the three things and ask which can move.",
     "beats": ["The headline first: you cannot do all three well", "The reason: the three items and their dates", "The ask or next step: which one moves"],
     "targetVocab": ["bandwidth", "prioritise", "trade-off"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 2,
+      "kind": "try",
+      "answer": "I don't have the bandwidth to finish all three this week: the client deck, the quarterly report and the new joiner's training plan. I can do two of them well. Could you help me prioritise? Which one can move to next week?"
+    }
   },
   {
     "id": "sit-office-23",
@@ -609,7 +909,13 @@
     "prompt": "Follow up a second time on something pending. Stay warm, restate the ask and the date.",
     "beats": ["The headline first: the pending item", "The reason: why the date still matters", "The ask or next step: confirm or a new date"],
     "targetVocab": ["nudge", "pending", "confirm"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Hi Joseph, just a gentle nudge on the access request from last Monday. It's still pending, and we need it by Thursday to start testing. Could you confirm that date works, or let me know who else I should ask?"
+    }
   },
   {
     "id": "sit-office-24",
@@ -621,7 +927,13 @@
     "prompt": "Introduce yourself to a new client on a call. Name, role, and what you own for them.",
     "beats": ["The headline first: name and role", "The reason: what you own for them", "The ask or next step: invite their first concern"],
     "targetVocab": ["own", "point of contact", "concern"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Hi, I'm Riya, and I lead your project on our side. I own the delivery plan and the weekly updates. I'm your point of contact, so if you have any concern, big or small, please come straight to me."
+    }
   },
   {
     "id": "sit-office-25",
@@ -633,7 +945,13 @@
     "prompt": "Tell a junior their work needs a rework. Be direct about the gap and kind about the person.",
     "beats": ["The headline first: the gap in one line", "The reason: the standard it missed", "The ask or next step: support and a new date"],
     "targetVocab": ["gap", "standard", "support"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 2,
+      "kind": "try",
+      "answer": "Thanks for the draft. I'll be direct: it needs a rework before it goes to the client. The gap is the numbers; three tables don't match the source. Our standard is that every number is checked twice. You're good at this, and I'll support you: let's go through one table together at three."
+    }
   },
   {
     "id": "sit-office-26",
@@ -645,7 +963,13 @@
     "prompt": "Ask your manager to approve a small tool or course. State cost, benefit, and time needed.",
     "beats": ["The headline first: what you want approved", "The reason: the benefit to the work", "The ask or next step: cost and time"],
     "targetVocab": ["cost", "benefit", "approve"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Could you approve a short course on data dashboards? The cost is small, and it fits our learning budget. It takes four evenings. The benefit is that I can build our weekly reports myself instead of waiting for the analytics team."
+    }
   },
   {
     "id": "sit-office-27",
@@ -657,7 +981,13 @@
     "prompt": "Close a project review call. Summarise decisions, owners, and the next check-in date.",
     "beats": ["The headline first: the two decisions taken", "The reason: owners against each item", "The ask or next step: the next check-in"],
     "targetVocab": ["decisions", "owners", "check-in"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Let me sum up before we close. Two decisions: we launch on the 15th, and the reports wait for phase two. Owners: Arjun has the launch checklist, and Priya has the client email. Our next check-in is Monday at ten."
+    }
   },
   {
     "id": "sit-office-28",
@@ -669,7 +999,13 @@
     "prompt": "Chase a vendor who missed a delivery. Firm on the date, polite in tone, clear on impact.",
     "beats": ["The headline first: the missed date", "The reason: the impact on your plan", "The ask or next step: the new committed date"],
     "targetVocab": ["committed", "impact", "confirm"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Hi, I'm calling about the laptops you committed to deliver last Friday. They haven't arrived. The impact is real: three new joiners start on Monday with nothing to work on. Could you confirm a delivery time for tomorrow?"
+    }
   },
   {
     "id": "sit-office-29",
@@ -681,7 +1017,13 @@
     "prompt": "State your case in an appraisal chat. Name two outcomes, your part in them, and what is next.",
     "beats": ["The headline first: your two strongest outcomes", "The reason: your specific part in each", "The ask or next step: the next level you want"],
     "targetVocab": ["outcome", "contribution", "next level"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "clearly",
+      "level": 2,
+      "kind": "try",
+      "answer": "I'd like to talk about two outcomes from this year. First, support tickets fell by a third after the new help page, and I led that project. Second, I trained three new joiners, and all of them now handle clients on their own. That's my contribution. Next, I'd like to lead a bigger project. What would it take to reach the next level?"
+    }
   },
   {
     "id": "sit-office-30",
@@ -693,7 +1035,13 @@
     "prompt": "Refer a friend for an open role. Say why they fit and where they may need support.",
     "beats": ["The headline first: the fit in one line", "The reason: evidence from work you saw", "The ask or next step: intro and next step"],
     "targetVocab": ["fit", "evidence", "vouch"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "I'd like to refer my friend Rahul for the data analyst role. He's a strong fit: he built the sales dashboards at his current company, and they still use them. I can vouch for how hard he works. Where he may need support is presenting to clients; he's quiet at first."
+    }
   },
   {
     "id": "sit-office-31",
@@ -705,7 +1053,13 @@
     "prompt": "Tell your manager you are leaving. Be grateful, brief, and clear on notice and handover.",
     "beats": ["The headline first: the decision, stated plainly", "The reason: one honest line, no blame", "The ask or next step: notice period and handover"],
     "targetVocab": ["grateful", "notice", "handover"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 2,
+      "kind": "try",
+      "answer": "I wanted to tell you first: I've decided to leave, and I've accepted another offer. I'm really grateful for these three years and everything you've taught me. My notice period is two months, so my last day would be 30 June. I'll write a full handover plan this week."
+    }
   },
   {
     "id": "sit-office-32",
@@ -717,7 +1071,13 @@
     "prompt": "Ask for a raise. State your outcomes, the market gap, and the number you want.",
     "beats": ["The headline first: the outcomes you delivered", "The reason: the gap you want closed", "The ask or next step: your number and a timeline"],
     "targetVocab": ["outcomes", "market", "expectation"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "clearly",
+      "level": 2,
+      "kind": "try",
+      "answer": "I'd like to talk about my pay. This year, I led the new billing system, and month-end closing went from five days to two. I've also looked at the market, and similar roles pay around fifteen percent more. My expectation is a raise that closes that gap. Could we discuss it in this cycle?"
+    }
   },
   {
     "id": "sit-office-33",
@@ -729,7 +1089,13 @@
     "prompt": "Clear a misunderstanding with a colleague. State what you heard, check it, and reset.",
     "beats": ["The headline first: what you thought happened", "The reason: check what they meant", "The ask or next step: the reset you both agree on"],
     "targetVocab": ["misunderstanding", "check", "reset"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "I think we had a misunderstanding this morning. What I heard was that you'd take over the client calls. Can I check if that's what you meant? If I got it wrong, let's reset and agree who does what."
+    }
   },
   {
     "id": "sit-office-34",
@@ -741,7 +1107,13 @@
     "prompt": "Ask one sharp question in a large all-hands. Keep it to two sentences plus the question.",
     "beats": ["The headline first: the context in one line", "The reason: why it matters to many teams", "The ask or next step: your one question"],
     "targetVocab": ["context", "concise", "question"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Hi, I'm Arjun from support. You mentioned we're moving to one app next year. My question: will the old app keep working for current customers during the move?"
+    }
   },
   {
     "id": "sit-office-35",
@@ -753,7 +1125,13 @@
     "prompt": "Say goodbye to a leaving teammate. Name one thing you learnt from them and wish them well.",
     "beats": ["The headline first: what you will miss", "The reason: one thing they taught you", "The ask or next step: staying in touch"],
     "targetVocab": ["learnt", "grateful", "stay in touch"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "clearly",
+      "level": 1,
+      "kind": "try",
+      "answer": "Priya, I'm going to miss you. The one thing I learnt from you is to ask the client 'why' before starting any work. I'm grateful for all the times you helped me. All the best in the new role, and let's stay in touch."
+    }
   },
   {
     "id": "sit-feeling-01",
@@ -765,7 +1143,13 @@
     "prompt": "Describe how you felt on the day your results came out. Name the feeling precisely.",
     "beats": ["The moment: where you were when you saw it", "What it felt like: the exact feeling in your body and mind", "What you did next and what stayed with you"],
     "targetVocab": ["relieved", "numb", "anxious"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "I was at a cyber café with two friends, waiting for the page to load. My hands were cold, and I felt anxious in my stomach. When I saw I'd passed, I didn't feel happy at first. I felt numb, almost blank. Then relief came slowly, like my shoulders dropping. I called my mum, and only when she cried did I start smiling."
+    }
   },
   {
     "id": "sit-feeling-02",
@@ -777,7 +1161,13 @@
     "prompt": "Describe how you felt when a close friend moved to another city. Be precise, not generic.",
     "beats": ["The moment: the goodbye itself", "What it felt like: the exact feeling underneath", "What you did next and what stayed with you"],
     "targetVocab": ["wistful", "hollow", "stay in touch"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "I said goodbye to Arjun at the railway station, and we both pretended it was no big deal. On the way home, I felt hollow, as if something normal had just gone missing. Now when I pass our old chai stall, I feel wistful rather than sad. We call every Sunday, and we've managed to stay in touch for two years."
+    }
   },
   {
     "id": "sit-feeling-03",
@@ -789,7 +1179,13 @@
     "prompt": "Describe a moment you were praised unexpectedly at work. How did it actually feel?",
     "beats": ["The moment: who said what and where", "What it felt like: the exact feeling", "What you did next and what stayed with you"],
     "targetVocab": ["validated", "sheepish", "motivated"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "In a team call, my manager suddenly said, 'Ravi's report saved us last week.' I felt sheepish at first; my face went warm, and I didn't know where to look. A minute later, I felt validated, as if the late nights had been seen. I left that call motivated and started the next report the same afternoon."
+    }
   },
   {
     "id": "sit-feeling-04",
@@ -801,7 +1197,13 @@
     "prompt": "Describe how you felt walking into your home after months away. What hit you first?",
     "beats": ["The moment: opening the door", "What it felt like: the exact feeling", "What you did next and what stayed with you"],
     "targetVocab": ["grounded", "familiar", "relief"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "After eight months in another city, I opened the door, and the smell of my mother's cooking hit me first. Everything was so familiar: the creaky fan, the same calendar on the wall. I felt relief first, then I felt grounded, as if my feet were back on solid floor. I sat in the kitchen for an hour, just talking."
+    }
   },
   {
     "id": "sit-feeling-05",
@@ -813,7 +1215,13 @@
     "prompt": "Describe how you felt after a rejection: a job, a role, or a plan that fell through.",
     "beats": ["The moment: how you heard the no", "What it felt like: the exact feeling, not just sad", "What you did next and what stayed with you"],
     "targetVocab": ["crestfallen", "stung", "bounce back"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "I got the email on a Monday morning: they'd chosen another candidate. It stung more than I expected, a sharp feeling in my chest, because I'd already pictured myself in that job. For a day, I was crestfallen and quiet. Then I asked them for feedback, used it in my next interview, and bounced back with a better offer a month later."
+    }
   },
   {
     "id": "sit-feeling-06",
@@ -825,7 +1233,13 @@
     "prompt": "Describe a time you were blamed for something that was not your fault. How did it feel?",
     "beats": ["The moment: the blame landing on you", "What it felt like: the exact flavour of anger", "What you did next and what stayed with you"],
     "targetVocab": ["indignant", "unfair", "steady"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "In a meeting, a senior said the delay was my fault, but I'd sent the file on time. I felt indignant; my ears went hot, and my jaw got tight. It felt deeply unfair. But I kept my voice steady, said, 'Let me share the email,' and showed the time it was sent. He nodded, and we moved on. I was still shaking a little afterwards."
+    }
   },
   {
     "id": "sit-feeling-07",
@@ -837,7 +1251,13 @@
     "prompt": "Describe your first evening alone in a new city. What did the loneliness feel like?",
     "beats": ["The moment: the empty room that evening", "What it felt like: the exact texture of it", "What you did next and what stayed with you"],
     "targetVocab": ["adrift", "hollow", "settle in"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "My first evening in Hyderabad, I sat on the bed in an empty room with one bag. The silence felt loud. I felt adrift, as if nothing around me belonged to me, and a bit hollow inside. So I went out, found a small dosa place and ate slowly, just to be around people. That's where I started to settle in."
+    }
   },
   {
     "id": "sit-feeling-08",
@@ -849,7 +1269,13 @@
     "prompt": "Describe how you felt after snapping at someone you care about. What did the guilt feel like?",
     "beats": ["The moment: the words leaving your mouth", "What it felt like: the guilt afterwards", "What you did next and what stayed with you"],
     "targetVocab": ["remorseful", "snap", "apologise"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "My mum called three times during a busy workday, and I snapped at her: 'I'm working, Mum!' The moment I hung up, I felt remorseful, a heavy, sinking feeling. I couldn't focus for the next hour. So I called her back, apologised properly and asked what she needed. She only wanted to tell me she'd made my favourite dish."
+    }
   },
   {
     "id": "sit-feeling-09",
@@ -861,7 +1287,13 @@
     "prompt": "Describe a small moment of sudden happiness. What made it different from just feeling good?",
     "beats": ["The moment: the small trigger", "What it felt like: the exact feeling", "What you did next and what stayed with you"],
     "targetVocab": ["buoyant", "light", "linger"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "I was walking to the bus stop on a normal Tuesday when a kid on a bicycle waved and shouted, 'Hi, uncle!' I suddenly felt buoyant and light, as if someone had opened a window. It wasn't just feeling good; it came from nowhere. I smiled at strangers all the way to work, and the feeling lingered until lunch."
+    }
   },
   {
     "id": "sit-feeling-10",
@@ -873,7 +1305,13 @@
     "prompt": "Describe feeling envious of a friend's success while still being happy for them. Name both feelings.",
     "beats": ["The moment: hearing their news", "What it felt like: the two feelings side by side", "What you did next and what stayed with you"],
     "targetVocab": ["ambivalent", "genuine", "drive"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "My best friend told me she'd got the job in London that I'd also wanted. My happiness for her was genuine; I hugged her right there. But on the way home, I felt a small sting of envy too. I was ambivalent: proud of her and jealous at the same time. So I turned that feeling into drive and signed up for the course I'd been putting off."
+    }
   },
   {
     "id": "sit-feeling-11",
@@ -885,7 +1323,13 @@
     "prompt": "Describe how you felt just before speaking in front of a group. Where did you feel it?",
     "beats": ["The moment: waiting for your turn", "What it felt like: the exact physical feeling", "What you did next and what stayed with you"],
     "targetVocab": ["jittery", "dry mouth", "settle"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "I was third on the list to present at the team offsite. While the others spoke, I felt jittery; my knee kept bouncing, and I had a dry mouth. I felt it most in my stomach. So I took three slow breaths and drank some water. After my first two sentences, my nerves began to settle."
+    }
   },
   {
     "id": "sit-feeling-12",
@@ -897,7 +1341,13 @@
     "prompt": "Describe the relief of hearing good news after a health worry. What did relief feel like?",
     "beats": ["The moment: the wait before the news", "What it felt like: relief arriving in the body", "What you did next and what stayed with you"],
     "targetVocab": ["tense", "exhale", "grateful"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "My father had some tests, and we waited four days for the results. The whole family was tense; nobody said it, but we all checked our phones too often. When the doctor said everything was normal, I felt my whole body exhale. Relief felt like warm water. I hugged him, and I've felt grateful for ordinary days ever since."
+    }
   },
   {
     "id": "sit-feeling-13",
@@ -909,7 +1359,13 @@
     "prompt": "Describe a moment you felt proud of your parents. What did they do, and how did pride feel?",
     "beats": ["The moment: what they did", "What it felt like: pride, precisely", "What you did next and what stayed with you"],
     "targetVocab": ["proud", "quiet", "look up to"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "Last year, my mother finished her degree at fifty-two, studying every night after work. At the ceremony, she walked up in a simple cotton saree. I felt proud, but it was a quiet pride, a warm tightness in my throat, not cheering. I look up to her more than ever, and I tell her that more often now."
+    }
   },
   {
     "id": "sit-feeling-14",
@@ -921,7 +1377,13 @@
     "prompt": "Describe sitting through a long boring family function. What did the boredom feel like?",
     "beats": ["The moment: the hour that would not end", "What it felt like: boredom in the body", "What you did next and what stayed with you"],
     "targetVocab": ["restless", "fidget", "drag"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "At my cousin's engagement, the speeches went on for two hours. The boredom felt physical: I was restless, I kept fidgeting with my phone, and every minute seemed to drag. I counted the lights on the ceiling twice. So I offered to help in the kitchen, and the time finally moved."
+    }
   },
   {
     "id": "sit-feeling-15",
@@ -933,7 +1395,13 @@
     "prompt": "Describe the first sign of hope after a long low phase. What changed inside you?",
     "beats": ["The moment: the small good sign", "What it felt like: hope returning", "What you did next and what stayed with you"],
     "targetVocab": ["glimmer", "lift", "cautious"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "For months after losing my job, every day felt grey. Then one morning, a company I liked replied: 'Can we talk this week?' It was only a glimmer, but I felt a lift in my chest, as if I'd been holding my breath. My hope was cautious; I didn't tell anyone yet. But I went for a walk that evening, my first in weeks."
+    }
   },
   {
     "id": "sit-feeling-16",
@@ -945,7 +1413,13 @@
     "prompt": "Describe a moment of public embarrassment. What did it feel like, exactly?",
     "beats": ["The moment: what everyone saw", "What it felt like: embarrassment, precisely", "What you did next and what stayed with you"],
     "targetVocab": ["mortified", "burning", "laugh it off"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "I tripped on the stairs in a crowded metro station and dropped my lunch box everywhere. Rice on the floor, people staring. I was mortified; my face was burning, and I wanted to disappear. Then an old man picked up my lid and said, 'At least it wasn't biryani.' I laughed it off with him, and the burning went away."
+    }
   },
   {
     "id": "sit-feeling-17",
@@ -957,7 +1431,13 @@
     "prompt": "Describe a morning when you felt completely calm. What created that calm?",
     "beats": ["The moment: the morning itself", "What it felt like: calm, precisely", "What you did next and what stayed with you"],
     "targetVocab": ["serene", "unhurried", "clarity"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "One Sunday, I woke up before everyone else, made tea and sat on the balcony. No phone, just birds and a slow street. I felt serene and unhurried, as if there was enough time for everything. The calm came from having nothing to answer. After an hour, I had a clarity I never get on weekdays, and I planned my whole week in ten minutes."
+    }
   },
   {
     "id": "sit-feeling-18",
@@ -969,7 +1449,13 @@
     "prompt": "Describe a week when everything piled up at once. What did being overwhelmed feel like?",
     "beats": ["The moment: the pile-up becoming clear", "What it felt like: overwhelm, precisely", "What you did next and what stayed with you"],
     "targetVocab": ["overwhelmed", "triage", "one thing"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "One week, a client deadline, my sister's wedding preparations and a move to a new flat all landed at once. Feeling overwhelmed was like having too many tabs open in my head; I'd start one thing and jump to another. So on Wednesday, I wrote everything down and did a quick triage. Then I did one thing at a time. The week was still busy, but I could breathe."
+    }
   },
   {
     "id": "sit-feeling-19",
@@ -981,7 +1467,13 @@
     "prompt": "Describe missing your college days. What exactly do you miss, and how does it feel?",
     "beats": ["The moment: what triggered the memory", "What it felt like: nostalgia, precisely", "What you did next and what stayed with you"],
     "targetVocab": ["wistful", "carefree", "memory"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "Sometimes an old song comes on, and I'm back in our hostel corridor at midnight. What I miss isn't the classes. It's how carefree we were: chai at 2 a.m., no calendar, no emails. I feel wistful, a warm ache with a smile in it. So I keep one memory alive: our whole group still meets every December."
+    }
   },
   {
     "id": "sit-feeling-20",
@@ -993,7 +1485,13 @@
     "prompt": "Describe how real confidence felt after you earned a win. How is it different from showing off?",
     "beats": ["The moment: the win landing", "What it felt like: quiet confidence", "What you did next and what stayed with you"],
     "targetVocab": ["grounded", "quiet", "earned"],
-    "targetSec": 30
+    "targetSec": 30,
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "try",
+      "answer": "After six months of practice, I gave my first client presentation without notes, and it went well. The confidence I felt was quiet. I didn't want to tell everyone; I just felt grounded, steady on my feet. It felt earned, not borrowed. Showing off needs an audience; this didn't. I went home and simply prepared for the next one."
+    }
   },
   {
     "id": "sit-opinion-01",
@@ -1005,7 +1503,13 @@
     "prompt": "Give your view on work from home: is it better than office? Take a side and defend it.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["flexibility", "isolation", "balance"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "I think a mix is better than full-time office. The main reason is flexibility: I get two hours back on home days, and I use them to work and sleep. The best counterpoint is isolation, and that's real. So I'd keep two office days for people and three home days for focused work. That's the balance."
+    }
   },
   {
     "id": "sit-opinion-02",
@@ -1017,7 +1521,13 @@
     "prompt": "Should busy city centres ban private cars? Give your view with one strong reason.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["congestion", "public transport", "trade-off"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "Yes, I think busy city centres should ban private cars, at least at peak hours. The strongest reason is congestion: too many cars carry just one person and block the road for buses. The best counterpoint is that public transport isn't good enough yet. That's fair, so the ban should come after more buses and metro lines, not before. It's a trade-off worth making."
+    }
   },
   {
     "id": "sit-opinion-03",
@@ -1029,7 +1539,13 @@
     "prompt": "Is ambition overrated? Give your view: should people chase big titles or a calm life?",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["ambition", "content", "cost"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "I don't think ambition is overrated, but chasing titles is. The strongest reason is that ambition for real skills makes work more interesting at any level. The best counterpoint is that ambition has a cost: stress, long hours, less family time. I agree, so I'd aim high on the work I love and stay content with the title I have."
+    }
   },
   {
     "id": "sit-opinion-04",
@@ -1041,7 +1557,13 @@
     "prompt": "For a young earner in a big city: is it smarter to rent or buy? Take a clear side.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["flexibility", "commitment", "numbers"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "For a young earner in a big city, I'd rent. The strongest reason is flexibility: in your twenties, your job and your city can change within a year. The best counterpoint is that rent feels like wasted money. But when I run the numbers, a big loan is a huge commitment that early. So rent now, save, and buy once your life is settled."
+    }
   },
   {
     "id": "sit-opinion-05",
@@ -1053,7 +1575,13 @@
     "prompt": "Have Indian weddings become too big and wasteful? Give your honest view with a reason.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["wasteful", "tradition", "moderation"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "Yes, I think many weddings have become too big. The strongest reason is that some families take loans for one weekend, and that's wasteful. The best counterpoint is tradition: weddings bring the whole family together, and that matters. I agree, so I'm for moderation: keep the rituals and the people, and cut the show."
+    }
   },
   {
     "id": "sit-opinion-06",
@@ -1065,7 +1593,13 @@
     "prompt": "Will AI tools create more jobs than they remove? Give your view with one strong reason.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["automate", "displace", "adapt"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "I think AI will change more jobs than it removes. The strongest reason is that it automates tasks, not whole roles, so most people will do the same job with new tools. The best counterpoint is that some jobs will be displaced, especially simple data work. That's true, so companies and people need to adapt early, with real training."
+    }
   },
   {
     "id": "sit-opinion-07",
@@ -1077,7 +1611,13 @@
     "prompt": "What matters more for a career: high marks or real skills? Take a side and defend it.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["rote", "practical", "signal"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "I think real skills matter more over a career. The strongest reason is that after your first job, nobody asks about your marks; they ask what you can do. The best counterpoint is that marks are a signal for your first interview. True, so get decent marks, but don't spend years on rote learning when you could build practical skills."
+    }
   },
   {
     "id": "sit-opinion-08",
@@ -1089,7 +1629,13 @@
     "prompt": "For staying fit with a desk job: is a gym membership worth it, or are daily walks enough?",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["consistent", "sustainable", "intensity"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "For most desk workers, I think daily walks are enough to start. The strongest reason is that walking is sustainable; you can stay consistent for years. The best counterpoint is intensity: a gym builds strength that walks don't. That's fair, so I'd walk every day and add two short strength sessions at home."
+    }
   },
   {
     "id": "sit-opinion-09",
@@ -1101,7 +1647,13 @@
     "prompt": "Should you lend money to friends? Give your view with the strongest reason behind it.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["awkward", "boundary", "relationship"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "I'd lend only what I can afford to lose. The strongest reason is the relationship: if money comes between friends, things get awkward fast. The best counterpoint is that friends should help each other. I agree, so I set a clear boundary: a small amount, given freely, and I don't keep asking for it back."
+    }
   },
   {
     "id": "sit-opinion-10",
@@ -1113,7 +1665,13 @@
     "prompt": "Early in a career: is it better to switch jobs often or stay and grow in one place?",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["growth", "loyalty", "leverage"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "Early on, I'd stay in one place for at least two or three years. The strongest reason is growth: you learn more when you see a project from start to finish. The best counterpoint is that switching gives you leverage for a bigger role. True, so switch when the learning stops, not just for the title. Loyalty makes sense only while you're still growing."
+    }
   },
   {
     "id": "sit-opinion-11",
@@ -1125,7 +1683,13 @@
     "prompt": "In a big Indian city: metro and cabs, or your own two-wheeler? Defend your pick.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["reliable", "freedom", "hassle"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "In a big city, I'd pick the metro and cabs. The strongest reason is that the metro is reliable; I know exactly when I'll arrive. The best counterpoint is freedom: with your own two-wheeler, you can go anywhere, any time. That's true, but parking and traffic are a daily hassle. So the metro for work, and a cab when I need the freedom."
+    }
   },
   {
     "id": "sit-opinion-12",
@@ -1137,7 +1701,13 @@
     "prompt": "Is waking up early really better, or can night owls be just as sharp? Take a side.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["rhythm", "quiet hours", "myth"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "I think night owls can be just as sharp. The strongest reason is that people have different rhythms, and a 5 a.m. alarm makes some of us worse, not better. The best counterpoint is that the early quiet hours are great for focus. True, but the night has quiet hours too. The real myth is that one schedule works for everyone."
+    }
   },
   {
     "id": "sit-opinion-13",
@@ -1149,7 +1719,13 @@
     "prompt": "Is eating out every weekend worth the money, or is home food the smarter habit?",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["habit", "worth it", "health"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "I don't think eating out every weekend is worth it as a habit. The strongest reason is health: restaurant food usually has much more oil and salt than home food. The best counterpoint is that it's how many people relax with friends. Fair, so I'd keep it to twice a month and make it a proper treat."
+    }
   },
   {
     "id": "sit-opinion-14",
@@ -1161,7 +1737,13 @@
     "prompt": "Do smartphones help us more than they distract us? Give your view with one strong reason.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["distraction", "tool", "discipline"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "I think smartphones help us more than they hurt, if we use them on purpose. The strongest reason is that one tool now handles maps, payments, learning and calls home. The best counterpoint is distraction; most of us check our phones far too often. That's real, so the answer isn't fewer phones; it's more discipline, like no phones at meals."
+    }
   },
   {
     "id": "sit-opinion-15",
@@ -1173,7 +1755,13 @@
     "prompt": "For a stable life: a government job or a private one? Give your honest view with a reason.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["security", "growth", "stability"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "For a stable life, I'd choose a private job. The strongest reason is growth: in the private sector, I can learn faster and change roles more easily. The best counterpoint is security; a government job is very hard to lose. That matters, so I'd build my stability from skills and savings instead of the job itself."
+    }
   },
   {
     "id": "sit-opinion-16",
@@ -1185,7 +1773,13 @@
     "prompt": "To learn something new: is reading better than watching videos? Defend your pick.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["depth", "retention", "passive"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "To learn something deeply, I think reading is better. The strongest reason is depth: I can slow down, reread and think, so I remember more. The best counterpoint is that videos show things words can't, like how to fix a tap. True, so I watch videos for hands-on skills and read for ideas. Watching can feel passive; reading makes me work."
+    }
   },
   {
     "id": "sit-opinion-17",
@@ -1197,7 +1791,13 @@
     "prompt": "Starting out: should a fresher join a big company or a small startup? Take a side.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["learning", "brand", "risk"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "I'd tell a fresher to join a startup. The strongest reason is learning: you get real responsibility in the first month. The best counterpoint is the brand of a big company and the risk of a startup closing. That's fair, so pick a startup with funding and a good team. Even if it closes, the learning stays with you."
+    }
   },
   {
     "id": "sit-opinion-18",
@@ -1209,7 +1809,13 @@
     "prompt": "In your twenties: save aggressively or spend on experiences? Give your view with a reason.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["compound", "experiences", "balance"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "I'd save first, but not everything. The strongest reason is that savings compound: money you save at twenty-five grows far more than money you save at forty. The best counterpoint is that some experiences only happen when you're young. True, so I'd save a fixed share every month and spend the rest on trips, guilt-free. That's the balance."
+    }
   },
   {
     "id": "sit-opinion-19",
@@ -1221,7 +1827,13 @@
     "prompt": "If it were your call: a small wedding or a big celebration? Defend your choice.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["intimate", "pressure", "memory"],
-    "targetSec": 45
+    "targetSec": 45,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "If it were my call, I'd choose a small wedding. The strongest reason is that an intimate wedding lets you actually talk to the people you love. The best counterpoint is family pressure; big celebrations matter a lot to parents. I understand that, so maybe a small wedding and one big dinner. The memory I want is faces, not crowds."
+    }
   },
   {
     "id": "sit-opinion-20",
@@ -1233,7 +1845,13 @@
     "prompt": "How much does fluent English matter for success in India? Give your honest view.",
     "beats": ["Your view in one line", "The strongest reason behind it", "The best counterpoint and your answer to it"],
     "targetVocab": ["door-opener", "skill", "confidence"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "clearly",
+      "level": 4,
+      "kind": "try",
+      "answer": "I think fluent English is a door-opener in India, but it isn't success by itself. The strongest reason is that interviews, client calls and most office emails happen in English. The best counterpoint is that many people succeed in business without it. True, so I see English as one skill among many. What it really gives you is confidence in the room."
+    }
   },
   {
     "id": "sit-life-01",
@@ -1245,7 +1863,13 @@
     "prompt": "Tell someone where you grew up. Paint the place in two lines, then what it gave you.",
     "beats": ["Where and when: the place as you remember it", "What happened there: one memory that captures it", "What it changed: what you carried from it"],
     "targetVocab": ["roots", "neighbourhood", "shaped"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "I grew up in a small neighbourhood in Indore, in a lane where every door stayed open in the evenings. You could smell three kitchens at once. One summer, the whole lane chipped in to fix the roof of the old man next door. That's what shaped me: I learnt that neighbours are family. My roots are in that lane, wherever I live."
+    }
   },
   {
     "id": "sit-life-02",
@@ -1257,7 +1881,13 @@
     "prompt": "Tell someone about a teacher who changed you. What did they do that others did not?",
     "beats": ["Where and when: the class and the teacher", "What happened: the one thing they did", "What it changed: how you are different for it"],
     "targetVocab": ["strict", "believed", "turning point"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "In class nine, our maths teacher, Mrs Thomas, was the strictest in school. I was failing, and I'd stopped trying. But one day she kept me after class and said, 'You're not bad at maths. You're scared of it.' She believed in me before I did. That was the turning point. I scored ninety that year, and I still say that kind of thing to juniors."
+    }
   },
   {
     "id": "sit-life-03",
@@ -1269,7 +1899,13 @@
     "prompt": "Tell someone about one decision that changed your direction. What were the options?",
     "beats": ["Where and when: the choice in front of you", "What happened: what you picked and why", "What it changed: where it led"],
     "targetVocab": ["crossroads", "gamble", "no regrets"],
-    "targetSec": 90
+    "targetSec": 90,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "After my engineering degree, I was at a crossroads. I had a safe job offer from a big IT company and a place on a design course in Ahmedabad. My parents wanted the job. But I kept picturing myself sketching, not coding. So I took the gamble and chose the course, with a loan and a lot of worry. Today I design apps for a living. It wasn't easy, but I have no regrets."
+    }
   },
   {
     "id": "sit-life-04",
@@ -1281,7 +1917,13 @@
     "prompt": "Tell someone the most important thing your father taught you, with one real example.",
     "beats": ["Where and when: the example you remember", "What happened: what he did or said", "What it changed: how you use it today"],
     "targetVocab": ["discipline", "example", "live by"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "The most important thing my father taught me was to keep your word. He believed in discipline, but he never lectured; he taught by example. When I was ten, he promised a neighbour he'd help him move house on a Sunday. That morning, he had a high fever, but he still went, slowly carrying the light boxes. I live by that now: if I say I'll do something, I do it."
+    }
   },
   {
     "id": "sit-life-05",
@@ -1293,7 +1935,13 @@
     "prompt": "Tell someone the most important thing your mother taught you, with one real example.",
     "beats": ["Where and when: the example you remember", "What happened: what she did or said", "What it changed: how you use it today"],
     "targetVocab": ["sacrifice", "warmth", "carry forward"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "My mother taught me that warmth costs nothing. When I was in school, she fed every friend who came home, even when money was tight. Once, she packed an extra tiffin every day for a boy whose mother was ill. I only understood that sacrifice years later. I try to carry it forward: there's always a seat at my table."
+    }
   },
   {
     "id": "sit-life-06",
@@ -1305,7 +1953,13 @@
     "prompt": "Tell someone about your biggest failure. Be honest about your part in it.",
     "beats": ["Where and when: what you attempted", "What happened: how it fell apart and your part", "What it changed: what you do differently now"],
     "targetVocab": ["own it", "humbling", "lesson"],
-    "targetSec": 90
+    "targetSec": 90,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "My biggest failure was my first startup, a food delivery app in Pune. We had a good team and some early users. But I spent all my time on the app and almost none talking to restaurants. I have to own that part. After eight months, the money ran out, and we shut it down. Telling my parents was humbling. The lesson stayed: talk to the people you serve before you build."
+    }
   },
   {
     "id": "sit-life-07",
@@ -1317,7 +1971,13 @@
     "prompt": "Tell someone about your first day at your first job. What do you still remember?",
     "beats": ["Where and when: the office and the morning", "What happened: the moments that stuck", "What it changed: what that day taught you"],
     "targetVocab": ["nervous", "clueless", "welcome"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "My first job was at a bank in Chennai. On the first day, I wore new shoes that hurt and arrived forty minutes early. I was nervous and completely clueless about the systems. But at lunch, an older colleague, Joseph, sat with me and said, 'Ask me anything, even silly things.' That welcome changed everything. I still do the same for every new joiner."
+    }
   },
   {
     "id": "sit-life-08",
@@ -1329,7 +1989,13 @@
     "prompt": "Tell someone about your oldest friend. How did you meet, and why did it last?",
     "beats": ["Where and when: how you met", "What happened: one memory that defines it", "What it changed: what the friendship gave you"],
     "targetVocab": ["thick and thin", "loyal", "bond"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "My oldest friend is Sameer. We met in class two, when he shared his lunch because I'd forgotten mine. Twenty years later, he's still the first person I call. When my dad was in hospital, Sameer slept in the waiting room for three nights without being asked. That's why it lasted: he's loyal, through thick and thin. Our bond is that simple."
+    }
   },
   {
     "id": "sit-life-09",
@@ -1341,7 +2007,13 @@
     "prompt": "Tell someone about moving to a new city. What was hardest, and what surprised you?",
     "beats": ["Where and when: the move itself", "What happened: the hardest part first", "What it changed: what the city made of you"],
     "targetVocab": ["adrift", "settle in", "independent"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "I moved from Lucknow to Bengaluru at twenty-two for my first job. The hardest part was the first month; I felt adrift, eating alone and not knowing anyone. But what surprised me was how quickly I learnt to cook, pay bills and fix things myself. It took about six months to settle in. The move made me independent in a way home never could."
+    }
   },
   {
     "id": "sit-life-10",
@@ -1353,7 +2025,13 @@
     "prompt": "Tell someone about your first salary. How much did it matter, and what did you do with it?",
     "beats": ["Where and when: the job and roughly what it paid", "What happened: what you did with it", "What it changed: what earning taught you"],
     "targetVocab": ["earned", "proud", "value"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "My first salary arrived on a Friday evening, and I checked my bank app about ten times. It wasn't a big amount, but it was the first money I'd earned myself, and I was so proud. I took my parents out to dinner and bought my dad a watch. He still wears it. That day taught me the value of money better than any advice."
+    }
   },
   {
     "id": "sit-life-11",
@@ -1365,7 +2043,13 @@
     "prompt": "Tell someone about a bad habit you finally broke. What worked when nothing else did?",
     "beats": ["Where and when: the habit at its worst", "What happened: the trick or moment that broke it", "What it changed: life after it"],
     "targetVocab": ["trigger", "replace", "streak"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "For years, I scrolled on my phone in bed until one in the morning. I tried deleting apps, but nothing lasted. Then I noticed the trigger: I picked up the phone the moment I lay down. So I started leaving it to charge in the kitchen and replaced it with a paper book. The first week was hard. Now I'm on a ninety-day streak, and I'm asleep by eleven."
+    }
   },
   {
     "id": "sit-life-12",
@@ -1377,7 +2061,13 @@
     "prompt": "Tell someone about a person who believed in you before you believed in yourself.",
     "beats": ["Where and when: who they were to you", "What happened: what they saw in you", "What it changed: what you dared after that"],
     "targetVocab": ["saw potential", "backing", "repay"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "In my first job, I was a junior who never spoke in meetings. My manager, Priya, saw potential that I didn't. One day she said, 'You're presenting the client update on Friday.' I panicked, but she gave me her backing and practised with me twice. It went well. I can't really repay her, so I try to do the same for my own juniors."
+    }
   },
   {
     "id": "sit-life-13",
@@ -1389,7 +2079,13 @@
     "prompt": "Sum up your college years in a minute: what you studied, who you became, one memory.",
     "beats": ["Where and when: the campus and the years", "What happened: the memory that says it all", "What it changed: who you walked out as"],
     "targetVocab": ["carefree", "broke", "formative"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "I studied commerce at a college in Delhi. We were always broke and completely carefree. My favourite memory is the night before an exam when the power went out, and ten of us studied by one torch, laughing more than reading. I walked in shy and walked out able to talk to anyone. Those were my most formative years."
+    }
   },
   {
     "id": "sit-life-14",
@@ -1401,7 +2097,13 @@
     "prompt": "Tell someone about the biggest risk you ever took. What was at stake?",
     "beats": ["Where and when: the risk and the stakes", "What happened: how it played out", "What it changed: was it worth it"],
     "targetVocab": ["stakes", "leap", "worth it"],
-    "targetSec": 90
+    "targetSec": 90,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "Three years ago, I left a stable job to join a five-person startup. The stakes were real: a smaller salary, a home loan and my parents' worry. But I'd stopped learning at the old job. So I took the leap. The first year was hard; we nearly ran out of money twice. But I learnt more in that one year than in the five before it. It was worth it."
+    }
   },
   {
     "id": "sit-life-15",
@@ -1413,7 +2115,13 @@
     "prompt": "Tell someone what growing up with your siblings was like. One fight, one fond memory.",
     "beats": ["Where and when: the house and the pecking order", "What happened: the memory that captures it", "What it changed: what siblings taught you"],
     "targetVocab": ["rivalry", "team up", "bond"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "I grew up with an older brother, and our rivalry was serious, especially over the TV remote. Once we fought so hard over cricket that we broke Mum's favourite vase. But then we did something new: we teamed up, glued it together and hid the crack behind a photo. She found out a year later and laughed. That's our bond: we fight, then we fix things together."
+    }
   },
   {
     "id": "sit-life-16",
@@ -1425,7 +2133,13 @@
     "prompt": "Tell someone about a trip that changed how you see things. Where did you go?",
     "beats": ["Where and when: the trip itself", "What happened: the moment that shifted you", "What it changed: what you see differently now"],
     "targetVocab": ["perspective", "humbled", "wander"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "Two years ago, I went to Spiti with two friends. We'd planned every day, but a landslide closed the road, and we were stuck in a small village for three days. A family there gave us food and blankets and wouldn't take anything in return. I was humbled. That trip changed my perspective: now I travel with fewer plans, wander more and notice people more."
+    }
   },
   {
     "id": "sit-life-17",
@@ -1437,7 +2151,13 @@
     "prompt": "Tell someone about learning something difficult: a language, a sport, a skill. How did you stick with it?",
     "beats": ["Where and when: what you set out to learn", "What happened: the phase you almost quit", "What it changed: what finishing gave you"],
     "targetVocab": ["plateau", "persist", "payoff"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "At twenty-eight, I decided to learn to swim. The first month was embarrassing; kids half my size were faster. Then I hit a plateau: for six weeks, I couldn't swim more than one length. But I kept going, three mornings a week, and my coach kept saying, 'Slow down. Breathe.' One day, I just did four lengths. The payoff was bigger than swimming: I learnt that if I persist, I get there."
+    }
   },
   {
     "id": "sit-life-18",
@@ -1449,7 +2169,13 @@
     "prompt": "Describe the house you grew up in. One room, one smell, one sound that brings it back.",
     "beats": ["Where and when: the house itself", "What happened: the sensory memory", "What it changed: what home means to you now"],
     "targetVocab": ["courtyard", "aroma", "echo"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "I grew up in an old house in Kochi with a small courtyard in the middle. The room I remember most is the kitchen, with the aroma of coconut oil and curry leaves every morning. The sound I remember is the echo of June rain on the tin roof over the courtyard. Even today, when I smell curry leaves, I'm ten years old again."
+    }
   },
   {
     "id": "sit-life-19",
@@ -1461,7 +2187,13 @@
     "prompt": "Tell someone why you chose your line of work. Was it planned or an accident?",
     "beats": ["Where and when: the fork in the road", "What happened: what pulled you in", "What it changed: how you feel about it now"],
     "targetVocab": ["stumbled into", "calling", "no regrets"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "I didn't plan this career; I stumbled into it. I'd studied mechanical engineering, but in my final year, I helped a friend build a website for his shop, and I loved it. So I took a short coding course and applied for junior developer jobs. Six years later, I lead a small team. I wouldn't call it a calling, but I have no regrets."
+    }
   },
   {
     "id": "sit-life-20",
@@ -1473,7 +2205,13 @@
     "prompt": "Tell someone what festivals were like at your home. Pick one festival and relive it.",
     "beats": ["Where and when: the festival and the house", "What happened: the day itself, morning to night", "What it changed: what you still carry from it"],
     "targetVocab": ["bustle", "sweets", "togetherness"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "At our home in Kolkata, Durga Puja was everything. For five days, the house was full of bustle: cousins arriving, aunts cooking, and my grandmother counting the sweets so nobody ate them early. Every evening, we walked together from pandal to pandal until our feet hurt. What I still carry from it is the togetherness, more than the lights or the food."
+    }
   },
   {
     "id": "sit-life-21",
@@ -1485,7 +2223,13 @@
     "prompt": "Tell someone the best advice you ever got. Who gave it, and when did it prove true?",
     "beats": ["Where and when: who said it and when", "What happened: the moment it proved true", "What it changed: how you apply it now"],
     "targetVocab": ["stuck with me", "proved true", "live by"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "The best advice I ever got was from my first manager, Arjun: 'Write it down before you say it.' It stuck with me. It proved true two years later, in a tense meeting with an angry client. I'd written three points on paper, so I stayed calm and clear while everyone else argued. Now I live by it before every important call."
+    }
   },
   {
     "id": "sit-life-22",
@@ -1497,7 +2241,13 @@
     "prompt": "Tell someone about your toughest year. What made it hard, and what got you through?",
     "beats": ["Where and when: the year and what hit", "What happened: the lowest point and the support", "What it changed: what that year built in you"],
     "targetVocab": ["resilient", "lean on", "emerge"],
-    "targetSec": 90
+    "targetSec": 90,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "My toughest year was 2020. I lost my job in April, and my father was unwell for most of the year. Some days I didn't want to get out of bed. What got me through was learning to lean on people: my sister called every night, and an old friend found me freelance work. By December, I had a new job. I emerged more resilient, and much better at asking for help."
+    }
   },
   {
     "id": "sit-life-23",
@@ -1509,7 +2259,13 @@
     "prompt": "Tell someone what you want in the next five years. Be concrete: work, place, life.",
     "beats": ["Where and when: the picture five years out", "What happened: the steps that get you there", "What it changed: why it matters to you"],
     "targetVocab": ["concrete", "milestone", "purpose"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "In five years, I want to lead a small product team in Pune, close to my parents. I'm already working towards it: my first milestone is to run one project from start to finish by next year. Outside work, I want to run a half marathon and have a flat with a balcony full of plants. Concrete goals give me purpose; vague ones never did."
+    }
   },
   {
     "id": "sit-life-24",
@@ -1521,7 +2277,13 @@
     "prompt": "Tell someone your favourite school memory. Who was there, and why does it stay with you?",
     "beats": ["Where and when: the school and the day", "What happened: the memory itself", "What it changed: why it still matters"],
     "targetVocab": ["mischief", "gang", "nostalgia"],
-    "targetSec": 60
+    "targetSec": 60,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "In class eight, my gang of four hid the teacher's attendance register as a joke. But the principal walked in looking for it, and we panicked. So we confessed, and he made us clean the library for a week. It turned into the best week of school: we read comics behind the shelves. That bit of mischief still fills me with nostalgia."
+    }
   },
   {
     "id": "sit-life-25",
@@ -1533,6 +2295,12 @@
     "prompt": "Tell a new friend your life story in two minutes: where from, what shaped you, where headed.",
     "beats": ["Where and when: your starting point", "What happened: the two turns that shaped you", "What it changed: where you are headed now"],
     "targetVocab": ["roots", "turning point", "headed"],
-    "targetSec": 90
+    "targetSec": 90,
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "try",
+      "answer": "I'm from Nagpur. That's where my roots are: a joint family, a busy house, and parents who ran a small medical shop. I studied engineering because everyone did. The turning point came in my first job, when I gave a client demo and loved it more than the coding. So I moved into product roles. Now I live in Bengaluru, and I'm headed towards building my own product one day."
+    }
   }
 ]

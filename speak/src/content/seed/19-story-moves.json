@@ -2,82 +2,136 @@
   {
     "id": "stm-the-hook",
     "type": "story_move",
-    "move": "The Inverted Hook",
-    "why": "Start with the climactic crisis or final metric before stepping back to the timeline. Grabs immediate attention in updates.",
-    "example": "At 2 AM on Diwali night, 40% of our payment transactions silently failed. Here is how we uncovered why.",
+    "move": "Start with the crisis",
+    "why": "Open with the worst moment, then go back to how it began.",
+    "example": "At 2 a.m. on Diwali night, our payments started failing. Here's how we found out why.",
     "tags": [
       "storytelling",
       "hook",
       "presentation"
-    ]
+    ],
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "learn",
+      "work": "On Monday, half our orders failed for an hour. Here's how we found out why.",
+      "everyday": "My cousin's wedding nearly had no groom. Let me tell you about the traffic.",
+      "analogy": "Like a film that opens on the car chase, then shows how it started.",
+      "insteadOf": "So first we did the planning, and then on Monday things started going wrong."
+    }
   },
   {
     "id": "stm-the-pivot",
     "type": "story_move",
-    "move": "The Uncomfortable Pivot",
-    "why": "Signals a sharp shift from smooth assumptions to sudden reality without rambling.",
-    "example": "The initial beta numbers looked phenomenal—until we checked retention on day seven.",
+    "move": "The sudden turn",
+    "why": "Show, in one line, the moment smooth plans met reality.",
+    "example": "The new office looked perfect, until the first monsoon rain came through the roof.",
     "tags": [
       "storytelling",
       "pivot",
       "contrast"
-    ]
+    ],
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "learn",
+      "work": "The first week's numbers looked great, until we checked who came back on day seven.",
+      "everyday": "The trip was going perfectly, until we reached the station and saw our train leaving.",
+      "analogy": "Like a smooth road that suddenly hits a speed breaker.",
+      "insteadOf": "The numbers were good, and then after some time they were not so good."
+    }
   },
   {
     "id": "stm-the-rule-of-three",
     "type": "story_move",
-    "move": "The Tricolon Cadence",
-    "why": "Groups three crisp points with matching rhythm. People remember three items naturally.",
-    "example": "We cut latency in half, doubled test coverage, and shipped on time.",
+    "move": "Three things, same rhythm",
+    "why": "Group your points in threes, with the same rhythm. Threes are easy to remember.",
+    "example": "We cut the load time in half, fixed the top bugs and shipped on time.",
     "tags": [
       "storytelling",
       "rhythm",
       "persuasion"
-    ]
+    ],
+    "skill": {
+      "track": "stories",
+      "level": 4,
+      "kind": "learn",
+      "work": "We fixed the bug, tested it twice and shipped it by Friday.",
+      "everyday": "We packed the car, picked up Nani and reached Goa by lunch.",
+      "analogy": "Like masala chai: milk, ginger, sugar. Three things, and you never forget them.",
+      "insteadOf": "We fixed things and did some testing and other stuff, and then finally we shipped."
+    }
   },
   {
     "id": "stm-the-zoom-in",
     "type": "story_move",
-    "move": "The Micro-Detail Zoom",
-    "why": "Grounds high-level abstractions in one visceral, specific physical moment.",
-    "example": "Instead of talking about poor UX, look at this: a customer had to tap sixteen buttons just to download their receipt.",
+    "move": "Zoom in on one detail",
+    "why": "Turn a big, vague problem into one moment people can picture.",
+    "example": "Instead of \"the app is slow\": my mother gave up booking her ticket after four minutes.",
     "tags": [
       "storytelling",
       "detail",
       "clarity"
-    ]
+    ],
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "learn",
+      "work": "Instead of saying the form is confusing: one customer tapped sixteen times to download a receipt.",
+      "everyday": "Instead of saying the hostel was bad: my bucket had a hole, so I bathed in thirty seconds.",
+      "analogy": "Like a camera zooming from the whole cricket ground to one bowler's face.",
+      "insteadOf": "The app was really confusing, and users didn't like it."
+    }
   },
   {
     "id": "stm-the-landing",
     "type": "story_move",
-    "move": "The Crisp Landing",
-    "why": "Stops speaking immediately after delivering the key takeaway. Prevents conversational fizzle.",
-    "example": "The lesson wasn't about caching. It was about assuming clean input from third-party APIs.",
+    "move": "Land it and stop",
+    "why": "Say the lesson in one line, then stop. Don't let it fizzle out.",
+    "example": "In the end, the problem wasn't the vendor. It was that nobody asked them first.",
     "tags": [
       "storytelling",
       "conclusion",
       "presence"
-    ]
+    ],
+    "skill": {
+      "track": "stories",
+      "level": 1,
+      "kind": "learn",
+      "work": "The lesson wasn't about the code. It was about checking what other teams send us.",
+      "everyday": "We never found that restaurant. But it was the best street food I've ever had.",
+      "analogy": "Like a bowler finishing the over and walking off. No extra ball.",
+      "insteadOf": "So yeah, that's basically it, I guess. Anyway, that's what happened."
+    }
   },
   {
     "id": "stm-the-vulnerability",
     "type": "story_move",
-    "move": "The Honest Admission",
-    "why": "Admitting an early mistake builds deep credibility and makes the eventual solution persuasive.",
-    "example": "We spent the first two weeks optimizing the database before realizing the network socket was the real bottleneck.",
+    "move": "Admit the early mistake",
+    "why": "Owning an early mistake makes the rest of your story easier to believe.",
+    "example": "I was sure the new intern broke the build. It turned out to be my own change from Friday.",
     "tags": [
       "storytelling",
       "authenticity",
       "leadership"
-    ]
+    ],
+    "skill": {
+      "track": "stories",
+      "level": 4,
+      "kind": "learn",
+      "work": "We spent two weeks fixing the database before we saw the real problem was the network.",
+      "everyday": "I blamed the shop for a week before I found the receipt in my own pocket.",
+      "analogy": "Like a fielder owning the dropped catch before anyone else mentions it.",
+      "insteadOf": "We found the real problem quickly and solved it."
+    }
   },
   {
     "id": "stm-the-contrast-frame",
     "type": "story_move",
     "lang": "en",
-    "move": "The Stark Contrast Frame",
-    "why": "Juxtaposing an old painful baseline with the new frictionless reality makes value instantly obvious.",
-    "example": "Six months ago, onboarding a new merchant took 14 days and four manual phone calls. Today, it takes 90 seconds on a phone.",
+    "move": "Then versus now",
+    "why": "Put the old, painful way next to the new way, so the change is obvious.",
+    "example": "Last year, getting a refund meant three phone calls and a form. Now it's one tap.",
     "tags": [
       "storytelling",
       "contrast",
@@ -86,15 +140,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 4,
+      "kind": "learn",
+      "work": "Six months ago, adding a new shop took two weeks. Today it takes ninety seconds.",
+      "everyday": "Last year, Dad couldn't send a photo. This year, he runs the family WhatsApp group.",
+      "analogy": "Like a before-and-after photo of a messy room.",
+      "insteadOf": "Adding a new shop is much faster now."
+    }
   },
   {
     "id": "stm-the-stakes-escalation",
     "type": "story_move",
     "lang": "en",
-    "move": "The Stakes Escalation",
-    "why": "Explains what is lost if we do nothing, transforming a technical request into an urgent mission.",
-    "example": "This isn’t just about database query latency. If our checkout delay exceeds 300ms, we lose 20,000 orders every single Diwali flash sale.",
+    "move": "Raise the stakes",
+    "why": "Say what we lose if nothing changes, so a small fix feels urgent.",
+    "example": "It isn't just a late report. If it's not in by Friday, the client can't present on Monday.",
     "tags": [
       "storytelling",
       "urgency",
@@ -103,15 +166,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 3,
+      "kind": "learn",
+      "work": "This isn't only about a slow page. If checkout stays slow, we lose orders in the Diwali sale.",
+      "everyday": "It wasn't just a flat tyre. If we didn't fix it in an hour, we'd miss my sister's engagement.",
+      "analogy": "Like a last ball that decides the whole series, not just the match.",
+      "insteadOf": "We need to fix the page because it's slow."
+    }
   },
   {
     "id": "stm-the-callback-loop",
     "type": "story_move",
     "lang": "en",
-    "move": "The Narrative Callback",
-    "why": "Revisiting a small detail or anecdote from the opening creates a satisfying sense of complete closure.",
-    "example": "Remember that confused coffee shop owner I mentioned at the start? Last night, she processed her 10,000th order through our new dashboard.",
+    "move": "Bring back the opening",
+    "why": "Return to a small detail from the start; the ending feels complete.",
+    "example": "Remember the shop owner from my first slide? Last night, she ran her whole Diwali sale on our app.",
     "tags": [
       "storytelling",
       "structure",
@@ -120,15 +192,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 4,
+      "kind": "learn",
+      "work": "Remember the coffee shop owner from the start? Last night, she took her thousandth order on our app.",
+      "everyday": "And that broken umbrella from the morning? It's now holding up my tomato plants.",
+      "analogy": "Like a film whose last scene brings back the song from the opening."
+    }
   },
   {
     "id": "stm-the-sensory-anchor",
     "type": "story_move",
     "lang": "en",
-    "move": "The Sensory Anchor",
-    "why": "Anchors an abstract problem in tangible physical sensations to make the memory visceral.",
-    "example": "It wasn’t just a server alert. It was the physical chill of walking into the server basement at 3 AM while cooling fans screamed at maximum RPM.",
+    "move": "Add one sense",
+    "why": "Add a sound, smell or feeling, so people can picture the moment.",
+    "example": "It wasn't just a power cut. It was the hum of the generator and the smell of diesel all night.",
     "tags": [
       "storytelling",
       "sensory",
@@ -137,15 +217,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "learn",
+      "work": "It wasn't just an alert. It was walking into the cold server room at 3 a.m., fans roaring.",
+      "everyday": "It wasn't just a hot day. My shirt stuck to the auto seat, and the road smelled of tar.",
+      "analogy": "Like smelling wet earth and suddenly remembering your school's first rainy day.",
+      "insteadOf": "It was a very stressful night with the servers."
+    }
   },
   {
     "id": "stm-the-rhetorical-pause",
     "type": "story_move",
     "lang": "en",
-    "move": "The Two-Second Rhetorical Pause",
-    "why": "Inserting total silence before your core takeaway forces listeners to look up and absorb the weight.",
-    "example": "We analyzed every possible bottleneck in the architecture. [Pause 2s] The problem wasn’t our database. It was our assumptions.",
+    "move": "The two-second pause",
+    "why": "Stay silent for a moment before your main line, so people look up.",
+    "example": "We tried three vendors, two tools and one long weekend. [pause] The fix was a single setting.",
     "tags": [
       "storytelling",
       "pacing",
@@ -154,15 +243,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 3,
+      "kind": "learn",
+      "work": "We checked every part of the system. [pause] The problem wasn't the database. It was our guess.",
+      "everyday": "We searched the whole house for the keys. [pause] They were in the fridge.",
+      "analogy": "Like the second of silence before the umpire raises his finger.",
+      "insteadOf": "We checked everything, and the problem was our guess, not the database."
+    }
   },
   {
     "id": "stm-the-relatable-confession",
     "type": "story_move",
     "lang": "en",
-    "move": "The Relatable Confession",
-    "why": "Sharing an unvarnished initial doubt or human reaction dismantles defensive cynicism in the room.",
-    "example": "When the design team first proposed removing the search bar entirely, I honestly thought it was the worst idea I’d ever heard.",
+    "move": "Admit your first doubt",
+    "why": "Sharing your honest first doubt helps doubtful listeners relax and hear you out.",
+    "example": "When my manager asked me to lead the client call, honestly, my first thought was: please, not me.",
     "tags": [
       "storytelling",
       "authenticity",
@@ -171,15 +269,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 4,
+      "kind": "learn",
+      "work": "When the team first suggested removing the search bar, honestly, I thought it was a terrible idea.",
+      "everyday": "When my friends planned a 5 a.m. trek, honestly, I wanted to stay in bed.",
+      "analogy": "Like a friend admitting he didn't understand the film either. Everyone relaxes and listens."
+    }
   },
   {
     "id": "stm-the-parallel-structure",
     "type": "story_move",
     "lang": "en",
-    "move": "The Parallel Cadence",
-    "why": "Repeating an identical grammatical cadence across short sentences builds irresistible momentum.",
-    "example": "We scoped it in a morning. We prototyped it in an afternoon. We tested it with twenty users before dinner.",
+    "move": "Repeat the same pattern",
+    "why": "Use the same sentence pattern three times to build pace.",
+    "example": "We called every vendor. We checked every invoice. We found the mistake by six.",
     "tags": [
       "storytelling",
       "rhythm",
@@ -188,15 +294,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 4,
+      "kind": "learn",
+      "work": "We planned it in a morning. We built it in an afternoon. We tested it before dinner.",
+      "everyday": "We missed the bus. We missed the train. We almost missed the wedding.",
+      "analogy": "Like a drummer repeating one beat until everyone's feet start moving."
+    }
   },
   {
     "id": "stm-the-understatement",
     "type": "story_move",
     "lang": "en",
-    "move": "The Powerful Understatement",
-    "why": "Letting an extraordinary milestone speak quietly without hyperbole conveys deep confidence.",
-    "example": "Our payment engine processed ten billion rupees yesterday without dropping a single packet. It was a good Tuesday.",
+    "move": "Say big things quietly",
+    "why": "Say a big win plainly, without big adjectives. Calm sounds confident.",
+    "example": "We moved every customer to the new app over one weekend. Nobody noticed. That was the point.",
     "tags": [
       "storytelling",
       "presence",
@@ -205,15 +319,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 4,
+      "kind": "learn",
+      "work": "Our system handled the whole Diwali sale without a single failure. It was a good Tuesday.",
+      "everyday": "Mum cooked for forty guests alone and still sat down to eat with us. Not bad for a Sunday.",
+      "analogy": "Like a batsman reaching a hundred and just raising his bat. No wild celebration.",
+      "insteadOf": "It was the most amazing, incredible, record-breaking day ever!"
+    }
   },
   {
     "id": "stm-the-show-dont-tell",
     "type": "story_move",
     "lang": "en",
-    "move": "Show, Don’t Summarize",
-    "why": "Sharing verbatim customer quotes or actions is ten times more persuasive than presenting generalized adjectives.",
-    "example": "Instead of calling the UX confusing, consider this: a customer called support in tears because she couldn’t find the cancel button.",
+    "move": "Show, don't summarise",
+    "why": "Share what a person really did or said, not an adjective like \"confusing\".",
+    "example": "Instead of \"the training went well\": three people stayed back an hour to keep asking questions.",
     "tags": [
       "storytelling",
       "empathy",
@@ -222,15 +345,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "learn",
+      "work": "Instead of calling it confusing: one customer called support in tears because she couldn't find the cancel button.",
+      "everyday": "Instead of saying Dadi was happy: she danced in the kitchen with a ladle in her hand.",
+      "analogy": "Like showing the photo instead of describing the view.",
+      "insteadOf": "The customers found the app very confusing."
+    }
   },
   {
     "id": "stm-the-metaphor-bridge",
     "type": "story_move",
     "lang": "en",
-    "move": "The Everyday Metaphor Bridge",
-    "why": "Translates high-dimensional technical abstractions into familiar daily mechanics anyone understands.",
-    "example": "Think of our caching layer like a restaurant waiter keeping water glasses pre-filled instead of running to the kitchen tap every single time.",
+    "move": "Explain with an everyday picture",
+    "why": "Explain a technical idea through something everyone does every day.",
+    "example": "Think of the backup server as a spare tyre: you forget it's there until the day you need it.",
     "tags": [
       "storytelling",
       "clarity",
@@ -239,15 +371,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 3,
+      "kind": "learn",
+      "work": "Our cache is like a waiter who fills your water glass before you ask.",
+      "everyday": "Saving a little every month is like filling a bucket under a dripping tap.",
+      "analogy": "Like explaining Wi-Fi to your grandmother as an invisible cable.",
+      "insteadOf": "The caching layer stores precomputed responses in memory to reduce latency."
+    }
   },
   {
     "id": "stm-the-turning-point",
     "type": "story_move",
     "lang": "en",
-    "move": "The Precise Inflection Moment",
-    "why": "Pinpointing the exact minute the trajectory changed transforms a routine status update into drama.",
-    "example": "At 4:15 PM on Thursday, we changed one line in the connection pooling configuration—and the error rate flatlined to zero.",
+    "move": "Name the exact moment",
+    "why": "Give the exact time things changed; it turns an update into a story.",
+    "example": "At 11:20 on Tuesday, the client said one sentence that changed the project: \"What if we start smaller?\"",
     "tags": [
       "storytelling",
       "inflection",
@@ -256,15 +397,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "learn",
+      "work": "At 4:15 on Thursday, we changed one setting, and the errors dropped to zero.",
+      "everyday": "At 9:40 that night, my phone buzzed once, and the whole trip changed.",
+      "analogy": "Like the exact ball in a match when everyone knew the game had turned.",
+      "insteadOf": "At some point, we fixed the problem, and things got better."
+    }
   },
   {
     "id": "stm-the-cliffhanger-drop",
     "type": "story_move",
     "lang": "en",
-    "move": "The Strategic Cliffhanger",
-    "why": "Stopping at peak tension before revealing the breakthrough locks full audience attention.",
-    "example": "With fifteen minutes left before market open, the replica refused to sync. We had exactly two options.",
+    "move": "Stop at the tense moment",
+    "why": "Pause the story at its most tense point, just before the answer.",
+    "example": "The demo started in two minutes, and the projector showed nothing but blue. I had one idea left.",
     "tags": [
       "storytelling",
       "tension",
@@ -273,15 +423,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 3,
+      "kind": "learn",
+      "work": "Fifteen minutes before the market opened, the backup refused to start. We had two options.",
+      "everyday": "The train doors were closing, my bag was still on the platform, and I had one second to decide.",
+      "analogy": "Like a TV serial ending the episode just before the big reveal."
+    }
   },
   {
     "id": "stm-the-voice-shift",
     "type": "story_move",
     "lang": "en",
-    "move": "The Controlled Deceleration",
-    "why": "Dropping volume and slowing pace right before your crucial sentence commands total room silence.",
-    "example": "Everyone was arguing about deadlines and budget. But here is the quiet truth: if we ship this bug, our users won’t come back.",
+    "move": "Slow down for the key line",
+    "why": "Speak slower and softer just before your most important sentence.",
+    "example": "Everyone had views on the colours and the logo. Then Priya said quietly, \"Our users can't find the pay button.\"",
     "tags": [
       "storytelling",
       "delivery",
@@ -290,15 +448,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 3,
+      "kind": "learn",
+      "work": "Everyone was arguing about dates. But here's the quiet truth: if we ship this bug, users won't come back.",
+      "everyday": "Everyone was shouting about the menu. Then Nani said softly, 'Just make sure everyone eats.'",
+      "analogy": "Like a commentator lowering his voice just before the final ball."
+    }
   },
   {
     "id": "stm-the-shared-enemy",
     "type": "story_move",
     "lang": "en",
-    "move": "The Externalized Obstacle",
-    "why": "Framing friction as a shared external hurdle unites teams rather than turning teammates against each other.",
-    "example": "The enemy isn’t the backend team or the marketing timeline. The enemy is the 12-second load time driving customers away.",
+    "move": "Make the problem the enemy",
+    "why": "Blame the problem, not a team, so people work on it together.",
+    "example": "The enemy isn't sales or support. It's the three-day wait our customers sit through for a reply.",
     "tags": [
       "storytelling",
       "culture",
@@ -307,15 +473,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 5,
+      "kind": "learn",
+      "work": "The problem isn't the backend team or marketing. It's the twelve-second load time pushing customers away.",
+      "everyday": "It's not you against your brother. It's both of you against the messy room.",
+      "analogy": "Like two rival teams covering the pitch together when the rain comes.",
+      "insteadOf": "The backend team is slowing us down again."
+    }
   },
   {
     "id": "stm-the-future-pacing",
     "type": "story_move",
     "lang": "en",
-    "move": "The Vivid Future Pace",
-    "why": "Describing what next year feels like once this hard work succeeds inspires long-term persistence.",
-    "example": "Imagine next Diwali: zero manual on-call pages, automated failover in two seconds, and the engineering team enjoying dinner with family.",
+    "move": "Paint the future",
+    "why": "Describe what life looks like once the hard work pays off.",
+    "example": "Picture next quarter: the reports build themselves, and Friday evenings are ours again.",
     "tags": [
       "storytelling",
       "vision",
@@ -324,15 +499,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 5,
+      "kind": "learn",
+      "work": "Imagine next Diwali: no late-night calls, no failures, and the whole team home for dinner.",
+      "everyday": "Imagine next summer: the house painted, the garden green, and all of us on the terrace with chai.",
+      "analogy": "Like showing the photo of the finished house while you're still laying bricks."
+    }
   },
   {
     "id": "stm-the-three-sentence-arc",
     "type": "story_move",
     "lang": "en",
-    "move": "The Three-Sentence Micro Arc",
-    "why": "Delivers context, conflict, and resolution in under twenty seconds for lightning-fast executive updates.",
-    "example": "We launched the new checkout flow at noon. Conversion spiked 18% immediately, but payment timeouts surged on mobile networks. We reverted the auth middleware in ten minutes and stabilized the stream.",
+    "move": "The three-sentence story",
+    "why": "Context, problem, fix: three sentences, in under twenty seconds.",
+    "example": "We moved the team to the new tool on Monday. But half the files wouldn't open. So we kept the old tool running for a week while we fixed them.",
     "tags": [
       "storytelling",
       "brevity",
@@ -341,15 +524,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 4,
+      "kind": "learn",
+      "work": "We launched the new checkout at noon. Sales jumped, but payments failed on slow networks. So we undid one change and fixed it in ten minutes.",
+      "everyday": "We planned a picnic on Sunday. But it rained all morning. So we ate on the living-room floor, and the kids loved it.",
+      "analogy": "Like a T20 innings: short, but with a start, a twist and a finish.",
+      "insteadOf": "We launched, and then there were a few issues, and we did some things, and it's fine now."
+    }
   },
   {
     "id": "stm-the-counterintuitive-anomaly",
     "type": "story_move",
     "lang": "en",
-    "move": "The Counterintuitive Anomaly",
-    "why": "Opening with a fact that contradicts common sense immediately provokes curiosity.",
-    "example": "When we increased the price of our premium tier by 40%, signups actually doubled. Here is why.",
+    "move": "Open with a surprise",
+    "why": "Start with something that sounds wrong; people lean in to hear why.",
+    "example": "When we made the sign-up form longer, more people finished it. Here's why.",
     "tags": [
       "storytelling",
       "curiosity",
@@ -358,15 +550,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 3,
+      "kind": "learn",
+      "work": "When we raised the price of our premium plan, sign-ups actually went up. Here's why.",
+      "everyday": "The week I stopped setting an alarm, I started waking up earlier. Let me explain.",
+      "analogy": "Like a magic trick: something that shouldn't happen makes everyone lean in."
+    }
   },
   {
     "id": "stm-the-triad-progression",
     "type": "story_move",
     "lang": "en",
-    "move": "The Triad Progression",
-    "why": "Takes the listener through past mistake, present realization, and future standard.",
-    "example": "In 2024, we built fast. In 2025, we stabilized. In 2026, we scale with zero compromises.",
+    "move": "Past, present, next",
+    "why": "Walk through what went wrong, what you learned and what comes next.",
+    "example": "Last year, we rushed. This year, we slowed down and tested. Next year, we'll do both.",
     "tags": [
       "storytelling",
       "progression",
@@ -375,15 +575,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 4,
+      "kind": "learn",
+      "work": "Last year, we built fast. This year, we made it stable. Next year, we grow.",
+      "everyday": "In school, I hated cooking. In college, I lived on instant noodles. Now I cook for the whole family.",
+      "analogy": "Like three photos of the same plant: a seed, a sapling, a tree."
+    }
   },
   {
     "id": "stm-the-direct-spotlight",
     "type": "story_move",
     "lang": "en",
-    "move": "The Direct Listener Spotlight",
-    "why": "Puts the listener directly into the protagonist’s shoes to build immediate empathy.",
-    "example": "Put yourself in the shoes of an intern who just ran an inadvertent DROP TABLE in production on their first Friday.",
+    "move": "Put the listener in the story",
+    "why": "Ask listeners to imagine themselves in the main person's place.",
+    "example": "Imagine you're the new joiner, it's day one, and nobody has given you a laptop.",
     "tags": [
       "storytelling",
       "empathy",
@@ -392,15 +600,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 3,
+      "kind": "learn",
+      "work": "Put yourself in the shoes of an intern who deletes a live database on their first Friday.",
+      "everyday": "Imagine it's your own wedding, and the caterer calls to say he's stuck in traffic two hours away.",
+      "analogy": "Like a film that puts the camera behind the hero's eyes."
+    }
   },
   {
     "id": "stm-the-thematic-repetition",
     "type": "story_move",
     "lang": "en",
-    "move": "The Thematic Motif",
-    "why": "Repeating a three-word anchor phrase throughout a presentation cements it in listeners’ memories.",
-    "example": "Clarity over cleverness. When designing APIs: clarity over cleverness. When writing incident reports: clarity over cleverness.",
+    "move": "Repeat one short phrase",
+    "why": "Repeat one short phrase through your talk, so people remember it.",
+    "example": "Customer first. In design: customer first. In every release: customer first.",
     "tags": [
       "storytelling",
       "memory",
@@ -409,15 +625,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 4,
+      "kind": "learn",
+      "work": "Clear, not clever. In our code: clear, not clever. In our reports: clear, not clever.",
+      "everyday": "Dad's rule for every trip: leave early. For trains: leave early. For weddings: leave early.",
+      "analogy": "Like a song's chorus: you hear it three times and hum it all week."
+    }
   },
   {
     "id": "stm-the-unvarnished-metric",
     "type": "story_move",
     "lang": "en",
-    "move": "The Unvarnished Data Anchor",
-    "why": "Leading with a raw, unvarnished number cuts through polite corporate fluff.",
-    "example": "Seventy-two percent of our mobile users drop off before completing step two. That is the only metric that matters today.",
+    "move": "Lead with one honest number",
+    "why": "Start with one plain number; it cuts through vague talk.",
+    "example": "Four out of five support calls this month were about one button. That's what we fix first.",
     "tags": [
       "storytelling",
       "candor",
@@ -426,15 +650,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 5,
+      "kind": "learn",
+      "work": "Seven in ten mobile users drop off before step two. That's the only number that matters today.",
+      "everyday": "I spent eleven hours on my phone yesterday. That number is why I'm changing things.",
+      "analogy": "Like the scoreboard: no speech, just the runs needed.",
+      "insteadOf": "Our engagement could be improved in a few areas going forward."
+    }
   },
   {
     "id": "stm-the-hero-shift",
     "type": "story_move",
     "lang": "en",
-    "move": "The Hero Shift",
-    "why": "Positioning the customer as the hero and your product as their helpful guide builds deep resonance.",
-    "example": "We aren’t the heroes of this case study. The hero is the rural warehouse supervisor who managed inventory without internet.",
+    "move": "Make the customer the hero",
+    "why": "Make the customer the hero; your product is only their helper.",
+    "example": "This isn't our story. It's Meena's: she runs a tailoring shop and now sends every bill from her phone.",
     "tags": [
       "storytelling",
       "humility",
@@ -443,15 +676,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 5,
+      "kind": "learn",
+      "work": "We aren't the heroes here. The hero is the warehouse manager who kept stock records without internet.",
+      "everyday": "The real hero of our trip wasn't the planner. It was the auto driver who knew every shortcut.",
+      "analogy": "Like a coach handing the trophy to the players instead of holding it himself.",
+      "insteadOf": "Our amazing product solved all their problems."
+    }
   },
   {
     "id": "stm-the-analogy-subversion",
     "type": "story_move",
     "lang": "en",
-    "move": "The Subverted Analogy",
-    "why": "Taking a cliché analogy and flipping it upside down wakes up a tired audience.",
-    "example": "People say software is like building a skyscraper. But software isn’t concrete. Software is gardening: if you don’t prune daily, weeds choke the fruit.",
+    "move": "Flip a tired comparison",
+    "why": "Take a common comparison and turn it around, so people listen again.",
+    "example": "They say a team is a family. I think it's more like a cricket side: everyone has a clear role.",
     "tags": [
       "storytelling",
       "creativity",
@@ -460,15 +702,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 4,
+      "kind": "learn",
+      "work": "People say software is like building a tower. It's more like gardening: skip a week, and the weeds win.",
+      "everyday": "People say exams are a race. I think they're more like cooking: rush it, and it burns.",
+      "analogy": "Like turning a well-known saying upside down so people look at it again."
+    }
   },
   {
     "id": "stm-the-silence-bracket",
     "type": "story_move",
     "lang": "en",
-    "move": "The Silence Bracket",
-    "why": "Surrounding your pivotal sentence with one second of stillness before and after.",
-    "example": "[Silence] We chose to turn down the million-dollar client because they demanded we compromise user encryption. [Silence]",
+    "move": "Silence before and after",
+    "why": "Leave a second of silence before and after your key sentence.",
+    "example": "[pause] We decided to delay the launch by a month, because it wasn't safe yet. [pause]",
     "tags": [
       "storytelling",
       "presence",
@@ -477,15 +727,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 3,
+      "kind": "learn",
+      "work": "[pause] We said no to the big client, because they wanted us to weaken user privacy. [pause]",
+      "everyday": "[pause] After twelve years in that house, we finally sold it. [pause]",
+      "analogy": "Like a frame around a photo: the empty space makes you look at the middle."
+    }
   },
   {
     "id": "stm-the-napkin-sketch-origin",
     "type": "story_move",
     "lang": "en",
-    "move": "The Origin Spark",
-    "why": "Recalling the informal, humble beginning of a major project makes the current achievement inspiring.",
-    "example": "This multi-region payments engine started as three lines of pseudocode scribbled on the back of a chai cup receipt.",
+    "move": "Tell the humble start",
+    "why": "Share the small, scrappy start; it makes today's result feel earned.",
+    "example": "This whole training programme began as a ten-minute chat I ran for two new joiners.",
     "tags": [
       "storytelling",
       "origin",
@@ -494,15 +752,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 5,
+      "kind": "learn",
+      "work": "This payment system started as three lines written on the back of a chai stall receipt.",
+      "everyday": "Our biggest family tradition began as one cake my aunt baked because the shop was closed.",
+      "analogy": "Like showing the first small sapling next to today's huge banyan tree."
+    }
   },
   {
     "id": "stm-the-pacing-shift",
     "type": "story_move",
     "lang": "en",
-    "move": "The Acceleration-Deceleration Shift",
-    "why": "Speaking rapidly during the crisis narrative, then slowing way down for the solution.",
-    "example": "Pagers were ringing, Slack was flooding, the dashboard was bleeding red—and then our senior SRE sat down, took a breath, and typed three words.",
+    "move": "Fast, then slow",
+    "why": "Tell the crisis fast, then slow right down for the fix.",
+    "example": "Calls coming in, emails piling up, the client on hold. Then Rahul stood up and said, \"One at a time.\"",
     "tags": [
       "storytelling",
       "cadence",
@@ -511,15 +777,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 3,
+      "kind": "learn",
+      "work": "Phones ringing, chats flooding, every dashboard red. And then our senior engineer sat down, took a breath and typed three words.",
+      "everyday": "The milk boiled over, the doorbell rang, the baby cried. Then Mum turned off the gas and said, 'One thing at a time.'",
+      "analogy": "Like a train racing through stations, then slowing gently into the last one."
+    }
   },
   {
     "id": "stm-the-constraint-reframing",
     "type": "story_move",
     "lang": "en",
-    "move": "The Constraint as Catalyst",
-    "why": "Reframing a severe limitation as the secret ingredient that forced an elegant design.",
-    "example": "Having only a $500 monthly cloud budget wasn’t a curse; it forced us to write the most efficient C++ caching engine in the company.",
+    "move": "The limit that helped",
+    "why": "Show how a hard limit pushed you to a better solution.",
+    "example": "Having only two people on the team wasn't a curse. It forced us to cut every feature nobody used.",
     "tags": [
       "storytelling",
       "resilience",
@@ -528,15 +802,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 4,
+      "kind": "learn",
+      "work": "Our tiny cloud budget wasn't a curse. It forced us to build the leanest system in the company.",
+      "everyday": "Having only one burner in the hostel taught me to cook a whole meal in one pot.",
+      "analogy": "Like a T20 over limit forcing batsmen to invent new shots.",
+      "insteadOf": "We had a very small budget, so things were difficult."
+    }
   },
   {
     "id": "stm-the-verbatim-dialogue",
     "type": "story_move",
     "lang": "en",
-    "move": "The Verbatim Customer Voice",
-    "why": "Enacting actual conversational dialogue brings real human stakes directly into the boardroom.",
-    "example": "I asked the driver, \"Why aren’t you using our GPS navigation?\" He looked at me and said, \"Sir, your app drains my battery in 20 minutes.\"",
+    "move": "Use the customer's own words",
+    "why": "Quote what a real person said; it brings their problem into the room.",
+    "example": "I asked a shopkeeper why he still used his notebook. He said, \"Because it never asks me for a password.\"",
     "tags": [
       "storytelling",
       "voice",
@@ -545,15 +828,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "learn",
+      "work": "I asked the driver why he didn't use our map. He said, 'Sir, your app kills my battery in twenty minutes.'",
+      "everyday": "I asked my grandmother why she still writes letters. She said, 'Because you can't keep a phone call.'",
+      "analogy": "Like hearing the actor's own voice instead of reading the subtitles.",
+      "insteadOf": "The drivers told us they had some issues with battery usage."
+    }
   },
   {
     "id": "stm-the-physical-stillness",
     "type": "story_move",
     "lang": "en",
-    "move": "The Physical Stillness Anchor",
-    "why": "Planting your feet and staying completely still while making an executive recommendation projects authority.",
-    "example": "When recommending we cancel the legacy product line, don’t fidget or pace. Stand still, look the CEO in the eye, and deliver the recommendation.",
+    "move": "Stand still for the big ask",
+    "why": "Stay still and calm while you make a big recommendation. Calm looks confident.",
+    "example": "When you ask your manager to let you lead the new project, plant your feet, look at her and say it once.",
     "tags": [
       "storytelling",
       "body_language",
@@ -562,15 +854,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 3,
+      "kind": "learn",
+      "work": "When you recommend closing a product, stand still, look at the decision-maker and say it once.",
+      "everyday": "When you tell your parents a big decision, sit still, look at them and don't fidget.",
+      "analogy": "Like a goalkeeper standing still before a penalty: calm looks strong."
+    }
   },
   {
     "id": "stm-the-unintended-second-problem",
     "type": "story_move",
     "lang": "en",
-    "move": "The Second-Order Discovery",
-    "why": "Sharing how solving problem A unexpectedly revealed a fascinating problem B keeps listeners curious.",
-    "example": "Once we fixed the query latency, our throughput doubled—which immediately exposed that our downstream payment gateway was throttling us.",
+    "move": "The problem behind the problem",
+    "why": "Share how fixing one problem showed you a second, bigger one.",
+    "example": "Once we sorted out the late deliveries, we saw the real issue: orders were being entered twice.",
     "tags": [
       "storytelling",
       "systems",
@@ -579,15 +879,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 3,
+      "kind": "learn",
+      "work": "Once we fixed the slow queries, traffic doubled, and that showed us the payment partner was limiting us.",
+      "everyday": "Once I fixed the leaking tap, I noticed the real problem: the whole pipe was rusty.",
+      "analogy": "Like clearing one traffic jam, only to find the next signal is broken."
+    }
   },
   {
     "id": "stm-the-lingering-question",
     "type": "story_move",
     "lang": "en",
-    "move": "The Lingering Challenge Question",
-    "why": "Ending your presentation with a pointed question forces the audience to ponder it for days.",
-    "example": "If our biggest competitor launched this feature tomorrow, would we be proud of our current response speed?",
+    "move": "End on a question",
+    "why": "End with one sharp question for people to think about afterwards.",
+    "example": "If a new customer tried our app today, would they come back tomorrow?",
     "tags": [
       "storytelling",
       "closing",
@@ -596,15 +904,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 4,
+      "kind": "learn",
+      "work": "If a competitor launched this tomorrow, would we be proud of how fast we respond?",
+      "everyday": "If your ten-year-old self saw your weekend, would they be happy?",
+      "analogy": "Like a film that ends on a question, so you discuss it all the way home.",
+      "insteadOf": "Okay, so that's all from my side. Any questions?"
+    }
   },
   {
     "id": "stm-the-grit-over-genius",
     "type": "story_move",
     "lang": "en",
-    "move": "The Grit Over Genius Framing",
-    "why": "Highlighting patient persistence rather than effortless brilliance makes achievements relatable and reproducible.",
-    "example": "We didn’t have a miraculous flash of genius. We just tested 140 different machine learning models until number 141 beat the baseline.",
+    "move": "Effort, not genius",
+    "why": "Show the patient effort behind a win; it makes success feel reachable.",
+    "example": "There was no flash of genius. We tried forty versions of the home page before one worked.",
     "tags": [
       "storytelling",
       "persistence",
@@ -613,15 +930,24 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 4,
+      "kind": "learn",
+      "work": "We didn't have a flash of genius. We tested a hundred and forty models until one beat the old one.",
+      "everyday": "I didn't suddenly become a good cook. I burnt about fifty rotis first.",
+      "analogy": "Like a batsman's hundred built on years of nets practice, not one lucky day.",
+      "insteadOf": "We had a brilliant idea, and it worked."
+    }
   },
   {
     "id": "stm-the-rhythmic-sentence-length",
     "type": "story_move",
     "lang": "en",
-    "move": "The Varied Sentence Cadence",
-    "why": "Mixing short 4-word punchy lines with one lush flowing narrative sentence creates hypnotic auditory flow.",
-    "example": "It failed. We regrouped. We rewrote the kernel from scratch over three sleepless nights under the humming fluorescent lights of the Bangalore office.",
+    "move": "Mix short and long sentences",
+    "why": "Mix short, punchy lines with one longer sentence to keep the rhythm alive.",
+    "example": "The call dropped. Twice. Then, just as the client unmuted to say yes, the power went out in the whole building.",
     "tags": [
       "storytelling",
       "cadence",
@@ -630,15 +956,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 2,
+      "kind": "learn",
+      "work": "It failed. We regrouped. Then we rewrote the whole module over three long nights in the Bengaluru office.",
+      "everyday": "It rained. We waited. Then we ran, laughing, through the flooded street to the only open chai stall.",
+      "analogy": "Like a bowler mixing short, fast balls with one slow, looping delivery."
+    }
   },
   {
     "id": "stm-the-shared-baton-handover",
     "type": "story_move",
     "lang": "en",
-    "move": "The Collective Baton Handover",
-    "why": "Concluding by inviting the audience to take ownership of the next chapter.",
-    "example": "The architecture is verified and the foundation is solid. What we build on top of it over the next twelve months is entirely in our collective hands.",
+    "move": "Hand over the next step",
+    "why": "End by inviting the listeners to own what happens next.",
+    "example": "The plan is ready, and the tools are in place. Who picks up the first task on Monday?",
     "tags": [
       "storytelling",
       "conclusion",
@@ -647,6 +981,14 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": {
+      "track": "stories",
+      "level": 5,
+      "kind": "learn",
+      "work": "The base is ready and tested. What we build on it this year is in all our hands.",
+      "everyday": "Dadi's recipes are all written down now. Who cooks them next Diwali is up to us.",
+      "analogy": "Like a relay runner handing the baton to the next runner."
+    }
   }
 ]

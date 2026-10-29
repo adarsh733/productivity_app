@@ -2,12 +2,18 @@ import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
 import handler, {
   ANTHROPIC_MODEL,
   ASK_ANSWER_MAX,
+  CHAT_BETTER_MAX,
+  CHAT_POINT_MAX,
   GEMINI_MODEL,
   GROQ_MODEL,
+  GROQ_TOKENS_PER_MINUTE,
   checkAnswerAskPayload,
+  groqMaxTokens,
+  checkCoachChatPayload,
   safeParse,
   systemFor,
   validateAnswerAsk,
+  validateCoachChat,
   validateProviderOutput,
 } from '../functions/ai';
 import { rulebookFor } from '../rulebook';
@@ -804,6 +810,7 @@ describe('AI models and rulebook prompts', () => {
     review_recording: { transcript: 'one two three four five six' },
     plan_week: { types: [{ type: 'word' }] },
     answer_ask: { text: 'what does flag mean' },
+    coach_chat: { question: 'How was your weekend?', transcript: 'It was good, I went hiking.', track: 'smalltalk' },
   };
   type ConfiguredTaskName =
     | 'expand_seed'
@@ -811,7 +818,8 @@ describe('AI models and rulebook prompts', () => {
     | 'classify_inbox'
     | 'review_recording'
     | 'plan_week'
-    | 'answer_ask';
+    | 'answer_ask'
+    | 'coach_chat';
   const TASKS = Object.keys(PAYLOADS) as ConfiguredTaskName[];
 
   it('pins the model names', () => {
@@ -837,6 +845,31 @@ describe('AI models and rulebook prompts', () => {
     expect(body.model).toBe('openai/gpt-oss-120b');
     expect(body.messages[0].role).toBe('system');
     expect(body.messages[0].content).toBe(systemFor('review_recording'));
+  });
+
+  it.each(TASKS)('%s: Groq prompt + answer room fit its 8,000 tokens a minute', async (task) => {
+    process.env.GROQ_API_KEY = 'mock-groq-key';
+    const fetchSpy = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ choices: [{ message: { content: '{}' } }] }),
+    });
+    global.fetch = fetchSpy as any;
+
+    await handler(post(task, PAYLOADS[task]));
+
+    const [, init] = fetchSpy.mock.calls[0] as [string, { body: string }];
+    const body = JSON.parse(init.body);
+    const promptChars = body.messages.reduce((n: number, m: { content: string }) => n + m.content.length, 0);
+    // ~3.9 characters a token in practice; 3.5 is the safe side.
+    expect(Math.ceil(promptChars / 3.5) + body.max_tokens).toBeLessThanOrEqual(GROQ_TOKENS_PER_MINUTE);
+    expect(body.max_tokens).toBeGreaterThanOrEqual(1024);
+    expect(body.reasoning_effort).toBe('low');
+  });
+
+  it('caps Groq answer room only when the prompt needs it', () => {
+    expect(groqMaxTokens('x'.repeat(350), '', 1024)).toBe(1024);
+    expect(groqMaxTokens('x'.repeat(19_250), '', 6144)).toBe(8000 - 5500 - 100);
+    expect(groqMaxTokens('x'.repeat(40_000), '', 2048)).toBe(512);
   });
 
   it('sends the pinned Gemini model', async () => {
@@ -908,6 +941,8 @@ describe('AI models and rulebook prompts', () => {
     expect(systemFor('answer_ask')).toContain('"askKind"');
     expect(systemFor('answer_ask')).toContain('[[double brackets]]');
     expect(systemFor('answer_ask')).toContain('3 to 8 teach cards');
+    expect(systemFor('coach_chat')).toContain('"fixes":[{"text":string,"lesson":string}]');
+    expect(systemFor('coach_chat')).toContain('one or two fixes, never more');
   });
 });
 
@@ -1288,5 +1323,457 @@ describe('answer_ask handler', () => {
     expect(body.system[0].text.startsWith(rulebookFor('answer_ask'))).toBe(true);
     expect(body.max_tokens).toBeGreaterThanOrEqual(4096);
     expect(JSON.parse(body.messages[0].content)).toEqual({ text: 'what does flag mean' });
+  });
+});
+
+describe('expand_seed with teach cards (v5 top-up)', () => {
+  const originalEnv = process.env;
+  let ip = 0;
+
+  beforeEach(() => {
+    process.env = { ...originalEnv };
+    delete process.env.GEMINI_API_KEY;
+    delete process.env.GROQ_API_KEY;
+    delete process.env.ANTHROPIC_API_KEY;
+  });
+
+  afterEach(() => {
+    process.env = originalEnv;
+    vi.restoreAllMocks();
+  });
+
+  function expand(payload: unknown) {
+    ip += 1;
+    return handler(
+      new Request('http://localhost/.netlify/functions/ai', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'x-forwarded-for': `10.14.0.${ip}` },
+        body: JSON.stringify({ task: 'expand_seed', payload }),
+      }),
+    );
+  }
+
+  const gemini = (text: string) => ({
+    ok: true,
+    json: async () => ({ candidates: [{ content: { parts: [{ text }] } }] }),
+  });
+  const groq = (content: string) => ({
+    ok: true,
+    json: async () => ({ choices: [{ message: { content } }] }),
+  });
+
+  const teach = (over: Record<string, unknown> = {}) => ({
+    type: 'teach',
+    track: 'words',
+    level: 1,
+    kind: 'learn',
+    category: 'precise verbs',
+    title: 'Flag a problem',
+    rule: 'To flag means to point out a problem early.',
+    examples: { work: "I'd like to flag a risk on the release.", everyday: 'Flag it if the milk smells off.' },
+    analogy: 'Like a linesman raising his flag at a cricket match.',
+    tryPrompt: 'How would you say: you want to warn your manager about a delay?',
+    register: 'both',
+    ...over,
+  });
+
+  it('validates teach drafts, drops bad or off-track ones, and throws when none are left', () => {
+    const payload = { type: 'teach', track: 'words', count: 3 };
+    const out = validateProviderOutput(
+      'expand_seed',
+      {
+        cards: [
+          teach(),
+          teach({ title: 'Flag it early', kind: 'use' }),
+          teach({ title: 'Too long', rule: 'one two three four five six seven eight nine ten eleven twelve thirteen' }),
+          teach({ title: 'Wrong track', track: 'stories' }),
+          teach({ title: 'FLAG A PROBLEM' }),
+        ],
+      },
+      payload,
+    ) as { cards: Array<{ title: string; type: string }> };
+    expect(out.cards.map((c) => c.title)).toEqual(['Flag a problem', 'Flag it early']);
+    expect(out.cards.every((c) => c.type === 'teach')).toBe(true);
+
+    expect(() =>
+      validateProviderOutput('expand_seed', { cards: [teach({ track: 'stories' })] }, payload),
+    ).toThrow(/No usable teach cards/);
+    expect(() => validateProviderOutput('expand_seed', { cards: [] }, payload)).toThrow();
+    // Without a teach payload the old shapes still go through the classify clamps.
+    expect(() => validateProviderOutput('expand_seed', { cards: [teach()] })).toThrow();
+  });
+
+  it('rejects bad teach payloads with a plain message and never calls a model', async () => {
+    process.env.GEMINI_API_KEY = 'k';
+    const fetchSpy = vi.fn();
+    global.fetch = fetchSpy as any;
+    for (const bad of [
+      { type: 'teach', count: 3 },
+      { type: 'teach', track: 'poetry', count: 3 },
+      { type: 'teach', track: 'words', count: 6 },
+      { type: 'teach', track: 'words', count: 0 },
+      { type: 'teach', track: 'words', count: 3, level: 9 },
+      { type: 'teach', track: 'words', count: 3, seed: teach() },
+      { type: 'teach', track: 'words', count: 3, topics: 'office' },
+    ]) {
+      const res = await expand(bad);
+      expect(res.status, JSON.stringify(bad)).toBe(400);
+    }
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it('returns validated teach cards for a good request and sends the teach rule in the prompt', async () => {
+    process.env.GEMINI_API_KEY = 'k';
+    const fetchSpy = vi.fn();
+    global.fetch = fetchSpy as any;
+    fetchSpy.mockResolvedValueOnce(
+      gemini(JSON.stringify({ cards: [teach(), teach({ title: 'Flag it early', kind: 'use' })] })) as any,
+    );
+
+    const res = await expand({ type: 'teach', track: 'words', level: 2, count: 2, topics: ['office'], avoid: ['revert'] });
+    expect(res.status).toBe(200);
+    const data = (await res.json()) as any;
+    expect(data.ok).toBe(true);
+    expect(data.provider).toBe('gemini');
+    expect(data.data.cards).toHaveLength(2);
+    expect(data.data.cards[0].type).toBe('teach');
+    expect(data.data.cards[0].examples.work).toContain('flag');
+
+    const sent = JSON.parse(fetchSpy.mock.calls[0]![1].body as string);
+    expect(JSON.stringify(sent)).toContain('When the requested type is \\"teach\\"');
+  });
+
+  it('fails over to the next provider when the first returns no usable teach card', async () => {
+    process.env.GEMINI_API_KEY = 'k';
+    process.env.GROQ_API_KEY = 'g';
+    const fetchSpy = vi.fn();
+    global.fetch = fetchSpy as any;
+    fetchSpy.mockResolvedValueOnce(gemini(JSON.stringify({ cards: [teach({ track: 'stories' })] })) as any);
+    fetchSpy.mockResolvedValueOnce(groq(JSON.stringify({ cards: [teach()] })) as any);
+
+    const res = await expand({ type: 'teach', track: 'words', count: 1 });
+    const data = (await res.json()) as any;
+    expect(data.ok).toBe(true);
+    expect(data.provider).toBe('groq');
+    expect(data.data.cards).toHaveLength(1);
+  });
+
+  it('with no keys it answers plainly (502), never a raw error', async () => {
+    const fetchSpy = vi.fn();
+    global.fetch = fetchSpy as any;
+    const res = await expand({ type: 'teach', track: 'words', count: 1 });
+    expect(res.status).toBe(502);
+    const data = (await res.json()) as any;
+    expect(data.ok).toBe(false);
+    expect(data.error).toMatch(/unavailable/i);
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+});
+
+// ── coach_chat (step 5: the voice practice chat, rulebook §5) ──────────────
+
+const TRANSCRIPT =
+  'So basically we had a production outage on Monday and I revert back to the team by evening with the fix.';
+
+const chatPayload = (over: Record<string, unknown> = {}) => ({
+  question: 'Tell me about a hard day at work this month.',
+  transcript: TRANSCRIPT,
+  track: 'stories',
+  ...over,
+});
+
+const goodChat = (over: Record<string, unknown> = {}) => ({
+  good: 'You named the moment: "a production outage on Monday". One moment, not a timeline.',
+  fixes: [
+    { text: 'Add the stakes with but/so: what could have gone wrong?', lesson: 'Stories L1: but/so, not and-then' },
+    { text: 'Drop the warm-up word and start with the moment.', lesson: 'Speak clearly L1: say the answer first' },
+  ],
+  better: 'On Monday we had a production outage. By evening I got back to the team with the fix.',
+  slip: { wrong: 'revert back', right: 'get back' },
+  ...over,
+});
+
+describe('coach_chat validator', () => {
+  it('accepts good feedback and keeps only the contract fields', () => {
+    const v = validateProviderOutput('coach_chat', { ...goodChat(), extra: 'x' }, chatPayload()) as any;
+    expect(Object.keys(v).sort()).toEqual(['better', 'fixes', 'good', 'slip']);
+    expect(v.fixes).toHaveLength(2);
+    expect(v.fixes[0]).toEqual({ text: goodChat().fixes[0]!.text, lesson: 'Stories L1: but/so, not and-then' });
+    expect(v.slip).toEqual({ wrong: 'revert back', right: 'get back' });
+  });
+
+  it('throws (so the next provider runs) on a missing part', () => {
+    const p = chatPayload();
+    expect(() => validateCoachChat(null, p)).toThrow(/must be an object/);
+    expect(() => validateCoachChat([], p)).toThrow(/must be an object/);
+    expect(() => validateCoachChat(goodChat({ good: ' ' }), p)).toThrow(/"good"/);
+    expect(() => validateCoachChat(goodChat({ better: '' }), p)).toThrow(/"better"/);
+    expect(() => validateCoachChat(goodChat({ fixes: 'add stakes' }), p)).toThrow(/"fixes"/);
+    expect(() => validateCoachChat(goodChat({ fixes: [] }), p)).toThrow(/names its lesson/);
+  });
+
+  it('at most 2 fixes, each naming its lesson; a fix without one is dropped', () => {
+    const three = validateCoachChat(
+      goodChat({
+        fixes: [{ text: 'No lesson here.' }, ...goodChat().fixes, { text: 'A third fix.', lesson: 'Words L2' }],
+      }),
+      chatPayload(),
+    );
+    expect(three.fixes.map((f) => f.lesson)).toEqual([
+      'Stories L1: but/so, not and-then',
+      'Speak clearly L1: say the answer first',
+    ]);
+    expect(() => validateCoachChat(goodChat({ fixes: [{ text: 'Add stakes.' }, 'x'] }), chatPayload())).toThrow(
+      /names its lesson/,
+    );
+  });
+
+  it('never quotes words that are not in the transcript', () => {
+    const p = chatPayload();
+    expect(() => validateCoachChat(goodChat({ good: 'You said "a major incident" clearly.' }), p)).toThrow(
+      /not in the transcript/,
+    );
+    expect(() =>
+      validateCoachChat(goodChat({ fixes: [{ text: 'Swap "kindly do the needful".', lesson: 'Words L1' }] }), p),
+    ).toThrow(/not in the transcript/);
+    // Case, punctuation, curly quotes and "..." gaps are fine when the words are his.
+    const ok = validateCoachChat(
+      goodChat({ good: 'You opened with “Production outage on Monday,” then "the team ... with the fix".' }),
+      p,
+    );
+    expect(ok.good).toContain('Monday');
+    // Point 1 must quote him at all.
+    expect(() => validateCoachChat(goodChat({ good: 'Nice clear story.' }), p)).toThrow(/quotes none/);
+    // A rewrite that keeps none of his words is invented, not his answer.
+    expect(() => validateCoachChat(goodChat({ better: 'I love sunny weekends.' }), p)).toThrow(/his words/);
+  });
+
+  it('pace and loudness only when the phone measured them; no invented figures', () => {
+    const noNumbers = chatPayload();
+    const fix = (text: string) => goodChat({ fixes: [{ text, lesson: 'Speak clearly L2' }] });
+    expect(() => validateCoachChat(fix('Slow down your pace a little.'), noNumbers)).toThrow(/pace/);
+    expect(() => validateCoachChat(fix('Speak up so the room hears you.'), noNumbers)).toThrow(/loudness/);
+
+    const measured = chatPayload({ wpm: 182, loudness: 'normal' });
+    const paced = validateCoachChat(fix('At 182 wpm you were quick: slow down at the key line.'), measured);
+    expect(paced.fixes[0]!.text).toContain('182 wpm');
+    expect(() => validateCoachChat(fix('At 140 wpm you were fine.'), measured)).toThrow(/figure/);
+
+    // Above his normal: never "project more" or "speak up" (rulebook §5.3).
+    expect(() => validateCoachChat(fix('Project more on the last line.'), chatPayload({ loudness: 'above' }))).toThrow(
+      /push harder/,
+    );
+    const easeOff = validateCoachChat(
+      fix('You were louder than your normal: ease off and let it land.'),
+      chatPayload({ loudness: 'above' }),
+    );
+    expect(easeOff.fixes[0]!.text).toContain('ease off');
+
+    // Everyday words like "project" or "faster" are not voice comments.
+    const project = validateCoachChat(fix('Name the project and get to the fix faster.'), noNumbers);
+    expect(project.fixes[0]!.text).toContain('project');
+  });
+
+  it('the slip must be his own words; a watched mistake he repeated comes first', () => {
+    const p = chatPayload();
+    expect(validateCoachChat(goodChat({ slip: { wrong: 'do the needful', right: 'handle it' } }), p).slip).toBeNull();
+    expect(validateCoachChat(goodChat({ slip: { wrong: 'revert back', right: 'Revert Back' } }), p).slip).toBeNull();
+    expect(validateCoachChat(goodChat({ slip: { wrong: 'w'.repeat(61), right: 'r' } }), p).slip).toBeNull();
+    expect(validateCoachChat(goodChat({ slip: 'revert back' }), p).slip).toBeNull();
+    expect(validateCoachChat(goodChat({ slip: null }), p).slip).toBeNull();
+
+    const watched = validateCoachChat(
+      goodChat({ slip: null }),
+      chatPayload({ watch: [{ wrong: 'basically', right: '(drop it)' }, { wrong: 'revert back', right: 'reply' }] }),
+    );
+    expect(watched.slip).toEqual({ wrong: 'basically', right: '(drop it)' });
+  });
+
+  it('a short answer is a nudge: no quote needed, still one fix with its lesson', () => {
+    const v = validateCoachChat(
+      {
+        good: 'Thanks for starting.',
+        fixes: [{ text: 'Add one detail: what did you eat?', lesson: 'Small talk L1: one real detail' }],
+        better: 'It was good, I tried a new dosa place near the office.',
+        slip: null,
+      },
+      chatPayload({ transcript: 'It was good.', track: 'smalltalk' }),
+    );
+    expect(v.fixes).toHaveLength(1);
+  });
+
+  it('clamps long lines at a sentence end', () => {
+    const long = 'You named "a production outage on Monday" well. '.repeat(20);
+    const v = validateCoachChat(
+      goodChat({ good: long, better: 'On Monday we had a production outage. '.repeat(30) }),
+      chatPayload(),
+    );
+    expect(v.good.length).toBeLessThanOrEqual(CHAT_POINT_MAX);
+    expect(v.better.length).toBeLessThanOrEqual(CHAT_BETTER_MAX);
+    expect(v.better.endsWith('.')).toBe(true);
+  });
+});
+
+describe('coach_chat handler', () => {
+  const originalEnv = process.env;
+  let ip = 0;
+
+  beforeEach(() => {
+    process.env = { ...originalEnv };
+    delete process.env.GEMINI_API_KEY;
+    delete process.env.GROQ_API_KEY;
+    delete process.env.ANTHROPIC_API_KEY;
+  });
+
+  afterEach(() => {
+    process.env = originalEnv;
+    vi.restoreAllMocks();
+  });
+
+  function chat(payload: unknown, prefer?: string) {
+    ip += 1;
+    return handler(
+      new Request('http://localhost/.netlify/functions/ai', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'x-forwarded-for': `10.15.0.${ip}` },
+        body: JSON.stringify({ task: 'coach_chat', payload, ...(prefer ? { prefer } : {}) }),
+      }),
+    );
+  }
+
+  const gemini = (text: string) => ({
+    ok: true,
+    json: async () => ({ candidates: [{ content: { parts: [{ text }] } }] }),
+  });
+  const groq = (content: string) => ({ ok: true, json: async () => ({ choices: [{ message: { content } }] }) });
+  const anthropic = (text: string) => ({ ok: true, json: async () => ({ content: [{ text }] }) });
+
+  it('rejects bad payloads with a plain message and never calls a model', async () => {
+    process.env.ANTHROPIC_API_KEY = 'k';
+    const fetchSpy = vi.fn();
+    global.fetch = fetchSpy as any;
+    const cases: Array<[unknown, RegExp | string]> = [
+      [null, 'Invalid payload'],
+      [[], 'Invalid payload'],
+      [chatPayload({ question: ' ' }), /needs the question/],
+      [chatPayload({ question: 'q'.repeat(501) }), 'Invalid payload'],
+      [chatPayload({ transcript: undefined }), 'Invalid payload'],
+      [chatPayload({ transcript: '   ' }), /didn't catch any words/],
+      [chatPayload({ transcript: 'word '.repeat(1100) }), /too long for one turn/],
+      [chatPayload({ track: 'grammar' }), 'Invalid payload'],
+      [chatPayload({ wpm: '150' }), 'Invalid payload'],
+      [chatPayload({ wpm: 0 }), 'Invalid payload'],
+      [chatPayload({ wpm: 900 }), 'Invalid payload'],
+      [chatPayload({ loudness: 'shouting' }), 'Invalid payload'],
+      [chatPayload({ voicedSec: -1 }), 'Invalid payload'],
+      [
+        chatPayload({ watch: Array.from({ length: 11 }, (_, i) => ({ wrong: `w${i}`, right: `r${i}` })) }),
+        'Invalid payload',
+      ],
+      [chatPayload({ watch: [{ wrong: 'revert back' }] }), 'Invalid payload'],
+    ];
+    for (const [payload, msg] of cases) {
+      const res = await chat(payload);
+      expect(res.status, JSON.stringify(payload)?.slice(0, 80)).toBe(400);
+      const data = (await res.json()) as any;
+      expect(data.ok).toBe(false);
+      if (typeof msg === 'string') expect(data.error).toBe(msg);
+      else expect(data.error).toMatch(msg);
+    }
+    expect(fetchSpy).not.toHaveBeenCalled();
+    expect(
+      checkCoachChatPayload(
+        chatPayload({ wpm: 150, loudness: 'above', voicedSec: 30, watch: [{ wrong: 'a', right: 'b' }] }),
+      ),
+    ).toBeNull();
+  });
+
+  it('Haiku coaches first: Anthropic is called before Gemini without any prefer', async () => {
+    process.env.ANTHROPIC_API_KEY = 'k';
+    process.env.GEMINI_API_KEY = 'k';
+    process.env.GROQ_API_KEY = 'k';
+    const fetchSpy = vi.fn().mockResolvedValueOnce(anthropic(JSON.stringify(goodChat())));
+    global.fetch = fetchSpy as any;
+    const res = await chat(chatPayload({ wpm: 150, loudness: 'normal' }));
+    expect(res.status).toBe(200);
+    const data = (await res.json()) as any;
+    expect(data.ok).toBe(true);
+    expect(data.task).toBe('coach_chat');
+    expect(data.provider).toBe('anthropic');
+    expect(data.data.fixes).toHaveLength(2);
+    expect(fetchSpy).toHaveBeenCalledTimes(1);
+    const [url, init] = fetchSpy.mock.calls[0] as [string, { body: string }];
+    expect(url).toContain('api.anthropic.com');
+    const body = JSON.parse(init.body);
+    expect(body.model).toBe('claude-haiku-5-5');
+    expect(body.system[0].text).toBe(systemFor('coach_chat'));
+    expect(body.system[0].text.startsWith(rulebookFor('coach_chat'))).toBe(true);
+    expect(JSON.parse(body.messages[0].content).wpm).toBe(150);
+  });
+
+  it('no Anthropic key: falls back to Gemini', async () => {
+    process.env.GEMINI_API_KEY = 'k';
+    global.fetch = vi.fn().mockResolvedValueOnce(gemini(JSON.stringify(goodChat()))) as any;
+    const data = (await (await chat(chatPayload())).json()) as any;
+    expect(data.ok).toBe(true);
+    expect(data.provider).toBe('gemini');
+  });
+
+  it('provider error, bad JSON and a rule-breaking reply each fail over to the next provider', async () => {
+    process.env.ANTHROPIC_API_KEY = 'k';
+    process.env.GEMINI_API_KEY = 'k';
+    process.env.GROQ_API_KEY = 'k';
+    global.fetch = vi
+      .fn()
+      .mockResolvedValueOnce({ ok: false, status: 529, json: async () => ({}) }) // anthropic overloaded
+      .mockResolvedValueOnce(gemini('{"good":"You said')) // broken JSON
+      .mockResolvedValueOnce(groq(JSON.stringify(goodChat()))) as any;
+    const data = (await (await chat(chatPayload())).json()) as any;
+    expect(data.ok).toBe(true);
+    expect(data.provider).toBe('groq');
+
+    global.fetch = vi
+      .fn()
+      .mockResolvedValueOnce(anthropic(JSON.stringify(goodChat({ good: 'You said "a big win" well.' }))))
+      .mockResolvedValueOnce(gemini(JSON.stringify(goodChat()))) as any;
+    const second = (await (await chat(chatPayload())).json()) as any;
+    expect(second.provider).toBe('gemini');
+    expect(second.data.good).toContain('production outage');
+  });
+
+  it('honours an explicit prefer over the Haiku default', async () => {
+    process.env.ANTHROPIC_API_KEY = 'k';
+    process.env.GROQ_API_KEY = 'k';
+    const fetchSpy = vi.fn().mockResolvedValueOnce(groq(JSON.stringify(goodChat())));
+    global.fetch = fetchSpy as any;
+    const data = (await (await chat(chatPayload(), 'groq')).json()) as any;
+    expect(data.provider).toBe('groq');
+    expect((fetchSpy.mock.calls[0] as [string])[0]).toContain('api.groq.com');
+  });
+
+  it('no keys, or every provider failing: the plain unavailable message, no fake coaching', async () => {
+    global.fetch = vi.fn() as any;
+    const none = await chat(chatPayload());
+    expect(none.status).toBe(502);
+    expect(((await none.json()) as any).error).toMatch(/unavailable/i);
+    expect(global.fetch).not.toHaveBeenCalled();
+
+    process.env.ANTHROPIC_API_KEY = 'k';
+    process.env.GEMINI_API_KEY = 'k';
+    process.env.GROQ_API_KEY = 'k';
+    global.fetch = vi
+      .fn()
+      .mockResolvedValueOnce({ ok: false, status: 500, json: async () => ({}) })
+      .mockResolvedValueOnce(gemini(''))
+      .mockResolvedValueOnce(
+        groq(JSON.stringify(goodChat({ fixes: [{ text: 'Slow your pace.', lesson: 'L2' }] }))),
+      ) as any;
+    const res = await chat(chatPayload());
+    expect(res.status).toBe(502);
+    const data = (await res.json()) as any;
+    expect(data.ok).toBe(false);
+    expect(data.data).toBeUndefined();
+    expect(data.error).not.toMatch(/http|JSON|pace|transcript/i);
+    expect(global.fetch).toHaveBeenCalledTimes(3);
   });
 });

@@ -683,10 +683,15 @@ export interface VerifyBatchResult {
 export type DraftCardType = ClassifyInboxResult['cards'][number]['type'];
 
 export interface ExpandSeedPayload {
-  /** Card type to produce siblings of — siblings must be this same type. */
-  type: DraftCardType;
-  /** How many siblings (1–10; misses ask for 2). */
+  /** Card type to produce siblings of — siblings must be this same type.
+   *  `'teach'` = v5 top-up: fresh teach cards for one `track` (no seed). */
+  type: DraftCardType | 'teach';
+  /** How many siblings (1–10; misses ask for 2; teach top-ups 1–5). */
   count: number;
+  /** v5 teach top-up only: the skill the cards are for (required with `'teach'`). */
+  track?: Track;
+  /** v5 teach top-up only: his current level in that skill. */
+  level?: TrackLevel;
   /** The seed card minus CardBase fields (validated with the classify draft rules). */
   seed?: unknown;
   /** Optional topic hints (top-up uses profile interests + coach subjects). */

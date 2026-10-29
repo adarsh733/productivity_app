@@ -1,5 +1,5 @@
 ﻿import { useState } from 'react';
-import type { Card } from '../../../types/contract';
+import type { Card, TeachCard } from '../../../types/contract';
 import { GAMIFICATION } from '../../../types/contract';
 import { useTryWords } from '../../../features/speak/useModeCards';
 import type { CapturedAudio } from '../../../features/reset/useMissionAudio';
@@ -34,6 +34,16 @@ export default function RapidRepMode({ initialCard, onClose }: RapidRepModeProps
       return {
         title: 'Rapid Speaking Rep',
         prompt: DEFAULT_PROMPTS[promptIndex % DEFAULT_PROMPTS.length]!,
+        targetVocab: undefined,
+      };
+    }
+
+    // v5 Try card (🎤 Say mine in the feed): say his own answer to the card's try prompt.
+    if ((initialCard as { type: string }).type === 'teach') {
+      const teach = initialCard as unknown as TeachCard;
+      return {
+        title: teach.title,
+        prompt: teach.tryPrompt,
         targetVocab: undefined,
       };
     }

@@ -217,6 +217,27 @@ describe('maybeSpawnMissSiblings (AG-008 stage 2)', () => {
     expect(await db.meta.get(MISS_META)).toBeUndefined();
   });
 
+  it('background reserve: refused with fewer than 10 calls left, allowed with exactly 10 (v5 Ask goes first)', async () => {
+    const seed = wordCard('c-8');
+    await db.cards.put(seed);
+    await db.meta.put({
+      key: AI_BUDGET_META,
+      value: { date: todayKey(), count: AI_DAILY_CAP - 9 },
+      updatedAt: 1,
+    });
+    const fetchFn = missFetch([WORD_A]);
+    expect(await maybeSpawnMissSiblings(seed, fetchFn)).toBe(0);
+    expect(fetchFn).not.toHaveBeenCalled();
+
+    await db.meta.put({
+      key: AI_BUDGET_META,
+      value: { date: todayKey(), count: AI_DAILY_CAP - 10 },
+      updatedAt: 2,
+    });
+    expect(await maybeSpawnMissSiblings(seed, fetchFn)).toBe(1);
+    expect(fetchFn).toHaveBeenCalled();
+  });
+
   it('same provider generate + verify: nothing stored, needs-key flag set, ask still counted', async () => {
     const seed = wordCard('c-6');
     await db.cards.put(seed);

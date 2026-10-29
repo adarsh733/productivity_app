@@ -135,4 +135,25 @@ describe('FeedScreen Real RTL Component Suite', () => {
       expect(onOpenSpeak).toHaveBeenCalled();
     }
   });
+
+  it('v5: 🎤 Say mine on a Try card opens the say-it drill with that card', async () => {
+    await db.cards.clear();
+    const { cards } = readSeedFiles();
+    await db.cards.bulkPut(
+      cards.filter((c) => isTeachCard(c) && (c as unknown as { kind: string }).kind === 'try'),
+    );
+    const onOpenSpeak = vi.fn();
+    render(<FeedScreen onOpenSpeakWithCard={onOpenSpeak} />);
+
+    const sayMine = await screen.findByRole(
+      'button',
+      { name: /Say my answer out loud/i },
+      { timeout: 10000 },
+    );
+    await act(async () => {
+      fireEvent.click(sayMine);
+    });
+    expect(onOpenSpeak).toHaveBeenCalledTimes(1);
+    expect(onOpenSpeak.mock.calls[0]![0]).toMatchObject({ type: 'teach', kind: 'try' });
+  });
 });

@@ -133,4 +133,13 @@ describe('useAsk', () => {
     expect(result.current.phase).toBe('idle');
     expect(result.current.added).toBeNull();
   });
+
+  it('lists his recent questions, newest first, at most 5', async () => {
+    for (let i = 0; i < 7; i++) {
+      await db.asks.put({ id: `r${i}`, createdAt: 100 + i, text: `q${i}`, askKind: 'word', answer: 'a', cardIds: [], addedToFeed: false });
+    }
+    const { result } = renderHook(() => useAsk({ fetchFn: goodFetch() }));
+    await waitFor(() => expect(result.current.recent).toHaveLength(5));
+    expect(result.current.recent!.map((a) => a.text)).toEqual(['q6', 'q5', 'q4', 'q3', 'q2']);
+  });
 });

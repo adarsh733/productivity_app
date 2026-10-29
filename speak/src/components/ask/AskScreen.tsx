@@ -1,6 +1,4 @@
 import { useMemo, useRef, useState } from 'react';
-import { useLiveQuery } from 'dexie-react-hooks';
-import { db } from '../../db/db';
 import { SearchIcon } from '../shell/Icons';
 import type { AnswerAskPayload, Track } from '../../types/contract';
 import SkillPage from '../lessons/SkillPage';
@@ -44,12 +42,8 @@ export default function AskScreen() {
   }, [ready, ladderOf]);
 
   const ask = useAsk({ levels });
-  const { text, setText, library, phase, view, added, adding, canSend } = ask;
+  const { text, setText, library, phase, view, added, adding, canSend, recent } = ask;
   const typing = text.trim().length >= MIN_QUERY_CHARS;
-  const recent = useLiveQuery(
-    () => db.asks.orderBy('createdAt').reverse().limit(5).toArray(),
-    [],
-  );
 
   const pickChip = (starter: string) => {
     setText(starter);

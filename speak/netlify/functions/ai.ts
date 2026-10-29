@@ -5,6 +5,8 @@ import type {
   AnswerAskResult,
   AskKind,
   CardKind,
+  CoachChatPayload,
+  CoachChatResult,
   TeachDraft,
   Track,
   TrackLevel,
@@ -26,7 +28,7 @@ import { rulebookFor } from '../rulebook';
  *    (`netlify/rulebook.ts`, generated from `docs/AI-RULEBOOK.md`).
  */
 
-/** Tasks this function can run today. A later step adds coach_chat. */
+/** Every task this function runs. Anything else is refused. */
 const CONFIGURED_TASKS = [
   'expand_seed',
   'verify_batch',
@@ -34,6 +36,7 @@ const CONFIGURED_TASKS = [
   'review_recording',
   'plan_week',
   'answer_ask',
+  'coach_chat',
 ] as const;
 type ConfiguredTask = (typeof CONFIGURED_TASKS)[number];
 
@@ -66,6 +69,14 @@ const CARD_SHAPES = [
   'teach_back {type:"teach_back",prompt,beats:[3],targetSec:15-180};',
   'situation {type:"situation",kind:"incident"|"office_call"|"feeling"|"opinion"|"life_story",title (max 40),prompt (max 200),beats:[3],targetVocab:[0-4],targetSec:30|45|60|90}.',
 ];
+/** expand_seed with type "teach": the top-up asks for rulebook teach cards, one skill at a time. */
+const TEACH_RULE = [
+  'When the requested type is "teach", ignore the old card shapes below.',
+  'Return {"cards":[...]} with exactly the requested count of teach cards, ALL in the requested "track", at the requested "level" (at most 1 in 5 may stretch one level up), following sections 1 to 3 of the rulebook above.',
+  'Mix the kinds the track allows (learn, use, fix, try). Each card is exactly',
+  '{"type":"teach","track":string,"level":1-5,"kind":"learn"|"use"|"fix"|"try"|"ask_them","category":string,"title":string,"rule":string,"examples":{"work":string,"everyday":string},"insteadOf"?:string,"analogy":string,"tryPrompt":string,"register":"casual"|"office"|"both","answer"?:string,"credit"?:string}.',
+  'Try cards carry the great answer in "answer". Fix cards need insteadOf. ask_them is small talk only. A card over any section 1.2 limit is thrown away.',
+].join(' ');
 const NEVER_PRODUCE = 'Never produce types: breath, pronounce, say_it, action_verb.';
 const AVOID_RULE =
   'If the input contains an "avoid" list, never produce any card whose headline term matches, or closely paraphrases, an entry in it.';
@@ -73,6 +84,8 @@ const AVOID_RULE =
 // ── answer_ask limits (rulebook §4 and §1.2) ───────────────────────────────
 /** Longest question the Ask box sends. */
 export const ASK_TEXT_MAX = 1000;
+/** Most teach cards one top-up call may ask for. */
+export const EXPAND_TEACH_MAX = 5;
 /** The short plain answer: 1-3 sentences. Longer is cut at a sentence end. */
 export const ASK_ANSWER_MAX = 600;
 /** One fix-my-sentence version. Longer fails over (cutting would break [[chunks]]). */
@@ -82,6 +95,22 @@ export const ASK_CARDS_MAX = 8;
 export const ASK_CHUNKS_MAX = 8;
 /** Weak-spot halves and chunks (rulebook §4.3). */
 export const ASK_SHORT_MAX = 60;
+
+// ── coach_chat limits (rulebook §5) ────────────────────────────────────────
+/** The partner's question shown to him. */
+export const CHAT_QUESTION_MAX = 500;
+/** One spoken answer's transcript (about 4 minutes of speech). */
+export const CHAT_TRANSCRIPT_MAX = 5000;
+/** Point 1 (what went well) and each fix: one or two plain sentences. */
+export const CHAT_POINT_MAX = 300;
+/** The rewritten better version. */
+export const CHAT_BETTER_MAX = 600;
+/** Most fixes per answer (rulebook §5.4: one or two). */
+export const CHAT_FIXES_MAX = 2;
+/** A lesson name a fix points to. */
+export const CHAT_LESSON_MAX = 80;
+/** Below this many words the coach only nudges (rulebook §5.6). */
+export const CHAT_SHORT_WORDS = 5;
 
 /**
  * Per-task generation settings. `verify_batch` is deliberately cold.
@@ -104,6 +133,7 @@ const TASK_CONFIG: Record<
       AVOID_RULE,
       'Everyday register, not literary. No rare or archaic words.',
       'Examples must be sentences a colleague would actually say out loud.',
+      TEACH_RULE,
       'Allowed card types and exact shapes:',
       ...CARD_SHAPES,
       NEVER_PRODUCE,
@@ -188,6 +218,31 @@ const TASK_CONFIG: Record<
       AVOID_RULE,
     ].join(' '),
   },
+  coach_chat: {
+    temperature: 0.3,
+    maxTokens: 1024,
+    shape: [
+      'You are the coach in the daily voice practice chat. You get the partner "question", his spoken answer as "transcript", the day\'s "track", and only the numbers his phone measured ("wpm", "loudness" vs his own normal, "voicedSec"). Follow section 5 of the rulebook above.',
+      'Return ONLY JSON: {"good":string,"fixes":[{"text":string,"lesson":string}],"better":string,"slip":{"wrong":string,"right":string}|null}.',
+      `good: point 1, the one thing done well. Quote his exact words in "double quotes" and name the rule it follows. At most ${CHAT_POINT_MAX} characters.`,
+      `fixes: one or two fixes, never more. Each "text" teaches the rule in one line plus the better way (at most ${CHAT_POINT_MAX} characters); each "lesson" names the track lesson or card that teaches it, for example "Speak clearly: say the answer first" (at most ${CHAT_LESSON_MAX} characters).`,
+      `better: one rewritten better version of his answer or its key sentence, using his own content and words. Same facts; invent nothing. At most ${CHAT_BETTER_MAX} characters.`,
+      'slip: at most one clear standard-English slip, not a style choice: "wrong" is his exact phrase from the transcript, "right" the global form, each at most 60 characters; null when there is none. If a phrase from the "watch" list appears in the transcript, the slip is that one.',
+      'Double quotes are ONLY for his exact words from the transcript. Never put rule names, lesson names or your own words in double quotes. Never quote a word that is not in the transcript.',
+      'Mention pace or speed ONLY when "wpm" is given, and loudness or volume ONLY when "loudness" is given; never guess them from text and never invent a figure. When loudness is "above", the tip is to ease off, never to project more or speak up.',
+      `If the transcript has fewer than ${CHAT_SHORT_WORDS} words, do not analyse: "good" thanks him for starting, the one fix nudges one more try with something concrete, and "better" shows a fuller sample answer.`,
+      'Never comment on accent or pronunciation. Judge against the track being practised, not everything at once. No markdown, no emoji.',
+    ].join(' '),
+  },
+};
+
+/**
+ * Tasks with a frozen first provider. The client's `prefer` still wins, and
+ * the rest of the locked order follows as the fallback.
+ * coach_chat: "Haiku coaches" (frozen 2026-10-29).
+ */
+const TASK_PREFER: Partial<Record<ConfiguredTask, Provider>> = {
+  coach_chat: 'anthropic',
 };
 
 type Provider = 'gemini' | 'groq' | 'anthropic';
@@ -203,6 +258,25 @@ export const GROQ_MODEL = 'openai/gpt-oss-120b';
  */
 export function systemFor(task: ConfiguredTask): string {
   return `${rulebookFor(task)}\n\n=== THIS JOB ===\n${TASK_CONFIG[task].shape}`;
+}
+
+/**
+ * Groq's free tier for gpt-oss-120b reads 8,000 tokens a minute, and it counts
+ * the answer room (`max_tokens`) up front: a request whose prompt plus
+ * max_tokens is over the limit is refused before it runs. answer_ask asks for
+ * 6,144 answer tokens on top of a ~5,000-token prompt, so without this cap Groq
+ * refused every Ask (and a long verify_batch).
+ */
+export const GROQ_TOKENS_PER_MINUTE = 8000;
+/** Rough characters per token for English plus JSON; a little low, to stay safe. */
+const CHARS_PER_TOKEN = 3.5;
+/** Never ask Groq for less answer room than this; below it, it fails over instead. */
+const GROQ_MIN_ANSWER_TOKENS = 512;
+
+/** Answer room for a Groq call: what the task wants, cut so prompt + answer fit the minute. */
+export function groqMaxTokens(system: string, user: string, wanted: number): number {
+  const prompt = Math.ceil((system.length + user.length) / CHARS_PER_TOKEN) + 100;
+  return Math.max(GROQ_MIN_ANSWER_TOKENS, Math.min(wanted, GROQ_TOKENS_PER_MINUTE - prompt));
 }
 
 const PER_PROVIDER_TIMEOUT_MS = 8000;
@@ -479,10 +553,38 @@ export function validateVerifyBatch(raw: unknown): unknown {
   return { results };
 }
 
-export function validateExpandSeed(raw: unknown): unknown {
+export function validateExpandSeed(raw: unknown, payload?: unknown): unknown {
   if (!raw || typeof raw !== 'object') throw new Error('expand_seed response must be an object');
   const c = raw as Record<string, unknown>;
   if (!Array.isArray(c.cards)) throw new Error('Missing "cards" array');
+  const asked = (payload && typeof payload === 'object' ? (payload as Record<string, unknown>) : {}) as {
+    type?: unknown;
+    track?: unknown;
+  };
+  if (asked.type === 'teach') {
+    // Teach cards: a bad card is dropped, not fatal. None left ⇒ fail over to the next provider.
+    const cards: TeachDraft[] = [];
+    const reasons: string[] = [];
+    const titles = new Set<string>();
+    (c.cards as unknown[]).forEach((d, i) => {
+      try {
+        const card = validateTeachDraft(d, i);
+        if (typeof asked.track === 'string' && card.track !== asked.track) {
+          throw new Error(`Card ${i}: not in the requested track`);
+        }
+        const key = card.title.toLowerCase();
+        if (titles.has(key)) throw new Error(`Card ${i}: repeats another card's title`);
+        titles.add(key);
+        cards.push(card);
+      } catch (e) {
+        reasons.push((e as Error).message);
+      }
+    });
+    if (cards.length === 0) {
+      throw new Error(`No usable teach cards${reasons.length ? `: ${reasons[0]}` : ''}`);
+    }
+    return { cards };
+  }
   return { cards: (c.cards as unknown[]).map((d, i) => validateClassifyDraft(d, i)) };
 }
 
@@ -801,7 +903,208 @@ export function checkAnswerAskPayload(payload: unknown): string | null {
   return null;
 }
 
-export function validateProviderOutput(task: AiTask, raw: unknown): unknown {
+// ── coach_chat (rulebook §5: voice practice chat feedback) ─────────────────
+// Strict where a wrong word would teach him something false: a quote that is
+// not in his transcript, a pace or loudness comment with no measured number,
+// a figure the phone never measured, or a fix that names no lesson. Any of
+// those throws, so the next provider gets a turn. Sizes are clamped; a slip
+// that is not his own words is dropped, never fatal.
+
+const CHAT_LOUDNESS = ['below', 'normal', 'above'] as const;
+
+/** Lower-case, straight apostrophes, punctuation to spaces, single spaces. */
+function normForMatch(s: string): string {
+  return ` ${s
+    .toLowerCase()
+    .replace(/[‘’ʼ`]/g, "'")
+    .replace(/[^\p{L}\p{N}'\s]/gu, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()} `;
+}
+
+/** True when `phrase` appears in `transcript` as whole words (case and punctuation ignored). */
+function inTranscript(phrase: string, transcript: string): boolean {
+  const p = normForMatch(phrase);
+  if (!p.trim()) return true;
+  return normForMatch(transcript).includes(p);
+}
+
+/** Every "double-quoted" span in a coach line (straight or curly quotes). */
+function quotesIn(s: string): string[] {
+  return [...s.matchAll(/["“”]([^"“”]+)["“”]/g)]
+    .map((m) => (m[1] ?? '').trim())
+    .filter(Boolean);
+}
+
+/** A quote may skip words with "..." or "…"; each piece must be his words. */
+function quoteIsHis(quote: string, transcript: string): boolean {
+  return quote
+    .split(/\.{3}|…/)
+    .map((piece) => piece.trim())
+    .filter(Boolean)
+    .every((piece) => inTranscript(piece, transcript));
+}
+
+/** The coach's own words in a line: the line minus his quoted words. */
+function coachWords(s: string): string {
+  return s.replace(/["“”][^"“”]*["“”]/g, ' ');
+}
+
+// Narrow on purpose: "project" or "faster" are everyday office words, not voice comments.
+const PACE_TERMS =
+  /\b(pace|pacing|speed|speaking speed|too fast|too slow|slow down|speak slower|speak faster|speed up|rushed|rushing|wpm|words per minute|words a minute)\b/i;
+const LOUD_TERMS =
+  /\b(loud|louder|loudly|loudness|quiet|quieter|quietly|volume|softer|softly|project more|project your voice|speak up)\b/i;
+/** Instructions to push harder. "You were louder than your normal" is a description, not one of these. */
+const PUSH_HARDER =
+  /\b(speak louder|be louder|get louder|talk louder|say it louder|project more|projecting more|project your voice|speak up|more volume|raise your voice)\b/i;
+
+/** First term from `re` in the coach's words that he did not say himself. */
+function strayTerm(text: string, re: RegExp, transcript: string): string | undefined {
+  const m = re.exec(coachWords(text));
+  if (!m) return undefined;
+  return inTranscript(m[0], transcript) ? undefined : m[0];
+}
+
+export function validateCoachChat(raw: unknown, payload?: unknown): CoachChatResult {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new Error('Coach response must be an object');
+  const c = raw as Record<string, unknown>;
+  const p = (payload && typeof payload === 'object' ? payload : {}) as Partial<CoachChatPayload>;
+  const transcript = typeof p.transcript === 'string' ? p.transcript : '';
+  const short = wordsOf(transcript) < CHAT_SHORT_WORDS;
+
+  const goodRaw = str(c.good);
+  if (!goodRaw) throw new Error('Missing or empty "good"');
+  const good = clampAtSentence(goodRaw, CHAT_POINT_MAX);
+
+  if (!Array.isArray(c.fixes)) throw new Error('Missing "fixes" array');
+  const fixes: CoachChatResult['fixes'] = [];
+  for (const f of c.fixes) {
+    if (!f || typeof f !== 'object' || Array.isArray(f)) continue;
+    const fr = f as Record<string, unknown>;
+    const text = str(fr.text);
+    const lesson = str(fr.lesson);
+    // Every fix is taught and names its lesson (rulebook §5.4); one without is dropped.
+    if (!text || !lesson) continue;
+    fixes.push({ text: clampAtSentence(text, CHAT_POINT_MAX), lesson: clampAtWord(lesson, CHAT_LESSON_MAX) });
+    if (fixes.length === CHAT_FIXES_MAX) break;
+  }
+  if (fixes.length === 0) throw new Error('No fix that names its lesson');
+
+  const betterRaw = str(c.better);
+  if (!betterRaw) throw new Error('Missing or empty "better"');
+  const better = clampAtSentence(betterRaw, CHAT_BETTER_MAX);
+
+  // Never quote words he did not say (rulebook §5.3). The rewrite is exempt: it is new wording.
+  const coachLines = [good, ...fixes.map((f) => f.text)];
+  for (const line of coachLines) {
+    for (const q of quotesIn(line)) {
+      if (!quoteIsHis(q, transcript)) throw new Error('Quotes words that are not in the transcript');
+    }
+  }
+  // Point 1 quotes his exact words, unless the answer was too short to analyse.
+  if (!short && quotesIn(good).length === 0) throw new Error('"good" quotes none of his words');
+  // The rewrite uses his content: at least one of his longer words survives.
+  if (!short) {
+    const his = new Set(
+      normForMatch(transcript)
+        .split(' ')
+        .filter((w) => w.length >= 4),
+    );
+    const kept = normForMatch(better)
+      .split(' ')
+      .some((w) => his.has(w));
+    if (his.size > 0 && !kept) throw new Error('"better" does not use his words');
+  }
+
+  // Pace and loudness only from the measured numbers (rulebook §5.3).
+  const hasWpm = typeof p.wpm === 'number' && Number.isFinite(p.wpm);
+  const loudness = CHAT_LOUDNESS.includes(p.loudness as (typeof CHAT_LOUDNESS)[number]) ? p.loudness : undefined;
+  for (const line of coachLines) {
+    if (!hasWpm) {
+      const t = strayTerm(line, PACE_TERMS, transcript);
+      if (t) throw new Error(`Talks about pace ("${t}") with no measured number`);
+    }
+    if (!loudness) {
+      const t = strayTerm(line, LOUD_TERMS, transcript);
+      if (t) throw new Error(`Talks about loudness ("${t}") with no measured number`);
+    } else if (loudness === 'above' && PUSH_HARDER.test(coachWords(line))) {
+      throw new Error('Tells him to push harder while he is above his normal');
+    }
+    // Never invent figures: a words-per-minute number must be the measured one.
+    for (const m of coachWords(line).matchAll(/(\d+(?:\.\d+)?)\s*(?:wpm|words (?:per|a) minute)/gi)) {
+      if (!hasWpm || Math.abs(Number(m[1]) - (p.wpm as number)) > 1) {
+        throw new Error('States a pace figure the phone did not measure');
+      }
+    }
+  }
+
+  // The slip is his own words or nothing. A watched mistake he repeated comes first.
+  let slip: CoachChatResult['slip'] = null;
+  const s = c.slip;
+  if (s && typeof s === 'object' && !Array.isArray(s)) {
+    const wrong = str((s as Record<string, unknown>).wrong);
+    const right = str((s as Record<string, unknown>).right);
+    if (
+      wrong &&
+      right &&
+      wrong.length <= ASK_SHORT_MAX &&
+      right.length <= ASK_SHORT_MAX &&
+      wrong.toLowerCase() !== right.toLowerCase() &&
+      inTranscript(wrong, transcript)
+    ) {
+      slip = { wrong, right };
+    }
+  }
+  if (Array.isArray(p.watch)) {
+    const hit = p.watch.find(
+      (w) => w && typeof w.wrong === 'string' && w.wrong.trim() && inTranscript(w.wrong, transcript),
+    );
+    if (hit && (!slip || normForMatch(slip.wrong) !== normForMatch(hit.wrong))) {
+      slip = { wrong: hit.wrong.trim().slice(0, ASK_SHORT_MAX), right: String(hit.right ?? '').trim().slice(0, ASK_SHORT_MAX) };
+      if (!slip.right) slip = null;
+    }
+  }
+
+  return { good, fixes, better, slip };
+}
+
+/** coach_chat payload: plain-words error, or null when fine. */
+export function checkCoachChatPayload(payload: unknown): string | null {
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return 'Invalid payload';
+  const p = payload as Record<string, unknown>;
+  if (typeof p.question !== 'string' || !p.question.trim()) return 'The chat needs the question you answered';
+  if (p.question.trim().length > CHAT_QUESTION_MAX) return 'Invalid payload';
+  if (typeof p.transcript !== 'string') return 'Invalid payload';
+  if (!p.transcript.trim()) return "I didn't catch any words. Try answering again, a little closer to the phone.";
+  if (p.transcript.trim().length > CHAT_TRANSCRIPT_MAX) return 'That answer is too long for one turn. Keep it under about 3 minutes.';
+  if (typeof p.track !== 'string' || !TRACKS.includes(p.track as Track)) return 'Invalid payload';
+  if (p.wpm !== undefined && (typeof p.wpm !== 'number' || !Number.isFinite(p.wpm) || p.wpm <= 0 || p.wpm > 400)) {
+    return 'Invalid payload';
+  }
+  if (p.loudness !== undefined && !CHAT_LOUDNESS.includes(p.loudness as (typeof CHAT_LOUDNESS)[number])) {
+    return 'Invalid payload';
+  }
+  if (
+    p.voicedSec !== undefined &&
+    (typeof p.voicedSec !== 'number' || !Number.isFinite(p.voicedSec) || p.voicedSec < 0 || p.voicedSec > 600)
+  ) {
+    return 'Invalid payload';
+  }
+  if (p.watch !== undefined) {
+    if (!Array.isArray(p.watch) || p.watch.length > 10) return 'Invalid payload';
+    for (const w of p.watch) {
+      if (!w || typeof w !== 'object' || Array.isArray(w)) return 'Invalid payload';
+      const ww = w as Record<string, unknown>;
+      if (typeof ww.wrong !== 'string' || !ww.wrong.trim() || typeof ww.right !== 'string' || !ww.right.trim()) {
+        return 'Invalid payload';
+      }
+    }
+  }
+  return null;
+}
+
+export function validateProviderOutput(task: AiTask, raw: unknown, payload?: unknown): unknown {
   if (!raw || typeof raw !== 'object') {
     throw new Error('Provider response must be an object');
   }
@@ -858,7 +1161,7 @@ export function validateProviderOutput(task: AiTask, raw: unknown): unknown {
   }
 
   if (task === 'expand_seed') {
-    return validateExpandSeed(raw);
+    return validateExpandSeed(raw, payload);
   }
 
   if (task === 'plan_week') {
@@ -869,7 +1172,12 @@ export function validateProviderOutput(task: AiTask, raw: unknown): unknown {
     return validateAnswerAsk(raw);
   }
 
-  return raw;
+  if (task === 'coach_chat') {
+    return validateCoachChat(raw, payload);
+  }
+
+  // Every configured task has a validator above; nothing unchecked reaches the client.
+  throw new Error('No validator for this task');
 }
 
 export default async function handler(req: Request): Promise<Response> {
@@ -914,14 +1222,31 @@ export default async function handler(req: Request): Promise<Response> {
     if (!payload || typeof payload !== 'object') {
       return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
     }
-    if (typeof payload.type !== 'string' || !(DRAFT_TYPES as readonly string[]).includes(payload.type)) {
+    const isTeach = payload.type === 'teach';
+    if (
+      typeof payload.type !== 'string' ||
+      !(isTeach || (DRAFT_TYPES as readonly string[]).includes(payload.type))
+    ) {
       return json({ ok: false, task: body.task, error: 'Invalid card type' }, 400);
     }
     const count = payload.count;
-    if (typeof count !== 'number' || !Number.isInteger(count) || count < 1 || count > 10) {
+    const countMax = isTeach ? EXPAND_TEACH_MAX : 10;
+    if (typeof count !== 'number' || !Number.isInteger(count) || count < 1 || count > countMax) {
       return json({ ok: false, task: body.task, error: 'Invalid count' }, 400);
     }
-    if (payload.seed !== undefined) {
+    if (isTeach) {
+      if (typeof payload.track !== 'string' || !TRACKS.includes(payload.track as Track)) {
+        return json({ ok: false, task: body.task, error: 'Invalid track' }, 400);
+      }
+      const lv = payload.level;
+      if (lv !== undefined && (typeof lv !== 'number' || !Number.isInteger(lv) || lv < 1 || lv > 5)) {
+        return json({ ok: false, task: body.task, error: 'Invalid level' }, 400);
+      }
+      if (payload.seed !== undefined) {
+        return json({ ok: false, task: body.task, error: 'Teach cards take no seed card' }, 400);
+      }
+    }
+    if (payload.seed !== undefined && !isTeach) {
       let seed: unknown;
       try {
         seed = validateClassifyDraft(payload.seed, 0);
@@ -1004,6 +1329,11 @@ export default async function handler(req: Request): Promise<Response> {
     if (bad) return json({ ok: false, task: body.task, error: bad }, 400);
   }
 
+  if (body.task === 'coach_chat') {
+    const bad = checkCoachChatPayload(body.payload);
+    if (bad) return json({ ok: false, task: body.task, error: bad }, 400);
+  }
+
   // Safe: the ALLOWED_TASKS check above guarantees a configured task.
   const task = body.task as ConfiguredTask;
   const cfg = TASK_CONFIG[task];
@@ -1014,9 +1344,11 @@ export default async function handler(req: Request): Promise<Response> {
   }
 
   // Provider order is Gemini → Groq → Anthropic (locked decision).
-  // Anthropic stays only as a last fallback. `prefer` can still override.
+  // Anthropic stays only as a last fallback. `prefer` (or a task's frozen
+  // first provider, TASK_PREFER) moves one provider to the front.
   const allProviders: Provider[] = ['gemini', 'groq', 'anthropic'];
-  const preferred = body.prefer && allProviders.includes(body.prefer) ? body.prefer : undefined;
+  const preferred =
+    body.prefer && allProviders.includes(body.prefer) ? body.prefer : TASK_PREFER[task];
   const order: Provider[] = preferred
     ? [preferred, ...allProviders.filter((p) => p !== preferred)]
     : allProviders;
@@ -1049,7 +1381,7 @@ export default async function handler(req: Request): Promise<Response> {
       }
 
       const parsed = safeParse(rawText);
-      const validated = validateProviderOutput(body.task, parsed);
+      const validated = validateProviderOutput(body.task, parsed, body.payload);
 
       return json({ ok: true, task: body.task, provider, data: validated });
     } catch (e) {
@@ -1147,7 +1479,9 @@ async function call(
     body: JSON.stringify({
       model: GROQ_MODEL,
       temperature,
-      max_tokens: maxTokens,
+      max_tokens: groqMaxTokens(system, user, maxTokens),
+      // gpt-oss thinks before it answers, and the thinking spends max_tokens; keep it short.
+      reasoning_effort: 'low',
       response_format: { type: 'json_object' },
       messages: [
         { role: 'system', content: system },

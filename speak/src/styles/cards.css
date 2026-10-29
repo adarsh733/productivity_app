@@ -354,7 +354,13 @@
 
 .teach-body {
   cursor: default;
-  gap: 12px;
+  gap: 10px;
+  /* Room under the last block so it scrolls fully clear of the action bar,
+     and a soft fade where the scroll area meets the bar. */
+  padding-bottom: 24px;
+  scroll-padding-bottom: 24px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 20px), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 20px), transparent);
 }
 
 .teach-title {
@@ -436,4 +442,68 @@
   background: #fef3c7;
   border-color: #d97706;
   color: #92400e;
+}
+
+/* -- v5 Try card: the moment, the shape, think, then tap -------------------- */
+.try-body {
+  gap: 10px;
+}
+
+.try-prompt {
+  margin: 0;
+  font-size: var(--fs-4);
+  font-weight: var(--fw-bold);
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.try-shape-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: var(--r-md, 12px);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--track, var(--line));
+  background: var(--track-soft, var(--raised));
+  color: var(--ink);
+  font-size: var(--fs-3);
+  line-height: 1.35;
+}
+
+.try-shape-rule {
+  color: var(--ink-2);
+}
+
+.try-reveal {
+  width: 100%;
+  min-height: 44px;
+  border-style: dashed;
+}
+
+.try-great {
+  padding: 10px 12px;
+  border-radius: var(--r-md, 12px);
+  border: 1px solid #cbe8d6;
+  background: #f4fbf6;
+  color: #14532d;
+  font-size: var(--fs-3);
+  line-height: 1.4;
+  white-space: pre-line;
+}
+
+.try-actions .abtn.try-say {
+  background: transparent;
+  min-height: 48px;
+}
+
+/* -- v5 old cards: work and everyday examples + analogy from the skill tag -- */
+.skill-parts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  cursor: default;
 }

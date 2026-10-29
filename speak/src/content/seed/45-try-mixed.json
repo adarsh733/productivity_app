@@ -1,0 +1,592 @@
+[
+  {
+    "id": "try-smalltalk-monday-weekend",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "try",
+    "category": "Answer well",
+    "title": "Monday: \"How was your weekend?\"",
+    "rule": "Answer with a feeling word plus one real detail, then hand it back.",
+    "examples": {
+      "work": "Arjun: \"How was your weekend?\"\nYou: \"Lazy, in a good way. I finally watched Kantara. Yours?\"",
+      "everyday": "Neighbour: \"Busy weekend?\"\nYou: \"Very. My nephew's birthday, twenty kids. Did you go out?\""
+    },
+    "analogy": "A detail is the biscuit with the chai: it gives them something to pick up.",
+    "tryPrompt": "Monday, 9:30, at the coffee machine. Fatima asks, \"How was your weekend?\" Answer for real.",
+    "answer": "Tiring but fun. We drove to Mysore for my cousin's housewarming. Did you do anything nice?",
+    "register": "both",
+    "credit": "The Reveal step in Carol Fleming's ARE",
+    "tags": [
+      "try",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "weekend"
+    ]
+  },
+  {
+    "id": "try-smalltalk-pick-up-thread",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "try",
+    "category": "Follow-ups",
+    "title": "Pick up their thread",
+    "rule": "Comment on the one detail they gave, then ask about it.",
+    "examples": {
+      "work": "Riya: \"I was in Jaipur last week.\"\nYou: \"Oh nice! Work or holiday?\"",
+      "everyday": "Cousin: \"I've started running.\"\nYou: \"Good for you! Mornings or evenings?\""
+    },
+    "analogy": "Their detail is a loose thread. Pull it gently and more comes out.",
+    "tryPrompt": "Joseph says, \"I spent Sunday fixing my bike.\" Reply with one comment and one question about it.",
+    "answer": "On your own? That's impressive. What was wrong with it?",
+    "register": "both",
+    "credit": "\"threads\", Lorraine K. Lee",
+    "tags": [
+      "try",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "follow-ups"
+    ]
+  },
+  {
+    "id": "try-smalltalk-busy-week-point-first",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "try",
+    "category": "Answer well",
+    "title": "\"Busy week?\" Answer first, then a hook",
+    "rule": "Give the answer in your first word, then one detail and a question.",
+    "examples": {
+      "work": "Manager: \"Busy week?\"\nYou: \"Very. Two client demos. Is yours any calmer?\"",
+      "everyday": "Friend: \"Coming tonight?\"\nYou: \"Can't, sorry. Mum's visiting. Sunday brunch instead?\""
+    },
+    "analogy": "Like a cricket scoreboard: the score first, the story of the overs after.",
+    "tryPrompt": "In the lift, a senior manager asks, \"Busy week?\" You launch the new app on Thursday. Answer in two sentences.",
+    "answer": "Very busy. We launch the new app on Thursday. How's your week going?",
+    "register": "both",
+    "tags": [
+      "try",
+      "small-talk",
+      "mixed",
+      "with:clearly",
+      "depth:light",
+      "setting:office",
+      "seniors"
+    ]
+  },
+  {
+    "id": "try-smalltalk-bad-day-light",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "try",
+    "category": "Answer well",
+    "title": "A bad day, said lightly",
+    "rule": "Be honest about a bad day, but keep it short and light.",
+    "examples": {
+      "work": "Priya: \"How's it going?\"\nYou: \"Long day. The build broke twice. Tea first, then round three!\"",
+      "everyday": "Dad: \"How was work?\"\nYou: \"Rough, honestly. But I'm home, and I can smell dal.\""
+    },
+    "analogy": "Share the rain, not the whole weather report.",
+    "tryPrompt": "Your client cancelled at the last minute today. A colleague asks, \"How's your day?\" Answer.",
+    "answer": "A bit frustrating, honestly. The client cancelled at the last minute. How's yours going?",
+    "register": "both",
+    "tags": [
+      "try",
+      "small-talk",
+      "depth:light",
+      "setting:office"
+    ]
+  },
+  {
+    "id": "try-smalltalk-welcome-back-catch-up",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "try",
+    "category": "Hand it back",
+    "title": "Hand it back with \"catch up\"",
+    "rule": "Give one detail, then hand it back using \"catch up\".",
+    "examples": {
+      "work": "Rahul: \"Good break?\"\nYou: \"Great. Two days in Coorg, zero emails. Let's catch up on what I missed.\"",
+      "everyday": "Old friend: \"It's been ages!\"\nYou: \"It has! I've changed jobs since. Shall we catch up over chai this week?\""
+    },
+    "analogy": "Like a rally in badminton: your shot's done, now it's theirs.",
+    "tryPrompt": "You're back from a week's leave. Your teammate says, \"Welcome back!\" Reply with a detail, then use \"catch up\".",
+    "answer": "Thanks! Goa was lovely, lots of fish curry. Can we catch up after lunch?",
+    "register": "both",
+    "tags": [
+      "try",
+      "small-talk",
+      "mixed",
+      "with:words",
+      "depth:light",
+      "setting:office",
+      "catch-up"
+    ]
+  },
+  {
+    "id": "try-smalltalk-match-their-mood",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "try",
+    "category": "Listening moves",
+    "title": "Match their mood",
+    "rule": "Meet their energy first: excited with excited, tired with gentle.",
+    "examples": {
+      "work": "Arjun: \"We finally shipped it!\"\nYou: \"Yes! Three months of work. How are you celebrating?\"",
+      "everyday": "Friend (quietly): \"Long week.\"\nYou: \"Sounds like it. Want to just get chai and sit?\""
+    },
+    "analogy": "Like joining a song: match the tempo before you sing your part.",
+    "tryPrompt": "Riya rushes in: \"I passed my driving test!\" Reply in two or three sentences.",
+    "answer": "Congratulations! That's huge. Was it your first try?",
+    "register": "both",
+    "credit": "Matching principle, Charles Duhigg (Supercommunicators)",
+    "tags": [
+      "try",
+      "small-talk",
+      "depth:light",
+      "setting:office"
+    ]
+  },
+  {
+    "id": "try-stories-but-and-so",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "try",
+    "category": "Story basics",
+    "title": "Today in three parts: what, but, so",
+    "rule": "Tell one thing from today: what happened, \"but…\", \"so…\".",
+    "examples": {
+      "work": "I planned to finish the report early, but the Wi-Fi went down. So I finished it offline and sent it at lunch.",
+      "everyday": "I wanted a quiet Sunday, but the plumber came at nine. So we had brunch at noon."
+    },
+    "analogy": "A train journey: the plan, a red signal, then the new route.",
+    "tryPrompt": "Think of one plan from today that didn't go as expected. Tell it with \"but\" and \"so\".",
+    "answer": "I wanted to leave the office at six, but my manager called a quick meeting at 5:55. So I ate my dinner on the bus home.",
+    "register": "both",
+    "credit": "South Park writers' \"but / therefore\" rule, built into Randy Olson's ABT",
+    "tags": [
+      "try",
+      "stories",
+      "your-day"
+    ]
+  },
+  {
+    "id": "try-stories-two-words-from-this-week",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "try",
+    "category": "Everyday stories",
+    "title": "Tell it with two words from this week",
+    "rule": "Tell one moment from today, using two of this week's words.",
+    "examples": {
+      "work": "We ran into a problem with the login at noon, but Riya sorted it out in ten minutes.",
+      "everyday": "Our Sunday picnic got pushed back a week, so we caught up over chai at home instead."
+    },
+    "analogy": "New words are new spices: use them in today's cooking, or they sit in the jar.",
+    "tryPrompt": "Tell one moment from today in under 30 seconds. Use two of: run into, sort out, push back, follow up.",
+    "answer": "This morning we ran into a problem: the client's file wouldn't open, and the call was in ten minutes. I asked Fatima, and she sorted it out in two. We started on time.",
+    "register": "both",
+    "credit": "Matthew Dicks, Homework for Life (Storyworthy)",
+    "tags": [
+      "try",
+      "stories",
+      "mixed",
+      "with:words",
+      "your-day",
+      "this-week-words"
+    ]
+  },
+  {
+    "id": "try-stories-what-changed",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "try",
+    "category": "Story basics",
+    "title": "End with what changed",
+    "rule": "End with what changed: in the situation, or in you.",
+    "examples": {
+      "work": "I used to dread client calls. Today's went well, and now I'm looking forward to Friday's.",
+      "everyday": "I thought my landlord was rude. Then he fixed our geyser at midnight. Now I bring him sweets."
+    },
+    "analogy": "A story is a before-and-after photo. Without the \"after\", it's just a photo.",
+    "tryPrompt": "Think of something you did differently this week. Say what you thought before, what happened, and how you see it now.",
+    "answer": "I always took the 8:30 bus and reached late. On Monday I missed it and walked to the metro instead. I reached ten minutes early. Now I take the metro every day.",
+    "register": "both",
+    "tags": [
+      "try",
+      "stories",
+      "your-day"
+    ]
+  },
+  {
+    "id": "try-stories-result-then-moment",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "try",
+    "category": "Story basics",
+    "title": "Result first, then the moment",
+    "rule": "Say the result in one line, then tell the moment it happened.",
+    "examples": {
+      "work": "The demo went fine in the end. Two minutes in, the screen froze.",
+      "everyday": "We made the train, just. The auto stopped dead on the flyover."
+    },
+    "analogy": "A cricket score first, then the one over everyone talks about.",
+    "tryPrompt": "Your manager asks, \"What happened with the demo?\" It crashed, but you fixed it live. Result first, then the moment.",
+    "answer": "It went well in the end. Two minutes in, the screen froze and the client went quiet. I restarted the app and said, \"Live demos, right?\" They laughed. Ten minutes later, they asked about pricing.",
+    "register": "both",
+    "tags": [
+      "try",
+      "stories",
+      "mixed",
+      "with:clearly",
+      "work-story"
+    ]
+  },
+  {
+    "id": "try-stories-one-line-of-dialogue",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "try",
+    "category": "Vivid detail",
+    "title": "Add one line someone said",
+    "rule": "Put in one real line someone said, in their exact words.",
+    "examples": {
+      "work": "My manager read the deck, looked up and said, \"Who wrote slide nine?\"",
+      "everyday": "The auto driver turned round and said, \"Sir, change is your problem, not mine.\""
+    },
+    "analogy": "A quote is a voice note inside your story: they hear the person, not just you.",
+    "tryPrompt": "Tell a moment from this week when someone said something that surprised you. Include their exact words.",
+    "answer": "I was rushing out with my laptop still open, and the security guard said, \"Sir, the laptop will reach before you.\" I laughed all the way to the lift.",
+    "register": "both",
+    "tags": [
+      "try",
+      "stories",
+      "your-day"
+    ]
+  },
+  {
+    "id": "try-stories-name-the-real-thing",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "try",
+    "category": "Vivid detail",
+    "title": "Swap the general word for the real one",
+    "rule": "Name the real thing: \"Activa\", not \"vehicle\"; \"dosa\", not \"food\".",
+    "examples": {
+      "work": "I rode my Activa to the client's office in Whitefield.",
+      "everyday": "We grabbed masala dosas at the stall outside the station."
+    },
+    "insteadOf": "I took my vehicle and went to eat some food.",
+    "analogy": "General words are a pencil sketch; real names add the colour.",
+    "tryPrompt": "Tell what you had for lunch yesterday, and where. Use at least two real names.",
+    "answer": "Yesterday I had rajma chawal at the Punjabi place near our office. The owner gave me extra onions without asking.",
+    "register": "both",
+    "tags": [
+      "try",
+      "stories",
+      "your-day",
+      "food"
+    ]
+  },
+  {
+    "id": "try-clearly-yes-or-no-first",
+    "type": "teach",
+    "track": "clearly",
+    "level": 1,
+    "kind": "try",
+    "category": "Answer first",
+    "title": "Yes or no in your first word",
+    "rule": "Start with yes or no, then give one reason.",
+    "examples": {
+      "work": "No, not today. Testing needs one more day.",
+      "everyday": "Yes, I'll come. I'll be there by eight."
+    },
+    "insteadOf": "Actually, the vendor was late, and testing took time, so maybe not…",
+    "analogy": "Like an umpire: the finger goes up or not, before any explanation.",
+    "tryPrompt": "Your manager asks, \"Can you take the Thursday client call?\" You can, but only after 3 p.m.",
+    "answer": "Yes, after 3 p.m. I'm in a review till then.",
+    "register": "both",
+    "tags": [
+      "try",
+      "speak-clearly"
+    ]
+  },
+  {
+    "id": "try-clearly-point-first-sharp-verb",
+    "type": "teach",
+    "track": "clearly",
+    "level": 1,
+    "kind": "try",
+    "category": "Answer first",
+    "title": "Point first, with a sharp verb",
+    "rule": "Give the point first, with a sharp verb like \"fixed\" or \"flagged\".",
+    "examples": {
+      "work": "We fixed the login bug. It's been live since ten.",
+      "everyday": "I booked the tickets. The train's at six tomorrow."
+    },
+    "insteadOf": "So regarding the bug, we did some work on it and it's done.",
+    "analogy": "A sharp verb is a sharp knife: one clean cut, no sawing.",
+    "tryPrompt": "In stand-up, report that you found a mistake in the invoice and told finance yesterday.",
+    "answer": "I found an error in the invoice and flagged it to finance yesterday.",
+    "register": "office",
+    "tags": [
+      "try",
+      "speak-clearly",
+      "mixed",
+      "with:words",
+      "stand-up"
+    ]
+  },
+  {
+    "id": "try-clearly-one-point-per-sentence",
+    "type": "teach",
+    "track": "clearly",
+    "level": 1,
+    "kind": "try",
+    "category": "Plain words",
+    "title": "One point per sentence",
+    "rule": "Break the long sentence; give each point its own sentence.",
+    "examples": {
+      "work": "The build failed. Rahul is on leave. I'll fix it by Friday.",
+      "everyday": "The cab's late. It's raining. Start dinner without me."
+    },
+    "insteadOf": "The build failed and Rahul is on leave and the client wants it by Friday and…",
+    "analogy": "Like train coaches: each carries its own load, linked but separate.",
+    "tryPrompt": "Tell your team three things: the server is slow, IT knows, and it will be fixed by lunch.",
+    "answer": "The server's slow today. IT knows about it. They'll fix it by lunch.",
+    "register": "both",
+    "tags": [
+      "try",
+      "speak-clearly"
+    ]
+  },
+  {
+    "id": "try-clearly-what-do-you-do",
+    "type": "teach",
+    "track": "clearly",
+    "level": 1,
+    "kind": "try",
+    "category": "Answer first",
+    "title": "\"What do you do?\" in one line",
+    "rule": "Answer \"What do you do?\" in one line, then hand it back.",
+    "examples": {
+      "work": "I build the app that small shops use for billing. What about you?",
+      "everyday": "I make apps for small shops. How about you?"
+    },
+    "insteadOf": "So basically I joined in 2019, then moved teams, and now I'm handling…",
+    "analogy": "A one-line answer is a shop's signboard: they know what's inside before walking in.",
+    "tryPrompt": "At a friend's wedding, someone asks, \"So, what do you do?\" Answer in one line, then hand it back.",
+    "answer": "I help small shops take payments on their phones. How about you?",
+    "register": "both",
+    "tags": [
+      "try",
+      "speak-clearly",
+      "mixed",
+      "with:smalltalk",
+      "introductions"
+    ]
+  },
+  {
+    "id": "try-clearly-half-the-words",
+    "type": "teach",
+    "track": "clearly",
+    "level": 2,
+    "kind": "try",
+    "category": "Cut the clutter",
+    "title": "Say it in half the words",
+    "rule": "Cut the warm-up; keep only what the listener needs.",
+    "examples": {
+      "work": "The meeting's moved to four.",
+      "everyday": "Dinner's at eight now, not seven."
+    },
+    "insteadOf": "So basically what I wanted to say is that the meeting has been moved.",
+    "analogy": "Like packing a cabin bag: only what you'll actually use.",
+    "tryPrompt": "Say this in under 10 words: \"I just wanted to let you all know that the office will be closed on Friday.\"",
+    "answer": "The office is closed on Friday.",
+    "register": "both",
+    "tags": [
+      "try",
+      "speak-clearly"
+    ]
+  },
+  {
+    "id": "try-clearly-buy-time-then-answer",
+    "type": "teach",
+    "track": "clearly",
+    "level": 2,
+    "kind": "try",
+    "category": "Delivery",
+    "title": "Buy time, then answer",
+    "rule": "Use a short phrase to think, then give the point.",
+    "examples": {
+      "work": "Good question. Short answer: yes, by Friday.",
+      "everyday": "Let me think… the blue one."
+    },
+    "analogy": "Like a bowler's run-up: a few steps first, then the delivery.",
+    "tryPrompt": "In a meeting, someone asks how many users signed up last week. You need a second to recall it.",
+    "answer": "Good question. Let me think… about twelve hundred last week.",
+    "register": "both",
+    "tags": [
+      "try",
+      "speak-clearly",
+      "meetings"
+    ]
+  },
+  {
+    "id": "try-words-bring-forward",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "try",
+    "category": "Phrasal verbs",
+    "title": "Move it earlier: \"bring forward\"",
+    "rule": "To move a plan earlier, \"bring it forward\".",
+    "examples": {
+      "work": "Can we bring the review forward to Tuesday?",
+      "everyday": "Let's bring dinner forward to seven; the match starts at eight."
+    },
+    "analogy": "Like moving your ticket to an earlier train.",
+    "tryPrompt": "The client wants Friday's demo on Wednesday instead. Tell your team.",
+    "answer": "The client wants to bring the demo forward to Wednesday.",
+    "register": "both",
+    "tags": [
+      "try",
+      "words",
+      "meetings"
+    ]
+  },
+  {
+    "id": "try-words-follow-up",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "try",
+    "category": "Phrasal verbs",
+    "title": "Chase politely: \"follow up\"",
+    "rule": "To check again on something pending, \"follow up on\" it.",
+    "examples": {
+      "work": "I'll follow up with Priya on the contract today.",
+      "everyday": "Did you follow up with the landlord about the leak?"
+    },
+    "analogy": "A second knock on the door, a little later, still polite.",
+    "tryPrompt": "You emailed the vendor on Monday; no reply yet. Tell your manager what you'll do today.",
+    "answer": "No reply yet, so I'll follow up with them today.",
+    "register": "both",
+    "tags": [
+      "try",
+      "words",
+      "email"
+    ]
+  },
+  {
+    "id": "try-words-leave-it-with-me",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "try",
+    "category": "Office phrases",
+    "title": "\"Leave it with me\", then a time",
+    "rule": "Say \"Leave it with me\" to take a task on.",
+    "examples": {
+      "work": "\"Can someone check the numbers?\" \"Leave it with me. I'll send them by four.\"",
+      "everyday": "\"Who'll call the plumber?\" \"Leave it with me.\""
+    },
+    "analogy": "Like taking the keys from someone's hand: now it's yours to drive.",
+    "tryPrompt": "Your manager asks who can fix the broken client link before lunch. Take it, answer first, and give a time.",
+    "answer": "Leave it with me. I'll have it fixed by twelve.",
+    "register": "both",
+    "tags": [
+      "try",
+      "words",
+      "mixed",
+      "with:clearly",
+      "meetings"
+    ]
+  },
+  {
+    "id": "try-words-raise-a-concern",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "try",
+    "category": "Collocations",
+    "title": "Raise a concern, calmly",
+    "rule": "Say \"I'd like to raise a concern\" to flag a worry politely.",
+    "examples": {
+      "work": "I'd like to raise a concern about the Friday deadline.",
+      "everyday": "I raised a concern with the school about the bus timing."
+    },
+    "analogy": "Like raising your hand in class: polite, visible, and everyone pauses.",
+    "tryPrompt": "In the planning meeting, you worry the team is too small for two launches. Say it politely.",
+    "answer": "I'd like to raise a concern: we may not have enough people for two launches.",
+    "register": "both",
+    "tags": [
+      "try",
+      "words",
+      "meetings"
+    ]
+  },
+  {
+    "id": "try-words-heavy-traffic-reply",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "try",
+    "category": "Collocations",
+    "title": "\"Heavy traffic\" in a real reply",
+    "rule": "Use \"heavy traffic\" in a 1+1 reply, then hand it back.",
+    "examples": {
+      "work": "Priya: \"Rough morning?\"\nYou: \"Heavy traffic on the flyover. An hour! How was your commute?\"",
+      "everyday": "Mum: \"Why so late?\"\nYou: \"Heavy traffic near the market. Have you eaten?\""
+    },
+    "analogy": "A new word is a new shirt: wear it out once and it starts to feel like yours.",
+    "tryPrompt": "You're 15 minutes late for a team lunch because of traffic. Arjun says, \"There you are!\" Reply.",
+    "answer": "Sorry! Heavy traffic all the way from Indiranagar. Have you ordered yet?",
+    "register": "both",
+    "tags": [
+      "try",
+      "words",
+      "mixed",
+      "with:smalltalk",
+      "depth:light",
+      "setting:office",
+      "commute"
+    ]
+  },
+  {
+    "id": "try-words-fill-me-in",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "try",
+    "category": "Phrasal verbs",
+    "title": "Ask to be filled in",
+    "rule": "\"Fill someone in\" means tell them what they missed.",
+    "examples": {
+      "work": "Can you fill me in on yesterday's client call?",
+      "everyday": "I missed the family call. Can you fill me in?"
+    },
+    "analogy": "Like filling in the blank pages of their notebook.",
+    "tryPrompt": "You missed the first half of the meeting. Afterwards, ask Rahul to tell you what happened.",
+    "answer": "Rahul, could you fill me in on the first half?",
+    "register": "both",
+    "tags": [
+      "try",
+      "words",
+      "meetings"
+    ]
+  }
+]

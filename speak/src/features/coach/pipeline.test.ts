@@ -1,4 +1,31 @@
 import { describe, expect, it, beforeEach, vi } from 'vitest';
+import { aiPost, withTimeout } from './pipeline';
+
+describe('AI client time limit', () => {
+  it('a hung request ends as the plain failure line, and the fetch is aborted', async () => {
+    vi.useFakeTimers();
+    try {
+      let signal: AbortSignal | undefined;
+      const hang = vi.fn((_url: string, init?: RequestInit) => {
+        signal = init?.signal ?? undefined;
+        return new Promise<Response>(() => {});
+      });
+      const p = aiPost('answer_ask', { text: 'x' }, hang as unknown as typeof fetch);
+      const caught = p.catch((e: Error) => e);
+      await vi.advanceTimersByTimeAsync(30_000);
+      const err = await caught;
+      expect(err).toBeInstanceOf(Error);
+      expect((err as Error).message).toMatch(/unavailable/i);
+      expect(signal?.aborted).toBe(true);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it('a quick answer is untouched', async () => {
+    await expect(withTimeout(async () => 'ok', 1000)).resolves.toBe('ok');
+  });
+});
 import { db } from '../../db/db';
 import { todayKey } from '../../lib/date';
 import type { Card } from '../../types/contract';

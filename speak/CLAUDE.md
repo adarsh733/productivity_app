@@ -11,7 +11,16 @@ don't reopen them.
 
 | Path | What |
 |---|---|
-| `src/types/contract.ts` | **The contract.** Types for everything. Start here. Now includes `situation` cards. |
+| `src/types/contract.ts` | **The contract.** Types for everything. Start here. v5 added (additive only): `TeachCard`/`TeachDraft`, `Track`, `CardKind`, `SkillTag`, Ask/chat/weak-spot/story types, AI tasks `answer_ask` + `coach_chat`. |
+| `src/App.tsx` + `components/shell/TabBar.tsx` | **v5 shell: Feed · Ask · Me.** Old Browse / Speak / You open from the ⚙︎ on Me via `components/me/OldToolsSheet.tsx`. |
+| `components/feed/` + `components/cards/` | Feed with the Stories row; `TeachCardFace` (Learn/Use/Fix), `TryCardFace` (reveal + 🎤 Say mine → the old say-it drill with the card's try prompt). |
+| `features/lessons/` + `components/lessons/` | One lesson a day (`rotation.ts`: smalltalk → stories → clearly → words), LessonPlayer, SkillPage ladder (L3-5 locked). |
+| `features/skills/trackOf.ts` | Which skill an old card trains (its own `skill` tag, else by type). |
+| `features/ask/` + `components/ask/` | Ask tab: local library search, `answer_ask`, check on the other provider, "Add N cards to my feed" (Use → Fix → Try). |
+| `features/chat/` + `components/chat/` | Evening chat: record → `transcribe` (word times) → pace + loudness measured on the phone → `coach_chat` (Haiku). Story bank. Opened from Me. |
+| `features/me/useMe.ts` + `components/me/` | Me: 3 stats, Saved, weak spots, story bank, chats, things asked. |
+| `features/coach/pipeline.ts` | `aiPost` (every client AI call; 30 s time limit) and `verifyDrafts` (every AI card checked on a DIFFERENT provider). |
+| `features/auto/budget.ts` | 25 AI calls a day, phone-only. Ask = 2, chat turn = 1; background top-ups/misses stop below 10 left. |
 | `src/db/db.ts` | Dexie schema. IndexedDB is the read path, always. |
 | `src/db/seedLoader.ts` | Loads `src/content/seed/*.json`. Validates, skips bad cards, never throws. Text-only describe scenes allowed. |
 | `src/srs/scheduler.ts` | SM-2. Silent-failure zone — covered by tests. Wired: first sight → due tomorrow. |
@@ -24,10 +33,29 @@ don't reopen them.
 | `src/components/speak/modes/` | Rapid Rep, Story, Situations, Describe, Explain, Teach-back — all DB-backed with "No prompts yet" fallbacks. |
 | `src/components/you/` | Voice charts (SVG), recordings, week counters, urges, notes. Every number traces to a query. |
 | `src/sync/` | Backup push (outbox on start/hidden/5 min) + restore. Never read during a session. |
-| `netlify/functions/ai.ts` | The only path to a model. Gemini → Groq → Anthropic (haiku-4-5 last). Feedback + classify/verify/expand + plan_week; no key ever in the client. |
+| `netlify/functions/ai.ts` | The only path to a model. Gemini `gemini-3.5-flash-lite` → Groq `openai/gpt-oss-120b` → Anthropic `claude-haiku-5-5` (locked order; `coach_chat` starts on Haiku). Tasks: expand_seed (incl. `type: 'teach'`), verify_batch, classify_inbox, review_recording, plan_week, answer_ask, coach_chat. Groq answer room is cut so prompt + answer fit its 8,000 tokens a minute. No key ever in the client. |
+| `netlify/rulebook.ts` | Generated from `../docs/AI-RULEBOOK.md` by `scripts/build-rulebook.mjs` (`--check` exits 1 when stale). Each task's system prompt = its rulebook slice + its JSON shape. |
+| `netlify/functions/transcribe.ts` | Speech-to-text: Groq `whisper-large-v3-turbo`, word timestamps, 4 MB cap, plain errors. |
 | `supabase/schema.sql` | Tables + RLS. `user_id` on everything from day one. |
 
-## What exists (2026-10-01, AG-009)
+## What exists (2026-10-29, v5 redesign — built, not yet committed per step)
+
+Three tabs: **Feed · Ask · Me**. Four skills (💬 Small talk · 📖 Stories · 🎯 Speak
+clearly · 🔤 Words) × five levels; Levels 1-2 have 10 lessons each (200 lesson
+cards), Levels 3-5 show "coming soon". The feed mixes teach cards (Learn / Use /
+Fix / Try / Ask-them), old cards reshaped with a skill tag, 32 global-English Fix
+cards and 24 mixed Try cards; XP, Hindi share and voice-drill types are off the
+feed (Hindi cards stay in the database). Ask answers any question with a short
+rule line, library hits and 3-8 checked cards; Fix my sentence gives crisp /
+confident / polite versions with reusable chunks and saves weak spots. The
+evening chat asks 3 questions, measures pace from word times and loudness
+against his own normal, and Haiku coaches (good · 1-2 fixes · a better
+version); the day's best moment goes to the story bank. Top-up asks for 3 teach
+cards for one skill at a time (max 4 a day). Every AI card is checked on a
+different provider before it is stored. Pictures of every step:
+`../docs/redesign-v5/built-step*.png` (regenerate with `npx playwright test v5-step`).
+
+### Before v5 (2026-10-01, AG-009)
 
 Endless feed with SRS (first sight schedules tomorrow, due gets "Show again soon"/"Knew it", `again` requeues within ~10) plus repeat-bug refill guards and engaged-only repetition — engaged now means 2 s on screen (was 4 s) — with XP gate, 14-day skim skip and `markEngaged` signals; content passes the AG-006 review with a seed validator (`scripts/content-pipeline/check-seed.mjs`). Coach box turns Capture dumps into verified cards: every draft is verified on a *different* provider than its generator (one key ⇒ nothing generated, one plain You line), with mistake watch-list, coach queue-jump, try-words wiring, learning from AI-checked recordings, auto top-up behind a 25-call/day local budget, and per-card "This is wrong" (2 taps ⇒ batch purge). Weekly `plan_week` proposes type weights + focus words, clamped in code, shown as one Speak line with Undo. Simpler Speak (Today card + 3 plain-words groups) and simpler You (4 stats, 8-week chart, rows), daily challenge (Today card, 30/45/60 s, use-word + avoid-phrase + voice-goal checks with honest nulls), 12-minute voice routine with pause/resume and transfer enforcement, six quick drills with live meters, weekly MPT check saving VoiceSamples, every recording training volume + pace with honest numbers, DB-backed speaking modes, tidy AI proxy with quote check, silent Supabase backup — every field mapped both ways. Breath cards stay out of feed/Browse; their drills live in the routine.
 
@@ -43,7 +71,16 @@ per-recording volume + pace numbers. The mic is never a gate: everything works d
 
 ## Phase
 
-Shipped through AG-009 (2026-10-01): everything AG-007 had, plus the AG-006
+**v5 (2026-10-29):** all five steps built on `v4-usable`, 705 unit tests, 8 user
+flows (`e2e/flows.spec.ts`, rewritten for the new tabs) and the 5 step specs
+green. Owed (see `../docs/known-issues.md`, "v5 final review"): the three AI
+keys on Netlify and one live call per AI path (everything AI is proven only
+against mocks today); the `viewports.spec.ts` AI mock; the Supabase AG-009
+ALTER block; Adarsh's look at the step pictures before each step's commit.
+`e2e/screenshots.spec.ts` is the old v4 picture test — left unused on purpose
+(question 11A); running it overwrites the 16 v4 pictures.
+
+Before that: shipped through AG-009 (2026-10-01): everything AG-007 had, plus the AG-006
 content pass with a seed validator, engaged-only repetition now at 2 s on
 screen (was 4 s), the backup gap closed (every stored field maps both ways),
 and the AG-008 AI upgrade — coach makes every allowed type, learns from misses
@@ -54,9 +91,10 @@ generated, one plain line. Owed: the 375×812 visual walk and live AI
 verification after deploy (see `../docs/known-issues.md`).
 The microphone is optional and measured everywhere it is used.
 
-Open technical risk carried forward: **live WPM depends on
-SpeechRecognition** — on iOS it stops on silence, has session limits and needs
-the network. When unavailable, WPM shows "—", never an estimate.
+Open technical risk carried forward: **live WPM in the old Speak tools depends
+on SpeechRecognition** — on iOS it stops on silence, has session limits and
+needs the network. When unavailable, WPM shows "—", never an estimate. The v5
+evening chat never uses it: pace there comes from Whisper's word timestamps.
 
 ## Working rules
 

@@ -2,6 +2,15 @@
   {
     "id": "feel-apprehensive",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "I'm a bit apprehensive about tomorrow's review with the client.",
+      "everyday": "She was apprehensive before her first drive on the highway.",
+      "analogy": "Like the quiet moment before the exam paper is handed out.",
+      "insteadOf": "I am having some tension about tomorrow."
+    },
     "term": "Apprehensive",
     "meaning": "Anxious or fearful that something bad or unpleasant will happen soon.",
     "contrast": "Not panic or terror; it is a quiet, anticipatory dread before an uncertain outcome.",
@@ -15,6 +24,15 @@
   {
     "id": "feel-vindicated",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "When the load test passed, Arjun felt vindicated about his design.",
+      "everyday": "The shortcut I suggested really was faster — I felt vindicated.",
+      "analogy": "Like a DRS review proving the batsman was right to challenge.",
+      "insteadOf": "I felt happy that I was proved correct."
+    },
     "term": "Vindicated",
     "meaning": "Feeling cleared of blame or proven right after being doubted.",
     "contrast": "Not gloating or petty; it is the quiet relief of objective reality confirming your original conviction.",
@@ -27,6 +45,15 @@
   {
     "id": "feel-exasperated",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "After the third meeting on the same issue, Priya was exasperated.",
+      "everyday": "I was exasperated when the fourth auto driver refused to go.",
+      "analogy": "Like a pressure cooker on its third whistle: patience is gone.",
+      "insteadOf": "I was very, very irritated."
+    },
     "term": "Exasperated",
     "meaning": "Intensely irritated, frustrated, and fatigued by repeated friction.",
     "contrast": "Beyond standard annoyance; you have tried multiple solutions and are out of patience.",
@@ -39,6 +66,15 @@
   {
     "id": "feel-ambivalent",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "I'm ambivalent about the new role: more reach, less hands-on work.",
+      "everyday": "I'm ambivalent about moving cities: a better job, but far from family.",
+      "analogy": "Like standing between two trains, wanting to board both.",
+      "insteadOf": "I am confused, I like it and I don't like it."
+    },
     "term": "Ambivalent",
     "meaning": "Having simultaneous conflicting feelings or contradictory attitudes about something.",
     "contrast": "Not apathy (not caring); it is caring strongly in two opposing directions at once.",
@@ -51,6 +87,15 @@
   {
     "id": "feel-complacent",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "Three good quarters made us complacent about testing.",
+      "everyday": "He got complacent after clearing the first round and stopped practising.",
+      "analogy": "Like a team at 200 for 1 that stops running hard between wickets.",
+      "insteadOf": "We became too relaxed because things were going well."
+    },
     "term": "Complacent",
     "meaning": "Smug self-satisfaction accompanied by an unawareness of impending danger or competition.",
     "contrast": "Different from confident; confidence is grounded in rigor, complacency is blinded by past wins.",
@@ -63,6 +108,15 @@
   {
     "id": "feel-demoralized",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "The team felt demoralized when the project was cancelled a week before launch.",
+      "everyday": "After five losses in a row, the colony cricket team was demoralized.",
+      "analogy": "Like a team walking off after a heavy defeat, heads down.",
+      "insteadOf": "Everyone lost their energy and interest."
+    },
     "term": "Demoralized",
     "meaning": "Having lost confidence, hope, or enthusiasm after repeated setbacks.",
     "contrast": "Deeper than tired; your internal belief in the project's eventual success has eroded.",
@@ -75,9 +129,18 @@
   {
     "id": "feel-buoyant",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 5,
+      "kind": "fix",
+      "work": "Despite the tight deadline, the team stayed upbeat all week.",
+      "everyday": "Even after missing the flight, Dad was in good spirits and joking.",
+      "analogy": "Like a cork in water: push it down and it pops right back up.",
+      "insteadOf": "The team stayed buoyant all week."
+    },
     "term": "Buoyant",
     "meaning": "Cheerful, resilient, and optimistically energetic despite headwinds.",
-    "contrast": "Not manic optimism; it is the resilient ability to bounce back when pressure mounts.",
+    "contrast": "You'll mostly see it in writing. In speech, most people say \"upbeat\" or \"in good spirits\".",
     "example": "Despite the tight deadline, the design team maintained a buoyant, collaborative mood.",
     "tags": [
       "emotion",
@@ -87,6 +150,15 @@
   {
     "id": "feel-wary",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "I'm wary of promising a date before we've tested it.",
+      "everyday": "Be wary of anyone on WhatsApp asking for an OTP.",
+      "analogy": "Like crossing a busy road: you look both ways before stepping out.",
+      "insteadOf": "I am a little scared to commit."
+    },
     "term": "Wary",
     "meaning": "Feeling or showing keen caution about possible dangers or hidden traps.",
     "contrast": "Not cowardice; it is calculated, tactical vigilance before committing resources.",
@@ -99,6 +171,15 @@
   {
     "id": "feel-disillusioned",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "After a year of ignored suggestions, he felt disillusioned with the team.",
+      "everyday": "He felt disillusioned when his dream city turned out noisy and lonely.",
+      "analogy": "Like finding out the famous restaurant uses packet masala.",
+      "insteadOf": "I lost my trust and interest in it."
+    },
     "lang": "en",
     "term": "Disillusioned",
     "meaning": "Disappointed upon discovering that something is not as good, honest, or noble as once believed.",
@@ -117,6 +198,15 @@
   {
     "id": "feel-rattled",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "The client's sharp questions rattled her for a moment, but she recovered.",
+      "everyday": "The near miss with the bus left him rattled all the way home.",
+      "analogy": "Like a cup shaking on the table when a truck goes past.",
+      "insteadOf": "She became nervous and disturbed suddenly."
+    },
     "lang": "en",
     "term": "Rattled",
     "meaning": "Momentarily flustered, shaken, or unnerved by an unexpected confrontation or crisis.",
@@ -135,6 +225,15 @@
   {
     "id": "feel-indignant",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "The team was indignant when another group took credit for their work.",
+      "everyday": "She was indignant when the shopkeeper served people who came after her.",
+      "analogy": "Like a batsman given out off a no-ball: the anger is about fairness.",
+      "insteadOf": "They were angry because it was not fair."
+    },
     "lang": "en",
     "term": "Indignant",
     "meaning": "Feeling or showing justifiable anger provoked by unfair treatment or injustice.",
@@ -153,6 +252,15 @@
   {
     "id": "feel-resolute",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "Despite pushback, Fatima stayed resolute about fixing the old code first.",
+      "everyday": "He was resolute about his morning walk, rain or shine.",
+      "analogy": "Like a train on its track: it doesn't swerve for every noise.",
+      "insteadOf": "She was very firm and didn't change her mind."
+    },
     "lang": "en",
     "term": "Resolute",
     "meaning": "Admirably purposeful, determined, and unwavering in commitment.",
@@ -171,6 +279,15 @@
   {
     "id": "feel-overwhelmed",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "With three deadlines this week, I'm a bit overwhelmed — can we prioritise?",
+      "everyday": "Cooking for twenty guests alone, Mum felt overwhelmed.",
+      "analogy": "Like a juggler handed one ball too many.",
+      "insteadOf": "I have so much work, I'm very tense."
+    },
     "lang": "en",
     "term": "Overwhelmed",
     "meaning": "Completely submerged by an excessive volume of demands, sensations, or tasks.",
@@ -189,6 +306,15 @@
   {
     "id": "feel-invigorated",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "After cracking the bug, the whole team felt invigorated.",
+      "everyday": "A swim in the sea left me invigorated for the whole day.",
+      "analogy": "Like the first sip of strong filter coffee on a sleepy morning.",
+      "insteadOf": "I felt fresh and full of energy."
+    },
     "lang": "en",
     "term": "Invigorated",
     "meaning": "Filled with renewed energy, enthusiasm, and vitality.",
@@ -207,6 +333,15 @@
   {
     "id": "feel-guarded",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "In the vendor meeting, his answers about the timeline were guarded.",
+      "everyday": "She's guarded with new neighbours until she knows them well.",
+      "analogy": "Like a batsman playing safe defensive shots, giving nothing away.",
+      "insteadOf": "He was not telling everything openly."
+    },
     "lang": "en",
     "term": "Guarded",
     "meaning": "Cautious, reserved, and deliberately withholding vulnerability in conversation.",
@@ -225,6 +360,15 @@
   {
     "id": "feel-sullen",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "After his idea was rejected, he sat through stand-up in sullen silence.",
+      "everyday": "The kids were sullen all evening after the TV was switched off.",
+      "analogy": "Like a grey monsoon sky that won't rain and won't clear.",
+      "insteadOf": "He was angry and not talking to anyone."
+    },
     "lang": "en",
     "term": "Sullen",
     "meaning": "Bad-tempered, gloomy, and silently resentful.",
@@ -243,6 +387,15 @@
   {
     "id": "feel-nonchalant",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "While everyone panicked over the bug, Joseph stayed nonchalant and fixed it.",
+      "everyday": "He was nonchalant about missing the bus — another comes in five minutes.",
+      "analogy": "Like a seasoned auto driver gliding through a jam without honking once.",
+      "insteadOf": "He was very cool and relaxed, no tension."
+    },
     "lang": "en",
     "term": "Nonchalant",
     "meaning": "Appearing calm, casual, and completely unconcerned under pressure.",
@@ -261,11 +414,20 @@
   {
     "id": "feel-chagrined",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 5,
+      "kind": "fix",
+      "work": "I was annoyed with myself when the typo turned out to be mine.",
+      "everyday": "He was embarrassed when his \"shortcut\" added half an hour to the trip.",
+      "analogy": "Like dropping a catch you loudly called for.",
+      "insteadOf": "I was chagrined to find the typo was mine."
+    },
     "lang": "en",
     "term": "Chagrined",
     "meaning": "Distressed, irritated, or embarrassed by failure or humiliation.",
-    "contrast": "Not devastating shame; it is the stinging annoyance of realizing an avoidable mistake happened publicly.",
-    "example": "She was chagrined to discover that the broken link on the live homepage was due to a typo in her own pull request.",
+    "contrast": "You'll mostly see it in writing. In speech, most people say \"embarrassed\" or \"annoyed with myself\".",
+    "example": "She was chagrined to find the broken link came from her own change.",
     "tags": [
       "emotion",
       "accountability",
@@ -279,11 +441,20 @@
   {
     "id": "feel-mortified",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "I was mortified when I shared the wrong screen in the client demo.",
+      "everyday": "She was mortified when her phone rang in the quietest part of the film.",
+      "analogy": "Like tripping on stage at the annual function, in front of everyone.",
+      "insteadOf": "I felt very, very ashamed and bad."
+    },
     "lang": "en",
     "term": "Mortified",
     "meaning": "Extremely embarrassed, humiliated, or ashamed.",
     "contrast": "Far stronger than mild awkwardness; it feels like wishing the ground would swallow you whole.",
-    "example": "He was mortified when he accidentally shared his private compensation spreadsheet during an all-hands presentation.",
+    "example": "He was mortified when he shared the wrong screen during an all-hands presentation.",
     "tags": [
       "emotion",
       "embarrassment",
@@ -297,6 +468,15 @@
   {
     "id": "feel-exhilarated",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "We were exhilarated when the app crossed a million downloads.",
+      "everyday": "The first rollercoaster ride left my nephew exhilarated.",
+      "analogy": "Like the stadium the moment India hits the winning six.",
+      "insteadOf": "I was very, very happy and excited."
+    },
     "lang": "en",
     "term": "Exhilarated",
     "meaning": "Filled with thrilling, energized joy and high spirits.",
@@ -315,11 +495,20 @@
   {
     "id": "feel-crestfallen",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 5,
+      "kind": "fix",
+      "work": "He looked really disappointed when his feature was cut from the release.",
+      "everyday": "The kids' faces fell when the match was rained off.",
+      "analogy": "Like a kite soaring high, suddenly cut loose and falling.",
+      "insteadOf": "He looked crestfallen about the feature."
+    },
     "lang": "en",
     "term": "Crestfallen",
     "meaning": "Sad, dejected, and visibly deflated after high expectations are suddenly dashed.",
-    "contrast": "Specifically tied to the sharp drop from optimistic hope to sudden disappointment.",
-    "example": "The intern looked crestfallen when told his favorite prototype feature was cut from the final release scope.",
+    "contrast": "You'll mostly see it in writing. In speech, most people say \"really disappointed\" or \"his face fell\".",
+    "example": "The intern looked crestfallen when his favourite feature was cut from the release.",
     "tags": [
       "emotion",
       "disappointment",
@@ -333,10 +522,19 @@
   {
     "id": "feel-disquieted",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 5,
+      "kind": "fix",
+      "work": "The client's silence after our proposal made me uneasy.",
+      "everyday": "Something felt off about the empty street at noon.",
+      "analogy": "Like a faint smell of gas in the kitchen that you can't trace.",
+      "insteadOf": "The client's silence left me disquieted."
+    },
     "lang": "en",
     "term": "Disquieted",
     "meaning": "Feeling an uneasy, subtle sense of worry, anxiety, or lurking danger.",
-    "contrast": "Not acute panic; it is a quiet nagging intuition that something fundamental is off balance.",
+    "contrast": "You'll mostly see it in writing. In speech, most people say \"uneasy\" or \"something felt off\".",
     "example": "The sudden silence from the client following our pricing proposal left the account lead disquieted.",
     "tags": [
       "emotion",
@@ -351,6 +549,15 @@
   {
     "id": "feel-defiant",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "The QA lead stayed defiant: no release without proper testing.",
+      "everyday": "The toddler gave a defiant 'No!' and kept the remote.",
+      "analogy": "Like a batsman who keeps hooking the bouncers he was told he can't play.",
+      "insteadOf": "She refused strongly and didn't listen to them."
+    },
     "lang": "en",
     "term": "Defiant",
     "meaning": "Openly resisting, challenging, or refusing to comply with unjust authority.",
@@ -369,6 +576,15 @@
   {
     "id": "feel-remorseful",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "He was remorseful after his script deleted a day of logs.",
+      "everyday": "She felt remorseful after snapping at her mother over nothing.",
+      "analogy": "Like replaying the shot that got you out, wishing you'd left it alone.",
+      "insteadOf": "He was feeling very sorry for what he did."
+    },
     "lang": "en",
     "term": "Remorseful",
     "meaning": "Filled with genuine, deep, and painful regret for having caused harm or error.",
@@ -387,11 +603,20 @@
   {
     "id": "feel-complaisant",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 5,
+      "kind": "fix",
+      "work": "We were too eager to please the client, and the team got overloaded.",
+      "everyday": "He's so eager to please that he agrees to every plan his friends make.",
+      "analogy": "Like a waiter who says yes to every order, even ones the kitchen can't make.",
+      "insteadOf": "He's too complaisant with the client."
+    },
     "lang": "en",
     "term": "Complaisant",
     "meaning": "Willing to please others or comply with requests without challenge.",
-    "contrast": "Distinct from thoughtful collaboration; complaisance risks agreeing to flawed demands to avoid conflict.",
-    "example": "The junior lead was too complaisant with unreasonable client requests, leading to severe team burnout.",
+    "contrast": "You'll mostly see it in writing. In speech, most people say \"too eager to please\"; it's also easy to mix up with \"complacent\".",
+    "example": "The junior lead was too complaisant with the client's requests, and the team burned out.",
     "tags": [
       "emotion",
       "boundaries",
@@ -405,6 +630,15 @@
   {
     "id": "feel-flustered",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "When the projector died mid-demo, he got flustered for a moment.",
+      "everyday": "The doorbell, the pressure cooker and the phone went off — I got flustered.",
+      "analogy": "Like a new cook when three pots boil over at once.",
+      "insteadOf": "I became confused and nervous suddenly."
+    },
     "lang": "en",
     "term": "Flustered",
     "meaning": "Agitated, confused, and thrown off stride by sudden interruptions or unexpected pressure.",
@@ -423,11 +657,20 @@
   {
     "id": "feel-restive",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 5,
+      "kind": "fix",
+      "work": "After two hours of going in circles, the team got restless.",
+      "everyday": "The kids got impatient in the long queue at the fair.",
+      "analogy": "Like passengers on a train stopped outside the station for an hour.",
+      "insteadOf": "After two hours, the team grew restive."
+    },
     "lang": "en",
     "term": "Restive",
     "meaning": "Unable to remain still or silent; becoming impatient and difficult to control under restraint.",
-    "contrast": "Not lively energy; restiveness comes from mounting frustration with stagnation or delays.",
-    "example": "After two hours of circular corporate debate with no clear action items, the engineering team grew restive.",
+    "contrast": "You'll mostly see it in writing. In speech, most people say \"restless\" or \"getting impatient\".",
+    "example": "After two hours of debate with no decisions, the team grew restive.",
     "tags": [
       "emotion",
       "meetings",
@@ -441,6 +684,15 @@
   {
     "id": "feel-smug",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "He looked smug when his prediction about the outage came true.",
+      "everyday": "My brother was smug all week after his team won.",
+      "analogy": "Like a neighbour who keeps reminding you he said it would rain.",
+      "insteadOf": "He was showing off too much about being right."
+    },
     "lang": "en",
     "term": "Smug",
     "meaning": "Having or showing an excessive, annoying pride in one’s achievements or correct guesses.",
@@ -459,6 +711,15 @@
   {
     "id": "feel-humbled",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "I felt humbled working alongside such experienced engineers.",
+      "everyday": "Losing to my ten-year-old niece at chess left me humbled.",
+      "analogy": "Like a club cricketer facing a Test bowler: you see how much is left to learn.",
+      "insteadOf": "I realised I don't know much."
+    },
     "lang": "en",
     "term": "Humbled",
     "meaning": "Feeling modest, small, and profoundly aware of one’s limitations after witnessing greatness or experiencing a setback.",
@@ -477,6 +738,15 @@
   {
     "id": "feel-tenacious",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "She was tenacious and chased the vendor until the fix arrived.",
+      "everyday": "My tenacious aunt bargained until the vendor finally gave in.",
+      "analogy": "Like a dog with a bone: it just won't let go.",
+      "insteadOf": "She didn't give up, she kept trying and trying."
+    },
     "lang": "en",
     "term": "Tenacious",
     "meaning": "Holding fast; persistent, stubborn in pursuing a goal despite intense difficulty.",
@@ -495,6 +765,15 @@
   {
     "id": "feel-weary",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "After six weeks of weekend releases, the team was weary.",
+      "everyday": "After the long train journey, we were too weary to unpack.",
+      "analogy": "Like a bullock after ploughing all day: still standing, but slow.",
+      "insteadOf": "We were very tired from all this."
+    },
     "lang": "en",
     "term": "Weary",
     "meaning": "Feeling exhausted in strength, patience, or endurance after sustained friction.",
@@ -513,11 +792,20 @@
   {
     "id": "feel-impassive",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 5,
+      "kind": "fix",
+      "work": "The manager kept a straight face while the vendor listed their demands.",
+      "everyday": "The ticket clerk showed nothing as the queue complained.",
+      "analogy": "Like a stone statue in the rain: things hit it, nothing shows.",
+      "insteadOf": "The manager stayed impassive."
+    },
     "lang": "en",
     "term": "Impassive",
     "meaning": "Giving no sign of feeling or emotion; expressionless and calm.",
-    "contrast": "Not internal numbness; impassive delivery is an intentional executive choice during high-stakes negotiation.",
-    "example": "The VP remained completely impassive as the opposing counsel laid out their aggressive settlement demands.",
+    "contrast": "You'll mostly see it in writing. In speech, most people say \"kept a straight face\" or \"showed nothing\".",
+    "example": "The VP remained completely impassive as the vendor laid out their demands.",
     "tags": [
       "emotion",
       "executive",
@@ -531,11 +819,20 @@
   {
     "id": "feel-petulant",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 5,
+      "kind": "fix",
+      "work": "He got a bit sulky when asked to follow the coding guidelines.",
+      "everyday": "The boy sulked because his brother got the window seat.",
+      "analogy": "Like a child stamping its feet because the ice cream is the wrong flavour.",
+      "insteadOf": "He gave a petulant reply."
+    },
     "lang": "en",
     "term": "Petulant",
     "meaning": "Childishly sulky, bad-tempered, or peevish over trivial setbacks.",
-    "contrast": "Different from legitimate grievance; petulance is reactive self-pity over minor inconveniences.",
-    "example": "He gave a petulant response when asked to adhere to the team’s standard code formatting guidelines.",
+    "contrast": "You'll mostly see it in writing. In speech, most people say \"sulky\" or \"a bit childish\".",
+    "example": "He gave a petulant reply when asked to follow the team's formatting rules.",
     "tags": [
       "emotion",
       "maturity",
@@ -549,11 +846,20 @@
   {
     "id": "feel-trepidatious",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 5,
+      "kind": "fix",
+      "work": "I was really nervous walking up to present to the whole company.",
+      "everyday": "He was a bit scared before his first solo ride on the highway.",
+      "analogy": "Like a first-time diver standing at the edge of the board.",
+      "insteadOf": "I felt trepidatious before the talk."
+    },
     "lang": "en",
     "term": "Trepidatious",
     "meaning": "Apprehensive and nervous with trembling anticipation before a high-stakes moment.",
-    "contrast": "Not cowardice; it is the natural adrenaline tremor before stepping onto an unfamiliar stage.",
-    "example": "She felt trepidatious as she walked to the podium to present the turnaround plan to two thousand employees.",
+    "contrast": "You'll mostly see it in writing. In speech, most people say \"really nervous\" or \"a bit scared\".",
+    "example": "She felt trepidatious as she walked on stage to present the plan to the whole company.",
     "tags": [
       "emotion",
       "speaking",
@@ -567,6 +873,15 @@
   {
     "id": "feel-serene",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "During the outage call, the incident lead's voice stayed serene.",
+      "everyday": "Sitting by the lake at sunrise, she felt serene.",
+      "analogy": "Like a still lake in the morning, before any boat goes out.",
+      "insteadOf": "She was very calm and peaceful."
+    },
     "lang": "en",
     "term": "Serene",
     "meaning": "Calm, peaceful, and untroubled by surrounding noise or chaotic urgency.",
@@ -585,6 +900,15 @@
   {
     "id": "feel-gleeful",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "The team was gleeful when a two-line fix made the page ten times faster.",
+      "everyday": "The kids were gleeful when school was cancelled for rain.",
+      "analogy": "Like a child who finds an extra laddoo in the box.",
+      "insteadOf": "They were very happy, jumping with joy."
+    },
     "lang": "en",
     "term": "Gleeful",
     "meaning": "Exuberantly or triumphantly joyful.",
@@ -603,11 +927,20 @@
   {
     "id": "feel-distraught",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "She was distraught when a week of her work was lost in a crash.",
+      "everyday": "He was distraught when his dog went missing.",
+      "analogy": "Like someone searching a crowded station for a lost child.",
+      "insteadOf": "She was very, very upset and crying."
+    },
     "lang": "en",
     "term": "Distraught",
     "meaning": "Deeply agitated, heartbroken, and unable to think clearly due to grief or catastrophe.",
     "contrast": "Far beyond everyday worry; distraught states represent acute emotional crisis requiring support.",
-    "example": "The founder was visibly distraught when the lead investor pulled their term sheet 24 hours before payroll.",
+    "example": "He was distraught when his only copy of the project files was lost in a laptop crash.",
     "tags": [
       "emotion",
       "crisis",
@@ -621,11 +954,20 @@
   {
     "id": "feel-ebullient",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 5,
+      "kind": "fix",
+      "work": "Her kickoff was full of energy and lifted the team after a tough quarter.",
+      "everyday": "Our bubbly uncle had the whole wedding dancing.",
+      "analogy": "Like milk boiling over: energy that can't stay in the pot.",
+      "insteadOf": "Her ebullient kickoff lifted the team."
+    },
     "lang": "en",
     "term": "Ebullient",
     "meaning": "Cheerful, full of energy, and overflowing with enthusiastic warmth.",
-    "contrast": "Not artificial cheer; ebullient enthusiasm is contagious and lifts the morale of everyone nearby.",
-    "example": "Her ebullient kickoff presentation energized the squad after a grueling quarter.",
+    "contrast": "You'll mostly see it in writing. In speech, most people say \"full of energy\" or \"bubbly\".",
+    "example": "Her ebullient kickoff talk lifted the team after a tough quarter.",
     "tags": [
       "emotion",
       "energy",
@@ -639,6 +981,15 @@
   {
     "id": "feel-disconcerted",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "The PM was disconcerted when users didn't understand the main feature.",
+      "everyday": "I was disconcerted to find a stranger in my reserved seat.",
+      "analogy": "Like reaching for a stair that isn't there in the dark.",
+      "insteadOf": "I was confused and a bit disturbed."
+    },
     "lang": "en",
     "term": "Disconcerted",
     "meaning": "Unsettled, confused, and thrown off balance by something unexpected.",
@@ -657,11 +1008,20 @@
   {
     "id": "feel-forlorn",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 5,
+      "kind": "fix",
+      "work": "After the team moved floors, the old office looked empty and sad.",
+      "everyday": "A lonely little puppy waited outside the shop in the rain.",
+      "analogy": "Like the last chair left out after the wedding tent is packed away.",
+      "insteadOf": "The old office looked forlorn."
+    },
     "lang": "en",
     "term": "Forlorn",
     "meaning": "Pitifully sad, abandoned, or lonely in appearance or mood.",
-    "contrast": "Not ordinary gloom; forlornness carries the poignant sting of neglect and desertion.",
-    "example": "The abandoned legacy office floor looked forlorn after the entire division migrated to remote hubs.",
+    "contrast": "You'll mostly see it in writing. In speech, most people say \"sad and lonely\" or \"deserted\".",
+    "example": "The old office floor looked forlorn after the whole team moved out.",
     "tags": [
       "emotion",
       "environment",
@@ -675,11 +1035,20 @@
   {
     "id": "feel-magnanimous",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 5,
+      "kind": "fix",
+      "work": "After winning the contract, she was gracious about the rival agency's work.",
+      "everyday": "After winning the carrom final, Grandpa was generous and praised his opponent.",
+      "analogy": "Like a captain who shakes every losing player's hand first.",
+      "insteadOf": "She was magnanimous about the rival agency."
+    },
     "lang": "en",
     "term": "Magnanimous",
     "meaning": "Generous or forgiving, especially toward a rival or less powerful person.",
-    "contrast": "Far above mere politeness; magnanimity is the noble grace of refusing to gloat in victory.",
-    "example": "After winning the competitive contract, she was magnanimous in praising the competing agency’s creative work.",
+    "contrast": "You'll mostly see it in writing. In speech, most people say \"gracious\" or \"generous\" towards a rival.",
+    "example": "After winning the contract, she was magnanimous in praising the rival agency's work.",
     "tags": [
       "emotion",
       "nobility",
@@ -693,6 +1062,15 @@
   {
     "id": "feel-vexed",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "We were vexed by a bug that only appeared on Tuesdays.",
+      "everyday": "He was vexed by a crossword clue all through breakfast.",
+      "analogy": "Like a stone in your shoe that you can't find.",
+      "insteadOf": "This problem is irritating me a lot."
+    },
     "lang": "en",
     "term": "Vexed",
     "meaning": "Frustrated, annoyed, and intellectually baffled by a recurring tricky problem.",
@@ -711,11 +1089,20 @@
   {
     "id": "feel-fervent",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 5,
+      "kind": "fix",
+      "work": "He made a passionate case for protecting user privacy.",
+      "everyday": "She's a huge, passionate fan of her local football club.",
+      "analogy": "Like a stadium crowd still singing for its team in the rain.",
+      "insteadOf": "He made a fervent case for privacy."
+    },
     "lang": "en",
     "term": "Fervent",
     "meaning": "Having or displaying a passionate, sincere, and burning intensity of belief.",
-    "contrast": "Deeper than casual excitement; fervent dedication is rooted in heartfelt moral or technical conviction.",
-    "example": "He gave a fervent defense of user privacy standards during the cross-functional product council.",
+    "contrast": "You'll mostly see it in writing. In speech, most people say \"passionate\".",
+    "example": "He gave a fervent defence of user privacy in the product meeting.",
     "tags": [
       "emotion",
       "conviction",
@@ -729,6 +1116,15 @@
   {
     "id": "feel-jaded",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "After four rebrands in five years, the senior staff were jaded.",
+      "everyday": "He's jaded about New Year resolutions after breaking every one.",
+      "analogy": "Like a tenth plate of the same biryani: nothing wrong, but no joy left.",
+      "insteadOf": "They were bored and didn't believe in it anymore."
+    },
     "lang": "en",
     "term": "Jaded",
     "meaning": "Cynical, tired, or unenthusiastic after having had too much of something.",
@@ -747,11 +1143,20 @@
   {
     "id": "feel-placid",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 5,
+      "kind": "fix",
+      "work": "Even under tough questions, the spokesperson stayed calm.",
+      "everyday": "Our easy-going old cat sleeps through the Diwali crackers.",
+      "analogy": "Like a buffalo in a pond, unbothered by the traffic on the road.",
+      "insteadOf": "The spokesperson stayed placid."
+    },
     "lang": "en",
     "term": "Placid",
     "meaning": "Not easily upset or excited; calm, peaceful, and steady.",
-    "contrast": "Not sluggish or dumb; placidity is the calm, steady surface of an unshakeable lake.",
-    "example": "Even as the press peppered him with provocative questions, the spokesperson remained placid and on-message.",
+    "contrast": "You'll mostly see it in writing. In speech, most people say \"calm\" or \"easy-going\".",
+    "example": "Even under tough questions from reporters, the spokesperson remained placid.",
     "tags": [
       "emotion",
       "presence",
@@ -765,6 +1170,15 @@
   {
     "id": "feel-stoic",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "He stayed stoic through the restructuring and focused on his team.",
+      "everyday": "Grandma stayed stoic through the long power cut in May.",
+      "analogy": "Like a fielder who takes a hard ball on the shin and doesn't rub it.",
+      "insteadOf": "He didn't complain, he just tolerated it."
+    },
     "lang": "en",
     "term": "Stoic",
     "meaning": "Enduring pain, stress, or hardship without showing feelings or complaining.",
@@ -783,6 +1197,15 @@
   {
     "id": "feel-jubilant",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "The office was jubilant when the client signed.",
+      "everyday": "The whole street was jubilant after India won the final.",
+      "analogy": "Like the dressing room after a last-ball win.",
+      "insteadOf": "Everyone was very happy and celebrating."
+    },
     "lang": "en",
     "term": "Jubilant",
     "meaning": "Feeling or expressing great happiness, triumph, and celebration.",
@@ -801,6 +1224,15 @@
   {
     "id": "feel-leery",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "I'm leery of vendors who promise zero downtime.",
+      "everyday": "After one bad experience, she's leery of online sellers.",
+      "analogy": "Like a cat that once touched a hot stove, now walking round the kitchen carefully.",
+      "insteadOf": "I don't trust them fully because of the past."
+    },
     "lang": "en",
     "term": "Leery",
     "meaning": "Cautious or wary due to realistic suspicions or past painful experiences.",
@@ -819,11 +1251,20 @@
   {
     "id": "feel-fretful",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 5,
+      "kind": "fix",
+      "work": "The launch manager was up all night worrying, refreshing the dashboards.",
+      "everyday": "Mum was anxious until my late train finally arrived.",
+      "analogy": "Like checking the gas knob three times before leaving home.",
+      "insteadOf": "I spent a fretful night."
+    },
     "lang": "en",
     "term": "Fretful",
     "meaning": "Feeling or expressing distress, irritation, and restless worry over details.",
-    "contrast": "Not constructive analysis; fretfulness is unproductive worrying that burns mental energy.",
-    "example": "The launch manager spent the entire night in a fretful state, endlessly refreshing server telemetry.",
+    "contrast": "You'll mostly see it in writing. In speech, most people say \"worried\" or \"anxious\".",
+    "example": "The launch manager spent a fretful night, refreshing the dashboards.",
     "tags": [
       "emotion",
       "anxiety",
@@ -837,6 +1278,15 @@
   {
     "id": "feel-galvanized",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "The security scare galvanized the team into fixing every password.",
+      "everyday": "The flooding galvanized the whole colony into cleaning the drains.",
+      "analogy": "Like a wicket in the last over: the whole fielding side suddenly wakes up.",
+      "insteadOf": "It made everyone start working immediately."
+    },
     "lang": "en",
     "term": "Galvanized",
     "meaning": "Shocked, excited, or spurred into sudden, focused, and purposeful collective action.",
@@ -855,6 +1305,15 @@
   {
     "id": "feel-wistful",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "Clearing out her old desk, she felt a little wistful.",
+      "everyday": "Hearing the old Kishore Kumar song made Dad wistful.",
+      "analogy": "Like smiling at an old school photo, missing those days a little.",
+      "insteadOf": "I felt a little sad, remembering the old days."
+    },
     "lang": "en",
     "term": "Wistful",
     "meaning": "Sad in a soft, thoughtful way about something lovely that is gone.",
@@ -869,6 +1328,15 @@
   {
     "id": "feel-nostalgic",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "Seeing the first version of our app made the founders nostalgic.",
+      "everyday": "The old Doordarshan theme music makes my parents nostalgic.",
+      "analogy": "Like opening Grandma's old tin trunk and finding your childhood toys.",
+      "insteadOf": "I remembered the old days and felt good."
+    },
     "lang": "en",
     "term": "Nostalgic",
     "meaning": "Warmed by a memory of the past, wishing a piece of it back.",
@@ -883,6 +1351,15 @@
   {
     "id": "feel-sheepish",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "He looked sheepish when he realised he'd been on mute.",
+      "everyday": "She gave a sheepish grin after forgetting the milk again.",
+      "analogy": "Like a kid caught with a hand in the sweet box, smiling to be forgiven.",
+      "insteadOf": "He felt a little embarrassed and smiled."
+    },
     "lang": "en",
     "term": "Sheepish",
     "meaning": "Embarrassed with a small guilty smile, hoping to be forgiven fast.",
@@ -897,6 +1374,15 @@
   {
     "id": "feel-jittery",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "I always feel jittery before presenting to the leadership team.",
+      "everyday": "Two cups of strong coffee left me jittery all afternoon.",
+      "analogy": "Like a phone on vibrate that keeps buzzing on the table.",
+      "insteadOf": "I'm feeling very nervous and shaky."
+    },
     "lang": "en",
     "term": "Jittery",
     "meaning": "Nervous energy buzzing in the body, shaky and over-alert.",
@@ -911,6 +1397,15 @@
   {
     "id": "feel-drained",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "After six interviews in a row, I'm completely drained.",
+      "everyday": "After the wedding week, we were too drained to cook.",
+      "analogy": "Like a phone at 1% that won't charge.",
+      "insteadOf": "I am fully tired, no energy left."
+    },
     "lang": "en",
     "term": "Drained",
     "meaning": "Empty of all energy, with nothing left to give anyone.",
@@ -925,6 +1420,15 @@
   {
     "id": "feel-wired",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "After the late launch, I was wired till 2 a.m.",
+      "everyday": "The kids were wired after all the birthday cake.",
+      "analogy": "Like a fan on full speed that won't switch off.",
+      "insteadOf": "I am tired, but I can't sleep at all."
+    },
     "lang": "en",
     "term": "Wired",
     "meaning": "Buzzing with tense energy that will not switch off.",
@@ -939,6 +1443,15 @@
   {
     "id": "feel-flat",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "After the big launch, the team felt a bit flat for a week.",
+      "everyday": "The week after Diwali always feels flat.",
+      "analogy": "Like a cola left open overnight: nothing wrong, just no fizz.",
+      "insteadOf": "I'm not sad, but I'm not feeling anything good."
+    },
     "lang": "en",
     "term": "Flat",
     "meaning": "Low and dull, with no highs and no real lows either.",
@@ -953,6 +1466,15 @@
   {
     "id": "feel-itchy-feet",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "After three years on the same project, I've got itchy feet.",
+      "everyday": "Every summer, Riya gets itchy feet and plans a trip.",
+      "analogy": "Like a train passenger eyeing every station, wanting to get off somewhere new.",
+      "insteadOf": "I want some change, I'm bored of staying here."
+    },
     "lang": "en",
     "term": "Itchy feet",
     "meaning": "Restless for a change of place or scene, unable to settle where you are.",
@@ -967,6 +1489,15 @@
   {
     "id": "feel-grumpy",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "Sorry I was grumpy in stand-up — I'd skipped breakfast.",
+      "everyday": "Grandpa gets grumpy when the newspaper arrives late.",
+      "analogy": "Like an old ceiling fan that creaks with every turn.",
+      "insteadOf": "I was in a bad mood and irritated."
+    },
     "lang": "en",
     "term": "Grumpy",
     "meaning": "Irritable in a low, complaining way over small things.",
@@ -981,6 +1512,15 @@
   {
     "id": "feel-touchy",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "He's been touchy about feedback since the tough review.",
+      "everyday": "She's touchy about her cooking, so praise the dal first.",
+      "analogy": "Like a sore tooth: even a light touch makes you flinch.",
+      "insteadOf": "He takes everything very personally these days."
+    },
     "lang": "en",
     "term": "Touchy",
     "meaning": "Easily offended, reading sting into innocent remarks.",
@@ -995,6 +1535,15 @@
   {
     "id": "feel-edgy",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "Everyone was edgy during release week, jumping at every alert.",
+      "everyday": "Waiting for his exam results, my brother was edgy all day.",
+      "analogy": "Like a dog at the window, waiting for the doorbell.",
+      "insteadOf": "Everyone was tense and getting irritated quickly."
+    },
     "lang": "en",
     "term": "Edgy",
     "meaning": "On edge, tense and ready to snap at small triggers.",
@@ -1009,6 +1558,15 @@
   {
     "id": "feel-prickly",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "She gets prickly when anyone asks about the delayed launch.",
+      "everyday": "He turns prickly whenever relatives ask about his plans.",
+      "analogy": "Like a cactus: fine to look at, painful to touch.",
+      "insteadOf": "She becomes angry when we ask about it."
+    },
     "lang": "en",
     "term": "Prickly",
     "meaning": "Defensive and sharp, bristling at questions that feel like attacks.",
@@ -1023,6 +1581,15 @@
   {
     "id": "feel-hangry",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "Let's break for lunch before the whole team gets hangry.",
+      "everyday": "Feed him first — he gets hangry by one o'clock.",
+      "analogy": "Like a phone that turns slow and cranky at low battery; food is the charger.",
+      "insteadOf": "I am angry because I am very hungry."
+    },
     "lang": "en",
     "term": "Hangry",
     "meaning": "Angry because hungry — irritability that food fixes in minutes.",
@@ -1037,6 +1604,15 @@
   {
     "id": "feel-frazzled",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "Three client calls and a demo left me frazzled by noon.",
+      "everyday": "Cooking, homework and the doorbell — she was frazzled by seven.",
+      "analogy": "Like a rope fraying at the end, threads pulling in ten directions.",
+      "insteadOf": "I was totally disturbed doing many things at once."
+    },
     "lang": "en",
     "term": "Frazzled",
     "meaning": "Worn out and scattered by juggling too many things at once.",
@@ -1051,6 +1627,15 @@
   {
     "id": "feel-numb",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "When the project was cancelled, I just felt numb for a day.",
+      "everyday": "After the shock of the break-in, she felt numb all evening.",
+      "analogy": "Like your hand after holding ice: you know it's there, but feel nothing.",
+      "insteadOf": "I didn't feel anything, I was blank."
+    },
     "lang": "en",
     "term": "Numb",
     "meaning": "Feeling nothing at all where something should hurt.",
@@ -1065,6 +1650,15 @@
   {
     "id": "feel-raw",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "The failed launch still feels raw, so let's give the team a few days.",
+      "everyday": "The break-up was still raw, so her friends kept things light.",
+      "analogy": "Like a fresh scrape on your knee: even a soft cloth stings.",
+      "insteadOf": "I am still very hurt about it."
+    },
     "lang": "en",
     "term": "Raw",
     "meaning": "Emotionally exposed, where every small touch stings.",
@@ -1079,6 +1673,15 @@
   {
     "id": "feel-homesick",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "In my first month at the Pune office, I was really homesick.",
+      "everyday": "Living abroad, she gets homesick every Diwali.",
+      "analogy": "Like a passenger watching every train going the other way, back home.",
+      "insteadOf": "I am missing my home and family very much."
+    },
     "lang": "en",
     "term": "Homesick",
     "meaning": "Aching for home — its food, voices, and familiar corners.",
@@ -1093,11 +1696,20 @@
   {
     "id": "feel-self-conscious",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "I feel self-conscious when I'm the first to speak on client calls.",
+      "everyday": "He felt self-conscious dancing at his cousin's wedding.",
+      "analogy": "Like being on the big screen at a cricket ground when the camera finds you.",
+      "insteadOf": "I feel shy, like everyone is looking at me."
+    },
     "lang": "en",
     "term": "Self-conscious",
     "meaning": "Painfully aware of being watched, and sure you look wrong.",
     "contrast": "Not shyness about people; self-consciousness is about yourself under imagined inspection.",
-    "example": "New glasses made her self-conscious through the whole first meeting.",
+    "example": "Speaking first in the big meeting made her self-conscious.",
     "tags": ["emotion", "social", "awareness"],
     "source": "seed",
     "status": "active",
@@ -1107,6 +1719,15 @@
   {
     "id": "feel-awkward",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "The video call felt awkward when nobody unmuted to answer.",
+      "everyday": "It was awkward when I waved back at someone waving at someone else.",
+      "analogy": "Like two people at a doorway both stepping the same way, again and again.",
+      "insteadOf": "It was a very uncomfortable situation."
+    },
     "lang": "en",
     "term": "Awkward",
     "meaning": "Socially clumsy and out of sync, unsure where to stand or what to say.",
@@ -1121,6 +1742,15 @@
   {
     "id": "feel-adrift",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 4,
+      "kind": "learn",
+      "work": "After the reorg, I felt adrift without a clear project.",
+      "everyday": "Between college and his first job, he felt adrift for months.",
+      "analogy": "Like a boat whose rope has slipped off the jetty.",
+      "insteadOf": "I had no direction, I was just passing time."
+    },
     "lang": "en",
     "term": "Adrift",
     "meaning": "Floating without direction, unattached to any plan or purpose.",
@@ -1135,6 +1765,15 @@
   {
     "id": "feel-bittersweet",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "My last day with my old team felt bittersweet.",
+      "everyday": "Dropping my sister at her new college was bittersweet.",
+      "analogy": "Like karela cooked with jaggery: bitter and sweet in the same bite.",
+      "insteadOf": "I felt happy and sad, both."
+    },
     "lang": "en",
     "term": "Bittersweet",
     "meaning": "Happy and sad at once about the same thing.",
@@ -1149,6 +1788,15 @@
   {
     "id": "feel-relieved",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "I was relieved when the client approved the new date.",
+      "everyday": "We were relieved when the delayed flight finally landed.",
+      "analogy": "Like putting down a heavy shopping bag after climbing four floors.",
+      "insteadOf": "My tension went away."
+    },
     "lang": "en",
     "term": "Relieved",
     "meaning": "The weight lifting off your chest when feared news turns out fine.",
@@ -1163,6 +1811,15 @@
   {
     "id": "feel-content",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "With the release out and my inbox clear, I felt content.",
+      "everyday": "Sunday lunch, rain outside, a good book — I was content.",
+      "analogy": "Like the quiet after a good meal, when you want nothing more.",
+      "insteadOf": "I was happy, everything was fine."
+    },
     "lang": "en",
     "term": "Content",
     "meaning": "Quietly satisfied, wanting nothing more than this moment.",
@@ -1177,6 +1834,15 @@
   {
     "id": "feel-grateful",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "I'm grateful to Arjun for staying late to help me debug.",
+      "everyday": "We're grateful to the neighbours who fed our cat all week.",
+      "analogy": "Like someone saving you a seat on a packed train.",
+      "insteadOf": "Thank you so much, I am very thankful to you."
+    },
     "lang": "en",
     "term": "Grateful",
     "meaning": "Warmly aware that someone's effort made your life easier.",
@@ -1191,6 +1857,15 @@
   {
     "id": "feel-proud",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "I'm proud of how the team handled the outage.",
+      "everyday": "He felt proud watching his daughter in her first school play.",
+      "analogy": "Like a parent clapping loudest at the annual function.",
+      "insteadOf": "I felt very good about my team."
+    },
     "lang": "en",
     "term": "Proud",
     "meaning": "Glowing with earned satisfaction about yourself or your people.",
@@ -1205,6 +1880,15 @@
   {
     "id": "feel-light",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "After finally sending the tough email, I felt light.",
+      "everyday": "After we cleared the air, I felt light all the way home.",
+      "analogy": "Like taking off a heavy backpack after a long trek.",
+      "insteadOf": "I felt free, no tension now."
+    },
     "lang": "en",
     "term": "Light",
     "meaning": "Unburdened and easy, as if a weight quietly slid off.",
@@ -1219,6 +1903,15 @@
   {
     "id": "feel-heavy",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "After Arjun's farewell, the team room felt heavy all afternoon.",
+      "everyday": "The house felt heavy for days after Grandpa moved away.",
+      "analogy": "Like humid air before a storm, pressing on your chest.",
+      "insteadOf": "I was feeling sad and low."
+    },
     "lang": "en",
     "term": "Heavy",
     "meaning": "Weighed down inside, as if the air itself got thicker.",
@@ -1233,11 +1926,20 @@
   {
     "id": "feel-stuck",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "Same role for three years — I'm starting to feel stuck.",
+      "everyday": "Living in the same small town, she felt stuck.",
+      "analogy": "Like a car spinning its wheels in mud: engine roaring, going nowhere.",
+      "insteadOf": "Nothing is changing for me, I'm not growing."
+    },
     "lang": "en",
     "term": "Stuck",
     "meaning": "Trapped in place while life visibly moves past you.",
     "contrast": "Not laziness; stuck is effort with no motion — pushing a door marked pull.",
-    "example": "Same role, same pay, third year — he felt stuck watching juniors pass by.",
+    "example": "Same role, same desk, third year: he felt stuck watching juniors move ahead.",
     "tags": ["emotion", "career", "trap"],
     "source": "seed",
     "status": "active",
@@ -1247,6 +1949,15 @@
   {
     "id": "feel-seen",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "When my manager named the exact problem I was facing, I felt seen.",
+      "everyday": "My friend remembered my exam date and called — I felt seen.",
+      "analogy": "Like a teacher who notices the quiet kid at the back of the class.",
+      "insteadOf": "I felt someone finally understood me."
+    },
     "lang": "en",
     "term": "Seen",
     "meaning": "Deeply understood by someone, perhaps for the first time.",
@@ -1261,6 +1972,15 @@
   {
     "id": "feel-invisible",
     "type": "feeling",
+    "skill": {
+      "track": "words",
+      "level": 3,
+      "kind": "learn",
+      "work": "My ideas were ignored in three meetings — I felt invisible.",
+      "everyday": "At the big family dinner, she felt invisible at the end of the table.",
+      "analogy": "Like a waiter walking past your raised hand again and again.",
+      "insteadOf": "Nobody is noticing me or my work."
+    },
     "lang": "en",
     "term": "Invisible",
     "meaning": "Present but unnoticed, as if the room looks straight through you.",

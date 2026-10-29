@@ -101,9 +101,45 @@ ruled-out cause — see `PROBLEM-MAP.md` §6.
 
 ---
 
+## v5 final review (2026-10-29) — owed, not blocked
+
+- **Live AI is proven only against mocks.** No AI key is on the Netlify site yet,
+  so no real model has been called. Mock-only paths: Ask (`answer_ask` + its
+  `verify_batch` check), teach top-up (`expand_seed` type `teach` + check), miss
+  siblings, the coach box (`classify_inbox`), `plan_week`, `review_recording`,
+  the evening chat (`transcribe` + `coach_chat`). After the three keys are on
+  Netlify, make one real call per path: an Ask, a Fix my sentence, one evening
+  chat answer, and wait for one top-up (cards appear only if both keys work).
+- **Groq's 8,000 tokens a minute.** Groq counts the answer room up front, so
+  `answer_ask` (≈5,000-token prompt + 6,144 answer room) was refused on every
+  call. Fixed in this review: Groq's `max_tokens` is cut to fit (`groqMaxTokens`)
+  and `reasoning_effort: 'low'`. Still unproven live: whether ~2,300 answer
+  tokens are enough for 8 cards, and whether a long `verify_batch` (8 teach
+  cards) fits. If Groq keeps failing, the check falls to the same provider and
+  Ask shows the "needs a second key" line even with two keys set.
+- **`viewports.spec.ts` is red (4 of 4), outside this review's files.** It does
+  not mock `/.netlify/functions/**`, and the v5 top-up now calls `expand_seed`
+  on first open; under `npm run dev` there are no functions, so the browser logs
+  a 404 and the zero-console-errors check fails. Fix: add the same `page.route`
+  mock the step specs use (owner: pass 5).
+- **AGENTS.md slips sent back:** `components/ask/AskScreen.tsx` reads `db.asks`
+  directly (rule 3; belongs in `useAsk`) · `styles/chat.css` `.chat-good` /
+  `.chat-fix` use raw hex (rule 4).
+- **🎤 Say mine opens the old say-it drill** (Rapid Rep with the card's try
+  prompt) inside the ⚙︎ sheet. It is not the evening-chat recorder, so it gets
+  no Whisper pace and no Haiku coaching.
+- **Supabase AG-009 ALTER block still not run** on the live project (below).
+  v5 tables (asks, weak spots, chats, story bank, lesson progress) are
+  phone-only by decision 8A.
+
+---
+
 ## AG-009 (2026-10-01) — owed, not blocked
 
-- **375×812 visual walk still owed.** The proof pass walked the preview
+- **375×812 visual walk — mostly done 2026-10-29** by the five v5 step specs
+  (pictures in `docs/redesign-v5/built-step*.png`, each checking no sideways
+  scroll, 44 px tap targets, zero console errors). Still owed: one walk in
+  real iPhone Safari. Original note: the proof pass walked the preview
   structurally (onboarding → feed card advance → You → coach box open/close →
   Speak; zero console errors, seed 1070 cards) but the build environment has no
   visible browser pane — no screenshots, no typed input — so 4-tab

@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import type { TeachCard } from '../../types/contract';
+import type { TeachCard, Track } from '../../types/contract';
 import { KIND_LABELS, TRACK_LABELS } from '../../features/skills/trackOf';
+import TryCardFace from './TryCardFace';
 
 export interface TeachCardFaceProps {
   card: TeachCard;
@@ -12,6 +13,15 @@ export interface TeachCardFaceProps {
   onGotIt?: () => void;
   /** Save ⭐ — add to / remove from saved. */
   onSave?: () => void;
+  /** Try cards only: the optional 🎤 Say mine button. */
+  onSayMine?: () => void;
+}
+
+/** Labels over the two examples. Small talk shows both sides of an exchange. */
+export function exampleLabels(track: Track): { work: string; everyday: string } {
+  return track === 'smalltalk'
+    ? { work: 'They ask · work', everyday: 'They ask · daily life' }
+    : { work: 'At work', everyday: 'In daily life' };
 }
 
 /**
@@ -20,9 +30,16 @@ export interface TeachCardFaceProps {
  * a picture, and one thing to try. Buttons only show when a handler is given,
  * so the card also renders cleanly in lists and tests.
  */
-export default function TeachCardFace({ card, saved = false, onAgain, onGotIt, onSave }: TeachCardFaceProps) {
+export default function TeachCardFace(props: TeachCardFaceProps) {
+  const { card, onGotIt, onSayMine } = props;
+  // A Try card has its own face: the moment, the shape, think, then tap to reveal.
+  if (card.kind === 'try') return <TryCardFace card={card} onNext={onGotIt} onSayMine={onSayMine} />;
+  return <TeachBody {...props} />;
+}
+
+function TeachBody({ card, saved = false, onAgain, onGotIt, onSave }: TeachCardFaceProps) {
   const [showAnswer, setShowAnswer] = useState(false);
-  const smallTalk = card.track === 'smalltalk';
+  const labels = exampleLabels(card.track);
   const hasActions = Boolean(onAgain || onGotIt || onSave);
 
   return (
@@ -46,11 +63,11 @@ export default function TeachCardFace({ card, saved = false, onAgain, onGotIt, o
         )}
 
         <div className="block teach-example">
-          <div className="lbl">{smallTalk ? 'They ask · work' : 'At work'}</div>
+          <div className="lbl">{labels.work}</div>
           <div className="val teach-lines">{card.examples.work}</div>
         </div>
         <div className="block teach-example">
-          <div className="lbl">{smallTalk ? 'They ask · daily life' : 'In daily life'}</div>
+          <div className="lbl">{labels.everyday}</div>
           <div className="val teach-lines">{card.examples.everyday}</div>
         </div>
 

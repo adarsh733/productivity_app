@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { db } from '../../db/db';
 import { currentStreak } from '../session/day';
 import { todayKey } from '../../lib/date';
-import type { WeakSpot } from '../../types/contract';
+import type { ChatSession, StoryBankEntry, WeakSpot } from '../../types/contract';
 
 export interface UseMeReturn {
   /** Consecutive days with a counted day — traces to `db.days`. */
@@ -20,6 +20,10 @@ export interface UseMeReturn {
   storyCount: number;
   /** Rows in `db.chats`. */
   chatCount: number;
+  /** Evening chats, newest day first. */
+  chats: ChatSession[];
+  /** Story-bank moments, newest day first. */
+  stories: StoryBankEntry[];
   /** Rows in `db.asks`. */
   askCount: number;
   /** Total cards made from asks. */
@@ -33,8 +37,8 @@ export function useMe(): UseMeReturn {
   const lessonsDone = useLiveQuery(() => db.lessonProgress.count(), []) ?? 0;
   const savedCount = useLiveQuery(() => db.bookmarks.count(), []) ?? 0;
   const weakSpots = useLiveQuery(() => db.weakSpots.orderBy('createdAt').reverse().toArray(), []);
-  const storyCount = useLiveQuery(() => db.storyBank.count(), []) ?? 0;
-  const chatCount = useLiveQuery(() => db.chats.count(), []) ?? 0;
+  const storyRows = useLiveQuery(() => db.storyBank.orderBy('day').reverse().toArray(), []);
+  const chatRows = useLiveQuery(() => db.chats.orderBy('day').reverse().toArray(), []);
   const asks = useLiveQuery(() => db.asks.toArray(), []);
 
   const today = todayKey();
@@ -48,6 +52,9 @@ export function useMe(): UseMeReturn {
     () => (reviews ?? []).filter((r) => (r.reps ?? 0) >= 1).length,
     [reviews],
   );
+
+  const stories = useMemo(() => storyRows ?? [], [storyRows]);
+  const chats = useMemo(() => chatRows ?? [], [chatRows]);
 
   const openWeakSpots = useMemo(
     () => (weakSpots ?? []).filter((w) => w.fixedAt === undefined),
@@ -65,8 +72,10 @@ export function useMe(): UseMeReturn {
     lessonsDone,
     savedCount,
     openWeakSpots,
-    storyCount,
-    chatCount,
+    storyCount: stories.length,
+    chatCount: chats.length,
+    chats,
+    stories,
     askCount: asks?.length ?? 0,
     askCardCount,
   };

@@ -251,6 +251,15 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
           onAgain={isTeach ? () => void handleGrade('again') : undefined}
           onGotIt={isTeach ? () => void handleGotIt() : undefined}
           onSave={isTeach ? () => void handleToggleBookmark() : undefined}
+          // 🎤 Say mine (Try cards only): the old say-it drill, with the card's try prompt.
+          onSayMine={
+            isTeach && card && onOpenSpeakWithCard
+              ? () => {
+                  markEngaged(card.id);
+                  onOpenSpeakWithCard(card);
+                }
+              : undefined
+          }
         />
       </div>
 

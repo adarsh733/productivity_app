@@ -59,6 +59,36 @@ export interface AiPostResult<T> {
   provider?: 'gemini' | 'groq' | 'anthropic';
 }
 
+/**
+ * Longest the phone waits for one AI request. The function gives up on its own
+ * after 24 s (TOTAL_FUNCTION_DEADLINE_MS in `netlify/functions/ai.ts`), so this
+ * only fires when the network itself hangs.
+ */
+export const AI_CLIENT_TIMEOUT_MS = 30_000;
+
+/**
+ * Run a request with a time limit. On time-out the request is aborted (when
+ * the fetch supports it) and the promise rejects, so no screen waits forever.
+ */
+export async function withTimeout<T>(
+  run: (signal: AbortSignal | undefined) => Promise<T>,
+  ms: number = AI_CLIENT_TIMEOUT_MS,
+): Promise<T> {
+  const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : undefined;
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const late = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => {
+      ctrl?.abort();
+      reject(new Error('timeout'));
+    }, ms);
+  });
+  try {
+    return await Promise.race([run(ctrl?.signal), late]);
+  } finally {
+    if (timer !== undefined) clearTimeout(timer);
+  }
+}
+
 export async function aiPost<T>(
   task: string,
   payload: unknown,
@@ -66,18 +96,18 @@ export async function aiPost<T>(
   prefer?: 'gemini' | 'groq' | 'anthropic',
 ): Promise<AiPostResult<T>> {
   let res: Response;
-  try {
-    res = await fetchFn('/.netlify/functions/ai', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(prefer ? { task, payload, prefer } : { task, payload }),
-    });
-  } catch {
-    throw new Error(COACH_FAIL_PLAIN);
-  }
   let data: AiResponse<T>;
   try {
-    data = (await res.json()) as AiResponse<T>;
+    // One time limit over the request and reading its answer.
+    [res, data] = await withTimeout(async (signal) => {
+      const r = await fetchFn('/.netlify/functions/ai', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(prefer ? { task, payload, prefer } : { task, payload }),
+        ...(signal ? { signal } : {}),
+      });
+      return [r, (await r.json()) as AiResponse<T>] as const;
+    });
   } catch {
     throw new Error(COACH_FAIL_PLAIN);
   }

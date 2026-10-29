@@ -1,5 +1,8 @@
+import { useState } from 'react';
+import '../../styles/chat.css';
 import { useMe } from '../../features/me/useMe';
 import { ArrowRightIcon, GearIcon } from '../shell/Icons';
+import EveningChat, { type EveningChatProps } from '../chat/EveningChat';
 
 export type MeRowId = 'saved' | 'weak' | 'stories' | 'chats' | 'asked';
 
@@ -8,14 +11,74 @@ export interface MeScreenProps {
   onOpenOldTools?: () => void;
   /** Later steps wire each row to its own screen. */
   onOpenRow?: (row: MeRowId) => void;
+  /** Test hook: network and microphone for the evening chat. */
+  chatProps?: Omit<EveningChatProps, 'onClose'>;
 }
+
+type MeView = 'home' | 'chats' | 'chat' | 'stories';
+
+const CHAT_BACK = 'Back to Me';
 
 function plural(n: number, one: string, many: string): string {
   return `${n} ${n === 1 ? one : many}`;
 }
 
-export default function MeScreen({ onOpenOldTools, onOpenRow }: MeScreenProps) {
+function dayLabel(day: string): string {
+  const d = new Date(`${day}T12:00:00`);
+  if (Number.isNaN(d.getTime())) return day;
+  return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+}
+
+export default function MeScreen({ onOpenOldTools, onOpenRow, chatProps }: MeScreenProps) {
   const me = useMe();
+  const [view, setView] = useState<MeView>('home');
+
+  const openRow = (id: MeRowId) => {
+    if (id === 'chats') setView('chats');
+    else if (id === 'stories') setView('stories');
+    else onOpenRow?.(id);
+  };
+
+  if (view === 'chat') {
+    return <EveningChat {...chatProps} onClose={() => setView('chats')} />;
+  }
+
+  if (view === 'chats' || view === 'stories') {
+    const isChats = view === 'chats';
+    return (
+      <section className="me-screen" aria-label={isChats ? 'Evening chats' : 'Story bank'}>
+        <button type="button" className="chat-back tap" onClick={() => setView('home')}>
+          ← {CHAT_BACK}
+        </button>
+        <h1 className="me-title">{isChats ? 'Evening chats' : 'Story bank'}</h1>
+        {isChats && (
+          <button type="button" className="chat-btn chat-btn-main tap" onClick={() => setView('chat')}>
+            🎙️ Start tonight's chat
+          </button>
+        )}
+        {isChats && me.chats.length === 0 && <p className="chat-done-sub">No chats yet. Three questions, about five minutes.</p>}
+        {!isChats && me.stories.length === 0 && (
+          <p className="chat-done-sub">Empty for now. The best moment of each evening chat lands here.</p>
+        )}
+        <ul className="chat-list">
+          {isChats
+            ? me.chats.map((c) => (
+                <li className="chat-list-item" key={c.id} data-testid="chat-item">
+                  <span className="chat-list-day">{dayLabel(c.day)}</span>
+                  {plural(c.turns.length, 'answer', 'answers')}
+                  {c.turns[0] ? ` · “${c.turns[0].transcript.slice(0, 80)}${c.turns[0].transcript.length > 80 ? '…' : ''}”` : ''}
+                </li>
+              ))
+            : me.stories.map((s) => (
+                <li className="chat-list-item" key={s.id} data-testid="story-item">
+                  <span className="chat-list-day">{dayLabel(s.day)}</span>
+                  {s.text}
+                </li>
+              ))}
+        </ul>
+      </section>
+    );
+  }
 
   const weakPreview = me.openWeakSpots
     .slice(0, 3)
@@ -41,14 +104,20 @@ export default function MeScreen({ onOpenOldTools, onOpenRow }: MeScreenProps) {
       id: 'stories',
       icon: '📓',
       title: 'Story bank',
-      sub: me.storyCount > 0 ? `${plural(me.storyCount, 'moment', 'moments')} from your days` : 'Empty for now',
+      sub:
+        me.storyCount > 0
+          ? `${plural(me.storyCount, 'moment', 'moments')} from your days`
+          : 'Empty for now',
       empty: me.storyCount === 0,
     },
     {
       id: 'chats',
       icon: '🎙️',
       title: 'Evening chats',
-      sub: me.chatCount > 0 ? plural(me.chatCount, 'chat', 'chats') : 'No chats yet',
+      sub:
+        me.chatCount > 0
+          ? `${plural(me.chatCount, 'chat', 'chats')} · last ${dayLabel(me.chats[0]!.day)}`
+          : 'No chats yet',
       empty: me.chatCount === 0,
     },
     {
@@ -98,7 +167,7 @@ export default function MeScreen({ onOpenOldTools, onOpenRow }: MeScreenProps) {
             <button
               type="button"
               className={`me-row tap${r.empty ? ' is-empty' : ''}`}
-              onClick={() => onOpenRow?.(r.id)}
+              onClick={() => openRow(r.id)}
               data-row={r.id}
             >
               <span className={`me-row-icon me-row-icon-${r.id}`} aria-hidden="true">

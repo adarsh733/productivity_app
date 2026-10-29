@@ -1,47 +1,54 @@
 import type {
   Card,
-  DraftCardType,
-  ExpandSeedResult,
+  ExpandSeedPayload,
   InboxItem,
+  TeachCard,
+  TeachDraft,
+  Track,
+  TrackLevel,
 } from '../../types/contract';
 import { db, enqueue, getMeta, setMeta } from '../../db/db';
 import { todayKey } from '../../lib/date';
 import {
-  AI_DRAFT_TYPES,
   AI_NEEDS_KEY_META,
   CoachNeedsKeyError,
   aiPost,
-  dedupeDrafts,
-  draftsToBatchCards,
   verifyDrafts,
   type FetchFn,
 } from '../coach/pipeline';
-import { tryConsumeAiCall } from './budget';
+import { isUsableDraft } from '../ask/askPipeline';
+import { TRACKS } from '../skills/trackOf';
+import { buildLadder, groupLessons } from '../lessons/useLessons';
+import { tryConsumeBackgroundAiCall } from './budget';
 import { rejectedTerms } from './reject';
 
 /**
- * AG-008 stage 3 — keep every allowed type stocked without asking.
+ * v5 top-up: a few fresh teaching cards a day, one skill at a time.
  *
- * Runs on app open (useAutoTopUp), at most once per 6 h, only when online.
- * For each allowed type it counts unseen active cards; when any type dips
- * below `TOPUP_MIN_UNSEEN`, the lowest one gets one batch of 10 verified
- * cards via `expand_seed`. Topics: profile interests + subjects of the last
- * 20 coach notes. Max `TOPUP_MAX_PER_DAY` batches a day, and every generation
- * draws from the shared daily AI budget (budget.ts).
+ * Rulebook 3.1: 4 new items a day, one per skill. So each run asks for one
+ * small batch of teach cards for ONE skill (`expand_seed`, type `teach`), at
+ * most 4 batches a day, never the same skill twice in a day (which also keeps
+ * the batch ids unique). The skill with the fewest unseen practice cards goes
+ * first; a skill already holding `TOPUP_MAX_UNSEEN` unseen cards is skipped.
  *
- * Deliberate deviation from the brief: it says at most one top-up per TYPE
- * per day — enforced here as same-day type exclusion, because a second
- * same-day batch of the same type would reuse `topup-<date>-<type>-<i>` ids
- * and overwrite the first batch's cards. One claim per type per day also
- * keeps the ids unique.
+ * Every card still goes through `verify_batch` on a DIFFERENT provider; a card
+ * that fails is thrown away, and one key only means nothing is stored (the
+ * "needs a second key" note is set instead). Background work draws from the
+ * shared daily AI budget and stops once fewer than 10 calls are left, so Ask
+ * always goes first (budget.ts).
  *
- * Every failure path is silent: top-up must never block or delay the app.
+ * Every failure path is silent: top-up must never block or delay the app, and
+ * a half-checked card is never stored.
  */
 
-export const TOPUP_MIN_UNSEEN = 30;
-export const TOPUP_BATCH = 10;
-export const TOPUP_GAP_MS = 6 * 60 * 60 * 1000;
-export const TOPUP_MAX_PER_DAY = 3;
+/** Cards asked for in one batch (rulebook 3.1: small; a few per skill). */
+export const TOPUP_BATCH = 3;
+/** A skill holding this many unseen practice cards is left alone today. */
+export const TOPUP_MAX_UNSEEN = 60;
+/** Between two top-ups. Short on purpose: the day's four are one per skill. */
+export const TOPUP_GAP_MS = 30 * 60 * 1000;
+/** One batch per skill, four skills. */
+export const TOPUP_MAX_PER_DAY = 4;
 
 /** Local-only counter (db.meta). Never synced. */
 export const TOPUP_META = 'ai.topupBatches';
@@ -53,43 +60,70 @@ interface TopUpState {
   date: string;
   count: number;
   lastAt: number;
-  /** Types already topped up today, so batch ids never collide within a day. */
-  types: string[];
+  /** Skills already topped up today, so batch ids never collide within a day. */
+  tracks: string[];
 }
 
-export interface TypeUnseen {
-  type: DraftCardType;
+export interface TrackUnseen {
+  track: Track;
   unseen: number;
 }
 
-/** Active cards of every draftable type with no review row (never served). */
-export function unseenCounts(cards: readonly Card[], seenIds: ReadonlySet<string>): TypeUnseen[] {
-  return AI_DRAFT_TYPES.map((type) => ({
-    type,
-    unseen: cards.filter((c) => c.status === 'active' && c.type === type && !seenIds.has(c.id))
-      .length,
+/**
+ * Active teach cards of each skill with no review row (never served). Lesson
+ * cards are the Stories row, not the practice pool, so they do not count.
+ */
+export function unseenCounts(cards: readonly Card[], seenIds: ReadonlySet<string>): TrackUnseen[] {
+  const teach = (cards as unknown as Array<{ type: string }>).filter(
+    (c) => c.type === 'teach',
+  ) as unknown as TeachCard[];
+  return TRACKS.map((track) => ({
+    track,
+    unseen: teach.filter(
+      (c) => c.status === 'active' && c.track === track && !c.lesson && !seenIds.has(c.id),
+    ).length,
   }));
 }
 
 /**
- * Lowest unseen count below `TOPUP_MIN_UNSEEN`, ties keep list order.
- * `exclude` = types already topped up today. null = every type is stocked.
+ * The skill with the fewest unseen cards that is below `TOPUP_MAX_UNSEEN`;
+ * ties keep list order. `exclude` = skills already topped up today.
+ * null = nothing to do.
  */
-export function pickDeficientType(
+export function pickTrack(
   cards: readonly Card[],
   seenIds: ReadonlySet<string>,
   exclude: ReadonlySet<string> = new Set(),
-): DraftCardType | null {
-  let best: DraftCardType | null = null;
-  let bestCount = TOPUP_MIN_UNSEEN;
-  for (const { type, unseen } of unseenCounts(cards, seenIds)) {
-    if (exclude.has(type)) continue;
+): Track | null {
+  let best: Track | null = null;
+  let bestCount = TOPUP_MAX_UNSEEN;
+  for (const { track, unseen } of unseenCounts(cards, seenIds)) {
+    if (exclude.has(track)) continue;
     if (unseen < bestCount) {
       bestCount = unseen;
-      best = type;
+      best = track;
     }
   }
   return best;
+}
+
+/**
+ * Where he is in one skill: the first open level of its ladder, else the
+ * highest finished one, else Level 1.
+ */
+export function currentLevel(
+  track: Track,
+  cards: readonly Card[],
+  doneIds: ReadonlySet<string>,
+): TrackLevel {
+  const teach = (cards as unknown as TeachCard[]).filter(
+    (c) => c.type === 'teach' && c.status === 'active' && c.track === track && c.lesson,
+  );
+  const ladder = buildLadder(groupLessons(teach), doneIds);
+  const open = ladder.find((l) => l.status === 'open');
+  if (open) return open.level;
+  const done = [...ladder].reverse().find((l) => l.status === 'done');
+  return done ? done.level : 1;
 }
 
 /**
@@ -119,13 +153,21 @@ export function topUpTopics(
   return out.slice(0, TOPUP_TOPIC_MAX);
 }
 
+function norm(s: string): string {
+  return s.trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
+function teachKey(c: { track: Track; title: string }): string {
+  return `teach|${c.track}|${norm(c.title)}`;
+}
+
 /**
- * One atomic claim: 6 h gate + daily cap + same-day type exclusion + shared
- * AI budget, all inside one Dexie transaction so two simultaneous app opens
- * can never both pass. Claimed BEFORE the network call — a failed ask still
- * cost a request against the free tier.
+ * One atomic claim: gap + daily cap + same-day skill exclusion + shared AI
+ * budget (background rule), all inside one Dexie transaction so two
+ * simultaneous app opens can never both pass. Claimed BEFORE the network
+ * call: a failed ask still cost a request against the free tier.
  */
-async function claimTopUp(type: DraftCardType, now: number): Promise<boolean> {
+async function claimTopUp(track: Track, now: number): Promise<boolean> {
   return db.transaction('rw', db.meta, async () => {
     const today = todayKey();
     const state = await getMeta<TopUpState>(TOPUP_META);
@@ -135,17 +177,17 @@ async function claimTopUp(type: DraftCardType, now: number): Promise<boolean> {
     const count = sameDay ? state.count : 0;
     if (count >= TOPUP_MAX_PER_DAY) return false;
 
-    const types = sameDay ? (state.types ?? []) : [];
-    if (types.includes(type)) return false;
+    const tracks = sameDay ? (state.tracks ?? []) : [];
+    if (tracks.includes(track)) return false;
 
-    // Nested transaction on the same scope — Dexie joins it into this one.
-    if (!(await tryConsumeAiCall(today))) return false;
+    // Nested transaction on the same scope: Dexie joins it into this one.
+    if (!(await tryConsumeBackgroundAiCall(today))) return false;
 
     await setMeta(TOPUP_META, {
       date: today,
       count: count + 1,
       lastAt: now,
-      types: [...types, type],
+      tracks: [...tracks, track],
     } satisfies TopUpState);
     return true;
   });
@@ -161,49 +203,82 @@ export async function maybeTopUp(fetchFn: FetchFn = fetch): Promise<number> {
 
     const now = Date.now();
     const today = todayKey();
-    const [state, cards, reviews, profile, inboxRaw] = await Promise.all([
+    const [state, cards, reviews, profile, inboxRaw, progress] = await Promise.all([
       getMeta<TopUpState>(TOPUP_META),
       db.cards.toArray(),
       db.reviews.toArray(),
       db.profile.get('me'),
       db.inbox.toArray(),
+      db.lessonProgress.toArray(),
     ]);
 
     const toppedToday =
-      state && state.date === today ? new Set(state.types ?? []) : new Set<string>();
+      state && state.date === today ? new Set(state.tracks ?? []) : new Set<string>();
 
     const seenIds = new Set(reviews.map((r) => r.cardId));
-    const type = pickDeficientType(cards, seenIds, toppedToday);
-    if (type === null) return 0;
+    const track = pickTrack(cards, seenIds, toppedToday);
+    if (track === null) return 0;
 
-    if (!(await claimTopUp(type, now))) return 0;
+    if (!(await claimTopUp(track, now))) return 0;
 
+    const level = currentLevel(track, cards, new Set(progress.map((p) => p.lessonId)));
     const inbox = [...inboxRaw].sort((a, b) => b.createdAt - a.createdAt);
     const topics = topUpTopics(profile?.interests ?? [], inbox);
     const avoid = await rejectedTerms();
 
-    const res = await aiPost<ExpandSeedResult>(
+    const res = await aiPost<{ cards?: unknown[] }>(
       'expand_seed',
       {
-        type,
+        type: 'teach',
+        track,
+        level,
         count: TOPUP_BATCH,
         ...(topics.length > 0 ? { topics } : {}),
         ...(avoid.length > 0 ? { avoid } : {}),
-      },
+      } satisfies ExpandSeedPayload,
       fetchFn,
     );
 
-    const sameType = (res.data.cards ?? []).filter((d) => d.type === type);
-    const verified = await verifyDrafts(sameType, res.provider, fetchFn);
-    const fresh = dedupeDrafts(verified, await db.cards.toArray());
+    const usable = (Array.isArray(res.data.cards) ? res.data.cards : [])
+      .filter(isUsableDraft)
+      .filter((d) => d.track === track)
+      .slice(0, TOPUP_BATCH);
+
+    // Every card through verify_batch on a DIFFERENT provider; failures are
+    // dropped. Same provider (one key only) throws CoachNeedsKeyError.
+    const verified = (await verifyDrafts(
+      usable as unknown as Parameters<typeof verifyDrafts>[0],
+      res.provider,
+      fetchFn,
+    )) as unknown as TeachDraft[];
+
+    const known = new Set<string>();
+    for (const c of await db.cards.toArray()) {
+      if ((c as { type: string }).type === 'teach') known.add(teachKey(c as unknown as TeachCard));
+    }
+    const fresh: TeachDraft[] = [];
+    for (const d of verified) {
+      const k = teachKey(d);
+      if (known.has(k)) continue;
+      known.add(k);
+      fresh.push(d);
+    }
     if (fresh.length === 0) return 0;
 
-    const batchId = `topup-${today}-${type}`;
-    const batchCards = draftsToBatchCards(fresh, {
-      batchId,
-      source: 'ai',
-      tags: ['ai', 'topup'],
-    });
+    const batchId = `topup-${today}-${track}`;
+    const batchCards = fresh.map(
+      (d, i) =>
+        ({
+          ...d,
+          id: `${batchId}-${i}`,
+          lang: 'en',
+          tags: ['ai', 'topup'],
+          source: 'ai',
+          status: 'active',
+          createdAt: now,
+          batchId,
+        }) as unknown as Card,
+    );
 
     await db.transaction('rw', db.cards, db.outbox, async () => {
       for (const c of batchCards) {
@@ -217,7 +292,7 @@ export async function maybeTopUp(fetchFn: FetchFn = fetch): Promise<number> {
       await setMeta(AI_NEEDS_KEY_META, true).catch(() => {});
       return 0;
     }
-    // Offline or provider trouble: skip silently and retry next app open.
+    // Offline, no keys or provider trouble: skip silently, retry next open.
     return 0;
   }
 }

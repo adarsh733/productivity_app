@@ -10,7 +10,8 @@
       "office",
       "email",
       "swap"
-    ]
+    ],
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "I'll get back to you by 5 p.m. with the numbers.", "everyday": "Let me ask my brother and get back to you tonight.", "analogy": "'Revert' is the Undo button; 'get back to you' is the Reply button.", "insteadOf": "I will revert back to you by end of day." }
   },
   {
     "id": "phr-prepone-meeting",
@@ -22,7 +23,8 @@
     "tags": [
       "office",
       "scheduling"
-    ]
+    ],
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "Can we bring tomorrow's stand-up forward to 9:30?", "everyday": "Let's move dinner earlier, to seven; the kids have school.", "analogy": "Like dragging a calendar block up the page: you bring it forward.", "insteadOf": "Can we prepone tomorrow's sync?" }
   },
   {
     "id": "phr-do-the-needful",
@@ -34,7 +36,8 @@
     "tags": [
       "office",
       "clarity"
-    ]
+    ],
+    "skill": { "track": "words", "level": 5, "kind": "fix", "work": "Could you sign the form and send it back by noon?", "everyday": "Could you pick up milk and bread on your way home?", "analogy": "Like telling an auto driver 'take me somewhere good': name the place instead.", "insteadOf": "Please do the needful at your end." }
   },
   {
     "id": "phr-out-of-pocket",
@@ -46,7 +49,8 @@
     "tags": [
       "office",
       "travel"
-    ]
+    ],
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "I'm travelling this week, so I'll join calls by phone.", "everyday": "We're away for Diwali, so please pause the newspaper till Monday.", "analogy": "'Out of station' is railway talk; outside India people simply say 'away' or 'travelling'.", "insteadOf": "I am out of station this week." }
   },
   {
     "id": "phr-discuss-about",
@@ -58,7 +62,8 @@
     "tags": [
       "office",
       "grammar"
-    ]
+    ],
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "Let's discuss the sprint priorities after lunch.", "everyday": "We discussed the wedding menu over chai.", "analogy": "'Discuss' already has the 'about' inside, like chai that already has sugar.", "insteadOf": "Let's discuss about the sprint priorities." }
   },
   {
     "id": "phr-tell-me-one-thing",
@@ -70,7 +75,8 @@
     "tags": [
       "office",
       "diplomacy"
-    ]
+    ],
+    "skill": { "track": "words", "level": 5, "kind": "fix", "work": "Could you help me understand what held up the release?", "everyday": "Help me understand: why is the car service taking a week?", "analogy": "'Tell me one thing' feels like a cross-examination; 'help me understand' pulls up a chair.", "insteadOf": "Tell me one thing, why was this delayed?" }
   },
   {
     "id": "phr-same-pinch",
@@ -82,7 +88,8 @@
     "tags": [
       "office",
       "presence"
-    ]
+    ],
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "Great minds think alike: I was about to suggest the same fix.", "everyday": "You ordered masala dosa too? Great minds think alike!", "analogy": "Like two friends turning up in the same shirt and laughing about it.", "insteadOf": "Same pinch! I was thinking the same thing." }
   },
   {
     "id": "phr-doubt-clarification",
@@ -94,7 +101,8 @@
     "tags": [
       "office",
       "tech"
-    ]
+    ],
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "I have a few questions about this architecture diagram.", "everyday": "Quick question about the recipe: do I soak the rajma overnight?", "analogy": "'I have a doubt' sounds like you suspect a trick; 'a question' is a raised hand.", "insteadOf": "I have a few doubts on this architecture diagram." }
   },
   {
     "id": "phr-pass-out",
@@ -106,7 +114,8 @@
     "tags": [
       "education",
       "intro"
-    ]
+    ],
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "I graduated from IIT Delhi in 2020 and joined as an analyst.", "everyday": "My sister graduated last year and now teaches in Pune.", "analogy": "Outside India, 'passed out' means fainted, so people picture you on the floor.", "insteadOf": "I passed out from IIT Delhi in 2020." }
   },
   {
     "id": "phr-co-brother",
@@ -118,7 +127,8 @@
     "tags": [
       "everyday",
       "family"
-    ]
+    ],
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "My cousin works in fintech; he might help with the demo.", "everyday": "My cousin and I grew up in the same lane in Lucknow.", "analogy": "'Cousin' already covers brothers and sisters, like 'chai' covers every kind of tea.", "insteadOf": "My cousin brother works in fintech." }
   },
   {
     "id": "phr-give-an-exam",
@@ -130,7 +140,8 @@
     "tags": [
       "education",
       "grammar"
-    ]
+    ],
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "I'm taking my AWS exam on Friday, so I'll log off early.", "everyday": "My son is taking his maths exam tomorrow.", "analogy": "The teacher sets the exam and the student takes it, like a bowler bowls and a batter faces.", "insteadOf": "I am giving an exam tomorrow." }
   },
   {
     "id": "phr-today-morning",
@@ -142,7 +153,8 @@
     "tags": [
       "office",
       "grammar"
-    ]
+    ],
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "This morning we had a short outage on the payments page.", "everyday": "This morning the milkman came at six.", "analogy": "English says 'this' for today: this morning, this evening, like 'this match' you're watching.", "insteadOf": "Today morning we had an outage." }
   },
   {
     "id": "phr-ping-me",
@@ -160,7 +172,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "Drop me a quick update on Slack once the build passes.", "everyday": "Drop me a message when you reach home.", "analogy": "Like a note on the office noticeboard everyone checks, not one in your own pocket.", "insteadOf": "Ping me on WhatsApp once you finish." }
   },
   {
     "id": "phr-myself-intro",
@@ -178,7 +191,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "Hi, I'm Rahul from the frontend team.", "everyday": "Hi, I'm Rahul, Priya's neighbour from the third floor.", "analogy": "'Myself' needs an 'I' earlier in the sentence, like an echo needs a shout first.", "insteadOf": "Myself Rahul from the frontend team." }
   },
   {
     "id": "phr-kindly-arrange",
@@ -196,7 +210,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 5, "kind": "fix", "work": "Could you schedule 15 minutes with Priya this week?", "everyday": "Could you book a table for six on Saturday?", "analogy": "'Kindly arrange' is an old government letter; 'could you' is a friendly WhatsApp.", "insteadOf": "Kindly arrange a sync for this." }
   },
   {
     "id": "phr-do-one-thing",
@@ -214,7 +229,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "Here's what I suggest: pull the latest branch and rerun the tests.", "everyday": "Here's an idea: let's take the metro, not an auto.", "analogy": "'Do one thing' sounds like an order; 'here's what I suggest' hands over a menu.", "insteadOf": "Do one thing, pull the latest branch." }
   },
   {
     "id": "phr-sleep-over-it",
@@ -232,7 +248,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "Let's sleep on it and decide at tomorrow's stand-up.", "everyday": "The flat looks good, but let's sleep on it before we sign.", "analogy": "Like dosa batter resting overnight: the decision is better in the morning.", "insteadOf": "Let's sleep over this decision." }
   },
   {
     "id": "phr-keep-in-loop",
@@ -250,7 +267,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "Please flag anything that could move the launch date.", "everyday": "Message me if the train's late; skip the small updates.", "analogy": "A smoke alarm rings for fire, not for every cup of chai.", "insteadOf": "Keep me in the loop for any small change." }
   },
   {
     "id": "phr-share-the-screen",
@@ -268,7 +286,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 5, "kind": "fix", "work": "Would you mind sharing your screen so we can walk through it?", "everyday": "Would you mind holding the door for a second?", "analogy": "'You please share' is an order in a polite hat; 'would you mind' is a real ask.", "insteadOf": "You please share the screen." }
   },
   {
     "id": "phr-can-you-hear-me",
@@ -286,15 +305,16 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 5, "kind": "fix", "work": "Can everyone hear me clearly?", "everyday": "Can you hear me? I'm on the train.", "analogy": "'Am I audible' sounds like an old radio test; 'can you hear me' sounds like today.", "insteadOf": "Am I audible to everyone present?" }
   },
   {
     "id": "phr-pass-the-buck",
     "type": "phrase",
     "lang": "en",
     "weak": "Don't pass the blame to the DevOps team.",
-    "strong": "Let's focus on root-cause remediation rather than assigning blame.",
-    "why": "Shifts tone from accusatory defensiveness to constructive systemic ownership.",
+    "strong": "Let's not pass the buck to DevOps. Let's find the cause together.",
+    "why": "\"Pass the buck\" means pushing the blame or the job onto someone else.",
     "register": "office",
     "tags": [
       "office",
@@ -304,7 +324,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "Let's not pass the buck; let's find what broke and fix it.", "everyday": "My brothers kept passing the buck about who broke the TV remote.", "analogy": "Like a hot potato passed round the circle: nobody wants to hold it.", "insteadOf": "Don't pass the blame to the DevOps team." }
   },
   {
     "id": "phr-give-a-heads-up",
@@ -322,7 +343,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "Please give me a heads-up before you start the database migration.", "everyday": "Give me a heads-up if you're coming for dinner.", "analogy": "Like honking before a blind turn on a hill road.", "insteadOf": "Tell me beforehand if server goes down." }
   },
   {
     "id": "phr-call-it-a-day",
@@ -340,7 +362,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "Let's call it a day and pick this up first thing tomorrow.", "everyday": "We'd painted two walls, so we called it a day.", "analogy": "Like the umpire calling stumps: play stops, and the match continues tomorrow.", "insteadOf": "Let's close the office work now." }
   },
   {
     "id": "phr-circle-back",
@@ -358,7 +381,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "Let's circle back on this once the test results are in.", "everyday": "Let's circle back to the holiday plan after Diwali.", "analogy": "Like a lap around the block: you come back to the same spot later.", "insteadOf": "We will talk about this later sometime." }
   },
   {
     "id": "phr-touch-base",
@@ -376,15 +400,16 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "Let's touch base for five minutes before the client demo.", "everyday": "I'll touch base with the landlord about the leak tomorrow.", "analogy": "Like a batter touching the crease between runs: a quick check-in, then go.", "insteadOf": "I want to speak with you for two minutes." }
   },
   {
     "id": "phr-pushback-deadline",
     "type": "phrase",
     "lang": "en",
     "weak": "This deadline is totally impossible for my team.",
-    "strong": "Given our current velocity, delivering this scope by Friday risks technical debt.",
-    "why": "Frames pushback around objective delivery risk and craft standards rather than personal capacity.",
+    "strong": "If we keep Friday, we'll have to skip testing. Could we move it to Tuesday?",
+    "why": "Give the fact and an option, not a complaint.",
     "register": "office",
     "tags": [
       "office",
@@ -394,7 +419,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "At our current pace, Friday means cutting testing. Can we say Tuesday?", "everyday": "If we leave at six, we'll miss the start. Can we go at five?", "analogy": "Like telling the cook the oven fits one tray, not three: facts, not complaints.", "insteadOf": "This deadline is totally impossible for my team." }
   },
   {
     "id": "phr-offline-discussion",
@@ -412,7 +438,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "Let's take this offline so today's review stays on the roadmap.", "everyday": "Let's take the trip debate offline; I'll call you after dinner.", "analogy": "Like moving a side argument out of the wedding hall into the corridor.", "insteadOf": "Stop talking about this in the group call." }
   },
   {
     "id": "phr-bandwidth-constraint",
@@ -430,7 +457,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "I don't have the bandwidth this sprint unless we move the payments work.", "everyday": "I don't have the bandwidth to plan the reunion this month.", "analogy": "Like a phone data pack: once it's used up, nothing new loads.", "insteadOf": "I have too much pending work to take this." }
   },
   {
     "id": "phr-align-expectations",
@@ -448,7 +476,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "Let's align on what 'done' means before anyone opens a pull request.", "everyday": "Let's align on the area before we visit any flats.", "analogy": "Like agreeing on the destination before you book the cab.", "insteadOf": "We are not matching our thoughts." }
   },
   {
     "id": "phr-ballpark-estimate",
@@ -466,15 +495,16 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "Could you give me a ballpark figure for the login rework?", "everyday": "Ballpark, how long is the drive to Mysuru?", "analogy": "Like a shopkeeper's 'around two kilos' before he puts it on the scale.", "insteadOf": "Give me some rough guess for timing." }
   },
   {
     "id": "phr-flag-risks",
     "type": "phrase",
     "lang": "en",
     "weak": "There can be big issues later.",
-    "strong": "I want to flag a potential concurrency risk with this Redis lock design.",
-    "why": "Direct, calm risk-flagging prompts engineering problem solving instead of generalized anxiety.",
+    "strong": "I want to flag a risk with this design before we build it.",
+    "why": "\"Flag\" calmly points out a risk early, so people can act on it.",
     "register": "office",
     "tags": [
       "office",
@@ -484,7 +514,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 1, "kind": "use", "work": "I want to flag a risk with the new login flow before Friday.", "everyday": "Just flagging: the road to the venue floods when it rains.", "analogy": "Like a railway guard waving a red flag before the train reaches trouble.", "insteadOf": "There can be big issues later." }
   },
   {
     "id": "phr-close-the-loop",
@@ -502,7 +533,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "Just closing the loop: the memory leak is fixed and live.", "everyday": "Closing the loop: the plumber came and the tap's fixed.", "analogy": "Like texting 'reached home' after a friend asked you to message when you got in.", "insteadOf": "Did that issue get solved or what?" }
   },
   {
     "id": "phr-hard-stop",
@@ -520,7 +552,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "I have a hard stop at 4 p.m., so let's start with the risks.", "everyday": "I have a hard stop at eight; it's my niece's birthday.", "analogy": "Like the last metro: it leaves at eleven, whether you're on it or not.", "insteadOf": "I have to leave right now at 4." }
   },
   {
     "id": "phr-take-away",
@@ -538,7 +571,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "My main takeaway: users drop off because sign-up is slow.", "everyday": "My main takeaway from the trip: never book the 6 a.m. flight.", "analogy": "Like the one line you still remember from a film after leaving the theatre.", "insteadOf": "What is the main thing you learned from this?" }
   },
   {
     "id": "phr-move-the-needle",
@@ -556,15 +590,16 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "A faster start-up time will really move the needle on retention.", "everyday": "Skipping evening tea really moved the needle on my sleep.", "analogy": "Like a speedometer: only a real push makes the needle climb.", "insteadOf": "This will help our product a lot." }
   },
   {
     "id": "phr-low-hanging-fruit",
     "type": "phrase",
     "lang": "en",
     "weak": "Let's do the easy small tasks first.",
-    "strong": "Let's capture the low-hanging fruit in the backlog while design finalizes mockups.",
-    "why": "Identifies quick, high-ROI wins to build momentum during blocked phases.",
+    "strong": "Let's pick off the low-hanging fruit while design finishes the mockups.",
+    "why": "\"Low-hanging fruit\" means the easy wins you can get quickly.",
     "register": "office",
     "tags": [
       "office",
@@ -574,15 +609,16 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "Let's fix the low-hanging fruit first, like the broken links.", "everyday": "Cleaning the fridge is the low-hanging fruit before Diwali guests arrive.", "analogy": "The mangoes you can pick by hand before anyone fetches a ladder.", "insteadOf": "Let's do the easy small tasks first." }
   },
   {
     "id": "phr-table-the-topic",
     "type": "phrase",
     "lang": "en",
     "weak": "Let's stop talking on this right now.",
-    "strong": "Let's table this topic until we have production telemetry data.",
-    "why": "Professional parliamentary phrasing for pausing debate until requisite evidence arrives.",
+    "strong": "Can we park this until we have the data from production?",
+    "why": "\"Park\" means pause it and come back later; \"table\" means opposite things in the UK and US.",
     "register": "office",
     "tags": [
       "office",
@@ -592,7 +628,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 5, "kind": "use", "work": "Let's park this until we have the production data.", "everyday": "Let's park the holiday plan until the exam results are out.", "analogy": "Like parking a car: it waits safely till you come back.", "insteadOf": "Let's stop talking on this right now." }
   },
   {
     "id": "phr-drill-down",
@@ -610,15 +647,16 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "Let's drill down into the slow pages between 2 and 4 p.m.", "everyday": "When we drilled down into the electricity bill, the geyser was the culprit.", "analogy": "Like digging a borewell: one spot, deeper and deeper.", "insteadOf": "Look more deeply into the numbers." }
   },
   {
     "id": "phr-boil-the-ocean",
     "type": "phrase",
     "lang": "en",
     "weak": "Don't try to build every single feature on day one.",
-    "strong": "We don't need to boil the ocean for v1; let's ship the core loop first.",
-    "why": "Vividly warns against excessive scope creep and over-engineering initial releases.",
+    "strong": "Let's not bite off more than we can chew in version one. Core features first.",
+    "why": "A common idiom for taking on more than you can handle at once.",
     "register": "office",
     "tags": [
       "office",
@@ -628,7 +666,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "Let's not bite off more than we can chew; ship the core first.", "everyday": "We bit off more than we could chew: twenty guests and one small oven.", "analogy": "Like cooking for the whole colony when six friends are coming over.", "insteadOf": "Don't try to build every single feature on day one." }
   },
   {
     "id": "phr-sanitize-data",
@@ -646,15 +685,16 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "We sanitise all user input before saving it.", "everyday": "We sanitised the kitchen counters after the cooking class.", "analogy": "Like washing vegetables from the market before they go in the pot.", "insteadOf": "Clean the user input before saving." }
   },
   {
     "id": "phr-context-switching",
     "type": "phrase",
     "lang": "en",
     "weak": "Jumping between different tickets is making me tired.",
-    "strong": "Frequent context switching between on-call interrupts and roadmap work is hurting team throughput.",
-    "why": "Articulates cognitive overhead in terms of engineering productivity.",
+    "strong": "All this context switching between support and project work is slowing us down.",
+    "why": "\"Context switching\" means jumping between tasks and losing time at every jump.",
     "register": "office",
     "tags": [
       "office",
@@ -664,15 +704,16 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "Constant context switching between support and features is slowing the team down.", "everyday": "Cooking while helping with homework is too much context switching for me.", "analogy": "Like changing trains every two stations: you spend the whole trip on platforms.", "insteadOf": "Jumping between different tickets is making me tired." }
   },
   {
     "id": "phr-double-click",
     "type": "phrase",
     "lang": "en",
     "weak": "Explain that specific point in more detail.",
-    "strong": "Let's double-click on why staging database metrics diverged from production.",
-    "why": "Modern conversational cue to zoom into a specific line item without losing high-level context.",
+    "strong": "Can we dig into that last point a bit more?",
+    "why": "\"Dig into\" means look at it closely; \"double-click on\" is jargon many listeners find odd.",
     "register": "office",
     "tags": [
       "office",
@@ -682,7 +723,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "Let's dig into why staging and production numbers differ.", "everyday": "Let me dig into why the electricity bill doubled this month.", "analogy": "Like zooming into one corner of a map until the street names show.", "insteadOf": "Explain that specific point in more detail." }
   },
   {
     "id": "phr-play-devil-advocate",
@@ -700,7 +742,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "Let me play devil's advocate: what if the payment webhook fails silently?", "everyday": "Playing devil's advocate: do we really need a bigger car?", "analogy": "Like the friend who argues for the other team just to test your cricket opinion.", "insteadOf": "I am arguing just to oppose your idea." }
   },
   {
     "id": "phr-on-the-same-page",
@@ -718,7 +761,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "Just to make sure we're on the same page about the rollout order.", "everyday": "Are we on the same page about leaving at six?", "analogy": "Like the whole class turning to page 42 before the teacher starts.", "insteadOf": "Are we thinking identical things?" }
   },
   {
     "id": "phr-buy-in",
@@ -736,7 +780,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "We need the sales team's buy-in before we freeze the roadmap.", "everyday": "Get the kids' buy-in before you book the trek.", "analogy": "Like getting everyone at home to agree on the film before buying tickets.", "insteadOf": "We need to get their agreement." }
   },
   {
     "id": "phr-knowledge-transfer",
@@ -754,7 +799,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "I'll run a knowledge transfer session with the support team on Friday.", "everyday": "Before Nani left, she did a knowledge transfer on her pickle recipe.", "analogy": "Like a relay runner handing over the baton, not just pointing at it.", "insteadOf": "I will teach them how to run this code." }
   },
   {
     "id": "phr-action-items",
@@ -772,7 +818,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "clearly", "level": 5, "kind": "fix", "work": "Quick recap of action items: Riya owns testing, I own the release.", "everyday": "So: I'll book tickets, you pack snacks, Arjun brings the car.", "analogy": "Like the tiffin list on the fridge: one name next to each dish.", "insteadOf": "Who will do what now?" }
   },
   {
     "id": "phr-surface-concerns",
@@ -790,7 +837,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 1, "kind": "use", "work": "Please raise any concerns early so we can change the design.", "everyday": "If the trip plan worries you, raise it now, not at the station.", "analogy": "Like pointing out the crack in the wall before the painters start.", "insteadOf": "Tell if you are unhappy with the plan." }
   },
   {
     "id": "phr-timebox-task",
@@ -808,15 +856,16 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "Let's timebox this to three hours; if it's still stuck, we ask Priya.", "everyday": "I timebox WhatsApp to ten minutes after dinner.", "analogy": "Like a pressure cooker: three whistles and you switch it off, done or not.", "insteadOf": "Spend only 3 hours on this experiment." }
   },
   {
     "id": "phr-level-set",
     "type": "phrase",
     "lang": "en",
     "weak": "Let everyone remember the background first.",
-    "strong": "Let's level-set on our Q3 deliverables before diving into individual updates.",
-    "why": "Aligns baseline context across disparate attendees before detailed debate.",
+    "strong": "Let me quickly get everyone up to speed before we start the updates.",
+    "why": "\"Up to speed\" means knowing the latest; \"level-set\" is jargon outside some offices.",
     "register": "office",
     "tags": [
       "office",
@@ -826,7 +875,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "Let's get everyone up to speed on Q3 goals before the updates.", "everyday": "Let me get Dad up to speed before he calls the builder.", "analogy": "Like a quick recap of the last episode before the new one starts.", "insteadOf": "Let everyone remember the background first." }
   },
   {
     "id": "phr-iron-out",
@@ -844,7 +894,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "We have a few small styling issues to iron out before the demo.", "everyday": "We still need to iron out who's driving to the wedding.", "analogy": "Like pressing the last few creases out of a shirt before you leave.", "insteadOf": "Fix all the small remaining problems." }
   },
   {
     "id": "phr-north-star",
@@ -862,7 +913,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "Our north star is faster recovery whenever something breaks.", "everyday": "My north star this year is running the Mumbai marathon.", "analogy": "Like the Pole Star sailors steer by: one fixed point for every decision.", "insteadOf": "Our main top aim for this product." }
   },
   {
     "id": "phr-sweet-spot",
@@ -880,7 +932,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "This design hits the sweet spot between low cost and speed.", "everyday": "Ten in the morning is the sweet spot: no rush, shops already open.", "analogy": "The middle of the bat: hit it there and the ball flies.", "insteadOf": "The best balanced point between two things." }
   },
   {
     "id": "phr-sanity-check",
@@ -898,7 +951,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "Let me do a quick sanity check on these numbers before we send them.", "everyday": "Quick sanity check: is 4 a.m. too early to leave for Goa?", "analogy": "Like tasting the dal for salt before you serve it.", "insteadOf": "Check if this calculation makes sense." }
   },
   {
     "id": "phr-silver-bullet",
@@ -916,7 +970,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "The new tool helps, but it isn't a silver bullet for slow pages.", "everyday": "Green tea isn't a silver bullet; you still need to walk.", "analogy": "Like hoping one new bat will fix your whole batting technique.", "insteadOf": "This tool will solve all our problems instantly." }
   },
   {
     "id": "phr-bottleneck-resolution",
@@ -934,7 +989,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "Manual testing has become the bottleneck in our release.", "everyday": "The single billing counter is the bottleneck on Saturdays.", "analogy": "Like the one-lane bridge on a highway: everything waits there.", "insteadOf": "Where is the work getting stuck right now?" }
   },
   {
     "id": "phr-push-the-envelope",
@@ -952,7 +1008,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "This prototype pushes the envelope on voice typing in Hindi.", "everyday": "Her fusion biryani really pushes the envelope.", "analogy": "Like a test pilot flying a little faster than anyone has before.", "insteadOf": "Try something very daring and advanced." }
   },
   {
     "id": "phr-drop-the-ball",
@@ -970,7 +1027,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "We dropped the ball on telling the client about the downtime.", "everyday": "I dropped the ball on Mum's birthday cake; I forgot to order it.", "analogy": "Like a fielder dropping an easy catch: own it and move on.", "insteadOf": "We made a silly mistake on our side." }
   },
   {
     "id": "phr-pivot-strategy",
@@ -988,7 +1046,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "Based on early data, we're pivoting towards larger business customers.", "everyday": "The café pivoted from dine-in to delivery during the monsoon.", "analogy": "Like a basketball player keeping one foot planted and turning to face a new direction.", "insteadOf": "We will change our whole direction now." }
   },
   {
     "id": "phr-skin-in-the-game",
@@ -1006,7 +1065,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-v3-quality-target-20260826"
+    "batchId": "batch-v3-quality-target-20260826",
+    "skill": { "track": "words", "level": 4, "kind": "use", "work": "When leads carry the on-call phone, they have real skin in the game.", "everyday": "Everyone chipped in for the trip, so everyone has skin in the game.", "analogy": "Like a cook who eats his own food: he cares how it tastes.", "insteadOf": "They must also face risk if this fails." }
   },
   {
     "id": "phr-kindly-adjust",
@@ -1020,7 +1080,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 5, "kind": "fix", "work": "Thanks for bearing with the delay; the fix will be live by six.", "everyday": "Thanks for bearing with us; the guests are running late.", "analogy": "'Kindly adjust' asks them to squeeze in; 'thanks for bearing with us' offers chai while they wait.", "insteadOf": "Kindly adjust with the delay." }
   },
   {
     "id": "phr-good-name",
@@ -1034,7 +1095,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "Before we start, may I have your name, please?", "everyday": "Hi, what's your name? I'm Riya, Priya's friend.", "analogy": "'Good name' is 'shubh naam' translated word for word; English just says 'name'.", "insteadOf": "What is your good name?" }
   },
   {
     "id": "phr-itself-emphasis",
@@ -1048,7 +1110,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "I already told him yesterday; he's working on it.", "everyday": "Mum fixed the leak the same day; she didn't wait.", "analogy": "'Itself' after a time word is extra salt; English adds 'already' or 'the same day'.", "insteadOf": "I told him yesterday itself." }
   },
   {
     "id": "phr-marriage-wedding",
@@ -1062,7 +1125,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "I'm on leave next Friday for my cousin's wedding.", "everyday": "We danced all night at my cousin's wedding.", "analogy": "A wedding is the party day; a marriage is the years after it.", "insteadOf": "I am on leave for my cousin's marriage." }
   },
   {
     "id": "phr-shift-house",
@@ -1076,7 +1140,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "I'm moving house this weekend, so I'll be offline on Saturday.", "everyday": "We're moving house in May, to a flat near the metro.", "analogy": "You shift gears or furniture; you move house.", "insteadOf": "I am shifting my house this weekend." }
   },
   {
     "id": "phr-real-brother",
@@ -1090,7 +1155,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "Yes, Arjun in sales is my brother, not a cousin.", "everyday": "That's my brother; my cousins are the ones near the stage.", "analogy": "'Brother' already means real; adding 'real' makes listeners wonder about the fake ones.", "insteadOf": "He is my real brother, not cousin." }
   },
   {
     "id": "phr-as-per-convenience",
@@ -1104,7 +1170,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 5, "kind": "fix", "work": "Join any time before Friday that suits you.", "everyday": "Come over whenever it suits you this weekend.", "analogy": "'As per your convenience' is a stamped circular; 'whenever suits you' is a phone call.", "insteadOf": "Please join as per your convenience." }
   },
   {
     "id": "phr-note-the-same",
@@ -1118,7 +1185,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 5, "kind": "fix", "work": "Please confirm once you've updated the sheet.", "everyday": "Let me know once you've booked the tickets.", "analogy": "'The same' as a pronoun is a dusty file cabinet; just name the thing.", "insteadOf": "Please note the same and confirm." }
   },
   {
     "id": "phr-intimate-the-team",
@@ -1132,7 +1200,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 5, "kind": "fix", "work": "Please let the team know about the change today.", "everyday": "Let Mum know we'll be late for dinner.", "analogy": "To global ears, 'intimate the team' sounds romantic, not like sending an email.", "insteadOf": "Kindly intimate the team about the change." }
   },
   {
     "id": "phr-took-my-dinner",
@@ -1146,7 +1215,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "I'll have dinner late, so let's take the call at eight.", "everyday": "We usually have dinner at nine on weekends.", "analogy": "You take medicine; you have dinner.", "insteadOf": "I will take my dinner late." }
   },
   {
     "id": "phr-open-the-light",
@@ -1160,7 +1230,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "Could someone switch on the lights in the meeting room?", "everyday": "Please switch on the fan; it's hot.", "analogy": "You open doors and windows; lights and fans you switch on.", "insteadOf": "Please open the light." }
   },
   {
     "id": "phr-close-the-tv",
@@ -1174,7 +1245,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "Please switch off the projector when you leave.", "everyday": "Switch off the TV and come for dinner.", "analogy": "You close a tap; a TV you switch off or turn off.", "insteadOf": "Close the TV, please." }
   },
   {
     "id": "phr-say-no-meeting",
@@ -1188,7 +1260,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "I can't make the review, but my update is in the doc.", "everyday": "I can't make lunch on Sunday, but I'm free for chai on Monday.", "analogy": "A 'no' with a door left open, so they don't feel shut out.", "insteadOf": "I can't come to the review." }
   },
   {
     "id": "phr-say-no-extra-work",
@@ -1202,7 +1275,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "I can't give this proper attention this week; I can start Monday.", "everyday": "I can't help this weekend, but I'm free next Saturday.", "analogy": "Like a clinic receptionist: not today, but here's the next free slot.", "insteadOf": "No, I can't take this up." }
   },
   {
     "id": "phr-say-no-gently",
@@ -1216,7 +1290,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 5, "kind": "fix", "work": "That won't work by Friday; here's what we can do by then.", "everyday": "Saturday's packed, but how about Sunday brunch?", "analogy": "A closed road with a diversion sign is easier to take than a dead end.", "insteadOf": "That won't be possible." }
   },
   {
     "id": "phr-pushback-scope",
@@ -1230,7 +1305,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 5, "kind": "fix", "work": "To hold the date, let's ship the core flow first and add reports later.", "everyday": "To reach by seven, let's skip the dhaba stop and eat there.", "analogy": "Like packing for a short trip: carry the essentials, send the rest later.", "insteadOf": "This is too much for the timeline." }
   },
   {
     "id": "phr-pushback-quality",
@@ -1244,7 +1320,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "Rushing this risks a buggy release. Can we take two more days to test?", "everyday": "If we rush the paint, it'll peel by the monsoon. Can we wait a day?", "analogy": "Like taking a cake out early: it looks done, then sinks in the middle.", "insteadOf": "If we rush this, quality will suffer." }
   },
   {
     "id": "phr-disagree-meeting",
@@ -1258,7 +1335,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "I see it differently; can I share a concern about the rollout order?", "everyday": "I see it differently: the earlier train gets us there before the rush.", "analogy": "Like pointing to another route on the map, not grabbing the steering wheel.", "insteadOf": "I don't agree with this plan." }
   },
   {
     "id": "phr-disagree-data",
@@ -1272,7 +1350,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "The dashboard shows a different picture; shall we look at it together?", "everyday": "The app says the shop closes at nine; shall we check before driving?", "analogy": "Like checking the scoreboard together instead of arguing about the score.", "insteadOf": "You are wrong about the numbers." }
   },
   {
     "id": "phr-interrupt-politely",
@@ -1286,7 +1365,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "Can I pause you there? I want to build on that point.", "everyday": "Can I stop you there? That's exactly what happened to me!", "analogy": "A gentle tap on the shoulder, not a shout across the room.", "insteadOf": "Sorry, but let me speak." }
   },
   {
     "id": "phr-clarify-ask",
@@ -1300,7 +1380,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "I followed the first half; could you walk me through the API part again?", "everyday": "I got the first turn; can you repeat the directions after the temple?", "analogy": "Like telling the mechanic which noise, not just 'the car is bad'.", "insteadOf": "I didn't understand anything." }
   },
   {
     "id": "phr-update-blocked",
@@ -1314,7 +1395,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 5, "kind": "fix", "work": "I'm blocked on the API keys. I've pinged Arjun twice; can you nudge him?", "everyday": "We're stuck on the gas connection; can you call the agency once?", "analogy": "Like telling the guard which signal is red and who can turn it green.", "insteadOf": "The work is stuck because of them." }
   },
   {
     "id": "phr-update-done",
@@ -1328,7 +1410,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 1, "kind": "fix", "work": "My part's done except final testing, which finishes tomorrow.", "everyday": "Dinner's ready except the rotis; five minutes.", "analogy": "Like a delivery app: 'arriving in 5 minutes' beats 'on the way'.", "insteadOf": "Almost done with my part." }
   },
   {
     "id": "phr-apologise-delay",
@@ -1342,7 +1425,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 5, "kind": "fix", "work": "Sorry for the delay; the report will be with you by 4 p.m.", "everyday": "Sorry I'm late; I'll be there by 7:15.", "analogy": "Like a train announcement: sorry for the delay, arriving 7:15. The time calms people.", "insteadOf": "Sorry for the delay." }
   },
   {
     "id": "phr-thanks-specific",
@@ -1356,7 +1440,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "Thanks for staying back to fix the deploy; we shipped because of you.", "everyday": "Thanks for the lift to the station; I'd have missed my train.", "analogy": "A specific thank-you is a handwritten note; 'thanks for your help' is a printed card.", "insteadOf": "Thanks for your help." }
   },
   {
     "id": "phr-ask-intro",
@@ -1370,7 +1455,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "Would you be comfortable introducing me to your manager? I can send a short note.", "everyday": "Could you introduce me to your plumber? I'll mention your name.", "analogy": "Like handing over a gift already wrapped, so passing it on is easy.", "insteadOf": "Give me an intro to your manager." }
   },
   {
     "id": "phr-follow-up-once",
@@ -1384,7 +1470,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "Following up on my note from Tuesday; could you confirm by tomorrow?", "everyday": "Following up on the sofa repair: can you come on Saturday morning?", "analogy": "Like a second knock with your name: 'It's Rahul, from Tuesday.'", "insteadOf": "Just reminding you about my mail." }
   },
   {
     "id": "phr-meeting-late",
@@ -1398,7 +1485,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 1, "kind": "fix", "work": "I'll join 10 minutes late; please start without me.", "everyday": "Running 15 minutes late; order for me, I'll have the thali.", "analogy": "Like a train app showing '10 min late', so nobody waits on the platform guessing.", "insteadOf": "I will join late." }
   },
   {
     "id": "phr-leave-early",
@@ -1412,7 +1500,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "I need to leave at 4 today; Rahul is covering support.", "everyday": "I'll leave the party at nine; Arjun will drop Nani home.", "analogy": "Like handing over the car keys before you leave, so nobody is stuck.", "insteadOf": "I have to leave early today." }
   },
   {
     "id": "phr-compliment-work",
@@ -1426,7 +1515,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "Your opening story made the presentation land; the room woke up.", "everyday": "That rasam was spot on; the pepper was perfect.", "analogy": "Pointing at the exact six you loved beats saying 'nice innings'.", "insteadOf": "Good job on the presentation." }
   },
   {
     "id": "phr-present-opener",
@@ -1434,13 +1524,14 @@
     "lang": "en",
     "weak": "Today I will present my slides.",
     "strong": "In the next ten minutes, I'll show you why sign-ups dropped and the one fix I'd try.",
-    "why": "A promise of a finding beats an announcement of slides every time.",
+    "why": "Promising a finding usually lands better than announcing your slides.",
     "register": "presenting",
     "tags": ["presenting", "opening", "clarity"],
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "In ten minutes, I'll show why sign-ups dropped and one fix to try.", "everyday": "Quick plan for Sunday: temple at nine, lunch at Nani's, home by four.", "analogy": "Like a cab driver telling you the route before starting, so you relax.", "insteadOf": "Today I will present my slides." }
   },
   {
     "id": "phr-present-unknown",
@@ -1454,7 +1545,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 5, "kind": "fix", "work": "I don't have that number on me; I'll confirm by tomorrow morning.", "everyday": "Not sure when the shop opens; I'll check and text you.", "analogy": "Like a shopkeeper out of stock saying 'tomorrow by noon', not just 'no'.", "insteadOf": "I don't know the answer to that." }
   },
   {
     "id": "phr-present-close",
@@ -1468,7 +1560,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 5, "kind": "fix", "work": "So the ask is two testers for one week; happy to take questions.", "everyday": "So, who's in for Sunday? I need numbers by tonight.", "analogy": "Like the last over: finish with the winning shot, not a dot ball.", "insteadOf": "That's all from my side." }
   },
   {
     "id": "phr-friends-cancel",
@@ -1482,7 +1575,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "smalltalk", "level": 5, "kind": "fix", "work": "Riya: \"Team lunch today?\" You: \"Can't make it, I'm on a client call. Tell me how the new place is?\"", "everyday": "Arjun: \"Movie tonight?\" You: \"Can't make it, you guys go ahead. Tell me the gossip tomorrow!\"", "analogy": "A 'no' with a hook is a door left ajar: they can knock again.", "insteadOf": "I can't come, sorry." }
   },
   {
     "id": "phr-friends-advice",
@@ -1496,7 +1590,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "smalltalk", "level": 4, "kind": "fix", "work": "Priya: \"I'm thinking of switching teams.\" You: \"If it were me, I'd talk to my lead first. Want to think it through over chai?\"", "everyday": "Riya: \"My landlord won't fix the leak.\" You: \"If it were me, I'd send him a photo and a date. Want help writing it?\"", "analogy": "Like offering your bike, not riding it for them.", "insteadOf": "You should just quit." }
   },
   {
     "id": "phr-friends-comfort",
@@ -1510,7 +1605,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "smalltalk", "level": 4, "kind": "fix", "work": "Arjun: \"The demo crashed in front of the client.\" You: \"That sounds rough. Want ideas, or just to vent for a bit?\"", "everyday": "Riya: \"My flight got cancelled.\" You: \"Ugh, that sounds rough. Do you want help rebooking, or just to rant?\"", "analogy": "Like asking if someone wants tea or water before you pour.", "insteadOf": "Don't worry about it." }
   },
   {
     "id": "phr-friends-split-bill",
@@ -1524,7 +1620,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 1, "kind": "fix", "work": "Let's split the slides now: I'll take one to five, you take the rest.", "everyday": "Let's split it now; UPI takes ten seconds.", "analogy": "Settling now is like clearing the table after dinner: no pile-up tomorrow.", "insteadOf": "You pay, I'll pay next time." }
   },
   {
     "id": "phr-house-help-request",
@@ -1538,7 +1635,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "Please test the login page first today; the client demo is at six.", "everyday": "Please mop the bedrooms first today; guests are coming at six.", "analogy": "Like giving the auto driver a landmark, not just 'that side'.", "insteadOf": "Do this work properly." }
   },
   {
     "id": "phr-auto-negotiate",
@@ -1552,7 +1650,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "Same format as last month's report, please? That one worked well.", "everyday": "Station Road, by meter, please? Last time it was eighty rupees.", "analogy": "Like showing the tailor an old shirt that fits: a reference ends the guessing.", "insteadOf": "How much to go there?" }
   },
   {
     "id": "phr-shop-return",
@@ -1566,7 +1665,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 1, "kind": "fix", "work": "The new laptop crashed twice today; I'd like a replacement, please.", "everyday": "This kettle stopped working in two days; I'd like a refund, please.", "analogy": "Like ordering at a counter: name the dish, don't describe your hunger.", "insteadOf": "This is defective, take it back." }
   },
   {
     "id": "phr-phone-drowned",
@@ -1574,13 +1674,14 @@
     "lang": "en",
     "weak": "Your voice is breaking.",
     "strong": "You're breaking up — could you move to a window or call back?",
-    "why": "'Breaking up' is the natural phrase; 'voice is breaking' sounds like puberty.",
+    "why": "\"Breaking up\" is the natural phrase; \"your voice is breaking\" usually means a teenager's voice changing.",
     "register": "office",
     "tags": ["office", "calls", "collocation"],
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 2, "kind": "use", "work": "You're breaking up; could you move closer to the window?", "everyday": "Mum, you're breaking up; I'll call you back from the balcony.", "analogy": "Like a radio between stations: the words arrive in pieces.", "insteadOf": "Your voice is breaking." }
   },
   {
     "id": "phr-battery-down",
@@ -1594,7 +1695,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 1, "kind": "fix", "work": "My phone's dying; I'll rejoin from my laptop if it drops.", "everyday": "My phone's about to die; I'll text you when I'm home.", "analogy": "In English a phone 'dies', like a torch fading out; it never 'gets off'.", "insteadOf": "My mobile is getting off." }
   },
   {
     "id": "phr-reply-deadline",
@@ -1608,7 +1710,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "Could you reply by Thursday? The client review is on Friday.", "everyday": "Can you confirm by tonight? The caterer needs numbers tomorrow.", "analogy": "Like a date on a train ticket: people plan around it.", "insteadOf": "Please reply soon." }
   },
   {
     "id": "phr-subject-line",
@@ -1622,7 +1725,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 4, "kind": "fix", "work": "Attached: the March report, for your sign-off by Friday.", "everyday": "Photos attached: Diwali at Nani's. Pick your favourite for the album!", "analogy": "Like a label on a tiffin box: you know what's inside before opening it.", "insteadOf": "Regards, please find attached." }
   },
   {
     "id": "phr-out-of-office",
@@ -1636,7 +1740,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "I'm on leave till Monday; for anything urgent, please call Rahul.", "everyday": "We're away till Sunday; the spare key is with Mrs Iyer.", "analogy": "Like a shop sign saying 'Back at 4, ask next door', not just 'Closed'.", "insteadOf": "I am on leave, call someone else." }
   },
   {
     "id": "phr-ask-deadline-kind",
@@ -1650,7 +1755,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "Could you get this back to me by 3 p.m.? The call is at four.", "everyday": "Can you pick up the cake by six? The party starts at seven.", "analogy": "'Do it fast' is a honk; a time and a reason is a clear signboard.", "insteadOf": "Do it fast." }
   },
   {
     "id": "phr-praise-junior",
@@ -1664,7 +1770,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "Well done on the client summary: crisp, honest about risks, and on time.", "everyday": "Great job on the science project; the labels made it so clear.", "analogy": "A coach saying 'great cover drive' teaches more than 'good batting'.", "insteadOf": "Well done, keep it up." }
   },
   {
     "id": "phr-correct-gently",
@@ -1678,7 +1785,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "Almost: the total's right, but the March row is last year's.", "everyday": "Nearly there: the dal's perfect, it just needs a pinch of salt.", "analogy": "Like a GPS saying 'turn left in 200 metres', not 'wrong way'.", "insteadOf": "That's wrong." }
   },
   {
     "id": "phr-meeting-wrap",
@@ -1692,7 +1800,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 5, "kind": "fix", "work": "So Rahul owns the API fix by Wednesday. Thanks, all; see you at stand-up.", "everyday": "So I'm booking the tickets tonight, and you sort out the hotel. Done!", "analogy": "Like the umpire's final signal: everyone knows the result before leaving the ground.", "insteadOf": "Okay then, bye all." }
   },
   {
     "id": "phr-small-talk",
@@ -1706,21 +1815,23 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "smalltalk", "level": 3, "kind": "ask_them", "work": "You: \"How was your weekend? Did the match live up to the hype?\" Arjun: \"Totally! That last over!\"", "everyday": "You: \"How was the wedding? Did the sangeet go on late?\" Riya: \"Till 2 a.m.!\"", "analogy": "A specific question is a ball bowled to them; 'Busy?' is a dead ball.", "insteadOf": "How are you? Busy?" }
   },
   {
     "id": "phr-ask-salary",
     "type": "phrase",
     "lang": "en",
-    "weak": "What is your salary?",
-    "strong": "Are you comfortable sharing the range for this role?",
-    "why": "Asking the role's range respects privacy while getting the number that matters.",
+    "weak": "Why did you leave your last job?",
+    "strong": "Are you comfortable sharing what made you move on?",
+    "why": "\"Are you comfortable sharing…\" asks a personal question but leaves room to say no.",
     "register": "office",
     "tags": ["office", "hiring", "tact"],
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 5, "kind": "fix", "work": "Are you comfortable sharing why the launch moved?", "everyday": "Are you comfortable sharing how you prepared for the exam?", "analogy": "Like knocking before you enter: the question leaves them free to say no.", "insteadOf": "Why did you leave your last job?" }
   },
   {
     "id": "phr-decline-offer",
@@ -1734,7 +1845,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 5, "kind": "fix", "work": "Thanks for the offer; the timing isn't right, but I'd love to stay in touch.", "everyday": "Thanks for inviting us; we can't make it this time, but next Diwali?", "analogy": "Like declining a second helping but praising the cook: the host still smiles.", "insteadOf": "I reject this offer." }
   },
   {
     "id": "phr-ask-referral",
@@ -1748,7 +1860,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "clearly", "level": 3, "kind": "fix", "work": "There's an analyst opening on your team; would you refer me? I'll send my CV.", "everyday": "Could you put in a word with your society secretary? I'll call him.", "analogy": "Like asking for a lift and naming the exact stop: it's easy to say yes.", "insteadOf": "Refer me in your company." }
   },
   {
     "id": "phr-wifi-request",
@@ -1762,7 +1875,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 5, "kind": "fix", "work": "Could I get the guest Wi-Fi password, please?", "everyday": "Could I get the Wi-Fi password, please? My data's run out.", "analogy": "'Could I' is like taking off your shoes at the door: small, but noticed.", "insteadOf": "Give me the WiFi password." }
   },
   {
     "id": "phr-food-feedback",
@@ -1776,7 +1890,8 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "smalltalk", "level": 1, "kind": "fix", "work": "Priya: \"How's the canteen biryani?\" You: \"A touch too salty for me, but the raita's great.\"", "everyday": "Aunty: \"How's the curry?\" You: \"A touch too salty for me, but the dal is excellent!\"", "analogy": "Like a review with one star off, not zero: honest, and still kind.", "insteadOf": "The food is not good." }
   },
   {
     "id": "phr-photo-request",
@@ -1790,6 +1905,7 @@
     "source": "seed",
     "status": "active",
     "createdAt": 1787746004355,
-    "batchId": "batch-ag006-phrases"
+    "batchId": "batch-ag006-phrases",
+    "skill": { "track": "words", "level": 5, "kind": "fix", "work": "Could you take a photo of the whiteboard before we wipe it?", "everyday": "Could you take a photo of us, please? Just press this button.", "analogy": "Like saying 'bhaiya' before asking directions: the softener makes people want to help.", "insteadOf": "Take my photo." }
   }
 ]

@@ -17,6 +17,11 @@ test.describe('Mobile Viewports Responsive & Release Hardening Gate', () => {
         }
       });
 
+      // No real AI or sync call may leave the machine (auto top-up asks on first open).
+      await page.route('**/.netlify/functions/**', (route) =>
+        route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: false, error: 'offline' }) }),
+      );
+
       await page.setViewportSize({ width: vp.width, height: vp.height });
       await page.goto('/');
       await page.evaluate(() => localStorage.setItem('speak.firstRun.v3', 'true'));

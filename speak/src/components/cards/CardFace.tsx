@@ -1,7 +1,7 @@
-import type { AnyCard } from '../../types/contract';
+import type { AnyCard, SkillTag } from '../../types/contract';
 import { speak } from '../../lib/speech';
 import { VolumeIcon } from '../shell/Icons';
-import TeachCardFace from './TeachCardFace';
+import TeachCardFace, { exampleLabels } from './TeachCardFace';
 import { trackChipText, trackOf } from '../../features/skills/trackOf';
 
 export interface CardFaceProps {
@@ -14,6 +14,8 @@ export interface CardFaceProps {
   onAgain?: () => void;
   onGotIt?: () => void;
   onSave?: () => void;
+  /** v5 Try cards only: the optional 🎤 Say mine button. */
+  onSayMine?: () => void;
 }
 
 function getBadge(card: AnyCard): { label: string; className: string } {
@@ -77,9 +79,19 @@ export default function CardFace({
   onAgain,
   onGotIt,
   onSave,
+  onSayMine,
 }: CardFaceProps) {
   if (card.type === 'teach') {
-    return <TeachCardFace card={card} saved={saved} onAgain={onAgain} onGotIt={onGotIt} onSave={onSave} />;
+    return (
+      <TeachCardFace
+        card={card}
+        saved={saved}
+        onAgain={onAgain}
+        onGotIt={onGotIt}
+        onSave={onSave}
+        onSayMine={onSayMine}
+      />
+    );
   }
 
   const badge = getBadge(card);
@@ -154,6 +166,7 @@ export default function CardFace({
         aria-label="Card content (click to flip detail)"
       >
         {renderCardContent(card, isDetail, isLong)}
+        <SkillParts skill={skill} />
       </div>
 
       <div className="hint" onClick={onToggleDetail}>
@@ -164,6 +177,39 @@ export default function CardFace({
             : 'Tap for detail · Swipe to advance'}
       </div>
     </article>
+  );
+}
+
+/**
+ * v5: an old card that was reshaped carries a work example, an everyday
+ * example and an analogy in its `skill` tag. They show under the card, in the
+ * same labels the teach cards use. A card without them shows nothing extra.
+ */
+function SkillParts({ skill }: { skill: SkillTag }) {
+  const { work, everyday, analogy } = skill;
+  if (!work && !everyday && !analogy) return null;
+  const labels = exampleLabels(skill.track);
+  return (
+    <div className="skill-parts" data-testid="skill-parts">
+      {work && (
+        <div className="block skill-example">
+          <div className="lbl">{labels.work}</div>
+          <div className="val teach-lines">{work}</div>
+        </div>
+      )}
+      {everyday && (
+        <div className="block skill-example">
+          <div className="lbl">{labels.everyday}</div>
+          <div className="val teach-lines">{everyday}</div>
+        </div>
+      )}
+      {analogy && (
+        <p className="teach-analogy">
+          <span aria-hidden="true">💡 </span>
+          {analogy}
+        </p>
+      )}
+    </div>
   );
 }
 

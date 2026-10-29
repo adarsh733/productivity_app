@@ -11,7 +11,7 @@ import {
   verifyDrafts,
   type FetchFn,
 } from '../coach/pipeline';
-import { tryConsumeAiCall } from './budget';
+import { tryConsumeBackgroundAiCall } from './budget';
 import { rejectedTerms } from './reject';
 
 /**
@@ -64,8 +64,8 @@ export async function maybeSpawnMissSiblings(
     const used = counter && counter.date === today ? counter.count : 0;
     if (used >= MISS_MAX_PER_DAY) return 0;
 
-    // AG-008 stage 3 — one shared daily budget for every generation path.
-    if (!(await tryConsumeAiCall())) return 0;
+    // AG-008 stage 3 — one shared daily budget; background work stops when fewer than 10 calls are left (Ask goes first).
+    if (!(await tryConsumeBackgroundAiCall())) return 0;
 
     // Counted before the network call: a failed ask still cost a request
     // against the free tier.

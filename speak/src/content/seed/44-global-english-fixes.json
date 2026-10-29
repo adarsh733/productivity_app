@@ -1,0 +1,853 @@
+[
+  {
+    "id": "gef-have-a-car",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Am having a car\" → \"have a car\"",
+    "rule": "In global English, say \"I have\" for owning, not \"I'm having\".",
+    "examples": {
+      "work": "I have the new build on my laptop, so I'll run the demo.",
+      "everyday": "We have a car now, so I can drop you at the station."
+    },
+    "insteadOf": "I am having a car, so I can drop you.",
+    "analogy": "Owning is a still photo. \"I'm having lunch\" is a video: it's happening now.",
+    "tryPrompt": "A friend asks if you own a bike. You do. Answer in one sentence.",
+    "answer": "Yes, I have a bike. It's an old Activa, but it runs.",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "grammar",
+      "state-verbs"
+    ]
+  },
+  {
+    "id": "gef-known-for-years",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Am knowing him\" → \"I've known him\"",
+    "rule": "In global English, say \"I've known\" for a time up to now.",
+    "examples": {
+      "work": "I've known Fatima since our first job, so I'll ask her.",
+      "everyday": "We've known our neighbours for ten years; they're like family."
+    },
+    "insteadOf": "I am knowing him for five years.",
+    "analogy": "A train that left years ago and is still running: that's \"I've known\".",
+    "tryPrompt": "Tell a new colleague that you and Rahul met in college and are still friends.",
+    "answer": "I've known Rahul since college. We're still close.",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "grammar",
+      "state-verbs",
+      "tense"
+    ]
+  },
+  {
+    "id": "gef-bought-yesterday",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Have bought yesterday\" → \"bought\"",
+    "rule": "In global English, a finished time like \"yesterday\" takes the simple past.",
+    "examples": {
+      "work": "I sent the invoice yesterday, so it should reach them today.",
+      "everyday": "I bought the book yesterday and finished it last night."
+    },
+    "insteadOf": "I have bought the book yesterday.",
+    "analogy": "\"Yesterday\" is a shop with its shutter down: it's closed, so use the plain past.",
+    "tryPrompt": "Tell your manager the vendor called last Monday. One sentence.",
+    "answer": "The vendor called last Monday.",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "grammar",
+      "tense"
+    ]
+  },
+  {
+    "id": "gef-since-for",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Since five years\" → \"for five years\"",
+    "rule": "In global English, \"for\" goes with a length; \"since\" with a start.",
+    "examples": {
+      "work": "I've been working here for five years, since 2021.",
+      "everyday": "We've lived in Pune since 2019, so for about seven years."
+    },
+    "insteadOf": "I am working here since five years.",
+    "analogy": "\"Since\" is the date on the calendar. \"For\" is how many pages you've turned.",
+    "tryPrompt": "You started learning the guitar two years ago and still practise. Say it in one sentence.",
+    "answer": "I've been learning the guitar for two years.",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "grammar",
+      "tense"
+    ]
+  },
+  {
+    "id": "gef-she-knows",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"She know\" → \"she knows\"",
+    "rule": "In global English, he, she or it takes a verb with \"-s\".",
+    "examples": {
+      "work": "Riya knows the payments code best, so ask her.",
+      "everyday": "My dad watches every match, even the boring ones."
+    },
+    "insteadOf": "She know JavaScript very well.",
+    "analogy": "The \"-s\" is a name badge: he, she and it always wear one.",
+    "tryPrompt": "Tell your team that Arjun speaks Tamil and can help on the Chennai call.",
+    "answer": "Arjun speaks Tamil, so he can help on the Chennai call.",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "grammar"
+    ]
+  },
+  {
+    "id": "gef-will-not-would",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Would be\" → \"will be\" for a plan",
+    "rule": "In global English, \"will\" states a plan; \"would\" sounds unsure.",
+    "examples": {
+      "work": "The next step will be to test it on Monday.",
+      "everyday": "Dinner will be at eight, so come by half past seven."
+    },
+    "insteadOf": "The next step would be to test it.",
+    "analogy": "\"Will\" is a confirmed train ticket. \"Would\" is still on the waiting list.",
+    "tryPrompt": "In the meeting, say that the next step is a call with the client on Friday.",
+    "answer": "The next step will be a call with the client on Friday.",
+    "register": "office",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "grammar",
+      "meetings"
+    ]
+  },
+  {
+    "id": "gef-enjoyed-it",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Enjoyed very much\" → \"enjoyed it\"",
+    "rule": "In global English, \"enjoy\" needs an object: \"enjoyed it\", \"enjoyed ourselves\".",
+    "examples": {
+      "work": "Thanks for organising the offsite. We really enjoyed it.",
+      "everyday": "We really enjoyed the food at the wedding, especially the biryani."
+    },
+    "insteadOf": "The party was great. We enjoyed very much.",
+    "analogy": "\"Enjoy\" is an empty plate until you say what's on it.",
+    "tryPrompt": "A colleague asks if you liked yesterday's team lunch. You loved it. Answer using \"enjoy\".",
+    "answer": "I really enjoyed it. The paneer was great.",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "grammar"
+    ]
+  },
+  {
+    "id": "gef-question-order",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "Questions: flip to \"are you\"",
+    "rule": "In global English, questions flip the order: \"are you\", \"will you\".",
+    "examples": {
+      "work": "When will you send the deck?",
+      "everyday": "Which way are you going? We can share an auto."
+    },
+    "insteadOf": "Which way you are going?",
+    "analogy": "A question is a cup turned upside down: \"you are\" becomes \"are you\".",
+    "tryPrompt": "Ask Joseph what time he's leaving for the airport.",
+    "answer": "What time are you leaving for the airport?",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "grammar",
+      "questions"
+    ]
+  },
+  {
+    "id": "gef-tag-questions",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Isn't it?\" → the matching tag",
+    "rule": "In global English, the tag matches the verb: \"aren't they?\", \"don't you?\"",
+    "examples": {
+      "work": "The client is joining at three, isn't she?",
+      "everyday": "Your parents are coming tomorrow, aren't they?"
+    },
+    "insteadOf": "They're coming tomorrow, isn't it?",
+    "analogy": "Like an echo in a well: the tag bounces back the verb you just used.",
+    "tryPrompt": "Check with Priya that she's coming to the stand-up. End with a short tag.",
+    "answer": "You're coming to the stand-up, aren't you?",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "grammar",
+      "questions"
+    ]
+  },
+  {
+    "id": "gef-trainings",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Trainings\" → \"training sessions\"",
+    "rule": "In global English, \"training\" and \"research\" take no plural \"-s\".",
+    "examples": {
+      "work": "We have two training sessions this week.",
+      "everyday": "My sister is doing research on rice farming."
+    },
+    "insteadOf": "We have two trainings and some researches this week.",
+    "analogy": "Like rice: you say \"two bowls of rice\", never \"two rices\".",
+    "tryPrompt": "Tell HR you went to three safety classes this month. Use \"training\".",
+    "answer": "I attended three safety training sessions this month.",
+    "register": "both",
+    "links": [
+      "ls-words-1-5"
+    ],
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "uncountable"
+    ]
+  },
+  {
+    "id": "gef-alphabet",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"The alphabets\" → \"the alphabet\"",
+    "rule": "In global English, \"alphabet\" means the whole set; each one's a letter.",
+    "examples": {
+      "work": "The code uses only letters of the alphabet, no numbers.",
+      "everyday": "My son can say the whole alphabet now, A to Z."
+    },
+    "insteadOf": "My son is learning his alphabets.",
+    "analogy": "The alphabet is the whole deck of cards; each letter is one card.",
+    "tryPrompt": "Tell a friend your niece knows all 26 letters now.",
+    "answer": "My niece knows the whole alphabet now.",
+    "register": "casual",
+    "links": [
+      "ls-words-1-5"
+    ],
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "uncountable",
+      "family"
+    ]
+  },
+  {
+    "id": "gef-masters-student",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"A master's student in CS\"",
+    "rule": "In global English, say \"a master's student in\" a subject.",
+    "examples": {
+      "work": "I'm a master's student in data science, interning here this summer.",
+      "everyday": "My cousin is a PhD student in history at Delhi University."
+    },
+    "insteadOf": "I am master's student of computer science.",
+    "analogy": "You study in a subject the way you sit in a train: inside it.",
+    "tryPrompt": "Introduce yourself at a meetup. You're doing a master's in finance.",
+    "answer": "Hi, I'm Arjun. I'm a master's student in finance.",
+    "register": "both",
+    "links": [
+      "ls-words-1-4"
+    ],
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "articles",
+      "introductions"
+    ]
+  },
+  {
+    "id": "gef-a-book",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"One book\" → \"a book\"",
+    "rule": "In global English, use \"a\", not \"one\", unless the number matters.",
+    "examples": {
+      "work": "A client called about the invoice this morning.",
+      "everyday": "She gave me a book for my birthday."
+    },
+    "insteadOf": "She gave me one book to read.",
+    "analogy": "\"One\" holds up a finger to count. \"A\" just points.",
+    "tryPrompt": "Tell your friend that someone at work told you about a nice café near the office.",
+    "answer": "A colleague told me about a nice café near the office.",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "articles"
+    ]
+  },
+  {
+    "id": "gef-attention-to",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Attention on\" → \"attention to\"",
+    "rule": "In global English, you pay attention to something, not on it.",
+    "examples": {
+      "work": "Please pay attention to the dates on the last slide.",
+      "everyday": "Pay attention to the road, not your phone."
+    },
+    "insteadOf": "Please pay attention on the last slide.",
+    "analogy": "Attention travels to it, like a ball thrown to the keeper.",
+    "tryPrompt": "Ask the new joiner to focus on the security steps. Use \"pay attention\".",
+    "answer": "Please pay attention to the security steps.",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "prepositions"
+    ]
+  },
+  {
+    "id": "gef-cope-with",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Cope up with\" → \"cope with\"",
+    "rule": "In global English, it's \"cope with\", with no \"up\".",
+    "examples": {
+      "work": "How do you cope with three projects at once?",
+      "everyday": "Mum is coping well with the move to Pune."
+    },
+    "insteadOf": "How do you cope up with so much work?",
+    "analogy": "The \"up\" is a second spoon of sugar nobody asked for.",
+    "tryPrompt": "Ask a colleague how they manage their two-hour commute every day. Use \"cope\".",
+    "answer": "How do you cope with that commute every day?",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "prepositions"
+    ]
+  },
+  {
+    "id": "gef-right-here",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"I'm here only\" → \"I'm right here\"",
+    "rule": "In global English, stress a place with \"right\": \"right here\".",
+    "examples": {
+      "work": "The file's right here, in the shared folder.",
+      "everyday": "Don't worry, I'm right here, by the gate."
+    },
+    "insteadOf": "Where are you? — I'm here only.",
+    "analogy": "\"Right\" is a pin on the map: exactly this spot.",
+    "tryPrompt": "Your friend can't find you at the station. Tell them you're at platform 2, near the tea stall.",
+    "answer": "I'm right here, on platform 2, near the tea stall.",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "emphasis"
+    ]
+  },
+  {
+    "id": "gef-really-small",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Small small\" → \"really small\"",
+    "rule": "In global English, say \"really small\" or \"little\", not \"small small\".",
+    "examples": {
+      "work": "These are really small fixes; I'll finish them today.",
+      "everyday": "Let's not fight over little things."
+    },
+    "insteadOf": "Let's not fight over small small things.",
+    "analogy": "Saying \"small\" twice is two spoons of sugar; \"really\" is one, and enough.",
+    "tryPrompt": "Tell your manager the review found only a few tiny typos.",
+    "answer": "The review found only a few really small typos.",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "emphasis"
+    ]
+  },
+  {
+    "id": "gef-three-or-four",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Three-four\" → \"three or four\"",
+    "rule": "In global English, say \"three or four\", with \"or\".",
+    "examples": {
+      "work": "Three or four people from sales are joining the call.",
+      "everyday": "We'll be back in two or three days."
+    },
+    "insteadOf": "Three-four people are joining the call.",
+    "analogy": "Like \"chai or coffee?\" on a menu: \"or\" means one of the two.",
+    "tryPrompt": "Your team needs a few more days: maybe two, maybe three. Tell your manager.",
+    "answer": "We need two or three more days.",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "numbers"
+    ]
+  },
+  {
+    "id": "gef-really-good",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Too good\" → \"really good\"",
+    "rule": "In global English, \"too\" means more than is OK.",
+    "examples": {
+      "work": "Your demo was really good. The client loved it.",
+      "everyday": "The chai's really good, but too hot to drink yet."
+    },
+    "insteadOf": "This coffee is too good!",
+    "analogy": "\"Too\" is the red zone on a speedometer; \"really\" is just fast.",
+    "tryPrompt": "Tell your aunt her dosa is excellent.",
+    "answer": "Aunty, this dosa is really good!",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "emphasis"
+    ]
+  },
+  {
+    "id": "gef-passed-away",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Expired\" → \"passed away\"",
+    "rule": "In global English, people \"pass away\"; milk and passports \"expire\".",
+    "examples": {
+      "work": "Rahul's grandfather passed away, so he's on leave this week.",
+      "everyday": "Check the milk; I think it expired yesterday."
+    },
+    "insteadOf": "His grandfather expired last week.",
+    "analogy": "\"Expire\" is the date stamped on a packet, not a word for a person.",
+    "tryPrompt": "Tell your team gently that Joseph is away because his grandmother died.",
+    "answer": "Joseph's away this week. His grandmother passed away.",
+    "register": "both",
+    "links": [
+      "ls-words-1-4"
+    ],
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "meaning-abroad"
+    ]
+  },
+  {
+    "id": "gef-invite",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Call to my party\" → \"invite\"",
+    "rule": "In global English, you \"invite\" people to an event.",
+    "examples": {
+      "work": "Let's invite the design team to the launch lunch.",
+      "everyday": "I'm inviting Riya to my birthday dinner."
+    },
+    "insteadOf": "I'll call her to my party.",
+    "analogy": "\"Call\" is the phone ringing. \"Invite\" is the card in their hand.",
+    "tryPrompt": "Tell a colleague you'd like them to come to your housewarming on Sunday.",
+    "answer": "I'd like to invite you to my housewarming on Sunday.",
+    "register": "both",
+    "links": [
+      "ls-words-1-4"
+    ],
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "meaning-abroad"
+    ]
+  },
+  {
+    "id": "gef-hundred-percent",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Cent percent\" → \"a hundred percent\"",
+    "rule": "In global English, say \"a hundred percent\" or \"one hundred percent\".",
+    "examples": {
+      "work": "I'm a hundred percent sure the numbers are right.",
+      "everyday": "She got a hundred percent in maths!"
+    },
+    "insteadOf": "I'm cent percent sure.",
+    "analogy": "Like \"a dozen eggs\": the \"a\" comes first, so \"a hundred percent\".",
+    "tryPrompt": "Your manager asks if you're sure about Friday's launch. You're completely sure. Answer.",
+    "answer": "Yes, I'm a hundred percent sure. We're ready for Friday.",
+    "register": "both",
+    "links": [
+      "ls-words-1-3"
+    ],
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "numbers"
+    ]
+  },
+  {
+    "id": "gef-restaurant",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"That hotel\" → \"that restaurant\"",
+    "rule": "In global English, a \"hotel\" is for staying; a \"restaurant\" for eating.",
+    "examples": {
+      "work": "Let's take the client to that South Indian restaurant.",
+      "everyday": "We stayed at a hotel in Goa and ate at the beach shacks."
+    },
+    "insteadOf": "Let's eat lunch at that hotel near the office.",
+    "analogy": "A hotel gives you a bed; a restaurant gives you a plate.",
+    "tryPrompt": "Suggest to your friends that you all have dinner at the new biryani place.",
+    "answer": "Shall we have dinner at that new biryani restaurant?",
+    "register": "both",
+    "links": [
+      "ls-words-1-4"
+    ],
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "meaning-abroad",
+      "food"
+    ]
+  },
+  {
+    "id": "gef-cramming",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Mugging\" → \"cramming\"",
+    "rule": "In global English, say \"cramming\"; \"mugging\" usually means robbing.",
+    "examples": {
+      "work": "I crammed the new process notes the night before the audit.",
+      "everyday": "My brother's cramming for his board exams."
+    },
+    "insteadOf": "I was mugging all night for the exam.",
+    "analogy": "Cramming is stuffing a suitcase the night before the trip.",
+    "tryPrompt": "Tell a friend you studied all night just before your driving test.",
+    "answer": "I crammed all night before my driving test.",
+    "register": "casual",
+    "links": [
+      "ls-words-1-4"
+    ],
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "meaning-abroad",
+      "study"
+    ]
+  },
+  {
+    "id": "gef-brother-in-law",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Co-brother\" → \"brother-in-law\"",
+    "rule": "In global English, your wife's sister's husband is your \"brother-in-law\".",
+    "examples": {
+      "work": "I'm off on Friday; my brother-in-law is flying in from Dubai.",
+      "everyday": "My brother-in-law makes the best biryani in the family."
+    },
+    "insteadOf": "My co-brother is visiting this weekend.",
+    "analogy": "One key ring, many keys: \"brother-in-law\" opens several family doors.",
+    "tryPrompt": "Tell a colleague your wife's sister's husband is joining you for the match.",
+    "answer": "My brother-in-law is coming to the match with us.",
+    "register": "both",
+    "links": [
+      "ls-words-1-4"
+    ],
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "family"
+    ]
+  },
+  {
+    "id": "gef-learn-by-heart",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"By-heart it\" → \"learn it by heart\"",
+    "rule": "In global English, you \"learn it by heart\" or \"memorise\" it.",
+    "examples": {
+      "work": "I've learned the opening lines of the pitch by heart.",
+      "everyday": "My daughter memorised the whole poem in a day."
+    },
+    "insteadOf": "I have to by-heart the whole speech.",
+    "analogy": "\"By heart\" is the shelf; \"learn\" is putting the book on it.",
+    "tryPrompt": "Tell a friend you need to know your lines for the office skit without the paper.",
+    "answer": "I need to learn my lines by heart before Friday.",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "study"
+    ]
+  },
+  {
+    "id": "gef-updating",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Updation\" → \"updating\"",
+    "rule": "In global English, say \"updating\" or \"an update\", not \"updation\".",
+    "examples": {
+      "work": "Updating the records will take till Friday.",
+      "everyday": "Can you give me an update on the plumber?"
+    },
+    "insteadOf": "The updation of records is pending.",
+    "analogy": "\"Update\" is already a ready-made roti; no need to knead \"updation\".",
+    "tryPrompt": "Tell your manager the address changes in the system are still not done.",
+    "answer": "Updating the addresses is still pending.",
+    "register": "office",
+    "links": [
+      "ls-words-1-3"
+    ],
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "email"
+    ]
+  },
+  {
+    "id": "gef-its-ramu",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Ramu this side\" → \"Hi, it's Ramu\"",
+    "rule": "In global English, start a phone call with \"Hi, it's Ramu.\"",
+    "examples": {
+      "work": "Hi, it's Arjun from the design team. Is now a good time?",
+      "everyday": "Hi Aunty, it's Riya. Is Mum there?"
+    },
+    "insteadOf": "Hello, Ramu this side.",
+    "analogy": "\"It's Ramu\" is your voice knocking: they know who's at the door.",
+    "tryPrompt": "You're calling a vendor, Meena, for the first time. Open the call.",
+    "answer": "Hi Meena, it's Rahul from Brightline. Do you have a minute?",
+    "register": "both",
+    "links": [
+      "ls-words-1-4"
+    ],
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "phone",
+      "introductions"
+    ]
+  },
+  {
+    "id": "gef-youre-welcome",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Mention not\" → \"You're welcome\"",
+    "rule": "In global English, answer \"thanks\" with \"You're welcome\" or \"No problem\".",
+    "examples": {
+      "work": "\"Thanks for covering the call.\" \"No problem, happy to help.\"",
+      "everyday": "\"Thanks for the lift!\" \"You're welcome. Anytime.\""
+    },
+    "insteadOf": "\"Thanks for the help!\" — \"Mention not.\"",
+    "analogy": "\"You're welcome\" is holding the door open after their thank-you.",
+    "tryPrompt": "Your neighbour thanks you for watering her plants while she was away. Reply warmly.",
+    "answer": "You're welcome! Happy to help.",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "social"
+    ]
+  },
+  {
+    "id": "gef-hang-up",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Cut the call\" → \"hang up\"",
+    "rule": "In global English, you \"hang up\" or \"end the call\".",
+    "examples": {
+      "work": "Let's end the call here and pick this up tomorrow.",
+      "everyday": "Don't hang up yet, Mum wants to say hi."
+    },
+    "insteadOf": "Wait, don't cut the call.",
+    "analogy": "Old phones hung the receiver on a hook, so the call \"hung up\".",
+    "tryPrompt": "Ask your friend to stay on the phone while you find a pen.",
+    "answer": "Don't hang up, I'm just getting a pen.",
+    "register": "both",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "phone"
+    ]
+  },
+  {
+    "id": "gef-annoying-me",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Eating my head\" → \"annoying me\"",
+    "rule": "In global English, say \"He's annoying me\" or \"He's driving me crazy\".",
+    "examples": {
+      "work": "This printer has been annoying me all morning.",
+      "everyday": "My brother keeps asking for my phone. He's driving me crazy."
+    },
+    "insteadOf": "My cousin is eating my head about the trip.",
+    "analogy": "Said abroad, \"eating my head\" sounds like a horror film, not a cousin who won't stop asking.",
+    "tryPrompt": "Your neighbour's dog barks all night. Tell a friend how you feel about it.",
+    "answer": "The neighbour's dog barks all night. It's driving me crazy.",
+    "register": "casual",
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "idiom",
+      "social"
+    ]
+  },
+  {
+    "id": "gef-duly-signed",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Duly signed\" → \"signed\"",
+    "rule": "In global English, \"duly\" sounds old-fashioned; just drop it.",
+    "examples": {
+      "work": "I've attached the signed form.",
+      "everyday": "I've filled in the school form and dropped it off."
+    },
+    "insteadOf": "Please find attached the duly signed form.",
+    "analogy": "\"Duly\" is a typewriter in a laptop office: it works, but feels old.",
+    "tryPrompt": "Email HR that your completed joining form is attached.",
+    "answer": "Hi, I've attached my completed joining form.",
+    "register": "office",
+    "links": [
+      "ls-words-1-3"
+    ],
+    "tags": [
+      "global-english",
+      "indian-english",
+      "fix",
+      "email",
+      "style"
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
-import type { AnswerAskPayload, AnyCard } from '../../types/contract';
+import type { AnswerAskPayload, AnyCard, AskRecord } from '../../types/contract';
 import { db } from '../../db/db';
 import type { FetchFn } from '../coach/pipeline';
 import { buildLibraryIndex, searchLibrary, type LibraryHit } from './librarySearch';
@@ -29,6 +29,8 @@ export interface UseAskReturn {
   adding: boolean;
   /** Can he send? Needs at least 2 characters and no question in flight. */
   canSend: boolean;
+  /** His last 5 questions, newest first. */
+  recent: AskRecord[] | undefined;
   send(): Promise<void>;
   addToFeed(): Promise<void>;
 }
@@ -47,6 +49,7 @@ export function useAsk(opts: UseAskOptions = {}): UseAskReturn {
     () => db.cards.where('status').equals('active').toArray(),
     [],
   ) as AnyCard[] | undefined;
+  const recent = useLiveQuery(() => db.asks.orderBy('createdAt').reverse().limit(5).toArray(), []);
   const index = useMemo(() => buildLibraryIndex(cards ?? []), [cards]);
   const library = useMemo(() => searchLibrary(text, index), [text, index]);
 
@@ -102,5 +105,5 @@ export function useAsk(opts: UseAskOptions = {}): UseAskReturn {
     }
   }, [view, askId, adding, added]);
 
-  return { text, setText, library, phase, view, added, adding, canSend, send, addToFeed };
+  return { text, setText, library, phase, view, added, adding, canSend, recent, send, addToFeed };
 }
