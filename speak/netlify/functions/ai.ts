@@ -1,4 +1,14 @@
-import type { AiRequest, AiResponse, AiTask } from '../../src/types/contract';
+import type {
+  AiRequest,
+  AiResponse,
+  AiTask,
+  AnswerAskResult,
+  AskKind,
+  CardKind,
+  TeachDraft,
+  Track,
+  TrackLevel,
+} from '../../src/types/contract';
 import { rulebookFor } from '../rulebook';
 
 /**
@@ -16,13 +26,14 @@ import { rulebookFor } from '../rulebook';
  *    (`netlify/rulebook.ts`, generated from `docs/AI-RULEBOOK.md`).
  */
 
-/** Tasks this function can run today. Later steps add answer_ask and coach_chat. */
+/** Tasks this function can run today. A later step adds coach_chat. */
 const CONFIGURED_TASKS = [
   'expand_seed',
   'verify_batch',
   'classify_inbox',
   'review_recording',
   'plan_week',
+  'answer_ask',
 ] as const;
 type ConfiguredTask = (typeof CONFIGURED_TASKS)[number];
 
@@ -59,12 +70,28 @@ const NEVER_PRODUCE = 'Never produce types: breath, pronounce, say_it, action_ve
 const AVOID_RULE =
   'If the input contains an "avoid" list, never produce any card whose headline term matches, or closely paraphrases, an entry in it.';
 
+// ── answer_ask limits (rulebook §4 and §1.2) ───────────────────────────────
+/** Longest question the Ask box sends. */
+export const ASK_TEXT_MAX = 1000;
+/** The short plain answer: 1-3 sentences. Longer is cut at a sentence end. */
+export const ASK_ANSWER_MAX = 600;
+/** One fix-my-sentence version. Longer fails over (cutting would break [[chunks]]). */
+export const ASK_VERSION_MAX = 400;
+export const ASK_CARDS_MIN = 3;
+export const ASK_CARDS_MAX = 8;
+export const ASK_CHUNKS_MAX = 8;
+/** Weak-spot halves and chunks (rulebook §4.3). */
+export const ASK_SHORT_MAX = 60;
+
 /**
  * Per-task generation settings. `verify_batch` is deliberately cold.
  * `shape` is the job-specific part (what to return, exact JSON shape). It goes
  * AFTER the rulebook slice in the system prompt — see `systemFor`.
  */
-const TASK_CONFIG: Record<ConfiguredTask, { temperature: number; maxTokens: number; shape: string }> = {
+const TASK_CONFIG: Record<
+  ConfiguredTask,
+  { temperature: number; maxTokens: number; shape: string; timeoutMs?: number }
+> = {
   expand_seed: {
     temperature: 1.0,
     maxTokens: 2048,
@@ -140,6 +167,25 @@ const TASK_CONFIG: Record<ConfiguredTask, { temperature: number; maxTokens: numb
       'focusWords: up to 5 items copied EXACTLY from the coach subjects list. Never invent words; omit the field when unsure.',
       'note: ONE plain sentence, at most 90 characters, saying what to practice this week.',
       'No jargon, no numbers-only notes, no emoji, no quotes, no markdown.',
+    ].join(' '),
+  },
+  answer_ask: {
+    temperature: 0.4,
+    maxTokens: 6144,
+    // 3-8 full cards take longer than the other jobs; two tries still fit the deadline.
+    timeoutMs: 11_000,
+    shape: [
+      'You answer ONE question he typed in the Ask tab, following section 4 of the rulebook above, and every card follows sections 1-2.',
+      'Return ONLY JSON: {"askKind":"word"|"phrase_idiom"|"mistake"|"fix_sentence"|"topic"|"how_say"|"difference"|"other","answer":string,"versions"?:{"crisp":string,"confident":string,"polite":string},"chunks"?:[string],"weakSpot"?:{"wrong":string,"right":string},"cards":[...]}.',
+      'askKind: classify first (4.1). phrase-idiom is "phrase_idiom", fix-my-sentence is "fix_sentence", how-do-I-say is "how_say", difference-between is "difference". A sentence that contains a mistake is "fix_sentence".',
+      `answer: the short plain answer first, 1-3 sentences, at most ${ASK_ANSWER_MAX} characters, no markdown. For fix_sentence it is the 1-2 lines on what changed, tied to a rule.`,
+      'versions and chunks: ONLY when askKind is "fix_sentence", and then required. crisp = shortest clear version, point first; confident = no hedges, active voice, clear ask or next step; polite = warm and respectful, still direct. Mark every reusable chunk inside the versions with [[double brackets]] (never nested) and list the same chunks, without brackets, in "chunks" (at most 8).',
+      'weakSpot: only per 4.3 (a mistake he made himself, or a known pattern in his sentence); "wrong" is his exact phrase and "right" the global form, each at most 60 characters. Otherwise leave it out.',
+      'cards: 3 to 8 teach cards, never more; 3 strong cards beat 8 thin ones. Each card is exactly',
+      '{"type":"teach","track":"smalltalk"|"stories"|"clearly"|"words","level":1-5,"kind":"learn"|"use"|"fix"|"try"|"ask_them","category":string,"title":string,"rule":string,"examples":{"work":string,"everyday":string},"insteadOf"?:string,"analogy":string,"tryPrompt":string,"register":"casual"|"office"|"both","answer"?:string,"credit"?:string}.',
+      'The section 1.2 limits are hard: a card over any limit is thrown away. title at most 40 characters. insteadOf is required on fix cards. ask_them is small talk only. credit names the framework (appendix), if any.',
+      'Use the "levels" input, when given, as his current level per track.',
+      AVOID_RULE,
     ].join(' '),
   },
 };
@@ -487,6 +533,274 @@ export function validatePlanWeek(raw: unknown): unknown {
   };
 }
 
+// ── answer_ask output validation (rulebook §4.1-4.3, card limits §1.2) ──────
+// Strict on what the screen depends on (kind, answer, the three versions, at
+// least 3 good cards): anything wrong there throws, so the next provider gets
+// a turn. Loose on the rest: one bad card is dropped, sizes are clamped, a bad
+// weak spot is dropped. Card word limits mirror check-seed.mjs `checkTeach`.
+
+const ASK_KINDS: readonly AskKind[] = [
+  'word',
+  'phrase_idiom',
+  'mistake',
+  'fix_sentence',
+  'topic',
+  'how_say',
+  'difference',
+  'other',
+];
+/** The rulebook's own names for the kinds, which a model may echo back. */
+const ASK_KIND_ALIASES: Record<string, AskKind> = {
+  'phrase-idiom': 'phrase_idiom',
+  phrase_idiom: 'phrase_idiom',
+  'fix-my-sentence': 'fix_sentence',
+  fix_my_sentence: 'fix_sentence',
+  'how-do-i-say': 'how_say',
+  how_do_i_say: 'how_say',
+  'difference-between': 'difference',
+  difference_between: 'difference',
+};
+const TRACKS: readonly Track[] = ['smalltalk', 'stories', 'clearly', 'words'];
+const CARD_KINDS: readonly CardKind[] = ['learn', 'use', 'fix', 'try', 'ask_them'];
+const REGISTERS = ['casual', 'office', 'both'] as const;
+/** Provenance words a card's `source` already means; never a framework credit. */
+const PROVENANCE = ['seed', 'ai', 'inbox'];
+
+const wordsOf = (s: string): number => s.trim().split(/\s+/).filter(Boolean).length;
+const linesOf = (s: string): number =>
+  s
+    .split('\n')
+    .map((l) => l.trim())
+    .filter(Boolean).length;
+
+function str(v: unknown): string | undefined {
+  return typeof v === 'string' && v.trim() ? v.trim() : undefined;
+}
+
+/** Cut to at most `max` characters at a word boundary, never mid-word. */
+function clampAtWord(s: string, max: number): string {
+  if (s.length <= max) return s;
+  const cut = s.slice(0, max + 1);
+  const space = cut.lastIndexOf(' ');
+  return (space > 0 ? cut.slice(0, space) : s.slice(0, max)).trim();
+}
+
+/** Cut to at most `max` characters at the last sentence end; else at a word, with "…". */
+function clampAtSentence(s: string, max: number): string {
+  if (s.length <= max) return s;
+  const cut = s.slice(0, max);
+  const end = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('? '), cut.lastIndexOf('! '));
+  if (end > 0) return cut.slice(0, end + 1).trim();
+  return `${clampAtWord(s, max - 1)}…`;
+}
+
+/**
+ * One AI-drafted teach card. Throws with the reason when it breaks a rule;
+ * the caller drops it. Rulebook aliases (`instead_of`, `try`, `source`) are
+ * accepted and renamed to the contract's field names.
+ */
+export function validateTeachDraft(d: unknown, i: number): TeachDraft {
+  if (!d || typeof d !== 'object' || Array.isArray(d)) throw new Error(`Card ${i}: must be an object`);
+  const r = d as Record<string, unknown>;
+  if (r.type !== undefined && r.type !== 'teach') throw new Error(`Card ${i}: type must be "teach"`);
+
+  const track = r.track as Track;
+  if (!TRACKS.includes(track)) throw new Error(`Card ${i}: unknown track`);
+  const kind = r.kind as CardKind;
+  if (!CARD_KINDS.includes(kind)) throw new Error(`Card ${i}: unknown kind`);
+  if (kind === 'ask_them' && track !== 'smalltalk') throw new Error(`Card ${i}: ask_them is small talk only`);
+  if (typeof r.level !== 'number' || !Number.isFinite(r.level)) throw new Error(`Card ${i}: missing level`);
+  const level = clampNum(r.level, 1, 5, 1) as TrackLevel;
+  const register = r.register as (typeof REGISTERS)[number];
+  if (!REGISTERS.includes(register)) throw new Error(`Card ${i}: unknown register`);
+
+  const need = (v: unknown, field: string): string => {
+    const s = str(v);
+    if (!s) throw new Error(`Card ${i}: missing "${field}"`);
+    return s;
+  };
+  const category = clampAtWord(need(r.category, 'category'), 40);
+  const title = clampAtWord(need(r.title, 'title'), 40);
+  const tight = track === 'words' || track === 'clearly';
+
+  const rule = need(r.rule, 'rule');
+  const ruleCap = tight ? 12 : 15;
+  if (wordsOf(rule) > ruleCap) throw new Error(`Card ${i}: rule over ${ruleCap} words`);
+
+  let work: string | undefined;
+  let everyday: string | undefined;
+  if (Array.isArray(r.examples) && r.examples.length === 2) {
+    work = str(r.examples[0]);
+    everyday = str(r.examples[1]);
+  } else if (r.examples && typeof r.examples === 'object') {
+    const ex = r.examples as Record<string, unknown>;
+    work = str(ex.work);
+    everyday = str(ex.everyday);
+  }
+  if (!work || !everyday) throw new Error(`Card ${i}: examples must be { work, everyday }`);
+  for (const e of [work, everyday]) {
+    if (tight && wordsOf(e) > 15) throw new Error(`Card ${i}: example over 15 words`);
+    if (track === 'smalltalk' && linesOf(e) > 4) throw new Error(`Card ${i}: example over 4 lines`);
+    if (track === 'stories' && wordsOf(e) > 90) throw new Error(`Card ${i}: example over 90 words`);
+  }
+
+  const insteadOf = str(r.insteadOf) ?? str(r.instead_of);
+  if (kind === 'fix' && !insteadOf) throw new Error(`Card ${i}: fix cards need insteadOf`);
+  if (insteadOf && wordsOf(insteadOf) > 20) throw new Error(`Card ${i}: insteadOf over 20 words`);
+
+  const analogy = need(r.analogy, 'analogy');
+  if (wordsOf(analogy) > 20 || linesOf(analogy) > 1) throw new Error(`Card ${i}: analogy over one 20-word line`);
+
+  const tryPrompt = need(r.tryPrompt ?? r.try, 'tryPrompt');
+  if (wordsOf(tryPrompt) > 25) throw new Error(`Card ${i}: tryPrompt over 25 words`);
+
+  const total = [title, rule, work, everyday, insteadOf ?? '', analogy, tryPrompt].reduce(
+    (n, s) => n + wordsOf(s),
+    0,
+  );
+  const cap = track === 'stories' ? 170 : 120;
+  if (total > cap) throw new Error(`Card ${i}: whole card over ${cap} words`);
+
+  const answer = str(r.answer);
+  const sourceCredit = str(r.source);
+  const credit = str(r.credit) ?? (sourceCredit && !PROVENANCE.includes(sourceCredit) ? sourceCredit : undefined);
+
+  return {
+    type: 'teach',
+    track,
+    level,
+    kind,
+    category,
+    title,
+    rule,
+    examples: { work, everyday },
+    ...(insteadOf ? { insteadOf } : {}),
+    analogy,
+    tryPrompt,
+    register,
+    ...(answer ? { answer } : {}),
+    ...(credit ? { credit: clampAtWord(credit, 80) } : {}),
+  };
+}
+
+const CHUNK_MARK = /\[\[([^[\]]+?)\]\]/g;
+
+/** Chunks marked [[like this]] in a version. Throws on broken or nested markers. */
+function chunksIn(version: string, name: string): string[] {
+  const found = [...version.matchAll(CHUNK_MARK)].map((m) => (m[1] ?? '').trim()).filter(Boolean);
+  if (/\[\[|\]\]/.test(version.replace(CHUNK_MARK, ''))) {
+    throw new Error(`"versions.${name}" has broken [[chunk]] markers`);
+  }
+  return found;
+}
+
+export function validateAnswerAsk(raw: unknown): AnswerAskResult {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new Error('Ask response must be an object');
+  const c = raw as Record<string, unknown>;
+
+  const kindRaw = typeof c.askKind === 'string' ? c.askKind.trim().toLowerCase() : '';
+  const askKind = ASK_KIND_ALIASES[kindRaw] ?? (ASK_KINDS.includes(kindRaw as AskKind) ? (kindRaw as AskKind) : undefined);
+  if (!askKind) throw new Error('Missing or invalid "askKind"');
+
+  const answerRaw = str(c.answer);
+  if (!answerRaw) throw new Error('Missing or empty "answer"');
+  const answer = clampAtSentence(answerRaw, ASK_ANSWER_MAX);
+
+  // Fix-my-sentence: the three versions are the answer, so they are required.
+  let versions: AnswerAskResult['versions'];
+  let chunks: string[] | undefined;
+  if (askKind === 'fix_sentence') {
+    const v = c.versions as Record<string, unknown> | undefined;
+    if (!v || typeof v !== 'object' || Array.isArray(v)) throw new Error('fix_sentence needs "versions"');
+    const marked: string[] = [];
+    const version = (name: 'crisp' | 'confident' | 'polite'): string => {
+      const s = str(v[name]);
+      if (!s) throw new Error(`Missing or empty "versions.${name}"`);
+      if (s.length > ASK_VERSION_MAX) throw new Error(`"versions.${name}" is too long`);
+      marked.push(...chunksIn(s, name));
+      return s;
+    };
+    versions = { crisp: version('crisp'), confident: version('confident'), polite: version('polite') };
+    const out = versions;
+
+    // The [[markers]] are the source of truth; a listed chunk counts only if
+    // it really appears in a version, so the screen never shows a stray one.
+    const plain = Object.values(out)
+      .join(' ')
+      .replace(CHUNK_MARK, '$1')
+      .toLowerCase();
+    const listed = Array.isArray(c.chunks)
+      ? c.chunks.map(str).filter((s): s is string => !!s && plain.includes(s.toLowerCase()))
+      : [];
+    const seen = new Set<string>();
+    chunks = [...marked, ...listed]
+      .filter((s) => s.length <= ASK_SHORT_MAX)
+      .filter((s) => {
+        const k = s.toLowerCase();
+        if (seen.has(k)) return false;
+        seen.add(k);
+        return true;
+      })
+      .slice(0, ASK_CHUNKS_MAX);
+  }
+
+  // Weak spot is optional and never fatal (rulebook §4.3).
+  let weakSpot: AnswerAskResult['weakSpot'];
+  const w = c.weakSpot;
+  if (w && typeof w === 'object' && !Array.isArray(w)) {
+    const wrong = str((w as Record<string, unknown>).wrong)?.slice(0, ASK_SHORT_MAX).trim();
+    const right = str((w as Record<string, unknown>).right)?.slice(0, ASK_SHORT_MAX).trim();
+    if (wrong && right && wrong.toLowerCase() !== right.toLowerCase()) weakSpot = { wrong, right };
+  }
+
+  if (!Array.isArray(c.cards)) throw new Error('Missing "cards" array');
+  const cards: TeachDraft[] = [];
+  const reasons: string[] = [];
+  const titles = new Set<string>();
+  c.cards.forEach((d, i) => {
+    try {
+      const card = validateTeachDraft(d, i);
+      const key = card.title.toLowerCase();
+      if (titles.has(key)) throw new Error(`Card ${i}: repeats another card's title`);
+      titles.add(key);
+      cards.push(card);
+    } catch (e) {
+      reasons.push((e as Error).message);
+    }
+  });
+  if (cards.length < ASK_CARDS_MIN) {
+    throw new Error(
+      `Only ${cards.length} usable cards (need ${ASK_CARDS_MIN})${reasons.length ? `: ${reasons[0]}` : ''}`,
+    );
+  }
+
+  return {
+    askKind,
+    answer,
+    ...(versions ? { versions } : {}),
+    ...(chunks && chunks.length ? { chunks } : {}),
+    ...(weakSpot ? { weakSpot } : {}),
+    cards: cards.slice(0, ASK_CARDS_MAX),
+  };
+}
+
+/** answer_ask payload: plain-words error, or null when fine. */
+export function checkAnswerAskPayload(payload: unknown): string | null {
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return 'Invalid payload';
+  const p = payload as Record<string, unknown>;
+  if (typeof p.text !== 'string' || !p.text.trim()) return 'Type a question first';
+  if (p.text.trim().length > ASK_TEXT_MAX) return `Keep the question under ${ASK_TEXT_MAX} characters`;
+  if (p.avoid !== undefined && !validStringList(p.avoid, 50)) return 'Invalid payload';
+  if (p.levels !== undefined) {
+    if (!p.levels || typeof p.levels !== 'object' || Array.isArray(p.levels)) return 'Invalid payload';
+    for (const [k, v] of Object.entries(p.levels as Record<string, unknown>)) {
+      if (!TRACKS.includes(k as Track)) return 'Invalid payload';
+      if (typeof v !== 'number' || !Number.isInteger(v) || v < 1 || v > 5) return 'Invalid payload';
+    }
+  }
+  return null;
+}
+
 export function validateProviderOutput(task: AiTask, raw: unknown): unknown {
   if (!raw || typeof raw !== 'object') {
     throw new Error('Provider response must be an object');
@@ -549,6 +863,10 @@ export function validateProviderOutput(task: AiTask, raw: unknown): unknown {
 
   if (task === 'plan_week') {
     return validatePlanWeek(raw);
+  }
+
+  if (task === 'answer_ask') {
+    return validateAnswerAsk(raw);
   }
 
   return raw;
@@ -681,6 +999,11 @@ export default async function handler(req: Request): Promise<Response> {
     }
   }
 
+  if (body.task === 'answer_ask') {
+    const bad = checkAnswerAskPayload(body.payload);
+    if (bad) return json({ ok: false, task: body.task, error: bad }, 400);
+  }
+
   // Safe: the ALLOWED_TASKS check above guarantees a configured task.
   const task = body.task as ConfiguredTask;
   const cfg = TASK_CONFIG[task];
@@ -709,7 +1032,7 @@ export default async function handler(req: Request): Promise<Response> {
 
     try {
       const remainingTime = Math.max(1000, functionDeadline - Date.now());
-      const timeoutMs = Math.min(PER_PROVIDER_TIMEOUT_MS, remainingTime);
+      const timeoutMs = Math.min(cfg.timeoutMs ?? PER_PROVIDER_TIMEOUT_MS, remainingTime);
 
       const rawText = await callWithTimeout(
         provider,
@@ -837,9 +1160,17 @@ async function call(
   return data.choices?.[0]?.message?.content ?? '';
 }
 
-function safeParse(text: string): unknown {
+/**
+ * Parse a provider's JSON. An empty reply and broken JSON both throw, so the
+ * next provider gets a turn. A ```json fence (Anthropic has no JSON mode) is
+ * stripped first; nothing else is repaired.
+ */
+export function safeParse(text: string): unknown {
+  const trimmed = (text ?? '').trim();
+  if (!trimmed) throw new Error('Empty response from provider');
+  const fenced = /^```(?:json)?\s*([\s\S]*?)\s*```$/i.exec(trimmed);
   try {
-    return JSON.parse(text);
+    return JSON.parse(fenced ? (fenced[1] ?? '') : trimmed);
   } catch {
     throw new Error('Malformed JSON returned by provider');
   }

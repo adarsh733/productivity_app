@@ -1,9 +1,13 @@
 import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
 import handler, {
   ANTHROPIC_MODEL,
+  ASK_ANSWER_MAX,
   GEMINI_MODEL,
   GROQ_MODEL,
+  checkAnswerAskPayload,
+  safeParse,
   systemFor,
+  validateAnswerAsk,
   validateProviderOutput,
 } from '../functions/ai';
 import { rulebookFor } from '../rulebook';
@@ -799,8 +803,15 @@ describe('AI models and rulebook prompts', () => {
     classify_inbox: { text: 'flag' },
     review_recording: { transcript: 'one two three four five six' },
     plan_week: { types: [{ type: 'word' }] },
+    answer_ask: { text: 'what does flag mean' },
   };
-  type ConfiguredTaskName = 'expand_seed' | 'verify_batch' | 'classify_inbox' | 'review_recording' | 'plan_week';
+  type ConfiguredTaskName =
+    | 'expand_seed'
+    | 'verify_batch'
+    | 'classify_inbox'
+    | 'review_recording'
+    | 'plan_week'
+    | 'answer_ask';
   const TASKS = Object.keys(PAYLOADS) as ConfiguredTaskName[];
 
   it('pins the model names', () => {
@@ -894,5 +905,388 @@ describe('AI models and rulebook prompts', () => {
     expect(systemFor('classify_inbox')).toContain('"kind":"word"|"mistake"|"topic"|"other"');
     expect(systemFor('review_recording')).toContain('"suggestedAlternative"');
     expect(systemFor('plan_week')).toContain('"typeWeights"');
+    expect(systemFor('answer_ask')).toContain('"askKind"');
+    expect(systemFor('answer_ask')).toContain('[[double brackets]]');
+    expect(systemFor('answer_ask')).toContain('3 to 8 teach cards');
+  });
+});
+
+// ── answer_ask (step 3: the Ask tab) ───────────────────────────────────────
+
+/** A teach card inside every rulebook 1.2 limit. */
+function card(over: Record<string, unknown> = {}): Record<string, unknown> {
+  return {
+    type: 'teach',
+    track: 'words',
+    level: 1,
+    kind: 'learn',
+    category: 'office words',
+    title: 'Flag a problem',
+    rule: 'To flag means to point out a problem early.',
+    examples: { work: "I'd like to flag a risk on the release.", everyday: 'Flag it if the milk smells off.' },
+    analogy: 'Like a linesman raising his flag at a cricket match.',
+    tryPrompt: 'How would you say: you want to warn your manager about a delay?',
+    register: 'both',
+    ...over,
+  };
+}
+
+const goodWordAsk = () => ({
+  askKind: 'word',
+  answer: 'To flag something means to point it out so someone looks at it.',
+  cards: [
+    card(),
+    card({ title: 'Flag it early', kind: 'use' }),
+    card({ title: 'Your turn: flag it', kind: 'try', answer: "I'd like to flag that we may slip a day." }),
+  ],
+});
+
+const goodFixAsk = () => ({
+  askKind: 'fix_sentence',
+  answer: 'Lead with the ask and drop "kindly do the needful".',
+  versions: {
+    crisp: '[[Can we move]] the review to Friday?',
+    confident: "Let's [[move the review]] to Friday. I'll send the invite.",
+    polite: 'Could we [[move the review]] to Friday, if that works for you?',
+  },
+  chunks: ['move the review', 'can we move', 'not in any version'],
+  weakSpot: { wrong: 'kindly do the needful', right: 'could you please' },
+  cards: [
+    card({ kind: 'fix', title: 'Ask, then thank', insteadOf: 'Kindly do the needful.' }),
+    card({ title: 'Move the review', kind: 'use' }),
+    card({ title: 'Try: ask to reschedule', kind: 'try' }),
+  ],
+});
+
+describe('answer_ask validator', () => {
+  it('accepts a good word ask and keeps only contract fields', () => {
+    const v = validateProviderOutput('answer_ask', goodWordAsk()) as any;
+    expect(v.askKind).toBe('word');
+    expect(v.cards).toHaveLength(3);
+    expect(v.cards[0]).toEqual(card());
+    expect(v.cards[2].answer).toContain('flag');
+    expect(v.versions).toBeUndefined();
+    expect(v.chunks).toBeUndefined();
+  });
+
+  it('maps rulebook kind names and field aliases to the contract', () => {
+    const v = validateAnswerAsk({
+      ...goodWordAsk(),
+      askKind: 'Phrase-Idiom',
+      cards: [
+        card({ instead_of: 'Please revert back.', kind: 'fix', title: 'Reply, not revert' }),
+        card({ tryPrompt: undefined, try: 'Say it your way about your day.', title: 'Try it' }),
+        card({ source: 'Nancy Duarte', title: 'Credited' }),
+      ],
+    }) as any;
+    expect(v.askKind).toBe('phrase_idiom');
+    expect(v.cards[0].insteadOf).toBe('Please revert back.');
+    expect(v.cards[0].instead_of).toBeUndefined();
+    expect(v.cards[1].tryPrompt).toBe('Say it your way about your day.');
+    expect(v.cards[2].credit).toBe('Nancy Duarte');
+    expect(validateAnswerAsk({ ...goodWordAsk(), askKind: 'how-do-I-say' }).askKind).toBe('how_say');
+    expect(validateAnswerAsk({ ...goodWordAsk(), askKind: 'difference-between' }).askKind).toBe('difference');
+  });
+
+  it('throws (so the next provider runs) on a bad kind, empty answer or missing cards', () => {
+    expect(() => validateAnswerAsk(null)).toThrow(/must be an object/);
+    expect(() => validateAnswerAsk([])).toThrow(/must be an object/);
+    expect(() => validateAnswerAsk({ ...goodWordAsk(), askKind: 'joke' })).toThrow(/askKind/);
+    expect(() => validateAnswerAsk({ ...goodWordAsk(), askKind: undefined })).toThrow(/askKind/);
+    expect(() => validateAnswerAsk({ ...goodWordAsk(), answer: '   ' })).toThrow(/empty "answer"/);
+    expect(() => validateAnswerAsk({ ...goodWordAsk(), answer: 42 })).toThrow(/empty "answer"/);
+    expect(() => validateAnswerAsk({ ...goodWordAsk(), cards: undefined })).toThrow(/cards/);
+    expect(() => validateAnswerAsk({ ...goodWordAsk(), cards: [card(), card({ title: 'Two' })] })).toThrow(
+      /Only 2 usable cards/,
+    );
+  });
+
+  it('drops cards that break a rule and keeps the rest', () => {
+    const v = validateAnswerAsk({
+      ...goodWordAsk(),
+      cards: [
+        ...goodWordAsk().cards,
+        card({ title: 'Ask them', kind: 'ask_them' }), // ask_them on words → dropped
+        card({ title: 'Long rule', rule: 'one two three four five six seven eight nine ten eleven twelve thirteen' }),
+        card({ title: 'Fix with nothing', kind: 'fix' }), // fix without insteadOf
+        card({ title: 'Bad track', track: 'grammar' }),
+        card({ title: 'Bad register', register: 'formal' }),
+        card({ title: 'No analogy', analogy: '' }),
+        card({ title: 'Wrong type', type: 'word' }),
+        card({ title: 'No level', level: 'two' }),
+        card({ title: 'flag a problem' }), // repeats a title
+        'not a card',
+      ],
+    });
+    expect(v.cards.map((c) => c.title)).toEqual(['Flag a problem', 'Flag it early', 'Your turn: flag it']);
+  });
+
+  it('applies the 1.2 word limits per track', () => {
+    const long = Array.from({ length: 16 }, (_, i) => `w${i}`).join(' ');
+    const base = goodWordAsk().cards;
+    // 16-word example: too long on words, fine on small talk.
+    expect(() =>
+      validateAnswerAsk({ ...goodWordAsk(), cards: [...base.slice(0, 2), card({ title: 'X', examples: { work: long, everyday: 'ok' } })] }),
+    ).toThrow(/Only 2/);
+    const st = validateAnswerAsk({
+      ...goodWordAsk(),
+      cards: [...base.slice(0, 2), card({ title: 'X', track: 'smalltalk', kind: 'ask_them', examples: { work: long, everyday: 'ok' } })],
+    });
+    expect(st.cards[2]?.kind).toBe('ask_them');
+    // A 13-word rule is fine on stories (cap 15), not on words (cap 12).
+    const rule13 = 'one two three four five six seven eight nine ten eleven twelve thirteen';
+    expect(validateAnswerAsk({ ...goodWordAsk(), cards: [...base.slice(0, 2), card({ title: 'S', track: 'stories', rule: rule13 })] }).cards).toHaveLength(3);
+    // Analogy over 20 words, tryPrompt over 25 words.
+    const w = (n: number) => Array.from({ length: n }, () => 'x').join(' ');
+    for (const bad of [{ analogy: w(21) }, { tryPrompt: w(26) }, { insteadOf: w(21) }, { analogy: 'line one\nline two' }]) {
+      expect(() => validateAnswerAsk({ ...goodWordAsk(), cards: [...base.slice(0, 2), card({ title: 'B', ...bad })] })).toThrow(/Only 2/);
+    }
+  });
+
+  it('clamps sizes: at most 8 cards, level 1-5, title and answer cut cleanly', () => {
+    const many = Array.from({ length: 11 }, (_, i) => card({ title: `Card ${i}` }));
+    const v = validateAnswerAsk({ ...goodWordAsk(), cards: many });
+    expect(v.cards).toHaveLength(8);
+
+    const lv = validateAnswerAsk({
+      ...goodWordAsk(),
+      cards: [card({ level: 9 }), card({ title: 'B', level: 0 }), card({ title: 'C', level: 2.4 })],
+    });
+    expect(lv.cards.map((c) => c.level)).toEqual([5, 1, 2]);
+
+    const longTitle = validateAnswerAsk({
+      ...goodWordAsk(),
+      cards: [card({ title: 'Flagging a problem early in the weekly stand-up meeting' }), ...goodWordAsk().cards.slice(1)],
+    });
+    expect(longTitle.cards[0]?.title.length).toBeLessThanOrEqual(40);
+    expect(longTitle.cards[0]?.title).toBe('Flagging a problem early in the weekly');
+
+    const sentence = 'This is one plain sentence about the word. ';
+    const longAnswer = validateAnswerAsk({ ...goodWordAsk(), answer: sentence.repeat(20) });
+    expect(longAnswer.answer.length).toBeLessThanOrEqual(ASK_ANSWER_MAX);
+    expect(longAnswer.answer.endsWith('.')).toBe(true);
+    const noStop = validateAnswerAsk({ ...goodWordAsk(), answer: 'word '.repeat(200) });
+    expect(noStop.answer.length).toBeLessThanOrEqual(ASK_ANSWER_MAX);
+    expect(noStop.answer.endsWith('…')).toBe(true);
+  });
+
+  it('fix_sentence: versions are required, chunks come from the [[markers]]', () => {
+    const v = validateAnswerAsk(goodFixAsk());
+    expect(v.askKind).toBe('fix_sentence');
+    expect(v.versions?.crisp).toBe('[[Can we move]] the review to Friday?');
+    // Marked chunks first, de-duplicated; a listed chunk that is in no version is dropped.
+    expect(v.chunks).toEqual(['Can we move', 'move the review']);
+    expect(v.weakSpot).toEqual({ wrong: 'kindly do the needful', right: 'could you please' });
+
+    expect(() => validateAnswerAsk({ ...goodFixAsk(), versions: undefined })).toThrow(/needs "versions"/);
+    expect(() =>
+      validateAnswerAsk({ ...goodFixAsk(), versions: { ...goodFixAsk().versions, polite: ' ' } }),
+    ).toThrow(/versions\.polite/);
+    expect(() =>
+      validateAnswerAsk({ ...goodFixAsk(), versions: { ...goodFixAsk().versions, crisp: 'Can we [[move it to Friday?' } }),
+    ).toThrow(/broken \[\[chunk\]\] markers/);
+    expect(() =>
+      validateAnswerAsk({ ...goodFixAsk(), versions: { ...goodFixAsk().versions, crisp: '[[a [[b]] c]]' } }),
+    ).toThrow(/broken/);
+    expect(() =>
+      validateAnswerAsk({ ...goodFixAsk(), versions: { ...goodFixAsk().versions, confident: 'x'.repeat(401) } }),
+    ).toThrow(/too long/);
+
+    // No markers and no real chunks → no chunks field, still valid.
+    const plain = validateAnswerAsk({
+      ...goodFixAsk(),
+      versions: { crisp: 'Friday?', confident: "Let's do Friday.", polite: 'Could we do Friday?' },
+      chunks: ['nowhere'],
+    });
+    expect(plain.chunks).toBeUndefined();
+  });
+
+  it('versions and chunks are dropped on other kinds; a bad weak spot is dropped, never fatal', () => {
+    const { versions, chunks } = goodFixAsk();
+    const v = validateAnswerAsk({ ...goodWordAsk(), versions, chunks });
+    expect(v.versions).toBeUndefined();
+    expect(v.chunks).toBeUndefined();
+
+    for (const weakSpot of [null, 'x', { wrong: ' ', right: 'r' }, { wrong: 'Revert', right: 'revert' }, []]) {
+      const r = validateAnswerAsk({ ...goodWordAsk(), weakSpot });
+      expect(r.weakSpot).toBeUndefined();
+      expect(r.cards).toHaveLength(3);
+    }
+    const long = validateAnswerAsk({ ...goodWordAsk(), weakSpot: { wrong: 'w'.repeat(80), right: 'r'.repeat(80) } });
+    expect(long.weakSpot?.wrong).toHaveLength(60);
+    expect(long.weakSpot?.right).toHaveLength(60);
+  });
+
+  it('safeParse: empty and broken JSON throw plainly; a ```json fence is stripped', () => {
+    expect(() => safeParse('')).toThrow(/Empty response/);
+    expect(() => safeParse('   ')).toThrow(/Empty response/);
+    expect(() => safeParse('{"askKind":')).toThrow(/Malformed JSON/);
+    expect(() => safeParse('Sure! Here is your JSON: {}')).toThrow(/Malformed JSON/);
+    expect(safeParse('```json\n{"a":1}\n```')).toEqual({ a: 1 });
+    expect(safeParse('```\n{"a":2}\n```')).toEqual({ a: 2 });
+  });
+});
+
+describe('answer_ask handler', () => {
+  const originalEnv = process.env;
+  let ip = 0;
+
+  beforeEach(() => {
+    process.env = { ...originalEnv };
+    delete process.env.GEMINI_API_KEY;
+    delete process.env.GROQ_API_KEY;
+    delete process.env.ANTHROPIC_API_KEY;
+  });
+
+  afterEach(() => {
+    process.env = originalEnv;
+    vi.restoreAllMocks();
+  });
+
+  function ask(payload: unknown, prefer?: string) {
+    ip += 1;
+    return handler(
+      new Request('http://localhost/.netlify/functions/ai', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'x-forwarded-for': `10.13.0.${ip}` },
+        body: JSON.stringify({ task: 'answer_ask', payload, ...(prefer ? { prefer } : {}) }),
+      }),
+    );
+  }
+
+  const gemini = (text: string) => ({
+    ok: true,
+    json: async () => ({ candidates: [{ content: { parts: [{ text }] } }] }),
+  });
+  const groq = (content: string) => ({
+    ok: true,
+    json: async () => ({ choices: [{ message: { content } }] }),
+  });
+  const anthropic = (text: string) => ({ ok: true, json: async () => ({ content: [{ text }] }) });
+
+  it('rejects bad payloads with a plain message and never calls a model', async () => {
+    const fetchSpy = vi.fn();
+    global.fetch = fetchSpy as any;
+    const cases: Array<[unknown, RegExp | string]> = [
+      [null, 'Invalid payload'],
+      ['flag', 'Invalid payload'],
+      [{}, 'Type a question first'],
+      [{ text: '   ' }, 'Type a question first'],
+      [{ text: 'x'.repeat(1001) }, /under 1000 characters/],
+      [{ text: 'flag', avoid: ['ok', 3] }, 'Invalid payload'],
+      [{ text: 'flag', avoid: Array.from({ length: 51 }, (_, i) => `a${i}`) }, 'Invalid payload'],
+      [{ text: 'flag', levels: { grammar: 2 } }, 'Invalid payload'],
+      [{ text: 'flag', levels: { words: 6 } }, 'Invalid payload'],
+      [{ text: 'flag', levels: { words: 1.5 } }, 'Invalid payload'],
+      [{ text: 'flag', levels: [1] }, 'Invalid payload'],
+    ];
+    for (const [payload, msg] of cases) {
+      const res = await ask(payload);
+      expect(res.status).toBe(400);
+      const data = (await res.json()) as any;
+      expect(data.ok).toBe(false);
+      if (typeof msg === 'string') expect(data.error).toBe(msg);
+      else expect(data.error).toMatch(msg);
+    }
+    expect(fetchSpy).not.toHaveBeenCalled();
+    expect(checkAnswerAskPayload({ text: 'flag', avoid: ['revert'], levels: { words: 2, stories: 1 } })).toBeNull();
+  });
+
+  it('returns the validated answer from the first provider', async () => {
+    process.env.GEMINI_API_KEY = 'k';
+    global.fetch = vi.fn().mockResolvedValueOnce(gemini(JSON.stringify(goodFixAsk()))) as any;
+    const res = await ask({ text: 'kindly do the needful and move the review', levels: { words: 1 } });
+    expect(res.status).toBe(200);
+    const data = (await res.json()) as any;
+    expect(data.ok).toBe(true);
+    expect(data.task).toBe('answer_ask');
+    expect(data.provider).toBe('gemini');
+    expect(data.data.versions.polite).toContain('Could we');
+    expect(data.data.chunks).toEqual(['Can we move', 'move the review']);
+    expect(data.data.cards).toHaveLength(3);
+  });
+
+  it('fails over to Groq when Gemini returns broken JSON', async () => {
+    process.env.GEMINI_API_KEY = 'k';
+    process.env.GROQ_API_KEY = 'k';
+    global.fetch = vi
+      .fn()
+      .mockResolvedValueOnce(gemini('{"askKind":"word","answer":'))
+      .mockResolvedValueOnce(groq(JSON.stringify(goodWordAsk()))) as any;
+    const data = (await (await ask({ text: 'what does flag mean' })).json()) as any;
+    expect(data.ok).toBe(true);
+    expect(data.provider).toBe('groq');
+    expect(data.data.askKind).toBe('word');
+  });
+
+  it('fails over when a provider returns an empty answer, an empty reply, or too few cards', async () => {
+    process.env.GEMINI_API_KEY = 'k';
+    process.env.GROQ_API_KEY = 'k';
+    process.env.ANTHROPIC_API_KEY = 'k';
+    global.fetch = vi
+      .fn()
+      .mockResolvedValueOnce(gemini(JSON.stringify({ ...goodWordAsk(), answer: '' })))
+      .mockResolvedValueOnce(groq(''))
+      .mockResolvedValueOnce(anthropic('```json\n' + JSON.stringify(goodWordAsk()) + '\n```')) as any;
+    const data = (await (await ask({ text: 'what does flag mean' })).json()) as any;
+    expect(data.ok).toBe(true);
+    expect(data.provider).toBe('anthropic');
+    expect(data.data.cards).toHaveLength(3);
+
+    global.fetch = vi
+      .fn()
+      .mockResolvedValueOnce(gemini(JSON.stringify({ ...goodWordAsk(), cards: [card()] })))
+      .mockResolvedValueOnce(groq(JSON.stringify(goodWordAsk()))) as any;
+    const second = (await (await ask({ text: 'what does flag mean' })).json()) as any;
+    expect(second.provider).toBe('groq');
+  });
+
+  it('fails over on an HTTP error and on a fix_sentence without versions', async () => {
+    process.env.GEMINI_API_KEY = 'k';
+    process.env.GROQ_API_KEY = 'k';
+    global.fetch = vi
+      .fn()
+      .mockResolvedValueOnce({ ok: false, status: 429, json: async () => ({}) })
+      .mockResolvedValueOnce(groq(JSON.stringify({ ...goodFixAsk(), versions: undefined }))) as any;
+    const res = await ask({ text: 'pls do the needful' });
+    expect(res.status).toBe(502);
+    const data = (await res.json()) as any;
+    expect(data.ok).toBe(false);
+    expect(data.data).toBeUndefined();
+    expect(data.error).toMatch(/unavailable/i);
+    expect(data.error).not.toMatch(/http|versions|JSON/);
+  });
+
+  it('returns the plain unavailable message when no provider is set up or all fail', async () => {
+    global.fetch = vi.fn() as any;
+    const none = await ask({ text: 'what does flag mean' });
+    expect(none.status).toBe(502);
+    expect(((await none.json()) as any).error).toMatch(/unavailable/i);
+    expect(global.fetch).not.toHaveBeenCalled();
+
+    process.env.GEMINI_API_KEY = 'k';
+    process.env.GROQ_API_KEY = 'k';
+    process.env.ANTHROPIC_API_KEY = 'k';
+    global.fetch = vi.fn().mockRejectedValue(new Error('network down')) as any;
+    const res = await ask({ text: 'what does flag mean' });
+    expect(res.status).toBe(502);
+    const data = (await res.json()) as any;
+    expect(data.data).toBeUndefined();
+    expect(data.error).not.toMatch(/network down/);
+    expect(global.fetch).toHaveBeenCalledTimes(3);
+  });
+
+  it('honours prefer and sends the answer_ask prompt with its rulebook slice', async () => {
+    process.env.ANTHROPIC_API_KEY = 'k';
+    process.env.GEMINI_API_KEY = 'k';
+    const fetchSpy = vi.fn().mockResolvedValueOnce(anthropic(JSON.stringify(goodWordAsk())));
+    global.fetch = fetchSpy as any;
+    const data = (await (await ask({ text: 'what does flag mean' }, 'anthropic')).json()) as any;
+    expect(data.provider).toBe('anthropic');
+    const body = JSON.parse((fetchSpy.mock.calls[0] as [string, { body: string }])[1].body);
+    expect(body.system[0].text).toBe(systemFor('answer_ask'));
+    expect(body.system[0].text.startsWith(rulebookFor('answer_ask'))).toBe(true);
+    expect(body.max_tokens).toBeGreaterThanOrEqual(4096);
+    expect(JSON.parse(body.messages[0].content)).toEqual({ text: 'what does flag mean' });
   });
 });

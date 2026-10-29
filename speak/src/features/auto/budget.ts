@@ -41,3 +41,58 @@ export async function tryConsumeAiCall(today: string = todayKey()): Promise<bool
     return true;
   });
 }
+
+// ── v5 (question 9A): Ask always goes first ─────────────────────────────────
+// The cap stays 25. An Ask costs 2 calls (the answer + the check on the other
+// provider) and is allowed all the way to the cap. Background work (top-ups,
+// misses) stops once fewer than 10 are left, so Ask keeps room all day.
+
+/** What one Ask spends: the answer and its check. */
+export const ASK_CALLS_PER_QUESTION = 2;
+
+/** Background work stops when fewer than this many calls are left today. */
+export const BACKGROUND_RESERVE = 10;
+
+/** Calls still free today. */
+export async function aiCallsLeft(today: string = todayKey()): Promise<number> {
+  return Math.max(0, AI_DAILY_CAP - (await aiCallsUsed(today)));
+}
+
+/**
+ * Take `n` slots at once, all or nothing, in one transaction. false = not
+ * enough left, nothing taken. Ask uses this with ASK_CALLS_PER_QUESTION.
+ */
+export async function tryConsumeAiCalls(n: number, today: string = todayKey()): Promise<boolean> {
+  if (n <= 0) return true;
+  return db.transaction('rw', db.meta, async () => {
+    const row = await getMeta<DailyBudget>(AI_BUDGET_META);
+    const used = row && row.date === today ? row.count : 0;
+    if (used + n > AI_DAILY_CAP) return false;
+    await setMeta(AI_BUDGET_META, { date: today, count: used + n });
+    return true;
+  });
+}
+
+/** Give slots back when the call never reached a model (e.g. no network). */
+export async function refundAiCalls(n: number, today: string = todayKey()): Promise<void> {
+  if (n <= 0) return;
+  await db.transaction('rw', db.meta, async () => {
+    const row = await getMeta<DailyBudget>(AI_BUDGET_META);
+    if (!row || row.date !== today) return;
+    await setMeta(AI_BUDGET_META, { date: today, count: Math.max(0, row.count - n) });
+  });
+}
+
+/**
+ * Background (non-Ask) calls: refused once fewer than BACKGROUND_RESERVE calls
+ * are left, so the last stretch of the day belongs to Ask.
+ */
+export async function tryConsumeBackgroundAiCall(today: string = todayKey()): Promise<boolean> {
+  return db.transaction('rw', db.meta, async () => {
+    const row = await getMeta<DailyBudget>(AI_BUDGET_META);
+    const used = row && row.date === today ? row.count : 0;
+    if (AI_DAILY_CAP - used < BACKGROUND_RESERVE) return false;
+    await setMeta(AI_BUDGET_META, { date: today, count: used + 1 });
+    return true;
+  });
+}

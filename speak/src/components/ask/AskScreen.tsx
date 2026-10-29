@@ -1,10 +1,13 @@
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '../../db/db';
 import { SearchIcon } from '../shell/Icons';
-import type { Track } from '../../types/contract';
+import type { AnswerAskPayload, Track } from '../../types/contract';
 import SkillPage from '../lessons/SkillPage';
+import AskAnswer from './AskAnswer';
 import { useLessons } from '../../features/lessons/useLessons';
+import { useAsk } from '../../features/ask/useAsk';
+import { MIN_QUERY_CHARS } from '../../features/ask/librarySearch';
 
 const CHIPS = [
   { id: 'word', icon: '📖', label: 'A word I heard', starter: 'What does this word mean: ' },
@@ -21,14 +24,28 @@ const SKILLS: Array<{ track: Track; icon: string; name: string; sub: string }> =
 ];
 
 /**
- * Ask tab layout. The box and chips only fill in text for now; the box is
- * wired to the AI in step 3.
+ * Ask tab. Typing searches the cards he already has, instantly and offline.
+ * Send asks the AI, checks the new cards on a second provider, and shows the
+ * answer. If anything fails he gets one plain line and the library results.
  */
 export default function AskScreen() {
-  const [text, setText] = useState('');
   const [skill, setSkill] = useState<Track | null>(null);
   const { ready, lessons, doneIds, ladderOf } = useLessons();
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const levels = useMemo<AnswerAskPayload['levels'] | undefined>(() => {
+    if (!ready) return undefined;
+    const out: NonNullable<AnswerAskPayload['levels']> = {};
+    for (const s of SKILLS) {
+      const open = ladderOf(s.track).find((l) => l.status === 'open');
+      if (open) out[s.track] = open.level;
+    }
+    return Object.keys(out).length > 0 ? out : undefined;
+  }, [ready, ladderOf]);
+
+  const ask = useAsk({ levels });
+  const { text, setText, library, phase, view, added, adding, canSend } = ask;
+  const typing = text.trim().length >= MIN_QUERY_CHARS;
   const recent = useLiveQuery(
     () => db.asks.orderBy('createdAt').reverse().limit(5).toArray(),
     [],
@@ -45,19 +62,30 @@ export default function AskScreen() {
     <section className="ask-screen" aria-label="Ask">
       <h1 className="ask-title">Ask</h1>
 
-      <label className="ask-box">
-        <SearchIcon className="ask-box-icon" />
-        <input
-          ref={inputRef}
-          type="text"
-          className="ask-input"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Type or speak anything…"
-          aria-label="Ask anything"
-          enterKeyHint="send"
-        />
-      </label>
+      <form
+        className="ask-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          void ask.send();
+        }}
+      >
+        <label className="ask-box">
+          <SearchIcon className="ask-box-icon" />
+          <input
+            ref={inputRef}
+            type="text"
+            className="ask-input"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder="Type or speak anything…"
+            aria-label="Ask anything"
+            enterKeyHint="send"
+          />
+        </label>
+        <button type="submit" className="ask-send tap" disabled={!canSend}>
+          {phase === 'asking' ? 'Asking…' : 'Ask'}
+        </button>
+      </form>
 
       <div className="ask-chips">
         {CHIPS.map((c) => (
@@ -71,6 +99,30 @@ export default function AskScreen() {
           </button>
         ))}
       </div>
+
+      {phase === 'asking' && (
+        <p className="ask-line" role="status">
+          Looking that up…
+        </p>
+      )}
+
+      {view && phase === 'done' && (
+        <AskAnswer view={view} added={added} adding={adding} onAdd={() => void ask.addToFeed()} />
+      )}
+
+      {!view && phase !== 'asking' && typing && library.length > 0 && (
+        <section className="ask-section" aria-label="In your library">
+          <h2 className="ask-h2">In your library</h2>
+          <ul className="ask-hits">
+            {library.map((h) => (
+              <li key={h.card.id} className="ask-hit" data-source="library">
+                <span className="ask-hit-title">{h.title}</span>
+                <span className="ask-hit-line">{h.line}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <h2 className="ask-h2">Your 4 skills</h2>
       <div className="ask-tiles">

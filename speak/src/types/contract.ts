@@ -905,11 +905,9 @@ export type AiTask =
   | 'verify_batch' // temp 0: is each generated item real and natural?
   | 'classify_inbox' // raw dump → typed card stubs
   | 'review_recording' // Phase 2: judgment over a recording's transcript
-  | 'plan_week'; // AG-008 §5: weekly coach plan over last week's stats
-// v5 adds 'answer_ask' and 'coach_chat' here in the same change that gives them
-// a TASK_CONFIG entry in netlify/functions/ai.ts (and in
-// src/features/ai/aiFunction.test.ts): both are `Record<AiTask, …>`, so adding
-// the names first breaks the typecheck.
+  | 'plan_week' // AG-008 §5: weekly coach plan over last week's stats
+  | 'answer_ask' // v5 Ask tab: classify + short answer + 3-8 TeachDraft cards (rulebook §4)
+  | 'coach_chat'; // v5 Chat: Haiku coaches a spoken turn (rulebook §5)
 
 export interface AiRequest {
   task: AiTask;

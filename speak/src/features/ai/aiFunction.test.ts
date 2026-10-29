@@ -31,6 +31,14 @@ describe('Netlify AI Function Contract Suite', () => {
       temperature: 0.2,
       maxTokens: 1024,
     },
+    answer_ask: {
+      temperature: 0.4,
+      maxTokens: 4096,
+    },
+    coach_chat: {
+      temperature: 0.3,
+      maxTokens: 1024,
+    },
   };
 
   it('ALLOWED_TASKS includes all 5 system tasks and rejects arbitrary tasks', () => {

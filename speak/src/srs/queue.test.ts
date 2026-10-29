@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { buildQueue, dayCardHash, getCardMultiplier, skimReview } from './queue';
+import {
+  ASK_FLOAT_CAP,
+  buildQueue,
+  dayCardHash,
+  getCardMultiplier,
+  graduatedAskBatches,
+  skimReview,
+} from './queue';
 import { grade, newReview } from './scheduler';
 import { QUEUE_RULES } from '../types/contract';
 import type { Card, CardType, DownweightRecord, QueueOptions, Review } from '../types/contract';
@@ -406,5 +413,89 @@ describe('Coach cards (AG-008 stage 1)', () => {
   });
 });
 
+describe('Asked cards come back (rulebook 8.1)', () => {
+  const types: CardType[] = ['word', 'idiom', 'swap', 'phrase', 'feeling', 'story_move'];
+  const deck = (): Card[] =>
+    Array.from({ length: 40 }, (_, i) => card(`mix${i}`, types[i % types.length]!));
 
+  function askCard(id: string, kind: 'learn' | 'use' | 'fix' | 'try', batchId: string, createdAt = 100): Card {
+    return { ...card(id, 'teach', 'en', ['ask']), kind, batchId, source: 'ai', createdAt } as unknown as Card;
+  }
 
+  function due(cardId: string, over: Partial<Review> = {}): Review {
+    return { ...newReview(cardId, TODAY), state: 'learning', due: TODAY, ...over };
+  }
+
+  it('asked cards sit at the front of the mix, Use before Fix before Try', () => {
+    const cards = [
+      ...deck(),
+      askCard('ask-1-2', 'try', 'ask-1'),
+      askCard('ask-1-0', 'use', 'ask-1'),
+      askCard('ask-1-1', 'fix', 'ask-1'),
+    ];
+    const reviews = new Map<string, Review>([
+      ['ask-1-1', due('ask-1-1')],
+      ['ask-1-2', due('ask-1-2')],
+    ]);
+    const ids = buildQueue(cards, reviews, opts({ limit: 20 })).map((i) => i.card.id);
+    expect(ids.slice(0, 3)).toEqual(['ask-1-0', 'ask-1-1', 'ask-1-2']);
+  });
+
+  it('a Fix or Try planned for a later day is not served before that day', () => {
+    const cards = [...deck(), askCard('ask-2-0', 'use', 'ask-2'), askCard('ask-2-1', 'fix', 'ask-2'), askCard('ask-2-2', 'try', 'ask-2')];
+    const later = (id: string, d: string) => due(id, { due: d });
+    const reviews = new Map<string, Review>([
+      ['ask-2-1', later('ask-2-1', '2026-08-14')],
+      ['ask-2-2', later('ask-2-2', '2026-08-18')],
+    ]);
+    const ids = buildQueue(cards, reviews, opts({ limit: 40 })).map((i) => i.card.id);
+    expect(ids[0]).toBe('ask-2-0');
+    expect(ids.slice(0, ASK_FLOAT_CAP)).not.toContain('ask-2-1');
+    expect(ids.slice(0, ASK_FLOAT_CAP)).not.toContain('ask-2-2');
+  });
+
+  it('the newest question goes first and no more than the cap is floated', () => {
+    const cards = [
+      ...deck(),
+      ...['a', 'b', 'c'].map((n, i) => askCard(`old-${n}`, 'use', 'ask-old', 100 + i)),
+      ...['a', 'b', 'c'].map((n, i) => askCard(`new-${n}`, 'use', 'ask-new', 900 + i)),
+    ];
+    const ids = buildQueue(cards, NONE, opts({ limit: 20 })).map((i) => i.card.id);
+    expect(ids[0]!.startsWith('new-')).toBe(true);
+    expect(ids.slice(0, ASK_FLOAT_CAP).filter((id) => id.startsWith('new-')).length).toBe(3);
+  });
+
+  it('priority ends after Got it twice in a row on a Try card', () => {
+    const cards = [...deck(), askCard('ask-3-0', 'use', 'ask-3'), askCard('ask-3-1', 'try', 'ask-3')];
+    const once = new Map<string, Review>([
+      ['ask-3-1', due('ask-3-1', { reps: 1, lastGrade: 'good', due: '2026-08-30' })],
+    ]);
+    expect(graduatedAskBatches(cards, once).has('ask-3')).toBe(false);
+
+    const twice = new Map<string, Review>([
+      ['ask-3-1', due('ask-3-1', { reps: 2, lastGrade: 'good', due: '2026-08-30' })],
+    ]);
+    expect(graduatedAskBatches(cards, twice).has('ask-3')).toBe(true);
+    // Same order as if the cards carried no `ask` tag: nothing is forced to the front.
+    const plain = cards.map((c) => ({ ...c, tags: c.tags.filter((t) => t !== 'ask') }));
+    const ids = buildQueue(cards, twice, opts({ limit: 20 })).map((i) => i.card.id);
+    const idsPlain = buildQueue(plain, twice, opts({ limit: 20 })).map((i) => i.card.id);
+    expect(ids).toEqual(idsPlain);
+  });
+
+  it('a miss resets the count, so priority stays on', () => {
+    const cards = [...deck(), askCard('ask-4-0', 'try', 'ask-4')];
+    const missed = new Map<string, Review>([
+      ['ask-4-0', due('ask-4-0', { reps: 0, lapses: 1, lastGrade: 'again', due: TODAY })],
+    ]);
+    expect(graduatedAskBatches(cards, missed).has('ask-4')).toBe(false);
+    const ids = buildQueue(cards, missed, opts({ limit: 20 })).map((i) => i.card.id);
+    expect(ids[0]).toBe('ask-4-0');
+  });
+
+  it('a deck with no asked cards is unchanged', () => {
+    const cards = deck();
+    const a = buildQueue(cards, NONE, opts({ limit: 30 })).map((i) => i.card.id);
+    expect(a).toHaveLength(30);
+  });
+});

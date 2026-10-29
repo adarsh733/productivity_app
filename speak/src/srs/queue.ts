@@ -1,5 +1,6 @@
 import type {
   Card,
+  CardKind,
   CardType,
   DayKey,
   DownweightRecord,
@@ -326,7 +327,8 @@ function buildEndless(
     fillRefill(out, cards, reviews, opts, lastType, cardsSinceLastHindi, newBudget, now);
   }
 
-  return jumpCoachCards(out, cards, reviews, opts, now).slice(0, opts.limit);
+  const withCoach = jumpCoachCards(out, cards, reviews, opts, now);
+  return jumpAskCards(withCoach, cards, reviews, opts, now).slice(0, opts.limit);
 }
 
 // ── AG-007 stage 3: coach cards jump the queue ──────────────────────────────
@@ -365,6 +367,107 @@ function jumpCoachCards(
   const coach = merged.filter(isCoach).slice(0, 10);
   const rest = merged.filter((i) => !isCoach(i));
   return [...coach, ...rest];
+}
+
+// ── v5 (rulebook 8.1): everything he asks comes back ────────────────────────
+// Cards stored by "Add N cards to my feed" carry the tag `ask` and share a
+// batchId. Their return is planned by review dates (Use now, Fix a few days
+// on, Try a week on), so a card is only a candidate when it is new or due.
+// Asked items sit at the front of the mix until he has said "Got it" twice in
+// a row on a Try card of that batch. Decks without asked cards are untouched.
+
+/** Most asked cards floated to the front of one feed run. */
+export const ASK_FLOAT_CAP = 4;
+
+/** "Got it" this many times in a row on a Try card ends the priority. */
+export const GOT_IT_TARGET = 2;
+
+const ASK_KIND_ORDER: Record<CardKind, number> = { learn: 0, use: 1, ask_them: 2, fix: 3, try: 4 };
+
+function askKindOf(card: Card): CardKind {
+  const any = card as unknown as { type: string; kind?: CardKind; skill?: { kind: CardKind } };
+  if (any.type === 'teach' && any.kind) return any.kind;
+  return any.skill?.kind ?? 'learn';
+}
+
+function isAskCard(card: Card): boolean {
+  return card.tags.includes('ask') && card.lang !== 'hi';
+}
+
+function gotItInARow(review: Review | undefined): boolean {
+  return (
+    review !== undefined &&
+    review.reps >= GOT_IT_TARGET &&
+    (review.lastGrade === 'good' || review.lastGrade === 'easy')
+  );
+}
+
+/**
+ * Batch ids whose asked items no longer get priority: a Try card of the batch
+ * has had "Got it" twice in a row. A batch with no Try card is done when every
+ * card in it has.
+ */
+export function graduatedAskBatches(
+  cards: readonly Card[],
+  reviews: ReadonlyMap<string, Review>,
+): Set<string> {
+  const byBatch = new Map<string, Card[]>();
+  for (const c of cards) {
+    if (!isAskCard(c) || !c.batchId) continue;
+    const list = byBatch.get(c.batchId) ?? [];
+    list.push(c);
+    byBatch.set(c.batchId, list);
+  }
+  const done = new Set<string>();
+  for (const [batchId, list] of byBatch) {
+    const tries = list.filter((c) => askKindOf(c) === 'try');
+    const finished =
+      tries.length > 0
+        ? tries.some((c) => gotItInARow(reviews.get(c.id)))
+        : list.every((c) => gotItInARow(reviews.get(c.id)));
+    if (finished) done.add(batchId);
+  }
+  return done;
+}
+
+function jumpAskCards(
+  out: QueueItem[],
+  cards: readonly Card[],
+  reviews: ReadonlyMap<string, Review>,
+  opts: QueueOptions,
+  now: number,
+): QueueItem[] {
+  if (!cards.some(isAskCard)) return out;
+  const done = graduatedAskBatches(cards, reviews);
+  const placed = new Map(out.map((i) => [i.card.id, i]));
+
+  const candidates: Array<{ item: QueueItem; created: number; order: number }> = [];
+  for (const card of cards) {
+    if (!isAskCard(card) || (card.batchId && done.has(card.batchId))) continue;
+    if (opts.seenCardIds.has(card.id)) continue;
+    const r = reviews.get(card.id);
+    let reason: QueueReason;
+    if (r && !isNew(r)) {
+      if (!isDue(r.due, opts.today)) continue;
+      reason = 'due';
+    } else if (isNew(r) && !isSkimFresh(r, now)) {
+      reason = 'new';
+    } else {
+      continue;
+    }
+    candidates.push({
+      item: placed.get(card.id) ?? { card, reason },
+      created: card.createdAt,
+      order: ASK_KIND_ORDER[askKindOf(card)],
+    });
+  }
+  if (candidates.length === 0) return out;
+
+  // Newest question first; inside one question: Use, then Fix, then Try.
+  candidates.sort((a, b) => b.created - a.created || a.order - b.order);
+  const front = candidates.slice(0, ASK_FLOAT_CAP).map((c) => c.item);
+  const frontIds = new Set(front.map((i) => i.card.id));
+  return [...front, ...out.filter((i) => !frontIds.has(i.card.id))];
 }
 
 function pickCandidate(

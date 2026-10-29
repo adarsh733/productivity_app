@@ -150,3 +150,211 @@
   font-size: var(--fs-3);
   color: var(--ink-3);
 }
+
+/* -- Step 3: sending a question, the answer, the library ------------------- */
+
+.ask-form {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.ask-form .ask-box {
+  flex: 1;
+  min-width: 0;
+}
+
+.ask-send {
+  flex: none;
+  min-width: 56px;
+  min-height: 52px;
+  padding: 0 var(--s-4);
+  border: none;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: inherit;
+  font-size: var(--fs-3);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+}
+
+.ask-send:disabled {
+  background: var(--line);
+  color: var(--ink-3);
+  cursor: default;
+}
+
+.ask-answer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.ask-line {
+  margin: 0;
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-sm);
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent-line);
+  font-size: var(--fs-3);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.ask-line[data-failure] {
+  background: color-mix(in srgb, var(--warn) 10%, var(--card));
+  border-left-color: var(--warn);
+}
+
+.ask-rule {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: var(--fs-4);
+  line-height: var(--lh-tight);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.ask-section,
+.ask-fix {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.ask-hits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.ask-hit {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  padding: var(--s-3) var(--s-4);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+}
+
+.ask-hit-new {
+  border-color: var(--accent-line);
+}
+
+.ask-hit-meta {
+  font-size: var(--fs-1);
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+
+.ask-hit-title {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-bold);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.ask-hit-line {
+  font-size: var(--fs-2);
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+.ask-add {
+  min-height: 48px;
+  padding: 0 var(--s-5);
+  border: none;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: inherit;
+  font-size: var(--fs-3);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+}
+
+.ask-add:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.ask-added {
+  margin: 0;
+  font-size: var(--fs-3);
+  color: var(--ink-2);
+}
+
+.ask-weak {
+  margin: 0;
+  font-size: var(--fs-2);
+  color: var(--warn);
+  overflow-wrap: anywhere;
+}
+
+.ask-version {
+  padding: var(--s-3) var(--s-4);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+}
+
+.ask-version-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-2);
+  margin-bottom: var(--s-2);
+}
+
+.ask-version-name {
+  font-size: var(--fs-2);
+  font-weight: var(--fw-bold);
+  color: var(--accent);
+}
+
+.ask-version-hint {
+  font-size: var(--fs-1);
+  color: var(--ink-3);
+}
+
+.ask-version-text {
+  margin: 0;
+  font-size: var(--fs-3);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.ask-chunk {
+  background: var(--accent-soft);
+  color: inherit;
+  border-radius: 4px;
+  padding: 0 2px;
+}
+
+.ask-chunks-label {
+  font-size: var(--fs-1);
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+
+.ask-chunk-list {
+  list-style: none;
+  margin: var(--s-2) 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.ask-chunk-item {
+  padding: var(--s-1) var(--s-3);
+  background: var(--accent-soft);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-2);
+  color: var(--ink);
+}
