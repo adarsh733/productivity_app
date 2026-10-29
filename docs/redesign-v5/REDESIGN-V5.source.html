@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Speak Redesign Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f1; --paper:#ffffff; --ink:#16161a; --ink2:#55555f; --ink3:#8b8b95;
+  --line:#e7e3dc; --accent:#0b63a6; --accent-soft:#e8f1fa; --good:#1d7a4a; --good-soft:#e6f4ec;
+  --warn:#b4540a; --warn-soft:#fdf0e1; --bad:#b42318; --bad-soft:#fdecea; --violet:#5b3fc4; --violet-soft:#efebfb;
+  --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--serif);font-weight:650;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(36px,6vw,64px);line-height:1.03}
+h2{font-size:clamp(26px,3.4vw,38px);line-height:1.1;margin-bottom:10px}
+h3{font-size:21px;line-height:1.2}
+p{margin:0 0 10px}
+.eyebrow{font:600 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px}
+section{padding:64px 0;border-top:1px solid var(--line)}
+.lede{font-size:19px;color:var(--ink2);max-width:680px}
+header.hero{padding:72px 0 56px}
+.hero .lede{margin-top:18px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;font:600 13px/1.2 var(--sans)}
+.p-good{background:var(--good-soft);color:var(--good)} .p-bad{background:var(--bad-soft);color:var(--bad)}
+.p-warn{background:var(--warn-soft);color:var(--warn)} .p-acc{background:var(--accent-soft);color:var(--accent)}
+.p-vio{background:var(--violet-soft);color:var(--violet)}
+.promise{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.promise div{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px}
+.promise b{display:block;font-family:var(--serif);font-size:20px;margin-bottom:4px}
+.promise span{color:var(--ink2);font-size:15px}
+
+/* today's screenshots */
+.shots{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px}
+.shot img{width:100%;border-radius:22px;border:1px solid var(--line);display:block;background:#fff}
+.shot h4{margin:12px 0 6px;font:600 15px var(--sans)}
+.shot ul{margin:0;padding-left:18px;color:var(--ink2);font-size:14px}
+.shot li{margin-bottom:4px}
+
+/* flow */
+.flow{display:grid;grid-template-columns:1.1fr auto 1.4fr auto 1.1fr;gap:12px;align-items:stretch;margin-top:28px}
+.fbox{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px}
+.fbox h3{font-size:18px;margin-bottom:8px}
+.fbox p,.fbox li{font-size:14.5px;color:var(--ink2)}
+.fbox ul{margin:0;padding-left:18px}
+.arrow{align-self:center;font-size:26px;color:var(--ink3)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.split > div{border-radius:12px;padding:10px 12px;font-size:14px}
+.mix{display:flex;height:34px;border-radius:10px;overflow:hidden;margin:10px 0 6px;font:600 12.5px/34px var(--sans);color:#fff;text-align:center}
+.legend{font-size:13px;color:var(--ink3)}
+
+/* phones */
+.phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 26px;margin-top:34px}
+.pcol .cap{margin-top:14px}
+.pcol .cap b{font-family:var(--serif);font-size:19px;display:block;margin-bottom:3px}
+.pcol .cap span{font-size:14.5px;color:var(--ink2)}
+.phone{box-sizing:content-box;width:390px;height:844px;background:#fbfaf8;border-radius:46px;border:11px solid #121214;position:relative;overflow:hidden;font-family:var(--sans);color:var(--ink);box-shadow:0 30px 60px -30px rgba(0,0,0,.35);transform-origin:top left}
+.pframe{width:100%;position:relative}
+.pframe .phone{position:absolute;top:0;left:0}
+.sb{height:46px;display:flex;justify-content:space-between;align-items:flex-end;padding:0 30px 6px;font:600 14px var(--sans)}
+.island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:112px;height:30px;background:#121214;border-radius:20px}
+.scr{position:absolute;top:46px;left:0;right:0;bottom:0;display:flex;flex-direction:column}
+.tabbar{margin-top:auto;height:78px;border-top:1px solid var(--line);display:flex;justify-content:space-around;align-items:flex-start;padding-top:10px;background:#fff}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 11px var(--sans);color:var(--ink3);width:80px}
+.tab.on{color:var(--ink)}
+.tab svg{width:25px;height:25px}
+.askfab{width:54px;height:40px;border-radius:14px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;margin-top:-2px}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:8px 18px 10px}
+.logo{font-family:var(--serif);font-weight:650;font-size:25px;letter-spacing:-.02em}
+.streak{font:600 14px var(--sans);background:#fff;border:1px solid var(--line);padding:5px 10px;border-radius:999px}
+.askbar{margin:0 16px 12px;height:46px;border-radius:14px;background:#efece6;display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--ink3);font-size:15px}
+.askbar svg{width:18px;height:18px;flex:none}
+.askbar.active{background:#fff;border:1.5px solid var(--ink);color:var(--ink)}
+.askbar .mic{margin-left:auto;color:var(--ink2)}
+
+/* feed card */
+.fcard{margin:0 14px;flex:1;background:#fff;border:1px solid var(--line);border-radius:26px;padding:22px 22px 18px;position:relative;display:flex;flex-direction:column}
+.chiprow{display:flex;gap:6px;align-items:center}
+.chiprow .rb{margin-left:auto;display:flex;gap:8px}
+.chip{font:600 11.5px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:8px}
+.big{font-family:var(--serif);font-size:40px;line-height:1.05;margin:20px 0 10px;letter-spacing:-.02em}
+.mean{font-size:18px;line-height:1.4;color:var(--ink)}
+.lbl{font:600 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin:18px 0 6px}
+.ex{font-size:15px;line-height:1.45;color:var(--ink2);padding-left:12px;border-left:3px solid var(--line);margin-bottom:8px}
+.ex b{color:var(--ink);font-weight:600}
+.dont{background:var(--bad-soft);border-radius:12px;padding:10px 12px;font-size:14px;color:#7a1d14;margin-top:6px}
+.dont s{opacity:.8}
+.rail{position:absolute;right:12px;top:72px;display:flex;flex-direction:column;gap:14px;align-items:center}
+.rbtn{width:42px;height:42px;border-radius:50%;background:#f4f2ee;display:flex;align-items:center;justify-content:center}
+.rbtn svg{width:20px;height:20px}
+.why{margin-top:auto;font-size:12.5px;color:var(--ink3);display:flex;align-items:center;gap:6px}
+.actions{display:flex;gap:10px;padding:12px 14px 12px}
+.btn{flex:1;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font:600 16px var(--sans);gap:6px}
+.btn.ghost{background:#fff;border:1px solid var(--line)}
+.btn.dark{background:var(--ink);color:#fff}
+.dots{display:flex;justify-content:center;gap:5px;padding-bottom:4px}
+.dots i{width:6px;height:6px;border-radius:50%;background:#d8d4cc} .dots i.on{background:var(--ink);width:16px;border-radius:4px}
+
+/* ask screens */
+.pad{padding:0 16px}
+.sugg{display:flex;flex-wrap:wrap;gap:8px;margin:2px 16px 18px}
+.sg{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font:500 13.5px var(--sans)}
+.h5{font:700 13px var(--sans);letter-spacing:.02em;margin:0 16px 10px;color:var(--ink)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 16px}
+.tile{border-radius:18px;padding:14px;height:104px;display:flex;flex-direction:column;justify-content:space-between}
+.tile b{font:650 17px/1.15 var(--serif)} .tile span{font:600 12px var(--sans);opacity:.75}
+.recent{margin:16px 16px 0;font-size:14px;color:var(--ink2)}
+.recent div{padding:9px 0;border-bottom:1px solid var(--line);display:flex;gap:8px}
+.you{align-self:flex-end;background:var(--ink);color:#fff;border-radius:18px 18px 4px 18px;padding:10px 14px;font-size:15px;margin:4px 16px 10px 60px}
+.ai{background:#fff;border:1px solid var(--line);border-radius:18px 18px 18px 4px;padding:12px 14px;font-size:15px;line-height:1.45;margin:0 50px 12px 16px}
+.ai b{font-weight:650}
+.mini{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:0 16px 9px;position:relative}
+.mini .t{font-family:var(--serif);font-size:19px;font-weight:650;line-height:1.2}
+.mini .m{font-size:13.5px;color:var(--ink2);margin-top:3px}
+.mini .src{display:inline-flex;margin-bottom:6px;padding:3px 8px}
+.add{margin:6px 16px 0;height:50px;border-radius:15px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font:600 15.5px var(--sans);gap:8px}
+.vers{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:0 16px 9px}
+.vers .k{font:700 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.vers p{font-size:15px;line-height:1.45;margin:0}
+.vers u{text-decoration:none;background:#fff1c7;border-radius:4px;padding:0 2px}
+.scroll{overflow:hidden;flex:1;display:flex;flex-direction:column}
+.scroll > *{flex:none}
+
+/* say it sheet */
+.dim{position:absolute;inset:0;background:rgba(20,20,24,.38)}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:26px 26px 0 0;padding:14px 20px 28px}
+.grab{width:40px;height:5px;border-radius:3px;background:#ddd;margin:0 auto 16px}
+.micbig{width:74px;height:74px;border-radius:50%;background:var(--bad);display:flex;align-items:center;justify-content:center;margin:16px auto 8px;box-shadow:0 0 0 10px #fbd9d5}
+.wave{display:flex;gap:3px;justify-content:center;align-items:center;height:30px;margin:6px 0 4px}
+.wave i{width:4px;border-radius:2px;background:var(--ink)}
+
+/* me */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:4px 16px 16px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 10px;text-align:center}
+.stat b{display:block;font:650 26px/1.1 var(--serif)} .stat span{font-size:11.5px;color:var(--ink3);font-weight:600}
+.row{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:0 16px 8px}
+.row .ic{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex:none}
+.row b{display:block;font-size:15px} .row span{font-size:13px;color:var(--ink3)}
+.row .go{margin-left:auto;color:var(--ink3)}
+.weak{margin:0 16px 14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.weak div{display:flex;justify-content:space-between;font-size:14px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.weak div:last-child{border:0}
+.bar7{display:flex;gap:6px;align-items:flex-end;height:54px;margin:8px 0 2px}
+.bar7 i{flex:1;background:#d9e7f3;border-radius:5px 5px 2px 2px}
+.bar7 i.t{background:var(--accent)}
+
+/* tables & lists */
+table{width:100%;border-collapse:separate;border-spacing:0;background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:24px;font-size:15px}
+th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);background:#faf9f6}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600;white-space:nowrap}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.col{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px}
+.col h3{margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.col ul{margin:0;padding-left:18px;color:var(--ink2);font-size:15px}
+.col li{margin-bottom:7px}
+.col li b{color:var(--ink)}
+.asks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.ask{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.ask .q{font-weight:600;margin-bottom:6px}
+.ask .q:before{content:"You type  ";font:600 11px var(--sans);letter-spacing:.1em;color:var(--ink3)}
+.ask .a{font-size:14.5px;color:var(--ink2)}
+.ask .a:before{content:"You get  ";font:600 11px var(--sans);letter-spacing:.1em;color:var(--good)}
+.steps{counter-reset:s;display:grid;gap:12px;margin-top:24px}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px 18px 66px;position:relative}
+.step:before{counter-increment:s;content:counter(s);position:absolute;left:20px;top:18px;width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;font:700 15px/32px var(--sans);text-align:center}
+.step.zero:before{content:"0";background:var(--warn)}
+.step h3{font-size:19px;margin-bottom:4px}
+.step p{color:var(--ink2);font-size:15px;margin:0}
+.decide{display:grid;gap:12px;margin-top:24px}
+.dq{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.dq h3{font-size:19px;margin-bottom:8px}
+.dq .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dq .o{border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px;color:var(--ink2)}
+.dq .o.rec{border:2px solid var(--good);background:#f6fbf8}
+.dq .o b{color:var(--ink);display:block}
+.note{font-size:13.5px;color:var(--ink3);margin-top:8px}
+footer{padding:40px 0 60px;color:var(--ink3);font-size:14px;border-top:1px solid var(--line)}
+
+@media (max-width:1000px){
+  .shots{grid-template-columns:repeat(2,1fr)}
+  .phones{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg);justify-self:center}
+}
+@media (max-width:680px){
+  .promise,.three,.asks,.dq .opts{grid-template-columns:1fr}
+  .phones{grid-template-columns:1fr}
+  .shots{grid-template-columns:1fr 1fr;gap:12px}
+  td:first-child{white-space:normal}
+  th,td{padding:11px 12px}
+}
+
+:root{--st:#c2560c;--st-soft:#fdeedd;--sy:#5b3fc4;--sy-soft:#efebfb;--cl:#1d7a4a;--cl-soft:#e6f4ec;--wd:#0b63a6;--wd-soft:#e8f1fa}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+.skill{border-radius:20px;padding:18px;border:1px solid var(--line);background:var(--paper)}
+.skill .ico{font-size:26px}
+.skill b{display:block;font-family:var(--serif);font-size:21px;margin:6px 0 4px}
+.skill .you{all:unset;display:block;font-size:14px;color:var(--ink2);font-style:italic;margin-bottom:8px}
+.skill ol{margin:8px 0 0;padding-left:20px;font-size:14px;color:var(--ink2)}
+.skill li{margin-bottom:3px}
+.kinds{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+.kind{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px}
+.kind b{font:700 13px var(--sans);letter-spacing:.12em}
+.kind p{font-size:14.5px;color:var(--ink2);margin:6px 0 0}
+.anat{display:grid;grid-template-columns:1.1fr 1fr;gap:26px;align-items:start;margin-top:26px}
+.anat ol{margin:0;padding-left:20px;color:var(--ink2)} .anat li{margin-bottom:8px} .anat li b{color:var(--ink)}
+.science{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.sci{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.sci b{display:block;font-size:16px;margin-bottom:4px}
+.sci p{font-size:14.5px;color:var(--ink2);margin:0}
+.sci .src{font-size:12.5px;color:var(--ink3);margin-top:6px}
+/* phone extras */
+.storyrow{display:flex;gap:12px;padding:0 16px 10px}
+.sring{display:flex;flex-direction:column;align-items:center;gap:4px;font:600 11px var(--sans);color:var(--ink2);width:70px}
+.sring i{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:24px;background:#fff;box-shadow:0 0 0 2.5px #fff,0 0 0 5px var(--c)}
+.sring.done i{box-shadow:0 0 0 2.5px #fff,0 0 0 5px #d8d4cc}
+.kchip{font:700 11px/1 var(--sans);letter-spacing:.1em;padding:6px 9px;border-radius:8px;text-transform:uppercase}
+.bars{display:flex;gap:4px;padding:6px 16px 0}
+.bars i{flex:1;height:3px;border-radius:2px;background:#e3dfd7} .bars i.on{background:var(--ink)}
+.lesson{flex:1;padding:18px 22px;display:flex;flex-direction:column}
+.lesson .big{font-size:34px;margin:14px 0 10px}
+.dia{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 12px;font-size:14.5px;line-height:1.45;margin-bottom:8px}
+.dia .q{color:var(--ink3)} .dia .bad{color:#9b2c22} .dia .good{color:#14532d}
+.analogy{background:#fff7e6;border-radius:14px;padding:10px 12px;font-size:14px;color:#6b4a06;margin-top:6px}
+.tapnext{margin-top:auto;text-align:center;font-size:12.5px;color:var(--ink3)}
+.lvl{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:0 16px 8px}
+.lvl .n{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 14px var(--sans);flex:none}
+.lvl b{display:block;font-size:15px} .lvl span{font-size:12.5px;color:var(--ink3)}
+.lvl .pb{margin-left:auto;font:600 12px var(--sans);color:var(--ink3)}
+.lvl.lock{opacity:.5}
+.skill4{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 16px}
+.s4{border-radius:18px;padding:13px 14px;height:96px;display:flex;flex-direction:column;justify-content:space-between}
+.s4 b{font:650 18px/1.1 var(--serif)} .s4 span{font:600 12px var(--sans);opacity:.8}
+.prog{height:5px;border-radius:3px;background:rgba(255,255,255,.7);overflow:hidden} .prog i{display:block;height:100%;background:currentColor}
+.reveal{border:1.5px dashed #cfc9bf;border-radius:14px;padding:14px;text-align:center;color:var(--ink3);font-size:14px;margin-top:10px}
+.chatq{display:flex;gap:10px;margin:4px 16px 10px;align-items:flex-start}
+.chatq .av{width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex:none}
+.chatq .bub{background:#fff;border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:10px 12px;font-size:14.5px}
+.fb{margin:0 16px 8px;border-radius:14px;padding:10px 12px;font-size:14px;line-height:1.45}
+.meter{display:flex;gap:8px;margin:0 16px 8px}
+.meter div{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 10px;font-size:12px;color:var(--ink3)}
+.meter b{display:block;font-size:15px;color:var(--ink)}
+.cost td:first-child{white-space:normal}
+@media (max-width:1000px){.skills,.kinds{grid-template-columns:1fr 1fr}.anat{grid-template-columns:1fr}}
+@media (max-width:680px){.skills,.kinds,.science{grid-template-columns:1fr}}
+@media (max-width:680px){table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero wrap">
+  <div class="eyebrow">Speak · redesign plan v2 · 29 Oct 2026 · frozen 29 Oct</div>
+  <h1>Become a great talker.<br>One card at a time.</h1>
+  <p class="lede">Four skills, each taught from the basics: a rule, two great examples and an everyday comparison. You learn by scrolling, you ask the AI anything, and when you want, you practise by talking. The look and feel is Instagram's: lessons at the top like Stories, practice cards below like Reels.</p>
+  <div class="skills">
+    <div class="skill" style="background:var(--st-soft);border-color:#f6d9b8"><div class="ico">💬</div><b>Small talk</b><p class="you">"I reply 'nice, good' and the chat dies."</p>Answer with a hook, keep it going, ask the right questions, from light to deep.</div>
+    <div class="skill" style="background:var(--sy-soft);border-color:#ddd5f6"><div class="ico">📖</div><b>Stories</b><p class="you">"I want to be superhuman at storytelling."</p>Your day, an anecdote, an incident at work, a business pitch, told so people lean in.</div>
+    <div class="skill" style="background:var(--cl-soft);border-color:#cbe8d6"><div class="ico">🎯</div><b>Speak clearly</b><p class="you">"I can explain, but not concisely, with the right words."</p>Ready-made shapes for any answer, so you say the point first and stop.</div>
+    <div class="skill" style="background:var(--wd-soft);border-color:#cfe2f3"><div class="ico">🔤</div><b>Words</b><p class="you">"Vocab, idioms, phrases, all of it."</p>Words and phrases you'll actually <i>say</i>, plus the slips to drop.</div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">How it's organised</div>
+    <h2>4 skills × 5 levels × 4 kinds of card</h2>
+    <p class="lede">So you never feel lost: every card tells you which skill it belongs to (its colour), which level, and what kind of card it is.</p>
+    <table>
+      <tr><th>Skill</th><th>Level 1</th><th>Level 2</th><th>Level 3</th><th>Level 4</th><th>Level 5</th></tr>
+      <tr><td>💬 Small talk</td><td>Answer well: never just "fine"</td><td>Keep it going</td><td>Ask good questions</td><td>Go deeper, safely</td><td>Exits, groups, following up days later</td></tr>
+      <tr><td>📖 Stories</td><td>What makes it a story</td><td>Make it vivid</td><td>Stakes &amp; the turn</td><td>Shapes for work: incidents, updates, pitches</td><td>Your story bank: reuse your best 10</td></tr>
+      <tr><td>🎯 Speak clearly</td><td>Point first</td><td>4 answer shapes (PREP, etc.)</td><td>Cut the fluff</td><td>Thinking on your feet</td><td>Hard moments: no, bad news, disagreeing</td></tr>
+      <tr><td>🔤 Words</td><td colspan="5">Not levels but 9 kinds of word, sorted by what the word <i>does</i>: sharp verbs · two-word verbs (follow up, push back) · natural pairs (meet a deadline) · idioms · office phrases · linking words · feelings &amp; reactions · "let me think" phrases · global-English fixes</td></tr>
+    </table>
+    <div class="kinds">
+      <div class="kind"><b style="color:var(--wd)">LEARN</b><p>Teaches one rule: what it is, why it works, 2 examples, an everyday comparison. Lessons are made of these.</p></div>
+      <div class="kind"><b style="color:var(--cl)">USE</b><p>Something to steal: a word, a phrase, a question to ask, a story opener. Shown at work and in everyday life.</p></div>
+      <div class="kind"><b style="color:#9b2c22">FIX</b><p>A weak version and a better one side by side. "Good." → "Good. I finally tried that dosa place. How was yours?"</p></div>
+      <div class="kind"><b style="color:var(--sy)">TRY</b><p>A real moment ("your manager asks about your weekend"). You think of your answer, then tap to see a great one. The mic is optional.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">The new app</div>
+    <h2>Nine screens, three tabs</h2>
+    <p class="lede">Feed · Ask · Me (frozen). Light theme. Hindi hidden. Sample text throughout, taken from the research.</p>
+    <div class="phones">
+
+      <div class="pcol"><div class="pframe"><div class="phone" id="m1" data-tab="feed"><div class="scr">
+        <div class="topbar"><span class="logo">Speak</span><span class="streak">🔥 6</span></div>
+        <div class="storyrow">
+          <div class="sring" style="--c:var(--st)"><i>💬</i>Small talk</div>
+          <div class="sring" style="--c:var(--sy)"><i>📖</i>Stories</div>
+          <div class="sring done"><i>🎯</i>Clearly</div>
+          <div class="sring" style="--c:var(--wd)"><i>🔤</i>Words</div>
+        </div>
+        <div class="fcard" style="padding-top:18px">
+          <div class="chiprow"><span class="kchip" style="background:#fdecea;color:#9b2c22">Fix</span><span class="kchip" style="background:var(--st-soft);color:var(--st)">💬 Small talk · L1</span><span class="rb"><span class="rbtn"><svg viewBox="0 0 24 24" fill="none" stroke="#16161a" stroke-width="2"><path d="M6 3h12v18l-6-4-6 4z"/></svg></span></span></div>
+          <div class="lbl" style="margin-top:16px">They ask</div>
+          <div style="font:600 18px var(--sans)">"How was your weekend?"</div>
+          <div class="lbl">Instead of</div>
+          <div class="dia bad" style="color:#9b2c22">"Good." <span style="color:var(--ink3)">— a closed door</span></div>
+          <div class="lbl">Try</div>
+          <div class="dia" style="color:#14532d;border-color:#cbe8d6;background:#f4fbf6">"Good! I finally tried that new dosa place near the station. The masala dosa was <b>huge</b>. Did you do anything fun?"</div>
+          <div class="analogy">🏸 It's badminton, not a speech: give one detail, then send the shuttle back.</div>
+        </div>
+        <div class="actions"><div class="btn ghost">↻ Again</div><div class="btn dark">Got it ✓</div></div>
+      </div></div></div>
+      <div class="cap"><b>1 · Feed</b><span>The top row works like Instagram Stories: one circle per skill, and tapping one plays today's short lesson. A grey ring means today's lesson is done. Below is practice, one card at a time: swipe up for the next.</span></div></div>
+
+      <div class="pcol"><div class="pframe"><div class="phone" id="m2" data-tab="none"><div class="scr" style="background:var(--st-soft)">
+        <div class="bars"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
+        <div class="topbar" style="padding-top:12px"><span style="font:600 14px var(--sans)">💬 Small talk · Level 1 · Lesson 1</span><span style="color:var(--ink3)">✕</span></div>
+        <div class="lesson">
+          <span class="kchip" style="background:#fff;color:var(--wd);align-self:flex-start">Learn · 2 of 5</span>
+          <div class="big">Give one real detail.</div>
+          <div style="font-size:16.5px;line-height:1.45">A one-word answer gives the other person nothing to grab. One specific detail gives them a "thread" to pull on.</div>
+          <div class="lbl">At work</div>
+          <div class="dia"><span class="q">"How's the week going?"</span><br>"Busy. We finally fixed the checkout bug that's been haunting us since Monday."</div>
+          <div class="lbl">With friends</div>
+          <div class="dia"><span class="q">"What did you do Sunday?"</span><br>"Took my nephew to his first cricket match. He cheered for the wrong team."</div>
+          <div class="analogy">🚪 "Good" is a closed door. A detail leaves it open a crack, so they can push it.</div>
+          <div class="tapnext">Tap for next →</div>
+        </div>
+      </div></div></div>
+      <div class="cap"><b>2 · A lesson</b><span>Full screen, tap through like Stories: 5 short teaching cards. It teaches before it tests, with one rule, a work example, an everyday example and a comparison. It takes about 90 seconds.</span></div></div>
+
+      <div class="pcol"><div class="pframe"><div class="phone" id="m3" data-tab="ask"><div class="scr">
+        <div class="topbar"><span class="logo" style="font-size:22px">💬 Small talk</span><span style="color:var(--ink3)">✕</span></div>
+        <div style="margin:0 16px 14px;font-size:14px;color:var(--ink2)">Make people feel heard, and keep the conversation going.</div>
+        <div class="lvl"><div class="n" style="background:var(--st);color:#fff">1</div><div><b>Answer well</b><span>Never "fine" · 5 lessons</span></div><span class="pb">3/5</span></div>
+        <div class="lvl"><div class="n" style="background:var(--st-soft);color:var(--st)">2</div><div><b>Keep it going</b><span>Hooks, threads, follow-ups</span></div><span class="pb">0/5</span></div>
+        <div class="lvl"><div class="n" style="background:var(--st-soft);color:var(--st)">3</div><div><b>Ask good questions</b><span>Light → medium questions</span></div><span class="pb">🔒</span></div>
+        <div class="lvl lock"><div class="n" style="background:#eee">4</div><div><b>Go deeper, safely</b><span>Memories, turning points</span></div><span class="pb">🔒</span></div>
+        <div class="lvl lock"><div class="n" style="background:#eee">5</div><div><b>Exits &amp; follow-ups</b><span>Leave warmly, remember later</span></div><span class="pb">🔒</span></div>
+        <div class="h5" style="margin-top:12px">Saved from this skill</div>
+        <div class="mini"><div class="m" style="margin:0">⭐ "What was the best part of it?"</div></div>
+        <div class="mini"><div class="m" style="margin:0">⭐ Share first, then ask, so it never feels like an interview</div></div>
+      </div></div></div>
+      <div class="cap"><b>3 · A skill page</b><span>Each skill is a simple ladder of 5 levels. You can always see where you are and what's next. A level unlocks when you've done its lessons. Your saved cards for that skill sit underneath.</span></div></div>
+
+      <div class="pcol"><div class="pframe"><div class="phone" id="m4" data-tab="ask"><div class="scr">
+        <div class="topbar"><span class="logo">Ask</span></div>
+        <div class="askbar active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span style="color:var(--ink3)">Type or speak anything…</span></div>
+        <div class="sugg"><span class="sg">📖 A word I heard</span><span class="sg">✍️ Fix my sentence</span><span class="sg">💬 What do I reply to…</span><span class="sg">⚠️ A slip I make</span></div>
+        <div class="h5">Your 4 skills</div>
+        <div class="skill4">
+          <div class="s4" style="background:var(--st-soft);color:var(--st)"><b>💬 Small talk</b><span>Level 1 · 3/5</span><div class="prog"><i style="width:60%"></i></div></div>
+          <div class="s4" style="background:var(--sy-soft);color:var(--sy)"><b>📖 Stories</b><span>Level 1 · 1/7</span><div class="prog"><i style="width:14%"></i></div></div>
+          <div class="s4" style="background:var(--cl-soft);color:var(--cl)"><b>🎯 Speak clearly</b><span>Level 2 · 2/4</span><div class="prog"><i style="width:50%"></i></div></div>
+          <div class="s4" style="background:var(--wd-soft);color:var(--wd)"><b>🔤 Words</b><span>132 known · 9 kinds</span><div class="prog"><i style="width:30%"></i></div></div>
+        </div>
+        <div class="recent"><div style="font-weight:700;color:var(--ink);border:0;padding-bottom:2px">Recent asks</div><div>🕘 what do I reply to "what's new?"</div><div>🕘 ubiquitous</div></div>
+      </div></div></div>
+      <div class="cap"><b>4 · Ask</b><span>One box for anything. The shortcuts cover the four things you'll ask most. Underneath are your 4 skills with progress, which is the only "browse" left.</span></div></div>
+
+      <div class="pcol"><div class="pframe"><div class="phone" id="m5" data-tab="ask"><div class="scr"><div class="scroll">
+        <div class="topbar"><span class="logo">Ask</span><span style="color:var(--ink3)">✕</span></div>
+        <div class="you">Someone says "I just got back from Goa." What do I reply?</div>
+        <div class="ai"><b>Ask about their trip, not about Goa in general.</b> People enjoy talking about their own experience. A follow-up shows you were listening.</div>
+        <div class="mini"><span class="src pill p-acc" style="font-size:11px">💬 Use · from library</span><div class="t" style="font-size:17px">"Oh nice! What was the best part?"</div><div class="m">Easy and warm. Works with anyone.</div></div>
+        <div class="mini"><span class="src pill p-vio" style="font-size:11px">✨ New · checked</span><div class="t" style="font-size:17px">"Was it a relaxing trip or a packed one?"</div><div class="m">Two options make it easy to answer.</div></div>
+        <div class="mini"><span class="src pill p-vio" style="font-size:11px">✨ New · checked</span><div class="t" style="font-size:17px">Then share a little: "I've only been once, for a friend's wedding…"</div><div class="m">Share first, then ask, so it isn't an interview.</div></div>
+        <div class="add">＋ Add 4 cards to my feed</div>
+      </div></div></div></div>
+      <div class="cap"><b>5 · Ask → answer</b><span>The rule in one line, then cards you can use. Cards from the existing library show up instantly. New AI cards appear once a second AI has checked them against the rulebook.</span></div></div>
+
+      <div class="pcol"><div class="pframe"><div class="phone" id="m6" data-tab="ask"><div class="scr"><div class="scroll">
+        <div class="topbar"><span class="logo">Ask</span><span style="color:var(--ink3)">✕</span></div>
+        <div class="you">Fix: "Today I was not able to tell my point properly in the meeting because I got nervous"</div>
+        <div class="ai">Three better ways. The <span style="background:#fff1c7;border-radius:4px;padding:0 2px">highlighted</span> phrases become cards.</div>
+        <div class="vers"><div class="k" style="color:var(--wd)">Crisp</div><p>"I got nervous and didn't <u>get my point across</u> in the meeting."</p></div>
+        <div class="vers"><div class="k" style="color:var(--cl)">Confident</div><p>"My point didn't <u>land</u> today. I'll <u>follow up</u> with a clearer note."</p></div>
+        <div class="vers"><div class="k" style="color:var(--sy)">Polite, to your boss</div><p>"I don't think I explained it well. Could I take two minutes to <u>walk you through</u> it?"</p></div>
+        <div class="mini" style="background:#f4fbf6;border-color:#cbe8d6"><div class="m" style="color:#14532d;margin:0"><b>Global English:</b> people say "<b>make</b> my point", not "tell my point". Added to your weak spots.</div></div>
+        <div class="add">＋ Add 4 phrases to my feed</div>
+      </div></div></div></div>
+      <div class="cap"><b>6 · Fix my sentence</b><span>The fastest way to speak more clearly. Type what you said, or wanted to say, and get it back three ways. Slips are explained kindly as "in global English…", never as "wrong".</span></div></div>
+
+      <div class="pcol"><div class="pframe"><div class="phone" id="m7" data-tab="feed"><div class="scr">
+        <div class="topbar"><span class="logo">Speak</span><span class="streak">🔥 6</span></div>
+        <div class="fcard">
+          <div class="chiprow"><span class="kchip" style="background:var(--sy-soft);color:var(--sy)">Try</span><span class="kchip" style="background:var(--cl-soft);color:var(--cl)">🎯 Clearly · L2</span></div>
+          <div class="lbl" style="margin-top:16px">The moment</div>
+          <div style="font:600 19px/1.35 var(--sans)">Your manager stops by: "Why did the launch slip?"</div>
+          <div class="lbl">Use the shape</div>
+          <div class="dia"><b>Point</b> → <b>Reason</b> → <b>Example</b> → <b>Point</b><br><span style="color:var(--ink3)">Say the answer first. Give one reason, one fact, then the answer again.</span></div>
+          <div class="lbl">Think of your answer, then tap…</div>
+          <div class="reveal" style="padding:8px;font-size:13px">👀 Revealed after you tap</div>
+          <div class="dia" style="margin-top:10px;background:#f4fbf6;border-color:#cbe8d6;color:#14532d">"<b>One week late.</b> The payment partner changed their API on Monday. We've already rebuilt the checkout, so we'll launch on the 17th."</div>
+        </div>
+        <div class="actions"><div class="btn ghost">🎤 Say mine</div><div class="btn dark">Next ✓</div></div>
+      </div></div></div>
+      <div class="cap"><b>7 · Try card</b><span>Practice without pressure. You read a real moment, think of your answer, then tap to see a great one. Recalling it yourself is what makes it stick. The 🎤 is optional.</span></div></div>
+
+      <div class="pcol"><div class="pframe"><div class="phone" id="m8" data-tab="me"><div class="scr"><div class="scroll">
+        <div class="topbar"><span class="logo" style="font-size:22px">Evening chat</span><span style="font-size:13px;color:var(--ink3)">2 of 3</span></div>
+        <div class="chatq"><div class="av">S</div><div class="bub">So, how was your day? Tell me one moment from it.</div></div>
+        <div class="you" style="font-size:14px">"It was good. I had meetings and then I worked on the pricing page and then the designer gave feedback and then we fixed it."</div>
+        <div class="meter"><div><b>48 s</b>length</div><div><b>182 wpm</b>speed · fast</div><div><b>Normal</b>loudness</div></div>
+        <div class="fb" style="background:var(--cl-soft);color:#14532d">✓ <b>Good:</b> you picked real things from your day.</div>
+        <div class="fb" style="background:var(--warn-soft);color:#7a3d06">→ <b>Swap "and then"</b> for "but" and "so". That turns a list into a story. <span style="opacity:.8">(📖 Stories L1)</span></div>
+        <div class="fb" style="background:#fff;border:1px solid var(--line)"><b>Try it like this:</b> "The designer tore up my pricing page at 4. <b>But</b> one comment was gold, <b>so</b> we rebuilt it in an hour. It's much better now."</div>
+        <div style="display:flex;gap:10px;margin:4px 16px 0"><div class="btn ghost" style="height:46px">🎤 Say it again</div><div class="btn dark" style="height:46px">Next question</div></div>
+      </div></div></div></div>
+      <div class="cap"><b>8 · Evening chat (optional)</b><span>The old voice tools, rethought. The app asks 3 questions, you answer by voice, and you get 1 thing you did well, 1–2 fixes, and a better version to say again. Speed and loudness are <i>measured</i> on your phone, never guessed.</span></div></div>
+
+      <div class="pcol"><div class="pframe"><div class="phone" id="m9" data-tab="me"><div class="scr">
+        <div class="topbar"><span class="logo">Me</span><span style="font-size:20px">⚙︎</span></div>
+        <div class="stats"><div class="stat"><b>6</b><span>day streak</span></div><div class="stat"><b>132</b><span>words &amp; phrases</span></div><div class="stat"><b>11</b><span>lessons done</span></div></div>
+        <div class="row"><div class="ic" style="background:#fdecea">⭐</div><div><b>Saved</b><span>38 cards · by skill</span></div><span class="go">›</span></div>
+        <div class="row"><div class="ic" style="background:#fdf0e1">⚠️</div><div><b>My weak spots</b><span>"tell my point", "and then…", talking fast</span></div><span class="go">›</span></div>
+        <div class="row"><div class="ic" style="background:#efebfb">📓</div><div><b>Story bank</b><span>7 moments from your days</span></div><span class="go">›</span></div>
+        <div class="row"><div class="ic" style="background:#e6f4ec">🎙️</div><div><b>Evening chats</b><span>12 chats · speed 182 → 158 wpm</span></div><span class="go">›</span></div>
+        <div class="row"><div class="ic" style="background:#e8f1fa">💬</div><div><b>Things I asked</b><span>17 questions → 63 cards</span></div><span class="go">›</span></div>
+      </div></div></div>
+      <div class="cap"><b>9 · Me</b><span>Everything you keep, in one place: saved cards, weak spots, your story bank (one moment from each day, to reuse), past chats and past asks.</span></div></div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">How every card teaches</div>
+    <h2>The same shape, every time</h2>
+    <div class="anat">
+      <ol>
+        <li><b>Colour + level + kind:</b> you always know where you are (💬 Small talk · L1 · Learn).</li>
+        <li><b>One idea only:</b> a rule in one plain sentence.</li>
+        <li><b>Two examples:</b> one at work, one in everyday life. You need to see it <i>used</i>.</li>
+        <li><b>"Instead of":</b> the weak version you'd normally say, when there is one.</li>
+        <li><b>An everyday comparison:</b> "conversation is badminton, not a speech".</li>
+        <li><b>A recall moment:</b> think of the answer before you see it. Pulling it from memory is what makes it stick.</li>
+        <li><b>Save ⭐ and Again ↻:</b> saved cards go to Me. "Again" brings the card back sooner.</li>
+      </ol>
+      <div class="sci" style="background:var(--cl-soft);border-color:#cbe8d6"><b>Why this shape?</b><p>Seeing a word 10 times is enough to <i>recognise</i> it, but not to <i>use</i> it. Recalling and making your own sentence is what moves it into your speech. Cards come back at growing gaps (1, 3, 7, 16, 35 days), which feels harder but works better.</p><p class="src">Webb 2007 · Roediger &amp; Karpicke 2006 · Cepeda et al. 2008 · Kornell 2009. The 1-3-7-16-35 schedule is our choice, inspired by the research.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">The research, in plain words</div>
+    <h2>What the books and studies agree on</h2>
+    <p class="lede">I went through more than 100 sources: studies, books (Storyworthy, Supercommunicators, The Fine Art of Small Talk, The Pyramid Principle, Think Faster Talk Smarter, Made to Stick) and expert guides. These ideas became the AI's rulebook.</p>
+    <div class="science">
+      <div class="sci"><b>💬 People want to talk to you more than you think.</b><p>People expect chatting with a stranger to be unpleasant, and it isn't. After a chat, the other person liked you more than you guess. Deep talk is less awkward than expected, and people prefer it afterwards. The first lesson fixes this belief.</p><p class="src">Epley &amp; Schroeder 2014 · Boothby et al. 2018 · Kardas, Kumar &amp; Epley 2021</p></div>
+      <div class="sci"><b>💬 Follow-up questions make people like you more.</b><p>Ask more about what they just said, not a new topic. Share a little first, then ask, so it never feels like an interview. Don't ask a question just to talk about yourself.</p><p class="src">Huang et al. 2017 (modest effect) · Sprecher et al. 2013 · Brooks &amp; Yeomans</p></div>
+      <div class="sci"><b>📖 A story is a change, not a list.</b><p>Replace "and then… and then…" with "but" and "so". Every story needs a moment where something changes. Start in the action and know your last line before you begin.</p><p class="src">Matthew Dicks, Storyworthy · Randy Olson, And-But-Therefore · The Moth</p></div>
+      <div class="sci"><b>📖 Small details beat big words.</b><p>"My Activa died at 9:58" beats "I had a vehicle problem in the morning". Name the person, the place, the time. Add one line of real dialogue.</p><p class="src">Heath &amp; Heath, Made to Stick · Green &amp; Brock 2000</p></div>
+      <div class="sci"><b>🎯 Say the point first.</b><p>Four ready shapes cover nearly every answer: Point-Reason-Example-Point; What / So what / Now what; Situation-Problem-Answer; Bottom line first. With a shape, you're never short of words.</p><p class="src">Toastmasters (PREP) · Matt Abrahams · Barbara Minto</p></div>
+      <div class="sci"><b>🔤 Learn phrases, not just words, and in both directions.</b><p>"Meet a deadline" sticks better than "deadline". Practise from meaning to English, because that's the direction speaking goes. "Um" is normal. Replace it with "let me think", don't ban it.</p><p class="src">Boers et al. 2006 · Laufer &amp; Hulstijn 2001 · Clark &amp; Fox Tree 2002</p></div>
+    </div>
+    <p class="note">Left out on purpose: "stories release oxytocin" (didn't hold up when others re-tested it) and "36 questions make you fall in love" (an overstatement). The AI is told never to claim these.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">The AI rulebook</div>
+    <h2>One rulebook the AI follows every time</h2>
+    <p class="lede">Whenever the AI makes cards, answers an Ask, or gives chat feedback, it reads this rulebook first. A second AI then checks each new card against the same rules before you see it.</p>
+    <div class="three">
+      <div class="col"><h3>Every card</h3><ul><li>One idea, plain words</li><li>A work example and an everyday example</li><li>An everyday comparison and a recall moment</li><li>Useful everyday words, never rare or showy ones</li><li>Slips explained as "in global English…"</li><li>No made-up idioms, no fake science</li></ul></div>
+      <div class="col"><h3>Every day</h3><ul><li>3–5 new items a day, the rest reviews</li><li>Mixes all 4 skills, leaning on what you ask about</li><li>Your weak spots come back until they're fixed</li><li>No repeats, no near-duplicates</li><li>Office-safe topics: food, travel, festivals. Never salary, caste or marriage</li></ul></div>
+      <div class="col"><h3>Every chat answer</h3><ul><li>Teach first, judge second</li><li>At most 3 points: 1 thing you did well, 1–2 fixes</li><li>Always a better version you can say again</li><li>Speed and loudness only from your phone's measurement</li><li>Each fix links to the lesson that teaches it</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Your question: can the AI analyse a voice note?</div>
+    <h2>Yes, and it costs pennies</h2>
+    <p class="lede">Two steps. First a listening service turns your voice note into text, like subtitles. Then an AI reads the text and coaches you against the rulebook. Your phone measures speed and loudness on its own, for free.</p>
+    <table class="cost">
+      <tr><th>Option</th><th>How it works</th><th>Per month*</th><th>Verdict</th></tr>
+      <tr><td>A · Free only</td><td>Groq (listens) + Gemini free tier (coaches)</td><td>$0</td><td>Free tiers are tight (around 20 coaching calls a day) and may use your answers for training. Fine as a backup.</td></tr>
+      <tr><td>B · Gemini hears the audio</td><td>Gemini listens to the recording and coaches</td><td>~$2.20 (≈ ₹185), doubling in Jan 2027</td><td>Can comment on tone and "um"s, but can't measure speed or loudness</td></tr>
+      <tr><td><b>D · Groq + Claude Haiku</b></td><td>Groq writes the text, Claude's cheapest model coaches</td><td><b>~$0.40 (≈ ₹35)</b></td><td><b>Recommended start [My guess, based on the research].</b> Cheap and reliable. Try it for a week against Sonnet.</td></tr>
+      <tr><td>C · Groq + Claude Sonnet</td><td>Same, with Claude's stronger model</td><td>~$4.50 (≈ ₹380)</td><td>Upgrade if Haiku's coaching feels thin</td></tr>
+    </table>
+    <p class="note">*Assumes one chat a day, 5 answers of about 1 minute each, plus 30 new AI cards a day. Rupee figures are rough. Claude can't hear audio, so it always reads the text. Prices were checked on the official pages on 29 Oct 2026.</p>
+    <div class="steps" style="margin-top:18px">
+      <div class="step zero"><h3>Things I found that need fixing anyway</h3><p>① The live site was never set up, so no AI has ever run for you. ② The backup AI model the app uses was switched off by Groq in August. ③ On iPhone, voice-to-text may not work at all when the app is opened from the home-screen icon (a known Apple limit). That's why the plan uses Groq's listening service instead of the phone's. One test on your phone will confirm.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Today's app, for comparison</div>
+    <h2>What it looks like now</h2>
+    <div class="shots">
+      <div class="shot"><img src="redesign-v5/now-1-feed.png" alt="Today's feed"><h4>Feed</h4><ul><li>Word and meaning only</li><li>Coach button overlaps the header</li></ul></div>
+      <div class="shot"><img src="redesign-v5/now-2-browse.png" alt="Today's browse"><h4>Browse</h4><ul><li>14 decks, no search box</li></ul></div>
+      <div class="shot"><img src="redesign-v5/now-3-speak.png" alt="Today's speak"><h4>Speak</h4><ul><li>Routine, 6 modes, timers, XP</li></ul></div>
+      <div class="shot"><img src="redesign-v5/now-4-you.png" alt="Today's you"><h4>You</h4><ul><li>Loudness charts, AI coach hidden</li></ul></div>
+    </div>
+    <table>
+      <tr><th>Screen</th><th>Before</th><th>Now</th></tr>
+      <tr><td>Tabs</td><td>Feed · Browse · Speak · You, plus Capture and Coach buttons</td><td>Feed · Ask · Me</td></tr>
+      <tr><td>Learning</td><td>Random cards, nothing teaches the "why"</td><td>4 skills × 5 levels; short lessons first, then practice</td></tr>
+      <tr><td>Cards</td><td>Word + meaning</td><td>Rule + work example + everyday example + "instead of" + comparison</td></tr>
+      <tr><td>Asking the AI</td><td>Hidden box, answer comes "later"</td><td>Ask tab; answer in seconds</td></tr>
+      <tr><td>Speaking</td><td>12-minute routine, 6 modes, drills</td><td>Optional 3-question evening chat with real coaching</td></tr>
+      <tr><td>Progress</td><td>Loudness and breath charts</td><td>Streak, lessons done, saved, weak spots, story bank</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Frozen · 29 Oct 2026</div>
+    <h2>What you decided</h2>
+    <table>
+      <tr><th>Decision</th><th>Your answer</th></tr>
+      <tr><td>Structure</td><td>4 skills × 5 levels × Learn/Use/Fix/Try cards. Lessons at the top like Stories, practice below like Reels. Tabs: Feed · Ask · Me. Hindi hidden.</td></tr>
+      <tr><td>Day one</td><td>All 4 skills, rotating: one short lesson a day, cycling through them</td></tr>
+      <tr><td>Voice coach</td><td>Groq listens, Claude Haiku coaches (about ₹35 a month)</td></tr>
+      <tr><td>Evening chat</td><td>Built last, after lessons and Ask work</td></tr>
+      <tr><td>Ask → feed</td><td><b>Everything you ask comes back.</b> Each answer becomes cards in your feed and reviews, in different forms (Use → Fix → Try → used inside a lesson example), so you meet it again and again until you can say it yourself.</td></tr>
+      <tr><td>Mix &amp; link</td><td><b>The 4 skills are woven together.</b> Words you learn show up in Story and Small-talk examples. Try cards mix skills: "tell this story using 2 of this week's words". Fixes link to the lesson that teaches them. The feed mixes all four every day.</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Build order (after you freeze)</div>
+    <h2>Five steps, you check each one</h2>
+    <div class="steps">
+      <div class="step zero"><h3>Switch the AI on <span class="pill p-warn" style="font-size:12px;vertical-align:middle">needs you · ~10 min</span></h3><p>Create the live site and paste 3 keys (Gemini, Groq, Anthropic). I'll give you click-by-click steps. I'll also fix the switched-off backup model.</p></div>
+      <div class="step"><h3>New shell + rulebook</h3><p>Three tabs, the new card shape, the rulebook loaded into the AI, Hindi and the old tools hidden.</p></div>
+      <div class="step"><h3>Lessons for all 4 skills</h3><p>The Stories row, lesson player and skill pages. Level 1–2 lessons for each skill, written from the research and double-checked: about 40 lessons.</p></div>
+      <div class="step"><h3>Ask + Fix my sentence</h3><p>Instant search over the library, new AI cards after the check, weak spots, "add to my feed".</p></div>
+      <div class="step"><h3>Try cards + the existing 1,100 cards re-shaped</h3><p>Add work and everyday examples to the cards you already have. Add Try cards and global-English fixes. The AI tops up a few more each day.</p></div>
+      <div class="step"><h3>Evening chat (voice)</h3><p>Last, because you put speaking lower. Groq + Claude Haiku, phone-measured speed and loudness, story bank.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">Plan only — no app code changed. The research notes and the AI rulebook are saved in the project's docs folder. Phone screens are mockups with sample text.</footer>
+<script>
+const TAB=t=>`<div class="tabbar">
+<div class="tab${t=='feed'?' on':''}"><svg viewBox="0 0 24 24" fill="${t=='feed'?'currentColor':'none'}" stroke="currentColor" stroke-width="2"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1z"/></svg>Feed</div>
+<div class="tab${t=='ask'?' on':''}"><div class="askfab"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" width="22" height="22"><path d="M12 5v14M5 12h14"/></svg></div>Ask</div>
+<div class="tab${t=='me'?' on':''}"><svg viewBox="0 0 24 24" fill="${t=='me'?'currentColor':'none'}" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>Me</div></div>`;
+document.querySelectorAll('.phone').forEach(p=>{p.insertAdjacentHTML('afterbegin','<div class="island"></div><div class="sb"><span>9:41</span><span>●●● ▮</span></div>');if(p.dataset.tab!=='none')p.querySelector('.scr').insertAdjacentHTML('beforeend',TAB(p.dataset.tab));});
+function fit(){document.querySelectorAll(".pframe").forEach(f=>{const p=f.querySelector(".phone");const s=f.clientWidth/412;p.style.transform="scale("+s+")";f.style.height=(866*s)+"px";});}
+addEventListener("resize",fit);fit();
+</script>
+</body>
+</html>
