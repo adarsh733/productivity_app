@@ -1,12 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useFeed } from '../../features/feed/useFeed';
 import { useBookmarks } from '../../features/bookmarks/useBookmarks';
-import { useProfile } from '../../features/profile/useProfile';
 import CardFace from '../cards/CardFace';
 import { useCardGestures } from './useCardGestures';
-import CoachBox from '../../features/coach/CoachBox';
 import type { Card } from '../../types/contract';
-import { GAMIFICATION } from '../../types/contract';
+import { isTeachCard } from '../../features/skills/trackOf';
 import { FlagIcon, MicrophoneIcon, StarIcon, ThumbsDownIcon } from '../shell/Icons';
 import { rejectCard } from '../../features/auto/reject';
 
@@ -17,19 +15,12 @@ export interface FeedScreenProps {
 export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
   const feed = useFeed();
   const { isBookmarked, toggleBookmark } = useBookmarks();
-  const { dailyGoal } = useProfile();
 
   const [isDetail, setIsDetail] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
-  const [showGoalBanner, setShowGoalBanner] = useState(false);
-  // AG-007 stage 3: coach box entry. Overlay only — feed logic untouched.
-  const [showCoach, setShowCoach] = useState(false);
-
-  const targetGoalXp = GAMIFICATION.GOAL_XP[dailyGoal];
 
   const shownAt = useRef<number>(Date.now());
   const busy = useRef<boolean>(false);
-  const prevGoalAchieved = useRef<boolean | null>(null);
 
   const card = feed.item?.card;
   const cardId = card?.id;
@@ -60,22 +51,6 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
     return () => clearTimeout(timer);
   }, [cardId]);
 
-  const { ready, todayXp } = feed;
-
-  // Daily goal celebration banner based on selected XP goal
-  useEffect(() => {
-    if (!ready) return;
-    const isGoalDone = todayXp >= targetGoalXp;
-    const was = prevGoalAchieved.current;
-    prevGoalAchieved.current = isGoalDone;
-
-    if (was === false && isGoalDone) {
-      setShowGoalBanner(true);
-      const timer = setTimeout(() => setShowGoalBanner(false), 3500);
-      return () => clearTimeout(timer);
-    }
-  }, [ready, todayXp, targetGoalXp]);
-
   const showToast = (msg: string) => {
     setToastMessage(msg);
     setTimeout(() => {
@@ -90,7 +65,7 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
       const res = await toggleBookmark(card.id, card.type);
       if (res.isBookmarked) {
         markEngaged(card.id);
-        showToast(res.xpEarned > 0 ? `Saved to You (+${res.xpEarned} XP)` : 'Saved to You');
+        showToast('Saved');
       } else {
         showToast('Bookmark removed');
       }
@@ -122,6 +97,16 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
     const msSpent = Date.now() - shownAt.current;
     await feed.submit(g, { msSpent });
   }, [feed, cardId]);
+
+  // v5 teach card: Got it ✓ moves on (a due card is graded good); Again ↻ brings it back soon.
+  const handleGotIt = useCallback(async () => {
+    if (cardId) markEngaged(cardId);
+    if (feed.item?.reason === 'due') {
+      await handleGrade('good');
+    } else {
+      await handleAdvance();
+    }
+  }, [feed, cardId, handleAdvance, handleGrade]);
 
   const handleDownvote = useCallback(async () => {
     if (busy.current) return;
@@ -212,8 +197,10 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
               ? `translate3d(${dragOffset.x}px, ${dragOffset.y}px, 0)`
               : undefined;
 
+  const isTeach = card ? isTeachCard(card) : false;
+
   return (
-    <div className="screen feed-screen">
+    <div className="screen feed-screen v5-feed">
       <header className="topbar">
         <div className="brand-group">
           <span className="feed-brand-title">Articulate</span>
@@ -227,33 +214,7 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
             </span>
           )}
         </div>
-
-        <div className="xp-group">
-          <span className="xp" aria-label={`${feed.todayXp} XP earned today`}>
-            {feed.todayXp} XP today
-          </span>
-          <button
-            type="button"
-            className="abtn tap"
-            onClick={() => setShowCoach(true)}
-            aria-label="Tell the coach"
-          >
-            💬 Coach
-          </button>
-        </div>
       </header>
-
-      {showCoach && (
-        <div className="coach-overlay" role="dialog" aria-modal="true" aria-label="Tell the coach">
-          <CoachBox onDone={() => setShowCoach(false)} onSaved={() => setShowCoach(false)} />
-        </div>
-      )}
-
-      {showGoalBanner && (
-        <div className="handoff-banner" role="status" aria-live="polite">
-          🎉 Daily XP goal reached! ({feed.todayXp}/{targetGoalXp} XP) · Streak: {feed.streak} day{feed.streak === 1 ? '' : 's'}.
-        </div>
-      )}
 
       {toastMessage && (
         <div className="toast" role="status" aria-live="polite">
@@ -277,18 +238,24 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
             setIsDetail((d) => !d);
           }}
           showSwipeHint={showHint}
+          saved={bookmarked}
+          onAgain={isTeach ? () => void handleGrade('again') : undefined}
+          onGotIt={isTeach ? () => void handleGotIt() : undefined}
+          onSave={isTeach ? () => void handleToggleBookmark() : undefined}
         />
       </div>
 
-      <nav className="actions" aria-label="Card actions">
-        <button
-          type="button"
-          className={`abtn ico star ${bookmarked ? 'on' : ''} tap`}
-          onClick={(e) => void handleToggleBookmark(e)}
-          aria-label={bookmarked ? 'Saved (tap to remove bookmark)' : 'Bookmark card'}
-        >
-          <StarIcon filled={bookmarked} aria-hidden="true" />
-        </button>
+      <nav className={`actions${isTeach ? ' is-teach' : ''}`} aria-label="Card actions">
+        {!isTeach && (
+          <button
+            type="button"
+            className={`abtn ico star ${bookmarked ? 'on' : ''} tap`}
+            onClick={(e) => void handleToggleBookmark(e)}
+            aria-label={bookmarked ? 'Saved (tap to remove bookmark)' : 'Bookmark card'}
+          >
+            <StarIcon filled={bookmarked} aria-hidden="true" />
+          </button>
+        )}
 
         <button
           type="button"
@@ -312,7 +279,7 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
           </button>
         )}
 
-        {onOpenSpeakWithCard && card && (
+        {onOpenSpeakWithCard && card && !isTeach && (
           <button
             type="button"
             className="abtn mic tap"
@@ -326,7 +293,7 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
           </button>
         )}
 
-        {feed.item?.reason === 'due' ? (
+        {isTeach ? null : feed.item?.reason === 'due' ? (
           <>
             <button
               type="button"

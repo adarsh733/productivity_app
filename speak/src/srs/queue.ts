@@ -12,6 +12,7 @@ import type {
 import { QUEUE_RULES } from '../types/contract';
 import { isDue } from '../lib/date';
 import { newReview } from './scheduler';
+import { isTeachCard, trackOf } from '../features/skills/trackOf';
 
 /**
  * V3 Endless Feed Queue Engine
@@ -19,6 +20,11 @@ import { newReview } from './scheduler';
  * Rules:
  *  - Endless mode only. The feed never dead-ends.
  *  - Breath drills and gym drills (describe, explain, teach_back) leave the feed.
+ *  - v5 (question 5A): pronounce and say-it voice drills leave the feed too; they stay in
+ *    the database and open from the old tools. Action verbs stay (Words cards).
+ *  - v5: Hindi cards stay in the database but are not served in the feed.
+ *  - v5: `teach` cards ride the feed; where it can, the queue serves a different skill
+ *    (small talk / stories / speak clearly / words) than the card before it.
  *  - Card one on a fresh profile is guaranteed to be an English 'word' or 'idiom'.
  *  - No adjacent same-type cards when at least 2 types are available.
  *  - Hindi cards appear naturally at roughly 1 in 8 cards (~12.5%, strictly 8%–18%).
@@ -33,13 +39,18 @@ export const FEED_TYPES: readonly CardType[] = [
   'swap',
   'idiom',
   'action_verb',
-  'pronounce',
-  'say_it',
   'phrase',
   'feeling',
   'story_move',
   'situation',
+  'teach',
 ] as const;
+
+/** v5: how much more often a teach card is picked than an old type, among new cards. */
+export const TEACH_SEAT_BOOST = 2.5;
+
+/** v5: the feed shows English only; Hindi cards stay stored but are not served. */
+export const FEED_SHOWS_HINDI = false;
 
 const TIER_DUE = 0;
 const TIER_NEW = 1;
@@ -218,7 +229,10 @@ export function buildQueue(
 
   // Filter cards to active feed types only (no breath, no gym drills)
   const eligible = cards.filter(
-    (c) => c.status === 'active' && FEED_TYPES.includes(c.type),
+    (c) =>
+      c.status === 'active' &&
+      FEED_TYPES.includes(c.type) &&
+      (FEED_SHOWS_HINDI || c.lang !== 'hi'),
   );
   if (eligible.length === 0) return [];
 
@@ -249,6 +263,7 @@ function buildEndless(
   const used = new Set<string>();
   const typeLastIndex = new Map<CardType, number>();
   let lastType: CardType | null = null;
+  let lastTrack: string | null = null;
   let cardsSinceLastHindi = 4; // start in the middle so first Hindi appears around card 7-8
 
   // Rule 3: Fresh profile Day 1 Card 1 is guaranteed to be an English 'word' or 'idiom'
@@ -273,6 +288,7 @@ function buildEndless(
       out.push({ card: starter.card, reason: starter.reason });
       if (starter.reason === 'new') newBudget--;
       lastType = starter.card.type;
+      lastTrack = trackOf(starter.card).track;
       cardsSinceLastHindi++;
     }
   }
@@ -288,6 +304,7 @@ function buildEndless(
       wantHindi,
       opts,
       out.length,
+      lastTrack,
     );
     if (!chosen) break;
 
@@ -302,6 +319,7 @@ function buildEndless(
       cardsSinceLastHindi++;
     }
     lastType = chosen.card.type;
+    lastTrack = trackOf(chosen.card).track;
   }
 
   if (out.length < opts.limit) {
@@ -358,6 +376,7 @@ function pickCandidate(
   wantHindi: boolean,
   opts: QueueOptions,
   currentPosition: number,
+  lastTrack: string | null = null,
 ): PoolCandidate | null {
   const eligible = (p: PoolCandidate) =>
     !used.has(p.card.id) && !(p.reason === 'new' && newBudget <= 0);
@@ -408,8 +427,15 @@ function pickCandidate(
     candidateTypes.sort(([typeA], [typeB]) => {
       const sampleA = byType.get(typeA)![0]!.card;
       const sampleB = byType.get(typeB)![0]!.card;
-      const multA = getCardMultiplier(sampleA, opts.interests, opts.typeWeights, opts.downweights);
-      const multB = getCardMultiplier(sampleB, opts.interests, opts.typeWeights, opts.downweights);
+      // v5: the day's new slots are limited (MAX_NEW_PER_DAY) and the old decks are
+      // large, so teaching cards get a seat boost here — in the new-card pick only.
+      // The refill pass keeps plain multipliers so a boosted type is never replayed.
+      const multA =
+        getCardMultiplier(sampleA, opts.interests, opts.typeWeights, opts.downweights) *
+        (isTeachCard(sampleA) ? TEACH_SEAT_BOOST : 1);
+      const multB =
+        getCardMultiplier(sampleB, opts.interests, opts.typeWeights, opts.downweights) *
+        (isTeachCard(sampleB) ? TEACH_SEAT_BOOST : 1);
       const lastA = typeLastIndex.get(typeA) ?? -100;
       const lastB = typeLastIndex.get(typeB) ?? -100;
 
@@ -425,7 +451,17 @@ function pickCandidate(
 
     // Sort by rank (lapses) then by deterministic daily score
     itemsOfBestType.sort((a, b) => a.rank - b.rank || a.dailyScore - b.dailyScore);
-    return itemsOfBestType[0] ?? null;
+    const first = itemsOfBestType[0];
+    if (!first) return null;
+    // v5: among equally-ranked cards of this type, prefer a different skill
+    // than the card just served so all four skills mix.
+    if (lastTrack !== null && trackOf(first.card).track === lastTrack) {
+      const other = itemsOfBestType.find(
+        (p) => p.rank === first.rank && trackOf(p.card).track !== lastTrack,
+      );
+      if (other) return other;
+    }
+    return first;
   }
 
   return null;

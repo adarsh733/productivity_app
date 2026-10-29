@@ -51,26 +51,13 @@
   color: var(--ink-3);
 }
 
-.xp-group .xp {
-  font-size: var(--fs-1);
-  font-weight: var(--fw-bold);
-  color: var(--ink-3);
-}
+/* v5: the XP bar, goal banner and coach box left the feed. */
 
-.handoff-banner {
-  background: var(--accent-soft);
-  color: var(--accent);
-  border-bottom: 1px solid var(--accent-line);
-  font-size: var(--fs-2);
-  font-weight: var(--fw-bold);
-  padding: 8px var(--gutter);
-  text-align: center;
-  animation: bannerSlideDown var(--dur) var(--ease);
-}
-
-@keyframes bannerSlideDown {
-  from { transform: translateY(-100%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+/* v5 teach cards carry their own buttons; the bar underneath is just the
+   small extras (less of this / this is wrong). */
+.actions.is-teach {
+  justify-content: center;
+  padding-top: 0;
 }
 
 .card-frame {

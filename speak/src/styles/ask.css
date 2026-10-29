@@ -1,0 +1,152 @@
+/* -- SPEAK v5: Ask screen (tokens only) ------------------------------------- */
+
+.ask-screen {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--s-4) var(--gutter) calc(var(--tabbar-h) + var(--s-6) + var(--safe-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.ask-title {
+  font-family: var(--serif);
+  font-size: var(--fs-6);
+  line-height: var(--lh-tight);
+  color: var(--ink);
+  margin: 0;
+}
+
+.ask-box {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  min-height: 52px;
+  padding: 0 var(--s-4);
+  background: var(--card);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-md);
+}
+
+.ask-box:focus-within {
+  border-color: var(--accent-bright);
+}
+
+.ask-box-icon {
+  flex: none;
+  color: var(--ink);
+}
+
+.ask-input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  font-size: var(--fs-4);
+  color: var(--ink);
+}
+
+.ask-input::placeholder {
+  color: var(--ink-3);
+}
+
+.ask-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.ask-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: 0 var(--s-4);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  font: inherit;
+  font-size: var(--fs-3);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.ask-h2 {
+  font-size: var(--fs-4);
+  font-weight: var(--fw-bold);
+  color: var(--ink);
+  margin: var(--s-2) 0 0;
+}
+
+.ask-tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-3);
+}
+
+.ask-tile {
+  --tile: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--tile) 10%, var(--card));
+  color: var(--tile);
+}
+
+.ask-tile-smalltalk { --tile: var(--t-idiom); }
+.ask-tile-stories { --tile: var(--t-swap); }
+.ask-tile-clearly { --tile: var(--t-say_it); }
+.ask-tile-words { --tile: var(--t-word); }
+
+.ask-tile-name {
+  font-family: var(--serif);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+}
+
+.ask-tile-sub {
+  font-size: var(--fs-2);
+  font-weight: var(--fw-medium);
+}
+
+.ask-tile-bar {
+  display: block;
+  height: 6px;
+  border-radius: var(--r-pill);
+  background: var(--card);
+  overflow: hidden;
+}
+
+.ask-tile-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--tile);
+  border-radius: var(--r-pill);
+}
+
+.ask-recent {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ask-recent-item {
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-3);
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+.ask-empty {
+  margin: 0;
+  font-size: var(--fs-3);
+  color: var(--ink-3);
+}

@@ -311,3 +311,129 @@
   font-size: var(--fs-1);
   font-weight: var(--fw-bold);
 }
+
+/* -- v5 teach card + skill chips ------------------------------------------- */
+/* One colour per skill: --track (text/border) on --track-soft (fill). */
+[data-track='smalltalk'] { --track: #0f766e; --track-soft: #ccfbf1; }
+[data-track='stories'] { --track: #be185d; --track-soft: #fce7f3; }
+[data-track='clearly'] { --track: #0369a1; --track-soft: #e0f2fe; }
+[data-track='words'] { --track: #6d28d9; --track-soft: #ede9fe; }
+
+.card-chips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+.teach-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-1);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-label);
+  white-space: nowrap;
+}
+
+.teach-chip-kind {
+  background: var(--ink);
+  color: #fff;
+}
+
+.teach-chip-track {
+  background: var(--track-soft, var(--raised));
+  color: var(--track, var(--ink-2));
+}
+
+.teach-face {
+  border-top: 4px solid var(--track, var(--line));
+}
+
+.teach-body {
+  cursor: default;
+  gap: 12px;
+}
+
+.teach-title {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: var(--fs-6);
+  line-height: var(--lh-tight);
+  color: var(--ink);
+}
+
+.teach-rule {
+  margin: 0;
+  font-size: var(--fs-4);
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.teach-instead {
+  border-left: 3px solid var(--track, var(--line));
+  padding-left: 10px;
+}
+
+.teach-instead .val {
+  color: var(--ink-2);
+  text-decoration: line-through;
+  text-decoration-color: var(--ink-3);
+}
+
+.teach-lines {
+  white-space: pre-line;
+}
+
+.teach-analogy {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: var(--r-md, 12px);
+  background: var(--track-soft, var(--raised));
+  color: var(--ink);
+  font-size: var(--fs-3);
+  line-height: 1.35;
+}
+
+.teach-try .val {
+  font-weight: var(--fw-bold);
+}
+
+.teach-answer {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: var(--r-md, 12px);
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.teach-reveal {
+  margin-top: 8px;
+  min-height: 44px;
+  padding: 0 16px;
+}
+
+.teach-actions {
+  flex: none;
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.teach-actions .abtn {
+  flex: 1;
+  min-height: 48px;
+  padding: 0 8px;
+}
+
+.teach-actions .abtn.teach-got {
+  flex: 1.3;
+}
+
+.teach-actions .abtn.teach-save.on {
+  background: #fef3c7;
+  border-color: #d97706;
+  color: #92400e;
+}

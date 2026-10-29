@@ -2,7 +2,8 @@ import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent, act, waitFor, cleanup } from '@testing-library/react';
 import FeedScreen from './FeedScreen';
 import { db } from '../../db/db';
-import { ensureSeeded } from '../../db/seedLoader';
+import { isTeachCard } from '../../features/skills/trackOf';
+import { ensureSeeded, readSeedFiles } from '../../db/seedLoader';
 
 describe('FeedScreen Real RTL Component Suite', () => {
   beforeEach(async () => {
@@ -39,7 +40,52 @@ describe('FeedScreen Real RTL Component Suite', () => {
     );
 
     expect(screen.getByLabelText(/day streak/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/XP earned today/i)).toBeInTheDocument();
+  });
+
+  it('v5: the feed shows no XP bar, no coach box and no goal banner', async () => {
+    render(<FeedScreen />);
+
+    await waitFor(
+      () => {
+        expect(screen.getByRole('button', { name: /Advance to next card/i })).toBeInTheDocument();
+      },
+      { timeout: 10000 },
+    );
+
+    expect(screen.queryByLabelText(/XP earned today/i)).toBeNull();
+    expect(screen.queryByText(/XP today/i)).toBeNull();
+    expect(screen.queryByRole('button', { name: /Tell the coach/i })).toBeNull();
+    expect(screen.queryByText(/Daily XP goal/i)).toBeNull();
+  });
+
+  it('v5: a teach card shows Again, Save and Got it on the card, and Got it moves on', async () => {
+    // Only teach cards in the deck so the first card is a teach card.
+    await db.cards.clear();
+    const { cards } = readSeedFiles();
+    await db.cards.bulkPut(cards.filter((c) => isTeachCard(c)));
+
+    render(<FeedScreen />);
+
+    await waitFor(
+      () => {
+        expect(screen.getByRole('button', { name: /Advance to next card/i })).toBeInTheDocument();
+      },
+      { timeout: 10000 },
+    );
+    expect(screen.getByText('Again \u21bb')).toBeInTheDocument();
+    expect(screen.getByText('Got it \u2713')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Bookmark card/i })).toBeInTheDocument();
+    expect(screen.getAllByText(/\u00b7 L\d/)).toHaveLength(1);
+
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: /Advance to next card/i }));
+    });
+    await waitFor(
+      async () => {
+        expect(await db.events.count()).toBeGreaterThan(0);
+      },
+      { timeout: 10000 },
+    );
   });
 
   it('advances to next card when Got It button is clicked', async () => {

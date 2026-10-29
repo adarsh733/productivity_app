@@ -1,4 +1,5 @@
 import type { AiRequest, AiResponse, AiTask } from '../../src/types/contract';
+import { rulebookFor } from '../rulebook';
 
 /**
  * The only path from the browser to a model.
@@ -11,15 +12,21 @@ import type { AiRequest, AiResponse, AiTask } from '../../src/types/contract';
  * 5. Timeouts with AbortController per provider and total deadline.
  * 6. In-memory rate limiting against abuse.
  * 7. Never turns an AI failure into fake/generic coaching.
+ * 8. Every task's standing instructions start with its slice of the AI rulebook
+ *    (`netlify/rulebook.ts`, generated from `docs/AI-RULEBOOK.md`).
  */
 
-const ALLOWED_TASKS: readonly AiTask[] = [
+/** Tasks this function can run today. Later steps add answer_ask and coach_chat. */
+const CONFIGURED_TASKS = [
   'expand_seed',
   'verify_batch',
   'classify_inbox',
   'review_recording',
   'plan_week',
-];
+] as const;
+type ConfiguredTask = (typeof CONFIGURED_TASKS)[number];
+
+const ALLOWED_TASKS: readonly AiTask[] = CONFIGURED_TASKS;
 
 /** Card types AI may ever draft (AG-008 §0.3) — mirrors `DraftCardType`. */
 const DRAFT_TYPES = [
@@ -52,12 +59,16 @@ const NEVER_PRODUCE = 'Never produce types: breath, pronounce, say_it, action_ve
 const AVOID_RULE =
   'If the input contains an "avoid" list, never produce any card whose headline term matches, or closely paraphrases, an entry in it.';
 
-/** Per-task generation settings. `verify_batch` is deliberately cold. */
-const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; system: string }> = {
+/**
+ * Per-task generation settings. `verify_batch` is deliberately cold.
+ * `shape` is the job-specific part (what to return, exact JSON shape). It goes
+ * AFTER the rulebook slice in the system prompt — see `systemFor`.
+ */
+const TASK_CONFIG: Record<ConfiguredTask, { temperature: number; maxTokens: number; shape: string }> = {
   expand_seed: {
     temperature: 1.0,
     maxTokens: 2048,
-    system: [
+    shape: [
       'You generate vocabulary and delivery drill cards for one Indian English speaker',
       'working in a corporate setting. Return ONLY JSON: {"cards":[...]}.',
       'Produce siblings of the SAME type and skill as the seed card, but different wording —',
@@ -74,19 +85,20 @@ const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; syst
   verify_batch: {
     temperature: 0,
     maxTokens: 2048,
-    system: [
-      'You are a strict verifier. For each item, answer whether it is real,',
-      'standard, and natural in everyday professional English.',
-      'Reject invented idioms, unnatural collocations, and calques from Hindi.',
-      'Also reject any claim that is contested, outdated, medically or legally',
-      'risky, or not well established. Reject slurs or words with an offensive',
-      'second meaning. When in doubt, reject. Return ONLY JSON.',
+    shape: [
+      'You are the checker: a different model wrote these items. Run cold and strict. Do not repair; judge. When in doubt, reject.',
+      'Check every item in "items" against the rulebook above, using every section 6 reject code (R1 to R17).',
+      'Items come in the app\'s own card shapes (word, swap, idiom, phrase, feeling, story_move, situation, describe, explain, teach_back, or a teach card).',
+      'An app shape carries only its own fields, so judge R4 MISSING against the fields that shape has; only a teach card needs the full anatomy (examples, analogy, try, register, track, level, category, kind).',
+      'Also reject slurs and words with an offensive second meaning, and any claim that is contested, outdated, or medically or legally risky.',
+      'Return ONLY JSON: {"results":[{"key":string,"ok":boolean,"reason":string}]} with one result per item, using the same "key" you were given.',
+      'ok true when no code applies (reason "pass"). ok false when any code applies: the reason starts with the code and its name, for example "R2 GRAMMAR: ...", then one short line saying why.',
     ].join(' '),
   },
   classify_inbox: {
     temperature: 0.4,
     maxTokens: 2048,
-    system: [
+    shape: [
       'You turn a raw one-line thought into grounded drill cards for one Indian English speaker in a corporate setting.',
       'Return ONLY JSON: {"kind":"word"|"mistake"|"topic"|"other","subject":string,"fix"?:string,"cards":[...]}.',
       'Allowed card types and exact shapes:',
@@ -99,7 +111,7 @@ const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; syst
   review_recording: {
     temperature: 0.3,
     maxTokens: 1024,
-    system: [
+    shape: [
       'You are an executive speech and communication coach for an Indian English speaker in tech.',
       'Review the user transcript, prompt context, and performance duration.',
       'Provide concise, high-signal, actionable feedback grounded strictly in what was said.',
@@ -118,7 +130,7 @@ const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; syst
   plan_week: {
     temperature: 0.2,
     maxTokens: 1024,
-    system: [
+    shape: [
       'You plan one week of speaking practice for one Indian English speaker in a corporate setting.',
       'You get last week\'s per-type numbers (views, again rate, skips), voice numbers, and his recent coach subjects.',
       'Return ONLY JSON: {"typeWeights":{...},"challengeFocus":"softer"|"slower"|"pause_first","focusWords":[...],"note":"..."}.',
@@ -134,9 +146,18 @@ const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number; syst
 
 type Provider = 'gemini' | 'groq' | 'anthropic';
 
-const ANTHROPIC_MODEL = 'claude-haiku-4-5';
-const GEMINI_MODEL = 'gemini-2.5-flash';
-const GROQ_MODEL = 'llama-3.3-70b-versatile';
+/** Model names, pinned by a test. Change them here and in `ai.test.ts` together. */
+export const ANTHROPIC_MODEL = 'claude-haiku-5-5';
+export const GEMINI_MODEL = 'gemini-3.5-flash-lite'; // stable code on Google's model page, 2026-10-29
+export const GROQ_MODEL = 'openai/gpt-oss-120b';
+
+/**
+ * The full system prompt for a task: its slice of the rulebook (the content
+ * rules), then the job-specific shape lines (what exactly to return).
+ */
+export function systemFor(task: ConfiguredTask): string {
+  return `${rulebookFor(task)}\n\n=== THIS JOB ===\n${TASK_CONFIG[task].shape}`;
+}
 
 const PER_PROVIDER_TIMEOUT_MS = 8000;
 const TOTAL_FUNCTION_DEADLINE_MS = 24000;
@@ -660,7 +681,10 @@ export default async function handler(req: Request): Promise<Response> {
     }
   }
 
-  const cfg = TASK_CONFIG[body.task];
+  // Safe: the ALLOWED_TASKS check above guarantees a configured task.
+  const task = body.task as ConfiguredTask;
+  const cfg = TASK_CONFIG[task];
+  const system = systemFor(task);
   const userPrompt = JSON.stringify(body.payload ?? {});
   if (userPrompt.length > 60_000) {
     return json({ ok: false, task: body.task, error: 'payload too large' }, 413);
@@ -689,7 +713,7 @@ export default async function handler(req: Request): Promise<Response> {
 
       const rawText = await callWithTimeout(
         provider,
-        cfg.system,
+        system,
         userPrompt,
         cfg.temperature,
         cfg.maxTokens,
@@ -754,7 +778,8 @@ async function call(
         model: ANTHROPIC_MODEL,
         max_tokens: maxTokens,
         temperature,
-        system,
+        // Cached: the rulebook slice is identical on every call for a task.
+        system: [{ type: 'text', text: system, cache_control: { type: 'ephemeral' } }],
         messages: [{ role: 'user', content: user }],
       }),
     });

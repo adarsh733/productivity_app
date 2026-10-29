@@ -4,8 +4,12 @@ import { grade, newReview } from './scheduler';
 import { QUEUE_RULES } from '../types/contract';
 import type { Card, CardType, DownweightRecord, QueueOptions, Review } from '../types/contract';
 import { readSeedFiles } from '../db/seedLoader';
+import { isTeachCard, trackOf } from '../features/skills/trackOf';
 
 const TODAY = '2026-08-11';
+
+const TRACK_CYCLE = ['smalltalk', 'stories', 'clearly', 'words'] as const;
+let teachCount = 0;
 
 function card(id: string, type: CardType, lang: 'en' | 'hi' = 'en', tags: string[] = []): Card {
   const base = {
@@ -45,6 +49,21 @@ function card(id: string, type: CardType, lang: 'en' | 'hi' = 'en', tags: string
       return { ...base, type, prompt: id, beats: ['', '', ''], targetSec: 60 };
     case 'situation':
       return { ...base, type, kind: 'incident', title: id, prompt: id, beats: ['', '', ''], targetVocab: [], targetSec: 60 };
+    case 'teach':
+      return {
+        ...base,
+        type,
+        track: TRACK_CYCLE[teachCount++ % TRACK_CYCLE.length]!,
+        level: 1,
+        kind: 'learn',
+        category: 'c',
+        title: id,
+        rule: 'r',
+        examples: { work: 'w', everyday: 'e' },
+        analogy: 'a',
+        tryPrompt: 'p',
+        register: 'both',
+      } as unknown as Card;
   }
 }
 
@@ -99,12 +118,34 @@ describe('V3 Queue Acceptance Suite', () => {
     }
   });
 
-  it('Hindi is strictly between 8% and 18% of a 1,000-card walk', () => {
+  it('v5: no Hindi card is served in a 1,000-card walk (they stay in the database)', () => {
+    expect(seedCards.some((c) => c.lang === 'hi')).toBe(true);
     const q = buildQueue(seedCards, NONE, opts({ limit: 1000 }));
-    const hindiCount = q.filter((i) => i.card.lang === 'hi').length;
-    const ratio = hindiCount / q.length;
-    expect(ratio).toBeGreaterThanOrEqual(0.08);
-    expect(ratio).toBeLessThanOrEqual(0.18);
+    expect(q.filter((i) => i.card.lang === 'hi')).toHaveLength(0);
+  });
+
+  it('v5 (question 5A): no pronounce or say-it voice drills in 1,000 feed cards; action verbs stay', () => {
+    const q = buildQueue(seedCards, NONE, opts({ limit: 1000 }));
+    expect(q.filter((i) => i.card.type === 'pronounce' || i.card.type === 'say_it')).toHaveLength(0);
+    expect(q.some((i) => i.card.type === 'action_verb')).toBe(true);
+  });
+
+  it('v5: the 8 gold teach cards are served and all 4 skills appear in the first 60 cards', () => {
+    const teach = seedCards.filter((c) => isTeachCard(c));
+    expect(teach.length).toBeGreaterThanOrEqual(8);
+    const q = buildQueue(seedCards, NONE, opts({ limit: 60 }));
+    const served = q.filter((i) => isTeachCard(i.card));
+    expect(served.length).toBeGreaterThan(0);
+    const tracks = new Set(served.map((i) => trackOf(i.card).track));
+    expect(tracks.size).toBeGreaterThanOrEqual(3);
+  });
+
+  it('v5: teach cards of different skills alternate when the deck has a mix', () => {
+    const deck: Card[] = Array.from({ length: 12 }, (_, i) => card(`t${i}`, 'teach'));
+    const q = buildQueue(deck, NONE, opts({ limit: 12 }));
+    for (let i = 1; i < q.length; i++) {
+      expect(trackOf(q[i]!.card).track).not.toBe(trackOf(q[i - 1]!.card).track);
+    }
   });
 
   it('New-card cap remains 20 across refills and walk extensions', () => {
@@ -115,7 +156,7 @@ describe('V3 Queue Acceptance Suite', () => {
   });
 
   it('With only 20 cards in the DB, a 200-card walk still never dead-ends', () => {
-    const types: CardType[] = ['word', 'swap', 'idiom', 'action_verb', 'pronounce'];
+    const types: CardType[] = ['word', 'swap', 'idiom', 'action_verb', 'story_move'];
     const smallDeck = Array.from({ length: 20 }, (_, i) => card(`small_${i}`, types[i % types.length]!));
     const q = buildQueue(smallDeck, NONE, opts({ limit: 200 }));
     expect(q).toHaveLength(200);
@@ -178,7 +219,7 @@ describe('Preferences, Downweights & Shuffling', () => {
 describe('V3 Queue Rules and Rotation', () => {
   it('caps new cards for the day at MAX_NEW_PER_DAY', () => {
     const deck = Array.from({ length: 60 }, (_, i) =>
-      card(`c${i}`, i % 2 ? 'word' : 'pronounce'),
+      card(`c${i}`, i % 2 ? 'word' : 'story_move'),
     );
     const q = buildQueue(deck, NONE, opts({ limit: 60 }));
     expect(q.filter((i) => i.reason === 'new').length).toBeLessThanOrEqual(
@@ -187,7 +228,7 @@ describe('V3 Queue Rules and Rotation', () => {
   });
 
   it('puts due reviews ahead of new material', () => {
-    const deck = [card('w1', 'word'), card('p1', 'pronounce'), card('w2', 'word')];
+    const deck = [card('w1', 'word'), card('p1', 'story_move'), card('w2', 'word')];
     const reviews = new Map<string, Review>([
       ['w2', { ...newReview('w2', TODAY), state: 'review', reps: 4, due: '2026-08-01' }],
     ]);
@@ -197,7 +238,7 @@ describe('V3 Queue Rules and Rotation', () => {
   });
 
   it('serves the most-failed card first among due cards', () => {
-    const deck = [card('a', 'word'), card('b', 'word'), card('c', 'pronounce')];
+    const deck = [card('a', 'word'), card('b', 'word'), card('c', 'story_move')];
     const mk = (id: string, lapses: number): Review => ({
       ...newReview(id, TODAY),
       state: 'review',
@@ -214,7 +255,7 @@ describe('V3 Queue Rules and Rotation', () => {
   });
 
   it('excludes cards passed today from new/due, but recycles if needed', () => {
-    const deck = [card('w1', 'word'), card('p1', 'pronounce')];
+    const deck = [card('w1', 'word'), card('p1', 'story_move')];
     const q = buildQueue(deck, NONE, opts({ seenCardIds: new Set(['w1']), limit: 5 }));
     const scheduled = q.filter((i) => i.reason !== 'filler');
     expect(scheduled.map((i) => i.card.id)).not.toContain('w1');
@@ -223,7 +264,7 @@ describe('V3 Queue Rules and Rotation', () => {
 
   it('ignores buried cards entirely', () => {
     const buried = { ...card('w1', 'word'), status: 'buried' as const };
-    const q = buildQueue([buried, card('p1', 'pronounce')], NONE, opts({ limit: 5 }));
+    const q = buildQueue([buried, card('p1', 'story_move')], NONE, opts({ limit: 5 }));
     expect(q.map((i) => i.card.id)).not.toContain('w1');
   });
 
@@ -233,7 +274,7 @@ describe('V3 Queue Rules and Rotation', () => {
 
   it('a card graded again (due today) resurfaces within the first 10 cards', () => {
     const deck = Array.from({ length: 40 }, (_, i) =>
-      card(`c${i}`, (['word', 'idiom', 'pronounce'] as CardType[])[i % 3]!),
+      card(`c${i}`, (['word', 'idiom', 'story_move'] as CardType[])[i % 3]!),
     );
     const againReview: Review = {
       ...newReview('c7', TODAY),
@@ -265,7 +306,7 @@ describe('V3 Queue Rules and Rotation', () => {
   it('downweighted type shows up measurably less often across a 200-card queue', () => {
     const deck: Card[] = [];    for (let i = 0; i < 40; i++) deck.push(card(`w${i}`, 'word'));
     for (let i = 0; i < 40; i++) deck.push(card(`i${i}`, 'idiom'));
-    for (let i = 0; i < 40; i++) deck.push(card(`p${i}`, 'pronounce'));
+    for (let i = 0; i < 40; i++) deck.push(card(`p${i}`, 'story_move'));
     const now = Date.now();
     const down: Record<string, DownweightRecord> = {
       idiom: { target: 'idiom', type: 'idiom', multiplier: 0.15, expiresAt: now + 7 * 86_400_000, createdAt: now },
@@ -287,7 +328,7 @@ describe('Skimmed cards (AG-007 stage 2)', () => {
   }
 
   function deck6(): Card[] {
-    const types: CardType[] = ['word', 'idiom', 'phrase', 'swap', 'feeling', 'pronounce'];
+    const types: CardType[] = ['word', 'idiom', 'phrase', 'swap', 'feeling', 'story_move'];
     return types.map((t, i) => card(`k${i}`, t));
   }
 
@@ -346,8 +387,8 @@ describe('Skimmed cards (AG-007 stage 2)', () => {
 });
 
 describe('Coach cards (AG-008 stage 1)', () => {
-  it('English coach cards float within the first 3; a Hindi coach card rides normal spacing', () => {
-    const types: CardType[] = ['word', 'idiom', 'swap', 'phrase', 'feeling', 'pronounce'];
+  it('English coach cards float within the first 3; a Hindi coach card is not served in the v5 feed', () => {
+    const types: CardType[] = ['word', 'idiom', 'swap', 'phrase', 'feeling', 'story_move'];
     const deck: Card[] = Array.from({ length: 40 }, (_, i) => card(`mix${i}`, types[i % types.length]!));
     deck.push(card('coach-en-1', 'word', 'en', ['coach']));
     deck.push(card('coach-en-2', 'idiom', 'en', ['coach']));
@@ -361,8 +402,7 @@ describe('Coach cards (AG-008 stage 1)', () => {
     expect(ids.indexOf('coach-en-1')).toBeLessThanOrEqual(2);
     expect(ids.indexOf('coach-en-2')).toBeGreaterThanOrEqual(0);
     expect(ids.indexOf('coach-en-2')).toBeLessThanOrEqual(2);
-    expect(idxHi).toBeGreaterThanOrEqual(0);
-    expect(idxHi).toBeGreaterThan(2);
+    expect(idxHi).toBe(-1);
   });
 });
 

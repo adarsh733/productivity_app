@@ -22,6 +22,7 @@ test.describe('Mobile Viewports Responsive & Release Hardening Gate', () => {
       await page.evaluate(() => localStorage.setItem('speak.firstRun.v3', 'true'));
       await page.reload();
 
+      await expect(page.locator('.v5-shell')).toBeVisible({ timeout: 10000 });
       await expect(page.locator('.feed-screen')).toBeVisible({ timeout: 10000 });
 
       // 1. Verify Zero Horizontal Overflow across Feed
@@ -31,7 +32,8 @@ test.describe('Mobile Viewports Responsive & Release Hardening Gate', () => {
       expect(hasHorizontalScroll).toBe(false);
 
       // 2. Check tab buttons have accessible height/dimensions
-      const tabs = page.locator('nav.tabs button');
+      const tabs = page.locator('nav.v5-tabs button');
+      expect(await tabs.count()).toBe(3);
       const tabCount = await tabs.count();
       for (let i = 0; i < tabCount; i++) {
         const box = await tabs.nth(i).boundingBox();
@@ -41,29 +43,25 @@ test.describe('Mobile Viewports Responsive & Release Hardening Gate', () => {
         }
       }
 
-      // 3. Navigate to Browse and check overflow
-      await page.locator('button.tab:has-text("Browse")').click();
-      await expect(page.locator('.browse-screen')).toBeVisible();
-      const browseOverflow = await page.evaluate(() => {
-        return document.documentElement.scrollWidth > window.innerWidth || document.body.scrollWidth > window.innerWidth;
-      });
-      expect(browseOverflow).toBe(false);
+      const overflows = () =>
+        page.evaluate(
+          () => document.documentElement.scrollWidth > window.innerWidth || document.body.scrollWidth > window.innerWidth,
+        );
 
-      // 4. Navigate to Speak and check overflow
-      await page.locator('button.tab:has-text("Speak")').click();
-      await expect(page.locator('.speak-screen')).toBeVisible();
-      const speakOverflow = await page.evaluate(() => {
-        return document.documentElement.scrollWidth > window.innerWidth || document.body.scrollWidth > window.innerWidth;
-      });
-      expect(speakOverflow).toBe(false);
+      // 3. Ask tab
+      await page.locator('nav.v5-tabs button', { hasText: 'Ask' }).click();
+      await expect(page.locator('.ask-screen')).toBeVisible();
+      expect(await overflows()).toBe(false);
 
-      // 5. Navigate to You and check overflow
-      await page.locator('button.tab:has-text("You")').click();
-      await expect(page.locator('.you-screen')).toBeVisible();
-      const youOverflow = await page.evaluate(() => {
-        return document.documentElement.scrollWidth > window.innerWidth || document.body.scrollWidth > window.innerWidth;
-      });
-      expect(youOverflow).toBe(false);
+      // 4. Me tab
+      await page.locator('nav.v5-tabs button', { hasText: 'Me' }).click();
+      await expect(page.locator('.me-screen')).toBeVisible();
+      expect(await overflows()).toBe(false);
+
+      // 5. The gear sheet (old Browse / Speak / You live behind it)
+      await page.locator('button.me-gear').click();
+      await expect(page.locator('.old-tools')).toBeVisible();
+      expect(await overflows()).toBe(false);
 
       // 6. Verify zero console errors
       expect(consoleErrors).toEqual([]);

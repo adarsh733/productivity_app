@@ -98,7 +98,7 @@ app is *not* at the root of the repo.
    > Netlify look for `speak/speak/dist` and the deploy fails with "deploy
    > directory does not exist".
 
-4. **Before deploying**, click **Add environment variables** and add all four.
+4. **Before deploying**, click **Add environment variables** and add all five.
 
    > **You can skip this and deploy right now.** Nothing in the app's daily loop
    > needs a key: practice, recording, playback, volume measurement and progress
@@ -112,11 +112,12 @@ app is *not* at the root of the repo.
    | `VITE_SUPABASE_ANON_KEY` | your anon key from step 1 | |
    | `GEMINI_API_KEY` | your key from step 2 | **no** `VITE_` prefix — drafts auto-cards |
    | `GROQ_API_KEY` | your key from step 3 | **no** `VITE_` prefix — checks auto-cards (a different provider than the drafter); auto-cards need both keys |
+   | `ANTHROPIC_API_KEY` | your key from console.anthropic.com (Settings, API keys); add a small credit under Billing, Claude Haiku has no free tier | **no** `VITE_` prefix — the last-resort AI and the evening-chat coach (Claude Haiku 5.5) |
 
    > The `VITE_` prefix is not decoration. Vite inlines every `VITE_` variable
    > into the JavaScript that ships to the browser. Putting it on the Gemini or
    > Groq key would publish that key to anyone who opens devtools, and the free
-   > quota would be gone within a day. The two without the prefix are readable
+   > quota would be gone within a day. The three without the prefix are readable
    > only by the Netlify Function.
 
 5. **Deploy site.** First build takes ~2 minutes.

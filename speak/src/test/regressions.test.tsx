@@ -11,7 +11,7 @@ import { SpeakingAttemptSession } from '../features/speak/useSpeakingAttempt';
 import { validateAiFeedback } from '../features/ai/useAiFeedback';
 import CardFace from '../components/cards/CardFace';
 import AudioRecorder from '../components/speak/AudioRecorder';
-import type { Card, CardType, WordCard } from '../types/contract';
+import type { AnyCard, Card, CardType, WordCard } from '../types/contract';
 import { QUEUE_RULES } from '../types/contract';
 
 describe('Articulate V3 Release-Hardening & Regressions Suite', () => {
@@ -185,15 +185,16 @@ describe('Articulate V3 Release-Hardening & Regressions Suite', () => {
     expect(searchCards(sampleCards, 'Box Breathing').length).toBe(1);
   });
 
-  // 8. Regression 8: All 13 Card Faces Render Cleanly
-  it('Regression 8: CardFace renders all 13 card types without throwing or crashing', () => {
+  // 8. Regression 8: All 15 Card Faces Render Cleanly (14 old types + the v5 teach card)
+  it('Regression 8: CardFace renders all 15 card types without throwing or crashing', () => {
     const cardTypes: CardType[] = [
       'word', 'swap', 'idiom', 'action_verb', 'pronounce',
       'say_it', 'breath', 'phrase', 'feeling', 'story_move',
-      'describe', 'explain', 'teach_back', 'situation',
+      'describe', 'explain', 'teach_back', 'situation', 'teach',
     ];
+    expect(cardTypes).toHaveLength(15);
 
-    const makeCard = (type: CardType): Card => {
+    const makeCard = (type: CardType): AnyCard => {
       switch (type) {
         case 'word': return { id: 'w1', type: 'word', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, term: 'term', pos: 'noun', meaning: 'm', examples: ['e1', 'e2'], say: 's' };
         case 'swap': return { id: 'sw1', type: 'swap', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, weak: 'w', answers: ['a'], timerSec: 5 };
@@ -209,6 +210,7 @@ describe('Articulate V3 Release-Hardening & Regressions Suite', () => {
         case 'explain': return { id: 'ex1', type: 'explain', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, topic: 'top', angle: 'ang', beats: ['b1', 'b2', 'b3'], targetVocab: ['v1', 'v2', 'v3'], targetSec: 45 };
         case 'teach_back': return { id: 'tb1', type: 'teach_back', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, prompt: 'pr', beats: ['b1', 'b2', 'b3'], targetSec: 45 };
         case 'situation': return { id: 'st1', type: 'situation', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, kind: 'incident', title: 't', prompt: 'pr', beats: ['b1', 'b2', 'b3'], targetVocab: [], targetSec: 60 };
+        case 'teach': return { id: 'te1', type: 'teach', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, track: 'smalltalk', level: 1, kind: 'learn', category: 'Answer well', title: 'The 1+1 answer', rule: 'Answer with a feeling word plus one real detail.', examples: { work: 'Tiring, but good.', everyday: 'Really nice.' }, analogy: 'A door left open a crack.', tryPrompt: 'Answer with 1+1.', register: 'both' };
       }
     };
 

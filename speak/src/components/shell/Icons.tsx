@@ -234,3 +234,22 @@ export function VolumeIcon(props: IconProps) {
     </IconFrame>
   );
 }
+
+export function HomeIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <path d="m3 11 9-8 9 8" />
+      <path d="M5 10v10h14V10" />
+      <path d="M10 20v-6h4v6" />
+    </IconFrame>
+  );
+}
+
+export function GearIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1" />
+    </IconFrame>
+  );
+}

@@ -53,7 +53,8 @@ export type CardType =
   | 'describe' // an image or scene to describe out loud
   | 'explain' // a topic to explain in 60s (news, history, philosophy)
   | 'teach_back' // something you learned, explained back
-  | 'situation'; // a real-life speaking prompt: incident, office call, feeling, opinion, life story
+  | 'situation' // a real-life speaking prompt: incident, office call, feeling, opinion, life story
+  | 'teach'; // v5: a Learn / Use / Fix / Try / Ask-them card in one of the 4 skills (TeachCard)
 
 interface CardBase {
   id: string;
@@ -70,6 +71,8 @@ interface CardBase {
   seedId?: string;
   /** When he flagged this card wrong (AG-008 stage 4). */
   rejectedAt?: Millis;
+  /** v5: how a reshaped old card carries its skill, level, kind and new parts. */
+  skill?: SkillTag;
 }
 
 export interface WordCard extends CardBase {
@@ -237,6 +240,177 @@ export type Card =
   | ExplainCard
   | TeachBackCard
   | SituationCard;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// v5 redesign (2026-10-29, question 1A: additive only — nothing above changed
+// shape). Four skills × five levels × Learn / Use / Fix / Try / Ask-them.
+// Field limits live in docs/AI-RULEBOOK.md §1.2 and are enforced by
+// `db/seedLoader.ts` and `scripts/content-pipeline/check-seed.mjs`.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** 💬 Small talk · 📖 Stories · 🎯 Speak clearly · 🔤 Words */
+export type Track = 'smalltalk' | 'stories' | 'clearly' | 'words';
+
+export type TrackLevel = 1 | 2 | 3 | 4 | 5;
+
+/** `ask_them` is SMALL TALK only (rulebook §2). */
+export type CardKind = 'learn' | 'use' | 'fix' | 'try' | 'ask_them';
+
+/**
+ * A v5 teaching card. Lives in `db.cards` like every other card.
+ *
+ * NOT part of the `Card` union yet: three components close their `switch` on
+ * `Card` with an exhaustive `never` check, so widening `Card` would break them.
+ * v5 code reads `AnyCard`. Widen `Card` in the pass that teaches those
+ * switches about `teach`.
+ *
+ * The rulebook's `source` (named framework) is stored as `credit`: on a card,
+ * `source` is already the provenance (`seed` | `ai` | `inbox`) that drives the
+ * purge path. The seed loader moves a framework-name `source` into `credit`.
+ */
+export interface TeachCard extends CardBase {
+  type: 'teach';
+  track: Track;
+  level: TrackLevel;
+  kind: CardKind;
+  category: string;
+  /** ≤ 40 characters. */
+  title: string;
+  /** One sentence; ≤ 15 words (≤ 12 for words and clearly). */
+  rule: string;
+  /** First at work, second in everyday life. */
+  examples: { work: string; everyday: string };
+  /** The weak version he might say now. Required on Fix cards; ≤ 20 words. */
+  insteadOf?: string;
+  /** One everyday picture; ≤ 20 words. */
+  analogy: string;
+  /** From meaning to English; ≤ 25 words. */
+  tryPrompt: string;
+  register: 'casual' | 'office' | 'both';
+  /** The revealed great answer on Try cards. */
+  answer?: string;
+  /** Named framework or study the idea comes from (rulebook 1.2 `source`). */
+  credit?: string;
+  /** Set on lesson cards: which lesson, which of its 5 steps. */
+  lesson?: { id: string; title: string; step: 1 | 2 | 3 | 4 | 5; order: number };
+  /** Lesson ids a Fix card points to. */
+  links?: string[];
+}
+
+/** Every card the app can hold, old and v5. */
+export type AnyCard = Card | TeachCard;
+
+/** How reshaped old cards carry the new parts (`CardBase.skill`). */
+export interface SkillTag {
+  track: Track;
+  level?: TrackLevel;
+  kind: CardKind;
+  work?: string;
+  everyday?: string;
+  analogy?: string;
+  insteadOf?: string;
+  answer?: string;
+}
+
+/** What the AI drafts: a TeachCard minus CardBase fields and `lesson`. */
+export type TeachDraft = Omit<TeachCard, keyof CardBase | 'lesson'> & { type: 'teach' };
+
+export type AskKind =
+  | 'word'
+  | 'phrase_idiom'
+  | 'mistake'
+  | 'fix_sentence'
+  | 'topic'
+  | 'how_say'
+  | 'difference'
+  | 'other';
+
+export interface AskRecord {
+  id: string;
+  createdAt: Millis;
+  text: string;
+  askKind: AskKind;
+  answer: string;
+  cardIds: string[];
+  addedToFeed: boolean;
+}
+
+export interface WeakSpot {
+  id: string;
+  wrong: string;
+  right: string;
+  source: 'ask' | 'chat';
+  createdAt: Millis;
+  fixedAt?: Millis;
+}
+
+export interface LessonProgress {
+  lessonId: string;
+  doneAt: Millis;
+}
+
+export interface ChatTurn {
+  question: string;
+  transcript: string;
+  wpm?: number;
+  loudness?: 'below' | 'normal' | 'above';
+  feedback?: CoachChatResult;
+}
+
+export interface ChatSession {
+  id: string;
+  day: DayKey;
+  turns: ChatTurn[];
+}
+
+export interface StoryBankEntry {
+  id: string;
+  day: DayKey;
+  text: string;
+  createdAt: Millis;
+}
+
+export interface AnswerAskPayload {
+  text: string;
+  /** Optional "do not produce" terms. */
+  avoid?: string[];
+  /** His current level per track. */
+  levels?: Partial<Record<Track, TrackLevel>>;
+}
+
+export interface AnswerAskResult {
+  askKind: AskKind;
+  answer: string;
+  versions?: { crisp: string; confident: string; polite: string };
+  chunks?: string[];
+  weakSpot?: { wrong: string; right: string };
+  /** Drafts only — never stored before verify_batch passes. */
+  cards: TeachDraft[];
+}
+
+export interface CoachChatPayload {
+  question: string;
+  transcript: string;
+  track: Track;
+  wpm?: number;
+  loudness?: 'below' | 'normal' | 'above';
+  voicedSec?: number;
+  /** His known mistakes. Max 10. */
+  watch?: Array<{ wrong: string; right: string }>;
+}
+
+export interface CoachChatResult {
+  good: string;
+  fixes: { text: string; lesson?: string }[];
+  better: string;
+  slip: { wrong: string; right: string } | null;
+}
+
+export interface TranscribeResult {
+  text: string;
+  words: { word: string; start: number; end: number }[];
+  durationSec: number;
+}
 
 /**
  * Spoken card types. In V3, the microphone is optional and never a feed gate;
@@ -732,6 +906,10 @@ export type AiTask =
   | 'classify_inbox' // raw dump → typed card stubs
   | 'review_recording' // Phase 2: judgment over a recording's transcript
   | 'plan_week'; // AG-008 §5: weekly coach plan over last week's stats
+// v5 adds 'answer_ask' and 'coach_chat' here in the same change that gives them
+// a TASK_CONFIG entry in netlify/functions/ai.ts (and in
+// src/features/ai/aiFunction.test.ts): both are `Record<AiTask, …>`, so adding
+// the names first breaks the typecheck.
 
 export interface AiRequest {
   task: AiTask;

@@ -76,6 +76,10 @@ describe('useFeed State Machine & Logic', () => {
 
     expect(getTypeMultiplier('feeling', ['Ideas & opinions'])).toBeCloseTo(1.6, 1);
     expect(getTypeMultiplier('phrase', ['🧠 Ideas & opinions'])).toBeCloseTo(1.6, 1);
+
+    // v5: a teach card is an ordinary type for weighting; a downweight still bites.
+    expect(getTypeMultiplier('teach')).toBe(1);
+    expect(getTypeMultiplier('teach', [], { teach: 0.5 })).toBeCloseTo(0.5, 2);
   });
 });
 
@@ -87,10 +91,9 @@ describe('useFeed endless repetition (AG-007 stage 1)', () => {
     'swap',
     'feeling',
     'action_verb',
-    'pronounce',
-    'say_it',
     'story_move',
     'situation',
+    'teach',
   ] as const;
 
   beforeEach(async () => {
@@ -148,10 +151,9 @@ describe('useFeed markEngaged wiring (AG-007 stage 2)', () => {
     'swap',
     'feeling',
     'action_verb',
-    'pronounce',
-    'say_it',
     'story_move',
     'situation',
+    'teach',
   ] as const;
 
   beforeEach(async () => {

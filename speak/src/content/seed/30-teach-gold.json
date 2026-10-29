@@ -1,0 +1,191 @@
+[
+  {
+    "id": "gold-words-revert-reply",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "fix",
+    "category": "Indian-English fixes",
+    "title": "\"Revert\" → \"reply\"",
+    "rule": "In global English, say \"reply\" or \"get back to you\", not \"revert\".",
+    "examples": {
+      "work": "Could you reply by Thursday?",
+      "everyday": "Let me check with my wife and get back to you."
+    },
+    "insteadOf": "Please revert by Thursday.",
+    "analogy": "Outside India, \"revert\" sounds like pressing Undo, not Reply.",
+    "tryPrompt": "A vendor sent a quote. How do you say you'll answer tomorrow?",
+    "register": "both",
+    "tags": [
+      "gold",
+      "email",
+      "indian-english"
+    ]
+  },
+  {
+    "id": "gold-words-meet-a-deadline",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Collocations",
+    "title": "Meet a deadline",
+    "rule": "Deadlines are \"met\" or \"missed\", not \"achieved\".",
+    "examples": {
+      "work": "We'll meet Friday's deadline if design signs off today.",
+      "everyday": "My cousin stayed up all night to meet her college deadline."
+    },
+    "insteadOf": "We achieved the deadline.",
+    "analogy": "Like a friend arriving at the station: you meet them on time, or you miss them.",
+    "tryPrompt": "Your team finished the report on time. Say it in one sentence.",
+    "register": "both",
+    "tags": [
+      "gold",
+      "meetings",
+      "deadlines"
+    ]
+  },
+  {
+    "id": "gold-clearly-answer-first",
+    "type": "teach",
+    "track": "clearly",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer first",
+    "title": "Say the answer first",
+    "rule": "Put your main point in the first sentence.",
+    "examples": {
+      "work": "The release will be two days late. The vendor's API broke our login.",
+      "everyday": "Can't make it tonight, sorry. I'm stuck at work till nine."
+    },
+    "insteadOf": "So the vendor called, and we checked the logs, and there was some issue…",
+    "analogy": "A newspaper headline: you read it first, details later.",
+    "tryPrompt": "Your manager asks, \"Is the demo ready?\" It isn't. Answer in two sentences.",
+    "register": "both",
+    "tags": [
+      "gold",
+      "updates",
+      "meetings"
+    ],
+    "credit": "Barbara Minto (Pyramid Principle); BLUF (US Army writing standard)"
+  },
+  {
+    "id": "gold-clearly-drop-hedges",
+    "type": "teach",
+    "track": "clearly",
+    "level": 2,
+    "kind": "fix",
+    "category": "Cut the clutter",
+    "title": "Drop the hedges you don't mean",
+    "rule": "Extra \"just, maybe, kind of\" makes a clear idea sound unsure.",
+    "examples": {
+      "work": "I think we should review it.",
+      "everyday": "Shall we order in?"
+    },
+    "insteadOf": "I just kind of think maybe we should probably look at it.",
+    "analogy": "Three jackets on a warm day. One is enough.",
+    "tryPrompt": "Say without hedges: \"I just wanted to quickly check if maybe you got my email?\"",
+    "register": "both",
+    "tags": [
+      "gold",
+      "hedges",
+      "email"
+    ]
+  },
+  {
+    "id": "gold-smalltalk-one-plus-one",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "The 1+1 answer",
+    "rule": "Answer with a feeling word plus one real detail.",
+    "examples": {
+      "work": "Priya: \"How was your day?\"\nYou: \"Tiring, but good. We closed the vendor deal. How was yours?\"\nPriya: \"Oh nice, finally! Which vendor?\"",
+      "everyday": "Uncle: \"How was the weekend?\"\nYou: \"Really nice. My cousin's mom made the best biryani. You?\""
+    },
+    "insteadOf": "\"How was your day?\" — \"Good.\"",
+    "analogy": "\"Good\" is a closed door. One detail leaves it open a crack.",
+    "tryPrompt": "Pick one thing from yesterday. Answer \"How was your day?\" with 1+1.",
+    "register": "both",
+    "tags": [
+      "gold",
+      "small-talk",
+      "corridor"
+    ],
+    "credit": "\"threads\", Lorraine K. Lee; the Reveal step in Carol Fleming's ARE"
+  },
+  {
+    "id": "gold-smalltalk-ask-highlight",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 3,
+    "kind": "ask_them",
+    "category": "Question ladder",
+    "title": "Ask for the highlight",
+    "rule": "Ask for the best part, not \"how was it\".",
+    "examples": {
+      "work": "You: \"What was the highlight of your weekend?\"\nArjun: \"Cycling to Nandi Hills at 5 a.m.\"\nYou: \"At 5 a.m.! How long does that take?\"",
+      "everyday": "You: \"What was the best part of the trip?\"\nRiya: \"Sunrise at the beach on day two.\""
+    },
+    "insteadOf": "\"How was your weekend?\" (gets \"Good.\")",
+    "analogy": "A follow-up digs deeper in one spot. A new topic digs a new hole.",
+    "tryPrompt": "Ask a colleague the highlight question today, then one follow-up.",
+    "register": "both",
+    "tags": [
+      "gold",
+      "small-talk",
+      "weekend"
+    ],
+    "credit": "Lorraine K. Lee (CNBC); follow-ups: Huang et al. 2017"
+  },
+  {
+    "id": "gold-stories-but-and-so",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Story basics",
+    "title": "\"But\" and \"so\", not \"and then\"",
+    "rule": "Link events with \"but\" and \"so\" to make a story move.",
+    "examples": {
+      "work": "I reached office early, but the client called. So I rewrote the deck.",
+      "everyday": "I planned a quiet Sunday, but my cousins turned up at nine. So we cooked lunch for eleven people."
+    },
+    "insteadOf": "I reached office early, and then the client called, and then I rewrote the deck.",
+    "analogy": "\"And then\" is a flat road. \"But\" is a speed-breaker. \"So\" is the turn you take.",
+    "tryPrompt": "Tell one thing from today in three parts: what happened, \"but…\", \"so…\".",
+    "register": "both",
+    "tags": [
+      "gold",
+      "stories",
+      "work"
+    ],
+    "credit": "South Park writers' \"but / therefore\" rule, built into Randy Olson's ABT"
+  },
+  {
+    "id": "gold-stories-one-moment",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "try",
+    "category": "Everyday stories",
+    "title": "One moment, not the whole day",
+    "rule": "Asked about your day? Tell one moment, not the timeline.",
+    "examples": {
+      "work": "At 9:58 my laptop died. The CEO's call was at ten.",
+      "everyday": "Best part of today? The auto driver lectured me about carrying change."
+    },
+    "insteadOf": "I woke up, had chai, took the bus, reached office, opened my laptop…",
+    "analogy": "A highlights reel shows the six, not all twenty overs.",
+    "tryPrompt": "Pick today's one moment you'd tell a friend. Start with it; under 30 seconds.",
+    "register": "both",
+    "tags": [
+      "gold",
+      "stories",
+      "your-day"
+    ],
+    "credit": "Matthew Dicks, Homework for Life (Storyworthy); The Moth on first lines"
+  }
+]

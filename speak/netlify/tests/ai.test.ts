@@ -1,5 +1,12 @@
 import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
-import handler, { validateProviderOutput } from '../functions/ai';
+import handler, {
+  ANTHROPIC_MODEL,
+  GEMINI_MODEL,
+  GROQ_MODEL,
+  systemFor,
+  validateProviderOutput,
+} from '../functions/ai';
+import { rulebookFor } from '../rulebook';
 
 describe('Netlify AI Function Handler Suite', () => {
   const originalEnv = process.env;
@@ -754,5 +761,138 @@ describe('Netlify AI Function Handler Suite', () => {
     expect(data.data.typeWeights).toEqual({ word: 1.3 });
     expect(data.data.challengeFocus).toBe('pause_first');
     expect(data.data.note).toBe('Word reps first, then pauses.');
+  });
+});
+
+// ── Models and rulebook prompts (step 0) ───────────────────────────────────
+
+describe('AI models and rulebook prompts', () => {
+  const originalEnv = process.env;
+  let ipCounter = 0;
+
+  beforeEach(() => {
+    process.env = { ...originalEnv };
+    delete process.env.GEMINI_API_KEY;
+    delete process.env.GROQ_API_KEY;
+    delete process.env.ANTHROPIC_API_KEY;
+  });
+
+  afterEach(() => {
+    process.env = originalEnv;
+    vi.restoreAllMocks();
+  });
+
+  /** A fresh client address per request keeps these tests out of the shared rate-limit bucket. */
+  function post(task: string, payload: unknown, prefer?: string) {
+    ipCounter += 1;
+    return new Request('http://localhost/.netlify/functions/ai', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'x-forwarded-for': `10.9.0.${ipCounter}` },
+      body: JSON.stringify({ task, payload, ...(prefer ? { prefer } : {}) }),
+    });
+  }
+
+  /** Minimal payloads that pass each task's payload check. */
+  const PAYLOADS: Record<ConfiguredTaskName, unknown> = {
+    expand_seed: { type: 'word', count: 1 },
+    verify_batch: { items: [] },
+    classify_inbox: { text: 'flag' },
+    review_recording: { transcript: 'one two three four five six' },
+    plan_week: { types: [{ type: 'word' }] },
+  };
+  type ConfiguredTaskName = 'expand_seed' | 'verify_batch' | 'classify_inbox' | 'review_recording' | 'plan_week';
+  const TASKS = Object.keys(PAYLOADS) as ConfiguredTaskName[];
+
+  it('pins the model names', () => {
+    expect(GROQ_MODEL).toBe('openai/gpt-oss-120b');
+    expect(ANTHROPIC_MODEL).toBe('claude-haiku-5-5');
+    expect(GEMINI_MODEL).toBe('gemini-3.5-flash-lite');
+  });
+
+  it('sends the pinned Groq model with the rulebook slice as the system prompt', async () => {
+    process.env.GROQ_API_KEY = 'mock-groq-key';
+    const fetchSpy = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ choices: [{ message: { content: '{}' } }] }),
+    });
+    global.fetch = fetchSpy as any;
+
+    await handler(post('review_recording', PAYLOADS.review_recording));
+
+    expect(fetchSpy).toHaveBeenCalledTimes(1);
+    const [url, init] = fetchSpy.mock.calls[0] as [string, { body: string }];
+    expect(url).toContain('api.groq.com');
+    const body = JSON.parse(init.body);
+    expect(body.model).toBe('openai/gpt-oss-120b');
+    expect(body.messages[0].role).toBe('system');
+    expect(body.messages[0].content).toBe(systemFor('review_recording'));
+  });
+
+  it('sends the pinned Gemini model', async () => {
+    process.env.GEMINI_API_KEY = 'mock-gemini-key';
+    const fetchSpy = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ candidates: [{ content: { parts: [{ text: '{}' }] } }] }),
+    });
+    global.fetch = fetchSpy as any;
+
+    await handler(post('review_recording', PAYLOADS.review_recording));
+
+    const [url] = fetchSpy.mock.calls[0] as [string];
+    expect(url).toContain('/models/gemini-3.5-flash-lite:generateContent');
+  });
+
+  it('sends the pinned Anthropic model with a cached system block', async () => {
+    process.env.ANTHROPIC_API_KEY = 'mock-anthropic-key';
+    const fetchSpy = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ content: [{ text: '{}' }] }),
+    });
+    global.fetch = fetchSpy as any;
+
+    await handler(post('verify_batch', PAYLOADS.verify_batch, 'anthropic'));
+
+    const [url, init] = fetchSpy.mock.calls[0] as [string, { body: string }];
+    expect(url).toContain('api.anthropic.com');
+    const body = JSON.parse(init.body);
+    expect(body.model).toBe('claude-haiku-5-5');
+    expect(Array.isArray(body.system)).toBe(true);
+    expect(body.system).toHaveLength(1);
+    expect(body.system[0].type).toBe('text');
+    expect(body.system[0].cache_control).toEqual({ type: 'ephemeral' });
+    expect(body.system[0].text).toBe(systemFor('verify_batch'));
+  });
+
+  it.each(TASKS)('%s: the prompt that reaches the model starts with its rulebook slice', async (task) => {
+    process.env.GEMINI_API_KEY = 'mock-gemini-key';
+    const fetchSpy = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ candidates: [{ content: { parts: [{ text: '{}' }] } }] }),
+    });
+    global.fetch = fetchSpy as any;
+
+    await handler(post(task, PAYLOADS[task]));
+
+    expect(fetchSpy).toHaveBeenCalled();
+    const [, init] = fetchSpy.mock.calls[0] as [string, { body: string }];
+    const sent = JSON.parse(init.body).systemInstruction.parts[0].text as string;
+    expect(sent.startsWith(rulebookFor(task))).toBe(true);
+    expect(sent).toContain('=== THIS JOB ===');
+    expect(rulebookFor(task).length).toBeGreaterThan(1000);
+  });
+
+  it('verify_batch judges against rulebook section 6 reject codes and answers in the existing shape', () => {
+    const prompt = systemFor('verify_batch');
+    for (let n = 1; n <= 17; n++) expect(prompt).toContain(`R${n} `);
+    expect(prompt).toContain('R1 INVENTED');
+    expect(prompt).toContain('R17 MEANING');
+    expect(prompt).toContain('"results":[{"key":string,"ok":boolean,"reason":string}]');
+  });
+
+  it('keeps each task\'s own JSON-shape lines after the rulebook', () => {
+    expect(systemFor('expand_seed')).toContain('Return ONLY JSON: {"cards":[...]}');
+    expect(systemFor('classify_inbox')).toContain('"kind":"word"|"mistake"|"topic"|"other"');
+    expect(systemFor('review_recording')).toContain('"suggestedAlternative"');
+    expect(systemFor('plan_week')).toContain('"typeWeights"');
   });
 });

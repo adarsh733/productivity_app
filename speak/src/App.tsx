@@ -1,17 +1,19 @@
 import { useState } from 'react';
-import FirstRun, { isFirstRunCompleted } from './components/onboarding/FirstRun';
 import TabBar, { type AppTab } from './components/shell/TabBar';
 import FeedScreen from './components/feed/FeedScreen';
-import BrowseScreen from './components/browse/BrowseScreen';
-import SpeakScreen from './components/speak/SpeakScreen';
-import YouScreen from './components/you/YouScreen';
-import CaptureSheet from './components/capture/CaptureSheet';
-import { useCapture } from './features/capture/useCapture';
+import AskScreen from './components/ask/AskScreen';
+import MeScreen from './components/me/MeScreen';
+import OldToolsSheet, { type OldToolView } from './components/me/OldToolsSheet';
 import { useAppOpen } from './features/you/useAppOpen';
 import { useAutoTopUp } from './features/auto/useAutoTopUp';
 import { useAutoPlan } from './features/auto/useAutoPlan';
 import { useSync } from './sync/useSync';
 import type { Card } from './types/contract';
+
+interface OldTools {
+  view: OldToolView;
+  card: Card | null;
+}
 
 export default function App() {
   useAppOpen();
@@ -19,79 +21,36 @@ export default function App() {
   useAutoPlan();
   useSync();
   const [activeTab, setActiveTab] = useState<AppTab>('feed');
-  const [showFirstRun, setShowFirstRun] = useState(!isFirstRunCompleted());
-  const [speakCard, setSpeakCard] = useState<Card | null>(null);
-  const [returnTab, setReturnTab] = useState<AppTab | null>(null);
+  const [oldTools, setOldTools] = useState<OldTools | null>(null);
 
-  const capture = useCapture();
-
+  // A feed card's "say it" opens the old Speak screen inside the gear sheet.
   const handleOpenSpeakWithCard = (card?: Card) => {
-    setReturnTab(activeTab);
-    setSpeakCard(card ?? null);
-    setActiveTab('speak');
+    setOldTools({ view: 'speak', card: card ?? null });
   };
-
-  const handleTabChange = (tab: AppTab) => {
-    if (activeTab === 'speak' && tab !== 'speak') {
-      setSpeakCard(null);
-      setReturnTab(null);
-    }
-    setActiveTab(tab);
-  };
-
-  const handleCloseDrill = () => {
-    const nextTab = returnTab ?? 'speak';
-    setSpeakCard(null);
-    setReturnTab(null);
-    setActiveTab(nextTab);
-  };
-
-  if (showFirstRun) {
-    return <FirstRun onComplete={() => setShowFirstRun(false)} />;
-  }
-
-  // Hide FAB on Feed tab to guarantee it NEVER obstructs action buttons,
-  // and hide when capture overlay or modals are active.
-  const showFab = !capture.isOpen && activeTab !== 'feed' && activeTab !== 'speak';
 
   return (
-    <div className="reset-app-shell v3-app-shell">
+    <div className="reset-app-shell v3-app-shell v5-shell">
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
 
       <main className="reset-app-body" id="main-content">
-        {activeTab === 'feed' && (
-          <FeedScreen onOpenSpeakWithCard={handleOpenSpeakWithCard} />
-        )}
-        {activeTab === 'browse' && (
-          <BrowseScreen onOpenCard={handleOpenSpeakWithCard} />
-        )}
-        {activeTab === 'speak' && (
-          <SpeakScreen
-            initialCard={speakCard}
-            onCloseDrill={handleCloseDrill}
-          />
-        )}
-        {activeTab === 'you' && (
-          <YouScreen onOpenSpeakWithCard={handleOpenSpeakWithCard} />
+        {activeTab === 'feed' && <FeedScreen onOpenSpeakWithCard={handleOpenSpeakWithCard} />}
+        {activeTab === 'ask' && <AskScreen />}
+        {activeTab === 'me' && (
+          <MeScreen onOpenOldTools={() => setOldTools({ view: 'menu', card: null })} />
         )}
       </main>
 
-      {showFab && (
-        <button
-          type="button"
-          className="fab tap"
-          onClick={capture.openCapture}
-          aria-label="Capture a thought"
-        >
-          <span aria-hidden="true">✏️</span> <span>Capture</span>
-        </button>
+      {oldTools && (
+        <OldToolsSheet
+          initialView={oldTools.view}
+          initialCard={oldTools.card}
+          onClose={() => setOldTools(null)}
+        />
       )}
 
-      {capture.isOpen && <CaptureSheet capture={capture} />}
-
-      <TabBar active={activeTab} onChange={handleTabChange} />
+      <TabBar active={activeTab} onChange={setActiveTab} />
     </div>
   );
 }

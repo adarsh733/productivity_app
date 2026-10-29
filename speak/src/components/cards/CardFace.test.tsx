@@ -1,5 +1,5 @@
-﻿import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+﻿import { describe, expect, it, vi } from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
 import CardFace from './CardFace';
 import type {
   ActionVerbCard,
@@ -14,6 +14,7 @@ import type {
   StoryMoveCard,
   SwapCard,
   TeachBackCard,
+  TeachCard,
   WordCard,
 } from '../../types/contract';
 
@@ -317,5 +318,92 @@ describe('CardFace Exhaustive Rendering Suite', () => {
     render(<CardFace card={card} />);
     expect(screen.getByText(/Explain how the JavaScript event loop/)).toBeDefined();
     expect(screen.getByText('Call stack execution')).toBeDefined();
+  });
+
+  it('shows each old card its skill chip (trackOf) next to the type badge', () => {
+    const word: WordCard = {
+      id: 'w-chip', type: 'word', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0,
+      term: 'ubiquitous', pos: 'adjective', meaning: 'everywhere', examples: ['a', 'b'], say: 's',
+    };
+    const { rerender } = render(<CardFace card={word} />);
+    expect(screen.getByTestId('track-chip').textContent).toBe('🔤 Words');
+    expect(screen.getByTestId('track-chip').getAttribute('data-track')).toBe('words');
+
+    const tb: TeachBackCard = {
+      id: 'tb-chip', type: 'teach_back', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0,
+      prompt: 'p', beats: ['a', 'b', 'c'], targetSec: 45,
+    };
+    rerender(<CardFace card={tb} />);
+    expect(screen.getByTestId('track-chip').textContent).toBe('🎯 Speak clearly');
+  });
+});
+
+describe('TeachCardFace (v5)', () => {
+  const teach: TeachCard = {
+    id: 'gold-words-revert-reply',
+    type: 'teach',
+    lang: 'en',
+    tags: [],
+    source: 'seed',
+    status: 'active',
+    createdAt: 0,
+    track: 'words',
+    level: 1,
+    kind: 'fix',
+    category: 'Indian-English fixes',
+    title: '"Revert" → "reply"',
+    rule: 'In global English, say "reply" or "get back to you", not "revert".',
+    examples: { work: 'Could you reply by Thursday?', everyday: 'Let me check and get back to you.' },
+    insteadOf: 'Please revert by Thursday.',
+    analogy: 'Outside India, "revert" sounds like pressing Undo, not Reply.',
+    tryPrompt: "A vendor sent a quote. How do you say you'll answer tomorrow?",
+    register: 'both',
+    answer: "Thanks for the quote. I'll get back to you tomorrow.",
+  };
+
+  it('shows the kind chip, the track and level chip in the track colour, and every part', () => {
+    render(<CardFace card={teach} />);
+    expect(screen.getByText('Fix')).toBeDefined();
+    const chip = screen.getByText('🔤 Words · L1');
+    expect(chip.getAttribute('data-track')).toBe('words');
+    expect(screen.getByText('Instead of')).toBeDefined();
+    expect(screen.getByText('Please revert by Thursday.')).toBeDefined();
+    expect(screen.getByText('Could you reply by Thursday?')).toBeDefined();
+    expect(screen.getByText(/pressing Undo/)).toBeDefined();
+    expect(screen.getByText('Try')).toBeDefined();
+    // No buttons unless handlers are given.
+    expect(screen.queryByRole('button', { name: /Advance to next card/i })).toBeNull();
+  });
+
+  it('labels small talk examples "They ask" and hides Instead of when there is none', () => {
+    const st: TeachCard = { ...teach, id: 'st', track: 'smalltalk', kind: 'learn', insteadOf: undefined };
+    render(<CardFace card={st} />);
+    expect(screen.getByText('They ask · work')).toBeDefined();
+    expect(screen.queryByText('Instead of')).toBeNull();
+  });
+
+  it('wires Again, Save and Got it to the handlers, and reveals a great answer on demand', () => {
+    const onAgain = vi.fn();
+    const onGotIt = vi.fn();
+    const onSave = vi.fn();
+    render(<CardFace card={teach} saved={false} onAgain={onAgain} onGotIt={onGotIt} onSave={onSave} />);
+
+    fireEvent.click(screen.getByRole('button', { name: /Show again soon/i }));
+    fireEvent.click(screen.getByRole('button', { name: /Bookmark card/i }));
+    fireEvent.click(screen.getByRole('button', { name: /Advance to next card/i }));
+    expect(onAgain).toHaveBeenCalledTimes(1);
+    expect(onSave).toHaveBeenCalledTimes(1);
+    expect(onGotIt).toHaveBeenCalledTimes(1);
+    expect(screen.getByText('Again ↻')).toBeDefined();
+    expect(screen.getByText('Got it ✓')).toBeDefined();
+
+    expect(screen.queryByText(/I'll get back to you tomorrow/)).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: /Show a great answer/i }));
+    expect(screen.getByText(/I'll get back to you tomorrow/)).toBeDefined();
+  });
+
+  it('shows a Saved state when the card is bookmarked', () => {
+    render(<CardFace card={teach} saved onSave={() => {}} />);
+    expect(screen.getByRole('button', { name: /Saved/i }).getAttribute('aria-pressed')).toBe('true');
   });
 });

@@ -1,15 +1,22 @@
-import type { Card } from '../../types/contract';
+import type { AnyCard } from '../../types/contract';
 import { speak } from '../../lib/speech';
 import { VolumeIcon } from '../shell/Icons';
+import TeachCardFace from './TeachCardFace';
+import { trackChipText, trackOf } from '../../features/skills/trackOf';
 
 export interface CardFaceProps {
-  card: Card;
+  card: AnyCard;
   isDetail?: boolean;
   onToggleDetail?: () => void;
   showSwipeHint?: boolean;
+  /** v5 teach cards only: the buttons that live on the card. */
+  saved?: boolean;
+  onAgain?: () => void;
+  onGotIt?: () => void;
+  onSave?: () => void;
 }
 
-function getBadge(card: Card): { label: string; className: string } {
+function getBadge(card: AnyCard): { label: string; className: string } {
   if (card.lang === 'hi') {
     return { label: '🇮🇳 Practical Hindi', className: 'b-hindi' };
   }
@@ -52,6 +59,8 @@ function getBadge(card: Card): { label: string; className: string } {
       return { label: '🎓 Teach It Back', className: 'b-teach' };
     case 'situation':
       return { label: '🎙️ Situation', className: 'b-situation' };
+    case 'teach':
+      return { label: 'Teach', className: 'b-scn' };
     default: {
       const _exhaustive: never = card;
       throw new Error(`Unhandled badge for card type: ${JSON.stringify(_exhaustive)}`);
@@ -64,8 +73,17 @@ export default function CardFace({
   isDetail = false,
   onToggleDetail,
   showSwipeHint = false,
+  saved,
+  onAgain,
+  onGotIt,
+  onSave,
 }: CardFaceProps) {
+  if (card.type === 'teach') {
+    return <TeachCardFace card={card} saved={saved} onAgain={onAgain} onGotIt={onGotIt} onSave={onSave} />;
+  }
+
   const badge = getBadge(card);
+  const skill = trackOf(card);
   const isLong = (text: string) => text.length > 14;
 
   const handleHearIt = (e: React.MouseEvent) => {
@@ -104,7 +122,12 @@ export default function CardFace({
   return (
     <article className={`fcard ${isDetail ? 'is-flipped' : ''}`} aria-label={`Card: ${card.id}`}>
       <div className="card-top-row">
-        <span className={`badge ${badge.className}`}>{badge.label}</span>
+        <span className="card-chips">
+          <span className={`badge ${badge.className}`}>{badge.label}</span>
+          <span className="teach-chip teach-chip-track" data-track={skill.track} data-testid="track-chip">
+            {trackChipText(skill)}
+          </span>
+        </span>
         {hasAudio && (
           <button
             type="button"
@@ -145,7 +168,7 @@ export default function CardFace({
 }
 
 function renderCardContent(
-  card: Card,
+  card: AnyCard,
   isDetail: boolean,
   isLong: (text: string) => boolean,
 ) {
@@ -501,6 +524,9 @@ function renderCardContent(
         </>
       );
     }
+
+    case 'teach':
+      return null; // drawn by TeachCardFace before we get here
 
     default: {
       const _exhaustive: never = card;

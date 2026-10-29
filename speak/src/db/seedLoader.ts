@@ -1,4 +1,4 @@
-import type { Card, CardType, Lang } from '../types/contract';
+import type { Card, CardKind, CardType, Lang, Track } from '../types/contract';
 import { db } from './db';
 
 /**
@@ -37,10 +37,102 @@ const REQUIRED_BY_TYPE: Record<CardType, string[]> = {
   explain: ['topic', 'angle', 'beats', 'targetVocab', 'targetSec'],
   teach_back: ['prompt', 'beats', 'targetSec'],
   situation: ['kind', 'title', 'prompt', 'beats', 'targetVocab', 'targetSec'],
+  // v5 — rulebook 1.2 required parts.
+  teach: [
+    'track',
+    'level',
+    'kind',
+    'category',
+    'title',
+    'rule',
+    'examples',
+    'analogy',
+    'tryPrompt',
+    'register',
+  ],
 };
 
 
 const TYPES = Object.keys(REQUIRED_BY_TYPE) as CardType[];
+
+const TRACKS: readonly Track[] = ['smalltalk', 'stories', 'clearly', 'words'];
+const KINDS: readonly CardKind[] = ['learn', 'use', 'fix', 'try', 'ask_them'];
+const REGISTERS = ['casual', 'office', 'both'];
+const CARD_SOURCES = ['seed', 'ai', 'inbox'];
+
+function isNonEmptyString(v: unknown): v is string {
+  return typeof v === 'string' && v.trim() !== '';
+}
+
+function isLevel(v: unknown): boolean {
+  return typeof v === 'number' && Number.isInteger(v) && v >= 1 && v <= 5;
+}
+
+function optionalString(o: Record<string, unknown>, field: string): string | null {
+  return o[field] !== undefined && !isNonEmptyString(o[field]) ? `${field} must be a non-empty string` : null;
+}
+
+/** The optional v5 `skill` tag any card may carry. Null when fine. */
+function checkSkill(v: unknown): string | null {
+  if (v === undefined) return null;
+  if (typeof v !== 'object' || v === null || Array.isArray(v)) return 'skill must be an object';
+  const s = v as Record<string, unknown>;
+  if (!TRACKS.includes(s.track as Track)) return `skill has unknown track ${String(s.track)}`;
+  if (!KINDS.includes(s.kind as CardKind)) return `skill has unknown kind ${String(s.kind)}`;
+  if (s.level !== undefined && !isLevel(s.level)) return 'skill level must be 1–5';
+  for (const f of ['work', 'everyday', 'analogy', 'insteadOf', 'answer']) {
+    const bad = optionalString(s, f);
+    if (bad) return `skill ${bad}`;
+  }
+  return null;
+}
+
+/** Shape checks for a `teach` card (rulebook 1.2). Word caps live in check-seed.mjs. */
+function checkTeach(o: Record<string, unknown>): string | null {
+  if (!TRACKS.includes(o.track as Track)) return `unknown track ${String(o.track)}`;
+  if (!isLevel(o.level)) return 'level must be 1–5';
+  if (!KINDS.includes(o.kind as CardKind)) return `unknown kind ${String(o.kind)}`;
+  if (o.kind === 'ask_them' && o.track !== 'smalltalk') return 'ask_them cards are small talk only';
+  for (const f of ['category', 'rule', 'analogy', 'tryPrompt']) {
+    if (!isNonEmptyString(o[f])) return `${f} must be a non-empty string`;
+  }
+  if (!isNonEmptyString(o.title) || o.title.length > 40) return 'teach title must be 1–40 chars';
+  const ex = o.examples as Record<string, unknown> | null;
+  if (typeof ex !== 'object' || ex === null || Array.isArray(ex) || !isNonEmptyString(ex.work) || !isNonEmptyString(ex.everyday)) {
+    return 'examples must be { work, everyday } strings';
+  }
+  if (!REGISTERS.includes(o.register as string)) return `unknown register ${String(o.register)}`;
+  if (o.kind === 'fix' && !isNonEmptyString(o.insteadOf)) return 'fix cards need insteadOf';
+  for (const f of ['insteadOf', 'answer', 'credit']) {
+    const bad = optionalString(o, f);
+    if (bad) return bad;
+  }
+  if (o.lesson !== undefined) {
+    const l = o.lesson as Record<string, unknown> | null;
+    if (
+      typeof l !== 'object' || l === null ||
+      !isNonEmptyString(l.id) || !isNonEmptyString(l.title) ||
+      !isLevel(l.step) || typeof l.order !== 'number'
+    ) {
+      return 'lesson must be { id, title, step 1–5, order }';
+    }
+  }
+  if (o.links !== undefined && !(Array.isArray(o.links) && o.links.every(isNonEmptyString))) {
+    return 'links must be lesson id strings';
+  }
+  return null;
+}
+
+/**
+ * Validate one raw seed entry. Exported for tests; `readSeedFiles` is the only
+ * production caller.
+ *
+ * Returns `Card` for the 14 old types; a `teach` entry is a `TeachCard` at
+ * runtime (see `AnyCard` in the contract).
+ */
+export function validateSeedCard(raw: unknown): { ok: true; card: Card } | { ok: false; reason: string } {
+  return validate(raw);
+}
 
 function validate(raw: unknown): { ok: true; card: Card } | { ok: false; reason: string } {
   if (typeof raw !== 'object' || raw === null) return { ok: false, reason: 'not an object' };
@@ -114,10 +206,25 @@ function validate(raw: unknown): { ok: true; card: Card } | { ok: false; reason:
     }
   }
 
+  if (type === 'teach') {
+    const bad = checkTeach(o);
+    if (bad) return { ok: false, reason: bad };
+  }
+  const badSkill = checkSkill(o.skill);
+  if (badSkill) return { ok: false, reason: badSkill };
+
   const lang: Lang = o.lang === 'hi' ? 'hi' : 'en';
+
+  // Rulebook 1.2 calls the framework credit `source`; on a card `source` is the
+  // provenance, so a teach card's framework name moves to `credit`.
+  const credit =
+    type === 'teach' && o.credit === undefined && isNonEmptyString(o.source) && !CARD_SOURCES.includes(o.source)
+      ? { credit: o.source }
+      : {};
 
   const card = {
     ...o,
+    ...credit,
     lang,
     tags: Array.isArray(o.tags) ? (o.tags as string[]) : [],
     source: 'seed',

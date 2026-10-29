@@ -1,16 +1,21 @@
 import Dexie, { type Table } from 'dexie';
 import type {
+  AskRecord,
   Card,
   CardEvent,
   CardType,
+  ChatSession,
   DayRecord,
   InboxItem,
   LabSession,
+  LessonProgress,
   Profile,
   ProductionEvent,
   Recording,
   Review,
+  StoryBankEntry,
   VoiceSample,
+  WeakSpot,
 } from '../types/contract';
 import { GAMIFICATION } from '../types/contract';
 import { todayKey } from '../lib/date';
@@ -42,9 +47,19 @@ export class SpeakDB extends Dexie {
   notes!: Table<NoteRecord, string>;
   /** Local-only operational state (AI flags, budgets). Never synced. */
   meta!: Table<MetaRecord, string>;
+  /** v6: one row per finished lesson. Phone-only. */
+  lessonProgress!: Table<LessonProgress, string>;
+  /** v6: things he asked on the Ask tab. Phone-only. */
+  asks!: Table<AskRecord, string>;
+  /** v6: his recurring slips (from Ask and evening chat). Phone-only. */
+  weakSpots!: Table<WeakSpot, string>;
+  /** v6: evening chat sessions. Phone-only. */
+  chats!: Table<ChatSession, string>;
+  /** v6: the day's best moments, saved from evening chat. Phone-only. */
+  storyBank!: Table<StoryBankEntry, string>;
 
-  constructor() {
-    super('speak');
+  constructor(name = 'speak') {
+    super(name);
     this.version(1).stores({
       cards: 'id, type, lang, status, source, batchId',
       reviews: 'cardId, due, state',
@@ -81,6 +96,17 @@ export class SpeakDB extends Dexie {
     // union below, and `meta` is deliberately not in it.
     this.version(5).stores({
       meta: 'key',
+    });
+
+    // v6 — the v5 redesign: lesson progress, asks, weak spots, evening chats,
+    // story bank. Additive, same rule as v2. Phone-only (question 8A): none of
+    // these is in the `OutboxRow` union, so nothing is enqueued for Supabase.
+    this.version(6).stores({
+      lessonProgress: 'lessonId',
+      asks: 'id, createdAt',
+      weakSpots: 'id, createdAt',
+      chats: 'id, day',
+      storyBank: 'id, day',
     });
   }
 }
