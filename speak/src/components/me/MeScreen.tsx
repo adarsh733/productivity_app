@@ -3,6 +3,7 @@ import '../../styles/chat.css';
 import { useMe } from '../../features/me/useMe';
 import { ArrowRightIcon, GearIcon } from '../shell/Icons';
 import EveningChat, { type EveningChatProps } from '../chat/EveningChat';
+import LearnerMemory from './LearnerMemory';
 
 export type MeRowId = 'saved' | 'weak' | 'stories' | 'chats' | 'asked';
 
@@ -182,6 +183,8 @@ export default function MeScreen({ onOpenOldTools, onOpenRow, chatProps }: MeScr
           </li>
         ))}
       </ul>
+
+      <LearnerMemory knows={me.knows} onForget={me.forgetWish} />
     </section>
   );
 }

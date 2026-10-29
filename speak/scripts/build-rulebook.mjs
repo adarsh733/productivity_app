@@ -31,7 +31,7 @@ const TARGET = join(here, '..', 'netlify', 'rulebook.ts');
  */
 const SLICES = {
   // Writing cards: who he is, universal rules, the four tracks, dedupe + steering.
-  expand_seed: { include: ['intro', '0', '1', '2', '3.3', '3.4'], exclude: [], gold: false },
+  expand_seed: { include: ['intro', '0', '1', '2', '3.3', '3.4', '8.3'], exclude: [], gold: false },
   // Sorting a one-line thought: the same, plus how Ask questions are classified.
   classify_inbox: { include: ['intro', '0', '1', '2', '3.3', '3.4', '4.1'], exclude: [], gold: false },
   // The second model: everything it judges against, and the reject codes.
@@ -41,7 +41,8 @@ const SLICES = {
   // Weekly plan: who he is and how new items are paced.
   plan_week: { include: ['intro', '0', '3.1', '3.4'], exclude: [], gold: false },
   // Ask (added in step 3): classify, answer shape, cards, "everything comes back".
-  answer_ask: { include: ['intro', '0', '1', '2', '4', '8'], exclude: ['1.7'], gold: false },
+  // 8.3 (learning from him) is left out to stay under the Groq cap; its rule rides in DATA_RULE in ai.ts.
+  answer_ask: { include: ['intro', '0', '1', '2', '4', '8'], exclude: ['1.7', '8.3'], gold: false },
   // Evening chat coach (added in step 5): feedback rules and what it may judge.
   coach_chat: { include: ['intro', '0', '1.3', '1.4', '5', '8'], exclude: [], gold: false },
 };

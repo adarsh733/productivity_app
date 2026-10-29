@@ -16,15 +16,22 @@ import {
 import { AI_NEEDS_KEY_META } from '../coach/pipeline';
 import { buildLibraryIndex } from './librarySearch';
 import {
+  ASK_CHECK_LINES,
   ASK_LINES,
   ASK_RETURN_DAYS,
   addAskCardsToFeed,
+  describePreference,
+  hasLetter,
   isUsableDraft,
+  retryAskCheck,
   runAsk,
   saveAsk,
+  saveAskResult,
   saveWeakSpot,
+  saveWeakSpotStatus,
   type AskView,
 } from './askPipeline';
+import { applyPreference, learnerContext } from '../learn/profile';
 
 const base = { lang: 'en' as const, tags: [], source: 'seed' as const, status: 'active' as const, createdAt: 0 };
 
@@ -193,24 +200,6 @@ describe('Ask pipeline: every failure is one plain line plus the library', () =>
     expectLibraryOnly(view, 'offline');
   });
 
-  it('no second key: the check lands on the same provider, so only the library is shown', async () => {
-    const fetchFn = mockFetch({ answerProvider: 'gemini', verifyProvider: 'gemini' });
-    const view = await runAsk({ text: 'discuss', index: INDEX, fetchFn: asFetch(fetchFn) });
-    expectLibraryOnly(view, 'no_key');
-    expect(await getMeta<boolean>(AI_NEEDS_KEY_META)).toBe(true);
-  });
-
-  it('the check call fails after the answer: library only', async () => {
-    let calls = 0;
-    const fetchFn = vi.fn(async () => {
-      calls++;
-      if (calls === 1) return okJson(ANSWER, 'gemini');
-      throw new TypeError('Failed to fetch');
-    }) as unknown as typeof fetch;
-    const view = await runAsk({ text: 'discuss', index: INDEX, fetchFn });
-    expectLibraryOnly(view, 'offline');
-  });
-
   it('bad answer (empty, missing, or an unknown kind): library only', async () => {
     for (const bad of [
       { ...ANSWER, answer: '   ' },
@@ -342,5 +331,272 @@ describe('Add N cards to my feed', () => {
     expect(view.fresh).toEqual([]);
     expect(await addAskCardsToFeed(id, view.fresh)).toBe(0);
     expect(await db.cards.count()).toBe(0);
+  });
+});
+
+// ── v5 fixes: a failed check keeps the answer ─────────────────────────────
+type SentBody = {
+  task: string;
+  prefer?: string;
+  exclude?: string[];
+  payload: { items?: Array<Record<string, unknown>>; avoid?: string[]; learner?: unknown; levels?: unknown };
+};
+
+function bodiesOf(fn: { mock: { calls: unknown[][] } }): SentBody[] {
+  return fn.mock.calls.map((c) => JSON.parse((c[1] as RequestInit).body as string) as SentBody);
+}
+
+function failJson(status: number, json: unknown): Response {
+  return { ok: false, status, json: async () => json } as unknown as Response;
+}
+
+/** answer_ask works; verify_batch answers with `verify` (a Response) or throws. */
+function answerThen(verify: () => Response, answer: unknown = ANSWER) {
+  return vi.fn(async (_url: string, init: RequestInit) => {
+    const body = JSON.parse(init.body as string) as { task: string };
+    if (body.task === 'answer_ask') return okJson(answer, 'gemini');
+    return verify();
+  });
+}
+
+describe('Ask: the check runs with the answer, on a different provider', () => {
+  it('one verify_batch call judges the cards AND the answer, excluding the writer', async () => {
+    const fetchFn = mockFetch();
+    const view = await runAsk({ text: 'is discuss about okay', index: INDEX, fetchFn: asFetch(fetchFn) });
+    const sent = bodiesOf(fetchFn);
+    expect(sent).toHaveLength(2);
+    expect(sent[1]!.exclude).toEqual(['gemini']);
+    expect(sent[1]!.prefer).toBe('groq');
+    const items = sent[1]!.payload.items!;
+    expect(items.map((i) => i.key)).toEqual(['d0', 'd1', 'd2', 'answer']);
+    expect(items[3]).toMatchObject({
+      type: 'ask_answer',
+      question: 'is discuss about okay',
+      answer: ANSWER.answer,
+      weakSpot: ANSWER.weakSpot,
+    });
+    expect(view.answerCheck).toBe('passed');
+  });
+
+  it('an answer the check rejects: the warning shows and the weak spot is not saved', async () => {
+    const fetchFn = mockFetch({ verifyOk: (k) => k !== 'answer' });
+    const view = await runAsk({ text: 'is discuss about okay', index: INDEX, fetchFn: asFetch(fetchFn) });
+    expect(view.answer).not.toBeNull();
+    expect(view.answerCheck).toBe('rejected');
+    const saved = await saveAskResult(view);
+    expect(saved.id).not.toBeNull();
+    expect(saved.weakSpot).toBeNull();
+    expect(await db.weakSpots.count()).toBe(0);
+  });
+
+  it('no verdict for the answer counts as rejected for the weak spot', async () => {
+    const fetchFn = vi.fn(async (_u: string, init: RequestInit) => {
+      const body = JSON.parse(init.body as string) as { task: string };
+      if (body.task === 'answer_ask') return okJson(ANSWER, 'gemini');
+      return okJson({ results: [{ key: 'd0', ok: true, reason: '' }] }, 'groq');
+    });
+    const view = await runAsk({ text: 'discuss about', index: INDEX, fetchFn: asFetch(fetchFn) });
+    expect(view.answerCheck).toBe('rejected');
+    expect(view.fresh).toHaveLength(1);
+    await saveAskResult(view);
+    expect(await db.weakSpots.count()).toBe(0);
+  });
+
+  it('a busy checker keeps the answer: zero cards, a plain retry line, no needs-key notice', async () => {
+    const fetchFn = answerThen(() => failJson(503, { ok: false, error: 'x', reason: 'busy' }));
+    const view = await runAsk({ text: 'discuss about', index: INDEX, fetchFn: asFetch(fetchFn) });
+    expect(view.failure).toBeNull();
+    expect(view.answer).toBe(ANSWER.answer);
+    expect(view.fresh).toEqual([]);
+    expect(view.checkLine).toBe(ASK_CHECK_LINES.retryCards);
+    expect(view.canRetryCheck).toBe(true);
+    expect(view.answerCheck).toBe('unchecked');
+    expect(await getMeta<boolean>(AI_NEEDS_KEY_META)).toBeUndefined();
+    // The busy check reached the providers: both calls stay spent.
+    expect(await aiCallsUsed()).toBe(2);
+  });
+
+  it('the check never leaves the phone (no network): the answer stays and the check slot comes back', async () => {
+    const fetchFn = answerThen(() => {
+      throw new TypeError('Failed to fetch');
+    });
+    const view = await runAsk({ text: 'discuss about', index: INDEX, fetchFn: asFetch(fetchFn) });
+    expect(view.answer).toBe(ANSWER.answer);
+    expect(view.canRetryCheck).toBe(true);
+    expect(await aiCallsUsed()).toBe(1);
+  });
+
+  it('a reply from the writer itself is a temporary failure, not the needs-key state', async () => {
+    const fetchFn = mockFetch({ answerProvider: 'gemini', verifyProvider: 'gemini' });
+    const view = await runAsk({ text: 'discuss', index: INDEX, fetchFn: asFetch(fetchFn) });
+    expect(view.answer).not.toBeNull();
+    expect(view.fresh).toEqual([]);
+    expect(view.canRetryCheck).toBe(true);
+    expect(view.checkLine).toBe(ASK_CHECK_LINES.retryCards);
+    expect(await getMeta<boolean>(AI_NEEDS_KEY_META)).toBeUndefined();
+  });
+
+  it('only the server reason no_key says "needs a second AI key"; the answer still shows', async () => {
+    const fetchFn = answerThen(() => failJson(503, { ok: false, error: 'No second key.', reason: 'no_key' }));
+    const view = await runAsk({ text: 'discuss', index: INDEX, fetchFn: asFetch(fetchFn) });
+    expect(view.failure).toBeNull();
+    expect(view.answer).toBe(ANSWER.answer);
+    expect(view.fresh).toEqual([]);
+    expect(view.checkLine).toBe(ASK_CHECK_LINES.noKey);
+    expect(view.canRetryCheck).toBe(false);
+    expect(await getMeta<boolean>(AI_NEEDS_KEY_META)).toBe(true);
+    // The check never reached a model: given back.
+    expect(await aiCallsUsed()).toBe(1);
+  });
+
+  it('tap to try again re-runs only the check, for one call, and fills the cards', async () => {
+    let checkUp = false;
+    const fetchFn = vi.fn(async (_u: string, init: RequestInit) => {
+      const body = JSON.parse(init.body as string) as { task: string; payload: { items?: Array<{ key: string }> } };
+      if (body.task === 'answer_ask') return okJson(ANSWER, 'gemini');
+      if (!checkUp) return failJson(503, { ok: false, error: 'x', reason: 'busy' });
+      return okJson({ results: (body.payload.items ?? []).map((i) => ({ key: i.key, ok: true, reason: '' })) }, 'groq');
+    });
+    const first = await runAsk({ text: 'discuss about', index: INDEX, fetchFn: asFetch(fetchFn) });
+    expect(first.canRetryCheck).toBe(true);
+    expect(await aiCallsUsed()).toBe(2);
+
+    checkUp = true;
+    const again = await retryAskCheck(first, { fetchFn: asFetch(fetchFn) });
+    expect(bodiesOf(fetchFn).map((b) => b.task)).toEqual(['answer_ask', 'verify_batch', 'verify_batch']);
+    expect(again.fresh.map((d) => d.title)).toEqual(['Discuss, no about', 'Drop about', 'Use discuss']);
+    expect(again.canRetryCheck).toBe(false);
+    expect(again.checkLine).toBeNull();
+    expect(again.answerCheck).toBe('passed');
+    expect(await aiCallsUsed()).toBe(3);
+  });
+
+  it('a retry that cannot reach the network gives its call back', async () => {
+    const fetchFn = answerThen(() => failJson(503, { ok: false, error: 'x', reason: 'busy' }));
+    const first = await runAsk({ text: 'discuss', index: INDEX, fetchFn: asFetch(fetchFn) });
+    const dead = vi.fn(async () => {
+      throw new TypeError('Failed to fetch');
+    }) as unknown as typeof fetch;
+    const again = await retryAskCheck(first, { fetchFn: dead });
+    expect(again.canRetryCheck).toBe(true);
+    expect(await aiCallsUsed()).toBe(2);
+  });
+});
+
+describe('Ask: refusals and refunds', () => {
+  it('bad_input shows the server plain words, and both calls come back', async () => {
+    const fetchFn = vi.fn(async () =>
+      failJson(400, { ok: false, error: 'Keep the question under 1000 characters.', reason: 'bad_input' }),
+    ) as unknown as typeof fetch;
+    const view = await runAsk({ text: 'discuss', index: INDEX, fetchFn });
+    expect(view.failure).toBe('refused');
+    expect(view.line).toBe('Keep the question under 1000 characters.');
+    expect(view.answer).toBeNull();
+    expect(view.library.map((h) => h.card.id)).toEqual(['lib-1']);
+    expect(await aiCallsUsed()).toBe(0);
+  });
+
+  it('a busy answer call spends one (it reached a provider), the unused check comes back', async () => {
+    const fetchFn = vi.fn(async () => failJson(503, { ok: false, error: 'x', reason: 'busy' })) as unknown as typeof fetch;
+    const view = await runAsk({ text: 'discuss', index: INDEX, fetchFn });
+    expect(view.failure).toBe('offline');
+    expect(await aiCallsUsed()).toBe(1);
+  });
+
+  it('a bad answer gives back the check it never needed', async () => {
+    await runAsk({ text: 'discuss', index: INDEX, fetchFn: asFetch(mockFetch({ answer: { ...ANSWER, answer: '' } })) });
+    expect(await aiCallsUsed()).toBe(1);
+  });
+
+  it('hasLetter wants a letter in any script', () => {
+    expect(hasLetter('🙂🙂')).toBe(false);
+    expect(hasLetter('123 ?')).toBe(false);
+    expect(hasLetter('क्या')).toBe(true);
+    expect(hasLetter('ok?')).toBe(true);
+  });
+});
+
+describe('Ask: the learner memory', () => {
+  it('sends avoid, topics, notes and watch, and remembers what the question was about', async () => {
+    await applyPreference({ note: 'More cricket small talk', topics: ['cricket'], avoid: ['revert back'] }, 'more cricket');
+    await db.weakSpots.put({ id: 'w1', wrong: 'discuss about', right: 'discuss', source: 'ask', createdAt: 1 });
+    const fetchFn = mockFetch({ answer: { ...ANSWER, topics: ['meetings', 'verbs'] } });
+    await runAsk({
+      text: 'discuss',
+      index: INDEX,
+      fetchFn: asFetch(fetchFn),
+      levels: { words: 2 },
+    });
+    const sent = bodiesOf(fetchFn)[0]!;
+    expect(sent.payload.avoid).toEqual(['revert back']);
+    expect(sent.payload.levels).toEqual({ words: 2 });
+    expect(sent.payload.learner).toEqual({
+      topics: ['cricket'],
+      notes: ['More cricket small talk'],
+      watch: [{ wrong: 'discuss about', right: 'discuss' }],
+    });
+    const ctx = await learnerContext();
+    expect(ctx.topics).toEqual(['cricket', 'meetings', 'verbs']);
+  });
+
+  it('a wish is saved into memory, shown with "What I will change", and needs no cards', async () => {
+    const wish = {
+      askKind: 'preference',
+      answer: 'Got it — more small talk about cricket, and no more "revert back".',
+      preference: {
+        note: 'More cricket small talk',
+        moreOf: ['smalltalk', 'cooking'],
+        topics: ['cricket'],
+        avoid: ['revert back'],
+      },
+      cards: [],
+    };
+    const view = await runAsk({
+      text: 'more cricket small talk please',
+      index: INDEX,
+      fetchFn: asFetch(mockFetch({ answer: wish })),
+    });
+    expect(view.failure).toBeNull();
+    expect(view.line).toBeNull();
+    expect(view.fresh).toEqual([]);
+    expect(view.changes).toBe("More: Small talk · Topics: cricket · Never show: 'revert back'");
+
+    const saved = await saveAskResult(view);
+    expect(saved.id).not.toBeNull();
+    expect((await db.asks.get(saved.id!))?.askKind).toBe('preference');
+    const ctx = await learnerContext();
+    expect(ctx.moreOf).toEqual(['smalltalk']);
+    expect(ctx.avoid).toContain('revert back');
+    expect(ctx.notes).toEqual(['More cricket small talk']);
+  });
+
+  it('"other" answers keep at most 2 cards', async () => {
+    const answer = {
+      askKind: 'other',
+      answer: 'A short answer.',
+      cards: [draft('learn', 'One'), draft('use', 'Two'), draft('try', 'Three')],
+    };
+    const fetchFn = mockFetch({ answer });
+    const view = await runAsk({ text: 'something else', index: INDEX, fetchFn: asFetch(fetchFn) });
+    expect(view.fresh.map((d) => d.title)).toEqual(['One', 'Two']);
+    expect(bodiesOf(fetchFn)[1]!.payload.items!.map((i) => i.key)).toEqual(['d0', 'd1', 'answer']);
+  });
+
+  it('describePreference: a wish with nothing to change says what it remembers', () => {
+    expect(describePreference({ note: 'I like short cards' })).toBe("I'll remember: I like short cards");
+    expect(describePreference({ note: '' })).toBeNull();
+    expect(describePreference({ note: 'x', harder: ['words'], easier: ['stories'], lessOf: ['clearly'] })).toBe(
+      'Less: Speak clearly · Harder: Words · Easier: Stories',
+    );
+  });
+});
+
+describe('Ask: weak spot status', () => {
+  it('says saved the first time and duplicate after', async () => {
+    const view = await runAsk({ text: 'is discuss about okay', index: INDEX, fetchFn: asFetch(mockFetch()) });
+    expect((await saveAskResult(view)).weakSpot).toBe('saved');
+    const again = await runAsk({ text: 'discuss about again', index: INDEX, fetchFn: asFetch(mockFetch()) });
+    expect((await saveAskResult(again)).weakSpot).toBe('duplicate');
+    expect(await saveWeakSpotStatus({ wrong: '', right: 'x' }, 'z')).toBe('invalid');
   });
 });

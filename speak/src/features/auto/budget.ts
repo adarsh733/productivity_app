@@ -96,3 +96,19 @@ export async function tryConsumeBackgroundAiCall(today: string = todayKey()): Pr
     return true;
   });
 }
+
+/**
+ * `n` background slots at once (a generate + its check = 2), all or nothing.
+ * Same reserve rule as `tryConsumeBackgroundAiCall`: refused when taking them
+ * would leave fewer than BACKGROUND_RESERVE for Ask.
+ */
+export async function tryConsumeBackgroundAiCalls(n: number, today: string = todayKey()): Promise<boolean> {
+  if (n <= 0) return true;
+  return db.transaction('rw', db.meta, async () => {
+    const row = await getMeta<DailyBudget>(AI_BUDGET_META);
+    const used = row && row.date === today ? row.count : 0;
+    if (AI_DAILY_CAP - used - n < BACKGROUND_RESERVE) return false;
+    await setMeta(AI_BUDGET_META, { date: today, count: used + n });
+    return true;
+  });
+}

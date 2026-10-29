@@ -145,3 +145,16 @@ describe('old cards show their work and everyday examples and analogy (v5)', () 
     expect(screen.queryByText('In daily life')).toBeNull();
   });
 });
+
+describe('TryCardFace with nothing to reveal', () => {
+  it('no answer and no work example: no reveal button, no empty box, Say mine stays', () => {
+    const bare = { ...tryCard, answer: undefined, examples: { work: '  ', everyday: 'e' } };
+    const onSayMine = vi.fn();
+    render(<TryCardFace card={bare} onSayMine={onSayMine} />);
+    expect(screen.queryByRole('button', { name: /Show a great answer/i })).toBeNull();
+    expect(screen.queryByTestId('try-great')).toBeNull();
+    expect(screen.queryByText(/Think of your answer, then tap/)).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Say my answer out loud' }));
+    expect(onSayMine).toHaveBeenCalledTimes(1);
+  });
+});

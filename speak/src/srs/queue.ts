@@ -148,6 +148,14 @@ export function getCardMultiplier(
     mult *= Math.max(0.15, typeWeights[card.type] ?? 1.0);
   }
 
+  // v5: lesson cards are weighted per skill (`teach_<track>`, from plan_week).
+  // No weight for that skill ⇒ 1, same as an old type with no weight.
+  if (typeWeights && (card as { type: string }).type === 'teach') {
+    const track = (card as unknown as { track?: string }).track;
+    const w = track ? typeWeights[`teach_${track}`] : undefined;
+    if (typeof w === 'number' && Number.isFinite(w)) mult *= Math.max(0.15, w);
+  }
+
   // 2. Interest-based boosts using shared interest IDs
   if (interests && interests.length > 0) {
     const interestSet = new Set(interests.map((i) => i.toLowerCase().trim()));

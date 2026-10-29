@@ -10,6 +10,7 @@ import {
   ChatError,
   MOMENT_QUESTION,
   loudnessVsNormal,
+  markFixedWeakSpots,
   questionsFor,
   startMicCapture,
   transcribeAudio,
@@ -207,6 +208,92 @@ describe('transcribeAudio — every failure is one plain line', () => {
     expect(await codeOf((async () => new Response('<html>', { status: 200 })) as never)).toBe('transcribe');
     expect(await codeOf((async () => json({ nope: 1 })) as never)).toBe('transcribe');
     expect(await codeOf((async () => json({ text: '  ', words: [], durationSec: 1 })) as never)).toBe('empty');
+  });
+
+  it('a busy speech service (429 or 503) gets its own plain line', async () => {
+    expect(await codeOf((async () => json({ ok: false, error: 'busy' }, 429)) as never)).toBe('busy');
+    expect(await codeOf((async () => json({ ok: false, error: 'busy' }, 503)) as never)).toBe('busy');
+    expect(CHAT_LINES.busy).toBe('The speech service is busy — try again in a minute.');
+  });
+});
+
+describe('learning from the chat (v5)', () => {
+  it('validateFeedback keeps up to 3 subjects he talked about', () => {
+    const fb = validateFeedback(
+      { ...FEEDBACK, topics: ['pricing page', '  design   review ', 7, '', 'a', 'b'] },
+      sentence,
+      { hasWpm: false, hasLoudness: false },
+    );
+    expect(fb?.topics).toEqual(['pricing page', 'design review', 'a']);
+    expect('topics' in validateFeedback(FEEDBACK, sentence, { hasWpm: false, hasLoudness: false })!).toBe(false);
+  });
+
+  it('markFixedWeakSpots: right said and wrong not said marks a watched spot fixed', async () => {
+    await db.weakSpots.bulkPut([
+      { id: 'w1', wrong: 'pricing webpage', right: 'pricing page', source: 'chat', createdAt: 1 },
+      { id: 'w2', wrong: 'and then', right: 'then', source: 'chat', createdAt: 2 },
+      { id: 'w3', wrong: 'gave a feedback', right: 'gave feedback', source: 'ask', createdAt: 3 },
+    ]);
+    const watch = [
+      { wrong: 'pricing webpage', right: 'pricing page' },
+      { wrong: 'and then', right: 'then' },
+    ];
+    expect(await markFixedWeakSpots(sentence, watch, 99)).toBe(1);
+    expect((await db.weakSpots.get('w1'))?.fixedAt).toBe(99);
+    expect((await db.weakSpots.get('w2'))?.fixedAt).toBeUndefined(); // still says "and then"
+    expect((await db.weakSpots.get('w3'))?.fixedAt).toBeUndefined(); // not on the watch list
+  });
+
+  it('sends his known mistakes newest first, notes the subjects, and marks a fixed spot', async () => {
+    await db.weakSpots.bulkPut([
+      { id: 'old', wrong: 'pricing webpage', right: 'pricing page', source: 'chat', createdAt: 1 },
+      { id: 'new', wrong: 'do the needful', right: 'please handle it', source: 'ask', createdAt: 5 },
+      { id: 'done', wrong: 'revert back', right: 'reply', source: 'ask', createdAt: 9, fixedAt: 10 },
+    ]);
+    const net = fakeNet({
+      coach: () => json({ ok: true, data: { ...FEEDBACK, topics: ['pricing page redesign'] }, provider: 'anthropic' }),
+    });
+    const r = mount({ fetchFn: net.fetchFn, startCapture: fakeCapture(), online: true });
+    await record(r);
+    await waitFor(() => expect(r.result.current.phase).toBe('review'));
+
+    const sent = net.calls.coach[0] as { payload: { watch: Array<{ wrong: string }> } };
+    expect(sent.payload.watch.map((w) => w.wrong)).toEqual(['do the needful', 'pricing webpage']);
+    await waitFor(async () => expect((await db.weakSpots.get('old'))?.fixedAt).toBeTypeOf('number'));
+    await waitFor(async () => {
+      const row = await db.meta.get('learn.profile');
+      const seen = (row?.value as { seenTopics?: Array<{ text: string; source: string }> } | undefined)?.seenTopics ?? [];
+      expect(seen).toEqual([expect.objectContaining({ text: 'pricing page redesign', source: 'chat' })]);
+    });
+    expect((await db.weakSpots.get('new'))?.fixedAt).toBeUndefined();
+  });
+
+  it('Retry Coach never spends again on an answer that already has feedback', async () => {
+    const net = fakeNet();
+    const r = mount({ fetchFn: net.fetchFn, startCapture: fakeCapture(), online: true });
+    await record(r);
+    await waitFor(() => expect(r.result.current.turn?.feedback).toBeTruthy());
+    await act(async () => { await r.result.current.retryCoach(); });
+    expect(net.calls.coach).toHaveLength(1);
+    expect(await aiCallsUsed()).toBe(1);
+    expect(r.result.current.phase).toBe('review');
+  });
+
+  it('closing the chat while the coach is answering keeps the answer on the turn', async () => {
+    let answer: (r: Response) => void = () => {};
+    const net = fakeNet({ coach: () => new Promise<Response>((res) => { answer = res; }) });
+    const r = mount({ fetchFn: net.fetchFn, startCapture: fakeCapture(), online: true });
+    await act(async () => { await r.result.current.start(); });
+    let stopping: Promise<void> = Promise.resolve();
+    act(() => { stopping = r.result.current.stop(); });
+    await waitFor(() => expect(net.calls.coach).toHaveLength(1));
+    r.unmount();
+    answer(json({ ok: true, data: FEEDBACK, provider: 'anthropic' }));
+    await stopping;
+    await waitFor(async () => {
+      const chats = await db.chats.toArray();
+      expect(chats[0]?.turns[0]?.feedback?.better).toContain('pricing page');
+    });
   });
 });
 

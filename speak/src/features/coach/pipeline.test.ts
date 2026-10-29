@@ -1,5 +1,14 @@
 import { describe, expect, it, beforeEach, vi } from 'vitest';
-import { aiPost, withTimeout } from './pipeline';
+import {
+  AiCallError,
+  CoachCheckFailedError,
+  CoachNeedsKeyError,
+  aiPost,
+  markNeedsSecondKey,
+  neverReachedModel,
+  verifyDrafts,
+  withTimeout,
+} from './pipeline';
 
 describe('AI client time limit', () => {
   it('a hung request ends as the plain failure line, and the fetch is aborted', async () => {
@@ -29,8 +38,11 @@ describe('AI client time limit', () => {
 import { db } from '../../db/db';
 import { todayKey } from '../../lib/date';
 import type { Card } from '../../types/contract';
-import { AI_BUDGET_META, AI_DAILY_CAP, aiCallsUsed } from '../auto/budget';
+import { AI_BUDGET_META, AI_DAILY_CAP, BACKGROUND_RESERVE, aiCallsUsed } from '../auto/budget';
 import {
+  NEEDS_KEY_TTL_MS,
+  needsSecondKey,
+  retryRaws,
   AI_NEEDS_KEY_META,
   COACH_FAIL_PLAIN,
   COACH_NEEDS_KEY_PLAIN,
@@ -155,6 +167,19 @@ const TYPE_DRAFTS: Array<{ type: string; draft: unknown }> = [
 
 function okJson(data: unknown, provider?: string) {
   return { ok: true, json: async () => ({ ok: true, task: 'x', provider, data }) } as unknown as Response;
+}
+
+/** classify answers; the check is refused with reason no_key (no second provider has a key). */
+function noKeyFetch(cards: unknown[] = [WORD_DRAFT]) {
+  return vi.fn(async (_url: string, init: RequestInit) => {
+    const body = JSON.parse(init.body as string) as { task: string };
+    if (body.task === 'classify_inbox') return okJson({ kind: 'word', subject: 'nuance', cards }, 'gemini');
+    return {
+      ok: false,
+      status: 503,
+      json: async () => ({ ok: false, task: 'verify_batch', error: 'Checking needs a second AI key.', reason: 'no_key' }),
+    } as unknown as Response;
+  }) as unknown as typeof fetch;
 }
 
 function classifyFetch(
@@ -305,6 +330,8 @@ describe('coach pipeline (AG-007 stage 3)', () => {
 
   it('every allowed draft type goes draft → verify → stored card (AG-008 stage 1)', async () => {
     for (const { type, draft } of TYPE_DRAFTS) {
+      // Each note costs 2 background calls; start every type with a fresh day's budget.
+      await db.meta.delete(AI_BUDGET_META);
       const id = `in-type-${type}`;
       await db.inbox.put({ id, createdAt: 1, text: `note about ${type}`, status: 'raw', attempts: 0 });
       const out = await processInboxItem(id, classifyFetch('word', type, [draft]));
@@ -337,12 +364,9 @@ describe('coach pipeline (AG-007 stage 3)', () => {
     expect(card?.tags).toEqual(['coach', 'word']);
   });
 
-  it('same provider generate + verify: nothing stored, plain needs-key line, no attempts burned (AG-008 §0.2)', async () => {
+  it('the server says no second key (reason no_key): nothing stored, plain needs-key line, no attempts burned (AG-008 §0.2)', async () => {
     await db.inbox.put({ id: 'in-same', createdAt: 1, text: 'I liked the word nuance', status: 'raw', attempts: 0 });
-    const out = await processInboxItem(
-      'in-same',
-      classifyFetch('word', 'nuance', [WORD_DRAFT], undefined, { classify: 'gemini', verify: 'gemini' }),
-    );
+    const out = await processInboxItem('in-same', noKeyFetch());
     expect(out).toEqual({ outcome: 'failed', added: 0 });
     expect(await db.cards.count()).toBe(0);
     const item = await db.inbox.get('in-same');
@@ -350,6 +374,23 @@ describe('coach pipeline (AG-007 stage 3)', () => {
     expect(item?.failReason).toBe(COACH_NEEDS_KEY_PLAIN);
     expect(item?.attempts).toBe(0);
     expect((await db.meta.get(AI_NEEDS_KEY_META))?.value).toBe(true);
+    expect(await needsSecondKey()).toBe(true);
+    // classify reached a model; the check never did, so it is given back.
+    expect(await aiCallsUsed()).toBe(1);
+  });
+
+  it('a reply from the generator itself is a temporary failure, never the needs-key state', async () => {
+    await db.inbox.put({ id: 'in-same2', createdAt: 1, text: 'I liked the word nuance', status: 'raw', attempts: 0 });
+    const out = await processInboxItem(
+      'in-same2',
+      classifyFetch('word', 'nuance', [WORD_DRAFT], undefined, { classify: 'gemini', verify: 'gemini' }),
+    );
+    expect(out).toEqual({ outcome: 'failed', added: 0 });
+    expect(await db.cards.count()).toBe(0);
+    const item = await db.inbox.get('in-same2');
+    expect(item?.failReason).toBe(COACH_FAIL_PLAIN);
+    expect(item?.attempts).toBe(1);
+    expect(await needsSecondKey()).toBe(false);
   });
 
   it('a cross-provider run clears the needs-key notice (AG-008 §0.2)', async () => {
@@ -362,12 +403,64 @@ describe('coach pipeline (AG-007 stage 3)', () => {
 });
 
 describe('daily AI budget (AG-008 stage 3)', () => {
-  it('one processed note spends exactly one slot from the shared budget', async () => {
+  it('one processed note spends two slots: the generate and its check', async () => {
     await db.inbox.put({ id: 'in-b1', createdAt: 1, text: 'I liked the word nuance', status: 'raw', attempts: 0 });
     expect(await aiCallsUsed()).toBe(0);
     const out = await processInboxItem('in-b1', classifyFetch('word', 'nuance', [WORD_DRAFT]));
     expect(out.added).toBe(1);
+    expect(await aiCallsUsed()).toBe(2);
+  });
+
+  it('no drafts to check: only the generate is spent', async () => {
+    await db.inbox.put({ id: 'in-b0', createdAt: 1, text: 'just a thought', status: 'raw', attempts: 0 });
+    const fetchFn = classifyFetch('other', 'thought', []);
+    const out = await processInboxItem('in-b0', fetchFn);
+    expect(out.outcome).toBe('processed');
+    expect(fetchFn).toHaveBeenCalledTimes(1);
     expect(await aiCallsUsed()).toBe(1);
+  });
+
+  it('no network: nothing reached a model, so both slots are given back', async () => {
+    await db.inbox.put({ id: 'in-bn', createdAt: 1, text: 'offline', status: 'raw', attempts: 0 });
+    const dead = vi.fn(async () => {
+      throw new TypeError('Failed to fetch');
+    }) as unknown as typeof fetch;
+    await processInboxItem('in-bn', dead);
+    expect(await aiCallsUsed()).toBe(0);
+  });
+
+  it('uses the background reserve: refused when it would leave fewer than 10 for Ask', async () => {
+    await db.meta.put({
+      key: AI_BUDGET_META,
+      value: { date: todayKey(), count: AI_DAILY_CAP - BACKGROUND_RESERVE - 1 },
+      updatedAt: 1,
+    });
+    await db.inbox.put({ id: 'in-br', createdAt: 1, text: 'nuance', status: 'raw', attempts: 0 });
+    const fetchFn = classifyFetch('word', 'nuance', [WORD_DRAFT]);
+    expect(await processInboxItem('in-br', fetchFn)).toEqual({ outcome: 'failed', added: 0 });
+    expect(fetchFn).not.toHaveBeenCalled();
+  });
+
+  it('retryRaws spends nothing while the needs-key notice is on, and retries once it expires', async () => {
+    await db.inbox.put({ id: 'in-r1', createdAt: 1, text: 'nuance', status: 'raw', attempts: 0 });
+    await db.inbox.put({ id: 'in-r2', createdAt: 2, text: 'nuance two', status: 'raw', attempts: 0 });
+    await db.meta.put({ key: AI_NEEDS_KEY_META, value: true, updatedAt: Date.now() });
+    const fetchFn = classifyFetch('word', 'nuance', [WORD_DRAFT]);
+    expect(await retryRaws(fetchFn)).toBe(0);
+    expect(fetchFn).not.toHaveBeenCalled();
+    expect(await aiCallsUsed()).toBe(0);
+
+    await db.meta.put({ key: AI_NEEDS_KEY_META, value: true, updatedAt: Date.now() - NEEDS_KEY_TTL_MS - 1 });
+    expect(await retryRaws(fetchFn)).toBe(2);
+  });
+
+  it('retryRaws stops after the first note finds no second key', async () => {
+    await db.inbox.put({ id: 'in-k1', createdAt: 1, text: 'nuance', status: 'raw', attempts: 0 });
+    await db.inbox.put({ id: 'in-k2', createdAt: 2, text: 'nuance two', status: 'raw', attempts: 0 });
+    const fetchFn = noKeyFetch();
+    expect(await retryRaws(fetchFn)).toBe(0);
+    // One classify + one refused check; the second note is never sent.
+    expect(fetchFn).toHaveBeenCalledTimes(2);
   });
 
   it('over budget: silent wait — no request, no attempt burned, no message', async () => {
@@ -475,5 +568,116 @@ describe('rejected vocabulary rides along as avoid (AG-008 stage 4)', () => {
 
     await processInboxItem('in-plain', fetchFn);
     expect('avoid' in firstPayload(fetchFn)).toBe(false);
+  });
+});
+
+describe('aiPost failures carry the server reason', () => {
+  function reply(status: number, json: unknown) {
+    return vi.fn(async () => ({ ok: status < 400, status, json: async () => json })) as unknown as typeof fetch;
+  }
+
+  it('bad_input shows the server plain words', async () => {
+    const fetchFn = reply(400, { ok: false, error: 'Keep the question under 1000 characters.', reason: 'bad_input' });
+    const err = await aiPost('answer_ask', { text: 'x' }, fetchFn).catch((e: unknown) => e);
+    expect(err).toBeInstanceOf(AiCallError);
+    expect((err as AiCallError).reason).toBe('bad_input');
+    expect((err as AiCallError).message).toBe('Keep the question under 1000 characters.');
+  });
+
+  it('a 400 with no reason is still bad_input', async () => {
+    const err = (await aiPost('answer_ask', {}, reply(400, { ok: false, error: 'Too long.' })).catch((e) => e)) as AiCallError;
+    expect(err.reason).toBe('bad_input');
+    expect(err.message).toBe('Too long.');
+  });
+
+  it('other server reasons pass through with the plain unavailable line', async () => {
+    for (const reason of ['no_key', 'busy', 'bad_reply'] as const) {
+      const err = (await aiPost('answer_ask', {}, reply(503, { ok: false, error: 'x', reason })).catch((e) => e)) as AiCallError;
+      expect(err.reason).toBe(reason);
+      expect(err.message).toBe(COACH_FAIL_PLAIN);
+      expect(err.serverError).toBe('x');
+    }
+  });
+
+  it('a reply that is not JSON (an HTML 502 page) is busy', async () => {
+    const fetchFn = vi.fn(async () => ({
+      ok: false,
+      status: 502,
+      json: async () => {
+        throw new SyntaxError('Unexpected token <');
+      },
+    })) as unknown as typeof fetch;
+    const err = (await aiPost('answer_ask', {}, fetchFn).catch((e) => e)) as AiCallError;
+    expect(err.reason).toBe('busy');
+    expect(neverReachedModel(err)).toBe(false);
+  });
+
+  it('no network is offline, the plain line, and never reached a model', async () => {
+    const fetchFn = vi.fn(async () => {
+      throw new TypeError('Failed to fetch');
+    }) as unknown as typeof fetch;
+    const err = (await aiPost('answer_ask', {}, fetchFn).catch((e) => e)) as AiCallError;
+    expect(err.reason).toBe('offline');
+    expect(err.message).toBe(COACH_FAIL_PLAIN);
+    expect(neverReachedModel(err)).toBe(true);
+  });
+
+  it('sends exclude only when asked', async () => {
+    const fetchFn = vi.fn(async () => okJson({ results: [] }, 'groq')) as unknown as typeof fetch;
+    await aiPost('verify_batch', {}, fetchFn, 'groq', { exclude: ['gemini'] });
+    await aiPost('answer_ask', {}, fetchFn);
+    const calls = (fetchFn as unknown as { mock: { calls: Array<[string, RequestInit]> } }).mock.calls;
+    expect(JSON.parse(calls[0]![1].body as string)).toMatchObject({ prefer: 'groq', exclude: ['gemini'] });
+    expect('exclude' in JSON.parse(calls[1]![1].body as string)).toBe(false);
+  });
+});
+
+describe('verifyDrafts: the check on a different provider', () => {
+  function verifyReply(res: { ok: boolean; status?: number; json: unknown }) {
+    return vi.fn(async () => ({ ok: res.ok, status: res.status ?? 200, json: async () => res.json })) as unknown as typeof fetch;
+  }
+  const passAll = { ok: true, json: { ok: true, provider: 'groq', data: { results: [{ key: 'd0', ok: true, reason: '' }] } } };
+
+  it('sends the generator as exclude and the other provider as prefer', async () => {
+    const fetchFn = verifyReply(passAll);
+    expect(await verifyDrafts([WORD_DRAFT], 'gemini', fetchFn)).toHaveLength(1);
+    const calls = (fetchFn as unknown as { mock: { calls: Array<[string, RequestInit]> } }).mock.calls;
+    expect(JSON.parse(calls[0]![1].body as string)).toMatchObject({ task: 'verify_batch', prefer: 'groq', exclude: ['gemini'] });
+  });
+
+  it('no generator name: fails closed, nothing passes, no call', async () => {
+    const fetchFn = verifyReply(passAll);
+    expect(await verifyDrafts([WORD_DRAFT], undefined, fetchFn)).toEqual([]);
+    expect(fetchFn).not.toHaveBeenCalled();
+  });
+
+  it('only reason no_key is the needs-second-key state', async () => {
+    const noKey = verifyReply({ ok: false, status: 503, json: { ok: false, error: 'x', reason: 'no_key' } });
+    await expect(verifyDrafts([WORD_DRAFT], 'gemini', noKey)).rejects.toBeInstanceOf(CoachNeedsKeyError);
+    expect(await needsSecondKey()).toBe(true);
+
+    await db.meta.clear();
+    for (const reason of ['busy', 'bad_reply', 'rate_limited']) {
+      const f = verifyReply({ ok: false, status: 503, json: { ok: false, error: 'x', reason } });
+      const err = await verifyDrafts([WORD_DRAFT], 'gemini', f).catch((e: unknown) => e);
+      expect(err).toBeInstanceOf(CoachCheckFailedError);
+      expect(err).not.toBeInstanceOf(CoachNeedsKeyError);
+      expect((err as CoachCheckFailedError).reason).toBe(reason);
+    }
+    expect(await needsSecondKey()).toBe(false);
+  });
+
+  it('a successful check clears the notice', async () => {
+    await markNeedsSecondKey();
+    expect(await needsSecondKey()).toBe(true);
+    await verifyDrafts([WORD_DRAFT], 'gemini', verifyReply(passAll));
+    expect(await needsSecondKey()).toBe(false);
+  });
+
+  it('the notice expires after 24 hours', async () => {
+    const now = Date.now();
+    await db.meta.put({ key: AI_NEEDS_KEY_META, value: true, updatedAt: now - NEEDS_KEY_TTL_MS + 1000 });
+    expect(await needsSecondKey(now)).toBe(true);
+    expect(await needsSecondKey(now + 2000)).toBe(false);
   });
 });

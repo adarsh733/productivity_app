@@ -1,4 +1,4 @@
-import type { Card, ClassifyInboxResult } from '../../types/contract';
+import type { AnyCard, Card, ClassifyInboxResult, TeachDraft } from '../../types/contract';
 import { db, enqueue } from '../../db/db';
 
 /**
@@ -13,8 +13,12 @@ export const AVOID_MAX = 50;
 
 type Draft = ClassifyInboxResult['cards'][number];
 
-/** The card's headline — the term a "do not produce" list can match on. */
-export function identityTerm(c: Card | Draft): string | null {
+/**
+ * The card's headline — the term a "do not produce" list can match on.
+ * v5 teach cards use their title (what the AI is asked not to repeat).
+ */
+export function identityTerm(c: AnyCard | Draft | TeachDraft): string | null {
+  if (c.type === 'teach') return c.title || null;
   switch (c.type) {
     case 'word':
       return c.term;

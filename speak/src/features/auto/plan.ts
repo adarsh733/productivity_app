@@ -7,6 +7,8 @@ import type {
   PlanWeekResult,
   Profile,
   Review,
+  TeachWeightKey,
+  Track,
   VoiceGoal,
   VoiceSample,
   VoiceSampleKind,
@@ -52,6 +54,24 @@ const PLAN_MAX_SUBJECTS = 10;
 /** Local-only last-attempt timestamp (db.meta). Never synced. */
 export const PLAN_META = 'ai.weekPlanAt';
 
+/** v5 lesson cards, weighted per skill: `teach_smalltalk` … `teach_words`. */
+export const TEACH_WEIGHT_KEYS: readonly TeachWeightKey[] = (
+  ['smalltalk', 'stories', 'clearly', 'words'] as const satisfies readonly Track[]
+).map((t) => `teach_${t}` as const);
+
+/** Every key a plan may weight: old draftable types, then one per skill. */
+export const PLAN_WEIGHT_KEYS: readonly string[] = [...AI_DRAFT_TYPES, ...TEACH_WEIGHT_KEYS];
+
+/** The plan key a card counts under: `teach_<track>` for lesson cards, else its type. */
+export function planKeyOf(card: { type: string; track?: unknown }): string | null {
+  if (card.type === 'teach') {
+    return typeof card.track === 'string' && TEACH_WEIGHT_KEYS.includes(`teach_${card.track}` as TeachWeightKey)
+      ? `teach_${card.track}`
+      : null;
+  }
+  return card.type;
+}
+
 /** The voice-goal branches `buildDailyChallenge.pickVoiceGoal` can produce. */
 export const VOICE_GOALS: readonly VoiceGoal[] = ['softer', 'slower', 'pause_first'];
 
@@ -90,7 +110,7 @@ export function clampPlan(
 
   const typeWeights: Record<string, number> = {};
   if (raw.typeWeights && typeof raw.typeWeights === 'object') {
-    for (const type of AI_DRAFT_TYPES) {
+    for (const type of PLAN_WEIGHT_KEYS) {
       const weight = clampWeight((raw.typeWeights as Record<string, unknown>)[type]);
       if (weight !== null) typeWeights[type] = weight;
     }
@@ -127,7 +147,10 @@ export function clampPlan(
   };
 }
 
-/** Active-card headlines by lowercase identity term → canonical casing. */
+/**
+ * Active-card headlines by lowercase identity term → canonical casing.
+ * Lesson cards count by their title (`identityTerm`).
+ */
 export function knownWordMap(cards: readonly Card[]): Map<string, string> {
   const map = new Map<string, string>();
   for (const c of cards) {
@@ -188,14 +211,21 @@ export interface PlanStats {
 
 export function buildPlanPayload(stats: PlanStats): PlanWeekPayload {
   const since = stats.now - PLAN_GAP_MS;
-  const typeOf = new Map(stats.cards.map((c) => [c.id, c.type] as const));
+  // Lesson cards count per skill (`teach_<track>`), old cards by type.
+  const typeOf = new Map<string, string>();
+  for (const c of stats.cards) {
+    const key = planKeyOf(c as unknown as { type: string; track?: unknown });
+    if (key) typeOf.set(c.id, key);
+  }
 
   const views = new Map<string, number>();
   const agains = new Map<string, number>();
   const graded = new Map<string, number>();
   for (const e of stats.events) {
     if (e.at < since) continue;
-    const type = e.cardType ?? (e.cardId ? typeOf.get(e.cardId) : undefined);
+    // The card's own key wins: a `teach` event needs its card to know the skill.
+    const fromCard = e.cardId ? typeOf.get(e.cardId) : undefined;
+    const type = fromCard ?? ((e.cardType as string | undefined) === 'teach' ? undefined : e.cardType);
     if (!type) continue;
     if (e.type === 'card_viewed') {
       views.set(type, (views.get(type) ?? 0) + 1);
@@ -213,7 +243,7 @@ export function buildPlanPayload(stats: PlanStats): PlanWeekPayload {
     skips.set(type, (skips.get(type) ?? 0) + 1);
   }
 
-  const types = AI_DRAFT_TYPES.map((type) => {
+  const types = (PLAN_WEIGHT_KEYS as Array<PlanWeekPayload['types'][number]['type']>).map((type) => {
     const g = graded.get(type) ?? 0;
     return {
       type,

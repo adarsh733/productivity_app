@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { AiRequest, AiResponse, AiTask } from '../../types/contract';
+import type { AiFailReason, AiRequest, AiResponse, AiTask } from '../../types/contract';
 
 describe('Netlify AI Function Contract Suite', () => {
   const ALLOWED_TASKS: readonly AiTask[] = [
@@ -114,5 +114,19 @@ describe('Netlify AI Function Contract Suite', () => {
     expect(req.task).toBe('review_recording');
     expect(res.ok).toBe(true);
     expect(res.provider).toBe('gemini');
+  });
+  it('a verify_batch request can name the providers that must not serve it', () => {
+    const req: AiRequest = { task: 'verify_batch', payload: { items: [] }, prefer: 'groq', exclude: ['gemini'] };
+    expect(req.exclude).toEqual(['gemini']);
+  });
+
+  it('every failure reply carries plain words and a reason the phone can act on', () => {
+    const reasons: AiFailReason[] = ['no_key', 'bad_reply', 'busy', 'bad_input', 'rate_limited'];
+    for (const reason of reasons) {
+      const res: AiResponse = { ok: false, task: 'answer_ask', error: 'Plain words.', reason };
+      expect(res.ok).toBe(false);
+      expect(res.reason).toBe(reason);
+      expect(typeof res.error).toBe('string');
+    }
   });
 });

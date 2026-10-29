@@ -323,7 +323,44 @@ export type AskKind =
   | 'topic'
   | 'how_say'
   | 'difference'
+  /** He told the app what he wants ("more cricket small talk", "too easy"). */
+  | 'preference'
   | 'other';
+
+/**
+ * What a `preference` Ask asks for. Every field optional; the AI fills only
+ * what he actually said. Stored in the learner profile (`features/learn`).
+ */
+export interface AskPreference {
+  /** Subjects he wants cards about ("cricket", "client calls"). Max 5. */
+  topics?: string[];
+  moreOf?: Track[];
+  lessOf?: Track[];
+  harder?: Track[];
+  easier?: Track[];
+  /** Words or phrases he never wants to see again. Max 10. */
+  avoid?: string[];
+  /** His wish in one plain line, kept for future prompts. Max 160 chars. */
+  note: string;
+}
+
+/**
+ * Everything the app has learned about him, sent with every AI job that
+ * writes or judges content. Built by `features/learn/profile.ts`.
+ */
+export interface LearnerContext {
+  /** Subjects to ground new cards in: his asks, what he talks about, his wishes. Max 12. */
+  topics: string[];
+  /** Never produce these headlines (his "This is wrong" taps + his wishes). Max 50. */
+  avoid: string[];
+  /** His own wishes, newest first, verbatim. Max 6. */
+  notes: string[];
+  /** Tracks he wants more of / less of. */
+  moreOf: Track[];
+  lessOf: Track[];
+  /** His known mistakes (wrong → right), newest first. Max 10. */
+  watch: Array<{ wrong: string; right: string }>;
+}
 
 export interface AskRecord {
   id: string;
@@ -376,6 +413,8 @@ export interface AnswerAskPayload {
   avoid?: string[];
   /** His current level per track. */
   levels?: Partial<Record<Track, TrackLevel>>;
+  /** What the app has learned about him (topics, wishes, known mistakes). */
+  learner?: Pick<LearnerContext, 'topics' | 'notes' | 'watch'>;
 }
 
 export interface AnswerAskResult {
@@ -384,7 +423,11 @@ export interface AnswerAskResult {
   versions?: { crisp: string; confident: string; polite: string };
   chunks?: string[];
   weakSpot?: { wrong: string; right: string };
-  /** Drafts only — never stored before verify_batch passes. */
+  /** Only when askKind is "preference". */
+  preference?: AskPreference;
+  /** Subjects this question is about, for future cards. Max 3. */
+  topics?: string[];
+  /** Drafts only — never stored before verify_batch passes. 0-8 (0-2 for preference/other). */
   cards: TeachDraft[];
 }
 
@@ -404,6 +447,8 @@ export interface CoachChatResult {
   fixes: { text: string; lesson?: string }[];
   better: string;
   slip: { wrong: string; right: string } | null;
+  /** Subjects he talked about (his content, e.g. "billing migration"), for future cards. Max 3. */
+  topics?: string[];
 }
 
 export interface TranscribeResult {
@@ -682,6 +727,9 @@ export interface VerifyBatchResult {
 /** The card types AI may ever draft (AG-008 §0.3). */
 export type DraftCardType = ClassifyInboxResult['cards'][number]['type'];
 
+/** plan_week / queue weight key for v5 lesson cards of one skill. */
+export type TeachWeightKey = `teach_${Track}`;
+
 export interface ExpandSeedPayload {
   /** Card type to produce siblings of — siblings must be this same type.
    *  `'teach'` = v5 top-up: fresh teach cards for one `track` (no seed). */
@@ -698,6 +746,8 @@ export interface ExpandSeedPayload {
   topics?: string[];
   /** Optional "do not produce" terms (his rejected vocabulary). */
   avoid?: string[];
+  /** v5: his wishes, newest first (max 6). Topics and avoid travel in the fields above. */
+  notes?: string[];
 }
 export interface ExpandSeedResult {
   cards: ClassifyInboxResult['cards'];
@@ -705,7 +755,8 @@ export interface ExpandSeedResult {
 
 /** plan_week payload — last week's per-type stats, voice numbers, coach subjects. */
 export interface PlanWeekPayload {
-  types: Array<{ type: DraftCardType; views: number; againRate: number; skips: number }>;
+  /** Old card types by name; v5 lesson cards per skill as `teach_<track>`. */
+  types: Array<{ type: DraftCardType | TeachWeightKey; views: number; againRate: number; skips: number }>;
   voice?: {
     calibrated?: boolean;
     baselineDb?: number;
@@ -920,7 +971,22 @@ export interface AiRequest {
   payload: unknown;
   /** Provider hint. The function may override on quota failure. */
   prefer?: 'gemini' | 'groq' | 'anthropic';
+  /**
+   * Providers that must NOT serve this call. verify_batch sends the generator
+   * here, so a busy checker can never fall back to the model checking itself.
+   */
+  exclude?: Array<'gemini' | 'groq' | 'anthropic'>;
 }
+
+/**
+ * Why a call failed, so the phone can say the right thing:
+ * - `no_key`: no allowed provider has a key (with `exclude`: no second key).
+ * - `bad_reply`: models answered, but no answer passed the checks.
+ * - `busy`: providers errored or timed out (quota, network, 5xx).
+ * - `bad_input`: the request itself was refused (400); `error` says why in plain words.
+ * - `rate_limited`: too many calls this minute.
+ */
+export type AiFailReason = 'no_key' | 'bad_reply' | 'busy' | 'bad_input' | 'rate_limited';
 
 export interface AiResponse<T = unknown> {
   ok: boolean;
@@ -929,6 +995,7 @@ export interface AiResponse<T = unknown> {
   provider?: 'gemini' | 'groq' | 'anthropic';
   data?: T;
   error?: string;
+  reason?: AiFailReason;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

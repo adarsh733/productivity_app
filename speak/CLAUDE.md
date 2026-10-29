@@ -18,9 +18,10 @@ don't reopen them.
 | `features/skills/trackOf.ts` | Which skill an old card trains (its own `skill` tag, else by type). |
 | `features/ask/` + `components/ask/` | Ask tab: local library search, `answer_ask`, check on the other provider, "Add N cards to my feed" (Use → Fix → Try). |
 | `features/chat/` + `components/chat/` | Evening chat: record → `transcribe` (word times) → pace + loudness measured on the phone → `coach_chat` (Haiku). Story bank. Opened from Me. |
-| `features/me/useMe.ts` + `components/me/` | Me: 3 stats, Saved, weak spots, story bank, chats, things asked. |
-| `features/coach/pipeline.ts` | `aiPost` (every client AI call; 30 s time limit) and `verifyDrafts` (every AI card checked on a DIFFERENT provider). |
-| `features/auto/budget.ts` | 25 AI calls a day, phone-only. Ask = 2, chat turn = 1; background top-ups/misses stop below 10 left. |
+| `features/me/useMe.ts` + `components/me/` | Me: 3 stats, Saved, weak spots, story bank, chats, things asked, "What the app knows about me" (wishes with Forget, subjects, watched weak spots). |
+| `features/learn/profile.ts` | **Learner memory** (meta `learn.profile`): his wishes (Ask `preference`), Ask/chat topics, never-show words, more/less and harder/easier per skill. `learnerContext()` = topics + avoid (+ rejected) + notes + watch list, sent with answer_ask, top-up, misses. |
+| `features/coach/pipeline.ts` | `aiPost` (every client AI call; 30 s; throws `AiCallError` with the server's `reason`) and `verifyDrafts` (every AI card checked on a DIFFERENT provider: `exclude` is strict on the server). `needsSecondKey()` expires after 24 h. |
+| `features/auto/budget.ts` | 25 AI calls a day, phone-only. Ask = 2, chat turn = 1, coach note / top-up / miss siblings = 2 (generate + check); background work keeps 10 back for Ask. |
 | `src/db/db.ts` | Dexie schema. IndexedDB is the read path, always. |
 | `src/db/seedLoader.ts` | Loads `src/content/seed/*.json`. Validates, skips bad cards, never throws. Text-only describe scenes allowed. |
 | `src/srs/scheduler.ts` | SM-2. Silent-failure zone — covered by tests. Wired: first sight → due tomorrow. |

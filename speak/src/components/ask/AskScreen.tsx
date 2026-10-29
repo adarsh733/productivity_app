@@ -14,6 +14,9 @@ const CHIPS = [
   { id: 'slip', icon: '⚠️', label: 'A slip I make', starter: 'A slip I make: ' },
 ] as const;
 
+/** Show the "950 / 1000" counter once this few characters are left. */
+const COUNTER_FROM_LEFT = 100;
+
 const SKILLS: Array<{ track: Track; icon: string; name: string; sub: string }> = [
   { track: 'smalltalk', icon: '💬', name: 'Small talk', sub: 'Level 1' },
   { track: 'stories', icon: '📖', name: 'Stories', sub: 'Level 1' },
@@ -29,7 +32,7 @@ const SKILLS: Array<{ track: Track; icon: string; name: string; sub: string }> =
 export default function AskScreen() {
   const [skill, setSkill] = useState<Track | null>(null);
   const { ready, lessons, doneIds, ladderOf } = useLessons();
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const levels = useMemo<AnswerAskPayload['levels'] | undefined>(() => {
     if (!ready) return undefined;
@@ -42,8 +45,10 @@ export default function AskScreen() {
   }, [ready, ladderOf]);
 
   const ask = useAsk({ levels });
-  const { text, setText, library, phase, view, added, adding, canSend, recent } = ask;
+  const { text, setText, library, phase, view, added, adding, checking, canSend, recent, hint, maxChars } = ask;
   const typing = text.trim().length >= MIN_QUERY_CHARS;
+  // The counter shows only near the limit, so it never nags.
+  const nearLimit = text.length >= maxChars - COUNTER_FROM_LEFT;
 
   const pickChip = (starter: string) => {
     setText(starter);
@@ -65,14 +70,23 @@ export default function AskScreen() {
       >
         <label className="ask-box">
           <SearchIcon className="ask-box-icon" />
-          <input
+          <textarea
             ref={inputRef}
-            type="text"
             className="ask-input"
+            rows={1}
             value={text}
+            maxLength={maxChars}
             onChange={(e) => setText(e.target.value)}
+            onKeyDown={(e) => {
+              // Enter sends (as the old one-line box did); Shift+Enter adds a line.
+              if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) {
+                e.preventDefault();
+                void ask.send();
+              }
+            }}
             placeholder="Type or speak anything…"
             aria-label="Ask anything"
+            aria-describedby={hint ? 'ask-hint' : undefined}
             enterKeyHint="send"
           />
         </label>
@@ -80,6 +94,21 @@ export default function AskScreen() {
           {phase === 'asking' ? 'Asking…' : 'Ask'}
         </button>
       </form>
+
+      {(hint || nearLimit) && (
+        <div className="ask-input-meta">
+          {hint && (
+            <p id="ask-hint" className="ask-hint" role="status">
+              {hint}
+            </p>
+          )}
+          {nearLimit && (
+            <span className="ask-counter" data-testid="ask-counter" aria-live="polite">
+              {text.length} / {maxChars}
+            </span>
+          )}
+        </div>
+      )}
 
       <div className="ask-chips">
         {CHIPS.map((c) => (
@@ -101,7 +130,14 @@ export default function AskScreen() {
       )}
 
       {view && phase === 'done' && (
-        <AskAnswer view={view} added={added} adding={adding} onAdd={() => void ask.addToFeed()} />
+        <AskAnswer
+          view={view}
+          added={added}
+          adding={adding}
+          onAdd={() => void ask.addToFeed()}
+          checking={checking}
+          onRetryCheck={() => void ask.retryCheck()}
+        />
       )}
 
       {!view && phase !== 'asking' && typing && library.length > 0 && (

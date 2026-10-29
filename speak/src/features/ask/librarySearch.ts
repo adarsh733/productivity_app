@@ -42,7 +42,9 @@ export const DEFAULT_LIBRARY_LIMIT = 5;
 export function queryTokens(query: string): string[] {
   const words = query
     .toLowerCase()
-    .replace(/[^a-z0-9'\s-]/g, ' ')
+    // Keep letters and numbers of any script (and the marks that join
+    // Devanagari letters), so Hindi or accented words survive.
+    .replace(/[^\p{L}\p{M}\p{N}'\s-]/gu, ' ')
     .split(/\s+/)
     .map((w) => w.replace(/^['-]+|['-]+$/g, ''))
     .filter(Boolean);
@@ -136,8 +138,8 @@ export function searchLibrary(
     if (row.titleLower === whole) score += 20;
     else if (row.titleLower.includes(whole) && whole.length >= 3) score += 8;
     for (const t of tokens) {
-      const inTitle = new RegExp(`\\b${escapeRe(t)}`).test(row.titleLower);
-      const inBody = !inTitle && new RegExp(`\\b${escapeRe(t)}`).test(row.bodyLower);
+      const inTitle = startsWord(row.titleLower, t);
+      const inBody = !inTitle && startsWord(row.bodyLower, t);
       if (inTitle) {
         score += 6;
         matched++;
@@ -154,6 +156,18 @@ export function searchLibrary(
   return hits.slice(0, Math.max(0, limit));
 }
 
-function escapeRe(s: string): string {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const WORD_CHAR = /[\p{L}\p{M}\p{N}]/u;
+
+/**
+ * True when `needle` appears at the start of a word in `hay`, in any script.
+ * (A regex word boundary only knows a-z, so it never found a Hindi word.) A plain indexOf scan
+ * with a one-character check: fast enough for every keystroke.
+ */
+function startsWord(hay: string, needle: string): boolean {
+  let i = hay.indexOf(needle);
+  while (i !== -1) {
+    if (i === 0 || !WORD_CHAR.test(hay[i - 1]!)) return true;
+    i = hay.indexOf(needle, i + 1);
+  }
+  return false;
 }

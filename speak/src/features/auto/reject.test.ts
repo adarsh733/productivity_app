@@ -41,6 +41,12 @@ describe('identityTerm (AG-008 stage 4)', () => {
     expect(identityTerm(card({ type: 'situation', title: 'The missed flight' }))).toBe('The missed flight');
   });
 
+  it('v5 teach cards: the title is the headline', () => {
+    const teach = card({ type: 'teach', track: 'words', title: 'Revert means reply', insteadOf: 'revert back' });
+    expect(identityTerm(teach)).toBe('Revert means reply');
+    expect(identityTerm(card({ type: 'teach', title: '' }))).toBeNull();
+  });
+
   it('returns null for types AI may never produce', () => {
     expect(identityTerm(card({ type: 'breath', drill: 'mpt', logUnit: 'seconds' }))).toBeNull();
     expect(identityTerm(card({ type: 'say_it' }))).toBeNull();
@@ -128,6 +134,14 @@ describe('rejectedTerms — the do-not-produce list (AG-008 stage 4)', () => {
     ]);
     const two = await rejectedTerms(2);
     expect(two).toEqual(['legacy-newest', 'third']);
+  });
+
+  it('a rejected lesson card feeds the avoid list by its title', async () => {
+    await db.cards.bulkPut([
+      card({ id: 't1', type: 'teach', track: 'smalltalk', title: 'Ask about the weekend', status: 'rejected', rejectedAt: 500 }),
+      card({ id: 'w1', status: 'rejected', rejectedAt: 100, term: 'nuance' }),
+    ]);
+    expect(await rejectedTerms()).toEqual(['Ask about the weekend', 'nuance']);
   });
 
   it('caps the default list at AVOID_MAX', async () => {

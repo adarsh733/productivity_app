@@ -127,3 +127,27 @@
 - **Status:** COMPLETED — claim released 2026-10-01
 - **Started:** 2026-10-01
 - **Files claimed:** `speak/netlify/functions/ai.test.ts` → `speak/netlify/tests/ai.test.ts`, `.claude/WORKLOG.md` (append)
+
+---
+
+- **Agent:** Claude (Opus 5.5) — session 2026-10-28
+- **Task:** Redesign plan (HTML, mockups + screenshots) — plan only, no app code
+- **Status:** COMPLETED — claim released 2026-10-28
+- **Started:** 2026-10-28
+- **Files claimed:** `docs/REDESIGN-V5.html` (new), `docs/redesign-v5/*` (new screenshots), `.claude/WORKLOG.md` (append)
+
+---
+
+- **Agent:** Claude (Opus 5.5) — session 2026-10-29
+- **Task:** Redesign plan v2 — research (small talk, storytelling, articulation/vocab, voice tech) + AI rulebook + revised plan page
+- **Status:** COMPLETED — claim released 2026-10-29
+- **Started:** 2026-10-29
+- **Files claimed:** `docs/REDESIGN-V5.html` (rewrite), `docs/redesign-v5/*`, `docs/research/*` (new), `docs/AI-RULEBOOK.md` (new), `.claude/WORKLOG.md` (append)
+
+---
+
+- **Agent:** Claude (Opus 5.5) — session 2026-10-29 (AI fix-all + learning machine)
+- **Task:** Fix all 18 AI gaps + make SPEAK learn from everything he says/suggests; then live-setup guide
+- **Status:** COMPLETED — claim released 2026-10-29
+- **Started:** 2026-10-29
+- **Files claimed:** `speak/src/types/contract.ts`, `speak/netlify/functions/ai.ts`, `speak/netlify/functions/transcribe.ts`, `speak/netlify/rulebook.ts`, `docs/AI-RULEBOOK.md`, `speak/netlify/tests/*`, `speak/src/features/learn/*` (new), `speak/src/features/auto/*`, `speak/src/features/coach/pipeline.ts`, `speak/src/features/ask/*`, `speak/src/features/chat/*`, `speak/src/components/ask/*`, `speak/src/components/chat/*`, `speak/src/components/cards/*`, `speak/e2e/*`, `speak/CLAUDE.md`, `docs/known-issues.md`, `.claude/WORKLOG.md` (append)

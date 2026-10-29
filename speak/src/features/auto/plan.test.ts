@@ -15,6 +15,8 @@ import { AI_BUDGET_META, aiCallsUsed } from './budget';
 import {
   PLAN_GAP_MS,
   PLAN_META,
+  PLAN_WEIGHT_KEYS,
+  TEACH_WEIGHT_KEYS,
   applyPlanToProfile,
   buildPlanPayload,
   clampPlan,
@@ -263,7 +265,7 @@ describe('buildPlanPayload', () => {
       now,
     });
 
-    expect(payload.types.map((t) => t.type)).toEqual([...AI_DRAFT_TYPES]);
+    expect(payload.types.map((t) => t.type)).toEqual([...AI_DRAFT_TYPES, ...TEACH_WEIGHT_KEYS]);
     const word = payload.types.find((t) => t.type === 'word')!;
     const idiom = payload.types.find((t) => t.type === 'idiom')!;
     expect(word).toEqual({ type: 'word', views: 2, againRate: 0.5, skips: 0 });
@@ -361,7 +363,7 @@ describe('buildPlanPayload', () => {
     });
     expect('voice' in payload).toBe(false);
     expect('coachSubjects' in payload).toBe(false);
-    expect(payload.types).toHaveLength(AI_DRAFT_TYPES.length);
+    expect(payload.types).toHaveLength(PLAN_WEIGHT_KEYS.length);
   });
 });
 
@@ -531,5 +533,98 @@ describe('the queue actually reads the plan weights (AG-008 §5)', () => {
 
     expect(queue).toHaveLength(2);
     expect(queue[0]!.card.type).toBe('word');
+  });
+});
+
+// ── v5 lesson cards in the weekly plan ─────────────────────────────────────
+function lessonCard(id: string, track: string, title: string): Card {
+  return {
+    id,
+    type: 'teach',
+    lang: 'en',
+    tags: [],
+    source: 'seed',
+    status: 'active',
+    createdAt: 1,
+    track,
+    level: 1,
+    kind: 'learn',
+    category: 'c',
+    title,
+    rule: 'r',
+    examples: { work: 'w', everyday: 'e' },
+    analogy: 'a',
+    tryPrompt: 'p',
+    register: 'both',
+  } as unknown as Card;
+}
+
+describe('v5: teach cards per skill (teach_<track>)', () => {
+  const now = 10 * DAY_MS;
+  const since = now - PLAN_GAP_MS;
+
+  it('counts teach views / again-rate / skips per skill, like old types', () => {
+    const cards = [lessonCard('t1', 'stories', 'Start in the middle'), lessonCard('t2', 'words', 'Revert means reply')];
+    const events: CardEvent[] = [
+      viewed('v1', 't1', 'teach' as Card['type'], since + 1),
+      viewed('v2', 't1', 'teach' as Card['type'], since + 2),
+      viewed('v3', 't2', 'teach' as Card['type'], since + 3),
+      viewed('v4', 'gone', 'teach' as Card['type'], since + 3), // card deleted: skill unknown, skipped
+      graded('g1', 't1', 'again', now),
+      graded('g2', 't1', 'good', now),
+    ];
+    const reviews: Review[] = [{ cardId: 't2', skippedAt: since + 4 } as Review];
+    const payload = buildPlanPayload({
+      events,
+      cards,
+      reviews,
+      inbox: [],
+      voiceSamples: [],
+      paceAttempts: [],
+      profile: undefined,
+      now,
+    });
+    expect(payload.types.find((t) => t.type === 'teach_stories')).toEqual({
+      type: 'teach_stories',
+      views: 2,
+      againRate: 0.5,
+      skips: 0,
+    });
+    expect(payload.types.find((t) => t.type === 'teach_words')).toEqual({
+      type: 'teach_words',
+      views: 1,
+      againRate: 0,
+      skips: 1,
+    });
+    expect(payload.types.find((t) => t.type === 'teach_smalltalk')?.views).toBe(0);
+    expect(payload.types.some((t) => (t.type as string) === 'teach')).toBe(false);
+  });
+
+  it('clampPlan keeps and clamps teach_<track> weights, drops a bare or unknown teach key', () => {
+    const plan = clampPlan(
+      { typeWeights: { teach_stories: 2, teach_words: 0.2, teach_clearly: 1.1, teach: 1.2, teach_cooking: 1 }, note: 'More stories.' },
+      new Map(),
+    );
+    expect(plan!.typeWeights).toEqual({ teach_stories: 1.5, teach_words: 0.5, teach_clearly: 1.1 });
+  });
+
+  it('knownWordMap includes lesson titles, so focus words can name them', () => {
+    const map = knownWordMap([lessonCard('t1', 'stories', 'Start in the middle')]);
+    expect(map.get('start in the middle')).toBe('Start in the middle');
+    const plan = clampPlan({ focusWords: ['start in the middle', 'made up'], note: 'Stories.' }, map);
+    expect(plan!.focusWords).toEqual(['Start in the middle']);
+  });
+
+  it('a feed of only teach cards still gets its weekly plan, and the skill weight is stored', async () => {
+    await db.profile.put(profile({ createdAt: Date.now() - 8 * DAY_MS }));
+    await db.cards.bulkPut([lessonCard('t1', 'stories', 'Start in the middle')]);
+    await db.events.put(viewed('v1', 't1', 'teach' as Card['type'], Date.now()));
+    const fetchFn = planFetch({ typeWeights: { teach_stories: 1.4 }, note: 'More stories this week.' });
+
+    expect(await maybePlanWeek(fetchFn)).toBe(true);
+    const sent = callsOf(fetchFn)[0]!.payload.types as Array<{ type: string; views: number }>;
+    expect(sent.find((t) => t.type === 'teach_stories')?.views).toBe(1);
+    const stored = await db.profile.get('me');
+    expect(stored?.typeWeights?.teach_stories).toBe(1.4);
   });
 });

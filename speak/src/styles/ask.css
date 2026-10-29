@@ -50,6 +50,17 @@
   color: var(--ink);
 }
 
+/* The box is a textarea: one line to start, grows with the question. */
+textarea.ask-input {
+  display: block;
+  resize: none;
+  padding: var(--s-3) 0;
+  line-height: var(--lh-body);
+  max-height: 40vh;
+  overflow-y: auto;
+  field-sizing: content;
+}
+
 .ask-input::placeholder {
   color: var(--ink-3);
 }
@@ -357,4 +368,79 @@
   border-radius: var(--r-pill);
   font-size: var(--fs-2);
   color: var(--ink);
+}
+
+/* Under the box: "Type a word or a question" and the 950 / 1000 counter. */
+.ask-input-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-2);
+  margin-top: calc(-1 * var(--s-2));
+}
+
+.ask-hint {
+  margin: 0;
+  font-size: var(--fs-2);
+  color: var(--warn);
+}
+
+.ask-counter {
+  margin-left: auto;
+  font-size: var(--fs-2);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The second check was not sure about the answer. */
+.ask-unsure {
+  margin: 0;
+  font-size: var(--fs-2);
+  color: var(--warn);
+  overflow-wrap: anywhere;
+}
+
+/* A wish: "What I'll change". */
+.ask-changes {
+  margin: 0;
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-sm);
+  background: var(--raised);
+  font-size: var(--fs-3);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.ask-changes-label {
+  display: block;
+  font-size: var(--fs-1);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* Cards couldn't be checked: the whole line is the retry. */
+.ask-retry {
+  min-height: 44px;
+  padding: var(--s-2) var(--s-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-size: var(--fs-2);
+  text-align: left;
+  cursor: pointer;
+}
+
+.ask-retry:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.ask-check-line {
+  margin: 0;
+  font-size: var(--fs-2);
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
 }

@@ -21,6 +21,9 @@ import type { TranscribeResult } from '../../src/types/contract';
 
 /** Model pinned by a test. */
 export const TRANSCRIBE_MODEL = 'whisper-large-v3-turbo';
+/** Whisper spelling hint: Indian English, Hindi words kept as said, in English letters. */
+export const WHISPER_HINT =
+  'Indian English at work, with some Hindi words written in English letters, like yaar, haan, accha, matlab, theek hai.';
 const GROQ_URL = 'https://api.groq.com/openai/v1/audio/transcriptions';
 
 /** 4 MB: about 8 minutes of phone audio; stays under Netlify's 6 MB request cap. */
@@ -189,6 +192,9 @@ async function callGroq(audio: Blob, type: string, key: string): Promise<unknown
   form.append('timestamp_granularities[]', 'word');
   form.append('timestamp_granularities[]', 'segment');
   form.append('language', 'en');
+  // He speaks Indian English with some Hindi words. Without a hint Whisper "translates"
+  // them into English words he never said, and the coach then corrects those.
+  form.append('prompt', WHISPER_HINT);
   form.append('temperature', '0');
 
   const abort = new AbortController();

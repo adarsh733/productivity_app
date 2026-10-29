@@ -21,7 +21,8 @@ export interface TryCardFaceProps {
  *
  * Recalling the answer himself is what makes it stick, so the answer is not in
  * the page until the tap. A Try card with no stored answer shows the card's
- * work example instead, so the button always has something to reveal.
+ * work example instead; with neither, the reveal is hidden (never an empty
+ * box) and 🎤 Say mine stays.
  */
 export default function TryCardFace({ card, onNext, onSayMine }: TryCardFaceProps) {
   const [revealed, setRevealed] = useState(false);
@@ -38,7 +39,8 @@ export default function TryCardFace({ card, onNext, onSayMine }: TryCardFaceProp
     const over = el.getBoundingClientRect().bottom - (body.getBoundingClientRect().bottom - pad);
     if (over > 0) body.scrollTop += over;
   }, [revealed]);
-  const great = card.answer?.trim() || card.examples.work;
+  // Nothing to reveal (no answer, no work example): no empty box, no button.
+  const great = card.answer?.trim() || card.examples?.work?.trim() || '';
   const hasActions = Boolean(onNext || onSayMine);
 
   return (
@@ -64,25 +66,27 @@ export default function TryCardFace({ card, onNext, onSayMine }: TryCardFaceProp
           </div>
         </div>
 
-        <div className="block try-think">
-          <div className="lbl">Think of your answer, then tap…</div>
-          {revealed ? (
-            <div className="try-great" data-testid="try-great" ref={greatRef}>
-              {great}
-            </div>
-          ) : (
-            <button
-              type="button"
-              className="abtn tap try-reveal"
-              onClick={(e) => {
-                e.stopPropagation();
-                setRevealed(true);
-              }}
-            >
-              👀 Show a great answer
-            </button>
-          )}
-        </div>
+        {great && (
+          <div className="block try-think">
+            <div className="lbl">Think of your answer, then tap…</div>
+            {revealed ? (
+              <div className="try-great" data-testid="try-great" ref={greatRef}>
+                {great}
+              </div>
+            ) : (
+              <button
+                type="button"
+                className="abtn tap try-reveal"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setRevealed(true);
+                }}
+              >
+                👀 Show a great answer
+              </button>
+            )}
+          </div>
+        )}
         <div className="spacer" />
       </div>
 
@@ -94,7 +98,12 @@ export default function TryCardFace({ card, onNext, onSayMine }: TryCardFaceProp
             </button>
           )}
           {onNext && (
-            <button type="button" className="abtn tap got-it teach-got try-next" onClick={onNext} aria-label="Advance to next card">
+            <button
+              type="button"
+              className="abtn tap got-it teach-got try-next"
+              onClick={onNext}
+              aria-label="Advance to next card"
+            >
               Next ✓
             </button>
           )}

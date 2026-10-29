@@ -19,6 +19,8 @@ async function clearAll() {
     db.storyBank.clear(),
     db.chats.clear(),
     db.asks.clear(),
+    db.meta.clear(),
+    db.cards.clear(),
   ]);
 }
 
@@ -86,5 +88,57 @@ describe('MeScreen (v5)', () => {
     expect(screen.getByText('"tell my point"')).toBeInTheDocument();
     expect(screen.queryByText(/old one/)).toBeNull();
     expect(screen.getByText('1 question → 3 cards')).toBeInTheDocument();
+  });
+
+  it('"What the app knows about me": plain empty lines on a fresh phone', async () => {
+    render(<MeScreen />);
+    expect(await screen.findByRole('heading', { name: 'What the app knows about me' })).toBeInTheDocument();
+    expect(screen.getByText(/Nothing yet\. Tell Ask what you want/)).toBeInTheDocument();
+    expect(screen.getByText(/None yet\. They come from what you ask/)).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByTestId('me-knows-weak').textContent).toBe('None open right now.'));
+  });
+
+  it('shows his wishes newest first with Forget, the subjects (max 8) and open weak-spot counts', async () => {
+    await db.meta.put({
+      key: 'learn.profile',
+      value: {
+        wishTopics: [{ text: 'cricket', at: 9 }],
+        seenTopics: Array.from({ length: 10 }, (_, i) => ({ text: `subject ${i}`, at: 8 - i, source: 'chat' })),
+        notes: [
+          { text: 'Too easy for me', at: 5 },
+          { text: 'More cricket small talk', at: 9 },
+        ],
+        avoid: [],
+        amount: [],
+        difficulty: [],
+      },
+      updatedAt: 1,
+    });
+    await db.weakSpots.bulkPut([
+      { id: 'w1', wrong: 'tell my point', right: 'make my point', source: 'ask', createdAt: now },
+      { id: 'w2', wrong: 'do the needful', right: 'please handle it', source: 'chat', createdAt: now },
+      { id: 'w3', wrong: 'revert back', right: 'reply', source: 'chat', createdAt: now },
+      { id: 'w4', wrong: 'old', right: 'new', source: 'ask', createdAt: now, fixedAt: now },
+    ]);
+
+    render(<MeScreen />);
+
+    await waitFor(() => expect(screen.getAllByTestId('me-wish')).toHaveLength(2));
+    expect(screen.getAllByTestId('me-wish').map((li) => li.textContent)).toEqual([
+      'More cricket small talkForget',
+      'Too easy for meForget',
+    ]);
+    await waitFor(() => expect(screen.getAllByTestId('me-topic')).toHaveLength(8));
+    expect(screen.getAllByTestId('me-topic')[0]!.textContent).toBe('cricket');
+    expect(screen.getByTestId('me-knows-weak').textContent).toBe('3 open · 1 from Ask, 2 from evening chats');
+
+    const forget = screen.getByRole('button', { name: 'Forget: Too easy for me' });
+    expect(forget.className).toContain('tap');
+    fireEvent.click(forget);
+    await waitFor(() => expect(screen.getAllByTestId('me-wish')).toHaveLength(1));
+    const row = await db.meta.get('learn.profile');
+    expect((row?.value as { notes: Array<{ text: string }> }).notes.map((n) => n.text)).toEqual([
+      'More cricket small talk',
+    ]);
   });
 });

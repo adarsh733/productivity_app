@@ -159,11 +159,13 @@ export function useAiFeedback() {
         if (!res.ok) {
           // Never surface raw provider errors. No key / offline → unavailable.
           let serverError = '';
+          let reason: AiResponse['reason'];
           try {
             const errData = (await res.json()) as AiResponse;
             serverError = errData.error ?? '';
+            reason = errData.reason;
           } catch {}
-          if (/not configured|failed to fetch|network|offline/i.test(serverError)) {
+          if (reason === 'no_key' || /not configured|failed to fetch|network|offline/i.test(serverError)) {
             setUnavailable(true);
           } else {
             setError('AI feedback unavailable right now.');
@@ -180,7 +182,7 @@ export function useAiFeedback() {
 
         if (!data.ok || !data.data) {
           const serverError = data.error ?? '';
-          if (/not configured|failed to fetch|network|offline/i.test(serverError)) {
+          if (data.reason === 'no_key' || /not configured|failed to fetch|network|offline/i.test(serverError)) {
             setUnavailable(true);
           } else {
             setError('AI feedback unavailable right now.');

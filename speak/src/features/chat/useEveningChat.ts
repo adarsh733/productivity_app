@@ -24,6 +24,7 @@ import { todaysTrack } from '../lessons/rotation';
 import { aiPost, withTimeout, type FetchFn } from '../coach/pipeline';
 import { aiCallsLeft, refundAiCalls, tryConsumeAiCalls } from '../auto/budget';
 import { isSavableWeakSpot } from '../ask/askPipeline';
+import { noteTopics, watchList } from '../learn/profile';
 import { saveBestMoment } from './storyBank';
 
 /**
@@ -52,6 +53,7 @@ export type ChatFailure =
   | 'offline'
   | 'budget'
   | 'upload'
+  | 'busy'
   | 'transcribe'
   | 'empty'
   | 'coach'
@@ -62,6 +64,7 @@ export const CHAT_LINES: Record<ChatFailure, string> = {
   offline: "You're offline, so I can't hear or coach right now. Type your answer, or skip.",
   budget: "You've used today's AI coaching. Type your answer to keep it, or skip. More tomorrow.",
   upload: "The recording didn't reach the AI. Type your answer instead, or skip.",
+  busy: 'The speech service is busy — try again in a minute.',
   transcribe: "I couldn't turn that into words. Type your answer instead, or skip.",
   empty: "I didn't hear any words. Say it again, or type your answer.",
   coach: "The coach couldn't answer this time. Your answer is saved.",
@@ -244,6 +247,8 @@ export async function transcribeAudio(blob: Blob, fetchFn: FetchFn): Promise<Tra
     throw new ChatError('upload');
   }
   if (res.status === 413) throw new ChatError('upload');
+  // Too many uploads (429) or the speech service itself busy (503).
+  if (res.status === 429 || res.status === 503) throw new ChatError('busy');
   // 422 is the server's "no words in that clip" — say so, not "couldn't turn it into words".
   if (res.status === 422) throw new ChatError('empty');
   try {
@@ -375,7 +380,19 @@ export function validateFeedback(
       ? { wrong: slipRaw.wrong.trim(), right: slipRaw.right.trim() }
       : null;
 
-  return { good: r.good.trim(), fixes, better: r.better.trim(), slip };
+  // Subjects he talked about, for future cards (never shown). Max 3.
+  const topics = (Array.isArray(r.topics) ? r.topics : [])
+    .filter(str)
+    .map((t) => t.replace(/\s+/g, ' ').trim().slice(0, 60))
+    .slice(0, 3);
+
+  return {
+    good: r.good.trim(),
+    fixes,
+    better: r.better.trim(),
+    slip,
+    ...(topics.length > 0 ? { topics } : {}),
+  };
 }
 
 export interface CoachTurnInput {
@@ -459,6 +476,53 @@ export async function saveChatWeakSpot(
   } catch {
     return null;
   }
+}
+
+/** True when `phrase` appears in `text` as whole words (case and punctuation ignored). */
+function saysPhrase(text: string, phrase: string): boolean {
+  const p = norm(phrase);
+  return p.length > 0 && ` ${norm(text)} `.includes(` ${p} `);
+}
+
+/**
+ * He said the right form of a watched weak spot and not the wrong one: mark it
+ * fixed (`fixedAt`). Only weak spots in `watch` count. Returns how many were
+ * marked. Never throws.
+ */
+export async function markFixedWeakSpots(
+  transcript: string,
+  watch: ReadonlyArray<{ wrong: string; right: string }>,
+  now: number = Date.now(),
+): Promise<number> {
+  try {
+    if (!transcript.trim() || watch.length === 0) return 0;
+    const watched = new Set(watch.map((w) => norm(w.wrong)));
+    const open = (await db.weakSpots.toArray()).filter(
+      (w) => w.fixedAt === undefined && watched.has(norm(w.wrong)),
+    );
+    const fixed = open.filter((w) => saysPhrase(transcript, w.right) && !saysPhrase(transcript, w.wrong));
+    if (fixed.length === 0) return 0;
+    await db.weakSpots.bulkPut(fixed.map((w) => ({ ...w, fixedAt: now })));
+    return fixed.length;
+  } catch {
+    return 0;
+  }
+}
+
+/**
+ * Everything that follows one coached answer, kept even if he has already
+ * closed the chat: the subjects he talked about, a new slip, and weak spots
+ * he has now fixed.
+ */
+export async function learnFromTurn(
+  transcript: string,
+  feedback: CoachChatResult,
+  watch: ReadonlyArray<{ wrong: string; right: string }>,
+  sessionId: string,
+): Promise<void> {
+  await noteTopics(feedback.topics, 'chat').catch(() => {});
+  await markFixedWeakSpots(transcript, watch);
+  if (feedback.slip) await saveChatWeakSpot(feedback.slip, sessionId);
 }
 
 // ── The hook ───────────────────────────────────────────────────────────────
@@ -560,7 +624,7 @@ export function useEveningChat(opts: UseEveningChatOptions = {}): UseEveningChat
     const copy = turnsRef.current.slice();
     copy[i] = t;
     turnsRef.current = copy;
-    setTurns(copy);
+    if (alive.current) setTurns(copy);
     // Keep the chat on the phone after every answer. A failed write is not his problem.
     const done = copy.filter((x): x is ChatTurn => !!x);
     const session: ChatSession = { id: sessionId.current, day, turns: done };
@@ -585,15 +649,8 @@ export function useEveningChat(opts: UseEveningChatOptions = {}): UseEveningChat
       go('working');
       setTurnAt(i, base);
       try {
-        const watch = await db.weakSpots
-          .toArray()
-          .then((all) =>
-            all
-              .filter((w) => w.fixedAt === undefined)
-              .slice(0, 10)
-              .map((w) => ({ wrong: w.wrong, right: w.right })),
-          )
-          .catch(() => []);
+        // His known mistakes, newest first (weak spots + coach-box mistakes).
+        const watch = await watchList().catch(() => [] as Array<{ wrong: string; right: string }>);
         const feedback = await coachTurn({
           question: base.question,
           transcript: base.transcript,
@@ -605,9 +662,11 @@ export function useEveningChat(opts: UseEveningChatOptions = {}): UseEveningChat
           fetchFn,
           online: opts.online,
         });
-        if (!alive.current) return;
+        // Kept even when he closed the chat while the coach was answering:
+        // the call was spent, so the answer is saved to the turn.
         setTurnAt(i, { ...base, feedback });
-        if (feedback.slip) void saveChatWeakSpot(feedback.slip, sessionId.current);
+        void learnFromTurn(base.transcript, feedback, watch, sessionId.current);
+        if (!alive.current) return;
       } catch (e) {
         if (!alive.current) return;
         setFailure(e instanceof ChatError ? e.code : 'coach');
@@ -765,6 +824,11 @@ export function useEveningChat(opts: UseEveningChatOptions = {}): UseEveningChat
     const i = indexRef.current;
     const base = turnsRef.current[i];
     if (!base || phaseRef.current !== 'review' || busy.current) return;
+    // This answer is already coached: never spend another call on it.
+    if (base.feedback) {
+      setFailure(null);
+      return;
+    }
     busy.current = true;
     try {
       await coachAndShow(i, { question: base.question, transcript: base.transcript, wpm: base.wpm, loudness: base.loudness });

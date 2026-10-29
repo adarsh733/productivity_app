@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import type { AskView } from '../../features/ask/askPipeline';
-import { isSavableWeakSpot } from '../../features/ask/askPipeline';
+import { ASK_ANSWER_UNSURE } from '../../features/ask/askPipeline';
 import { KIND_LABELS, TRACK_LABELS } from '../../features/skills/trackOf';
 
 export interface AskAnswerProps {
@@ -9,6 +9,10 @@ export interface AskAnswerProps {
   added: number | null;
   adding?: boolean;
   onAdd?: () => void;
+  /** "Tap to try again" when the check could not run: re-runs only the check. */
+  onRetryCheck?: () => void;
+  /** True while that retry runs. */
+  checking?: boolean;
 }
 
 /** Turns "Could [[you share]] it" into text with the chunk marked. */
@@ -39,7 +43,14 @@ const VERSION_LABELS = [
  * something went wrong, the short answer, the Fix my sentence view, cards he
  * already has ("From your library") and new checked ones ("New · checked").
  */
-export default function AskAnswer({ view, added, adding = false, onAdd }: AskAnswerProps) {
+export default function AskAnswer({
+  view,
+  added,
+  adding = false,
+  onAdd,
+  onRetryCheck,
+  checking = false,
+}: AskAnswerProps) {
   const fixView = view.askKind === 'fix_sentence' && view.versions;
   const count = view.fresh.length;
 
@@ -52,6 +63,30 @@ export default function AskAnswer({ view, added, adding = false, onAdd }: AskAns
       )}
 
       {view.answer && <p className="ask-rule">{view.answer}</p>}
+
+      {view.answer && view.answerCheck === 'rejected' && (
+        <p className="ask-unsure" data-testid="ask-unsure">
+          {ASK_ANSWER_UNSURE}
+        </p>
+      )}
+
+      {view.answer && view.changes && (
+        <p className="ask-changes" data-testid="ask-changes">
+          <span className="ask-changes-label">What I'll change</span> {view.changes}
+        </p>
+      )}
+
+      {view.answer && view.checkLine && (
+        view.canRetryCheck && onRetryCheck ? (
+          <button type="button" className="ask-retry tap" onClick={onRetryCheck} disabled={checking}>
+            {checking ? 'Checking…' : view.checkLine}
+          </button>
+        ) : (
+          <p className="ask-check-line" role="status">
+            {view.checkLine}
+          </p>
+        )
+      )}
 
       {fixView && view.versions && (
         <section className="ask-fix" aria-label="Fix my sentence">
@@ -80,10 +115,10 @@ export default function AskAnswer({ view, added, adding = false, onAdd }: AskAns
         </section>
       )}
 
-      {isSavableWeakSpot(view.weakSpot) && view.weakSpot && (
+      {view.weakSpot && view.weakSpotSaved && (
         <p className="ask-weak">
           <span aria-hidden="true">⚠️ </span>
-          Saved to My weak spots: "{view.weakSpot.wrong}" → "{view.weakSpot.right}"
+          {`${view.weakSpotSaved === 'saved' ? 'Saved to My weak spots' : 'Already in My weak spots'}: "${view.weakSpot.wrong}" → "${view.weakSpot.right}"`}
         </p>
       )}
 

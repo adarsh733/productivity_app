@@ -270,3 +270,35 @@ describe('AI Coaching Feedback Suite', () => {
     second.unmount();
   });
 });
+
+describe('useAiFeedback: server reasons', () => {
+  const transcript = 'I want to revert back on this plan today please';
+
+  it('reason no_key shows the quiet "unavailable" line, whatever the error words say', async () => {
+    global.fetch = vi.fn(async () => ({
+      ok: false,
+      status: 503,
+      json: async () => ({ ok: false, task: 'review_recording', error: 'No AI provider is set up yet.', reason: 'no_key' }),
+    })) as unknown as typeof fetch;
+    const { result } = renderHook(() => useAiFeedback());
+    await act(async () => {
+      await result.current.requestFeedback({ transcript });
+    });
+    expect(result.current.unavailable).toBe(true);
+    expect(result.current.error).toBeNull();
+  });
+
+  it('a busy server is the plain error line, never raw words', async () => {
+    global.fetch = vi.fn(async () => ({
+      ok: false,
+      status: 503,
+      json: async () => ({ ok: false, task: 'review_recording', error: 'groq 503 upstream', reason: 'busy' }),
+    })) as unknown as typeof fetch;
+    const { result } = renderHook(() => useAiFeedback());
+    await act(async () => {
+      await result.current.requestFeedback({ transcript });
+    });
+    expect(result.current.unavailable).toBe(false);
+    expect(result.current.error).toBe('AI feedback unavailable right now.');
+  });
+});

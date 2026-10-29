@@ -101,6 +101,26 @@ ruled-out cause — see `PROBLEM-MAP.md` §6.
 
 ---
 
+## AI fix-all + learning memory (2026-10-29) — owed, not blocked
+
+Fixed the 18 gaps from the AI stress test (kept as `netlify/tests/ai-stress.test.ts`)
+and added the learner memory (`src/features/learn/profile.ts`, rulebook 4.1 preference,
+4.4 any input, 8.3): his wishes, Ask/chat topics, "This is wrong" on lesson cards,
+misses on lesson cards, weak spots (newest first, auto-fixed when he says it right)
+all feed top-up, misses, Ask, the evening chat and the weekly plan.
+
+- **Still proven only against mocks.** No AI key exists yet. Make the live calls in
+  the go-live guide (step 6) before calling the AI "done".
+- **Left to the second AI, not to code:** a Hinglish-sounding example ("do the
+  needful") and a chat rewrite that adds a fact. Prompts forbid both; no code check.
+- **Groq answer room for Ask is ~1,300 tokens** (Ask prompt ≈ 6,150 tokens on an
+  8,000-a-minute free tier). Enough for 3 cards; Ask on Groq is only a fallback.
+  Rulebook 8.3 is left out of the Ask slice to stay under the cap (its rule rides in
+  `DATA_RULE`). If Ask keeps landing on Groq, move it to a paid tier or Haiku.
+- **Budget now counts the check:** coach note, top-up and misses spend 2 calls each
+  (generate + check); background work stops when fewer than 12 are left.
+- **"Harder" may stretch one level past the open lesson level** (top-up only).
+
 ## v5 final review (2026-10-29) — owed, not blocked
 
 - **Live AI is proven only against mocks.** No AI key is on the Netlify site yet,
@@ -117,7 +137,7 @@ ruled-out cause — see `PROBLEM-MAP.md` §6.
   tokens are enough for 8 cards, and whether a long `verify_batch` (8 teach
   cards) fits. If Groq keeps failing, the check falls to the same provider and
   Ask shows the "needs a second key" line even with two keys set.
-- **`viewports.spec.ts` is red (4 of 4), outside this review's files.** It does
+- ~~**`viewports.spec.ts` is red (4 of 4)**~~ green again 2026-10-29 (all 4 pass). Old note: **`viewports.spec.ts` is red (4 of 4), outside this review's files.** It does
   not mock `/.netlify/functions/**`, and the v5 top-up now calls `expand_seed`
   on first open; under `npm run dev` there are no functions, so the browser logs
   a 404 and the zero-console-errors check fails. Fix: add the same `page.route`

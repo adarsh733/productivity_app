@@ -858,3 +858,35 @@ rewrite describes as 60 text scenes, new 130 situations, +100 words / +60 phrase
 - [x] Tests 420/420 + build + seed PASS (engine-verified). master fast-forwarded to v4-usable and pushed (a2b84f3 → ea1f164); v4-usable pushed too.
 - [ ] Found: `https://adarsh-speak.netlify.app` returns "site not found" — the Netlify site was never created (docs/SETUP.md §4). Adarsh: connect the repo in Netlify, add the 4 keys, run the 12-line SQL. Then one live AI check.
 - [x] Netlify build failed: it deployed `ai.test.ts` as a function. Moved it to `speak/netlify/tests/ai.test.ts` (19/19 pass, build green), pushed.
+
+## 2026-10-01 (late) — Speak to the side + handoff for the Speak restructure
+
+**Agenda:** move Speak out of the lead spot (cards lead) · write a proper handoff for the major Speak restructure · ask Adarsh what's unclear first.
+
+- [x] Checked local app at phone size: it already opens on the card feed; Speak is 1 of 4 equal bottom tabs + a "Say it" mic button on every card. Live site link still returns "not found".
+
+## 2026-10-28 — Redesign plan: "ask anything" + vocab/articulation first, Instagram-simple
+
+**Agenda:** look at today's app · plan a full simpler redesign (type anything → AI brings best cards, mixed with existing ~1,100 cards; light speaking only) · HTML plan with today's screenshots + new mockups · Adarsh freezes, then build.
+
+- [x] Walked today's app at phone size; captured Feed/Browse/Speak/You/Capture screenshots.
+- [x] Wrote `docs/REDESIGN-V5.html` (self-contained): problems, "ask anything" flow, 6 new screen mockups (Feed · Ask · Ask answer · Fix my sentence · Say it · Me), before/after, cut/keep/add, build order, 4 freeze choices. PNGs in `docs/redesign-v5/`.
+- [ ] Waiting on Adarsh's freeze (tabs · speaking amount · old voice tools · Hindi). Step 0 still open: Netlify site + AI keys.
+- [x] Adarsh froze: tabs Feed · Ask · Me; Hindi hidden. New asks: articulation + small-talk + storytelling as taught tracks (rule + examples + analogy), researched AI rulebook, voice conversation analysed by AI (+ cost: Gemini/Groq vs Claude). Research running (4 parallel).
+- [x] Research done (4 files in `docs/research/`): small talk, storytelling, articulation + vocab, voice tech/costs. Found: Netlify site never created; Groq llama-3.3-70b retired Aug 2026; Anthropic fallback outdated (haiku-4-5 → haiku-5-5); iOS home-screen apps may have no SpeechRecognition.
+- [x] `docs/AI-RULEBOOK.md` written (4 tracks × 5 levels, card anatomy, Ask rules, voice-feedback rules, checker reasons).
+- [x] `docs/REDESIGN-V5.html` rewritten as plan v2: 4 skills × 5 levels × 4 card kinds, 9 screens, research summary, voice cost table (rec: Groq Whisper + Claude Haiku 5.5 ≈ $0.40/mo), build order.
+- [ ] Waiting on Adarsh's freeze of plan v2.
+- [x] Plan v2 FROZEN by Adarsh: as proposed + Ask items return in varied forms + 4 skills woven together; all 4 skills rotating; voice coach Groq + Claude Haiku; evening chat built last. Added to plan page and rulebook §8.
+- [ ] Next: Step 0 (Netlify site + keys, Adarsh) and build steps 1–5.
+- [x] Handoff written for the build: `.claude/handoffs/2026-10-29-speak-v5-build.md` (fresh chat, /one-go dispatch, middle level).
+
+## 2026-10-29 — SPEAK v5: check + stress-test the AI part
+
+**Agenda:** check the AI is done properly · can it handle every kind of question · does it improve future content · stress test.
+
+- [x] Read-only review of the AI proxy + phone-side AI flows; offline stress run (46 bad-input / bad-reply cases, mocks only — no keys exist, so no live model call).
+- [x] Verdict: never stores unchecked cards; 18 gaps found. Top: off-topic Asks fail as "AI unavailable"; v5 lesson cards outside the learning loops ("This is wrong", misses, weekly plan); a failed check throws away good answers + wrongly says "needs a second key"; chat coaching rejected for normal words ("softer", "rushed", single quotes). No fixes made — waiting on Adarsh.
+- [x] Adarsh: "fix everything end to end… make it a learning machine". Fixed all 18 gaps (stress test now 41/46; the rest are left to the second AI or are test wording) + learner memory: Ask understands wishes ("more cricket small talk", "too easy", "never show X") and shows "What I'll change"; Me shows "What the app knows about me" with Forget; topics from asks/chats, lesson-card rejects/misses, newest weak spots feed every new card, the chat and the weekly plan. Hinglish speech hint; honest error reasons; checker can never check itself. All unit + 30 browser tests green. Not committed.
+- [x] Go-live guide written in chat (Netlify site + 3 keys + live calls).
+

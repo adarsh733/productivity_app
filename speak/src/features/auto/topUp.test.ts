@@ -6,16 +6,24 @@ import { AI_BUDGET_META, AI_DAILY_CAP, BACKGROUND_RESERVE, aiCallsUsed } from '.
 import { AI_NEEDS_KEY_META } from '../coach/pipeline';
 import {
   TOPUP_BATCH,
+  TOPUP_FAIR_MS,
   TOPUP_GAP_MS,
   TOPUP_MAX_PER_DAY,
   TOPUP_MAX_UNSEEN,
   TOPUP_META,
   currentLevel,
+  highestUnlockedLevel,
   maybeTopUp,
+  mergeTopics,
+  missRates,
+  overdueTracks,
   pickTrack,
+  shiftedLevel,
   topUpTopics,
+  trackWeights,
   unseenCounts,
 } from './topUp';
+import { LEARNER_META } from '../learn/profile';
 
 interface TopUpStateLike {
   date: string;
@@ -257,7 +265,7 @@ describe('maybeTopUp: teach cards, one skill a batch (rulebook 3.1)', () => {
     expect(state?.date).toBe(todayKey());
     expect(state?.count).toBe(1);
     expect(state?.tracks).toEqual(['stories']);
-    expect(await aiCallsUsed()).toBe(1);
+    expect(await aiCallsUsed()).toBe(2); // generate + check
   });
 
   it('asks at his level: Level 2 once Level 1 lessons are done', async () => {
@@ -371,7 +379,7 @@ describe('maybeTopUp: teach cards, one skill a batch (rulebook 3.1)', () => {
     const [a, b] = await Promise.all([maybeTopUp(fetchFn), maybeTopUp(fetchFn)]);
     expect([a, b].sort()).toEqual([0, TOPUP_BATCH]);
     expect(callsOf(fetchFn).filter((c) => c.task === 'expand_seed')).toHaveLength(1);
-    expect(await aiCallsUsed()).toBe(1);
+    expect(await aiCallsUsed()).toBe(2);
   });
 
   it('no interests and no notes: the payload simply has no topics key', async () => {
@@ -423,13 +431,32 @@ describe('maybeTopUp: the shared AI budget (Ask goes first)', () => {
     expect(await aiCallsUsed()).toBe(AI_DAILY_CAP - BACKGROUND_RESERVE + 1);
   });
 
-  it('still allowed with exactly 10 left, and takes one call', async () => {
+  it('generate + check = 2 slots: refused with 11 left, allowed with 12 (leaves exactly 10)', async () => {
     await stockAll({ words: 5 });
-    await useCalls(AI_DAILY_CAP - BACKGROUND_RESERVE);
+    await useCalls(AI_DAILY_CAP - BACKGROUND_RESERVE - 1); // 11 left
     const fetchFn = topFetch();
+    expect(await maybeTopUp(fetchFn)).toBe(0);
+    expect(fetchFn).not.toHaveBeenCalled();
 
+    await useCalls(AI_DAILY_CAP - BACKGROUND_RESERVE - 2); // 12 left
     expect(await maybeTopUp(fetchFn)).toBe(TOPUP_BATCH);
-    expect(await aiCallsUsed()).toBe(AI_DAILY_CAP - BACKGROUND_RESERVE + 1);
+    expect(await aiCallsUsed()).toBe(AI_DAILY_CAP - BACKGROUND_RESERVE);
+  });
+
+  it('the network down on the first call: both slots come back', async () => {
+    await stockAll({ words: 5 });
+    const fetchFn = vi.fn(async () => {
+      throw new TypeError('Failed to fetch');
+    }) as unknown as typeof fetch;
+    expect(await maybeTopUp(fetchFn)).toBe(0);
+    expect(await aiCallsUsed()).toBe(0);
+  });
+
+  it('nothing usable to check: the check slot comes back', async () => {
+    await stockAll({ words: 5 });
+    const fetchFn = topFetch({ drafts: () => [null] });
+    expect(await maybeTopUp(fetchFn)).toBe(0);
+    expect(await aiCallsUsed()).toBe(1);
   });
 
   it('over the whole daily cap: silently skipped', async () => {
@@ -475,15 +502,42 @@ describe('maybeTopUp: AI quality gate and quiet failure', () => {
     expect(await db.outbox.count()).toBe(0);
   });
 
-  it('same provider generated and checked: nothing stored, needs-key note set, the ask still counted', async () => {
+  it('same provider generated and checked: nothing stored, both calls still counted', async () => {
     await stockAll({ words: 5 });
     const fetchFn = topFetch({ gen: 'gemini', verify: 'gemini' });
 
     expect(await maybeTopUp(fetchFn)).toBe(0);
     expect(await storedTopUp()).toBe(0);
     expect(await db.outbox.count()).toBe(0);
+    expect(await aiCallsUsed()).toBe(2);
+  });
+
+  it('server says no second key: nothing stored, needs-key note set, the check slot comes back', async () => {
+    await stockAll({ words: 5 });
+    const fetchFn = vi.fn(async (_url: string, init: RequestInit) => {
+      const body = JSON.parse(init.body as string) as { task: string; payload: { track: Track; count: number } };
+      if (body.task === 'expand_seed') {
+        return okJson({ cards: [draftOf(body.payload.track, 900)] }, 'gemini');
+      }
+      return { ok: true, json: async () => ({ ok: false, task: 'verify_batch', reason: 'no_key' }) } as unknown as Response;
+    }) as unknown as typeof fetch;
+
+    expect(await maybeTopUp(fetchFn)).toBe(0);
+    expect(await storedTopUp()).toBe(0);
     expect(await getMeta(AI_NEEDS_KEY_META)).toBe(true);
     expect(await aiCallsUsed()).toBe(1);
+  });
+
+  it('while the needs-a-second-key notice is fresh: no request, no claim; a day-old notice is ignored', async () => {
+    await stockAll({ words: 5 });
+    await db.meta.put({ key: AI_NEEDS_KEY_META, value: true, updatedAt: Date.now() });
+    const fetchFn = topFetch();
+    expect(await maybeTopUp(fetchFn)).toBe(0);
+    expect(fetchFn).not.toHaveBeenCalled();
+    expect(await getMeta(TOPUP_META)).toBeUndefined();
+
+    await db.meta.put({ key: AI_NEEDS_KEY_META, value: true, updatedAt: Date.now() - 25 * 3_600_000 });
+    expect(await maybeTopUp(fetchFn)).toBe(TOPUP_BATCH);
   });
 
   it('the check itself failing (network or server) stores nothing and never throws', async () => {
@@ -575,5 +629,184 @@ describe('maybeTopUp: AI quality gate and quiet failure', () => {
     const fetchFn = topFetch();
 
     expect(await maybeTopUp(fetchFn)).toBe(TOPUP_BATCH - 1);
+  });
+});
+
+// ── v5: learning from him ──────────────────────────────────────────────────
+function review(cardId: string, over: Record<string, unknown> = {}) {
+  return {
+    cardId,
+    state: 'review',
+    due: '2026-01-01',
+    intervalDays: 1,
+    ease: 2.5,
+    reps: 1,
+    lapses: 0,
+    lastGrade: 'good',
+    ...over,
+  } as unknown as import('../../types/contract').Review;
+}
+
+async function putLearner(over: Record<string, unknown>) {
+  await db.meta.put({
+    key: LEARNER_META,
+    value: { wishTopics: [], seenTopics: [], notes: [], avoid: [], amount: [], difficulty: [], ...over },
+    updatedAt: 1,
+  });
+}
+
+describe('track weighting (pure)', () => {
+  it('more of / less of / misses shape the weights; never zero, capped at 1.5', () => {
+    const w = trackWeights({ moreOf: ['stories'], lessOf: ['words'] }, { clearly: 0.5, smalltalk: 0.1 });
+    expect(w).toEqual({ smalltalk: 1, stories: 1.5, clearly: 1.3, words: 0.5 });
+    expect(trackWeights({ moreOf: ['clearly'], lessOf: [] }, { clearly: 0.9 }).clearly).toBe(1.5);
+    expect(Object.values(trackWeights({ moreOf: [], lessOf: ['smalltalk', 'stories', 'clearly', 'words'] })).every((x) => x > 0)).toBe(true);
+  });
+
+  it('a "more of" skill goes first and is stocked deeper; a "less of" skill waits', () => {
+    const deck: Card[] = ALL_TRACKS.flatMap((t) => stockTrack(t, t === 'stories' ? 27 : 20));
+    expect(pickTrack(deck, new Set())).toBe('smalltalk'); // old rule: emptiest
+    expect(pickTrack(deck, new Set(), new Set(), { weights: { stories: 1.5 } })).toBe('stories'); // 30/1.5 = 20, list order loses to...
+    const full: Card[] = ALL_TRACKS.flatMap((t) => stockTrack(t, 70));
+    expect(pickTrack(full, new Set())).toBeNull();
+    expect(pickTrack(full, new Set(), new Set(), { weights: { stories: 1.5 } })).toBe('stories'); // ceiling 90
+    const half: Card[] = ALL_TRACKS.flatMap((t) => stockTrack(t, t === 'words' ? 35 : TOPUP_MAX_UNSEEN));
+    expect(pickTrack(half, new Set(), new Set(), { weights: { words: 0.5 } })).toBeNull(); // ceiling 30
+  });
+
+  it('an overdue skill goes first whatever its weight, so "less of" still comes once a week', () => {
+    const deck: Card[] = ALL_TRACKS.flatMap((t) => stockTrack(t, t === 'words' ? 35 : 5));
+    const weights = { words: 0.5 };
+    expect(pickTrack(deck, new Set(), new Set(), { weights })).toBe('smalltalk');
+    expect(pickTrack(deck, new Set(), new Set(), { weights, overdue: new Set<Track>(['words']) })).toBe('words');
+  });
+
+  it('overdueTracks: never topped up or a week ago = overdue', () => {
+    const now = 10 * TOPUP_FAIR_MS;
+    const state = {
+      date: 'x',
+      count: 0,
+      lastAt: 0,
+      tracks: [],
+      lastByTrack: { smalltalk: now - 1000, stories: now - TOPUP_FAIR_MS },
+    };
+    expect([...overdueTracks(state, now)].sort()).toEqual(['clearly', 'stories', 'words']);
+    expect(overdueTracks(undefined, now).size).toBe(4);
+  });
+
+  it('missRates: share of graded cards he missed, per skill, only with 5+ graded', () => {
+    const cards = stockTrack('clearly', 6).concat(stockTrack('words', 3));
+    const reviews = [
+      ...cards.slice(0, 6).map((c, i) => review(c.id, i < 3 ? { lapses: 1, lastGrade: 'again' } : {})),
+      ...cards.slice(6).map((c) => review(c.id, { lapses: 2 })),
+      review('unknown-card', { lapses: 3 }),
+      review(cards[0]!.id.replace('c0', 'zz'), {}),
+    ];
+    const r = missRates(cards, reviews);
+    expect(r.clearly).toBeCloseTo(0.5);
+    expect(r.words).toBe(0); // only 3 graded
+  });
+});
+
+describe('level from his wishes (pure)', () => {
+  const lessonCard = (track: Track, level: TrackLevel, n: number): Card =>
+    teachCard(`ls-${track}-${level}-${n}`, track, {
+      level,
+      lesson: { id: `${track}-${level}-${n}`, title: `L${n}`, step: 1, order: n },
+    });
+
+  it('shiftedLevel clamps to 1..max; "harder" may stretch one level past it', () => {
+    expect(shiftedLevel(2, -1, 2)).toBe(1);
+    expect(shiftedLevel(1, -1, 2)).toBe(1);
+    expect(shiftedLevel(2, 1, 2)).toBe(3);
+    expect(shiftedLevel(2, 0, 2)).toBe(2);
+    expect(shiftedLevel(1, 1, 2)).toBe(2);
+    expect(shiftedLevel(5, 1, 5)).toBe(5);
+  });
+
+  it('highestUnlockedLevel: the highest open or finished level', () => {
+    const cards = [lessonCard('words', 1, 1), lessonCard('words', 2, 1)];
+    expect(highestUnlockedLevel('words', cards, new Set())).toBe(1);
+    expect(highestUnlockedLevel('words', cards, new Set(['words-1-1']))).toBe(2);
+    expect(highestUnlockedLevel('stories', cards, new Set())).toBe(1);
+  });
+
+  it('mergeTopics: first list first, deduped, max 20', () => {
+    expect(mergeTopics(['Cricket', 'billing'], ['cricket', 'office'])).toEqual(['Cricket', 'billing', 'office']);
+    expect(mergeTopics(Array.from({ length: 15 }, (_, i) => `a${i}`), Array.from({ length: 15 }, (_, i) => `b${i}`))).toHaveLength(20);
+  });
+});
+
+describe('maybeTopUp: learns from him (v5)', () => {
+  it('sends his wishes first in topics, his avoid list and his notes', async () => {
+    await stockAll({ words: 5 });
+    await db.profile.put({ id: 'me', createdAt: 1, interests: ['office'] } as Profile);
+    await putLearner({
+      wishTopics: [{ text: 'cricket', at: 9 }],
+      seenTopics: [{ text: 'billing migration', at: 8, source: 'chat' }],
+      notes: [{ text: 'More cricket small talk', at: 9 }],
+      avoid: [{ text: 'revert back', at: 9 }],
+    });
+    const fetchFn = topFetch();
+
+    expect(await maybeTopUp(fetchFn)).toBe(TOPUP_BATCH);
+    const p = callsOf(fetchFn)[0]!.payload;
+    expect(p.topics).toEqual(['cricket', 'billing migration', 'office']);
+    expect(p.avoid).toEqual(['revert back']);
+    expect(p.notes).toEqual(['More cricket small talk']);
+  });
+
+  it('"more of" picks that skill first when the stock is close', async () => {
+    await stockAll({ smalltalk: 20, stories: 25 });
+    await putLearner({ amount: [{ track: 'stories', dir: 1, at: Date.now() }] });
+    const fetchFn = topFetch();
+    expect(await maybeTopUp(fetchFn)).toBe(TOPUP_BATCH);
+    expect(callsOf(fetchFn)[0]!.payload.track).toBe('stories');
+  });
+
+  it('a skill he keeps missing gets a boost', async () => {
+    await stockAll({ smalltalk: 20, clearly: 24 });
+    const missed = stockTrack('clearly', 6).map((c) => ({ ...c, id: `m-${c.id}` }) as Card);
+    await db.cards.bulkPut(missed);
+    await db.reviews.bulkPut(missed.map((c) => review(c.id, { lapses: 2, lastGrade: 'again' })));
+    const fetchFn = topFetch();
+    expect(await maybeTopUp(fetchFn)).toBe(TOPUP_BATCH);
+    expect(callsOf(fetchFn)[0]!.payload.track).toBe('clearly');
+  });
+
+  it('"too easy / too hard": easier lowers the level, harder stretches one level past what he unlocked', async () => {
+    const lesson = (level: TrackLevel): Card =>
+      teachCard(`ls-words-${level}-1`, 'words', {
+        level,
+        lesson: { id: `words-${level}-1`, title: 'L', step: 1, order: 1 },
+      });
+    await stockAll({ words: 2 });
+    await db.cards.bulkPut([lesson(1), lesson(2)]);
+    await db.lessonProgress.put({ lessonId: 'words-1-1', doneAt: 1 });
+
+    await putLearner({ difficulty: [{ track: 'words', dir: -1, at: Date.now() }] });
+    const easier = topFetch();
+    expect(await maybeTopUp(easier)).toBe(TOPUP_BATCH);
+    expect(callsOf(easier)[0]!.payload).toMatchObject({ track: 'words', level: 1 });
+
+    await db.meta.delete(TOPUP_META);
+    await db.cards.where('batchId').startsWith('topup-').delete();
+    await putLearner({ difficulty: [{ track: 'words', dir: 1, at: Date.now() }] });
+    const harder = topFetch();
+    expect(await maybeTopUp(harder)).toBe(TOPUP_BATCH);
+    expect(callsOf(harder)[0]!.payload).toMatchObject({ track: 'words', level: 3 });
+  });
+
+  it('remembers the last top-up per skill across days', async () => {
+    await stockAll({ words: 5 });
+    await db.meta.put({
+      key: TOPUP_META,
+      value: { date: '2000-01-01', count: 1, lastAt: 0, tracks: ['stories'], lastByTrack: { stories: 123 } },
+      updatedAt: 1,
+    });
+    expect(await maybeTopUp(topFetch())).toBe(TOPUP_BATCH);
+    const state = await getMeta<TopUpStateLike & { lastByTrack: Record<string, number> }>(TOPUP_META);
+    expect(state?.lastByTrack.stories).toBe(123);
+    expect(state?.lastByTrack.words).toBeGreaterThan(123);
   });
 });

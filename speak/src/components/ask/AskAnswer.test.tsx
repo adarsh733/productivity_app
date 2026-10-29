@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import type { Card, TeachDraft } from '../../types/contract';
 import AskAnswer from './AskAnswer';
-import { ASK_LINES, type AskView } from '../../features/ask/askPipeline';
+import { ASK_ANSWER_UNSURE, ASK_CHECK_LINES, ASK_LINES, type AskView } from '../../features/ask/askPipeline';
 
 const LIB_CARD = {
   lang: 'en',
@@ -111,10 +111,64 @@ describe('AskAnswer', () => {
     }
   });
 
-  it('shows the weak spot it saved, but not one that was too long to save', () => {
-    const { rerender } = render(<AskAnswer view={view({ weakSpot: { wrong: 'discuss about', right: 'discuss' } })} added={null} />);
-    expect(screen.getByText(/Saved to My weak spots/)).toBeInTheDocument();
-    rerender(<AskAnswer view={view({ weakSpot: { wrong: 'x'.repeat(70), right: 'discuss' } })} added={null} />);
+  it('says "Saved to My weak spots" only when it was saved, "Already in" for a repeat, nothing otherwise', () => {
+    const spot = { wrong: 'discuss about', right: 'discuss' };
+    const { rerender } = render(<AskAnswer view={view({ weakSpot: spot, weakSpotSaved: 'saved' })} added={null} />);
+    expect(screen.getByText('Saved to My weak spots: "discuss about" → "discuss"')).toBeInTheDocument();
+    rerender(<AskAnswer view={view({ weakSpot: spot, weakSpotSaved: 'duplicate' })} added={null} />);
+    expect(screen.getByText(/Already in My weak spots/)).toBeInTheDocument();
     expect(screen.queryByText(/Saved to My weak spots/)).toBeNull();
+    // Not saved (e.g. the check rejected the answer): no claim at all.
+    rerender(<AskAnswer view={view({ weakSpot: spot })} added={null} />);
+    expect(screen.queryByText(/weak spots/)).toBeNull();
+  });
+});
+
+describe('AskAnswer: the check', () => {
+  it('a rejected answer shows the plain warning under it', () => {
+    render(<AskAnswer view={view({ answerCheck: 'rejected' })} added={null} />);
+    expect(screen.getByTestId('ask-unsure').textContent).toBe(ASK_ANSWER_UNSURE);
+  });
+
+  it('a passed or unchecked answer shows no warning', () => {
+    const { rerender } = render(<AskAnswer view={view({ answerCheck: 'passed' })} added={null} />);
+    expect(screen.queryByTestId('ask-unsure')).toBeNull();
+    rerender(<AskAnswer view={view({ answerCheck: 'unchecked' })} added={null} />);
+    expect(screen.queryByTestId('ask-unsure')).toBeNull();
+  });
+
+  it('a check that could not run: the answer stays, no add button, and the line is the retry', () => {
+    const onRetry = vi.fn();
+    const v = view({ fresh: [], checkLine: ASK_CHECK_LINES.retryCards, canRetryCheck: true, answerCheck: 'unchecked' });
+    const { rerender } = render(<AskAnswer view={v} added={null} onRetryCheck={onRetry} />);
+    expect(screen.getByText('Say "discuss it".')).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /to my feed/ })).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: ASK_CHECK_LINES.retryCards }));
+    expect(onRetry).toHaveBeenCalledTimes(1);
+    rerender(<AskAnswer view={v} added={null} onRetryCheck={onRetry} checking />);
+    expect((screen.getByRole('button', { name: 'Checking…' }) as HTMLButtonElement).disabled).toBe(true);
+  });
+
+  it('needs a second key: a plain line, no retry button', () => {
+    const v = view({ fresh: [], checkLine: ASK_CHECK_LINES.noKey, canRetryCheck: false });
+    render(<AskAnswer view={v} added={null} onRetryCheck={vi.fn()} />);
+    expect(screen.getByRole('status').textContent).toBe(ASK_CHECK_LINES.noKey);
+    expect(screen.queryByRole('button')).toBeNull();
+  });
+
+  it('a wish shows the confirmation and "What I\'ll change", with no cards and no error', () => {
+    const v = view({
+      askKind: 'preference',
+      answer: 'Got it — more cricket small talk.',
+      changes: 'More: Small talk · Topics: cricket',
+      fresh: [],
+      library: [],
+    });
+    render(<AskAnswer view={v} added={null} />);
+    expect(screen.getByText('Got it — more cricket small talk.')).toBeInTheDocument();
+    expect(screen.getByTestId('ask-changes').textContent).toContain("What I'll change");
+    expect(screen.getByTestId('ask-changes').textContent).toContain('More: Small talk · Topics: cricket');
+    expect(screen.queryByRole('button')).toBeNull();
+    expect(screen.queryByText('Nothing found yet.')).toBeNull();
   });
 });

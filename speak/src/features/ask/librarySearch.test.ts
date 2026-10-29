@@ -97,3 +97,37 @@ describe('library search (no network)', () => {
     expect(performance.now() - t0).toBeLessThan(250);
   });
 });
+
+describe('library search: any script', () => {
+  const HINGLISH = {
+    ...base,
+    id: 't-hi',
+    type: 'teach',
+    track: 'smalltalk',
+    level: 1,
+    kind: 'learn',
+    category: 'warmth',
+    title: 'Say jugaad at work',
+    rule: 'Use "workaround" in a meeting; जुगाड़ is fine with friends.',
+    examples: { work: 'We found a workaround.', everyday: 'Bas thoda जुगाड़ kiya.' },
+    analogy: 'Like a café note.',
+    tryPrompt: 'Say it.',
+    register: 'both',
+  } as unknown as AnyCard;
+  const IDX = buildLibraryIndex([HINGLISH, WORD]);
+
+  it('keeps Hindi letters (with their vowel marks) as one token', () => {
+    expect(queryTokens('जुगाड़ क्या है')).toEqual(['जुगाड़', 'क्या', 'है']);
+    expect(queryTokens('café?')).toEqual(['café']);
+  });
+
+  it('a Hindi query finds the card that uses the word', () => {
+    expect(searchLibrary('जुगाड़', IDX).map((h) => h.card.id)).toEqual(['t-hi']);
+    // Only at the start of a word: a fragment from the middle does not match.
+    expect(searchLibrary('गाड़', IDX)).toEqual([]);
+  });
+
+  it('accented letters match at a word start too', () => {
+    expect(searchLibrary('café', IDX).map((h) => h.card.id)).toEqual(['t-hi']);
+  });
+});

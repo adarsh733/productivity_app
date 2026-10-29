@@ -1,7 +1,15 @@
 import { describe, expect, it, beforeEach } from 'vitest';
 import { db, getMeta } from '../../db/db';
 import { todayKey } from '../../lib/date';
-import { AI_BUDGET_META, AI_DAILY_CAP, aiCallsUsed, tryConsumeAiCall } from './budget';
+import {
+  AI_BUDGET_META,
+  AI_DAILY_CAP,
+  BACKGROUND_RESERVE,
+  aiCallsUsed,
+  tryConsumeAiCall,
+  tryConsumeAiCalls,
+  tryConsumeBackgroundAiCalls,
+} from './budget';
 
 beforeEach(async () => {
   await db.meta.clear();
@@ -41,5 +49,18 @@ describe('shared daily AI budget (AG-008 stage 3)', () => {
     expect([a, b].filter(Boolean)).toHaveLength(1);
     expect(await aiCallsUsed()).toBe(AI_DAILY_CAP);
     expect(await tryConsumeAiCall()).toBe(false);
+  });
+});
+
+describe('tryConsumeBackgroundAiCalls (generate + check)', () => {
+  it('takes n at once, all or nothing, and never dips into the reserve Ask keeps', async () => {
+    expect(await tryConsumeBackgroundAiCalls(2)).toBe(true);
+    expect(await aiCallsUsed()).toBe(2);
+    // Leave exactly the reserve + 1: taking 2 would dip into it.
+    await tryConsumeAiCalls(AI_DAILY_CAP - BACKGROUND_RESERVE - 1 - 2);
+    expect(await tryConsumeBackgroundAiCalls(2)).toBe(false);
+    expect(await aiCallsUsed()).toBe(AI_DAILY_CAP - BACKGROUND_RESERVE - 1);
+    expect(await tryConsumeBackgroundAiCalls(1)).toBe(true);
+    expect(await tryConsumeBackgroundAiCalls(0)).toBe(true);
   });
 });

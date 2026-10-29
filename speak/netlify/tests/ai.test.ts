@@ -238,7 +238,7 @@ describe('Netlify AI Function Handler Suite', () => {
     const data = (await res.json()) as any;
     expect(data.ok).toBe(false);
     expect(data.data).toBeUndefined(); // Zero fake coaching data returned
-    expect(data.error).toMatch(/unavailable/i);
+    expect(data.error).toMatch(/not set up|busy or unreachable|didn't pass/i);
     expect(data.error).not.toMatch(/http \d+/);
   });
 
@@ -989,7 +989,7 @@ const goodFixAsk = () => ({
   cards: [
     card({ kind: 'fix', title: 'Ask, then thank', insteadOf: 'Kindly do the needful.' }),
     card({ title: 'Move the review', kind: 'use' }),
-    card({ title: 'Try: ask to reschedule', kind: 'try' }),
+    card({ title: 'Try: ask to reschedule', kind: 'try', answer: 'Could we move this to Thursday?' }),
   ],
 });
 
@@ -1156,7 +1156,9 @@ describe('answer_ask validator', () => {
     expect(() => safeParse('')).toThrow(/Empty response/);
     expect(() => safeParse('   ')).toThrow(/Empty response/);
     expect(() => safeParse('{"askKind":')).toThrow(/Malformed JSON/);
-    expect(() => safeParse('Sure! Here is your JSON: {}')).toThrow(/Malformed JSON/);
+    // A sentence around the object is tolerated; the object inside is read.
+    expect(safeParse('Sure! Here is your JSON: {}')).toEqual({});
+    expect(safeParse('Here it is:\n{"a":3}\nHope this helps!')).toEqual({ a: 3 });
     expect(safeParse('```json\n{"a":1}\n```')).toEqual({ a: 1 });
     expect(safeParse('```\n{"a":2}\n```')).toEqual({ a: 2 });
   });
@@ -1288,7 +1290,7 @@ describe('answer_ask handler', () => {
     const data = (await res.json()) as any;
     expect(data.ok).toBe(false);
     expect(data.data).toBeUndefined();
-    expect(data.error).toMatch(/unavailable/i);
+    expect(data.error).toMatch(/not set up|busy or unreachable|didn't pass/i);
     expect(data.error).not.toMatch(/http|versions|JSON/);
   });
 
@@ -1296,7 +1298,7 @@ describe('answer_ask handler', () => {
     global.fetch = vi.fn() as any;
     const none = await ask({ text: 'what does flag mean' });
     expect(none.status).toBe(502);
-    expect(((await none.json()) as any).error).toMatch(/unavailable/i);
+    expect(((await none.json()) as any).error).toMatch(/not set up|busy or unreachable|didn't pass/i);
     expect(global.fetch).not.toHaveBeenCalled();
 
     process.env.GEMINI_API_KEY = 'k';
@@ -1465,7 +1467,7 @@ describe('expand_seed with teach cards (v5 top-up)', () => {
     expect(res.status).toBe(502);
     const data = (await res.json()) as any;
     expect(data.ok).toBe(false);
-    expect(data.error).toMatch(/unavailable/i);
+    expect(data.error).toMatch(/not set up|busy or unreachable|didn't pass/i);
     expect(fetchSpy).not.toHaveBeenCalled();
   });
 });
@@ -1755,7 +1757,7 @@ describe('coach_chat handler', () => {
     global.fetch = vi.fn() as any;
     const none = await chat(chatPayload());
     expect(none.status).toBe(502);
-    expect(((await none.json()) as any).error).toMatch(/unavailable/i);
+    expect(((await none.json()) as any).error).toMatch(/not set up|busy or unreachable|didn't pass/i);
     expect(global.fetch).not.toHaveBeenCalled();
 
     process.env.ANTHROPIC_API_KEY = 'k';

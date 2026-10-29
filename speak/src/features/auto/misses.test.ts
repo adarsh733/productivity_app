@@ -217,12 +217,12 @@ describe('maybeSpawnMissSiblings (AG-008 stage 2)', () => {
     expect(await db.meta.get(MISS_META)).toBeUndefined();
   });
 
-  it('background reserve: refused with fewer than 10 calls left, allowed with exactly 10 (v5 Ask goes first)', async () => {
+  it('background reserve: generate + check = 2 slots; refused when that would leave fewer than 10 (v5 Ask goes first)', async () => {
     const seed = wordCard('c-8');
     await db.cards.put(seed);
     await db.meta.put({
       key: AI_BUDGET_META,
-      value: { date: todayKey(), count: AI_DAILY_CAP - 9 },
+      value: { date: todayKey(), count: AI_DAILY_CAP - 11 },
       updatedAt: 1,
     });
     const fetchFn = missFetch([WORD_A]);
@@ -231,23 +231,54 @@ describe('maybeSpawnMissSiblings (AG-008 stage 2)', () => {
 
     await db.meta.put({
       key: AI_BUDGET_META,
-      value: { date: todayKey(), count: AI_DAILY_CAP - 10 },
+      value: { date: todayKey(), count: AI_DAILY_CAP - 12 },
       updatedAt: 2,
     });
     expect(await maybeSpawnMissSiblings(seed, fetchFn)).toBe(1);
     expect(fetchFn).toHaveBeenCalled();
+    const budget = (await db.meta.get(AI_BUDGET_META))?.value as { count: number };
+    expect(budget.count).toBe(AI_DAILY_CAP - 10);
   });
 
-  it('same provider generate + verify: nothing stored, needs-key flag set, ask still counted', async () => {
+  it('same provider generate + verify: nothing stored, ask still counted, both slots spent', async () => {
     const seed = wordCard('c-6');
     await db.cards.put(seed);
     const fetchFn = missFetch([WORD_A, WORD_B], undefined, { gen: 'gemini', verify: 'gemini' });
 
     expect(await maybeSpawnMissSiblings(seed, fetchFn)).toBe(0);
     expect(await db.cards.count()).toBe(1);
-    expect((await db.meta.get(AI_NEEDS_KEY_META))?.value).toBe(true);
     const counter = (await db.meta.get(MISS_META))?.value as { count: number };
     expect(counter.count).toBe(1);
+    const budget = (await db.meta.get(AI_BUDGET_META))?.value as { count: number };
+    expect(budget.count).toBe(2);
+  });
+
+  it('server says no second key: nothing stored, needs-key flag set, the check slot comes back', async () => {
+    const seed = wordCard('c-nokey');
+    await db.cards.put(seed);
+    const fetchFn = vi.fn(async (_url: string, init: RequestInit) => {
+      const body = JSON.parse(init.body as string) as { task: string };
+      if (body.task === 'expand_seed') return okJson({ cards: [WORD_A] }, 'gemini');
+      return { ok: true, json: async () => ({ ok: false, task: 'verify_batch', reason: 'no_key' }) } as unknown as Response;
+    }) as unknown as typeof fetch;
+
+    expect(await maybeSpawnMissSiblings(seed, fetchFn)).toBe(0);
+    expect(await db.cards.count()).toBe(1);
+    expect((await db.meta.get(AI_NEEDS_KEY_META))?.value).toBe(true);
+    const budget = (await db.meta.get(AI_BUDGET_META))?.value as { count: number };
+    expect(budget.count).toBe(1);
+  });
+
+  it('skips while the needs-a-second-key notice is fresh; runs again once it is a day old', async () => {
+    const seed = wordCard('c-flag');
+    await db.cards.put(seed);
+    await db.meta.put({ key: AI_NEEDS_KEY_META, value: true, updatedAt: Date.now() });
+    const fetchFn = missFetch([WORD_A]);
+    expect(await maybeSpawnMissSiblings(seed, fetchFn)).toBe(0);
+    expect(fetchFn).not.toHaveBeenCalled();
+
+    await db.meta.put({ key: AI_NEEDS_KEY_META, value: true, updatedAt: Date.now() - 25 * 3_600_000 });
+    expect(await maybeSpawnMissSiblings(seed, fetchFn)).toBe(1);
   });
 
   it('never runs for the types the AI may not produce', async () => {
@@ -284,5 +315,162 @@ describe('maybeSpawnMissSiblings (AG-008 stage 2)', () => {
     const counter = (await db.meta.get(MISS_META))?.value as { count: number };
     expect(counter.count).toBe(1);
     expect(await db.outbox.count()).toBe(0);
+    // The generate call never reached a model: both budget slots come back.
+    const budget = (await db.meta.get(AI_BUDGET_META))?.value as { count: number };
+    expect(budget.count).toBe(0);
+  });
+
+  it('phone offline: no claim, no request, nothing counted', async () => {
+    const seed = wordCard('c-off');
+    await db.cards.put(seed);
+    const fetchFn = missFetch([WORD_A]);
+    const spy = vi.spyOn(navigator, 'onLine', 'get').mockReturnValue(false);
+    try {
+      expect(await maybeSpawnMissSiblings(seed, fetchFn)).toBe(0);
+    } finally {
+      spy.mockRestore();
+    }
+    expect(fetchFn).not.toHaveBeenCalled();
+    expect(await db.meta.get(MISS_META)).toBeUndefined();
+    expect(await db.meta.get(AI_BUDGET_META)).toBeUndefined();
+  });
+
+  it('a successful old-type run spends 2 slots (generate + check)', async () => {
+    const seed = wordCard('c-spend');
+    await db.cards.put(seed);
+    expect(await maybeSpawnMissSiblings(seed, missFetch([WORD_A]))).toBe(1);
+    const budget = (await db.meta.get(AI_BUDGET_META))?.value as { count: number };
+    expect(budget.count).toBe(2);
+  });
+
+  it('two misses at once never pass the daily cap together', async () => {
+    await db.meta.put({
+      key: MISS_META,
+      value: { date: todayKey(), count: MISS_MAX_PER_DAY - 1 },
+      updatedAt: 1,
+    });
+    const a = wordCard('c-par-a', 'alpha');
+    const b = wordCard('c-par-b', 'beta');
+    await db.cards.bulkPut([a, b]);
+    const fetchFn = missFetch([WORD_A]);
+    await Promise.all([maybeSpawnMissSiblings(a, fetchFn), maybeSpawnMissSiblings(b, fetchFn)]);
+    const counter = (await db.meta.get(MISS_META))?.value as { count: number };
+    expect(counter.count).toBe(MISS_MAX_PER_DAY);
+    expect(callsOf(fetchFn).filter((c) => c.task === 'expand_seed')).toHaveLength(1);
+  });
+});
+
+// ── v5 lesson cards ────────────────────────────────────────────────────────
+function teachCard(id: string, over: Record<string, unknown> = {}): Card {
+  return {
+    id,
+    type: 'teach',
+    lang: 'en',
+    tags: [],
+    source: 'seed',
+    status: 'active',
+    createdAt: 1,
+    track: 'smalltalk',
+    level: 2,
+    kind: 'learn',
+    category: 'Openers',
+    title: 'Ask about the weekend',
+    rule: 'Ask one open question about their weekend.',
+    examples: { work: 'How was your weekend, Priya?', everyday: 'Did you do anything fun on Sunday?' },
+    analogy: 'Like opening a door, not a window.',
+    tryPrompt: 'Ask a colleague about their weekend.',
+    register: 'both',
+    ...over,
+  } as unknown as Card;
+}
+
+function teachDraft(title: string, track = 'smalltalk') {
+  return {
+    type: 'teach',
+    track,
+    level: 2,
+    kind: 'use',
+    category: 'Openers',
+    title,
+    rule: 'Ask one open question.',
+    examples: { work: 'How did the demo go?', everyday: 'How was the trip?' },
+    analogy: 'Like passing a ball.',
+    tryPrompt: 'Ask about their trip.',
+    register: 'both',
+  };
+}
+
+describe('maybeSpawnMissSiblings — v5 teach cards', () => {
+  it('a missed lesson card gets 2 verified sibling teach cards with the learner context sent', async () => {
+    const seed = teachCard('t-1');
+    await db.cards.put(seed);
+    await db.cards.put({ ...wordCard('rej-t', 'circle back'), status: 'rejected', rejectedAt: 9 } as unknown as Card);
+    await db.meta.put({
+      key: 'learn.profile',
+      value: {
+        wishTopics: [{ text: 'cricket', at: 5 }],
+        seenTopics: [{ text: 'billing migration', at: 4, source: 'chat' }],
+        notes: [{ text: 'More cricket small talk', at: 5 }],
+        avoid: [],
+        amount: [],
+        difficulty: [],
+      },
+      updatedAt: 1,
+    });
+    const fetchFn = missFetch([
+      teachDraft('Ask about the match'),
+      teachDraft('Follow up on their trip'),
+      teachDraft('Wrong skill', 'words'),
+    ]);
+
+    expect(await maybeSpawnMissSiblings(seed, fetchFn)).toBe(2);
+
+    const calls = callsOf(fetchFn);
+    expect(calls.map((c) => c.task)).toEqual(['expand_seed', 'verify_batch']);
+    const p = calls[0]!.payload;
+    expect(p.type).toBe('teach');
+    expect(p.count).toBe(2);
+    expect(p.track).toBe('smalltalk');
+    expect(p.level).toBe(2);
+    expect(p.topics).toEqual(['Ask about the weekend', 'Openers', 'cricket', 'billing migration']);
+    expect(p.avoid).toEqual(['circle back']);
+    expect(p.notes).toEqual(['More cricket small talk']);
+    expect(p.seed).toBeUndefined();
+    expect((calls[1]!.payload.items as unknown[]).length).toBe(2);
+
+    const stored = await db.cards.where('batchId').equals('miss-t-1').toArray();
+    expect(stored).toHaveLength(2);
+    for (const c of stored) {
+      expect((c as { type: string }).type).toBe('teach');
+      expect(c.seedId).toBe('t-1');
+      expect(c.source).toBe('ai');
+      expect(c.tags).toEqual(['ai', 'miss']);
+    }
+  });
+
+  it('drops a sibling that repeats an existing lesson title', async () => {
+    const seed = teachCard('t-2');
+    await db.cards.put(seed);
+    const fetchFn = missFetch([teachDraft('ask about the  WEEKEND'), teachDraft('Ask about the match')]);
+    expect(await maybeSpawnMissSiblings(seed, fetchFn)).toBe(1);
+  });
+
+  it('no usable drafts: the unused check slot goes back', async () => {
+    const seed = teachCard('t-3');
+    await db.cards.put(seed);
+    const fetchFn = missFetch([{ type: 'teach', title: 'broken' }]);
+    expect(await maybeSpawnMissSiblings(seed, fetchFn)).toBe(0);
+    expect(callsOf(fetchFn).map((c) => c.task)).toEqual(['expand_seed']);
+    const budget = (await db.meta.get(AI_BUDGET_META))?.value as { count: number };
+    expect(budget.count).toBe(1);
+  });
+
+  it('one batch per lesson card, ever', async () => {
+    const seed = teachCard('t-4');
+    await db.cards.put(seed);
+    await db.cards.put(teachCard('miss-t-4-0', { batchId: 'miss-t-4', title: 'Other' }));
+    const fetchFn = missFetch([teachDraft('Ask about the match')]);
+    expect(await maybeSpawnMissSiblings(seed, fetchFn)).toBe(0);
+    expect(fetchFn).not.toHaveBeenCalled();
   });
 });

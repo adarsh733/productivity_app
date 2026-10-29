@@ -237,3 +237,118 @@
   font-size: var(--fs-3);
   color: var(--ink-2);
 }
+
+/* -- What the app knows about me (learner memory) ------------------------- */
+.me-knows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  padding: var(--s-4);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+}
+
+.me-knows-title {
+  font-size: var(--fs-4);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--ink);
+  margin: 0;
+}
+
+.me-knows-part {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.me-knows-label {
+  font-size: var(--fs-1);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0;
+}
+
+.me-knows-empty,
+.me-knows-line {
+  font-size: var(--fs-3);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.me-knows-empty {
+  color: var(--ink-3);
+}
+
+.me-knows-wishes,
+.me-knows-topics {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.me-knows-wishes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.me-knows-wish {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-2) var(--s-2) var(--s-2) var(--s-3);
+  background: var(--raised);
+  border-radius: var(--r-sm);
+}
+
+.me-knows-wish-text {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--fs-3);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.me-knows-forget {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--s-4);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  font: inherit;
+  font-size: var(--fs-2);
+  font-weight: var(--fw-medium);
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.me-knows-forget:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.me-knows-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.me-knows-topic {
+  max-width: 100%;
+  padding: var(--s-1) var(--s-3);
+  background: var(--raised);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-2);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}

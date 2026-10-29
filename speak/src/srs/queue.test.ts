@@ -213,6 +213,17 @@ describe('Preferences, Downweights & Shuffling', () => {
     expect(mult).toBeGreaterThanOrEqual(0.15);
   });
 
+  it('v5: teach_<track> weights apply to teach cards of that skill only; no weight = 1', () => {
+    const t = { ...card('tw', 'teach'), track: 'stories' } as unknown as Card;
+    const weights = { teach_stories: 1.4, teach_words: 0.5 };
+    expect(getCardMultiplier(t, [], weights, undefined, baseTime)).toBeCloseTo(1.4);
+    const other = { ...card('tw2', 'teach'), track: 'clearly' } as unknown as Card;
+    expect(getCardMultiplier(other, [], weights, undefined, baseTime)).toBe(1);
+    expect(getCardMultiplier(testCard, [], weights, undefined, baseTime)).toBe(1);
+    const low = { ...card('tw3', 'teach'), track: 'words' } as unknown as Card;
+    expect(getCardMultiplier(low, [], { teach_words: 0.01 }, undefined, baseTime)).toBe(0.15);
+  });
+
   it('Deterministic daily shuffling is reproducible for the same day and different across days', () => {
     const scoreDay1A = dayCardHash('card_123', '2026-08-26');
     const scoreDay1B = dayCardHash('card_123', '2026-08-26');
