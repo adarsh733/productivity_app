@@ -1,0 +1,1698 @@
+[
+  {
+    "id": "ls-smalltalk-1-1-1",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Mindset",
+    "title": "They like you more than you think",
+    "rule": "After a chat, people tend to like you more than you guess.",
+    "examples": {
+      "work": "Rahul: \"Good luck with the demo!\"\nYou (thinking): \"I talked too much about that bug.\"\nRahul (later, to Priya): \"He's really easy to talk to.\"",
+      "everyday": "You: \"Sorry, I went on and on about my cricket team.\"\nRiya: \"Are you kidding? That was the best part of the evening.\""
+    },
+    "insteadOf": "That was awkward. She must think I'm boring.",
+    "analogy": "You cringe at your voice on a recording. Everyone else just hears you.",
+    "tryPrompt": "Name one person you chatted with this week. Say one thing they probably enjoyed about that chat.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "mindset",
+      "liking-gap"
+    ],
+    "credit": "Liking gap: Boothby et al. (2018)",
+    "lesson": {
+      "id": "ls-smalltalk-1-1",
+      "title": "They want to hear more",
+      "step": 1,
+      "order": 1
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-1-2",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Mindset",
+    "title": "People care what you share",
+    "rule": "People care more about what you share than you expect.",
+    "examples": {
+      "work": "Fatima: \"What did you do on Sunday?\"\nYou: \"Tried baking bread for the first time. It came out like a brick! Do you bake?\"\nFatima: \"Ha! Yes, send me a photo!\"",
+      "everyday": "Cousin: \"What's new with you?\"\nYou: \"I've started cycling to work on Fridays. My legs are not happy! Do you still go running?\""
+    },
+    "insteadOf": "Nobody wants to hear about my weekend.",
+    "analogy": "Like cooking for friends: you worry it's plain, then they ask for seconds.",
+    "tryPrompt": "Pick one small thing from your weekend you'd normally skip. Say it in two sentences, then ask a question.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "mindset",
+      "weekend"
+    ],
+    "credit": "Kardas, Kumar & Epley (2021)",
+    "lesson": {
+      "id": "ls-smalltalk-1-1",
+      "title": "They want to hear more",
+      "step": 2,
+      "order": 1
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-1-3",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Mindset",
+    "title": "Most people want to talk too",
+    "rule": "People nearby are often happy to chat; someone just has to start.",
+    "examples": {
+      "work": "You (in the lift): \"Long day, or just getting started?\"\nJoseph: \"Just starting! Three calls before lunch.\"\nYou: \"Three before lunch? Which one's the big one?\"",
+      "everyday": "You (at the bus stop): \"Is the 500D running late again?\"\nAunty: \"Always! Twenty minutes, at least. Where are you headed?\""
+    },
+    "insteadOf": "Don't disturb him. He probably wants some quiet.",
+    "analogy": "At a bus stop, everyone waits for someone else to speak first. Go first.",
+    "tryPrompt": "Say one easy line you could use in the lift or at the coffee machine tomorrow.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "mindset",
+      "commute",
+      "openers"
+    ],
+    "credit": "Epley & Schroeder (2014)",
+    "lesson": {
+      "id": "ls-smalltalk-1-1",
+      "title": "They want to hear more",
+      "step": 3,
+      "order": 1
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-1-4",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Mindset",
+    "title": "A tiny chat lifts your day",
+    "rule": "A few friendly words with a stranger can lift your mood.",
+    "examples": {
+      "work": "You (at the front desk): \"Morning! Did the rain flood the car park again?\"\nGuard: \"Only the back row. Park near the gate today.\"\nYou: \"Thanks, will do. Has it been raining since last night?\"",
+      "everyday": "You (at the chai stall): \"Ginger chai today? It smells amazing.\"\nChai seller: \"Fresh ginger, just came in. One or two?\""
+    },
+    "insteadOf": "Grabbing your chai without a word or a look.",
+    "analogy": "A smile at the chai stall is like a pinch of sugar: tiny, but you taste it.",
+    "tryPrompt": "Tomorrow, say one friendly line to a shopkeeper, guard or driver. Practise the line aloud now.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "mindset",
+      "chai",
+      "strangers"
+    ],
+    "credit": "Sandstrom & Dunn (2014)",
+    "lesson": {
+      "id": "ls-smalltalk-1-1",
+      "title": "They want to hear more",
+      "step": 4,
+      "order": 1
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-1-5",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "\"Fine\" closes the door",
+    "rule": "A one-word answer gives them nothing to say back.",
+    "examples": {
+      "work": "Arjun: \"How was your day?\"\nYou: \"Long, but we fixed the login bug at last. How was yours?\"\nArjun: \"Wait, the one from Monday? Finally!\"",
+      "everyday": "Mom (on the phone): \"How's everything?\"\nYou: \"All good! I tried making your rajma. What's your secret?\""
+    },
+    "insteadOf": "\"How was your day?\" — \"Fine.\"",
+    "analogy": "A one-word answer is a dot ball: nothing happens, nobody runs.",
+    "tryPrompt": "Answer \"How was your day?\" once with one word, then once with something real. Hear the difference.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "your-day"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-1",
+      "title": "They want to hear more",
+      "step": 5,
+      "order": 1
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-2-1",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "Feeling first, then one fact",
+    "rule": "Start with how it felt, then add one real thing that happened.",
+    "examples": {
+      "work": "Rahul: \"How was the offsite?\"\nYou: \"Fun, actually! We did a cooking challenge and our team won. Were you at the Pune one?\"\nRahul: \"Yes, we just did quizzes. Jealous!\"",
+      "everyday": "Friend: \"How was the wedding?\"\nYou: \"Exhausting but lovely. The dhol played till 2 a.m. Have you been to one that went that late?\""
+    },
+    "insteadOf": "\"How was the offsite?\" — \"Nice.\"",
+    "analogy": "The feeling is the headline. The detail is the photo under it.",
+    "tryPrompt": "How was yesterday? Say one feeling word first, like a headline, then one real thing.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "your-day",
+      "answer-first"
+    ],
+    "credit": "The Reveal step in Carol Fleming's ARE",
+    "lesson": {
+      "id": "ls-smalltalk-1-2",
+      "title": "Give one real detail",
+      "step": 1,
+      "order": 2
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-2-2",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "Names beat \"nice\"",
+    "rule": "Names, places and food give them more than \"nice\" or \"good\".",
+    "examples": {
+      "work": "Priya: \"What did you do last night?\"\nYou: \"Watched the India match at Arjun's place. Did you catch the last over?\"",
+      "everyday": "Neighbour: \"Good dinner?\"\nYou: \"Great. Pav bhaji from the cart near the station. Have you tried it?\""
+    },
+    "insteadOf": "\"What did you do last night?\" — \"Something nice.\"",
+    "analogy": "\"Nice food\" is a blurry photo. \"Pav bhaji near the station\" is in focus.",
+    "tryPrompt": "Describe last weekend in two sentences. Use one name, one place and one food. No \"nice\".",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "food",
+      "cricket"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-2",
+      "title": "Give one real detail",
+      "step": 2,
+      "order": 2
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-2-3",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "Leave a thread to pull",
+    "rule": "Drop a small detail they can ask about. That's a thread.",
+    "examples": {
+      "work": "Joseph: \"How was your weekend?\"\nYou: \"Good! I went on a trek and got caught in the rain. You?\"\nJoseph: \"Wait, which trek? I want to try one.\"",
+      "everyday": "Aunty: \"What's new?\"\nYou: \"I've started learning the guitar. Three chords so far! Do you still sing?\"\nAunty: \"Three chords is enough for an old Kishore Kumar song!\""
+    },
+    "insteadOf": "\"How was your weekend?\" — \"Good. Relaxed.\"",
+    "analogy": "A loose thread on your sleeve: people can't help pulling it.",
+    "tryPrompt": "Answer \"How was your weekend?\" with one detail someone would want to ask about.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "weekend",
+      "threads"
+    ],
+    "credit": "\"Threads\", Lorraine K. Lee (CNBC)",
+    "lesson": {
+      "id": "ls-smalltalk-1-2",
+      "title": "Give one real detail",
+      "step": 3,
+      "order": 2
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-2-4",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "Keep a fresh detail ready",
+    "rule": "Each morning, pick one thing from yesterday to share if asked.",
+    "examples": {
+      "work": "Fatima: \"Anything new?\"\nYou: \"I found a back road that cuts ten minutes off my commute. Which way do you come in?\"",
+      "everyday": "Brother (on a call): \"So, what's up?\"\nYou: \"I watched a show on Lucknow street food. Now I'm planning a trip! Want to come?\""
+    },
+    "insteadOf": "\"Anything new?\" — \"Nothing, same old.\"",
+    "analogy": "Like keeping change ready for the auto: when the moment comes, you're not searching.",
+    "tryPrompt": "Pick your fresh detail from yesterday right now. Say it in one sentence, then add a question.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "commute",
+      "habit"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-2",
+      "title": "Give one real detail",
+      "step": 4,
+      "order": 2
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-2-5",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "Two sentences, not a speech",
+    "rule": "Keep your answer to two sentences, three at most, then hand over.",
+    "examples": {
+      "work": "Riya: \"How was Goa?\"\nYou: \"Brilliant. The best part was a beach shack playing old Hindi songs. Have you been?\"",
+      "everyday": "Uncle: \"How's the new job?\"\nYou: \"Really good so far. My team takes chai breaks very seriously! How's retired life?\""
+    },
+    "insteadOf": "A five-minute, day-by-day tour of your whole Goa trip.",
+    "analogy": "A good answer is a T20 over, not a Test match.",
+    "tryPrompt": "Answer \"How's work these days?\" in two sentences: the point first, one detail, then a question.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "travel",
+      "answer-first"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-2",
+      "title": "Give one real detail",
+      "step": 5,
+      "order": 2
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-3-1",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Hand it back",
+    "title": "End with a hook",
+    "rule": "Finish your answer with a question, so the turn passes to them.",
+    "examples": {
+      "work": "Rahul: \"How was your day?\"\nYou: \"Busy. The audit took all morning. How's your week going?\"\nRahul: \"Don't ask! Two deadlines on Friday.\"",
+      "everyday": "Friend: \"How was the movie?\"\nYou: \"So good. The ending really surprised me. Have you seen it?\""
+    },
+    "insteadOf": "\"How was your day?\" — \"Busy. We had the audit.\" (silence)",
+    "analogy": "Conversation is badminton, not a speech. Hit the shuttle back to their side.",
+    "tryPrompt": "Answer \"How was your morning?\" and end with a question back.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "hooks",
+      "your-day"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-3",
+      "title": "Hand it back",
+      "step": 1,
+      "order": 3
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-3-2",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Hand it back",
+    "title": "A sharper hook than \"You?\"",
+    "rule": "A specific question back is easier to answer than \"And you?\"",
+    "examples": {
+      "work": "Priya: \"How's the sprint?\"\nYou: \"Tight, but we'll meet the deadline. Is your team stuck on testing too?\"",
+      "everyday": "Cousin: \"How was your day?\"\nYou: \"Busy, but good. I fixed a bug I'd been stuck on all week. Calm day for you, or a crazy one?\""
+    },
+    "insteadOf": "\"…And you?\"",
+    "analogy": "\"And you?\" is a loose throw. A specific question lands right in their hands.",
+    "tryPrompt": "Answer \"How's your week?\" Then end with a specific question, not \"And you?\"",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "hooks",
+      "meetings",
+      "deadlines"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-3",
+      "title": "Hand it back",
+      "step": 2,
+      "order": 3
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-3-3",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Hand it back",
+    "title": "Take turns sharing",
+    "rule": "Share a little, then let them share. Taking turns tends to build liking.",
+    "examples": {
+      "work": "Fatima: \"Weekend plans?\"\nYou: \"Just a long cycle ride on Sunday morning. What about you?\"\nFatima: \"My sister's visiting. We might do Lalbagh.\"\nYou: \"Lalbagh's lovely now. Is the flower show on?\"",
+      "everyday": "Neighbour: \"We went to Mysore on Sunday.\"\nYou: \"Lovely! We just stayed home and made dosas. Did you see the palace?\""
+    },
+    "insteadOf": "Telling your whole story while they only nod.",
+    "analogy": "Like a plate of pakoras: you take one, then pass the plate.",
+    "tryPrompt": "A colleague says, \"I went to my hometown last weekend.\" Share one line about yours, then ask them something.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "hooks",
+      "weekend",
+      "turn-taking"
+    ],
+    "credit": "Sprecher et al. (2013)",
+    "lesson": {
+      "id": "ls-smalltalk-1-3",
+      "title": "Hand it back",
+      "step": 3,
+      "order": 3
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-3-4",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Hand it back",
+    "title": "Yes or no? Add a bit more",
+    "rule": "Answer a yes-or-no question with the answer, one detail and a question.",
+    "examples": {
+      "work": "Arjun: \"Did you watch the match?\"\nYou: \"Missed it, sadly! I was stuck on a call. Was it a good one?\"\nArjun: \"Last-ball finish!\"",
+      "everyday": "Shopkeeper: \"Tried the new mango barfi?\"\nYou: \"Not yet! Is it better than the kaju one? I'll take a small box.\""
+    },
+    "insteadOf": "\"Did you watch the match?\" — \"No.\"",
+    "analogy": "\"No\" is a red light. \"No, but…\" turns it green.",
+    "tryPrompt": "Someone asks, \"Have you tried the new canteen menu?\" Answer yes or no, add one detail, then a question.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "hooks",
+      "cricket",
+      "food"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-3",
+      "title": "Hand it back",
+      "step": 4,
+      "order": 3
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-3-5",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Hand it back",
+    "title": "Turn it into an invitation",
+    "rule": "Sometimes the best hook is an offer: \"Want to grab one?\"",
+    "examples": {
+      "work": "Priya: \"Long day?\"\nYou: \"Long, but okay. I really need chai. Want to grab one?\"\nPriya: \"Yes, please. Ten minutes?\"",
+      "everyday": "Friend: \"I'm so bored this weekend.\"\nYou: \"Same! There's a food festival near the lake on Sunday. Want to go?\""
+    },
+    "insteadOf": "\"Long day?\" — \"Hmm.\"",
+    "analogy": "An offer is like holding the lift door: a small gesture that says \"come along\".",
+    "tryPrompt": "A colleague says, \"So much work today.\" Reply with one detail and an offer.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "hooks",
+      "chai",
+      "invitations"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-3",
+      "title": "Hand it back",
+      "step": 5,
+      "order": 3
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-4-1",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "Bad day? Say it lightly",
+    "rule": "If your day went badly, say so, with a small smile in it.",
+    "examples": {
+      "work": "Rahul: \"How's it going?\"\nYou: \"Rough one. My laptop crashed twice before lunch. Yours better?\"\nRahul: \"Ha, a bit. Want me to call IT?\"",
+      "everyday": "Mom: \"How was the trip back?\"\nYou: \"Long! The train was four hours late, but I finished a whole book. What did you all have for dinner?\""
+    },
+    "insteadOf": "\"How was your day?\" — \"Terrible. Everything went wrong.\"",
+    "analogy": "Like rain at a picnic: you mention it, laugh, and still pass the sandwiches.",
+    "tryPrompt": "Think of one small thing that went wrong this week. Say it lightly in one line, then ask back.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "bad-day"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-4",
+      "title": "Honest but light",
+      "step": 1,
+      "order": 4
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-4-2",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "Corridor \"How are you?\"",
+    "rule": "In a corridor, \"How are you?\" is a hello. Reply in one line.",
+    "examples": {
+      "work": "Joseph (walking past): \"Hey, how are you?\"\nYou: \"Good, thanks! Surviving Monday. You?\"\nJoseph: \"Same! Catch you later.\"",
+      "everyday": "Neighbour (in the lift): \"All well?\"\nYou: \"All good! Off to the market. You?\""
+    },
+    "insteadOf": "A full update on your week, or silence.",
+    "analogy": "A wave from a passing car. You wave back; you don't chase the car.",
+    "tryPrompt": "Practise three one-line replies to a quick \"How are you?\" in the corridor. Keep each under eight words.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "corridor",
+      "greetings"
+    ],
+    "credit": "Debra Fine, The Fine Art of Small Talk",
+    "lesson": {
+      "id": "ls-smalltalk-1-4",
+      "title": "Honest but light",
+      "step": 2,
+      "order": 4
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-4-3",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "A small slip beats silence",
+    "rule": "A tiny grammar slip matters less than an answer that stops the chat.",
+    "examples": {
+      "work": "Priya: \"How was the client visit?\"\nYou: \"Went well! They really liked the new dashboard. Were you on the call?\"",
+      "everyday": "Friend: \"How's Bengaluru treating you?\"\nYou: \"The traffic's crazy, but the weather's lovely. When are you visiting?\""
+    },
+    "insteadOf": "Staying quiet because you're unsure of the grammar.",
+    "analogy": "A fielder who fumbles keeps playing. Standing frozen gives away more runs.",
+    "tryPrompt": "Answer \"How was your morning?\" right now, without stopping to fix anything. Keep going for two sentences.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "confidence"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-4",
+      "title": "Honest but light",
+      "step": 3,
+      "order": 4
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-4-4",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "Share a small win",
+    "rule": "A small win from today is an easy, happy answer.",
+    "examples": {
+      "work": "Arjun: \"How was the meeting?\"\nYou: \"Better than I expected. They actually liked the new design! How was yours?\"",
+      "everyday": "Friend: \"What's new?\"\nYou: \"I cooked dinner without burning anything, finally! Want to come over on Sunday and try it?\""
+    },
+    "insteadOf": "\"How was the meeting?\" — \"Fine.\"",
+    "analogy": "Like a single off the last ball: small, but everyone cheers.",
+    "tryPrompt": "Name one small win from this week. Say it as an answer to \"What's new?\", then ask back.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "meetings",
+      "wins"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-4",
+      "title": "Honest but light",
+      "step": 4,
+      "order": 4
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-4-5",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "Sound like you talk",
+    "rule": "Short, spoken sentences sound warmer than formal ones.",
+    "examples": {
+      "work": "Fatima: \"How are you doing?\"\nYou: \"I'm good! A bit sleepy. The team dinner ran late. You?\"",
+      "everyday": "Cousin: \"How's life?\"\nYou: \"Pretty good. I've started a little balcony garden. Do you still grow chillies?\""
+    },
+    "insteadOf": "\"I am doing well, thank you for asking.\"",
+    "analogy": "Formal English over chai is like wearing a suit to the beach.",
+    "tryPrompt": "Answer \"How are you doing?\" starting with \"I'm\", plus one short detail. Short words only.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "register",
+      "plain-words"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-4",
+      "title": "Honest but light",
+      "step": 5,
+      "order": 4
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-5-1",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "\"Where are you from?\"",
+    "rule": "Give the place plus one thing about it, then ask theirs.",
+    "examples": {
+      "work": "Joseph: \"Where are you from?\"\nYou: \"Indore originally, but I've been in Pune six years now. I still miss the poha there. You?\"",
+      "everyday": "Fellow passenger: \"Going home?\"\nYou: \"Yes, to Nagpur. My mom's already planning the menu! Is Nagpur home for you too?\""
+    },
+    "insteadOf": "\"Where are you from?\" — \"Delhi.\"",
+    "analogy": "Your hometown is a free story you carry everywhere. Open the bag a little.",
+    "tryPrompt": "Answer \"Where are you from?\" with your town, one thing you miss and a question back.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "hometown"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-5",
+      "title": "Answer the usual questions",
+      "step": 1,
+      "order": 5
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-5-2",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "\"What do you do?\"",
+    "rule": "Say your job in plain words, plus what you actually do.",
+    "examples": {
+      "work": "Riya (at a meetup): \"What do you do?\"\nYou: \"I'm a product manager. I decide what our learning app builds next. What about you?\"",
+      "everyday": "Uncle: \"So what exactly do you do?\"\nYou: \"I help build an app that teaches English. Lots of talking to users! Want to try it?\""
+    },
+    "insteadOf": "\"What do you do?\" — \"I'm a PM.\"",
+    "analogy": "A job title is a closed lunchbox. Show them what's inside.",
+    "tryPrompt": "Explain your job to a new neighbour in two plain sentences, then ask about theirs.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "work",
+      "plain-words"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-5",
+      "title": "Answer the usual questions",
+      "step": 2,
+      "order": 5
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-5-3",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "\"Any plans for the weekend?\"",
+    "rule": "No plans? Say what you might do, then ask about theirs.",
+    "examples": {
+      "work": "Priya: \"Any plans for the long weekend?\"\nYou: \"Nothing big. I might finally try that trek near Lonavala. Are you going anywhere?\"",
+      "everyday": "Friend: \"What are you up to this evening?\"\nYou: \"Probably cooking and a call with my parents. Something fun on your side?\""
+    },
+    "insteadOf": "\"Any plans for the weekend?\" — \"Not really.\"",
+    "analogy": "Even a quiet weekend has a trailer. Show them one scene.",
+    "tryPrompt": "A colleague asks, \"Any plans for Sunday?\" Answer with one maybe-plan and a question back.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "weekend",
+      "plans"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-5",
+      "title": "Answer the usual questions",
+      "step": 3,
+      "order": 5
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-5-4",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "\"How was the festival?\"",
+    "rule": "Share one warm detail from the festival, then ask about their break.",
+    "examples": {
+      "work": "Joseph: \"How was Diwali?\"\nYou: \"Lovely. My mom's kaju katli is dangerous! How was your long weekend?\"",
+      "everyday": "Fatima: \"Eid Mubarak! Did you get the biryani I sent?\"\nYou: \"Eid Mubarak! We finished it in ten minutes. What's the secret?\""
+    },
+    "insteadOf": "\"How was Diwali?\" — \"Good.\"",
+    "analogy": "Festival talk is like sharing sweets: pass one piece, then hold the box out.",
+    "tryPrompt": "A colleague asks, \"How was your long weekend?\" Answer with one festival or holiday detail, then ask about theirs.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "festivals",
+      "food"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-5",
+      "title": "Answer the usual questions",
+      "step": 4,
+      "order": 5
+    }
+  },
+  {
+    "id": "ls-smalltalk-1-5-5",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 1,
+    "kind": "learn",
+    "category": "Answer well",
+    "title": "\"Busy day?\"",
+    "rule": "\"Busy?\" deserves more than \"yes\": say what's keeping you busy.",
+    "examples": {
+      "work": "Rahul: \"Busy day?\"\nYou: \"Very! Two launches at once. How's your week looking?\"\nRahul: \"Calmer, thankfully. Need a hand?\"",
+      "everyday": "Shop owner: \"Busy these days?\"\nYou: \"Yes, my sister has board exams, so the whole house is on mute! Busy here too?\""
+    },
+    "insteadOf": "\"Busy day?\" — \"Yes.\"",
+    "analogy": "\"Yes\" is a missed call. Say a full line and they'll call back.",
+    "tryPrompt": "Someone asks, \"Busy week?\" Say what's keeping you busy in one line, then ask back.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "answers",
+      "work"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-1-5",
+      "title": "Answer the usual questions",
+      "step": 5,
+      "order": 5
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-1-1",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Follow-ups",
+    "title": "Hear the extra detail",
+    "rule": "Listen for the extra detail they drop: a place, a name, a plan.",
+    "examples": {
+      "work": "Rahul: \"Weekend was good. I was at my cousin's engagement in Jaipur.\"\nYou: \"Jaipur! Was it a big function?\"\nRahul: \"Huge. Four hundred people!\"",
+      "everyday": "Friend: \"Sorry I'm late, I was at the vet with Bruno.\"\nYou: \"Oh no, is Bruno okay?\""
+    },
+    "insteadOf": "Hearing only \"good\" and missing the rest.",
+    "analogy": "Their answer is a menu. Spot the dish you'd like to hear more about.",
+    "tryPrompt": "A colleague says, \"Long weekend. I drove to Coorg with college friends.\" Name the two details you heard.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "threads",
+      "listening",
+      "weekend"
+    ],
+    "credit": "\"Threads\", Lorraine K. Lee (CNBC)",
+    "lesson": {
+      "id": "ls-smalltalk-2-1",
+      "title": "Pick up their thread",
+      "step": 1,
+      "order": 6
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-1-2",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Follow-ups",
+    "title": "Ask about their thread",
+    "rule": "Ask about what they just said, not a brand-new topic.",
+    "examples": {
+      "work": "Fatima: \"I went to Pune this weekend.\"\nYou: \"Oh nice, what took you there?\"\nFatima: \"My best friend's housewarming.\"",
+      "everyday": "Brother: \"I've joined a badminton club.\"\nYou: \"Since when? Are you any good?\""
+    },
+    "insteadOf": "\"I went to Pune.\" — \"Nice. Did you watch the match?\"",
+    "analogy": "One deep well beats ten shallow holes.",
+    "tryPrompt": "A colleague says, \"I spent Sunday at a pottery class.\" Ask one question about it.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "threads",
+      "questions"
+    ],
+    "credit": "Huang et al. (2017)",
+    "lesson": {
+      "id": "ls-smalltalk-2-1",
+      "title": "Pick up their thread",
+      "step": 2,
+      "order": 6
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-1-3",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Follow-ups",
+    "title": "Short news, short question",
+    "rule": "When they share a little, ask one short question about it.",
+    "examples": {
+      "work": "Joseph: \"I went hiking on Saturday.\"\nYou: \"Oh, where? Was it tough?\"\nJoseph: \"Skandagiri. The last stretch was brutal!\"",
+      "everyday": "Riya: \"I finally got my licence.\"\nYou: \"Finally! Two-wheeler or car?\""
+    },
+    "insteadOf": "\"I went hiking.\" — \"Nice.\"",
+    "analogy": "Like a gentle push on a swing: a small nudge keeps it going.",
+    "tryPrompt": "Your friend texts, \"Just got back from Ooty.\" Reply with one short question.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "threads",
+      "travel"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-2-1",
+      "title": "Pick up their thread",
+      "step": 3,
+      "order": 6
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-1-4",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Follow-ups",
+    "title": "Pick the warmer thread",
+    "rule": "Two details? Ask about the one they sound excited about.",
+    "examples": {
+      "work": "Priya: \"Crazy week. Two client calls, and I'm running my first 10K on Sunday!\"\nYou: \"Your first 10K! How long have you been training?\"",
+      "everyday": "Uncle: \"Busy month. The house is being painted, and I've started yoga.\"\nYou: \"Yoga! How's it going so far?\""
+    },
+    "insteadOf": "Asking about the client calls when they're clearly excited about the race.",
+    "analogy": "Two snacks on the plate? Reach for the one that's still warm.",
+    "tryPrompt": "A friend says, \"Work's busy, but I'm learning to make sourdough.\" Pick the warmer thread and ask about it.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "threads",
+      "listening"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-2-1",
+      "title": "Pick up their thread",
+      "step": 4,
+      "order": 6
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-1-5",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Follow-ups",
+    "title": "Rescue with an earlier thread",
+    "rule": "When the chat goes quiet, go back to something they said earlier.",
+    "examples": {
+      "work": "(Silence by the coffee machine)\nYou: \"Wait, you said you're running a 10K on Sunday. Nervous?\"\nPriya: \"Very! I've never run that far.\"",
+      "everyday": "(The chat slows down)\nYou: \"Hey, you mentioned Jaipur earlier. Did you eat anything good?\"\nRahul: \"Dal baati, three times!\""
+    },
+    "insteadOf": "Awkward silence, then \"So… okay.\"",
+    "analogy": "A dying fire? Blow on the coal that's still glowing.",
+    "tryPrompt": "Remember something a colleague mentioned this week. Say the line you'd use to bring it back up.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "threads",
+      "rescue"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-2-1",
+      "title": "Pick up their thread",
+      "step": 5,
+      "order": 6
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-2-1",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Follow-ups",
+    "title": "Comment, question, comment",
+    "rule": "Mix comments with questions, so it never feels like an interview.",
+    "examples": {
+      "work": "Arjun: \"I just moved to Whitefield.\"\nYou: \"That's a big change from Jayanagar. How's the commute?\"\nArjun: \"Shorter, thankfully.\"\nYou: \"Lucky you. Mine's an hour each way.\"",
+      "everyday": "Friend: \"We tried that new Korean place.\"\nYou: \"I've walked past it so many times. Was it spicy?\""
+    },
+    "insteadOf": "\"Where did you go? Who with? How long? What did you eat?\"",
+    "analogy": "Only questions is a police interview. Add comments and it's a chat over chai.",
+    "tryPrompt": "A colleague says, \"I've started gardening.\" Reply with a comment, then a question.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "comments",
+      "questions",
+      "commute"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-2-2",
+      "title": "Comment, then ask",
+      "step": 1,
+      "order": 7
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-2-2",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Follow-ups",
+    "title": "Comment on what you both see",
+    "rule": "Stuck? Comment on something you can both see right now.",
+    "examples": {
+      "work": "(Silence in the lift)\nYou: \"This lift is slower than our release cycle! Are you on eight too?\"\nJoseph: \"Nine. Same pain.\"",
+      "everyday": "(A quiet moment at the wedding)\nYou: \"The dhol player hasn't stopped for an hour. Are you dancing later?\"\nCousin: \"Only if you do!\""
+    },
+    "insteadOf": "Staring at your phone in a silent lift.",
+    "analogy": "What you both see is free chutney at the counter: always there, help yourself.",
+    "tryPrompt": "Think of where you'll be at lunch tomorrow. Say one comment about it, then one question.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "comments",
+      "rescue"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-2-2",
+      "title": "Comment, then ask",
+      "step": 2,
+      "order": 7
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-2-3",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Follow-ups",
+    "title": "\"Speaking of…\"",
+    "rule": "Take one word they said and link it to your own small story.",
+    "examples": {
+      "work": "Fatima: \"We watched a movie with the whole team last night.\"\nYou: \"Speaking of movies, I finally saw 12th Fail. Have you seen it?\"",
+      "everyday": "Friend: \"My mom made appam this morning.\"\nYou: \"Speaking of appam, there's a new Kerala café near my flat. Want to try it on Saturday?\""
+    },
+    "insteadOf": "\"Okay.\" (and the topic ends)",
+    "analogy": "Like a train switching tracks at a junction: same journey, smooth turn.",
+    "tryPrompt": "Someone says, \"I spent the weekend reading.\" Use \"Speaking of…\" to link to something of yours, then ask.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "comments",
+      "films",
+      "food"
+    ],
+    "credit": "Craig Gibbons (threading)",
+    "lesson": {
+      "id": "ls-smalltalk-2-2",
+      "title": "Comment, then ask",
+      "step": 3,
+      "order": 7
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-2-4",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Follow-ups",
+    "title": "Laugh along",
+    "rule": "When they joke about something ordinary, laugh back. It shows you want to connect.",
+    "examples": {
+      "work": "Rahul: \"My code works and I have no idea why.\"\nYou: \"Ha! Don't touch it. Is it going live today?\"",
+      "everyday": "Aunty: \"I asked for less sugar. This is basically syrup!\"\nYou: \"Ha, classic! Shall I ask for another one?\""
+    },
+    "insteadOf": "A straight face and \"Okay.\"",
+    "analogy": "A laugh back is a high five: they raise a hand, you meet it.",
+    "tryPrompt": "A colleague jokes, \"The Wi-Fi only works when the boss is here.\" Laugh, then add one line.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "comments",
+      "humour"
+    ],
+    "credit": "Charles Duhigg, Supercommunicators",
+    "lesson": {
+      "id": "ls-smalltalk-2-2",
+      "title": "Comment, then ask",
+      "step": 4,
+      "order": 7
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-2-5",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Follow-ups",
+    "title": "Let them talk about themselves",
+    "rule": "People enjoy talking about their own lives, so give them room.",
+    "examples": {
+      "work": "Joseph: \"I've started baking on weekends.\"\nYou: \"Nice! What do you bake?\"\nJoseph: \"Banana bread, mostly. Now my kids expect it every Sunday.\"",
+      "everyday": "Grandma: \"In my day, we walked to school.\"\nYou: \"How far was it? Tell me about it.\""
+    },
+    "insteadOf": "Turning every answer back to your own week.",
+    "analogy": "Asking about their hobby is handing them the karaoke mic. Most secretly want it.",
+    "tryPrompt": "Today, ask a friend one question about something they love. Then just listen for a minute.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "listening",
+      "hobbies"
+    ],
+    "credit": "Tamir & Mitchell (2012)",
+    "lesson": {
+      "id": "ls-smalltalk-2-2",
+      "title": "Comment, then ask",
+      "step": 5,
+      "order": 7
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-3-1",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Listening moves",
+    "title": "Mirror one word",
+    "rule": "A negotiation expert suggests repeating their key word as a question.",
+    "examples": {
+      "work": "Priya: \"The client changed the whole brief again.\"\nYou: \"The whole brief?\"\nPriya: \"Yes! Even the colours. We start from scratch on Monday.\"",
+      "everyday": "Friend: \"I'm thinking of quitting the gym.\"\nYou: \"Quitting?\"\nFriend: \"It's too far. I want one closer to home.\""
+    },
+    "insteadOf": "\"Oh.\" (and you change the topic)",
+    "analogy": "Like a waiter reading your order back: you feel heard straight away.",
+    "tryPrompt": "A colleague says, \"The demo crashed in front of the whole team.\" Mirror one word aloud.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "listening",
+      "mirroring"
+    ],
+    "credit": "Chris Voss (mirroring), a negotiation practitioner",
+    "lesson": {
+      "id": "ls-smalltalk-2-3",
+      "title": "Mirror and wait",
+      "step": 1,
+      "order": 8
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-3-2",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Listening moves",
+    "title": "Wait two seconds",
+    "rule": "After they finish, wait two seconds. They often say more.",
+    "examples": {
+      "work": "Arjun: \"The review went okay.\"\nYou: (wait… two seconds)\nArjun: \"Actually, they want me to lead the next one.\"\nYou: \"That's big! What will it involve?\"",
+      "everyday": "Mom: \"Your dad tried cooking today.\"\nYou: (wait…)\nMom: \"He made upma. It was… crunchy.\""
+    },
+    "insteadOf": "Jumping in the moment they stop.",
+    "analogy": "Waiting two seconds is like letting tea brew: more flavour comes out.",
+    "tryPrompt": "Ask someone about their day tonight. When they stop, count two seconds before you speak.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "listening",
+      "pauses"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-2-3",
+      "title": "Mirror and wait",
+      "step": 2,
+      "order": 8
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-3-3",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Listening moves",
+    "title": "Echo once, not every line",
+    "rule": "Mirror once or twice in a chat. More than that sounds fake.",
+    "examples": {
+      "work": "Rahul: \"Mad week with the audit.\"\nYou: \"The audit?\"\nRahul: \"Yes, and the deadline moved up.\"\nYou: \"Ouch. When is it now?\"",
+      "everyday": "Friend: \"I'm moving to Hyderabad.\"\nYou: \"Hyderabad?\"\nFriend: \"New job! Next month.\"\nYou: \"Congratulations! Which part of the city?\""
+    },
+    "insteadOf": "\"The audit?\" … \"The deadline?\" … \"The weekend?\"",
+    "analogy": "Salt once makes the dal. Salt every minute ruins it.",
+    "tryPrompt": "Start from \"I've joined a dance class.\" Mirror once, then ask a normal question.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "listening",
+      "mirroring"
+    ],
+    "credit": "Leil Lowndes (parroting); a critic's warning, via book summaries",
+    "lesson": {
+      "id": "ls-smalltalk-2-3",
+      "title": "Mirror and wait",
+      "step": 3,
+      "order": 8
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-3-4",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Listening moves",
+    "title": "React before you ask",
+    "rule": "Show a small reaction first, like \"Japan!\", then ask your question.",
+    "examples": {
+      "work": "Fatima: \"I just got back from Japan.\"\nYou: \"Japan! What surprised you the most?\"\nFatima: \"How quiet the trains were!\"",
+      "everyday": "Cousin: \"I cleared my driving test.\"\nYou: \"No way, first try? When's the road trip?\""
+    },
+    "insteadOf": "\"I just got back from Japan.\" — \"Okay. What did you see?\"",
+    "analogy": "A reaction is the clap before the speech. It tells them you're with them.",
+    "tryPrompt": "Your friend says, \"I just ran my first half marathon.\" React in one or two words, then ask one question.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "listening",
+      "reactions",
+      "travel"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-2-3",
+      "title": "Mirror and wait",
+      "step": 4,
+      "order": 8
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-3-5",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Listening moves",
+    "title": "Go where the chat goes",
+    "rule": "If the talk turns somewhere surprising, follow it instead of pulling it back.",
+    "examples": {
+      "work": "Joseph: \"So the report's late. Oh, and I'm learning the tabla now.\"\nYou: \"Tabla! How's that going?\"\nJoseph: \"Three months in! My neighbour teaches me.\"",
+      "everyday": "Friend: \"Traffic was bad. Oh, and I saw an elephant on the highway!\"\nYou: \"An elephant? Where was it going?\""
+    },
+    "insteadOf": "\"Anyway, about the report…\"",
+    "analogy": "Like an auto driver's shortcut: trust the turn, you might enjoy the route.",
+    "tryPrompt": "A colleague says mid-update, \"By the way, I adopted a cat.\" Say what you'd reply.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "listening",
+      "hobbies"
+    ],
+    "credit": "Charles Duhigg, Supercommunicators (matching)",
+    "lesson": {
+      "id": "ls-smalltalk-2-3",
+      "title": "Mirror and wait",
+      "step": 5,
+      "order": 8
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-4-1",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Listening moves",
+    "title": "Tired? Reply calmly",
+    "rule": "When someone sounds tired, match them with a calm, gentle reply.",
+    "examples": {
+      "work": "Priya: \"Ugh, what a week.\"\nYou: \"Tell me about it. Chai first, then emails?\"\nPriya: \"Yes. Please.\"",
+      "everyday": "Brother: \"Just got home. So tired.\"\nYou: \"Long day? Eat something and rest. We'll talk tomorrow.\""
+    },
+    "insteadOf": "A loud, cheerful \"Come on, cheer up!\"",
+    "analogy": "If they're dancing to a slow song, don't start doing bhangra.",
+    "tryPrompt": "A colleague sighs, \"Third late night this week.\" Reply in a calm, tired tone. Keep it short.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "mood",
+      "chai"
+    ],
+    "credit": "Charles Duhigg, Supercommunicators (matching)",
+    "lesson": {
+      "id": "ls-smalltalk-2-4",
+      "title": "Match their mood",
+      "step": 1,
+      "order": 9
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-4-2",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Listening moves",
+    "title": "Excited? Get excited too",
+    "rule": "When they're excited, show some excitement back before you ask.",
+    "examples": {
+      "work": "Rahul: \"We won the hackathon!\"\nYou: \"No way! That's huge! What did you build?\"",
+      "everyday": "Riya: \"I got tickets for the final!\"\nYou: \"You did? Lucky you! Who are you going with?\""
+    },
+    "insteadOf": "\"We won the hackathon!\" — \"Okay, congrats.\"",
+    "analogy": "Like a Mexican wave in the stadium: when they stand up, you stand up too.",
+    "tryPrompt": "A friend texts, \"My startup got its first paying customer!\" Reply with their energy, then one question.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "mood",
+      "reactions",
+      "cricket"
+    ],
+    "credit": "Charles Duhigg, Supercommunicators (matching)",
+    "lesson": {
+      "id": "ls-smalltalk-2-4",
+      "title": "Match their mood",
+      "step": 2,
+      "order": 9
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-4-3",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Listening moves",
+    "title": "Don't argue with their mood",
+    "rule": "Agree with how they feel first. Don't flip it.",
+    "examples": {
+      "work": "Arjun: \"Ugh, Mondays.\"\nYou: \"I know. My inbox doubled overnight. Coffee?\"",
+      "everyday": "Friend: \"This heat is unbearable.\"\nYou: \"It really is. I've had three nimbu panis already. Want one?\""
+    },
+    "insteadOf": "\"Ugh, Mondays.\" — \"Actually, I love Mondays!\"",
+    "analogy": "Raining outside? Don't tell them it's sunny. Hand them an umbrella.",
+    "tryPrompt": "Someone says, \"This traffic is the worst.\" Agree first, add one detail, then ask something.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "mood",
+      "weather"
+    ],
+    "credit": "Charles Duhigg, Supercommunicators (matching)",
+    "lesson": {
+      "id": "ls-smalltalk-2-4",
+      "title": "Match their mood",
+      "step": 3,
+      "order": 9
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-4-4",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Listening moves",
+    "title": "Bad news? Slow down",
+    "rule": "When they share bad news, drop the jokes and ask gently.",
+    "examples": {
+      "work": "Fatima: \"The client rejected the whole deck.\"\nYou: \"Oh no, after all that work. What did they say?\"",
+      "everyday": "Friend: \"My flight got cancelled. I'll miss my sister's wedding.\"\nYou: \"Oh no, that's awful. Is there another way to get there?\""
+    },
+    "insteadOf": "\"Ha, classic client! Anyway…\"",
+    "analogy": "Like driving past a school: slow down, look carefully, no honking.",
+    "tryPrompt": "A colleague says, \"My laptop died and I lost a week of work.\" Reply gently in two sentences.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "mood",
+      "bad-news"
+    ],
+    "credit": "Charles Duhigg, Supercommunicators (matching)",
+    "lesson": {
+      "id": "ls-smalltalk-2-4",
+      "title": "Match their mood",
+      "step": 4,
+      "order": 9
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-4-5",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Listening moves",
+    "title": "Practical question? Help first",
+    "rule": "If they need something practical, answer it first. Chat later.",
+    "examples": {
+      "work": "Joseph: \"Do you know where the projector remote is?\"\nYou: \"Top drawer in room four. Big presentation today?\"",
+      "everyday": "Neighbour: \"Which bus goes to the station?\"\nYou: \"The blue one, from that stop. It comes every ten minutes. Off to work?\""
+    },
+    "insteadOf": "\"Where's the projector remote?\" — a story about your first week.",
+    "analogy": "Like a headline: the answer goes first, the chat comes after.",
+    "tryPrompt": "A new colleague asks, \"Where's the canteen?\" Answer first in one line, then add one friendly question.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "mood",
+      "answer-first"
+    ],
+    "credit": "Charles Duhigg, Supercommunicators (matching)",
+    "lesson": {
+      "id": "ls-smalltalk-2-4",
+      "title": "Match their mood",
+      "step": 5,
+      "order": 9
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-5-1",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Follow-ups",
+    "title": "Don't top their story",
+    "rule": "When they share something, don't jump in with a bigger story of yours.",
+    "examples": {
+      "work": "Arjun: \"I ran my first 5K on Sunday!\"\nYou: \"Your first! How did it feel at the finish?\"\nArjun: \"Like I could do it again. Almost.\"",
+      "everyday": "Cousin: \"We got stuck in a two-hour traffic jam.\"\nYou: \"Two hours! What did you do the whole time?\""
+    },
+    "insteadOf": "\"You ran 5K? I ran a half marathon last year.\"",
+    "analogy": "It's their innings. Don't walk out to bat while they're still batting.",
+    "tryPrompt": "A friend says, \"I finally visited Kashmir!\" Reply without mentioning your own trip. Ask one question.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "listening",
+      "topping"
+    ],
+    "credit": "Celeste Headlee (TED talk, via a third-party summary)",
+    "lesson": {
+      "id": "ls-smalltalk-2-5",
+      "title": "Don't top their story",
+      "step": 1,
+      "order": 10
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-5-2",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Follow-ups",
+    "title": "Skip \"I know exactly how you feel\"",
+    "rule": "Don't claim you know exactly how they feel. Ask about their experience.",
+    "examples": {
+      "work": "Priya: \"The first week in a new team is hard.\"\nYou: \"I can imagine. What's been the hardest part so far?\"",
+      "everyday": "Friend: \"Moving cities is exhausting.\"\nYou: \"That's a lot to handle. How's the new place so far?\""
+    },
+    "insteadOf": "\"I know exactly how you feel. When I moved…\"",
+    "analogy": "Everyone's shoes pinch in a different spot. Ask where theirs pinch.",
+    "tryPrompt": "A colleague says, \"My first presentation went badly.\" Reply with one kind line and one question about it.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "listening",
+      "empathy"
+    ],
+    "credit": "Celeste Headlee (TED talk, via a third-party summary)",
+    "lesson": {
+      "id": "ls-smalltalk-2-5",
+      "title": "Don't top their story",
+      "step": 2,
+      "order": 10
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-5-3",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Follow-ups",
+    "title": "\"Me too\" closes it",
+    "rule": "Instead of only \"me too\", ask about their side.",
+    "examples": {
+      "work": "Rahul: \"I'm so tired.\"\nYou: \"Late night? Or just one of those weeks?\"\nRahul: \"Late night. The release went out at 2 a.m.\"",
+      "everyday": "Friend: \"I love this song.\"\nYou: \"Same! When did you first hear it?\""
+    },
+    "insteadOf": "\"I'm so tired.\" — \"Me too.\"",
+    "analogy": "\"Me too\" is a full stop. A question is a comma.",
+    "tryPrompt": "A colleague says, \"I'm so hungry.\" Reply with a question instead of just \"me too\".",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "listening",
+      "questions"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-2-5",
+      "title": "Don't top their story",
+      "step": 3,
+      "order": 10
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-5-4",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Follow-ups",
+    "title": "Your story can wait",
+    "rule": "Ask one more question about theirs before you share your own.",
+    "examples": {
+      "work": "Fatima: \"I spent the weekend in Goa.\"\nYou: \"Goa! Which beach were you near?\"\nFatima: \"Palolem. So quiet.\"\nYou: \"I loved Palolem too. Did you try kayaking?\"",
+      "everyday": "Friend: \"My grandma taught me her pickle recipe.\"\nYou: \"Lucky you! Which pickle?\"\nFriend: \"Mango. It took two days!\""
+    },
+    "insteadOf": "\"Oh, Goa! When I went to Goa…\"",
+    "analogy": "Let their chai finish before you pour yours.",
+    "tryPrompt": "A friend says, \"We drove to Pondicherry.\" You've been too. Ask one question before you mention your trip.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "listening",
+      "travel"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-2-5",
+      "title": "Don't top their story",
+      "step": 4,
+      "order": 10
+    }
+  },
+  {
+    "id": "ls-smalltalk-2-5-5",
+    "type": "teach",
+    "track": "smalltalk",
+    "level": 2,
+    "kind": "learn",
+    "category": "Follow-ups",
+    "title": "Share smaller, then hand back",
+    "rule": "If you share your own story, keep it smaller and end with a question.",
+    "examples": {
+      "work": "Joseph: \"Our flight was delayed six hours.\"\nYou: \"Six! Mine was delayed two hours once, and that felt endless. How did you pass the time?\"",
+      "everyday": "Riya: \"My cat knocked my phone into the sink.\"\nYou: \"Oh no! Mine once sat on my laptop mid-call. Is the phone okay?\""
+    },
+    "insteadOf": "A ten-minute story about your own worst flight.",
+    "analogy": "Add one small brick to their wall. Don't build your own house.",
+    "tryPrompt": "A colleague says, \"My train broke down for an hour.\" Share one smaller line of yours, then ask a question.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "small-talk",
+      "depth:light",
+      "setting:office",
+      "setting:friend",
+      "listening",
+      "travel",
+      "topping"
+    ],
+    "lesson": {
+      "id": "ls-smalltalk-2-5",
+      "title": "Don't top their story",
+      "step": 5,
+      "order": 10
+    }
+  }
+]

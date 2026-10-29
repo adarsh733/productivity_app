@@ -7,6 +7,9 @@ import type { Card } from '../../types/contract';
 import { isTeachCard } from '../../features/skills/trackOf';
 import { FlagIcon, MicrophoneIcon, StarIcon, ThumbsDownIcon } from '../shell/Icons';
 import { rejectCard } from '../../features/auto/reject';
+import StoriesRow from '../lessons/StoriesRow';
+import LessonPlayer from '../lessons/LessonPlayer';
+import type { Lesson } from '../../features/lessons/useLessons';
 
 export interface FeedScreenProps {
   onOpenSpeakWithCard?: (card: Card) => void;
@@ -18,6 +21,7 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
 
   const [isDetail, setIsDetail] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [playing, setPlaying] = useState<Lesson | null>(null);
 
   const shownAt = useRef<number>(Date.now());
   const busy = useRef<boolean>(false);
@@ -167,6 +171,8 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
   if (!feed.item) {
     return (
       <div className="screen feed">
+        <StoriesRow onOpenLesson={setPlaying} />
+        {playing && <LessonPlayer lesson={playing} onClose={() => setPlaying(null)} />}
         <div className="feed-empty">
           <h2 className="feed-empty-title">You're all caught up!</h2>
           <p className="meaning feed-empty-desc">
@@ -215,6 +221,9 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
           )}
         </div>
       </header>
+
+      <StoriesRow onOpenLesson={setPlaying} />
+      {playing && <LessonPlayer lesson={playing} onClose={() => setPlaying(null)} />}
 
       {toastMessage && (
         <div className="toast" role="status" aria-live="polite">

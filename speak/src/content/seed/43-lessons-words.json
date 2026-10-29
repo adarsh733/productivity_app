@@ -1,0 +1,1627 @@
+[
+  {
+    "id": "ls-words-1-1-1",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Precise verbs",
+    "title": "Run a meeting, don't \"do\" it",
+    "rule": "Meetings are run or led, not done.",
+    "examples": {
+      "work": "I ran today's stand-up because Priya was on leave.",
+      "everyday": "My brother led the planning for Mum's birthday dinner."
+    },
+    "insteadOf": "I did the meeting today.",
+    "analogy": "A captain leads the team; nobody says the captain \"did\" the match.",
+    "tryPrompt": "You were in charge of the client call this morning. Say it in one sentence.",
+    "answer": "I ran the client call this morning.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-1",
+      "title": "Sharp verbs, not \"do\"",
+      "step": 1,
+      "order": 1
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "verbs",
+      "meetings"
+    ]
+  },
+  {
+    "id": "ls-words-1-1-2",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Precise verbs",
+    "title": "Make changes, not \"do\" changes",
+    "rule": "You make changes; you don't do them.",
+    "examples": {
+      "work": "I made a few changes to the deck after your comments.",
+      "everyday": "Mum made a few changes to the Diwali menu this year."
+    },
+    "insteadOf": "I did some changes in the deck.",
+    "analogy": "A tailor makes changes to your shirt; he doesn't \"do\" them.",
+    "tryPrompt": "You edited the report after feedback. Tell your manager in one sentence.",
+    "answer": "I've made the changes you suggested.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-1",
+      "title": "Sharp verbs, not \"do\"",
+      "step": 2,
+      "order": 1
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "verbs",
+      "email",
+      "updates"
+    ]
+  },
+  {
+    "id": "ls-words-1-1-3",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Precise verbs",
+    "title": "Say what you found and fixed",
+    "rule": "Name the result: found, fixed, solved. Not just \"looked into\".",
+    "examples": {
+      "work": "I found the cause: a wrong date format. It's fixed now.",
+      "everyday": "The fan was making a noise. I fixed it with one screw."
+    },
+    "insteadOf": "I looked into the issue.",
+    "analogy": "A mechanic says \"I fixed the brakes\", not \"I looked into your car\".",
+    "tryPrompt": "You solved a login bug today. Tell your team what you did in one sentence.",
+    "answer": "I fixed the login bug. It was a wrong setting.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-1",
+      "title": "Sharp verbs, not \"do\"",
+      "step": 3,
+      "order": 1
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "verbs",
+      "updates"
+    ]
+  },
+  {
+    "id": "ls-words-1-1-4",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Precise verbs",
+    "title": "Flag a problem early",
+    "rule": "\"Flag\" means point out a problem so others notice it.",
+    "examples": {
+      "work": "I want to flag a risk: the vendor hasn't replied yet.",
+      "everyday": "My sister flagged that our train tickets were for the wrong date."
+    },
+    "insteadOf": "I just wanted to inform one issue.",
+    "analogy": "Like a railway guard waving a flag: a signal that something needs attention now.",
+    "tryPrompt": "You notice the launch date clashes with Diwali. How do you raise it early in the meeting?",
+    "answer": "I'd like to flag something: the launch date clashes with Diwali.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-1",
+      "title": "Sharp verbs, not \"do\"",
+      "step": 4,
+      "order": 1
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "verbs",
+      "meetings",
+      "risks"
+    ]
+  },
+  {
+    "id": "ls-words-1-1-5",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Precise verbs",
+    "title": "Approve: an official yes",
+    "rule": "\"Approve\" means you officially say yes to something.",
+    "examples": {
+      "work": "Rahul approved the design, so we can start on Monday.",
+      "everyday": "Dad approved the road trip as long as I drive."
+    },
+    "insteadOf": "My leave got passed by the manager.",
+    "analogy": "Approving is the signal turning green: now the train can go.",
+    "tryPrompt": "Your manager said yes to your leave request. Tell your team in one sentence.",
+    "answer": "My manager approved my leave for next week.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-1",
+      "title": "Sharp verbs, not \"do\"",
+      "step": 5,
+      "order": 1
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "verbs",
+      "decisions"
+    ]
+  },
+  {
+    "id": "ls-words-1-2-1",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Collocations",
+    "title": "Make a mistake",
+    "rule": "Mistakes are made, not done.",
+    "examples": {
+      "work": "I made a mistake in the invoice; I'll send a corrected one.",
+      "everyday": "Everyone makes mistakes when they're learning to drive."
+    },
+    "insteadOf": "I did a mistake in the invoice.",
+    "analogy": "Words come in pairs, like chai and biscuit: \"make\" goes with \"mistake\".",
+    "tryPrompt": "You sent the wrong file to a client. Admit it in one sentence.",
+    "answer": "Sorry, I made a mistake and sent the wrong file.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-2",
+      "title": "Words that go together",
+      "step": 1,
+      "order": 2
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "chunks",
+      "email"
+    ]
+  },
+  {
+    "id": "ls-words-1-2-2",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Collocations",
+    "title": "Raise a concern",
+    "rule": "To raise a concern is to say you're worried about something.",
+    "examples": {
+      "work": "Arjun raised a concern about the testing time.",
+      "everyday": "Mum raised a concern about me driving home late at night."
+    },
+    "insteadOf": "I want to put one concern.",
+    "analogy": "Like raising your hand in class: you lift the worry so everyone sees it.",
+    "tryPrompt": "You think two weeks is too little for testing. Say it politely in the meeting.",
+    "answer": "Can I raise a concern? Two weeks feels tight for testing.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-2",
+      "title": "Words that go together",
+      "step": 2,
+      "order": 2
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "chunks",
+      "meetings",
+      "risks"
+    ]
+  },
+  {
+    "id": "ls-words-1-2-3",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Collocations",
+    "title": "Heavy traffic",
+    "rule": "Traffic is heavy or light, not big or small.",
+    "examples": {
+      "work": "Sorry I'm late. There was heavy traffic on the ring road.",
+      "everyday": "Leave early on Friday; the traffic to Pune is always heavy."
+    },
+    "insteadOf": "There was big traffic today.",
+    "analogy": "Picture a heavy bag on your back: that's how a jammed road feels.",
+    "tryPrompt": "You're joining the call ten minutes late because of the roads. Message your team.",
+    "answer": "Running ten minutes late, sorry. Heavy traffic on the way.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-2",
+      "title": "Words that go together",
+      "step": 3,
+      "order": 2
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "chunks",
+      "commute"
+    ]
+  },
+  {
+    "id": "ls-words-1-2-4",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Collocations",
+    "title": "Make a decision",
+    "rule": "\"Make a decision\" works everywhere; British people also say \"take\".",
+    "examples": {
+      "work": "We need to make a decision on the vendor by Friday.",
+      "everyday": "We finally made a decision: Goa for the long weekend."
+    },
+    "analogy": "Like choosing a train at the junction: once you make the decision, you're moving.",
+    "tryPrompt": "Your team keeps discussing two designs. Ask them to choose one today.",
+    "answer": "Can we make a decision on the design today?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-2",
+      "title": "Words that go together",
+      "step": 4,
+      "order": 2
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "chunks",
+      "decisions",
+      "meetings"
+    ]
+  },
+  {
+    "id": "ls-words-1-2-5",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Collocations",
+    "title": "Strong coffee, strong chai",
+    "rule": "Coffee and tea are strong or weak, not powerful.",
+    "examples": {
+      "work": "I need a strong coffee before this 9 a.m. client call.",
+      "everyday": "Make my chai strong, please, with less sugar."
+    },
+    "insteadOf": "This chai is very powerful.",
+    "analogy": "Strong chai is like a firm handshake: you really feel it.",
+    "tryPrompt": "At a café, you want coffee with more taste and less milk. Ask for it.",
+    "answer": "Could I get a strong coffee, please?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-2",
+      "title": "Words that go together",
+      "step": 5,
+      "order": 2
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "chunks",
+      "food"
+    ]
+  },
+  {
+    "id": "ls-words-1-3-1",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Indian-English fixes",
+    "title": "\"Do the needful\" → name the action",
+    "rule": "In global English, name the exact action you need.",
+    "examples": {
+      "work": "Please approve the invoice by Friday.",
+      "everyday": "Could you pick up the cake on your way home?"
+    },
+    "insteadOf": "Please do the needful.",
+    "analogy": "Like telling an auto driver \"go\" versus giving him the address.",
+    "tryPrompt": "You need IT to reset your laptop password. Ask them clearly in one line.",
+    "answer": "Could you please reset my laptop password today?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-3",
+      "title": "Global English at work",
+      "step": 1,
+      "order": 3
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "indian-english",
+      "email"
+    ]
+  },
+  {
+    "id": "ls-words-1-3-2",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Indian-English fixes",
+    "title": "\"I have a doubt\" → \"a question\"",
+    "rule": "In global English, say \"I have a question\", not \"a doubt\".",
+    "examples": {
+      "work": "Quick question about the timeline: is it the end of May?",
+      "everyday": "Quick question: does this train stop at Thane?"
+    },
+    "insteadOf": "Sir, I have a doubt about the timeline.",
+    "analogy": "Abroad, \"a doubt\" can sound like a third-umpire review: you think they got it wrong.",
+    "tryPrompt": "In a training session, you didn't understand step three. Ask the trainer.",
+    "answer": "Sorry, I have a question about step three.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-3",
+      "title": "Global English at work",
+      "step": 2,
+      "order": 3
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "indian-english",
+      "meetings",
+      "training"
+    ]
+  },
+  {
+    "id": "ls-words-1-3-3",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Indian-English fixes",
+    "title": "\"Discuss about\" → \"discuss\"",
+    "rule": "In global English, \"discuss\" already means \"talk about\"; drop \"about\".",
+    "examples": {
+      "work": "Let's discuss the plan tomorrow after stand-up.",
+      "everyday": "We discussed the wedding menu over chai."
+    },
+    "insteadOf": "Let's discuss about the plan tomorrow.",
+    "analogy": "Saying \"discuss about\" is like ordering \"chai tea\": the second word repeats the first.",
+    "tryPrompt": "You want to talk through the new design with Riya. Invite her.",
+    "answer": "Riya, can we discuss the new design this afternoon?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-3",
+      "title": "Global English at work",
+      "step": 3,
+      "order": 3
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "indian-english",
+      "meetings"
+    ]
+  },
+  {
+    "id": "ls-words-1-3-4",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Indian-English fixes",
+    "title": "\"Today itself\" → \"by end of day\"",
+    "rule": "In global English, say \"by end of day\", not \"today itself\".",
+    "examples": {
+      "work": "I'll send the report by end of day.",
+      "everyday": "I'll book the tickets today, before they sell out."
+    },
+    "insteadOf": "I'll send the report today itself.",
+    "analogy": "Like a courier promising \"by 6 p.m.\": a clear time beats extra emphasis.",
+    "tryPrompt": "Your manager needs the slides urgently. Promise them today, clearly.",
+    "answer": "I'll send the slides by end of day today.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-3",
+      "title": "Global English at work",
+      "step": 4,
+      "order": 3
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "indian-english",
+      "email",
+      "deadlines"
+    ]
+  },
+  {
+    "id": "ls-words-1-3-5",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Indian-English fixes",
+    "title": "\"The below\" → \"below\"",
+    "rule": "In global English, put \"below\" after the noun: \"the file below\".",
+    "examples": {
+      "work": "Please check the numbers in the table below.",
+      "everyday": "The recipe below serves four, so double it for Diwali."
+    },
+    "insteadOf": "Please see the below table.",
+    "analogy": "Like a lift sign, \"Parking below\": the place first, then the direction.",
+    "tryPrompt": "In an email, you want people to read the steps listed underneath. Write that line.",
+    "answer": "Please follow the steps below.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-3",
+      "title": "Global English at work",
+      "step": 5,
+      "order": 3
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "indian-english",
+      "email"
+    ]
+  },
+  {
+    "id": "ls-words-1-4-1",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Indian-English fixes",
+    "title": "\"Passed out\" → \"graduated\"",
+    "rule": "In global English, say \"graduated\"; \"passed out\" means \"fainted\".",
+    "examples": {
+      "work": "I graduated in 2019 and started here as a junior designer.",
+      "everyday": "My sister graduated from Pune University last month."
+    },
+    "insteadOf": "I passed out of college in 2019.",
+    "analogy": "Say \"passed out\" abroad and people picture you fainting at the convocation.",
+    "tryPrompt": "A new colleague asks about your college. Say when you finished your degree.",
+    "answer": "I graduated in 2019, from an engineering college in Nagpur.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-4",
+      "title": "Global English about you",
+      "step": 1,
+      "order": 4
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "indian-english",
+      "about-me",
+      "introductions"
+    ]
+  },
+  {
+    "id": "ls-words-1-4-2",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Indian-English fixes",
+    "title": "\"Out of station\" → \"out of town\"",
+    "rule": "In global English, say \"out of town\", not \"out of station\".",
+    "examples": {
+      "work": "I'll be out of town Monday to Wednesday; Rahul will cover.",
+      "everyday": "We're out of town for Onam, back on Sunday."
+    },
+    "insteadOf": "I'll be out of station next week.",
+    "analogy": "\"Station\" makes people picture a train platform; \"town\" tells them you've left the city.",
+    "tryPrompt": "You'll miss Thursday's meeting because you're travelling home. Tell the team.",
+    "answer": "I'll be out of town on Thursday, so I'll miss the meeting.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-4",
+      "title": "Global English about you",
+      "step": 2,
+      "order": 4
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "indian-english",
+      "about-me",
+      "travel",
+      "leave"
+    ]
+  },
+  {
+    "id": "ls-words-1-4-3",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Indian-English fixes",
+    "title": "\"Cousin brother\" → \"cousin\"",
+    "rule": "In global English, \"cousin\" alone works for both boys and girls.",
+    "examples": {
+      "work": "Can I leave at four? My cousin is landing from Dubai.",
+      "everyday": "My cousin and I watched the match at his place."
+    },
+    "insteadOf": "My cousin brother is visiting this weekend.",
+    "analogy": "\"Cousin\" is like \"teammate\": one word fits everyone, boy or girl.",
+    "tryPrompt": "A colleague asks who you spent Diwali with. Mention your male cousin.",
+    "answer": "I spent Diwali with my cousin and his family.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-4",
+      "title": "Global English about you",
+      "step": 3,
+      "order": 4
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "indian-english",
+      "about-me",
+      "family"
+    ]
+  },
+  {
+    "id": "ls-words-1-4-4",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Indian-English fixes",
+    "title": "\"Shifting house\" → \"moving house\"",
+    "rule": "In global English, say \"moving house\", not \"shifting house\".",
+    "examples": {
+      "work": "Can I work from home on Friday? We're moving house.",
+      "everyday": "We're moving to a bigger flat near my office."
+    },
+    "insteadOf": "I'm shifting house this weekend.",
+    "analogy": "Even the trucks say \"Packers and Movers\": you're moving house, not shifting it.",
+    "tryPrompt": "Tell your manager you need Friday off to move to a new flat.",
+    "answer": "Could I take Friday off? We're moving house.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-4",
+      "title": "Global English about you",
+      "step": 4,
+      "order": 4
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "indian-english",
+      "about-me",
+      "home",
+      "leave"
+    ]
+  },
+  {
+    "id": "ls-words-1-4-5",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Indian-English fixes",
+    "title": "\"Myself Arjun\" → \"I'm Arjun\"",
+    "rule": "In global English, start with \"I'm\", not \"Myself\".",
+    "examples": {
+      "work": "Hi everyone, I'm Arjun, from the design team.",
+      "everyday": "Hi, I'm Fatima, Riya's friend from school."
+    },
+    "insteadOf": "Myself Arjun, from the design team.",
+    "analogy": "\"I'm\" is a handshake; \"Myself\" sounds like reading from a form.",
+    "tryPrompt": "You join a call with a new client team. Introduce yourself in one line.",
+    "answer": "Hi, I'm Arjun. I lead design on this project.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-4",
+      "title": "Global English about you",
+      "step": 5,
+      "order": 4
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "indian-english",
+      "about-me",
+      "introductions"
+    ]
+  },
+  {
+    "id": "ls-words-1-5-1",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Indian-English fixes",
+    "title": "\"Informations\" → \"information\"",
+    "rule": "In global English, \"information\" never takes an -s.",
+    "examples": {
+      "work": "Could you share more information about the new process?",
+      "everyday": "The station app has all the information on train timings."
+    },
+    "insteadOf": "Please share the informations.",
+    "analogy": "Information is like rice: you ask for more rice, never \"rices\".",
+    "tryPrompt": "You need details about tomorrow's offsite. Ask HR in one line.",
+    "answer": "Could you send me some information about tomorrow's offsite?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-5",
+      "title": "Words without a plural",
+      "step": 1,
+      "order": 5
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "indian-english",
+      "grammar",
+      "email"
+    ]
+  },
+  {
+    "id": "ls-words-1-5-2",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Indian-English fixes",
+    "title": "\"Feedbacks\" → \"feedback\"",
+    "rule": "In global English, say \"some feedback\", never \"feedbacks\".",
+    "examples": {
+      "work": "Thanks for the feedback; I'll update the slides today.",
+      "everyday": "I asked my friends for feedback on my biryani."
+    },
+    "insteadOf": "Thanks for all the feedbacks.",
+    "analogy": "Feedback is like traffic: there can be a lot of it, never \"many traffics\".",
+    "tryPrompt": "Your team reviewed your design. Thank them in one line.",
+    "answer": "Thanks, everyone, for the feedback on my design.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-5",
+      "title": "Words without a plural",
+      "step": 2,
+      "order": 5
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "indian-english",
+      "grammar",
+      "reviews"
+    ]
+  },
+  {
+    "id": "ls-words-1-5-3",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Indian-English fixes",
+    "title": "\"Luggages\" → \"luggage\" or \"bags\"",
+    "rule": "In global English, \"luggage\" has no plural; count \"bags\" instead.",
+    "examples": {
+      "work": "Leave your luggage at reception; the meeting room is small.",
+      "everyday": "We've got three bags, so we'll need a bigger cab."
+    },
+    "insteadOf": "I have three luggages.",
+    "analogy": "Luggage is the whole pile on the trolley; bags are what you count.",
+    "tryPrompt": "A hotel porter asks how much you are carrying. You have two suitcases. Answer.",
+    "answer": "Just two bags, thanks.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-5",
+      "title": "Words without a plural",
+      "step": 3,
+      "order": 5
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "indian-english",
+      "grammar",
+      "travel"
+    ]
+  },
+  {
+    "id": "ls-words-1-5-4",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Indian-English fixes",
+    "title": "\"Equipments\" → \"equipment\"",
+    "rule": "In global English, \"equipment\" and \"furniture\" never take an -s.",
+    "examples": {
+      "work": "The new studio equipment arrives on Monday.",
+      "everyday": "We bought some furniture for the new flat."
+    },
+    "insteadOf": "We need new equipments for the studio.",
+    "analogy": "Equipment is the whole cricket kit; bats and pads are what you count.",
+    "tryPrompt": "You need two more laptops and a projector for a training day. Ask IT.",
+    "answer": "Could we get some more equipment for the training: two laptops and a projector?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-5",
+      "title": "Words without a plural",
+      "step": 4,
+      "order": 5
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "indian-english",
+      "grammar",
+      "office"
+    ]
+  },
+  {
+    "id": "ls-words-1-5-5",
+    "type": "teach",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Indian-English fixes",
+    "title": "\"A good news\" → \"some good news\"",
+    "rule": "In global English, \"news\" takes no \"a\": say \"some good news\".",
+    "examples": {
+      "work": "I have some good news: the client signed today.",
+      "everyday": "Great news! Riya got into her dream college."
+    },
+    "insteadOf": "I have a good news!",
+    "analogy": "Need just one? Say \"a piece of news\", like one slice from a whole cake.",
+    "tryPrompt": "Your project just got approved. Tell your team in one line.",
+    "answer": "I've got some good news: our project was approved!",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-1-5",
+      "title": "Words without a plural",
+      "step": 5,
+      "order": 5
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l1",
+      "indian-english",
+      "grammar",
+      "updates"
+    ]
+  },
+  {
+    "id": "ls-words-2-1-1",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Phrasal verbs",
+    "title": "Bring forward",
+    "rule": "\"Bring forward\" means move something to an earlier time.",
+    "examples": {
+      "work": "Can we bring the call forward to 3?",
+      "everyday": "We brought the trip forward so we'd be home for Onam."
+    },
+    "insteadOf": "Can we prepone the call?",
+    "analogy": "Like pulling a chair closer: you bring the date nearer to today.",
+    "tryPrompt": "The client wants Friday's demo on Wednesday. Ask your team if that's possible.",
+    "answer": "Can we bring the demo forward to Wednesday?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-1",
+      "title": "Two-word verbs for plans",
+      "step": 1,
+      "order": 6
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "phrasal-verbs",
+      "plans",
+      "meetings"
+    ]
+  },
+  {
+    "id": "ls-words-2-1-2",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Phrasal verbs",
+    "title": "Push back",
+    "rule": "\"Push back\" means move something to a later time.",
+    "examples": {
+      "work": "Can we push the meeting back an hour? I'm stuck in traffic.",
+      "everyday": "We pushed dinner back to nine because Dad's train was late."
+    },
+    "insteadOf": "Can we make the meeting late by one hour?",
+    "analogy": "Like pushing your plate back: same plate, just further away.",
+    "tryPrompt": "Your report needs two more days. Ask your manager for a later deadline.",
+    "answer": "Could we push the deadline back to Thursday?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-1",
+      "title": "Two-word verbs for plans",
+      "step": 2,
+      "order": 6
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "phrasal-verbs",
+      "plans",
+      "meetings",
+      "deadlines"
+    ]
+  },
+  {
+    "id": "ls-words-2-1-3",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Phrasal verbs",
+    "title": "Follow up",
+    "rule": "\"Follow up\" means check back later on something already started.",
+    "examples": {
+      "work": "I'll follow up with the vendor tomorrow if they don't reply.",
+      "everyday": "I'll follow up with the plumber about the leaking tap."
+    },
+    "insteadOf": "I'll ask again regarding the same.",
+    "analogy": "Like a fielder chasing the ball after it's hit: you keep going after it.",
+    "tryPrompt": "You'll check with the client again on Monday. Tell your manager in one line.",
+    "answer": "I'll follow up with the client on Monday.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-1",
+      "title": "Two-word verbs for plans",
+      "step": 3,
+      "order": 6
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "phrasal-verbs",
+      "plans",
+      "email"
+    ]
+  },
+  {
+    "id": "ls-words-2-1-4",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Phrasal verbs",
+    "title": "Sort out",
+    "rule": "\"Sort out\" means fix a problem or put something in order.",
+    "examples": {
+      "work": "Give me an hour; I'll sort out the login issue.",
+      "everyday": "Can you sort out the Wi-Fi? It keeps dropping."
+    },
+    "insteadOf": "I'll do something about the issue.",
+    "analogy": "Like sorting a messy drawer: you're done when everything's in its place.",
+    "tryPrompt": "A teammate's laptop won't connect to the office network. Say you'll fix it.",
+    "answer": "Don't worry, I'll sort it out in ten minutes.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-1",
+      "title": "Two-word verbs for plans",
+      "step": 4,
+      "order": 6
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "phrasal-verbs",
+      "plans",
+      "problems"
+    ]
+  },
+  {
+    "id": "ls-words-2-1-5",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Phrasal verbs",
+    "title": "Run into a problem",
+    "rule": "\"Run into\" a problem means meet it unexpectedly.",
+    "examples": {
+      "work": "We ran into a bug on the checkout page this morning.",
+      "everyday": "We ran into heavy traffic near Silk Board."
+    },
+    "analogy": "Like an auto turning a corner and finding a cow in the road.",
+    "tryPrompt": "Testing is late because of a server issue nobody expected. Tell your manager.",
+    "answer": "We ran into a server issue, so testing is a day behind.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-1",
+      "title": "Two-word verbs for plans",
+      "step": 5,
+      "order": 6
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "phrasal-verbs",
+      "plans",
+      "problems",
+      "updates"
+    ]
+  },
+  {
+    "id": "ls-words-2-2-1",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Phrasal verbs",
+    "title": "Catch up",
+    "rule": "\"Catch up\" means talk and share news after some time apart.",
+    "examples": {
+      "work": "Let's catch up after your leave. I want to hear about the trip.",
+      "everyday": "Let's catch up this weekend; it's been months!"
+    },
+    "analogy": "Like checking the score after missing a few overs: you catch up on what happened.",
+    "tryPrompt": "You haven't spoken to an old colleague in a while. Suggest coffee to talk.",
+    "answer": "It's been ages! Want to catch up over coffee this week?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-2",
+      "title": "Two-word verbs with people",
+      "step": 1,
+      "order": 7
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "phrasal-verbs",
+      "people",
+      "friends"
+    ]
+  },
+  {
+    "id": "ls-words-2-2-2",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Phrasal verbs",
+    "title": "Fill someone in",
+    "rule": "\"Fill someone in\" means tell them what they missed.",
+    "examples": {
+      "work": "I missed the stand-up. Can you fill me in?",
+      "everyday": "Fill me in: what happened at the party?"
+    },
+    "insteadOf": "Can you update me what happened?",
+    "analogy": "Like filling the blanks in a form: they give you the missing parts.",
+    "tryPrompt": "You were on leave yesterday and missed a meeting. Ask Rahul what happened.",
+    "answer": "Rahul, could you fill me in on yesterday's meeting?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-2",
+      "title": "Two-word verbs with people",
+      "step": 2,
+      "order": 7
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "phrasal-verbs",
+      "people",
+      "meetings"
+    ]
+  },
+  {
+    "id": "ls-words-2-2-3",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Phrasal verbs",
+    "title": "Set up a meeting",
+    "rule": "\"Set up\" a meeting means arrange it.",
+    "examples": {
+      "work": "I'll set up a call with the client for Tuesday.",
+      "everyday": "Let's set up a video call with Grandma on Sunday."
+    },
+    "analogy": "Like setting up the stumps before a match: you get everything ready to play.",
+    "tryPrompt": "You need 30 minutes with the design team next week. Offer to arrange it.",
+    "answer": "I'll set up a 30-minute call with design next week.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-2",
+      "title": "Two-word verbs with people",
+      "step": 3,
+      "order": 7
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "phrasal-verbs",
+      "people",
+      "meetings"
+    ]
+  },
+  {
+    "id": "ls-words-2-2-4",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Phrasal verbs",
+    "title": "Go over",
+    "rule": "\"Go over\" something means check or review it carefully.",
+    "examples": {
+      "work": "Can we go over the numbers before the client call?",
+      "everyday": "Let's go over the packing list before we leave."
+    },
+    "analogy": "Like running your finger down a shopping list before leaving the kirana shop.",
+    "tryPrompt": "You want Priya to check the slides with you before tomorrow's pitch. Ask her.",
+    "answer": "Priya, can we go over the slides before tomorrow's pitch?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-2",
+      "title": "Two-word verbs with people",
+      "step": 4,
+      "order": 7
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "phrasal-verbs",
+      "people",
+      "reviews"
+    ]
+  },
+  {
+    "id": "ls-words-2-2-5",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Phrasal verbs",
+    "title": "Point out",
+    "rule": "\"Point out\" means show someone something they may have missed.",
+    "examples": {
+      "work": "Joseph pointed out a typo on the first slide.",
+      "everyday": "My friend pointed out we were on the wrong platform."
+    },
+    "analogy": "Like a friend tapping your shoulder and pointing: \"Look, your train's here.\"",
+    "tryPrompt": "In a review, you notice the date on slide 4 is wrong. Mention it politely.",
+    "answer": "Can I point out one thing? The date on slide 4 is wrong.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-2",
+      "title": "Two-word verbs with people",
+      "step": 5,
+      "order": 7
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "phrasal-verbs",
+      "people",
+      "reviews"
+    ]
+  },
+  {
+    "id": "ls-words-2-3-1",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "title": "\"Just to recap…\"",
+    "rule": "Use \"Just to recap\" to sum up before a meeting ends.",
+    "examples": {
+      "work": "Just to recap: Riya builds it, I test it, launch Friday.",
+      "everyday": "Just to recap: you buy snacks, I bring the speaker."
+    },
+    "analogy": "Like the highlights at the end of a match: the key moments, fast.",
+    "tryPrompt": "The meeting is ending. Sum up the two next steps for the team.",
+    "answer": "Just to recap: Arjun sends the quote, and I'll book the room.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-3",
+      "title": "Phrases for meetings",
+      "step": 1,
+      "order": 8
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "office-phrases",
+      "meetings"
+    ]
+  },
+  {
+    "id": "ls-words-2-3-2",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "title": "\"Can we park that?\"",
+    "rule": "\"Can we park that?\" means let's leave it for later.",
+    "examples": {
+      "work": "Good point, but can we park that until next week?",
+      "everyday": "Can we park the holiday plan till after exams?"
+    },
+    "analogy": "Like parking a car: it's safe, it's not going anywhere, you'll come back.",
+    "tryPrompt": "Someone raises a new topic, but time is short. Suggest leaving it for later.",
+    "answer": "Good point. Can we park that and come back to it on Friday?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-3",
+      "title": "Phrases for meetings",
+      "step": 2,
+      "order": 8
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "office-phrases",
+      "meetings"
+    ]
+  },
+  {
+    "id": "ls-words-2-3-3",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "title": "\"Can I add something?\"",
+    "rule": "Ask \"Can I add something?\" to join in politely.",
+    "examples": {
+      "work": "Can I add something? The client also wants a Hindi version.",
+      "everyday": "Can I add something? The restaurant shuts at ten, so let's hurry."
+    },
+    "insteadOf": "Sorry to disturb, one point from my side.",
+    "analogy": "Like waiting for a gap in traffic before you merge in.",
+    "tryPrompt": "Your team is planning dates, and you know a holiday clashes. Join in politely.",
+    "answer": "Can I add something? Diwali falls that week, so many people will be off.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-3",
+      "title": "Phrases for meetings",
+      "step": 3,
+      "order": 8
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "office-phrases",
+      "meetings"
+    ]
+  },
+  {
+    "id": "ls-words-2-3-4",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "title": "\"So the next step is…\"",
+    "rule": "End with \"So the next step is…\" and name who does what.",
+    "examples": {
+      "work": "So the next step is: Fatima shares the draft by Thursday.",
+      "everyday": "So the next step is: I book the tickets, you pack."
+    },
+    "analogy": "Like the guard's whistle at the station: everyone knows what happens next.",
+    "tryPrompt": "The call is ending. Say what happens next: you'll send the plan tomorrow.",
+    "answer": "So the next step is: I'll send the plan tomorrow.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-3",
+      "title": "Phrases for meetings",
+      "step": 4,
+      "order": 8
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "office-phrases",
+      "meetings",
+      "clearly"
+    ]
+  },
+  {
+    "id": "ls-words-2-3-5",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "title": "\"Let's pick this up tomorrow.\"",
+    "rule": "\"Let's pick this up tomorrow\" means continue it later.",
+    "examples": {
+      "work": "We're out of time. Let's pick this up tomorrow at ten.",
+      "everyday": "It's late and we're all tired. Let's pick this up after breakfast."
+    },
+    "analogy": "Like pausing a film at the interval: you'll start right where you stopped.",
+    "tryPrompt": "The discussion is running late. Suggest continuing on Monday morning.",
+    "answer": "We're out of time. Let's pick this up on Monday morning.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-3",
+      "title": "Phrases for meetings",
+      "step": 5,
+      "order": 8
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "office-phrases",
+      "meetings"
+    ]
+  },
+  {
+    "id": "ls-words-2-4-1",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "title": "\"I'll get back to you by…\"",
+    "rule": "Say \"I'll get back to you by\" and give a time.",
+    "examples": {
+      "work": "Let me check with the team; I'll get back to you by Friday.",
+      "everyday": "Let me check with Mum and get back to you tonight."
+    },
+    "insteadOf": "I'll check and tell.",
+    "analogy": "Like a train timetable: people relax when they know the time, not just \"soon\".",
+    "tryPrompt": "A client asks a question you can't answer yet. Promise a reply by Wednesday.",
+    "answer": "Good question. Let me check and get back to you by Wednesday.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-4",
+      "title": "Phrases for quick replies",
+      "step": 1,
+      "order": 9
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "office-phrases",
+      "replies",
+      "email"
+    ]
+  },
+  {
+    "id": "ls-words-2-4-2",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "title": "\"Thanks for flagging this.\"",
+    "rule": "Say \"Thanks for flagging this\" when someone points out a problem.",
+    "examples": {
+      "work": "Thanks for flagging this, Rahul. I'll fix it today.",
+      "everyday": "Thanks for flagging that the gas cylinder's nearly empty!"
+    },
+    "analogy": "Like thanking the person who shouts \"mind the step\": they saved you a fall.",
+    "tryPrompt": "A teammate tells you the link in your email is broken. Thank them and promise a fix.",
+    "answer": "Thanks for flagging this. I'll send the right link now.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-4",
+      "title": "Phrases for quick replies",
+      "step": 2,
+      "order": 9
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "office-phrases",
+      "replies",
+      "email"
+    ]
+  },
+  {
+    "id": "ls-words-2-4-3",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "title": "\"Sounds good, go ahead.\"",
+    "rule": "\"Sounds good, go ahead\" gives a warm, quick yes.",
+    "examples": {
+      "work": "Sounds good, go ahead and send it to the client.",
+      "everyday": "Sounds good, go ahead and order the pizza."
+    },
+    "insteadOf": "Okay, fine, you may proceed.",
+    "analogy": "Like a nod across the room: friendly, quick, and everyone knows it's a yes.",
+    "tryPrompt": "A teammate asks if they can share the draft with design. Say yes warmly.",
+    "answer": "Sounds good, go ahead!",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-4",
+      "title": "Phrases for quick replies",
+      "step": 3,
+      "order": 9
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "office-phrases",
+      "replies"
+    ]
+  },
+  {
+    "id": "ls-words-2-4-4",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "title": "\"Leave it with me.\"",
+    "rule": "\"Leave it with me\" means you'll take care of it.",
+    "examples": {
+      "work": "The demo link is broken? Leave it with me.",
+      "everyday": "Dinner needs onions? Leave it with me, back in ten."
+    },
+    "analogy": "Like handing your bags to a porter: off your hands, and in safe ones.",
+    "tryPrompt": "Your manager says a client can't log in. Show you'll handle it.",
+    "answer": "Leave it with me. I'll update you in 20 minutes.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-4",
+      "title": "Phrases for quick replies",
+      "step": 4,
+      "order": 9
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "office-phrases",
+      "replies",
+      "problems"
+    ]
+  },
+  {
+    "id": "ls-words-2-4-5",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "title": "\"That's a fair point.\"",
+    "rule": "Say \"That's a fair point\" to agree that someone is right.",
+    "examples": {
+      "work": "That's a fair point; let's test on older phones too.",
+      "everyday": "That's a fair point. The earlier train is less crowded."
+    },
+    "insteadOf": "Yes, yes, correct, correct.",
+    "analogy": "Like a batter nodding when the umpire's right: no fuss, just a calm yes.",
+    "tryPrompt": "A colleague says your plan forgets weekend traffic. They're right. Agree warmly.",
+    "answer": "That's a fair point. Let's plan for weekends too.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-4",
+      "title": "Phrases for quick replies",
+      "step": 5,
+      "order": 9
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "office-phrases",
+      "replies",
+      "meetings"
+    ]
+  },
+  {
+    "id": "ls-words-2-5-1",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "title": "\"Do you have a minute?\"",
+    "rule": "Ask \"Do you have a minute?\" before starting a quick chat.",
+    "examples": {
+      "work": "Hi Joseph, do you have a minute? Quick question on the quote.",
+      "everyday": "Mum, do you have a minute? I need help with this form."
+    },
+    "insteadOf": "Ma'am, I want to talk.",
+    "analogy": "Like knocking before you open a door.",
+    "tryPrompt": "You need two minutes of your manager's time at her desk. Ask first.",
+    "answer": "Hi, do you have a minute? I need a quick decision on the design.",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-5",
+      "title": "Phrases for asking politely",
+      "step": 1,
+      "order": 10
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "office-phrases",
+      "requests"
+    ]
+  },
+  {
+    "id": "ls-words-2-5-2",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "title": "\"Could you take a look at…?\"",
+    "rule": "\"Could you take a look at…?\" asks someone to check something.",
+    "examples": {
+      "work": "Could you take a look at my draft before three?",
+      "everyday": "Could you take a look at the tap? It's still dripping."
+    },
+    "analogy": "Like handing a friend your phone: \"Just see if this looks right.\"",
+    "tryPrompt": "You want Priya to review your email before you send it. Ask her.",
+    "answer": "Priya, could you take a look at this email before I send it?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-5",
+      "title": "Phrases for asking politely",
+      "step": 2,
+      "order": 10
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "office-phrases",
+      "requests",
+      "email",
+      "reviews"
+    ]
+  },
+  {
+    "id": "ls-words-2-5-3",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "title": "\"Would you mind…?\"",
+    "rule": "\"Would you mind\" plus an -ing verb softly asks a favour.",
+    "examples": {
+      "work": "Would you mind sharing your screen?",
+      "everyday": "Would you mind keeping my seat? I'll be right back."
+    },
+    "insteadOf": "Would you mind to send the file?",
+    "analogy": "Like holding the lift door for someone: polite, small, and easy to say yes to.",
+    "tryPrompt": "On a call, you want a colleague to send the file again. Ask softly.",
+    "answer": "Would you mind sending the file again?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-5",
+      "title": "Phrases for asking politely",
+      "step": 3,
+      "order": 10
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "office-phrases",
+      "requests"
+    ]
+  },
+  {
+    "id": "ls-words-2-5-4",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "title": "\"When works for you?\"",
+    "rule": "Ask \"When works for you?\" so the other person picks the time.",
+    "examples": {
+      "work": "I need 20 minutes with you this week. When works for you?",
+      "everyday": "Let's meet for chai. When works for you, Saturday or Sunday?"
+    },
+    "analogy": "Like letting a guest choose their chair: a small courtesy they notice.",
+    "tryPrompt": "You want a call with a senior client. Let them choose the time.",
+    "answer": "Could we set up a quick call? When works for you this week?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-5",
+      "title": "Phrases for asking politely",
+      "step": 4,
+      "order": 10
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "office-phrases",
+      "requests",
+      "meetings"
+    ]
+  },
+  {
+    "id": "ls-words-2-5-5",
+    "type": "teach",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "title": "\"Is it OK if I…?\"",
+    "rule": "\"Is it OK if I…?\" asks permission politely and simply.",
+    "examples": {
+      "work": "Is it OK if I join the call five minutes late?",
+      "everyday": "Is it OK if I bring a friend to dinner?"
+    },
+    "insteadOf": "Sir, I want to leave early on Friday, please permit.",
+    "analogy": "Like asking before you take the last samosa: a small check that keeps things friendly.",
+    "tryPrompt": "You'd like to leave an hour early on Friday for a family event. Ask your manager.",
+    "answer": "Is it OK if I leave an hour early on Friday?",
+    "register": "both",
+    "lesson": {
+      "id": "ls-words-2-5",
+      "title": "Phrases for asking politely",
+      "step": 5,
+      "order": 10
+    },
+    "tags": [
+      "lesson",
+      "words",
+      "words-l2",
+      "office-phrases",
+      "requests",
+      "leave"
+    ]
+  }
+]

@@ -1,0 +1,1565 @@
+[
+  {
+    "id": "ls-stories-1-1-1",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Story basics",
+    "title": "Want + obstacle = story",
+    "rule": "A story needs someone who wants something, and something in the way.",
+    "examples": {
+      "work": "I wanted to leave by six for my cousin's engagement. At 5:45, my manager called a meeting.",
+      "everyday": "I wanted one quiet chai before work. Then the milk boiled over and the gas ran out."
+    },
+    "insteadOf": "I left at six and went to my cousin's engagement.",
+    "analogy": "A run chase is exciting only because the bowler is trying to stop you.",
+    "tryPrompt": "Think of today. What did you want, and what got in the way? Say it in two sentences.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "story-basics",
+      "your-day"
+    ],
+    "lesson": {
+      "id": "ls-stories-1-1",
+      "title": "A want and something in the way",
+      "step": 1,
+      "order": 1
+    }
+  },
+  {
+    "id": "ls-stories-1-1-2",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Story basics",
+    "title": "A list of events is a report",
+    "rule": "If nothing gets in the way, you're giving a report, not telling a story.",
+    "examples": {
+      "work": "We were sure the review would go well. Ten minutes in, the VP asked why repeat users had dropped. Nobody had checked.",
+      "everyday": "I took the 8:10 metro like always. Today it stopped between stations for twenty minutes, and I walked in at 9:40."
+    },
+    "insteadOf": "We had the review, we showed the numbers, and it finished at six.",
+    "analogy": "A timetable lists the stops. A story is the day the train stops between them.",
+    "tryPrompt": "Tell yesterday as a report in one line. Now add the one thing that went wrong.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "story-basics",
+      "meetings"
+    ],
+    "credit": "The Moth (storytelling tips): without something to gain or lose, it's an essay",
+    "lesson": {
+      "id": "ls-stories-1-1",
+      "title": "A want and something in the way",
+      "step": 2,
+      "order": 1
+    }
+  },
+  {
+    "id": "ls-stories-1-1-3",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Story basics",
+    "title": "Small trouble is enough",
+    "rule": "The problem can be small and ordinary, as long as it matters to you.",
+    "examples": {
+      "work": "I needed the projector for my ten o'clock demo, and the HDMI cable was missing.",
+      "everyday": "I promised Amma I'd bring coriander. The shop had sold out by seven."
+    },
+    "insteadOf": "It was the worst day of my life. Everything collapsed.",
+    "analogy": "A last-over finish in a gully match is still thrilling.",
+    "tryPrompt": "Find one small problem from this week, like a late cab or a missing file. Say what you wanted and what stopped you.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "story-basics",
+      "demo",
+      "family"
+    ],
+    "lesson": {
+      "id": "ls-stories-1-1",
+      "title": "A want and something in the way",
+      "step": 3,
+      "order": 1
+    }
+  },
+  {
+    "id": "ls-stories-1-1-4",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Story basics",
+    "title": "The obstacle can be you",
+    "rule": "Your own mistake can be the thing that gets in the way.",
+    "examples": {
+      "work": "I wanted to send the report by noon. Then I realised I'd emailed it to the wrong Rahul.",
+      "everyday": "I wanted to surprise my sister on her birthday. Then I posted the cake photo in the family WhatsApp group. She's in it."
+    },
+    "insteadOf": "The team was slow, IT was slow, and the client changed everything.",
+    "analogy": "Sometimes the batter runs himself out. That's still a story worth telling.",
+    "tryPrompt": "Think of a small mistake you made this month. Say what you wanted, then how you got in your own way.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "story-basics",
+      "email",
+      "family"
+    ],
+    "lesson": {
+      "id": "ls-stories-1-1",
+      "title": "A want and something in the way",
+      "step": 4,
+      "order": 1
+    }
+  },
+  {
+    "id": "ls-stories-1-1-5",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Telling it",
+    "title": "\"I wanted…\", \"I was trying to…\"",
+    "rule": "Show the want with \"I wanted to\" or \"I was trying to\".",
+    "examples": {
+      "work": "I was trying to leave by six, but at 5:45 my manager called a meeting.",
+      "everyday": "I wanted to watch the match in peace, but my nephew wanted the TV for cartoons."
+    },
+    "insteadOf": "I am wanting to leave early, but the meeting started.",
+    "analogy": "Like setting the destination in Google Maps before the road closes.",
+    "tryPrompt": "Start a story about today with \"I was trying to…\". Then say what stopped you.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "story-basics",
+      "grammar",
+      "cricket"
+    ],
+    "lesson": {
+      "id": "ls-stories-1-1",
+      "title": "A want and something in the way",
+      "step": 5,
+      "order": 1
+    }
+  },
+  {
+    "id": "ls-stories-1-2-1",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Story basics",
+    "title": "\"And then\" makes a list",
+    "rule": "A chain of \"and then\" sounds like a list, so listeners drift off.",
+    "examples": {
+      "work": "I reached office early, but the client called, furious. So I rewrote the deck before ten.",
+      "everyday": "We left for Mysore at six, but the car broke down near Ramanagara. So we had idli at a roadside stall and waited for the mechanic."
+    },
+    "insteadOf": "I reached office, and then the meeting started, and then the client called.",
+    "analogy": "A list is a queue at the bank. A story is the queue where someone cuts in.",
+    "tryPrompt": "Tell your morning with \"and then\" three times. Now say it again with one \"but\" and one \"so\".",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "story-basics",
+      "client-call",
+      "travel"
+    ],
+    "credit": "South Park writers' \"but / therefore\" rule, built into Randy Olson's ABT",
+    "lesson": {
+      "id": "ls-stories-1-2",
+      "title": "\"But\" and \"so\", not \"and then\"",
+      "step": 1,
+      "order": 2
+    }
+  },
+  {
+    "id": "ls-stories-1-2-2",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Story basics",
+    "title": "\"But\" brings the problem",
+    "rule": "Use \"but\" at the moment things stop going to plan.",
+    "examples": {
+      "work": "The demo was at three, but at 2:55 the Wi-Fi went down.",
+      "everyday": "I booked a table for Riya's birthday, but the restaurant had lost our booking."
+    },
+    "insteadOf": "The demo was at three, and the Wi-Fi went down.",
+    "analogy": "\"But\" is the googly: the ball looked straight, then it turned.",
+    "tryPrompt": "Finish this with a \"but\": \"I left home early today…\" Then do one from your own day.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "story-basics",
+      "demo",
+      "friends"
+    ],
+    "credit": "South Park writers' \"but / therefore\" rule, built into Randy Olson's ABT",
+    "lesson": {
+      "id": "ls-stories-1-2",
+      "title": "\"But\" and \"so\", not \"and then\"",
+      "step": 2,
+      "order": 2
+    }
+  },
+  {
+    "id": "ls-stories-1-2-3",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Story basics",
+    "title": "\"So\" shows what you did next",
+    "rule": "After the problem, use \"so\" to show what you did because of it.",
+    "examples": {
+      "work": "The Wi-Fi went down, so I ran the demo from my phone's hotspot.",
+      "everyday": "The restaurant lost our booking, so we ordered biryani and ate on Riya's terrace."
+    },
+    "insteadOf": "The Wi-Fi went down. Then I called IT. Then I used my phone.",
+    "analogy": "Rain stops play, so the captain changes the plan. That change is the story.",
+    "tryPrompt": "Think of one problem from this week. Say it with \"but\", then what you did with \"so\".",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "story-basics",
+      "demo",
+      "food"
+    ],
+    "credit": "Matthew Dicks (Storyworthy); Randy Olson's ABT",
+    "lesson": {
+      "id": "ls-stories-1-2",
+      "title": "\"But\" and \"so\", not \"and then\"",
+      "step": 3,
+      "order": 2
+    }
+  },
+  {
+    "id": "ls-stories-1-2-4",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Story basics",
+    "title": "The three-part story",
+    "rule": "A short story fits in three parts: what happened, \"but…\", \"so…\".",
+    "examples": {
+      "work": "I had a client call at nine, but my laptop wouldn't start. So I joined from my manager's laptop.",
+      "everyday": "I went to buy milk, but the kirana was shut for Onam. So I walked to the big store and came back with three bags of snacks."
+    },
+    "insteadOf": "So many things happened today, the cab, the meeting, the rain, everything.",
+    "analogy": "Like making chai: boil the water, add the tea, add the milk. Three steps, done.",
+    "tryPrompt": "Tell one moment from today in three sentences. Start the second with \"but\" and the third with \"so\".",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "story-basics",
+      "client-call",
+      "festivals"
+    ],
+    "lesson": {
+      "id": "ls-stories-1-2",
+      "title": "\"But\" and \"so\", not \"and then\"",
+      "step": 4,
+      "order": 2
+    }
+  },
+  {
+    "id": "ls-stories-1-2-5",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Telling it",
+    "title": "Lean on \"but\" and \"so\" aloud",
+    "rule": "Say \"but\" and \"so\" clearly when speaking, because they carry the turns.",
+    "examples": {
+      "work": "We planned to launch on Monday. But testing found a bug. So we moved it to Wednesday.",
+      "everyday": "We planned a picnic at Lalbagh. But it poured all morning. So we had the picnic on the living-room floor."
+    },
+    "insteadOf": "So, basically, and then the thing happened, and then…",
+    "analogy": "Like indicators on a car: they tell people behind you that you're turning.",
+    "tryPrompt": "Say your three-part story aloud. Hit \"but\" and \"so\" a little harder than the other words.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "story-basics",
+      "launch",
+      "weekend"
+    ],
+    "lesson": {
+      "id": "ls-stories-1-2",
+      "title": "\"But\" and \"so\", not \"and then\"",
+      "step": 5,
+      "order": 2
+    }
+  },
+  {
+    "id": "ls-stories-1-3-1",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Everyday stories",
+    "title": "Pick one moment",
+    "rule": "Asked about your day? Pick one moment and tell just that.",
+    "examples": {
+      "work": "Best part of today? My manager used my slide to open the team meeting.",
+      "everyday": "Funniest moment today? My four-year-old niece told the delivery man our full address, PIN code included."
+    },
+    "insteadOf": "I woke up, had chai, took the bus, reached office, had meetings, came home.",
+    "analogy": "Show one great photo, not the whole wedding album.",
+    "tryPrompt": "What's one moment from today you'd tell a friend? Say just that moment in two sentences.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "your-day",
+      "meetings",
+      "family"
+    ],
+    "credit": "Matthew Dicks, Homework for Life (Storyworthy)",
+    "lesson": {
+      "id": "ls-stories-1-3",
+      "title": "One moment, not the whole day",
+      "step": 1,
+      "order": 3
+    }
+  },
+  {
+    "id": "ls-stories-1-3-2",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Everyday stories",
+    "title": "Choose the surprising moment",
+    "rule": "Pick the moment that surprised, annoyed or amused you most.",
+    "examples": {
+      "work": "Today an intern on her second day found a bug our team had missed for a year.",
+      "everyday": "My auto driver refused UPI. Then he asked if I had change for a five-hundred note."
+    },
+    "insteadOf": "Today was okay. Normal day, meetings, lunch, nothing much.",
+    "analogy": "Out of a whole thali, you remember the one dish that was too spicy.",
+    "tryPrompt": "Name three moments from today. Pick the one that surprised you most and tell only that.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "your-day",
+      "team",
+      "commute"
+    ],
+    "lesson": {
+      "id": "ls-stories-1-3",
+      "title": "One moment, not the whole day",
+      "step": 2,
+      "order": 3
+    }
+  },
+  {
+    "id": "ls-stories-1-3-3",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Everyday stories",
+    "title": "Skip the timeline",
+    "rule": "Leave out the steps before the moment and start close to it.",
+    "examples": {
+      "work": "Just before my demo, my laptop showed a blue screen.",
+      "everyday": "On the way home, the metro stopped between stations, and a stranger started singing old Kishore Kumar songs."
+    },
+    "insteadOf": "I woke up at seven, had chai, took the metro, reached office, opened my laptop…",
+    "analogy": "Match highlights skip the dot balls and go straight to the wickets.",
+    "tryPrompt": "Think of today's moment. What's the last thing that happened just before it? Start there.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "your-day",
+      "demo",
+      "commute"
+    ],
+    "lesson": {
+      "id": "ls-stories-1-3",
+      "title": "One moment, not the whole day",
+      "step": 3,
+      "order": 3
+    }
+  },
+  {
+    "id": "ls-stories-1-3-4",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Everyday stories",
+    "title": "Thirty seconds is plenty",
+    "rule": "When someone asks about your day, aim for about thirty seconds.",
+    "examples": {
+      "work": "Today a client said our app was \"too easy to use\". He meant it as a complaint.",
+      "everyday": "My mother learnt to send voice notes today. I've received eleven since lunch."
+    },
+    "insteadOf": "Okay, so, long story, let me start from Monday…",
+    "analogy": "Like a T20 innings: short, sharp, and nobody checks the clock.",
+    "tryPrompt": "Tell today's moment aloud and time it. Under 30 seconds? Good. Over? Cut the start.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "your-day",
+      "client",
+      "family"
+    ],
+    "lesson": {
+      "id": "ls-stories-1-3",
+      "title": "One moment, not the whole day",
+      "step": 4,
+      "order": 3
+    }
+  },
+  {
+    "id": "ls-stories-1-3-5",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Everyday stories",
+    "title": "Catch one moment each night",
+    "rule": "Each night, note the one moment from today you'd tell a friend.",
+    "examples": {
+      "work": "Moment: Priya from finance laughed at my joke in the stand-up. First time in six months.",
+      "everyday": "Moment: my dad asked me how to use Google Maps, then told me I was going the wrong way."
+    },
+    "insteadOf": "Nothing happened today. My days are all the same.",
+    "analogy": "Like saving one photo a day. In a month, you have an album.",
+    "tryPrompt": "Tonight, write one line: the moment from today you'd tell a friend. Just the moment, not the story.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "your-day",
+      "habit",
+      "family"
+    ],
+    "credit": "Matthew Dicks, Homework for Life (Storyworthy)",
+    "lesson": {
+      "id": "ls-stories-1-3",
+      "title": "One moment, not the whole day",
+      "step": 5,
+      "order": 3
+    }
+  },
+  {
+    "id": "ls-stories-1-4-1",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Story basics",
+    "title": "A story is a change",
+    "rule": "A story shows something changing, not just things happening.",
+    "examples": {
+      "work": "I walked into that review sure I'd be praised. I walked out knowing I'd never once asked the client what they wanted.",
+      "everyday": "I sat down to teach my nephew chess. Twenty minutes later, he was teaching me."
+    },
+    "insteadOf": "I went to the review, they asked questions, I answered, and it ended at six.",
+    "analogy": "A photo of the stumps standing is boring. A photo of them flying is a story.",
+    "tryPrompt": "Think of something you see differently now than a year ago. What made it change?",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "story-basics",
+      "meetings",
+      "family"
+    ],
+    "credit": "Matthew Dicks (Storyworthy); The Moth: a story shows change",
+    "lesson": {
+      "id": "ls-stories-1-4",
+      "title": "Every story has a change",
+      "step": 1,
+      "order": 4
+    }
+  },
+  {
+    "id": "ls-stories-1-4-2",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Story basics",
+    "title": "The five-second moment",
+    "rule": "Find the few seconds where you changed or understood something new.",
+    "examples": {
+      "work": "Our intern said users don't scroll that far. I almost told her to wait. Then I realised she was right.",
+      "everyday": "My niece asked why I check my phone at dinner. I had no answer, so I put the phone in the other room."
+    },
+    "insteadOf": "So I learned that listening is important for leaders.",
+    "analogy": "Like the one ball that turns a match: everything before builds to it.",
+    "tryPrompt": "Think of a time you realised something. What were the few seconds when it clicked? Describe just those.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "story-basics",
+      "team",
+      "family"
+    ],
+    "credit": "Matthew Dicks, the five-second moment (Storyworthy)",
+    "lesson": {
+      "id": "ls-stories-1-4",
+      "title": "Every story has a change",
+      "step": 2,
+      "order": 4
+    }
+  },
+  {
+    "id": "ls-stories-1-4-3",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Story basics",
+    "title": "Small changes count",
+    "rule": "The change can be tiny, like a new habit or a new opinion.",
+    "examples": {
+      "work": "I used to answer emails during meetings. Then I missed my own name being called. Now my laptop stays shut.",
+      "everyday": "I always thought I hated karela. Then my friend Fatima's mother made it with jaggery. Now I ask for it."
+    },
+    "insteadOf": "Nothing big has ever happened to me, so I have no stories.",
+    "analogy": "One pinch of salt changes the whole dal.",
+    "tryPrompt": "Name one small thing you do differently now. Tell the moment that made you start.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "story-basics",
+      "messages",
+      "food"
+    ],
+    "lesson": {
+      "id": "ls-stories-1-4",
+      "title": "Every story has a change",
+      "step": 3,
+      "order": 4
+    }
+  },
+  {
+    "id": "ls-stories-1-4-4",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Story basics",
+    "title": "\"I realised…\" is a change too",
+    "rule": "Understanding something new counts as a change, even if nothing else moves.",
+    "examples": {
+      "work": "Halfway through my answer, I realised the client had never asked about features. He'd asked about the launch date.",
+      "everyday": "Watching my dad fix the tap, I realised he'd been doing these jobs quietly for thirty years."
+    },
+    "insteadOf": "So the meeting ended, and I went back to my desk.",
+    "analogy": "Like a light coming on in a dark room: nothing moves, but now you see everything.",
+    "tryPrompt": "Finish this about your week: \"And right there, I realised…\" Then tell what led up to it.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "story-basics",
+      "client-call",
+      "family"
+    ],
+    "lesson": {
+      "id": "ls-stories-1-4",
+      "title": "Every story has a change",
+      "step": 4,
+      "order": 4
+    }
+  },
+  {
+    "id": "ls-stories-1-4-5",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Endings",
+    "title": "Say the change in one line",
+    "rule": "End by saying what's different now, in one short line.",
+    "examples": {
+      "work": "I lost a day's work in a power cut because I hadn't saved. Now I save every few minutes.",
+      "everyday": "I got lost in Pune because I trusted my memory over Google Maps. Now I check the map before I leave, even for places I know."
+    },
+    "insteadOf": "So yeah, I learned many things about many things, that's it.",
+    "analogy": "The last line is the scoreboard: it tells everyone how the match ended.",
+    "tryPrompt": "Tell a small mistake from this month. End with one line that starts \"Now I…\".",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "endings",
+      "demo",
+      "travel"
+    ],
+    "lesson": {
+      "id": "ls-stories-1-4",
+      "title": "Every story has a change",
+      "step": 5,
+      "order": 4
+    }
+  },
+  {
+    "id": "ls-stories-1-5-1",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Story basics",
+    "title": "Start in the action",
+    "rule": "Open with the moment things happen, not the weather or the date.",
+    "examples": {
+      "work": "The fire alarm went off one minute into my first client demo.",
+      "everyday": "The cooker whistle shot off and hit the ceiling just as our guests rang the bell."
+    },
+    "insteadOf": "So yesterday was a normal Tuesday, I woke up at seven…",
+    "analogy": "A good film doesn't show the hero brushing his teeth, unless the toothbrush matters.",
+    "tryPrompt": "Take today's moment. Say your first line so that it starts with something happening.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "openings",
+      "meetings",
+      "food"
+    ],
+    "credit": "The Moth (a first line that grabs attention); Matthew Dicks (Storyworthy)",
+    "lesson": {
+      "id": "ls-stories-1-5",
+      "title": "Start in the action, end clean",
+      "step": 1,
+      "order": 5
+    }
+  },
+  {
+    "id": "ls-stories-1-5-2",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Story basics",
+    "title": "Drop \"So yesterday…\"",
+    "rule": "Cut the warm-up words and say your first real sentence straight away.",
+    "examples": {
+      "work": "Yesterday I almost got told off for being too helpful.",
+      "everyday": "Last night, my grandmother beat me at Ludo four times in a row."
+    },
+    "insteadOf": "So, basically, yesterday something happened at work, okay, so…",
+    "analogy": "Skip the long run-up. Just bowl.",
+    "tryPrompt": "Say your opening line for today's moment. Start with what happened, not with \"so\" or \"basically\".",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "openings",
+      "work",
+      "family"
+    ],
+    "credit": "The Moth (first lines)",
+    "lesson": {
+      "id": "ls-stories-1-5",
+      "title": "Start in the action, end clean",
+      "step": 2,
+      "order": 5
+    }
+  },
+  {
+    "id": "ls-stories-1-5-3",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Endings",
+    "title": "Know your last line first",
+    "rule": "Before you start, decide the exact line you'll finish on.",
+    "examples": {
+      "work": "I sent my manager \"Quick question?\" at 6 p.m. She called back, worried something was on fire. It was about font size. That's the day I stopped writing \"quick question\".",
+      "everyday": "My friends dared me to order in Tamil at a Chennai restaurant. I asked for two coffees and got two plates of pongal. Now I just point."
+    },
+    "insteadOf": "…and then, yeah, so, anyway, that was the whole thing, I guess.",
+    "analogy": "A cab driver who knows the address drives straight. One who doesn't goes in circles.",
+    "tryPrompt": "Pick today's moment. Before telling it, say your last line out loud. Then tell it and land there.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "endings",
+      "messages",
+      "food"
+    ],
+    "credit": "The Moth (know your last line); Matthew Dicks (build the story from its end)",
+    "lesson": {
+      "id": "ls-stories-1-5",
+      "title": "Start in the action, end clean",
+      "step": 3,
+      "order": 5
+    }
+  },
+  {
+    "id": "ls-stories-1-5-4",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Endings",
+    "title": "Stop after the last line",
+    "rule": "Say your last line and stop, with no \"so yeah, that's it\".",
+    "examples": {
+      "work": "I spent all weekend fixing the bug. On Monday, the client said they liked it the old way.",
+      "everyday": "My dad finally learnt to video call. Now he calls during every match to show me his TV."
+    },
+    "insteadOf": "…and the client said they liked it the old way. So yeah, that's it, crazy, right?",
+    "analogy": "When the batter hits the winning run, he doesn't keep running.",
+    "tryPrompt": "Tell today's moment. The second your last line is out, stop talking and smile.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "endings",
+      "client",
+      "cricket"
+    ],
+    "lesson": {
+      "id": "ls-stories-1-5",
+      "title": "Start in the action, end clean",
+      "step": 4,
+      "order": 5
+    }
+  },
+  {
+    "id": "ls-stories-1-5-5",
+    "type": "teach",
+    "track": "stories",
+    "level": 1,
+    "kind": "learn",
+    "category": "Telling it",
+    "title": "Pick one tense and stay in it",
+    "rule": "Tell the whole scene in past tense, or the whole scene in present.",
+    "examples": {
+      "work": "I walked in, and my manager looked at the clock. Then she smiled and said, \"Coffee's on you.\"",
+      "everyday": "I'm on the bus. The conductor looks at my ticket. He shakes his head and points at the date."
+    },
+    "insteadOf": "I walk in and my manager looked at me and says, \"You're late.\"",
+    "analogy": "Like driving on the left: switch sides halfway and everyone gets confused.",
+    "tryPrompt": "Tell today's moment in past tense. Then tell it again in present. Don't mix the two.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "grammar",
+      "tense",
+      "commute"
+    ],
+    "lesson": {
+      "id": "ls-stories-1-5",
+      "title": "Start in the action, end clean",
+      "step": 5,
+      "order": 5
+    }
+  },
+  {
+    "id": "ls-stories-2-1-1",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "Name the exact thing",
+    "rule": "Swap a general word for the exact one: not \"vehicle\", \"Activa\".",
+    "examples": {
+      "work": "I rode my Activa to the office and ate a cold masala dosa at my desk.",
+      "everyday": "We went for a drive in my uncle's old Maruti 800 and stopped for Maggi."
+    },
+    "insteadOf": "I took my vehicle to the office and had some food at my desk.",
+    "analogy": "\"Food was nice\" tells me nothing. \"Smoky dal with garlic tadka\" makes me hungry.",
+    "tryPrompt": "Say one sentence about your lunch today. Now say it again with the exact names of things.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "vivid",
+      "commute",
+      "food"
+    ],
+    "credit": "Chip & Dan Heath, Made to Stick (Concrete)",
+    "lesson": {
+      "id": "ls-stories-2-1",
+      "title": "Specific, not general",
+      "step": 1,
+      "order": 6
+    }
+  },
+  {
+    "id": "ls-stories-2-1-2",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "Describe it, don't judge it",
+    "rule": "Instead of \"bad\" or \"nice\", say what actually happened.",
+    "examples": {
+      "work": "By slide four, half the team had switched their cameras off.",
+      "everyday": "We sat on Silk Board flyover for forty minutes. The auto driver switched off the engine to save petrol."
+    },
+    "insteadOf": "The meeting was really boring.",
+    "analogy": "Don't say the biryani was good. Say you went back for thirds.",
+    "tryPrompt": "Think of something today you'd call \"bad\" or \"nice\". Say what actually happened instead.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "vivid",
+      "meetings",
+      "traffic"
+    ],
+    "credit": "Chip & Dan Heath, Made to Stick (Concrete)",
+    "lesson": {
+      "id": "ls-stories-2-1",
+      "title": "Specific, not general",
+      "step": 2,
+      "order": 6
+    }
+  },
+  {
+    "id": "ls-stories-2-1-3",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "A number makes it real",
+    "rule": "Use a real number instead of \"many\", \"a lot\" or \"very\".",
+    "examples": {
+      "work": "The client sent 37 changes at 11:40 p.m., the night before launch.",
+      "everyday": "My aunt sent 14 good-morning messages to the family group before eight."
+    },
+    "insteadOf": "The client sent a lot of changes, very late.",
+    "analogy": "\"He scored a lot\" is forgotten by lunch. \"He scored 183\" is remembered for years.",
+    "tryPrompt": "Find one \"a lot\" or \"very\" in your day. Swap it for a real number.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "vivid",
+      "client",
+      "family"
+    ],
+    "credit": "Chip & Dan Heath, Made to Stick (Concrete)",
+    "lesson": {
+      "id": "ls-stories-2-1",
+      "title": "Specific, not general",
+      "step": 3,
+      "order": 6
+    }
+  },
+  {
+    "id": "ls-stories-2-1-4",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "The detail only you noticed",
+    "rule": "Add one small detail that only someone who was there would know.",
+    "examples": {
+      "work": "When I got in, the office was empty, except for the cleaner watching cricket on his phone.",
+      "everyday": "The wedding hall was packed, and one uncle was asleep in the front row, still holding his plate."
+    },
+    "insteadOf": "The office was empty when I got in.",
+    "analogy": "Anyone can say \"crowded train\". Only you saw the man reading over your shoulder.",
+    "tryPrompt": "Picture one place you were today. Name one small thing there that nobody else would mention.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "vivid",
+      "office",
+      "weddings"
+    ],
+    "credit": "Chip & Dan Heath, Made to Stick (Concrete)",
+    "lesson": {
+      "id": "ls-stories-2-1",
+      "title": "Specific, not general",
+      "step": 4,
+      "order": 6
+    }
+  },
+  {
+    "id": "ls-stories-2-1-5",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "One sharp detail is enough",
+    "rule": "Pick the one detail that matters most, and leave the rest out.",
+    "examples": {
+      "work": "The meeting room was so cold that the client kept his jacket on the whole time.",
+      "everyday": "My friend's new flat is so small that the fridge is in the bedroom."
+    },
+    "insteadOf": "It was a big blue room with nine chairs, a whiteboard, two plants and a clock.",
+    "analogy": "One green chilli lifts the dish. Ten ruin it.",
+    "tryPrompt": "Describe where you are right now in one sentence, using only the one detail that stands out.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "vivid",
+      "meetings",
+      "friends"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-1",
+      "title": "Specific, not general",
+      "step": 5,
+      "order": 6
+    }
+  },
+  {
+    "id": "ls-stories-2-2-1",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "Name the person",
+    "rule": "Give people names, or a short label, instead of \"someone\".",
+    "examples": {
+      "work": "Rahul from the data team asked me why repeat users had dropped.",
+      "everyday": "Mrs Joseph from the second floor asked if I could fix her Wi-Fi."
+    },
+    "insteadOf": "Someone from another team asked me something in the meeting.",
+    "analogy": "In commentary, \"a batter hit a six\" is dull. \"Kohli hit a six\" makes you look up.",
+    "tryPrompt": "Think of today's moment. Who was in it? Say their name, or a two-word label like \"our intern\".",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "vivid",
+      "meetings",
+      "neighbours"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-2",
+      "title": "Who, where and when",
+      "step": 1,
+      "order": 7
+    }
+  },
+  {
+    "id": "ls-stories-2-2-2",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "Name the place",
+    "rule": "Say exactly where it happened, so the listener can picture it.",
+    "examples": {
+      "work": "We were in the third-floor pantry, waiting for the coffee machine, when the fire alarm went off.",
+      "everyday": "We were stuck at the Hebbal junction when my sister called to say she'd passed her driving test."
+    },
+    "insteadOf": "We were somewhere in the office when it happened.",
+    "analogy": "A film always shows you the street before the scene starts.",
+    "tryPrompt": "Say where today's moment happened in under ten words, as exactly as you can.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "vivid",
+      "office",
+      "traffic"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-2",
+      "title": "Who, where and when",
+      "step": 2,
+      "order": 7
+    }
+  },
+  {
+    "id": "ls-stories-2-2-3",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "Name the time",
+    "rule": "An exact time, like \"9:58\", makes a moment feel real.",
+    "examples": {
+      "work": "At 8:47, the server went down. Our biggest client was due to log in at nine.",
+      "everyday": "At 11:15 p.m., the doorbell rang. It was my cousin, with a suitcase and no warning."
+    },
+    "insteadOf": "In the morning, the server went down before the client logged in.",
+    "analogy": "A station announcement says \"7:42\", not \"sometime in the evening\".",
+    "tryPrompt": "Start your moment from today with the exact time it happened, like \"At 4:15…\".",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "vivid",
+      "client-call",
+      "family"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-2",
+      "title": "Who, where and when",
+      "step": 3,
+      "order": 7
+    }
+  },
+  {
+    "id": "ls-stories-2-2-4",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "No name? Use a short label",
+    "rule": "If you can't name someone, give them a short, clear label.",
+    "examples": {
+      "work": "The man from accounts who never speaks fixed the projector in ten seconds.",
+      "everyday": "The chai-wala outside the metro remembers my order better than my mother does."
+    },
+    "insteadOf": "This one person, some guy, I don't know who, he came and said…",
+    "analogy": "Like a contact saved as \"Plumber Raju\": two words and you know exactly who.",
+    "tryPrompt": "Think of someone in your day whose name you don't know. Give them a three-word label.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "vivid",
+      "team",
+      "commute"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-2",
+      "title": "Who, where and when",
+      "step": 4,
+      "order": 7
+    }
+  },
+  {
+    "id": "ls-stories-2-2-5",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "Who, where, when: one line",
+    "rule": "Put the who, where and when in your first line, then move on.",
+    "examples": {
+      "work": "On Monday at ten, in the big conference room, Arjun deleted the wrong file in front of the client.",
+      "everyday": "Last Sunday at Juhu beach, my nephew buried my phone in the sand."
+    },
+    "insteadOf": "So there is this colleague, I'll tell you about him, he works in… anyway.",
+    "analogy": "Like a ticket: date, time, seat. Then you go in and watch.",
+    "tryPrompt": "Say a first line for today's moment with a who, a where and a when, in ten to fifteen words.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "vivid",
+      "meetings",
+      "family"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-2",
+      "title": "Who, where and when",
+      "step": 5,
+      "order": 7
+    }
+  },
+  {
+    "id": "ls-stories-2-3-1",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "Quote one line",
+    "rule": "Say one line exactly as the person said it, instead of reporting it.",
+    "examples": {
+      "work": "He leaned back and said, \"Is this the final version?\"",
+      "everyday": "My mother looked at my plate and said, \"Only two rotis? What happened?\""
+    },
+    "insteadOf": "He said that he wasn't happy with the deck.",
+    "analogy": "A replay of the shot beats the commentator describing it.",
+    "tryPrompt": "Think of one thing someone said to you today. Say it in their exact words.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "dialogue",
+      "meetings",
+      "family"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-3",
+      "title": "One line of real dialogue",
+      "step": 1,
+      "order": 8
+    }
+  },
+  {
+    "id": "ls-stories-2-3-2",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Telling it",
+    "title": "Drop \"that\" before a quote",
+    "rule": "Quote people directly: drop \"that\" and use their own words.",
+    "examples": {
+      "work": "My manager said, \"Can you send it by five?\"",
+      "everyday": "My brother texted, \"Bring snacks. Don't ask why.\""
+    },
+    "insteadOf": "She said that \"I am busy, call later.\"",
+    "analogy": "A quote is a photocopy: the same words, nothing changed.",
+    "tryPrompt": "Turn this into a direct quote: \"She said that she would call me back.\"",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "dialogue",
+      "grammar",
+      "family"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-3",
+      "title": "One line of real dialogue",
+      "step": 2,
+      "order": 8
+    }
+  },
+  {
+    "id": "ls-stories-2-3-3",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "Short lines hit harder",
+    "rule": "Quote the short line that matters, not the whole conversation.",
+    "examples": {
+      "work": "He read my plan, put it down and said, \"Who wrote this?\"",
+      "everyday": "I showed my dad my new phone. He turned it over and asked, \"Where's the headphone hole?\""
+    },
+    "insteadOf": "He said a lot, about the numbers, the timeline, the team and the design…",
+    "analogy": "The Bollywood dialogue everyone remembers is one line, not a speech.",
+    "tryPrompt": "From one chat today, pick the single line that mattered most. Say just that line, in quotes.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "dialogue",
+      "manager",
+      "family"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-3",
+      "title": "One line of real dialogue",
+      "step": 3,
+      "order": 8
+    }
+  },
+  {
+    "id": "ls-stories-2-3-4",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "Your own line counts too",
+    "rule": "Quote your own words too, so we hear how you reacted.",
+    "examples": {
+      "work": "I said, \"Give me ten minutes. I'll fix it before the client joins.\"",
+      "everyday": "I said, \"Amma, I'm thirty. I can cross the road.\" She held my hand anyway."
+    },
+    "insteadOf": "I told him I would fix it soon.",
+    "analogy": "A phone call has two voices. Let us hear yours too.",
+    "tryPrompt": "Tell one moment from today with one line someone said and one line you said back.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "dialogue",
+      "client",
+      "family"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-3",
+      "title": "One line of real dialogue",
+      "step": 4,
+      "order": 8
+    }
+  },
+  {
+    "id": "ls-stories-2-3-5",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "Let the line show the mood",
+    "rule": "Let what someone said show their mood, instead of naming it.",
+    "examples": {
+      "work": "The client typed in all caps: \"WHO APPROVED THIS?\"",
+      "everyday": "My sister texted, \"Fine. Do whatever you want.\" Then nothing for two days."
+    },
+    "insteadOf": "The client was angry about the change.",
+    "analogy": "You know your mother is upset from \"Fine, beta.\" She doesn't need to say it.",
+    "tryPrompt": "Think of someone who was annoyed or happy today. Say one line they said that shows it.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "dialogue",
+      "client",
+      "family"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-3",
+      "title": "One line of real dialogue",
+      "step": 5,
+      "order": 8
+    }
+  },
+  {
+    "id": "ls-stories-2-4-1",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "Show it through the body",
+    "rule": "Instead of naming a feeling, say what your body did.",
+    "examples": {
+      "work": "Before the presentation, my hand was shaking so hard that the clicker rattled.",
+      "everyday": "When the results came out, my mouth went dry and I couldn't open the link."
+    },
+    "insteadOf": "I was very nervous before the presentation.",
+    "analogy": "Actors don't say \"I'm scared\". Their hands shake, and we know.",
+    "tryPrompt": "Think of a moment you were nervous. What did your hands, voice or stomach do? Say that.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "feelings",
+      "presenting",
+      "exams"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-4",
+      "title": "Show the feeling",
+      "step": 1,
+      "order": 9
+    }
+  },
+  {
+    "id": "ls-stories-2-4-2",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "Show it through what you did",
+    "rule": "Say what you did when you felt it, and let us guess the feeling.",
+    "examples": {
+      "work": "I closed my laptop, walked to the pantry and made a second chai I didn't want.",
+      "everyday": "When India won, I ran out onto the balcony and shouted at nobody."
+    },
+    "insteadOf": "I was really angry with the vendor.",
+    "analogy": "You know Dad's happy when he starts humming old songs while cooking.",
+    "tryPrompt": "Pick one feeling from today. Without naming it, say one thing you did because of it.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "feelings",
+      "vendor",
+      "cricket"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-4",
+      "title": "Show the feeling",
+      "step": 2,
+      "order": 9
+    }
+  },
+  {
+    "id": "ls-stories-2-4-3",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "Pick one sense",
+    "rule": "Add one thing you heard, smelled, saw, tasted or felt.",
+    "examples": {
+      "work": "All morning, three phones kept ringing on the empty desk next to mine.",
+      "everyday": "The house smelled of ghee and cardamom, so I knew Amma was making Diwali sweets."
+    },
+    "insteadOf": "The office was busy in the morning.",
+    "analogy": "Like the smell of wet earth before rain: one sense, and you're there.",
+    "tryPrompt": "Think of one moment from today. What did you hear? Add that one sound to the story.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "senses",
+      "office",
+      "festivals"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-4",
+      "title": "Show the feeling",
+      "step": 3,
+      "order": 9
+    }
+  },
+  {
+    "id": "ls-stories-2-4-4",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "Keep feelings true-size",
+    "rule": "Describe the feeling at its real size; don't blow it up.",
+    "examples": {
+      "work": "When the VP said my name, my ears went hot and I forgot my first line.",
+      "everyday": "When the waiter brought out the wrong cake, my friend and I just stared at each other."
+    },
+    "insteadOf": "I literally died. It was the worst moment of my whole life.",
+    "analogy": "A tight single can be thrilling. Not every ball needs to be a six.",
+    "tryPrompt": "Tell an embarrassing moment without \"worst\", \"died\" or \"literally\". Show one real body detail instead.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "feelings",
+      "meetings",
+      "friends"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-4",
+      "title": "Show the feeling",
+      "step": 4,
+      "order": 9
+    }
+  },
+  {
+    "id": "ls-stories-2-4-5",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Vivid detail",
+    "title": "One body detail, then move on",
+    "rule": "One body detail is enough; then get back to what happened.",
+    "examples": {
+      "work": "My hands were shaking as I clicked \"Share screen\". The wrong file opened.",
+      "everyday": "My heart was pounding as I knocked on the principal's door. He opened it, holding my old exam paper."
+    },
+    "insteadOf": "My hands shook, my heart raced, I was sweating, my legs were like jelly…",
+    "analogy": "A pinch of hing flavours the whole dal. A spoonful ruins it.",
+    "tryPrompt": "Tell today's moment with exactly one body detail. Then keep going with what happened next.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "feelings",
+      "presenting",
+      "school"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-4",
+      "title": "Show the feeling",
+      "step": 5,
+      "order": 9
+    }
+  },
+  {
+    "id": "ls-stories-2-5-1",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Telling it",
+    "title": "Cut three boring sentences",
+    "rule": "Drop the first three sentences of setup and see if it still works.",
+    "examples": {
+      "work": "Halfway through my review, the CEO walked in and took the seat next to me.",
+      "everyday": "Halfway up the hill, my scooter ran out of petrol, and the nearest pump was three kilometres away."
+    },
+    "insteadOf": "I woke up, had chai, took the bus, reached office, opened my laptop, and then…",
+    "analogy": "Like skipping the ads before a YouTube video. Nobody misses them.",
+    "tryPrompt": "Tell today's moment. Then tell it again, starting three sentences later.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "cutting",
+      "demo",
+      "travel"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-5",
+      "title": "Cut the slow parts",
+      "step": 1,
+      "order": 10
+    }
+  },
+  {
+    "id": "ls-stories-2-5-2",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Telling it",
+    "title": "Short sentences at the tense bit",
+    "rule": "When the moment gets tense, use short sentences.",
+    "examples": {
+      "work": "He reads my report. He reads it again. Then he looks up and says, \"Did you check these numbers?\"",
+      "everyday": "The ball went up. Everyone went quiet. My cousin, who never catches anything, held on."
+    },
+    "insteadOf": "He read my report and then he said that it was wrong.",
+    "analogy": "In the last over, the commentary turns into short, sharp words.",
+    "tryPrompt": "Find the tense second in today's moment. Tell just that part in sentences of five words or fewer.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "short-sentences",
+      "manager",
+      "cricket"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-5",
+      "title": "Cut the slow parts",
+      "step": 2,
+      "order": 10
+    }
+  },
+  {
+    "id": "ls-stories-2-5-3",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Telling it",
+    "title": "One action per sentence",
+    "rule": "At the key moment, give each action its own sentence.",
+    "examples": {
+      "work": "He opened my file. He scrolled. He stopped. He took off his glasses.",
+      "everyday": "My nephew took the last laddoo. He looked at me. He looked at his mother. He put it back."
+    },
+    "insteadOf": "He opened the file and scrolled and stopped and took off his glasses.",
+    "analogy": "Like dealing cards one at a time, instead of dropping the whole pack.",
+    "tryPrompt": "Take one tense moment from your week. Split it into four short sentences, one action each.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "short-sentences",
+      "manager",
+      "family"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-5",
+      "title": "Cut the slow parts",
+      "step": 3,
+      "order": 10
+    }
+  },
+  {
+    "id": "ls-stories-2-5-4",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Telling it",
+    "title": "Skip what we can guess",
+    "rule": "Skip the steps the listener can guess and jump to what's new.",
+    "examples": {
+      "work": "I opened the shared deck, and every slide I'd made had disappeared.",
+      "everyday": "By the time my cab reached the station, my train was pulling out."
+    },
+    "insteadOf": "I opened my laptop, logged in, opened my email, clicked the link, opened the deck…",
+    "analogy": "Films cut from the hero leaving home to him arriving. Nobody needs the traffic.",
+    "tryPrompt": "Tell today's moment and cut every step the listener could guess. What's left?",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "cutting",
+      "slides",
+      "travel"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-5",
+      "title": "Cut the slow parts",
+      "step": 4,
+      "order": 10
+    }
+  },
+  {
+    "id": "ls-stories-2-5-5",
+    "type": "teach",
+    "track": "stories",
+    "level": 2,
+    "kind": "learn",
+    "category": "Telling it",
+    "title": "Don't explain the funny bit",
+    "rule": "When the funny line lands, stop; explaining it kills the laugh.",
+    "examples": {
+      "work": "Forty minutes into a client call, I'm sure I'm on mute, so I tell my wife, \"Make the paneer.\" Silence. Then their CFO unmutes: \"Butter or kadai?\"",
+      "everyday": "My grandmother asked Alexa to play old songs. Alexa said, \"Sorry, I didn't get that.\" Nani said, \"Nobody does, beta.\""
+    },
+    "insteadOf": "…and he asked which paneer. Get it? Because he heard me. So it was funny.",
+    "analogy": "Explaining a joke is like explaining a magic trick: the magic goes.",
+    "tryPrompt": "Tell a funny moment from this week. Stop the second the funny line is out. Don't add a word.",
+    "register": "both",
+    "tags": [
+      "lesson",
+      "stories",
+      "funny",
+      "client-call",
+      "family"
+    ],
+    "lesson": {
+      "id": "ls-stories-2-5",
+      "title": "Cut the slow parts",
+      "step": 5,
+      "order": 10
+    }
+  }
+]

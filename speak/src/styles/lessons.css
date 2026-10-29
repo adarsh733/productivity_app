@@ -1,0 +1,355 @@
+/* -- SPEAK v5: stories row, lesson player, skill page (tokens only) ---------- */
+/* Track colours (--track / --track-soft) come from [data-track] in cards.css. */
+
+/* ---- Stories row (top of the Feed) ---------------------------------------- */
+
+.stories-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-2);
+  padding: var(--s-2) var(--gutter) var(--s-3);
+}
+
+.story-ring {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-1);
+  padding: 0;
+  background: transparent;
+  border: none;
+  font: inherit;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.story-ring:disabled {
+  cursor: default;
+}
+
+.story-ring-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--r-pill);
+  padding: 3px;
+  background: var(--track, var(--line));
+  display: grid;
+  place-items: center;
+}
+
+.story-ring.is-today .story-ring-circle {
+  box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--track, var(--line));
+}
+
+.story-ring-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--r-pill);
+  background: var(--track-soft, var(--raised));
+  border: 2px solid var(--paper);
+  display: grid;
+  place-items: center;
+  font-size: var(--fs-5);
+  line-height: 1;
+}
+
+/* Today's lesson is done: the ring goes grey. */
+.story-ring.is-done .story-ring-circle,
+.story-ring:disabled .story-ring-circle {
+  background: var(--line);
+  box-shadow: none;
+}
+
+.story-ring.is-done .story-ring-inner,
+.story-ring:disabled .story-ring-inner {
+  background: var(--raised);
+  filter: grayscale(1);
+  opacity: 0.8;
+}
+
+.story-ring-name {
+  max-width: 100%;
+  font-size: var(--fs-1);
+  line-height: var(--lh-tight);
+  color: var(--ink-2);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.story-ring.is-done .story-ring-name {
+  color: var(--ink-3);
+}
+
+/* ---- Lesson player (full screen) ------------------------------------------ */
+
+.lp-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+}
+
+.lp-top {
+  flex: none;
+  padding: var(--s-3) var(--gutter) var(--s-2);
+}
+
+.lp-bars {
+  display: flex;
+  gap: var(--s-1);
+}
+
+.lp-bar {
+  flex: 1;
+  height: 4px;
+  border-radius: var(--r-pill);
+  background: var(--line);
+}
+
+.lp-bar.is-on {
+  background: var(--track, var(--accent));
+}
+
+.lp-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  margin-top: var(--s-2);
+}
+
+.lp-head-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.lp-track {
+  font-size: var(--fs-1);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--track, var(--ink-2));
+}
+
+.lp-title {
+  font-family: var(--serif);
+  font-size: var(--fs-4);
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lp-close {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: var(--raised);
+  border: none;
+  border-radius: var(--r-pill);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.lp-stage {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--s-2) var(--gutter);
+  cursor: pointer;
+}
+
+.lp-stage .fcard {
+  height: auto;
+  min-height: 100%;
+  max-height: none;
+}
+
+.lp-foot {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--gutter) var(--s-4);
+}
+
+.lp-back,
+.lp-next {
+  min-width: 96px;
+  min-height: 48px;
+}
+
+.lp-back:disabled {
+  opacity: 0.4;
+}
+
+.lp-count {
+  font-size: var(--fs-2);
+  color: var(--ink-3);
+}
+
+/* ---- Skill page (opened from the Ask skill tiles) ------------------------- */
+
+.skill-page {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--s-4) var(--gutter) calc(var(--tabbar-h) + var(--s-6) + var(--safe-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.sk-top {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.sk-back {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: var(--raised);
+  border: none;
+  border-radius: var(--r-pill);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.sk-title {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: var(--fs-6);
+  line-height: var(--lh-tight);
+  color: var(--track, var(--ink));
+}
+
+.sk-h2 {
+  margin: var(--s-2) 0 0;
+  font-size: var(--fs-1);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.sk-ladder {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.sk-level {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-left: 4px solid var(--track, var(--line));
+  border-radius: var(--r-md);
+  padding: var(--s-3) var(--s-4);
+}
+
+.sk-level.is-locked,
+.sk-level.is-soon {
+  background: var(--raised);
+  border-left-color: var(--line);
+  color: var(--ink-3);
+}
+
+.sk-level-head {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  min-height: 32px;
+}
+
+.sk-level-name {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-3);
+}
+
+.sk-level-note {
+  margin-left: auto;
+  font-size: var(--fs-2);
+  color: var(--ink-3);
+}
+
+.sk-lessons {
+  list-style: none;
+  margin: var(--s-2) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+
+.sk-lesson {
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: 0 var(--s-3);
+  background: var(--track-soft, var(--raised));
+  border: none;
+  border-radius: var(--r-sm);
+  font: inherit;
+  font-size: var(--fs-3);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.sk-lesson-state {
+  flex: none;
+  color: var(--track, var(--ink-2));
+}
+
+.sk-saved {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.sk-saved-item {
+  padding: var(--s-3) var(--s-4);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-3);
+}
+
+.sk-empty {
+  margin: 0;
+  font-size: var(--fs-2);
+  color: var(--ink-3);
+}
+
+/* ---- Ask skill tiles are buttons now -------------------------------------- */
+
+button.ask-tile {
+  border: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  min-height: 44px;
+}

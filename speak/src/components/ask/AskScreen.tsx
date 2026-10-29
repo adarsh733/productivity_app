@@ -3,6 +3,8 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '../../db/db';
 import { SearchIcon } from '../shell/Icons';
 import type { Track } from '../../types/contract';
+import SkillPage from '../lessons/SkillPage';
+import { useLessons } from '../../features/lessons/useLessons';
 
 const CHIPS = [
   { id: 'word', icon: '📖', label: 'A word I heard', starter: 'What does this word mean: ' },
@@ -24,6 +26,8 @@ const SKILLS: Array<{ track: Track; icon: string; name: string; sub: string }> =
  */
 export default function AskScreen() {
   const [text, setText] = useState('');
+  const [skill, setSkill] = useState<Track | null>(null);
+  const { ready, lessons, doneIds, ladderOf } = useLessons();
   const inputRef = useRef<HTMLInputElement>(null);
   const recent = useLiveQuery(
     () => db.asks.orderBy('createdAt').reverse().limit(5).toArray(),
@@ -34,6 +38,8 @@ export default function AskScreen() {
     setText(starter);
     inputRef.current?.focus();
   };
+
+  if (skill) return <SkillPage track={skill} onBack={() => setSkill(null)} />;
 
   return (
     <section className="ask-screen" aria-label="Ask">
@@ -68,17 +74,33 @@ export default function AskScreen() {
 
       <h2 className="ask-h2">Your 4 skills</h2>
       <div className="ask-tiles">
-        {SKILLS.map((s) => (
-          <div key={s.track} className={`ask-tile ask-tile-${s.track}`} data-track={s.track}>
-            <span className="ask-tile-name">
-              <span aria-hidden="true">{s.icon}</span> {s.name}
-            </span>
-            <span className="ask-tile-sub">{s.sub}</span>
-            <span className="ask-tile-bar" aria-hidden="true">
-              <span className="ask-tile-fill" />
-            </span>
-          </div>
-        ))}
+        {SKILLS.map((s) => {
+          const own = lessons.filter((l) => l.track === s.track);
+          const done = own.filter((l) => doneIds.has(l.id)).length;
+          const level = ready ? (ladderOf(s.track).find((l) => l.status === 'open')?.level ?? null) : null;
+          const sub = level ? `Level ${level}` : s.sub;
+          return (
+            <button
+              key={s.track}
+              type="button"
+              className={`ask-tile ask-tile-${s.track} tap`}
+              data-track={s.track}
+              onClick={() => setSkill(s.track)}
+              aria-label={`${s.name}, ${sub}. Open`}
+            >
+              <span className="ask-tile-name">
+                <span aria-hidden="true">{s.icon}</span> {s.name}
+              </span>
+              <span className="ask-tile-sub">{sub}</span>
+              <span className="ask-tile-bar" aria-hidden="true">
+                <span
+                  className="ask-tile-fill"
+                  style={own.length ? { width: `${Math.round((done / own.length) * 100)}%` } : undefined}
+                />
+              </span>
+            </button>
+          );
+        })}
       </div>
 
       <h2 className="ask-h2">Recent asks</h2>
