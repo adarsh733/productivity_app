@@ -80,11 +80,10 @@ test.describe('Step 2: lessons pictures', () => {
     const overlay = page.locator('.lp-overlay');
     await expect(overlay).toBeVisible();
     await expect(overlay.locator('[data-testid="lp-bar"]')).toHaveCount(5);
-    await expect(overlay.locator('.teach-face')).toBeVisible();
-    // Move to step 2 so the picture shows progress, not just the first card.
-    await overlay.locator('button.lp-next').click();
-    await expect(overlay.locator('.lp-count')).toHaveText('2 / 5');
-    await expect(overlay.locator('.teach-face')).toBeVisible();
+    await expect(overlay.locator('.poster')).toBeVisible();
+    // Tap once so the picture shows progress, not just the first slide.
+    await overlay.locator('[data-testid="lp-stage"]').click({ position: { x: 300, y: 300 } });
+    await expect(overlay.locator('.poster')).toBeVisible();
     await page.waitForTimeout(400);
     await noSidewaysScroll(page);
     await tapTargetsBigEnough(page, '.lp-overlay');

@@ -30,6 +30,8 @@ export function useCardGestures(
   cardId: string | undefined,
   onSubmitGrade: (grade: Grade, direction: 'up' | 'left' | 'right') => void,
   onSwipeDown?: () => boolean | void,
+  /** Sideways swipe: return true when it was used up (a slide changed), so the card stays. */
+  onSwipeSideways?: (direction: 'left' | 'right') => boolean,
 ) {
   const [dragOffset, setDragOffset] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [leavingDirection, setLeavingDirection] = useState<'up' | 'down' | 'left' | 'right' | null>(null);
@@ -142,9 +144,17 @@ export function useCardGestures(
 
     if (absDx > absDy) {
       if (dx < 0 && isLeftSwipeAllowed && (absDx > DISTANCE_THRESHOLD || velX > VELOCITY_THRESHOLD)) {
+        if (onSwipeSideways?.('left')) {
+          setDragOffset({ x: 0, y: 0 });
+          return;
+        }
         triggerGrade('hard', 'left');
         return;
       } else if (dx > 0 && (absDx > DISTANCE_THRESHOLD || velX > VELOCITY_THRESHOLD)) {
+        if (onSwipeSideways?.('right')) {
+          setDragOffset({ x: 0, y: 0 });
+          return;
+        }
         triggerGrade('good', 'right');
         return;
       }

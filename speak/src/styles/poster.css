@@ -1,0 +1,418 @@
+/* -- Articulate: full-size picture cards (feed + lessons) ------------------- */
+
+[data-track='smalltalk'] { --poster-bg: var(--poster-coral); --poster-ink: var(--poster-on-colour); }
+[data-track='stories'] { --poster-bg: var(--poster-cobalt); --poster-ink: var(--poster-on-colour); }
+[data-track='clearly'] { --poster-bg: var(--poster-sun); --poster-ink: var(--ink); }
+[data-track='words'] { --poster-bg: var(--poster-teal); --poster-ink: var(--poster-on-colour); }
+
+.poster {
+  position: relative;
+  isolation: isolate;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--poster-bg, var(--poster-cobalt));
+  color: var(--poster-ink, var(--poster-on-colour));
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* The picture sits at the bottom. Its top edge melts into the card colour. */
+.poster-art {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: -1;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  object-position: bottom;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 25%);
+  mask-image: linear-gradient(to bottom, transparent, #000 25%);
+}
+
+.poster-slide {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-5) var(--gutter) var(--s-3);
+  overflow-y: auto;
+  cursor: inherit;
+  animation: poster-in var(--dur) var(--ease);
+}
+
+@keyframes poster-in {
+  from { opacity: 0; transform: translateX(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.poster-kicker {
+  align-self: flex-start;
+  padding: var(--s-1) var(--s-3);
+  border-radius: var(--r-pill);
+  background: var(--card);
+  color: var(--ink);
+  font-size: var(--fs-2);
+  font-weight: var(--fw-bold);
+}
+
+.poster-label {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-bold);
+}
+
+.poster-h {
+  margin: 0;
+  font-family: var(--sans);
+  font-weight: var(--fw-black);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.poster-h-xl { font-size: var(--fs-8); }
+.poster-h-l { font-size: var(--fs-7); }
+.poster-h-m { font-size: var(--fs-6); }
+.poster-h-s { font-size: var(--fs-5); line-height: 1.2; letter-spacing: -0.01em; }
+
+/* The old Try card's prompt style must not leak onto a picture card. */
+.poster .try-prompt {
+  color: inherit;
+  font-weight: var(--fw-black);
+}
+
+.poster-sub {
+  margin: 0;
+  font-size: var(--fs-5);
+  font-weight: var(--fw-bold);
+  line-height: 1.25;
+}
+
+/* -- Examples --------------------------------------------------------------- */
+
+.poster-examples {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.poster-strip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  padding: var(--s-4);
+  border-radius: var(--r-md);
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow-card);
+}
+
+.poster-strip-label {
+  font-size: var(--fs-2);
+  font-weight: var(--fw-bold);
+  color: var(--ink-2);
+}
+
+.poster-strip-text {
+  margin: 0;
+  font-size: var(--fs-5);
+  font-weight: var(--fw-bold);
+  line-height: 1.25;
+  white-space: pre-line;
+}
+
+.poster-chat-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.poster-chat {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.poster-bubble {
+  align-self: flex-start;
+  max-width: 86%;
+  padding: var(--s-2) var(--s-4);
+  border-radius: var(--r-md);
+  border-bottom-left-radius: var(--s-1);
+  background: var(--card);
+  color: var(--ink);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-medium);
+  line-height: 1.3;
+  box-shadow: var(--shadow-card);
+}
+
+.poster-bubble.is-mine {
+  align-self: flex-end;
+  border-radius: var(--r-md);
+  border-bottom-right-radius: var(--s-1);
+  background: var(--ink);
+  color: var(--card);
+}
+
+.poster-bubble-who {
+  display: block;
+  font-size: var(--fs-1);
+  font-weight: var(--fw-bold);
+  color: var(--ink-2);
+}
+
+/* -- Games ------------------------------------------------------------------ */
+
+.poster-game {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.poster-game-fill {
+  flex: 1;
+}
+
+.poster-game-result {
+  margin: 0;
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  background: var(--card);
+  color: var(--ink);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-bold);
+  line-height: 1.3;
+}
+
+.poster-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.poster-option {
+  width: 100%;
+  min-height: 60px;
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  background: var(--card);
+  color: var(--ink);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-bold);
+  line-height: 1.25;
+  text-align: center;
+  box-shadow: var(--shadow-chunky);
+  transition: transform var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+
+.poster-option:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.poster-option.is-right,
+.poster-chip.is-right {
+  background: var(--poster-right);
+  color: var(--poster-on-colour);
+}
+
+.poster-option.is-wrong {
+  background: var(--raised);
+  color: var(--ink-2);
+  animation: poster-shake 0.3s var(--ease);
+}
+
+.poster-option.is-out {
+  opacity: 0.7;
+}
+
+.poster-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  padding-bottom: var(--s-2);
+}
+
+.poster-chip {
+  padding: var(--s-2) var(--s-4);
+  border-radius: var(--r-sm);
+  background: var(--card);
+  color: var(--ink);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-bold);
+  line-height: 1.2;
+  box-shadow: var(--shadow-chunky);
+  transition: background var(--dur-fast) var(--ease);
+}
+
+.poster-chip.is-miss {
+  animation: poster-shake 0.3s var(--ease);
+}
+
+@keyframes poster-shake {
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.poster-reveal {
+  align-self: flex-start;
+  padding: var(--s-3) var(--s-5);
+  border-radius: var(--r-pill);
+  background: var(--card);
+  color: var(--ink);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-bold);
+  box-shadow: var(--shadow-chunky);
+}
+
+/* -- Bottom: right-edge buttons, last-slide buttons, dots ------------------- */
+
+.poster-bottom {
+  position: relative;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: 0 var(--gutter) var(--s-3);
+}
+
+.poster-rail {
+  position: absolute;
+  right: var(--s-3);
+  bottom: calc(100% + var(--s-2));
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.poster-rail-btn {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-pill);
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow-card);
+}
+
+.poster-rail-btn.is-on {
+  color: var(--warn);
+}
+
+.poster-foot {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.poster-btn {
+  flex: 1;
+  min-height: 52px;
+  border-radius: var(--r-pill);
+  background: var(--card);
+  color: var(--ink);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-bold);
+  box-shadow: var(--shadow-chunky);
+}
+
+.poster-btn.is-main {
+  flex: 1.5;
+  background: var(--ink);
+  color: var(--card);
+}
+
+/* Sits on top of the picture, so it carries its own small backing. */
+.poster-hint {
+  margin: 0 auto;
+  padding: var(--s-1) var(--s-3);
+  border-radius: var(--r-pill);
+  background: var(--card);
+  color: var(--ink);
+  font-size: var(--fs-2);
+  font-weight: var(--fw-bold);
+}
+
+.poster-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  min-height: 8px;
+}
+
+.poster-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--r-pill);
+  background: var(--card);
+  opacity: 0.45;
+  box-shadow: var(--shadow-card);
+}
+
+.poster-dot.is-on {
+  opacity: 1;
+}
+
+/* Short phones: the buttons lie down in a row, so long text keeps its room. */
+@media (max-height: 700px) {
+  .poster-rail {
+    flex-direction: row;
+  }
+
+  .poster-slide {
+    padding-bottom: 56px;
+  }
+
+  .poster-h-xl {
+    font-size: var(--fs-7);
+  }
+
+  .poster-h-l {
+    font-size: var(--fs-6);
+  }
+
+  .poster-sub,
+  .poster-strip-text {
+    font-size: var(--fs-4);
+  }
+}
+
+/* The "more" menu on a feed card: less like this, this is wrong. */
+.poster-more {
+  position: absolute;
+  right: calc(var(--s-3) + 52px);
+  bottom: calc(100% + var(--s-2));
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  min-width: 170px;
+  padding: var(--s-1);
+  border-radius: var(--r-md);
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow-card);
+}
+
+.poster-more-item {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: 44px;
+  padding: 0 var(--s-3);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-3);
+  font-weight: var(--fw-medium);
+  text-align: left;
+}

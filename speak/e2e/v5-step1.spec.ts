@@ -61,19 +61,9 @@ test.describe('Step 1: new shell pictures', () => {
     expect(consoleErrors).toEqual([]);
   });
 
-  test('Feed shows a teach card', async ({ page }) => {
+  test('Feed shows a full-size card', async ({ page }) => {
     await expect(page.locator('.feed-screen')).toBeVisible({ timeout: 15000 });
-    // Walk forward until a teach card is on screen (the queue mixes card types).
-    const teach = page.locator('.teach-face');
-    for (let i = 0; i < 40 && !(await teach.isVisible().catch(() => false)); i++) {
-      const next = page.locator('button.got-it').first();
-      if (!(await next.isVisible().catch(() => false))) break;
-      await next.click();
-      await page.waitForTimeout(250);
-    }
-    await expect(teach).toBeVisible({ timeout: 5000 });
-    await expect(page.locator('.teach-chip-kind')).toBeVisible();
-    await expect(page.locator('.teach-chip-track')).toBeVisible();
+    await expect(page.locator('.poster')).toBeVisible({ timeout: 5000 });
     await page.waitForTimeout(400);
     await noSidewaysScroll(page);
     await tapTargetsBigEnough(page, '.v5-shell');

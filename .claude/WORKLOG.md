@@ -890,3 +890,11 @@ rewrite describes as 60 text scenes, new 130 situations, +100 words / +60 phrase
 - [x] Adarsh: "fix everything end to end… make it a learning machine". Fixed all 18 gaps (stress test now 41/46; the rest are left to the second AI or are test wording) + learner memory: Ask understands wishes ("more cricket small talk", "too easy", "never show X") and shows "What I'll change"; Me shows "What the app knows about me" with Forget; topics from asks/chats, lesson-card rejects/misses, newest weak spots feed every new card, the chat and the weekly plan. Hinglish speech hint; honest error reasons; checker can never check itself. All unit + 30 browser tests green. Not committed.
 - [x] Go-live guide written in chat (Netlify site + 3 keys + live calls).
 
+
+## 2026-10-31 — SPEAK: Instagram-style redesign pictures
+
+**Agenda:** fix squeezed buttons and alignment · make cards big like Instagram · stop the cut-off at the top of cards · tidy the top story circles · short cards with examples, more cards or games instead of long text · Codex design pictures for approval before building.
+
+- [x] Checked the app at phone size and found the layout problems. 7 Codex design pictures in 3 looks (Bold poster, Playful game, Warm photo) saved in `docs/redesign-v6/`. Waiting on Adarsh's choice; no app code changed.
+- [x] Adarsh picked Bold poster + the games + a picture set per topic + no red text.
+- [x] Built: full-size picture cards with one idea per slide, tap-the-weak-word and pick-the-reply games, chat bubbles for examples, full-screen lessons, 46 Codex pictures, picture story circles, three equal tabs, new Ask page. Red text gone from cards. Checked at phone size; not committed; not yet tried on his real phone.

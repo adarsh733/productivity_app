@@ -151,3 +151,19 @@
 - **Status:** COMPLETED — claim released 2026-10-29
 - **Started:** 2026-10-29
 - **Files claimed:** `speak/src/types/contract.ts`, `speak/netlify/functions/ai.ts`, `speak/netlify/functions/transcribe.ts`, `speak/netlify/rulebook.ts`, `docs/AI-RULEBOOK.md`, `speak/netlify/tests/*`, `speak/src/features/learn/*` (new), `speak/src/features/auto/*`, `speak/src/features/coach/pipeline.ts`, `speak/src/features/ask/*`, `speak/src/features/chat/*`, `speak/src/components/ask/*`, `speak/src/components/chat/*`, `speak/src/components/cards/*`, `speak/e2e/*`, `speak/CLAUDE.md`, `docs/known-issues.md`, `.claude/WORKLOG.md` (append)
+
+---
+
+- **Agent:** Claude (Opus 5.5) — session 2026-10-31 (Instagram-style look: Codex design pictures)
+- **Task:** Generate design pictures with Codex for approval. No app code changes until Adarsh approves.
+- **Status:** COMPLETED — claim released 2026-10-31
+- **Started:** 2026-10-31
+- **Files claimed:** `docs/redesign-v6/*` (new), `.claude/WORKLOG.md` (append)
+
+---
+
+- **Agent:** Claude (Opus 5.5) — session 2026-10-31 (Instagram-style build, Look A + games)
+- **Task:** Build the approved look: full-size poster cards with slides, games, picture set, story circles, tab bar, Ask page, remove red text.
+- **Status:** COMPLETED — claim released 2026-10-31. Not committed.
+- **Started:** 2026-10-31
+- **Files claimed:** `speak/src/components/feed/*`, `speak/src/components/cards/*`, `speak/src/components/lessons/*`, `speak/src/components/ask/AskScreen.tsx`, `speak/src/components/shell/*`, `speak/src/features/cards/*` (new), `speak/src/styles/*`, `speak/public/art/*` (new), `speak/vite.config.ts`, `speak/e2e/*`, tests for those files, `docs/redesign-v6/*`, `speak/CLAUDE.md`, `.claude/WORKLOG.md` (append)

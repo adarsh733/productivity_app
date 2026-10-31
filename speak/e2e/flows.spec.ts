@@ -158,6 +158,17 @@ async function showOnlyCard(page: Page, cardId: string) {
   await expect(page.locator(`article[aria-label="Card: ${cardId}"]`)).toBeVisible({ timeout: 15000 });
 }
 
+/** Swipe up on the card: the next card comes. */
+async function swipeUp(page: Page) {
+  const box = await page.locator('.card-frame').boundingBox();
+  if (!box) throw new Error('no card on screen');
+  const x = box.x + box.width / 2;
+  await page.mouse.move(x, box.y + box.height * 0.6);
+  await page.mouse.down();
+  await page.mouse.move(x, box.y + box.height * 0.2, { steps: 6 });
+  await page.mouse.up();
+}
+
 test.describe('SPEAK v5 user flows', () => {
   let consoleErrors: string[] = [];
 
@@ -184,16 +195,14 @@ test.describe('SPEAK v5 user flows', () => {
     await start(page);
     await expect(page.locator('.ob-title')).toHaveCount(0);
     await expect(page.locator('.feed-screen')).toBeVisible({ timeout: 15000 });
-    await expect(page.locator('.fcard')).toBeVisible();
+    await expect(page.locator('.poster')).toBeVisible();
     await expect(tab(page, 'Feed')).toHaveClass(/is-active/);
 
     for (let i = 0; i < 5; i++) {
-      const next = page.locator('button.got-it').first();
-      await expect(next).toBeVisible();
-      await next.click();
-      await page.waitForTimeout(250);
+      await swipeUp(page);
+      await page.waitForTimeout(400);
     }
-    await expect(page.locator('.fcard')).toBeVisible();
+    await expect(page.locator('.poster')).toBeVisible();
     // XP is off in the v5 feed.
     await expect(page.getByText(/XP today/i)).toHaveCount(0);
   });
@@ -291,13 +300,13 @@ test.describe('SPEAK v5 user flows', () => {
   test('Flow 7: reload keeps the Feed and progress, with no first-run screen', async ({ page }) => {
     await start(page);
     await expect(page.locator('.feed-screen')).toBeVisible({ timeout: 15000 });
-    await page.locator('button.got-it').first().click();
+    await swipeUp(page);
     await page.waitForTimeout(300);
 
     await page.reload();
     await expect(page.locator('.v5-shell')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('.feed-screen')).toBeVisible();
-    await expect(page.locator('.fcard')).toBeVisible();
+    await expect(page.locator('.poster')).toBeVisible();
     await expect(page.locator('.ob-title')).toHaveCount(0);
   });
 

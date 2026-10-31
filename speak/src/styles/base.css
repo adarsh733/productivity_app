@@ -194,27 +194,10 @@
   color: var(--accent);
 }
 
-/* v5: Feed, Ask, Me. Ask is the dark centre button. */
-.v5-shell .tab.is-active {
-  color: var(--ink);
-}
-
-.tab-ask-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 40px;
-  background: var(--ink);
-  color: var(--card);
-  border-radius: var(--r-md);
-  box-shadow: var(--shadow-card);
-}
-
-.tab-ask-btn .tab-icon {
-  width: 22px;
-  height: 22px;
-}
+/* v5: Feed, Ask, Me. Three equal tabs. */
+.v5-shell .tab { font-size: var(--fs-2); }
+.v5-shell .tab .tab-icon { width: 24px; height: 24px; }
+.v5-shell .tab.is-active { color: var(--poster-cobalt); }
 
 /* -- Floating Capture Action Button (FAB) ----------------------------------- */
 .fab {

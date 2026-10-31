@@ -29,8 +29,8 @@
 .feed-brand-title {
   font-family: var(--sans);
   font-weight: 800;
-  font-size: var(--fs-2);
-  letter-spacing: 0.1em;
+  font-size: var(--fs-5);
+  letter-spacing: -0.01em;
   color: var(--ink);
 }
 
@@ -51,20 +51,16 @@
   color: var(--ink-3);
 }
 
-/* v5: the XP bar, goal banner and coach box left the feed. */
-
-/* v5 teach cards carry their own buttons; the bar underneath is just the
-   small extras (less of this / this is wrong). */
-.actions.is-teach {
-  justify-content: center;
-  padding-top: 0;
+/* The card fills the screen from edge to edge, down to the tab bar. */
+.feed-screen.v5-feed {
+  padding: 0;
+  overflow: hidden;
 }
 
 .card-frame {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 0 var(--gutter);
   min-height: 0;
   transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
   will-change: transform;
@@ -74,6 +70,10 @@
 .card-frame.is-leaving {
   transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
+
+/* A slide too long for a small phone scrolls instead of being cut off. */
+.poster-slide { touch-action: none; }
+.poster-slide.is-scrollable { touch-action: pan-y; }
 
 /* -- Actions Bar ----------------------------------------------------------- */
 .actions {

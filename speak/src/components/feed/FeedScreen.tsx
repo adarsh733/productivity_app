@@ -1,15 +1,19 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useFeed } from '../../features/feed/useFeed';
 import { useBookmarks } from '../../features/bookmarks/useBookmarks';
-import CardFace from '../cards/CardFace';
+import PosterCard from '../cards/PosterCard';
 import { useCardGestures } from './useCardGestures';
-import type { Card } from '../../types/contract';
-import { isTeachCard } from '../../features/skills/trackOf';
-import { FlagIcon, MicrophoneIcon, StarIcon, ThumbsDownIcon } from '../shell/Icons';
+import type { AnyCard, Card, TeachCard } from '../../types/contract';
+import { isBackTap, usePosterDeck } from '../../features/cards/usePosterDeck';
+import { speak } from '../../lib/speech';
+import { FlagIcon, MicrophoneIcon, MoreIcon, StarIcon, ThumbsDownIcon, VolumeIcon } from '../shell/Icons';
 import { rejectCard } from '../../features/auto/reject';
 import StoriesRow from '../lessons/StoriesRow';
 import LessonPlayer from '../lessons/LessonPlayer';
 import type { Lesson } from '../../features/lessons/useLessons';
+
+/** A press that moved further than this was a swipe, not a tap. */
+const TAP_SLOP_PX = 10;
 
 export interface FeedScreenProps {
   onOpenSpeakWithCard?: (card: Card) => void;
@@ -19,20 +23,22 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
   const feed = useFeed();
   const { isBookmarked, toggleBookmark } = useBookmarks();
 
-  const [isDetail, setIsDetail] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [playing, setPlaying] = useState<Lesson | null>(null);
+  const [moreOpen, setMoreOpen] = useState(false);
 
   const shownAt = useRef<number>(Date.now());
   const busy = useRef<boolean>(false);
+  const pressedAt = useRef<{ x: number; y: number } | null>(null);
 
   const card = feed.item?.card;
   const cardId = card?.id;
   const bookmarked = cardId ? isBookmarked(cardId) : false;
+  const deck = usePosterDeck(card);
 
   // AG-007 stage 2: engaged-only repetition. Engagement state lives in the
   // feed hook (`markEngaged`, landing with the useFeed pass); this screen
-  // reports every engagement signal it can see — 2 s on screen, flip, save,
+  // reports every engagement signal it can see — 2 s on screen, slide, save,
   // say-it, grade — through an optional call so the screen stays green before
   // and after the hook lands.
   const feedRef = useRef(feed);
@@ -41,10 +47,9 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
     (feedRef.current as unknown as { markEngaged?: (cardId: string) => void }).markEngaged?.(id);
   };
 
-  // Reset detail on card change
   useEffect(() => {
     shownAt.current = Date.now();
-    setIsDetail(false);
+    setMoreOpen(false);
     busy.current = false;
   }, [cardId]);
 
@@ -62,8 +67,7 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
     }, 2000);
   };
 
-  const handleToggleBookmark = async (e?: React.MouseEvent) => {
-    e?.stopPropagation();
+  const handleToggleBookmark = async () => {
     if (!card) return;
     try {
       const res = await toggleBookmark(card.id, card.type);
@@ -76,15 +80,6 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
     } catch (err) {
       console.error('Error toggling bookmark:', err);
     }
-  };
-
-  const handleSaveOnly = async () => {
-    if (!card) return;
-    if (isBookmarked(card.id)) {
-      showToast('Already saved');
-      return;
-    }
-    await handleToggleBookmark();
   };
 
   const handleAdvance = useCallback(async () => {
@@ -102,7 +97,7 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
     await feed.submit(g, { msSpent });
   }, [feed, cardId]);
 
-  // v5 teach card: Got it ✓ moves on (a due card is graded good); Again ↻ brings it back soon.
+  // Got it ✓ moves on (a due card is graded good); Again ↻ brings it back soon.
   const handleGotIt = useCallback(async () => {
     if (cardId) markEngaged(cardId);
     if (feed.item?.reason === 'due') {
@@ -143,20 +138,42 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
     return false;
   }, [feed]);
 
+  // Sideways moves through the slides. Past the last slide, the next card comes.
+  const handleSwipeSideways = (direction: 'left' | 'right') => {
+    if (cardId) markEngaged(cardId);
+    if (direction === 'right') {
+      deck.back();
+      return true;
+    }
+    if (deck.locked) return true;
+    if (deck.atEnd) return false;
+    deck.next();
+    return true;
+  };
+
   const { dragOffset, leavingDirection, showHint, bindGestures } = useCardGestures(
     cardId,
-    (_grade, direction) => {
-      if (direction === 'left' && card) {
-        void feed.downvoteCard(card);
-        showToast('Less of this topic for 7 days');
-      } else if (direction === 'right') {
-        void handleSaveOnly();
-      }
+    () => {
       const msSpent = Date.now() - shownAt.current;
       void feed.advanceCard({ msSpent });
     },
     handleSwipeDown,
+    handleSwipeSideways,
   );
+
+  // Tap the right of the card for the next slide, the left to go back.
+  const handleFrameClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if ((e.target as HTMLElement).closest('button, a, input, textarea')) return;
+    const start = pressedAt.current;
+    if (start && Math.hypot(e.clientX - start.x, e.clientY - start.y) > TAP_SLOP_PX) return;
+    setMoreOpen(false);
+    if (isBackTap(e.clientX, e.currentTarget.getBoundingClientRect())) {
+      deck.back();
+    } else if (!deck.locked) {
+      if (cardId) markEngaged(cardId);
+      deck.next();
+    }
+  };
 
   if (!feed.ready) {
     return (
@@ -203,23 +220,24 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
               ? `translate3d(${dragOffset.x}px, ${dragOffset.y}px, 0)`
               : undefined;
 
-  const isTeach = card ? isTeachCard(card) : false;
+  const isTryCard = card ? (card as AnyCard).type === 'teach' && (card as unknown as TeachCard).kind === 'try' : false;
+  const canFlag = card && (card.source === 'ai' || card.source === 'inbox');
 
   return (
     <div className="screen feed-screen v5-feed">
       <header className="topbar">
         <div className="brand-group">
           <span className="feed-brand-title">Articulate</span>
-          {feed.streak > 0 ? (
-            <span className="streak" aria-label={`${feed.streak} day streak`}>
-              🔥 {feed.streak}
-            </span>
-          ) : (
-            <span className="streak is-zero" aria-label="0 day streak">
-              🔥 0
-            </span>
-          )}
         </div>
+        {feed.streak > 0 ? (
+          <span className="streak" aria-label={`${feed.streak} day streak`}>
+            🔥 {feed.streak}
+          </span>
+        ) : (
+          <span className="streak is-zero" aria-label="0 day streak">
+            🔥 0
+          </span>
+        )}
       </header>
 
       <StoriesRow onOpenLesson={setPlaying} />
@@ -234,113 +252,116 @@ export default function FeedScreen({ onOpenSpeakWithCard }: FeedScreenProps) {
       <div
         className={`card-frame${leavingDirection ? ' is-leaving' : ''}`}
         style={{ transform: transformStyle }}
+        onPointerDownCapture={(e) => {
+          pressedAt.current = { x: e.clientX, y: e.clientY };
+        }}
+        onClick={handleFrameClick}
         {...bindGestures}
       >
-        {feed.item?.reason === 'due' && (
-          <span className="badge b-pace" aria-label="Review card">Review</span>
-        )}
-        <CardFace
-          card={feed.item.card}
-          isDetail={isDetail}
-          onToggleDetail={() => {
-            if (cardId) markEngaged(cardId);
-            setIsDetail((d) => !d);
-          }}
-          showSwipeHint={showHint}
-          saved={bookmarked}
-          onAgain={isTeach ? () => void handleGrade('again') : undefined}
-          onGotIt={isTeach ? () => void handleGotIt() : undefined}
-          onSave={isTeach ? () => void handleToggleBookmark() : undefined}
-          // 🎤 Say mine (Try cards only): the old say-it drill, with the card's try prompt.
-          onSayMine={
-            isTeach && card && onOpenSpeakWithCard
-              ? () => {
-                  markEngaged(card.id);
-                  onOpenSpeakWithCard(card);
-                }
-              : undefined
-          }
-        />
-      </div>
-
-      <nav className={`actions${isTeach ? ' is-teach' : ''}`} aria-label="Card actions">
-        {!isTeach && (
-          <button
-            type="button"
-            className={`abtn ico star ${bookmarked ? 'on' : ''} tap`}
-            onClick={(e) => void handleToggleBookmark(e)}
-            aria-label={bookmarked ? 'Saved (tap to remove bookmark)' : 'Bookmark card'}
-          >
-            <StarIcon filled={bookmarked} aria-hidden="true" />
-          </button>
-        )}
-
-        <button
-          type="button"
-          className="abtn ico tap"
-          onClick={() => void handleDownvote()}
-          aria-label="Less of this card type"
-          title="Less of this type"
-        >
-          <ThumbsDownIcon aria-hidden="true" />
-        </button>
-
-        {card && (card.source === 'ai' || card.source === 'inbox') && (
-          <button
-            type="button"
-            className="abtn ico tap"
-            onClick={() => void handleReject()}
-            aria-label="This is wrong"
-            title="This is wrong"
-          >
-            <FlagIcon aria-hidden="true" />
-          </button>
-        )}
-
-        {onOpenSpeakWithCard && card && !isTeach && (
-          <button
-            type="button"
-            className="abtn mic tap"
-            onClick={() => {
+        {card && (
+          <PosterCard
+            card={card}
+            slides={deck.slides}
+            index={deck.index}
+            onSolved={() => {
               markEngaged(card.id);
-              onOpenSpeakWithCard(card);
+              deck.markSolved();
             }}
-            aria-label="Practice speaking this card"
-          >
-            <MicrophoneIcon /> <span>Say it</span>
-          </button>
+            kicker={feed.item.reason === 'due' ? 'Review' : undefined}
+            rail={
+              <>
+                {moreOpen && (
+                  <div className="poster-more">
+                    <button
+                      type="button"
+                      className="poster-more-item tap"
+                      onClick={() => void handleDownvote()}
+                      aria-label="Less of this card type"
+                    >
+                      <ThumbsDownIcon aria-hidden="true" /> Less like this
+                    </button>
+                    {canFlag && (
+                      <button
+                        type="button"
+                        className="poster-more-item tap"
+                        onClick={() => void handleReject()}
+                        aria-label="This is wrong"
+                      >
+                        <FlagIcon aria-hidden="true" /> This is wrong
+                      </button>
+                    )}
+                  </div>
+                )}
+                <button
+                  type="button"
+                  className={`poster-rail-btn tap${bookmarked ? ' is-on' : ''}`}
+                  onClick={() => void handleToggleBookmark()}
+                  aria-pressed={bookmarked}
+                  aria-label={bookmarked ? 'Saved (tap to remove bookmark)' : 'Bookmark card'}
+                >
+                  <StarIcon filled={bookmarked} aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  className="poster-rail-btn tap"
+                  onClick={() => {
+                    if (deck.slide) speak(deck.slide.speech, { lang: card.lang });
+                  }}
+                  aria-label="Hear this"
+                >
+                  <VolumeIcon aria-hidden="true" />
+                </button>
+                {onOpenSpeakWithCard && (
+                  <button
+                    type="button"
+                    className="poster-rail-btn tap"
+                    onClick={() => {
+                      markEngaged(card.id);
+                      onOpenSpeakWithCard(card as Card);
+                    }}
+                    aria-label={isTryCard ? 'Say my answer out loud' : 'Practice speaking this card'}
+                  >
+                    <MicrophoneIcon aria-hidden="true" />
+                  </button>
+                )}
+                <button
+                  type="button"
+                  className="poster-rail-btn tap"
+                  onClick={() => setMoreOpen((open) => !open)}
+                  aria-expanded={moreOpen}
+                  aria-label="More options"
+                >
+                  <MoreIcon aria-hidden="true" />
+                </button>
+              </>
+            }
+            foot={
+              deck.atEnd ? (
+                <>
+                  <button
+                    type="button"
+                    className="poster-btn tap"
+                    onClick={() => void handleGrade('again')}
+                    aria-label="Show again soon"
+                  >
+                    Again ↻
+                  </button>
+                  <button
+                    type="button"
+                    className="poster-btn is-main tap"
+                    onClick={() => void handleGotIt()}
+                    aria-label="Advance to next card"
+                  >
+                    Got it ✓
+                  </button>
+                </>
+              ) : showHint && !deck.locked ? (
+                <span className="poster-hint">Swipe sideways for more · Up for next</span>
+              ) : undefined
+            }
+          />
         )}
-
-        {isTeach ? null : feed.item?.reason === 'due' ? (
-          <>
-            <button
-              type="button"
-              className="abtn tap"
-              onClick={() => void handleGrade('again')}
-              aria-label="Show again soon"
-            >
-              Show again soon
-            </button>
-            <button
-              type="button"
-              className="abtn tap"
-              onClick={() => void handleGrade('good')}
-              aria-label="Knew it"
-            >
-              Knew it
-            </button>
-          </>
-        ) : (
-          <button
-            type="button"
-            className="abtn got-it tap"
-            onClick={() => void handleAdvance()}
-            aria-label="Advance to next card"
-          >
-            Got it →
-          </button>
-        )}
-      </nav>
+      </div>
     </div>
   );
 }

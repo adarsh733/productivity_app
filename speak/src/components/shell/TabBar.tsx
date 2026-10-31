@@ -1,4 +1,4 @@
-import { CaptureIcon, HomeIcon, YouIcon } from './Icons';
+import { ChatIcon, HomeIcon, YouIcon } from './Icons';
 
 export type AppTab = 'feed' | 'ask' | 'me';
 
@@ -20,20 +20,17 @@ export default function TabBar({
     <nav className="reset-tabbar tabs v5-tabs" aria-label="Primary navigation">
       {TABS.map(({ id, label }) => {
         const isActive = id === active;
-        const isAsk = id === 'ask';
         return (
           <button
             key={id}
             type="button"
-            className={`reset-tab tab tap${isAsk ? ' tab-ask' : ''}${isActive ? ' is-active on' : ''}`}
+            className={`reset-tab tab tap${isActive ? ' is-active on' : ''}`}
             aria-current={isActive ? 'page' : undefined}
             onClick={() => onChange(id)}
             aria-label={`${label} tab`}
           >
-            {isAsk ? (
-              <span className="tab-ask-btn">
-                <CaptureIcon className="tab-icon" />
-              </span>
+            {id === 'ask' ? (
+              <ChatIcon className="tab-icon" />
             ) : id === 'feed' ? (
               <HomeIcon className="tab-icon" />
             ) : (

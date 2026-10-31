@@ -133,11 +133,12 @@ test.describe('Step 4: card pictures', () => {
 
   test('A reshaped word card', async ({ page }) => {
     await showOnlyCard(page, 'w-vague');
-    const parts = page.locator('[data-testid="skill-parts"]');
-    await expect(parts).toBeVisible();
-    await expect(parts).toContainText('blurry photo');
-    await expect(page.locator('[data-testid="track-chip"]')).toBeVisible();
-    await parts.evaluate((el) => el.scrollIntoView({ block: 'center' }));
+    const face = page.locator('article[aria-label="Card: w-vague"]');
+    // Its parts come slide by slide; the picture line is on the last one.
+    for (let i = 0; i < 4 && !(await face.getByText('blurry photo').isVisible()); i++) {
+      await page.locator('.card-frame').click({ position: { x: 300, y: 200 } });
+    }
+    await expect(face).toContainText('blurry photo');
     await page.waitForTimeout(400);
     await noSidewaysScroll(page);
     await tapTargetsBigEnough(page, '.v5-shell');

@@ -13,7 +13,8 @@ don't reopen them.
 |---|---|
 | `src/types/contract.ts` | **The contract.** Types for everything. Start here. v5 added (additive only): `TeachCard`/`TeachDraft`, `Track`, `CardKind`, `SkillTag`, Ask/chat/weak-spot/story types, AI tasks `answer_ask` + `coach_chat`. |
 | `src/App.tsx` + `components/shell/TabBar.tsx` | **v5 shell: Feed · Ask · Me.** Old Browse / Speak / You open from the ⚙︎ on Me via `components/me/OldToolsSheet.tsx`. |
-| `components/feed/` + `components/cards/` | Feed with the Stories row; `TeachCardFace` (Learn/Use/Fix), `TryCardFace` (reveal + 🎤 Say mine → the old say-it drill with the card's try prompt). |
+| `components/feed/` + `components/cards/PosterCard.tsx` | Feed with picture story circles and full-size picture cards (2026-10-31): one idea per slide, tap or swipe sideways for slides, swipe up for the next card, right-edge buttons, Again / Got it on the last slide. Old `CardFace` / `TeachCardFace` / `TryCardFace` remain for Browse and detail sheets. |
+| `features/cards/` | `slides.ts` turns any card into slides and games (tap the weak word, pick the better reply) using only the card's own words. `art.ts` picks the picture: two per topic, 46 files in `public/art/` (made with Codex, cached offline). `usePosterDeck.ts` holds the current slide. |
 | `features/lessons/` + `components/lessons/` | One lesson a day (`rotation.ts`: smalltalk → stories → clearly → words), LessonPlayer, SkillPage ladder (L3-5 locked). |
 | `features/skills/trackOf.ts` | Which skill an old card trains (its own `skill` tag, else by type). |
 | `features/ask/` + `components/ask/` | Ask tab: local library search, `answer_ask`, check on the other provider, "Add N cards to my feed" (Use → Fix → Try). |

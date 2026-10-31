@@ -245,6 +245,24 @@ export function HomeIcon(props: IconProps) {
   );
 }
 
+export function ChatIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.4A8.5 8.5 0 1 1 21 12Z" />
+    </IconFrame>
+  );
+}
+
+export function MoreIcon(props: IconProps) {
+  return (
+    <IconFrame {...props}>
+      <circle cx="5" cy="12" r="1.2" fill="currentColor" />
+      <circle cx="12" cy="12" r="1.2" fill="currentColor" />
+      <circle cx="19" cy="12" r="1.2" fill="currentColor" />
+    </IconFrame>
+  );
+}
+
 export function GearIcon(props: IconProps) {
   return (
     <IconFrame {...props}>

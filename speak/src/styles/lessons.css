@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   gap: var(--s-2);
-  padding: var(--s-2) var(--gutter) var(--s-3);
+  padding: var(--s-1) var(--gutter) var(--s-3);
 }
 
 .story-ring {
@@ -31,29 +31,34 @@
 }
 
 .story-ring-circle {
-  width: 58px;
-  height: 58px;
+  width: 68px;
+  height: 68px;
   border-radius: var(--r-pill);
   padding: 3px;
-  background: var(--track, var(--line));
+  background: var(--poster-bg, var(--line));
   display: grid;
   place-items: center;
 }
 
+@media (max-height: 700px) {
+  .story-ring-circle {
+    width: 52px;
+    height: 52px;
+  }
+}
+
 .story-ring.is-today .story-ring-circle {
-  box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--track, var(--line));
+  box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--poster-bg, var(--line));
 }
 
 .story-ring-inner {
   width: 100%;
   height: 100%;
   border-radius: var(--r-pill);
-  background: var(--track-soft, var(--raised));
+  background: var(--poster-bg, var(--raised));
   border: 2px solid var(--paper);
-  display: grid;
-  place-items: center;
-  font-size: var(--fs-5);
-  line-height: 1;
+  display: block;
+  object-fit: cover;
 }
 
 /* Today's lesson is done: the ring goes grey. */
@@ -72,9 +77,10 @@
 
 .story-ring-name {
   max-width: 100%;
-  font-size: var(--fs-1);
+  font-size: var(--fs-2);
+  font-weight: var(--fw-bold);
   line-height: var(--lh-tight);
-  color: var(--ink-2);
+  color: var(--ink);
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -93,17 +99,22 @@
   z-index: 200;
   display: flex;
   flex-direction: column;
-  background: var(--paper);
-  padding-top: var(--safe-top);
-  padding-bottom: var(--safe-bottom);
+  background: var(--poster-bg, var(--paper));
+  color: var(--poster-ink, var(--ink));
 }
 
 .lp-top {
-  flex: none;
-  padding: var(--s-3) var(--gutter) var(--s-2);
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: calc(var(--safe-top) + var(--s-2)) var(--s-3) 0 var(--gutter);
 }
 
 .lp-bars {
+  flex: 1;
   display: flex;
   gap: var(--s-1);
 }
@@ -112,41 +123,15 @@
   flex: 1;
   height: 4px;
   border-radius: var(--r-pill);
-  background: var(--line);
-}
-
-.lp-bar.is-on {
-  background: var(--track, var(--accent));
-}
-
-.lp-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--s-3);
-  margin-top: var(--s-2);
-}
-
-.lp-head-text {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.lp-track {
-  font-size: var(--fs-1);
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--track, var(--ink-2));
-}
-
-.lp-title {
-  font-family: var(--serif);
-  font-size: var(--fs-4);
-  color: var(--ink);
+  background: color-mix(in srgb, currentColor 30%, transparent);
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+}
+
+.lp-bar-fill {
+  display: block;
+  height: 100%;
+  background: currentColor;
+  transition: width var(--dur) var(--ease);
 }
 
 .lp-close {
@@ -155,49 +140,26 @@
   height: 44px;
   display: grid;
   place-items: center;
-  background: var(--raised);
+  background: transparent;
   border: none;
-  border-radius: var(--r-pill);
-  color: var(--ink);
+  color: inherit;
   cursor: pointer;
 }
 
 .lp-stage {
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
-  padding: var(--s-2) var(--gutter);
-  cursor: pointer;
-}
-
-.lp-stage .fcard {
-  height: auto;
-  min-height: 100%;
-  max-height: none;
-}
-
-.lp-foot {
-  flex: none;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--s-3);
-  padding: var(--s-3) var(--gutter) var(--s-4);
+  flex-direction: column;
+  touch-action: pan-y;
 }
 
-.lp-back,
-.lp-next {
-  min-width: 96px;
-  min-height: 48px;
+.lp-stage .poster-slide {
+  padding-top: calc(var(--safe-top) + 60px);
 }
 
-.lp-back:disabled {
-  opacity: 0.4;
-}
-
-.lp-count {
-  font-size: var(--fs-2);
-  color: var(--ink-3);
+.lp-stage .poster-bottom {
+  padding-bottom: calc(var(--s-3) + var(--safe-bottom));
 }
 
 /* ---- Skill page (opened from the Ask skill tiles) ------------------------- */

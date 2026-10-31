@@ -15,11 +15,12 @@ describe('TabBar (v5: Feed · Ask · Me)', () => {
     expect(screen.queryByRole('button', { name: /You/i })).toBeNull();
   });
 
-  it('makes Ask the centre dark button', () => {
+  it('keeps all three tabs the same: an icon and a label, nothing raised', () => {
     render(<TabBar active="feed" onChange={vi.fn()} />);
-    const buttons = screen.getAllByRole('button');
-    expect(buttons[1]?.className).toContain('tab-ask');
-    expect(buttons[1]?.querySelector('.tab-ask-btn')).not.toBeNull();
+    for (const button of screen.getAllByRole('button')) {
+      expect(button.querySelectorAll('svg')).toHaveLength(1);
+      expect(button.querySelector('.tab-ask-btn')).toBeNull();
+    }
   });
 
   it('marks the active tab with aria-current and calls onChange when tapped', async () => {

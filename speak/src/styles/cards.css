@@ -196,7 +196,7 @@
 }
 
 .card-contrast-highlight {
-  color: var(--heat);
+  color: var(--ink);
   font-weight: var(--fw-bold);
 }
 
@@ -226,7 +226,7 @@
 }
 
 .card-danger-highlight {
-  color: var(--bad);
+  color: var(--ink);
   font-weight: var(--fw-medium);
 }
 

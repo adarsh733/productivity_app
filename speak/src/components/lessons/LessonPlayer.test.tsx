@@ -32,6 +32,12 @@ function makeLesson(): Lesson {
 
 const litBars = () => document.querySelectorAll('.lp-bar.is-on').length;
 
+/** Each test card has 4 slides: idea, examples, picture, try. */
+const SLIDES_PER_CARD = 4;
+const tapStage = (times = 1) => {
+  for (let i = 0; i < times; i++) fireEvent.click(screen.getByTestId('lp-stage'));
+};
+
 describe('LessonPlayer', () => {
   beforeEach(async () => {
     await Promise.all([db.lessonProgress.clear(), db.cards.clear()]);
@@ -44,40 +50,68 @@ describe('LessonPlayer', () => {
     expect(screen.getByText('Step 1 title')).toBeInTheDocument();
   });
 
-  it('tapping the card advances one step and lights the next bar', () => {
+  it('tapping walks through the slides, then lights the next bar', () => {
     render(<LessonPlayer lesson={makeLesson()} onClose={() => {}} />);
-    fireEvent.click(screen.getByTestId('lp-stage'));
+    tapStage();
+    expect(screen.getByText('At work.')).toBeInTheDocument();
+    expect(screen.queryByText('Step 1 title')).toBeNull();
+    expect(litBars()).toBe(1);
+    tapStage(SLIDES_PER_CARD - 1);
     expect(screen.getByText('Step 2 title')).toBeInTheDocument();
     expect(litBars()).toBe(2);
   });
 
-  it('the Back button goes back a step', () => {
+  it('tapping the left of the screen goes back a slide, then a card', () => {
     render(<LessonPlayer lesson={makeLesson()} onClose={() => {}} />);
-    fireEvent.click(screen.getByTestId('lp-stage'));
-    fireEvent.click(screen.getByRole('button', { name: 'Back' }));
+    const stage = screen.getByTestId('lp-stage');
+    tapStage(SLIDES_PER_CARD + 1);
+    expect(litBars()).toBe(2);
+    stage.getBoundingClientRect = () => ({ left: 0, width: 300 }) as DOMRect;
+    fireEvent.click(stage, { clientX: 10 });
+    expect(screen.getByText('Step 2 title')).toBeInTheDocument();
+    fireEvent.click(stage, { clientX: 10 });
     expect(screen.getByText('Step 1 title')).toBeInTheDocument();
     expect(litBars()).toBe(1);
+  });
+
+  it('a game holds the tap until it is played', () => {
+    const lesson = makeLesson();
+    const first = lesson.cards[0] as TeachCard;
+    first.insteadOf = 'We had a very good meeting.';
+    first.examples = { work: 'We had a productive meeting.', everyday: 'At home.' };
+    render(<LessonPlayer lesson={lesson} onClose={() => {}} />);
+    tapStage();
+    expect(screen.getByText('Tap the weak words')).toBeInTheDocument();
+    tapStage();
+    expect(screen.getByText('Tap the weak words')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'We' }));
+    expect(screen.getByText('Tap the weak words')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'very good' }));
+    expect(screen.getByRole('button', { name: 'productive' })).toBeInTheDocument();
+    tapStage();
+    expect(screen.getByText('We had a productive meeting.')).toBeInTheDocument();
   });
 
   it('✕ closes without saving any progress', async () => {
     const onClose = vi.fn();
     render(<LessonPlayer lesson={makeLesson()} onClose={onClose} />);
-    fireEvent.click(screen.getByTestId('lp-stage'));
+    tapStage();
     fireEvent.click(screen.getByRole('button', { name: 'Close lesson' }));
     expect(onClose).toHaveBeenCalledTimes(1);
     expect(await db.lessonProgress.count()).toBe(0);
   });
 
-  it('finishing the fifth step saves the lesson and closes', async () => {
+  it('finishing the last slide of the fifth card saves the lesson and closes', async () => {
     const onClose = vi.fn();
     const onDone = vi.fn();
     render(<LessonPlayer lesson={makeLesson()} onClose={onClose} onDone={onDone} />);
-    for (let i = 0; i < 4; i++) fireEvent.click(screen.getByTestId('lp-stage'));
+    tapStage(SLIDES_PER_CARD * 4);
     expect(screen.getByText('Step 5 title')).toBeInTheDocument();
     expect(litBars()).toBe(5);
+    tapStage(SLIDES_PER_CARD - 1);
     expect(await db.lessonProgress.count()).toBe(0);
 
-    fireEvent.click(screen.getByTestId('lp-stage'));
+    fireEvent.click(screen.getByRole('button', { name: /Finish/ }));
     await waitFor(() => expect(onClose).toHaveBeenCalledTimes(1));
     expect(onDone).toHaveBeenCalledTimes(1);
     const row = await db.lessonProgress.get('ls-words-1-1');
@@ -89,9 +123,10 @@ describe('LessonPlayer', () => {
     const lesson = makeLesson();
     (lesson.cards[0] as TeachCard).answer = 'A great answer.';
     render(<LessonPlayer lesson={lesson} onClose={() => {}} />);
+    tapStage(SLIDES_PER_CARD - 1);
     fireEvent.click(screen.getByRole('button', { name: 'Show a great answer' }));
     expect(screen.getByText('A great answer.')).toBeInTheDocument();
-    expect(screen.getByText('Step 1 title')).toBeInTheDocument();
+    expect(screen.getByText('Try it.')).toBeInTheDocument();
   });
 });
 

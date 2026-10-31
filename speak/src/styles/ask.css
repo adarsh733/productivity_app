@@ -11,31 +11,33 @@
 }
 
 .ask-title {
-  font-family: var(--serif);
-  font-size: var(--fs-6);
+  font-family: var(--sans);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-black);
+  letter-spacing: -0.02em;
   line-height: var(--lh-tight);
-  color: var(--ink);
+  color: var(--poster-cobalt);
   margin: 0;
+}
+
+/* The question box holds its own round send button. */
+.ask-form {
+  position: relative;
 }
 
 .ask-box {
   display: flex;
   align-items: center;
-  gap: var(--s-3);
-  min-height: 52px;
-  padding: 0 var(--s-4);
+  min-height: 60px;
+  padding: var(--s-1) 60px var(--s-1) var(--s-5);
   background: var(--card);
-  border: 1.5px solid var(--ink);
-  border-radius: var(--r-md);
+  border: 1.5px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
 }
 
 .ask-box:focus-within {
-  border-color: var(--accent-bright);
-}
-
-.ask-box-icon {
-  flex: none;
-  color: var(--ink);
+  border-color: var(--poster-cobalt);
 }
 
 .ask-input {
@@ -67,12 +69,22 @@ textarea.ask-input {
 
 .ask-chips {
   display: flex;
-  flex-wrap: wrap;
   gap: var(--s-2);
+  margin: 0 calc(var(--gutter) * -1);
+  padding: 0 var(--gutter);
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: none;
+}
+
+.ask-chips::-webkit-scrollbar {
+  display: none;
 }
 
 .ask-chip {
   display: inline-flex;
+  flex: none;
+  white-space: nowrap;
   align-items: center;
   gap: var(--s-2);
   padding: 0 var(--s-4);
@@ -99,38 +111,46 @@ textarea.ask-input {
 }
 
 .ask-tile {
-  --tile: var(--ink);
+  position: relative;
+  aspect-ratio: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--s-3);
-  padding: var(--s-4);
+  padding: var(--s-3) var(--s-4);
   border-radius: var(--r-md);
-  background: color-mix(in srgb, var(--tile) 10%, var(--card));
-  color: var(--tile);
+  background: var(--poster-bg);
+  color: var(--poster-ink);
+  overflow: hidden;
 }
 
-.ask-tile-smalltalk { --tile: var(--t-idiom); }
-.ask-tile-stories { --tile: var(--t-swap); }
-.ask-tile-clearly { --tile: var(--t-say_it); }
-.ask-tile-words { --tile: var(--t-word); }
-
 .ask-tile-name {
-  font-family: var(--serif);
-  font-size: var(--fs-4);
-  font-weight: var(--fw-bold);
+  position: relative;
+  z-index: 1;
+  font-family: var(--sans);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-black);
+  letter-spacing: -0.01em;
   line-height: var(--lh-tight);
 }
 
-.ask-tile-sub {
-  font-size: var(--fs-2);
-  font-weight: var(--fw-medium);
+.ask-tile-art {
+  position: absolute;
+  right: var(--s-1);
+  bottom: var(--s-3);
+  width: 64%;
+  height: 64%;
+  object-fit: cover;
+  -webkit-mask-image: radial-gradient(circle at 60% 60%, #000 55%, transparent 72%);
+  mask-image: radial-gradient(circle at 60% 60%, #000 55%, transparent 72%);
 }
 
 .ask-tile-bar {
+  position: absolute;
+  inset: auto var(--s-3) var(--s-2);
+  z-index: 1;
   display: block;
-  height: 6px;
+  height: 4px;
   border-radius: var(--r-pill);
-  background: var(--card);
+  background: color-mix(in srgb, currentColor 30%, transparent);
   overflow: hidden;
 }
 
@@ -138,7 +158,7 @@ textarea.ask-input {
   display: block;
   width: 0;
   height: 100%;
-  background: var(--tile);
+  background: currentColor;
   border-radius: var(--r-pill);
 }
 
@@ -164,34 +184,23 @@ textarea.ask-input {
 
 /* -- Step 3: sending a question, the answer, the library ------------------- */
 
-.ask-form {
-  display: flex;
-  align-items: center;
-  gap: var(--s-2);
-}
-
-.ask-form .ask-box {
-  flex: 1;
-  min-width: 0;
-}
-
 .ask-send {
-  flex: none;
-  min-width: 56px;
-  min-height: 52px;
-  padding: 0 var(--s-4);
+  position: absolute;
+  right: var(--s-2);
+  bottom: var(--s-2);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
   border: none;
   border-radius: var(--r-pill);
-  background: var(--accent);
-  color: var(--accent-ink);
-  font: inherit;
-  font-size: var(--fs-3);
-  font-weight: var(--fw-bold);
+  background: var(--poster-cobalt);
+  color: var(--poster-on-colour);
   cursor: pointer;
 }
 
 .ask-send:disabled {
-  background: var(--line);
+  background: var(--raised);
   color: var(--ink-3);
   cursor: default;
 }

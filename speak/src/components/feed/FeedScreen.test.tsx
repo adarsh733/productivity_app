@@ -5,6 +5,20 @@ import { db } from '../../db/db';
 import { isTeachCard } from '../../features/skills/trackOf';
 import { ensureSeeded, readSeedFiles } from '../../db/seedLoader';
 
+/** Plays any game and taps on until the last slide's buttons show. */
+function walkToLastSlide() {
+  const frame = document.querySelector('.card-frame') as HTMLElement;
+  for (let i = 0; i < 12; i++) {
+    if (screen.queryByRole('button', { name: /Advance to next card/i })) return;
+    const game = document.querySelector<HTMLElement>('.poster-option, .poster-chip');
+    if (game) {
+      // In tap-the-word, only the weak chip counts; press every chip once.
+      document.querySelectorAll<HTMLElement>('.poster-option, .poster-chip').forEach((b) => fireEvent.click(b));
+    }
+    fireEvent.click(frame);
+  }
+}
+
 describe('FeedScreen Real RTL Component Suite', () => {
   beforeEach(async () => {
     // Unmount any leaked tree first so a previous test's pending feed write
@@ -34,7 +48,7 @@ describe('FeedScreen Real RTL Component Suite', () => {
 
     await waitFor(
       () => {
-        expect(screen.getByRole('button', { name: /Advance to next card/i })).toBeInTheDocument();
+        expect(document.querySelector('.poster')).not.toBeNull();
       },
       { timeout: 10000 },
     );
@@ -47,7 +61,7 @@ describe('FeedScreen Real RTL Component Suite', () => {
 
     await waitFor(
       () => {
-        expect(screen.getByRole('button', { name: /Advance to next card/i })).toBeInTheDocument();
+        expect(document.querySelector('.poster')).not.toBeNull();
       },
       { timeout: 10000 },
     );
@@ -68,14 +82,14 @@ describe('FeedScreen Real RTL Component Suite', () => {
 
     await waitFor(
       () => {
-        expect(screen.getByRole('button', { name: /Advance to next card/i })).toBeInTheDocument();
+        expect(document.querySelector('.poster')).not.toBeNull();
       },
       { timeout: 10000 },
     );
+    expect(screen.getByRole('button', { name: /Bookmark card/i })).toBeInTheDocument();
+    walkToLastSlide();
     expect(screen.getByText('Again \u21bb')).toBeInTheDocument();
     expect(screen.getByText('Got it \u2713')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Bookmark card/i })).toBeInTheDocument();
-    expect(screen.getAllByText(/\u00b7 L\d/)).toHaveLength(1);
 
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: /Advance to next card/i }));
@@ -93,18 +107,19 @@ describe('FeedScreen Real RTL Component Suite', () => {
 
     await waitFor(
       () => {
-        expect(screen.getByRole('button', { name: /Advance to next card/i })).toBeInTheDocument();
+        expect(document.querySelector('.poster')).not.toBeNull();
       },
       { timeout: 10000 },
     );
 
+    walkToLastSlide();
     const gotItBtn = screen.getByRole('button', { name: /Advance to next card/i });
     await act(async () => {
       fireEvent.click(gotItBtn);
     });
 
-    // Feed still has active card and advance button
-    expect(screen.getByRole('button', { name: /Advance to next card/i })).toBeInTheDocument();
+    // Feed still has an active card
+    expect(document.querySelector('.poster')).not.toBeNull();
 
     // Let the async advance write settle before this test ends, so it cannot
     // bleed into the next test's reseed window.
@@ -122,7 +137,7 @@ describe('FeedScreen Real RTL Component Suite', () => {
 
     await waitFor(
       () => {
-        expect(screen.getByRole('button', { name: /Advance to next card/i })).toBeInTheDocument();
+        expect(document.querySelector('.poster')).not.toBeNull();
       },
       { timeout: 10000 },
     );

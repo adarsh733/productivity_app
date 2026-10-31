@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from 'react';
-import { SearchIcon } from '../shell/Icons';
+import { ArrowRightIcon } from '../shell/Icons';
+import { RING_ART } from '../../features/cards/art';
 import type { AnswerAskPayload, Track } from '../../types/contract';
 import SkillPage from '../lessons/SkillPage';
 import AskAnswer from './AskAnswer';
@@ -8,20 +9,20 @@ import { useAsk } from '../../features/ask/useAsk';
 import { MIN_QUERY_CHARS } from '../../features/ask/librarySearch';
 
 const CHIPS = [
-  { id: 'word', icon: '📖', label: 'A word I heard', starter: 'What does this word mean: ' },
-  { id: 'fix', icon: '✍️', label: 'Fix my sentence', starter: 'Fix my sentence: ' },
-  { id: 'reply', icon: '💬', label: 'What do I reply to…', starter: 'What do I reply to ' },
-  { id: 'slip', icon: '⚠️', label: 'A slip I make', starter: 'A slip I make: ' },
+  { id: 'word', label: 'A word I heard', starter: 'What does this word mean: ' },
+  { id: 'fix', label: 'Fix my sentence', starter: 'Fix my sentence: ' },
+  { id: 'reply', label: 'What do I reply to…', starter: 'What do I reply to ' },
+  { id: 'slip', label: 'A slip I make', starter: 'A slip I make: ' },
 ] as const;
 
 /** Show the "950 / 1000" counter once this few characters are left. */
 const COUNTER_FROM_LEFT = 100;
 
-const SKILLS: Array<{ track: Track; icon: string; name: string; sub: string }> = [
-  { track: 'smalltalk', icon: '💬', name: 'Small talk', sub: 'Level 1' },
-  { track: 'stories', icon: '📖', name: 'Stories', sub: 'Level 1' },
-  { track: 'clearly', icon: '🎯', name: 'Speak clearly', sub: 'Level 1' },
-  { track: 'words', icon: '🔤', name: 'Words', sub: 'Level 1' },
+const SKILLS: Array<{ track: Track; name: string; sub: string }> = [
+  { track: 'smalltalk', name: 'Small talk', sub: 'Level 1' },
+  { track: 'stories', name: 'Stories', sub: 'Level 1' },
+  { track: 'clearly', name: 'Speak clearly', sub: 'Level 1' },
+  { track: 'words', name: 'Words', sub: 'Level 1' },
 ];
 
 /**
@@ -59,7 +60,7 @@ export default function AskScreen() {
 
   return (
     <section className="ask-screen" aria-label="Ask">
-      <h1 className="ask-title">Ask</h1>
+      <h1 className="ask-title">Ask anything</h1>
 
       <form
         className="ask-form"
@@ -69,7 +70,6 @@ export default function AskScreen() {
         }}
       >
         <label className="ask-box">
-          <SearchIcon className="ask-box-icon" />
           <textarea
             ref={inputRef}
             className="ask-input"
@@ -84,14 +84,19 @@ export default function AskScreen() {
                 void ask.send();
               }
             }}
-            placeholder="Type or speak anything…"
+            placeholder="How do I say this better?"
             aria-label="Ask anything"
             aria-describedby={hint ? 'ask-hint' : undefined}
             enterKeyHint="send"
           />
         </label>
-        <button type="submit" className="ask-send tap" disabled={!canSend}>
-          {phase === 'asking' ? 'Asking…' : 'Ask'}
+        <button
+          type="submit"
+          className="ask-send tap"
+          disabled={!canSend}
+          aria-label={phase === 'asking' ? 'Asking…' : 'Ask'}
+        >
+          <ArrowRightIcon aria-hidden="true" />
         </button>
       </form>
 
@@ -118,7 +123,7 @@ export default function AskScreen() {
             className="ask-chip tap"
             onClick={() => pickChip(c.starter)}
           >
-            <span aria-hidden="true">{c.icon}</span> {c.label}
+            {c.label}
           </button>
         ))}
       </div>
@@ -170,10 +175,8 @@ export default function AskScreen() {
               onClick={() => setSkill(s.track)}
               aria-label={`${s.name}, ${sub}. Open`}
             >
-              <span className="ask-tile-name">
-                <span aria-hidden="true">{s.icon}</span> {s.name}
-              </span>
-              <span className="ask-tile-sub">{sub}</span>
+              <span className="ask-tile-name">{s.name}</span>
+              <img className="ask-tile-art" src={RING_ART[s.track]} alt="" draggable={false} />
               <span className="ask-tile-bar" aria-hidden="true">
                 <span
                   className="ask-tile-fill"

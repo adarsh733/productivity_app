@@ -1,6 +1,15 @@
 import '../../styles/lessons.css';
 import { useLessons, type Lesson } from '../../features/lessons/useLessons';
 import { TRACK_LABELS } from '../../features/skills/trackOf';
+import { RING_ART } from '../../features/cards/art';
+import type { Track } from '../../types/contract';
+
+const SHORT_NAMES: Record<Track, string> = {
+  smalltalk: 'Talk',
+  stories: 'Stories',
+  clearly: 'Clear',
+  words: 'Words',
+};
 
 export interface StoriesRowProps {
   /** A ring was tapped: play this lesson. */
@@ -19,8 +28,7 @@ export default function StoriesRow({ onOpenLesson }: StoriesRowProps) {
   return (
     <nav className="stories-row" aria-label="Today's lessons">
       {rings.map((ring, i) => {
-        const [icon, ...rest] = TRACK_LABELS[ring.track].split(' ');
-        const name = rest.join(' ');
+        const name = TRACK_LABELS[ring.track].split(' ').slice(1).join(' ');
         return (
           <button
             key={ring.track}
@@ -38,9 +46,9 @@ export default function StoriesRow({ onOpenLesson }: StoriesRowProps) {
             }
           >
             <span className="story-ring-circle" aria-hidden="true">
-              <span className="story-ring-inner">{icon}</span>
+              <img className="story-ring-inner" src={RING_ART[ring.track]} alt="" draggable={false} />
             </span>
-            <span className="story-ring-name">{name}</span>
+            <span className="story-ring-name">{SHORT_NAMES[ring.track]}</span>
           </button>
         );
       })}
