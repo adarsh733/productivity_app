@@ -1,4 +1,4 @@
-import { ChatIcon, HomeIcon, YouIcon } from './Icons';
+import { CardIcon, ChatIcon, YouIcon } from './Icons';
 
 export type AppTab = 'feed' | 'ask' | 'me';
 
@@ -32,7 +32,7 @@ export default function TabBar({
             {id === 'ask' ? (
               <ChatIcon className="tab-icon" />
             ) : id === 'feed' ? (
-              <HomeIcon className="tab-icon" />
+              <CardIcon className="tab-icon" />
             ) : (
               <YouIcon className="tab-icon" />
             )}

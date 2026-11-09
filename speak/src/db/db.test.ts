@@ -59,10 +59,16 @@ describe('SpeakDB IndexedDB Schema Suite', () => {
     expect(db.weakSpots).toBeDefined();
     expect(db.chats).toBeDefined();
     expect(db.storyBank).toBeDefined();
+    // v7 — Night glass card feedback
+    expect(db.feedback).toBeDefined();
+    // v8 — v7 steps 4-6
+    expect(db.seen).toBeDefined();
+    expect(db.savedReviews).toBeDefined();
+    expect(db.batches).toBeDefined();
   });
 
-  it('is at version 6 with the v6 keys and indexes', () => {
-    expect(db.verno).toBe(6);
+  it('is at version 8 with the v6, v7 and v8 keys and indexes', () => {
+    expect(db.verno).toBe(8);
     const schema = (name: string) => db.table(name).schema;
     expect(schema('lessonProgress').primKey.name).toBe('lessonId');
     expect(schema('asks').primKey.name).toBe('id');
@@ -70,9 +76,17 @@ describe('SpeakDB IndexedDB Schema Suite', () => {
     expect(schema('weakSpots').indexes.map((i) => i.name)).toEqual(['createdAt']);
     expect(schema('chats').indexes.map((i) => i.name)).toEqual(['day']);
     expect(schema('storyBank').indexes.map((i) => i.name)).toEqual(['day']);
+    expect(schema('feedback').primKey.name).toBe('id');
+    expect(schema('feedback').indexes.map((i) => i.name)).toEqual(['cardId', 'module', 'at']);
+    expect(schema('seen').primKey.name).toBe('id');
+    expect(schema('seen').indexes.map((i) => i.name)).toEqual(['module', 'at']);
+    expect(schema('savedReviews').primKey.name).toBe('cardId');
+    expect(schema('savedReviews').indexes.map((i) => i.name)).toEqual(['due']);
+    expect(schema('batches').primKey.name).toBe('id');
+    expect(schema('batches').indexes.map((i) => i.name)).toEqual(['module', 'at']);
   });
 
-  it('upgrades a version-5 install to version 6 without losing anything', async () => {
+  it('upgrades a version-5 install to the current version without losing anything', async () => {
     const name = 'speak-upgrade-test';
     await Dexie.delete(name);
 
@@ -100,7 +114,7 @@ describe('SpeakDB IndexedDB Schema Suite', () => {
 
     const next = new SpeakDB(name);
     await next.open();
-    expect(next.verno).toBe(6);
+    expect(next.verno).toBe(8);
 
     // Old rows survive, review state included.
     expect((await next.cards.get('w-1'))?.type).toBe('word');
@@ -125,6 +139,148 @@ describe('SpeakDB IndexedDB Schema Suite', () => {
     expect(await next.storyBank.where('day').equals('2026-10-29').count()).toBe(1);
 
     // Phone-only: writing to v6 tables queues nothing for Supabase.
+    expect(await next.outbox.count()).toBe(0);
+
+    next.close();
+    await Dexie.delete(name);
+  });
+
+  it('upgrades a version-6 install to the current version with the feedback table', async () => {
+    const name = 'speak-upgrade-v7-test';
+    await Dexie.delete(name);
+
+    // A v6 install exactly as shipped (v1..v6 stores, same index strings).
+    const old = new Dexie(name);
+    old.version(1).stores({
+      cards: 'id, type, lang, status, source, batchId',
+      reviews: 'cardId, due, state',
+      events: 'id, cardId, at, mode',
+      days: 'date',
+      inbox: 'id, createdAt, status',
+      profile: 'id',
+      outbox: '++seq, table, at',
+    });
+    old.version(2).stores({ labSessions: 'id, date', voiceSamples: 'id, at, date, kind' });
+    old.version(3).stores({ recordings: 'id, at, date, sessionId' });
+    old.version(4).stores({ bookmarks: 'cardId, createdAt', notes: 'id, createdAt' });
+    old.version(5).stores({ meta: 'key' });
+    old.version(6).stores({
+      lessonProgress: 'lessonId',
+      asks: 'id, createdAt',
+      weakSpots: 'id, createdAt',
+      chats: 'id, day',
+      storyBank: 'id, day',
+    });
+    await old.open();
+    await old.table('cards').put({ id: 'w-1', type: 'word', lang: 'en', status: 'active', source: 'seed' });
+    await old.table('asks').put({
+      id: 'a1', createdAt: 5, text: 'revert', askKind: 'word', answer: 'reply', cardIds: [], addedToFeed: false,
+    });
+    await old.table('storyBank').put({ id: 's1', day: '2026-10-29', text: 'The chai story', createdAt: 7 });
+    old.close();
+
+    const next = new SpeakDB(name);
+    await next.open();
+    expect(next.verno).toBe(8);
+
+    // v6 rows survive.
+    expect((await next.cards.get('w-1'))?.type).toBe('word');
+    expect((await next.asks.get('a1'))?.text).toBe('revert');
+    expect((await next.storyBank.get('s1'))?.text).toBe('The chai story');
+
+    // The feedback table is empty, keyed by id, and updated in place per card.
+    expect(await next.feedback.count()).toBe(0);
+    await next.feedback.put({
+      id: 'fb-v7-words-01', cardId: 'v7-words-01', module: 'words',
+      thumb: 'down', reasons: ['too_easy'], reply: 'Got it: harder words next.', at: 10,
+    });
+    await next.feedback.put({
+      id: 'fb-v7-words-01', cardId: 'v7-words-01', module: 'words',
+      thumb: 'up', reasons: ['loved'], reply: 'Got it: more like this.', at: 11,
+    });
+    await next.feedback.put({
+      id: 'fb-v7-talk-01', cardId: 'v7-talk-01', module: 'smalltalk',
+      reasons: ['confusing'], comment: 'Too long', reply: 'Got it: shorter replies.', at: 12,
+    });
+    expect(await next.feedback.count()).toBe(2);
+    expect((await next.feedback.get('fb-v7-words-01'))?.thumb).toBe('up');
+    expect(await next.feedback.where('module').equals('smalltalk').count()).toBe(1);
+    expect(await next.feedback.where('cardId').equals('v7-words-01').count()).toBe(1);
+    expect(await next.feedback.orderBy('at').primaryKeys()).toEqual(['fb-v7-words-01', 'fb-v7-talk-01']);
+
+    // Phone-only: writing feedback queues nothing for Supabase.
+    expect(await next.outbox.count()).toBe(0);
+
+    next.close();
+    await Dexie.delete(name);
+  });
+
+  it('upgrades a version-7 install to version 8: feedback kept, seen / saved reviews / batches added', async () => {
+    const name = 'speak-upgrade-v8-test';
+    await Dexie.delete(name);
+
+    // A v7 install exactly as shipped (v1..v7 stores, same index strings).
+    const old = new Dexie(name);
+    old.version(1).stores({
+      cards: 'id, type, lang, status, source, batchId',
+      reviews: 'cardId, due, state',
+      events: 'id, cardId, at, mode',
+      days: 'date',
+      inbox: 'id, createdAt, status',
+      profile: 'id',
+      outbox: '++seq, table, at',
+    });
+    old.version(2).stores({ labSessions: 'id, date', voiceSamples: 'id, at, date, kind' });
+    old.version(3).stores({ recordings: 'id, at, date, sessionId' });
+    old.version(4).stores({ bookmarks: 'cardId, createdAt', notes: 'id, createdAt' });
+    old.version(5).stores({ meta: 'key' });
+    old.version(6).stores({
+      lessonProgress: 'lessonId',
+      asks: 'id, createdAt',
+      weakSpots: 'id, createdAt',
+      chats: 'id, day',
+      storyBank: 'id, day',
+    });
+    old.version(7).stores({ feedback: 'id, cardId, module, at' });
+    await old.open();
+    await old.table('cards').put({ id: 'v7-words-01', type: 'module', lang: 'en', status: 'active', source: 'seed' });
+    await old.table('bookmarks').put({ cardId: 'v7-words-01', createdAt: 3 });
+    await old.table('feedback').put({
+      id: 'fb-v7-words-01', cardId: 'v7-words-01', module: 'words', thumb: 'up', reasons: [], reply: 'Got it.', at: 4,
+    });
+    old.close();
+
+    const next = new SpeakDB(name);
+    await next.open();
+    expect(next.verno).toBe(8);
+
+    // v7 rows survive.
+    expect((await next.cards.get('v7-words-01'))?.type).toBe('module');
+    expect((await next.bookmarks.get('v7-words-01'))?.createdAt).toBe(3);
+    expect((await next.feedback.get('fb-v7-words-01'))?.thumb).toBe('up');
+
+    // New tables start empty and are writable on their keys and indexes.
+    expect(await next.seen.count()).toBe(0);
+    expect(await next.savedReviews.count()).toBe(0);
+    expect(await next.batches.count()).toBe(0);
+
+    await next.seen.put({ id: 'words:relieved', module: 'words', head: 'relieved', cardId: 'v7-words-03', at: 20 });
+    await next.seen.put({ id: 'words:relieved', module: 'words', head: 'Relieved', cardId: 'v7-ai-words-0001', at: 21 });
+    await next.seen.put({ id: 'smalltalk:how was your weekend?', module: 'smalltalk', head: 'How was your weekend?', cardId: 'v7-talk-01', at: 22 });
+    expect(await next.seen.count()).toBe(2);
+    expect(await next.seen.where('module').equals('words').count()).toBe(1);
+    expect(await next.seen.orderBy('at').primaryKeys()).toEqual(['words:relieved', 'smalltalk:how was your weekend?']);
+
+    await next.savedReviews.put({ cardId: 'v7-words-01', module: 'words', savedAt: 3, step: 0, due: '2026-11-11', rights: 0 });
+    await next.savedReviews.put({ cardId: 'v7-talk-01', module: 'smalltalk', savedAt: 5, step: 1, due: '2026-11-20', rights: 1, lastAnswer: 'knew' });
+    expect(await next.savedReviews.where('due').belowOrEqual('2026-11-15').primaryKeys()).toEqual(['v7-words-01']);
+
+    await next.batches.put({
+      id: 'batch-words-100', module: 'words', at: 100, level: 2, asked: 30, kept: ['v7-ai-words-0001'], dropped: 29, status: 'done',
+    });
+    expect(await next.batches.where('module').equals('words').count()).toBe(1);
+
+    // Writing to the tables queues nothing by itself: callers enqueue.
     expect(await next.outbox.count()).toBe(0);
 
     next.close();

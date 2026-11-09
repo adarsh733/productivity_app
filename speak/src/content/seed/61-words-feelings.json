@@ -1,0 +1,4624 @@
+[
+  {
+    "id": "v7-words-feelings-001",
+    "type": "module",
+    "module": "words",
+    "topic": "upset",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "upset",
+    "pos": "adjective",
+    "say": "up-SET",
+    "meaning": "Unhappy and a bit hurt or worried.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Mum was **upset** that I forgot to call.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He got **upset** when we left without him.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Upset about a thing, with a person",
+      "text": "I'm **upset** about the cancelled trip."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"upset on\"",
+        "text": "Don't be upset on me."
+      },
+      {
+        "label": "✗ Not for things or weather",
+        "text": "The weather is upset today."
+      }
+    ],
+    "rule": "upset about / with"
+  },
+  {
+    "id": "v7-words-feelings-002",
+    "type": "module",
+    "module": "words",
+    "topic": "anxious",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "anxious",
+    "pos": "adjective",
+    "say": "ANK-shus",
+    "meaning": "Worried and tense about something that might happen.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I get **anxious** before long flights.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She was **anxious** about her driving test.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Anxious about",
+      "text": "I'm **anxious** about the results."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"anxious on\"",
+        "text": "I'm anxious on the interview."
+      }
+    ],
+    "rule": "anxious about"
+  },
+  {
+    "id": "v7-words-feelings-003",
+    "type": "module",
+    "module": "words",
+    "topic": "nervous",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "nervous",
+    "pos": "adjective",
+    "say": "NUR-vus",
+    "meaning": "A little scared before something important.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My son is **nervous** before his exam.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He's **nervous** about meeting her parents.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Before something big",
+      "text": "I always feel **nervous** before a speech."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for being angry",
+        "text": "I was nervous at him for being late."
+      }
+    ],
+    "rule": "a little scared, before",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I was nervous at him for being late.",
+          "right": false
+        },
+        {
+          "text": "I felt nervous before my first interview.",
+          "right": true
+        },
+        {
+          "text": "The cake was nervous.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-004",
+    "type": "module",
+    "module": "words",
+    "topic": "frustrated",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "frustrated",
+    "pos": "adjective",
+    "say": "frus-TRAY-tid",
+    "meaning": "Annoyed because you can't do or change something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The Wi-Fi keeps dropping and I'm so **frustrated**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He gets **frustrated** when we are late.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Frustrated with or by",
+      "text": "I'm **frustrated** with this slow app."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"frustrated on\"",
+        "text": "She was frustrated on me."
+      }
+    ],
+    "rule": "frustrated with / by"
+  },
+  {
+    "id": "v7-words-feelings-005",
+    "type": "module",
+    "module": "words",
+    "topic": "elated",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "elated",
+    "pos": "adjective",
+    "say": "ih-LAY-tid",
+    "meaning": "Extremely happy and excited.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Dad was **elated** when his tomatoes finally grew.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We were **elated** when our team won the final.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For big happy news",
+      "text": "She was **elated** to get the job."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for small, everyday things",
+        "text": "I was elated that the tea was hot."
+      }
+    ],
+    "rule": "much stronger than happy"
+  },
+  {
+    "id": "v7-words-feelings-006",
+    "type": "module",
+    "module": "words",
+    "topic": "grateful",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "grateful",
+    "pos": "adjective",
+    "say": "GRAYT-ful",
+    "meaning": "Thankful for something someone did.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm **grateful** my parents helped with the move.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We're so **grateful** you came all this way.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Grateful to a person, for a thing",
+      "text": "I'm **grateful** to you for the lift."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the person who helped",
+        "text": "Thanks for the gift, you are very grateful."
+      }
+    ],
+    "rule": "grateful to someone for something",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The gift was very grateful.",
+          "right": false
+        },
+        {
+          "text": "She grateful me.",
+          "right": false
+        },
+        {
+          "text": "I'm grateful for your help.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-007",
+    "type": "module",
+    "module": "words",
+    "topic": "content",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "content",
+    "pos": "adjective",
+    "say": "kun-TENT",
+    "meaning": "Quietly happy with what you have.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Give him a book and he's **content** for hours.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She's **content** with a small, quiet wedding.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Content with",
+      "text": "I'm **content** with my simple life."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for wild joy",
+        "text": "We won the cup and the crowd screamed, totally content."
+      }
+    ],
+    "rule": "calm happiness, not wild joy"
+  },
+  {
+    "id": "v7-words-feelings-008",
+    "type": "module",
+    "module": "words",
+    "topic": "proud",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "proud",
+    "pos": "adjective",
+    "say": "PROWD",
+    "meaning": "Happy about something you or someone close to you did.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Mum is so **proud** of my sister's marks.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm **proud** of you for running the full race.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Proud of",
+      "text": "We're **proud** of our son."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"proud on\"",
+        "text": "I am proud on my team."
+      }
+    ],
+    "rule": "proud of"
+  },
+  {
+    "id": "v7-words-feelings-009",
+    "type": "module",
+    "module": "words",
+    "topic": "nostalgic",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "nostalgic",
+    "pos": "adjective",
+    "say": "nos-TAL-jik",
+    "meaning": "Missing happy times from the past.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Old photos make Grandma **nostalgic**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "That song makes me **nostalgic** for college.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Nostalgic about or for the past",
+      "text": "I feel **nostalgic** about summer holidays."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the future",
+        "text": "I'm nostalgic about my trip next month."
+      }
+    ],
+    "rule": "for the past",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I'm nostalgic about tomorrow's meeting.",
+          "right": false
+        },
+        {
+          "text": "Our old school songs make me nostalgic.",
+          "right": true
+        },
+        {
+          "text": "The food was nostalgic hot.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-010",
+    "type": "module",
+    "module": "words",
+    "topic": "melancholy",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "melancholy",
+    "pos": "adjective",
+    "say": "MEL-un-kol-ee",
+    "meaning": "A quiet, lasting sadness, often without a clear reason.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Rainy Sunday evenings make me feel **melancholy**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "His songs have a **melancholy** sound.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a soft, deep sadness",
+      "text": "There was a **melancholy** mood after the farewell."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for sudden anger",
+        "text": "He was melancholy and shouted at the driver."
+      }
+    ],
+    "rule": "slow, soft sadness"
+  },
+  {
+    "id": "v7-words-feelings-011",
+    "type": "module",
+    "module": "words",
+    "topic": "jealous",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "jealous",
+    "pos": "adjective",
+    "say": "JEL-us",
+    "meaning": "Upset because someone has what you want.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My little brother gets **jealous** when the baby gets attention.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She's **jealous** of her friend's new car.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Jealous of",
+      "text": "Don't be **jealous** of his promotion."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"jealous on\"",
+        "text": "He is jealous on me."
+      }
+    ],
+    "rule": "jealous of"
+  },
+  {
+    "id": "v7-words-feelings-012",
+    "type": "module",
+    "module": "words",
+    "topic": "irritated",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "irritated",
+    "pos": "adjective",
+    "say": "IR-ih-tay-tid",
+    "meaning": "A bit angry because something keeps bothering you.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The dripping tap is making me **irritated**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He got **irritated** when we kept teasing him.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Irritated by or with",
+      "text": "I'm **irritated** by the loud phone calls."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the thing that bothers you",
+        "text": "This noise is very irritated."
+      }
+    ],
+    "rule": "irritated person, irritating thing",
+    "check": {
+      "question": "The neighbour's dog barks all night. How do you feel?",
+      "options": [
+        {
+          "text": "Irritated.",
+          "right": true
+        },
+        {
+          "text": "Grateful.",
+          "right": false
+        },
+        {
+          "text": "Elated.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-013",
+    "type": "module",
+    "module": "words",
+    "topic": "lonely",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "lonely",
+    "pos": "adjective",
+    "say": "LOHN-lee",
+    "meaning": "Sad because you are alone or have no one to talk to.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Since the kids moved out, Dad feels **lonely**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I felt **lonely** in a new city at first.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a sad feeling of being alone",
+      "text": "She feels **lonely** on weekends."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not the same as \"alone\"",
+        "text": "I like living lonely; it's peaceful."
+      }
+    ],
+    "rule": "alone and sad"
+  },
+  {
+    "id": "v7-words-feelings-014",
+    "type": "module",
+    "module": "words",
+    "topic": "resentful",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "resentful",
+    "pos": "adjective",
+    "say": "rih-ZENT-ful",
+    "meaning": "Angry for a long time because you feel treated unfairly.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "He's still **resentful** that his brother got the bigger room.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She felt **resentful** when nobody thanked her.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Resentful of or about",
+      "text": "He's **resentful** about the unfair rules."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for quick, short anger",
+        "text": "I was resentful for two seconds when he bumped me."
+      }
+    ],
+    "rule": "lasting anger at unfairness"
+  },
+  {
+    "id": "v7-words-feelings-015",
+    "type": "module",
+    "module": "words",
+    "topic": "apprehensive",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "apprehensive",
+    "pos": "adjective",
+    "say": "ap-rih-HEN-siv",
+    "meaning": "A little worried that something bad may happen.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Mum was **apprehensive** about me driving at night.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm **apprehensive** about the long trek.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Apprehensive about",
+      "text": "We were **apprehensive** about the new school."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"apprehensive on\"",
+        "text": "She is apprehensive on the trip."
+      }
+    ],
+    "rule": "apprehensive about",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I'm apprehensive about the surgery.",
+          "right": true
+        },
+        {
+          "text": "The cake looks apprehensive.",
+          "right": false
+        },
+        {
+          "text": "He apprehensive the exam.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-016",
+    "type": "module",
+    "module": "words",
+    "topic": "bored",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "bored",
+    "pos": "adjective",
+    "say": "BORD",
+    "meaning": "Tired because nothing interesting is happening.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The kids are **bored** after two days of rain.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I got **bored** halfway through the movie.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For the person",
+      "text": "I'm **bored**; let's go out."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the dull thing",
+        "text": "This class is so bored."
+      }
+    ],
+    "rule": "bored person, boring thing"
+  },
+  {
+    "id": "v7-words-feelings-017",
+    "type": "module",
+    "module": "words",
+    "topic": "envious",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "envious",
+    "pos": "adjective",
+    "say": "EN-vee-us",
+    "meaning": "Wanting what someone else has.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm a bit **envious** of my cousin's big garden.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We were all **envious** of his trip to Japan.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Envious of",
+      "text": "She's **envious** of her friend's free time."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"envious on\"",
+        "text": "I'm envious on his house."
+      }
+    ],
+    "rule": "envious of"
+  },
+  {
+    "id": "v7-words-feelings-018",
+    "type": "module",
+    "module": "words",
+    "topic": "annoyed",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "annoyed",
+    "pos": "adjective",
+    "say": "uh-NOYD",
+    "meaning": "A little angry about something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Dad gets **annoyed** when we leave the lights on.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She was **annoyed** that I was late again.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Annoyed with a person, about a thing",
+      "text": "I'm **annoyed** with him about the mess."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the thing that bothers you",
+        "text": "The traffic was very annoyed."
+      }
+    ],
+    "rule": "annoyed person, annoying thing",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The loud music was annoyed.",
+          "right": false
+        },
+        {
+          "text": "I got annoyed by the loud music.",
+          "right": true
+        },
+        {
+          "text": "She annoyed on me.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-019",
+    "type": "module",
+    "module": "words",
+    "topic": "ashamed",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "ashamed",
+    "pos": "adjective",
+    "say": "uh-SHAYMD",
+    "meaning": "Feeling bad about something wrong you did.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I was **ashamed** that I shouted at my mum.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He felt **ashamed** of lying to us.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Ashamed of",
+      "text": "I'm **ashamed** of how I behaved."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for small, silly moments",
+        "text": "I was ashamed when I tripped on the stairs."
+      }
+    ],
+    "rule": "for wrong things, not silly moments"
+  },
+  {
+    "id": "v7-words-feelings-020",
+    "type": "module",
+    "module": "words",
+    "topic": "exasperated",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "exasperated",
+    "pos": "adjective",
+    "say": "ig-ZAS-puh-ray-tid",
+    "meaning": "Very annoyed because something keeps going wrong.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Mum was **exasperated** after asking us five times to clean up.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm **exasperated** with his excuses.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ After many tries or repeats",
+      "text": "She was **exasperated** after the third delay."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the first small problem",
+        "text": "One drop of rain and I was exasperated."
+      }
+    ],
+    "rule": "annoyed after many repeats"
+  },
+  {
+    "id": "v7-words-feelings-021",
+    "type": "module",
+    "module": "words",
+    "topic": "scared",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "scared",
+    "pos": "adjective",
+    "say": "SKAIRD",
+    "meaning": "Afraid.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My daughter is **scared** of the dark.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I was **scared** on the roller coaster.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Scared of",
+      "text": "He's **scared** of dogs."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"scared from\"",
+        "text": "I am scared from spiders."
+      }
+    ],
+    "rule": "scared of",
+    "check": {
+      "question": "A big dog runs at you, barking. How do you feel?",
+      "options": [
+        {
+          "text": "Bored.",
+          "right": false
+        },
+        {
+          "text": "Content.",
+          "right": false
+        },
+        {
+          "text": "Scared.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-022",
+    "type": "module",
+    "module": "words",
+    "topic": "humbled",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "humbled",
+    "pos": "adjective",
+    "say": "HUM-buld",
+    "meaning": "Feeling small and thankful when people honour or help you.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We were **humbled** by how many neighbours came to help.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I felt **humbled** by their kind words.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ When you get praise or kindness",
+      "text": "I'm **humbled** by this award."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"proud\"",
+        "text": "I'm so humbled; I'm the best player here!"
+      }
+    ],
+    "rule": "thankful, not boastful"
+  },
+  {
+    "id": "v7-words-feelings-023",
+    "type": "module",
+    "module": "words",
+    "topic": "cheerful",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "cheerful",
+    "pos": "adjective",
+    "say": "CHEER-ful",
+    "meaning": "Happy and bright in a way others can see.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Grandpa is always **cheerful** in the morning.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She sent a **cheerful** message to the group.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For people, faces and moods",
+      "text": "The nurse had a **cheerful** smile."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"glad that\"",
+        "text": "I'm cheerful you came."
+      }
+    ],
+    "rule": "a bright mood others can see"
+  },
+  {
+    "id": "v7-words-feelings-024",
+    "type": "module",
+    "module": "words",
+    "topic": "drained",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "drained",
+    "pos": "adjective",
+    "say": "DRAYND",
+    "meaning": "Very tired, with no energy left.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "After the long family wedding, I was **drained**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "That hike left us all **drained**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ After something takes your energy",
+      "text": "I feel **drained** after back-to-back calls."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not with \"fresh\" or \"rested\"",
+        "text": "I feel drained and fresh after my nap."
+      }
+    ],
+    "rule": "no energy left",
+    "check": {
+      "question": "You worked 12 hours, then moved house. How do you feel?",
+      "options": [
+        {
+          "text": "Smug.",
+          "right": false
+        },
+        {
+          "text": "Drained.",
+          "right": true
+        },
+        {
+          "text": "Jealous.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-025",
+    "type": "module",
+    "module": "words",
+    "topic": "despondent",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "despondent",
+    "pos": "adjective",
+    "say": "dih-SPON-dunt",
+    "meaning": "Very sad and without hope.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "He was **despondent** after his dog died.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She was **despondent** when the visa got rejected again.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a deep loss of hope",
+      "text": "After the third failure, he felt **despondent**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a small letdown",
+        "text": "I was despondent that the café was out of muffins."
+      }
+    ],
+    "rule": "sad with no hope"
+  },
+  {
+    "id": "v7-words-feelings-026",
+    "type": "module",
+    "module": "words",
+    "topic": "homesick",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "homesick",
+    "pos": "adjective",
+    "say": "HOHM-sik",
+    "meaning": "Missing your home and family when you are far away.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My son called from the hostel; he's **homesick**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I got **homesick** in my first month abroad.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ When you are away from home",
+      "text": "She was **homesick** during the course."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for being ill at home",
+        "text": "I stayed homesick in bed with a fever."
+      }
+    ],
+    "rule": "missing home"
+  },
+  {
+    "id": "v7-words-feelings-027",
+    "type": "module",
+    "module": "words",
+    "topic": "uneasy",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "uneasy",
+    "pos": "adjective",
+    "say": "un-EE-zee",
+    "meaning": "Worried that something is not right.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I felt **uneasy** when I found the door open.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "His strange questions made me **uneasy**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a quiet worry",
+      "text": "I'm **uneasy** about lending him money."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"difficult\"",
+        "text": "This puzzle is very uneasy."
+      }
+    ],
+    "rule": "a quiet worry",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The test was uneasy.",
+          "right": false
+        },
+        {
+          "text": "I felt uneasy walking home alone.",
+          "right": true
+        },
+        {
+          "text": "He uneasy the door.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-028",
+    "type": "module",
+    "module": "words",
+    "topic": "embarrassed",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "embarrassed",
+    "pos": "adjective",
+    "say": "im-BAIR-ust",
+    "meaning": "Shy and awkward because people saw you do something silly.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I was **embarrassed** when Mum showed my baby photos.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He was **embarrassed** after calling her by the wrong name.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For silly or awkward moments",
+      "text": "I'm **embarrassed** I forgot your birthday."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the thing that causes it",
+        "text": "That was a very embarrassed moment."
+      }
+    ],
+    "rule": "embarrassed person, embarrassing moment"
+  },
+  {
+    "id": "v7-words-feelings-029",
+    "type": "module",
+    "module": "words",
+    "topic": "tense",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "tense",
+    "pos": "adjective",
+    "say": "TENS",
+    "meaning": "Nervous and unable to relax.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Everyone was **tense** before the results came out.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The match got **tense** in the last over.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For people and situations",
+      "text": "The meeting felt **tense**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"tensed\" for the feeling",
+        "text": "I am very tensed today."
+      }
+    ],
+    "rule": "tense, not tensed"
+  },
+  {
+    "id": "v7-words-feelings-030",
+    "type": "module",
+    "module": "words",
+    "topic": "indignant",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "indignant",
+    "pos": "adjective",
+    "say": "in-DIG-nunt",
+    "meaning": "Angry because something is unfair.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Grandma was **indignant** when the shop overcharged her.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He got **indignant** when they blamed him for the mess.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ When something feels unfair",
+      "text": "She was **indignant** about the long wait."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for soft sadness",
+        "text": "He felt indignant and cried quietly over old photos."
+      }
+    ],
+    "rule": "angry at unfairness",
+    "check": {
+      "question": "The waiter charges you twice for one coffee. How do you feel?",
+      "options": [
+        {
+          "text": "Nostalgic.",
+          "right": false
+        },
+        {
+          "text": "Humbled.",
+          "right": false
+        },
+        {
+          "text": "Indignant.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-031",
+    "type": "module",
+    "module": "words",
+    "topic": "confused",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "confused",
+    "pos": "adjective",
+    "say": "kun-FYOOZD",
+    "meaning": "Not able to understand something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Dad gets **confused** by the new TV remote.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I was **confused** about which station to get off at.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For the person who does not understand",
+      "text": "I'm **confused** by these steps."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the hard thing",
+        "text": "The map is very confused."
+      }
+    ],
+    "rule": "confused person, confusing thing"
+  },
+  {
+    "id": "v7-words-feelings-032",
+    "type": "module",
+    "module": "words",
+    "topic": "moved",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "moved",
+    "pos": "adjective",
+    "say": "MOOVD",
+    "meaning": "Feeling deep emotion because of something kind or sad.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Mum was **moved** to tears by our anniversary video.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We were all **moved** by his speech.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Moved by",
+      "text": "I was **moved** by her letter."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for being angry",
+        "text": "He was moved and threw his phone."
+      }
+    ],
+    "rule": "moved by"
+  },
+  {
+    "id": "v7-words-feelings-033",
+    "type": "module",
+    "module": "words",
+    "topic": "excited",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "excited",
+    "pos": "adjective",
+    "say": "ik-SY-tid",
+    "meaning": "Very happy about something that's going to happen.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The kids are **excited** about the holidays.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm **excited** to see you on Saturday.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Excited about or to",
+      "text": "She's **excited** about her new job."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the thing itself",
+        "text": "The film was very excited."
+      }
+    ],
+    "rule": "excited person, exciting thing",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The trip is excited.",
+          "right": false
+        },
+        {
+          "text": "We're excited about the trip.",
+          "right": true
+        },
+        {
+          "text": "I excited for the trip.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-034",
+    "type": "module",
+    "module": "words",
+    "topic": "startled",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "startled",
+    "pos": "adjective",
+    "say": "STAR-tuld",
+    "meaning": "Suddenly surprised or a little scared.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I was **startled** when the cooker whistled.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She looked **startled** when we shouted \"Surprise!\"",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a sudden jump of surprise",
+      "text": "The loud horn left me **startled**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a long worry",
+        "text": "I've been startled about my exams all month."
+      }
+    ],
+    "rule": "sudden, short surprise"
+  },
+  {
+    "id": "v7-words-feelings-035",
+    "type": "module",
+    "module": "words",
+    "topic": "euphoric",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "euphoric",
+    "pos": "adjective",
+    "say": "yoo-FOR-ik",
+    "meaning": "Extremely happy, almost floating.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We were **euphoric** when our daughter was born.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The fans were **euphoric** after the win.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a huge rush of joy",
+      "text": "He felt **euphoric** after finishing the marathon."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for calm, small pleasures",
+        "text": "I felt euphoric reading the newspaper."
+      }
+    ],
+    "rule": "a huge rush of joy"
+  },
+  {
+    "id": "v7-words-feelings-036",
+    "type": "module",
+    "module": "words",
+    "topic": "exhausted",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "exhausted",
+    "pos": "adjective",
+    "say": "ig-ZOS-tid",
+    "meaning": "Extremely tired.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "After cleaning the whole house, I'm **exhausted**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We were **exhausted** after dancing all night.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For the tired person",
+      "text": "I'm completely **exhausted**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the tiring thing",
+        "text": "The lecture was exhausted."
+      }
+    ],
+    "rule": "exhausted person, exhausting day",
+    "check": {
+      "question": "You walked all day at the fair. How do you feel?",
+      "options": [
+        {
+          "text": "Exhausted.",
+          "right": true
+        },
+        {
+          "text": "Smug.",
+          "right": false
+        },
+        {
+          "text": "Curious.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-037",
+    "type": "module",
+    "module": "words",
+    "topic": "stunned",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "stunned",
+    "pos": "adjective",
+    "say": "STUND",
+    "meaning": "So surprised you can't speak for a moment.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We were **stunned** when Dad said he'd retire.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She was **stunned** by the price of the flat.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For big, shocking news",
+      "text": "I'm **stunned** that he quit."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for tiny surprises",
+        "text": "I was stunned that my tea was a little cold."
+      }
+    ],
+    "rule": "big surprise"
+  },
+  {
+    "id": "v7-words-feelings-038",
+    "type": "module",
+    "module": "words",
+    "topic": "calm",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "calm",
+    "pos": "adjective",
+    "say": "KAHM",
+    "meaning": "Peaceful, not worried or excited.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Stay **calm**; the doctor is on the way.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She was **calm** even when the car broke down.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Stay calm, keep calm",
+      "text": "Please keep **calm** and wait."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"calmly\" after \"is\"",
+        "text": "He is very calmly."
+      }
+    ],
+    "rule": "stay calm"
+  },
+  {
+    "id": "v7-words-feelings-039",
+    "type": "module",
+    "module": "words",
+    "topic": "puzzled",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "puzzled",
+    "pos": "adjective",
+    "say": "PUZ-uld",
+    "meaning": "Confused because something doesn't make sense.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm **puzzled**; my keys were right here.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He looked **puzzled** by the menu.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Puzzled by or about",
+      "text": "We're **puzzled** by the strange bill."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the puzzling thing",
+        "text": "The question was puzzled."
+      }
+    ],
+    "rule": "puzzled person, puzzling thing",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "She looked puzzled by the message.",
+          "right": true
+        },
+        {
+          "text": "The message was puzzled.",
+          "right": false
+        },
+        {
+          "text": "He puzzled on the message.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-040",
+    "type": "module",
+    "module": "words",
+    "topic": "wistful",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "wistful",
+    "pos": "adjective",
+    "say": "WIST-ful",
+    "meaning": "Softly sad while thinking of something you miss.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Mum looked **wistful** as she packed my old toys.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He gave a **wistful** smile at the beach photos.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a soft longing",
+      "text": "She sounded **wistful** about her village."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for strong anger",
+        "text": "He was wistful and banged the table."
+      }
+    ],
+    "rule": "soft longing"
+  },
+  {
+    "id": "v7-words-feelings-041",
+    "type": "module",
+    "module": "words",
+    "topic": "hopeful",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "hopeful",
+    "pos": "adjective",
+    "say": "HOHP-ful",
+    "meaning": "Feeling that something good may happen.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We're **hopeful** the rain will stop by noon.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She's **hopeful** about her interview.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Hopeful about or that",
+      "text": "I'm **hopeful** that he'll call."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not without \"am\" or \"feel\"",
+        "text": "I hopeful he comes."
+      }
+    ],
+    "rule": "hopeful about / that"
+  },
+  {
+    "id": "v7-words-feelings-042",
+    "type": "module",
+    "module": "words",
+    "topic": "crushed",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "crushed",
+    "pos": "adjective",
+    "say": "KRUSHT",
+    "meaning": "Very sad and let down.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My son was **crushed** when his team lost.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She was **crushed** when he called off the wedding.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a big letdown",
+      "text": "I was **crushed** by the rejection letter."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for mild sadness",
+        "text": "I was crushed that the shop was out of milk."
+      }
+    ],
+    "rule": "a big letdown",
+    "check": {
+      "question": "You spent months on a plan and it gets cancelled. How do you feel?",
+      "options": [
+        {
+          "text": "Cheerful.",
+          "right": false
+        },
+        {
+          "text": "Smug.",
+          "right": false
+        },
+        {
+          "text": "Crushed.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-043",
+    "type": "module",
+    "module": "words",
+    "topic": "guilty",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "guilty",
+    "pos": "adjective",
+    "say": "GIL-tee",
+    "meaning": "Feeling bad because you did something wrong.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I feel **guilty** for missing Dad's birthday call.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She felt **guilty** about eating the last slice.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Guilty about or for",
+      "text": "I feel **guilty** about leaving early."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"guilty on\"",
+        "text": "I feel guilty on him."
+      }
+    ],
+    "rule": "guilty about / for"
+  },
+  {
+    "id": "v7-words-feelings-044",
+    "type": "module",
+    "module": "words",
+    "topic": "ecstatic",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "ecstatic",
+    "pos": "adjective",
+    "say": "ek-STAT-ik",
+    "meaning": "Extremely happy.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Grandma was **ecstatic** to see the whole family together.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We were **ecstatic** when we got the tickets.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For very big joy",
+      "text": "He's **ecstatic** about the new baby."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for small things",
+        "text": "I'm ecstatic my socks match."
+      }
+    ],
+    "rule": "very big joy"
+  },
+  {
+    "id": "v7-words-feelings-045",
+    "type": "module",
+    "module": "words",
+    "topic": "ambivalent",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "ambivalent",
+    "pos": "adjective",
+    "say": "am-BIV-uh-lunt",
+    "meaning": "Having two opposite feelings about something at once.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm **ambivalent** about moving: a bigger flat, but far from friends.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She's **ambivalent** about the wedding date.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Ambivalent about",
+      "text": "I'm **ambivalent** about the job offer."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"I don't care\"",
+        "text": "I'm ambivalent, so pick any restaurant."
+      }
+    ],
+    "rule": "two feelings at once",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The food is ambivalent.",
+          "right": false
+        },
+        {
+          "text": "I'm ambivalent about the move: excited but scared.",
+          "right": true
+        },
+        {
+          "text": "He ambivalent the plan.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-046",
+    "type": "module",
+    "module": "words",
+    "topic": "hurt",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "hurt",
+    "pos": "adjective",
+    "say": "HURT",
+    "meaning": "Sad because of what someone said or did.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I was **hurt** that nobody remembered my birthday.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She felt **hurt** by his joke.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Hurt by",
+      "text": "He was **hurt** by her words."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"hurted\"",
+        "text": "My feelings got hurted."
+      }
+    ],
+    "rule": "hurt, never hurted"
+  },
+  {
+    "id": "v7-words-feelings-047",
+    "type": "module",
+    "module": "words",
+    "topic": "gloomy",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "gloomy",
+    "pos": "adjective",
+    "say": "GLOO-mee",
+    "meaning": "Sad and without hope; also dark and grey.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The house feels **gloomy** during the power cut.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He's been **gloomy** since the match.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For moods and dull weather",
+      "text": "It's a **gloomy**, rainy day."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for bright, happy things",
+        "text": "What a gloomy party; everyone danced all night!"
+      }
+    ],
+    "rule": "dark mood, grey day"
+  },
+  {
+    "id": "v7-words-feelings-048",
+    "type": "module",
+    "module": "words",
+    "topic": "moody",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "moody",
+    "pos": "adjective",
+    "say": "MOO-dee",
+    "meaning": "Changing moods quickly, often grumpy.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My teenager is **moody** in the mornings.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He gets **moody** when he's hungry.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For people whose mood changes",
+      "text": "She's been **moody** all week."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"in the mood\"",
+        "text": "I'm moody for pizza tonight."
+      }
+    ],
+    "rule": "mood changes quickly",
+    "check": {
+      "question": "Your friend is happy one minute and snapping the next. Which word fits?",
+      "options": [
+        {
+          "text": "Grateful.",
+          "right": false
+        },
+        {
+          "text": "Moody.",
+          "right": true
+        },
+        {
+          "text": "Humbled.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-049",
+    "type": "module",
+    "module": "words",
+    "topic": "jittery",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "jittery",
+    "pos": "adjective",
+    "say": "JIT-uh-ree",
+    "meaning": "Nervous and shaky.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Too much coffee makes me **jittery**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I was **jittery** before my first date.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For nervous, shaky energy",
+      "text": "He's **jittery** before the match."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not with \"relaxed\"",
+        "text": "I felt jittery and fully relaxed."
+      }
+    ],
+    "rule": "nervous and shaky"
+  },
+  {
+    "id": "v7-words-feelings-050",
+    "type": "module",
+    "module": "words",
+    "topic": "vindicated",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "vindicated",
+    "pos": "adjective",
+    "say": "VIN-dih-kay-tid",
+    "meaning": "Proved right after people doubted you.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Mum felt **vindicated** when we needed the umbrella she packed.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I felt **vindicated** when the café I picked got great reviews.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ After being proved right",
+      "text": "She felt **vindicated** when the test showed she was right."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for being proved wrong",
+        "text": "I was vindicated when I failed the test."
+      }
+    ],
+    "rule": "proved right"
+  },
+  {
+    "id": "v7-words-feelings-051",
+    "type": "module",
+    "module": "words",
+    "topic": "grumpy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "grumpy",
+    "pos": "adjective",
+    "say": "GRUM-pee",
+    "meaning": "In a bad mood and easily annoyed.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Dad is **grumpy** before his morning tea.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Don't be so **grumpy**; it's a holiday!",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a bad mood",
+      "text": "The baby is **grumpy** because she's tired."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for things",
+        "text": "The road is grumpy today."
+      }
+    ],
+    "rule": "a bad mood",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The rain is grumpy.",
+          "right": false
+        },
+        {
+          "text": "He's grumpy when he skips lunch.",
+          "right": true
+        },
+        {
+          "text": "She grumpy at me.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-052",
+    "type": "module",
+    "module": "words",
+    "topic": "on edge",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "on edge",
+    "pos": "phrase",
+    "say": "on EJ",
+    "meaning": "Nervous and unable to relax.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm **on edge** waiting for the doctor's call.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Everyone was **on edge** during the penalty shootout.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Be on edge",
+      "text": "She's been **on edge** all week."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"on the edge\" for this feeling",
+        "text": "I'm on the edge about the results."
+      }
+    ],
+    "rule": "on edge, no \"the\""
+  },
+  {
+    "id": "v7-words-feelings-053",
+    "type": "module",
+    "module": "words",
+    "topic": "thrilled",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "thrilled",
+    "pos": "adjective",
+    "say": "THRILD",
+    "meaning": "Very happy and excited.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We're **thrilled** with the new house.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm **thrilled** you can come!",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Thrilled with, about or to",
+      "text": "She was **thrilled** to win."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the thing that excites",
+        "text": "The ride was very thrilled."
+      }
+    ],
+    "rule": "thrilled person, thrilling ride"
+  },
+  {
+    "id": "v7-words-feelings-054",
+    "type": "module",
+    "module": "words",
+    "topic": "burnt out",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "burnt out",
+    "pos": "phrase",
+    "say": "burnt OWT",
+    "meaning": "So tired from too much work that you can't go on.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "After the move and the new baby, she's **burnt out**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He's **burnt out** from working every weekend.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ From long, heavy stress",
+      "text": "I'm **burnt out** after months of overtime."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for one tired evening",
+        "text": "I'm burnt out because I stayed up late once."
+      }
+    ],
+    "rule": "long, heavy stress",
+    "check": {
+      "question": "You've worked 70-hour weeks for months and feel empty. Which word fits?",
+      "options": [
+        {
+          "text": "Burnt out.",
+          "right": true
+        },
+        {
+          "text": "Thrilled.",
+          "right": false
+        },
+        {
+          "text": "Smug.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-055",
+    "type": "module",
+    "module": "words",
+    "topic": "disillusioned",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "disillusioned",
+    "pos": "adjective",
+    "say": "dis-ih-LOO-zhund",
+    "meaning": "Let down after finding out something isn't as good as you believed.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "He's **disillusioned** with the new school after a month.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She got **disillusioned** with city life.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Disillusioned with",
+      "text": "Many fans are **disillusioned** with the club."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a quick surprise",
+        "text": "I was disillusioned when the lights went off."
+      }
+    ],
+    "rule": "disillusioned with"
+  },
+  {
+    "id": "v7-words-feelings-056",
+    "type": "module",
+    "module": "words",
+    "topic": "shy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "shy",
+    "pos": "adjective",
+    "say": "SHY",
+    "meaning": "Nervous about talking to new people.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My daughter is **shy** with visitors.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He's **shy** at first, then he talks a lot.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For people",
+      "text": "Don't be **shy**; say hello."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"shying\" for the feeling",
+        "text": "I'm shying to speak."
+      }
+    ],
+    "rule": "be shy"
+  },
+  {
+    "id": "v7-words-feelings-057",
+    "type": "module",
+    "module": "words",
+    "topic": "at ease",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "at ease",
+    "pos": "phrase",
+    "say": "at EEZ",
+    "meaning": "Relaxed and comfortable.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I feel **at ease** in Grandma's kitchen.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Her jokes put everyone **at ease**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Feel at ease, put someone at ease",
+      "text": "The doctor made me feel **at ease**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"at easy\"",
+        "text": "Please be at easy."
+      }
+    ],
+    "rule": "at ease, not at easy",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I am at easy here.",
+          "right": false
+        },
+        {
+          "text": "He ease at me.",
+          "right": false
+        },
+        {
+          "text": "She made us feel at ease.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-058",
+    "type": "module",
+    "module": "words",
+    "topic": "worried",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "worried",
+    "pos": "adjective",
+    "say": "WUR-eed",
+    "meaning": "Thinking a lot that something bad may happen.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Mum gets **worried** if I come home late.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm **worried** about my friend's health.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Worried about",
+      "text": "We're **worried** about the exam."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"don't worried\"",
+        "text": "Don't worried, it's fine."
+      }
+    ],
+    "rule": "worried about; don't worry"
+  },
+  {
+    "id": "v7-words-feelings-059",
+    "type": "module",
+    "module": "words",
+    "topic": "sentimental",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "sentimental",
+    "pos": "adjective",
+    "say": "sen-tih-MEN-tul",
+    "meaning": "Easily moved by memories and feelings.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Dad gets **sentimental** at weddings.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm keeping this old shirt for **sentimental** reasons.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For memories and feelings",
+      "text": "She's **sentimental** about her first car."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"sensitive\" to pain",
+        "text": "My teeth are sentimental to cold water."
+      }
+    ],
+    "rule": "memories, not pain"
+  },
+  {
+    "id": "v7-words-feelings-060",
+    "type": "module",
+    "module": "words",
+    "topic": "crestfallen",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "crestfallen",
+    "pos": "adjective",
+    "say": "KREST-faw-lun",
+    "meaning": "Suddenly sad and disappointed.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "He looked **crestfallen** when the cake fell.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She was **crestfallen** when her name wasn't called.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a sudden drop in hope",
+      "text": "The kids were **crestfallen** when the trip was cancelled."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for happy news",
+        "text": "She was crestfallen to win the prize."
+      }
+    ],
+    "rule": "a sudden drop in hope",
+    "check": {
+      "question": "Your friend hears his flight is cancelled. How does he look?",
+      "options": [
+        {
+          "text": "Elated.",
+          "right": false
+        },
+        {
+          "text": "Crestfallen.",
+          "right": true
+        },
+        {
+          "text": "Smug.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-061",
+    "type": "module",
+    "module": "words",
+    "topic": "fed up",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "fed up",
+    "pos": "phrase",
+    "say": "fed UP",
+    "meaning": "Annoyed and tired of something that keeps happening.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm **fed up** with the leaking roof.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She's **fed up** with his excuses.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Fed up with",
+      "text": "We're **fed up** with the traffic."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for being full after food",
+        "text": "I ate three plates, so I'm fed up."
+      }
+    ],
+    "rule": "fed up with"
+  },
+  {
+    "id": "v7-words-feelings-062",
+    "type": "module",
+    "module": "words",
+    "topic": "insecure",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "insecure",
+    "pos": "adjective",
+    "say": "in-sih-KYOOR",
+    "meaning": "Not sure of yourself or your worth.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "He feels **insecure** about his height.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She's **insecure** about her English.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Insecure about",
+      "text": "I'm **insecure** about my voice."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"insecured\"",
+        "text": "I feel insecured."
+      }
+    ],
+    "rule": "insecure about"
+  },
+  {
+    "id": "v7-words-feelings-063",
+    "type": "module",
+    "module": "words",
+    "topic": "cranky",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "cranky",
+    "pos": "adjective",
+    "say": "KRANK-ee",
+    "meaning": "In a bad mood, often from being tired or hungry.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The baby gets **cranky** before her nap.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm **cranky** when I skip breakfast.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ From being tired or hungry",
+      "text": "He's **cranky** after the long drive."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a happy mood",
+        "text": "She's cranky and smiling at everyone."
+      }
+    ],
+    "rule": "tired or hungry mood",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The cake is cranky.",
+          "right": false
+        },
+        {
+          "text": "He cranky me.",
+          "right": false
+        },
+        {
+          "text": "The baby is cranky because she's hungry.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-064",
+    "type": "module",
+    "module": "words",
+    "topic": "self-conscious",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "self-conscious",
+    "pos": "adjective",
+    "say": "self-KON-shus",
+    "meaning": "Worried about how others see you.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm **self-conscious** about my new glasses.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He felt **self-conscious** dancing in front of everyone.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Self-conscious about",
+      "text": "She's **self-conscious** about her accent."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"confident\"",
+        "text": "He's very self-conscious, so he loves the stage."
+      }
+    ],
+    "rule": "self-conscious about"
+  },
+  {
+    "id": "v7-words-feelings-065",
+    "type": "module",
+    "module": "words",
+    "topic": "jubilant",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "jubilant",
+    "pos": "adjective",
+    "say": "JOO-bih-lunt",
+    "meaning": "Very happy and celebrating, often after a win.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The family was **jubilant** when Grandpa came home from hospital.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The **jubilant** fans sang all the way home.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For loud, shared joy",
+      "text": "The team was **jubilant** after the final."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for quiet, private calm",
+        "text": "I felt jubilant sitting alone with my tea."
+      }
+    ],
+    "rule": "loud, shared joy"
+  },
+  {
+    "id": "v7-words-feelings-066",
+    "type": "module",
+    "module": "words",
+    "topic": "restless",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "restless",
+    "pos": "adjective",
+    "say": "REST-lus",
+    "meaning": "Unable to stay still or relax.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The kids get **restless** on long car rides.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm **restless**; let's go for a walk.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For people who cannot sit still",
+      "text": "He's been **restless** all evening."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"tired and sleepy\"",
+        "text": "I'm so restless I could sleep for days."
+      }
+    ],
+    "rule": "can't sit still",
+    "check": {
+      "question": "A child can't sit still on a long flight. Which word fits?",
+      "options": [
+        {
+          "text": "Content.",
+          "right": false
+        },
+        {
+          "text": "Restless.",
+          "right": true
+        },
+        {
+          "text": "Humbled.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-067",
+    "type": "module",
+    "module": "words",
+    "topic": "offended",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "offended",
+    "pos": "adjective",
+    "say": "uh-FEN-did",
+    "meaning": "Upset because someone was rude or disrespectful.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My aunt was **offended** that we didn't invite her.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He was **offended** by the joke about his weight.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Offended by",
+      "text": "She was **offended** by his comment."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the rude thing itself",
+        "text": "His joke was very offended."
+      }
+    ],
+    "rule": "offended person, offensive joke"
+  },
+  {
+    "id": "v7-words-feelings-068",
+    "type": "module",
+    "module": "words",
+    "topic": "sulk",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "sulk",
+    "pos": "verb",
+    "say": "SULK",
+    "meaning": "To stay quiet and grumpy because you didn't get your way.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Don't **sulk**; you can play after dinner.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He tends to **sulk** when he loses at cards.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Sulk about something",
+      "text": "She went to her room to **sulk** about the phone."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"I am sulk\"",
+        "text": "I am sulk today."
+      }
+    ],
+    "rule": "sulk, not \"am sulk\""
+  },
+  {
+    "id": "v7-words-feelings-069",
+    "type": "module",
+    "module": "words",
+    "topic": "flattered",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "flattered",
+    "pos": "adjective",
+    "say": "FLAT-urd",
+    "meaning": "Pleased because someone praised you or chose you.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Mum was **flattered** when they asked for her recipe.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm **flattered** you asked me to be your best man.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Flattered by",
+      "text": "She was **flattered** by the offer."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for being insulted",
+        "text": "I was flattered when he called me lazy."
+      }
+    ],
+    "rule": "pleased by praise",
+    "check": {
+      "question": "A friend says your cooking is the best she's had. You feel…",
+      "options": [
+        {
+          "text": "Offended.",
+          "right": false
+        },
+        {
+          "text": "Jittery.",
+          "right": false
+        },
+        {
+          "text": "Flattered.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-070",
+    "type": "module",
+    "module": "words",
+    "topic": "forlorn",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "forlorn",
+    "pos": "adjective",
+    "say": "for-LORN",
+    "meaning": "Sad and lonely, as if left behind.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The dog looked **forlorn** when we left for the holiday.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He sat **forlorn** at the empty bus stop.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a sad, left-alone look",
+      "text": "A **forlorn** child stood outside the shop."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a busy, happy place",
+        "text": "The crowded, cheerful party looked forlorn."
+      }
+    ],
+    "rule": "sad and left behind"
+  },
+  {
+    "id": "v7-words-feelings-071",
+    "type": "module",
+    "module": "words",
+    "topic": "regret",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "regret",
+    "pos": "verb",
+    "say": "rih-GRET",
+    "meaning": "To feel sorry about something you did or didn't do.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I **regret** not calling Grandpa more.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "You won't **regret** coming on this trip.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Regret + -ing for the past",
+      "text": "I **regret** saying that."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"regret to\" for the past",
+        "text": "I regret to shout at you yesterday."
+      }
+    ],
+    "rule": "regret + -ing"
+  },
+  {
+    "id": "v7-words-feelings-072",
+    "type": "module",
+    "module": "words",
+    "topic": "reluctant",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "reluctant",
+    "pos": "adjective",
+    "say": "rih-LUK-tunt",
+    "meaning": "Not wanting to do something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My son is **reluctant** to eat vegetables.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She was **reluctant** to lend her car.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Reluctant to + verb",
+      "text": "I'm **reluctant** to travel at night."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"reluctant for\"",
+        "text": "He's reluctant for going."
+      }
+    ],
+    "rule": "reluctant to",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "He's reluctant for leave.",
+          "right": false
+        },
+        {
+          "text": "He's reluctant to leave the party.",
+          "right": true
+        },
+        {
+          "text": "The party is reluctant.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-073",
+    "type": "module",
+    "module": "words",
+    "topic": "relaxed",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "relaxed",
+    "pos": "adjective",
+    "say": "rih-LAKST",
+    "meaning": "Calm and not worried.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Sunday mornings at home are slow and **relaxed**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Everyone felt **relaxed** at the beach.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For people and calm times",
+      "text": "I feel **relaxed** after a hot shower."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the thing that calms you",
+        "text": "The massage was so relaxed."
+      }
+    ],
+    "rule": "relaxed person, relaxing massage"
+  },
+  {
+    "id": "v7-words-feelings-074",
+    "type": "module",
+    "module": "words",
+    "topic": "eager",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "eager",
+    "pos": "adjective",
+    "say": "EE-gur",
+    "meaning": "Wanting very much to do something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The kids are **eager** to open their gifts.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He's **eager** to show us his new bike.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Eager to + verb",
+      "text": "I'm **eager** to start."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for something you hate",
+        "text": "I'm eager to visit the dentist; I hate it."
+      }
+    ],
+    "rule": "eager to"
+  },
+  {
+    "id": "v7-words-feelings-075",
+    "type": "module",
+    "module": "words",
+    "topic": "sombre",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "sombre",
+    "pos": "adjective",
+    "say": "SOM-bur",
+    "meaning": "Serious and sad.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The house was **sombre** after the funeral.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "His voice turned **sombre** when he spoke of his father.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For serious, sad moods",
+      "text": "It was a **sombre** day for the family."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for parties",
+        "text": "The birthday party was loud and sombre."
+      }
+    ],
+    "rule": "serious and sad",
+    "check": {
+      "question": "Which word fits the mood at a funeral?",
+      "options": [
+        {
+          "text": "Giddy.",
+          "right": false
+        },
+        {
+          "text": "Sombre.",
+          "right": true
+        },
+        {
+          "text": "Smug.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-076",
+    "type": "module",
+    "module": "words",
+    "topic": "satisfied",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "satisfied",
+    "pos": "adjective",
+    "say": "SAT-is-fyd",
+    "meaning": "Pleased because you got what you wanted.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm **satisfied** with how the room looks.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Are you **satisfied** with your new phone?",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Satisfied with",
+      "text": "She's **satisfied** with her marks."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"satisfied from\"",
+        "text": "I'm satisfied from the food."
+      }
+    ],
+    "rule": "satisfied with"
+  },
+  {
+    "id": "v7-words-feelings-077",
+    "type": "module",
+    "module": "words",
+    "topic": "dread",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "dread",
+    "pos": "verb",
+    "say": "DRED",
+    "meaning": "To fear something that is going to happen.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I **dread** Monday mornings.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She used to **dread** speaking in class.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Dread + a thing or -ing",
+      "text": "I **dread** going to the dentist."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"dread of\" as a verb",
+        "text": "I dread of exams."
+      }
+    ],
+    "rule": "dread + -ing"
+  },
+  {
+    "id": "v7-words-feelings-078",
+    "type": "module",
+    "module": "words",
+    "topic": "shocked",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "shocked",
+    "pos": "adjective",
+    "say": "SHOKT",
+    "meaning": "Very surprised and upset.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We were **shocked** by the electricity bill.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I was **shocked** to hear they broke up.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Shocked by, at or to",
+      "text": "She was **shocked** at the price."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the shocking thing",
+        "text": "The news was very shocked."
+      }
+    ],
+    "rule": "shocked person, shocking news",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The news was shocked.",
+          "right": false
+        },
+        {
+          "text": "He shocked on the news.",
+          "right": false
+        },
+        {
+          "text": "I was shocked by the news.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-079",
+    "type": "module",
+    "module": "words",
+    "topic": "resigned",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "resigned",
+    "pos": "adjective",
+    "say": "rih-ZYND",
+    "meaning": "Accepting something bad because you can't change it.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Dad is **resigned** to the long drive every day.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She sounded **resigned** about missing the trip.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Resigned to",
+      "text": "He's **resigned** to losing the match."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for fighting back",
+        "text": "She was resigned, so she argued all night."
+      }
+    ],
+    "rule": "resigned to"
+  },
+  {
+    "id": "v7-words-feelings-080",
+    "type": "module",
+    "module": "words",
+    "topic": "contrite",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "contrite",
+    "pos": "adjective",
+    "say": "kun-TRYT",
+    "meaning": "Truly sorry for something wrong you did.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My son was **contrite** after breaking the window.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He sent a **contrite** message after the fight.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a real, sorry feeling",
+      "text": "She looked **contrite** and said sorry."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for laughing off a mistake",
+        "text": "He was contrite and laughed about the mess he made."
+      }
+    ],
+    "rule": "truly sorry"
+  },
+  {
+    "id": "v7-words-feelings-081",
+    "type": "module",
+    "module": "words",
+    "topic": "touched",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "touched",
+    "pos": "adjective",
+    "say": "TUCHT",
+    "meaning": "Happy and moved by someone's kindness.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I was **touched** that my kids made me breakfast.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She was **touched** by your card.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Touched by",
+      "text": "We're **touched** by your help."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"touching\" for the feeling",
+        "text": "I am very touching by your gift."
+      }
+    ],
+    "rule": "touched person, touching gift",
+    "check": {
+      "question": "Your neighbour brings soup when you're ill. You feel…",
+      "options": [
+        {
+          "text": "Touched.",
+          "right": true
+        },
+        {
+          "text": "Smug.",
+          "right": false
+        },
+        {
+          "text": "Irritated.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-082",
+    "type": "module",
+    "module": "words",
+    "topic": "sheepish",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "sheepish",
+    "pos": "adjective",
+    "say": "SHEE-pish",
+    "meaning": "A bit embarrassed because you made a small mistake.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "He gave a **sheepish** smile after burning the toast.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She looked **sheepish** when she arrived an hour late.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For small, silly mistakes",
+      "text": "I felt **sheepish** about forgetting her name."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for showing off",
+        "text": "He was sheepish and boasted about it."
+      }
+    ],
+    "rule": "small, silly mistakes"
+  },
+  {
+    "id": "v7-words-feelings-083",
+    "type": "module",
+    "module": "words",
+    "topic": "heartbroken",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "heartbroken",
+    "pos": "adjective",
+    "say": "HART-broh-kun",
+    "meaning": "Very, very sad, often after a loss.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The kids were **heartbroken** when the puppy died.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He was **heartbroken** after the break-up.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a deep loss or love ending",
+      "text": "She was **heartbroken** to leave her home."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for small letdowns",
+        "text": "I'm heartbroken my coffee is cold."
+      }
+    ],
+    "rule": "deep loss"
+  },
+  {
+    "id": "v7-words-feelings-084",
+    "type": "module",
+    "module": "words",
+    "topic": "smug",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "smug",
+    "pos": "adjective",
+    "say": "SMUG",
+    "meaning": "Too pleased with yourself, in an annoying way.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My brother looked **smug** after winning the board game.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Don't be so **smug** just because you were right.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For annoying self-pleasure",
+      "text": "He gave a **smug** grin."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for kind, humble pride",
+        "text": "She felt smug and thanked everyone who helped."
+      }
+    ],
+    "rule": "annoyingly pleased",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The soup is smug.",
+          "right": false
+        },
+        {
+          "text": "He looked smug after winning and kept bragging.",
+          "right": true
+        },
+        {
+          "text": "She smug at us.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-085",
+    "type": "module",
+    "module": "words",
+    "topic": "dismayed",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "dismayed",
+    "pos": "adjective",
+    "say": "dis-MAYD",
+    "meaning": "Shocked and upset by bad news.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We were **dismayed** to find the fridge had stopped working.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She was **dismayed** by how much the city had changed.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Dismayed by or to",
+      "text": "He was **dismayed** to see the mess."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for good news",
+        "text": "I was dismayed to win the trip."
+      }
+    ],
+    "rule": "upset by bad news"
+  },
+  {
+    "id": "v7-words-feelings-086",
+    "type": "module",
+    "module": "words",
+    "topic": "stressed",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "stressed",
+    "pos": "adjective",
+    "say": "STREST",
+    "meaning": "Worried and tense because of too much to deal with.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm **stressed** about the move.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He gets **stressed** when the house is full of guests.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Stressed about",
+      "text": "Don't get **stressed** about small things."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"stressful\" for the person",
+        "text": "I am so stressful today."
+      }
+    ],
+    "rule": "stressed person, stressful week"
+  },
+  {
+    "id": "v7-words-feelings-087",
+    "type": "module",
+    "module": "words",
+    "topic": "giddy",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "giddy",
+    "pos": "adjective",
+    "say": "GID-ee",
+    "meaning": "Silly and excited; also a little dizzy.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The kids were **giddy** on the last day of school.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We felt **giddy** after the good news.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For light, bubbly excitement",
+      "text": "She was **giddy** with joy."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for deep sadness",
+        "text": "He was giddy with grief at the funeral."
+      }
+    ],
+    "rule": "bubbly excitement",
+    "check": {
+      "question": "Kids bounce around on the last day of school. Which word fits?",
+      "options": [
+        {
+          "text": "Sombre.",
+          "right": false
+        },
+        {
+          "text": "Resigned.",
+          "right": false
+        },
+        {
+          "text": "Giddy.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-088",
+    "type": "module",
+    "module": "words",
+    "topic": "delighted",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "delighted",
+    "pos": "adjective",
+    "say": "dih-LY-tid",
+    "meaning": "Very pleased.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Grandma was **delighted** with the flowers.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm **delighted** you could make it.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Delighted with, by or to",
+      "text": "We're **delighted** to have you."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the thing that pleases",
+        "text": "The meal was delighted."
+      }
+    ],
+    "rule": "delighted person, delightful meal"
+  },
+  {
+    "id": "v7-words-feelings-089",
+    "type": "module",
+    "module": "words",
+    "topic": "flustered",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "flustered",
+    "pos": "adjective",
+    "say": "FLUS-turd",
+    "meaning": "Nervous and confused because you're rushed.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I got **flustered** when the guests arrived early.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She gets **flustered** when people stare.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ When rushed or watched",
+      "text": "He got **flustered** and forgot his lines."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for calm, clear thinking",
+        "text": "She stayed flustered and solved it calmly."
+      }
+    ],
+    "rule": "rushed and confused"
+  },
+  {
+    "id": "v7-words-feelings-090",
+    "type": "module",
+    "module": "words",
+    "topic": "complacent",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "complacent",
+    "pos": "adjective",
+    "say": "kum-PLAY-sunt",
+    "meaning": "So pleased with how things are that you stop trying.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Don't get **complacent** just because the garden looks good.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We got **complacent** after winning and lost the next match.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For relaxing too much after success",
+      "text": "The team became **complacent**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not the same as \"content\"",
+        "text": "I'm complacent with my simple, happy life."
+      }
+    ],
+    "rule": "stops trying",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "We got complacent and stopped practising.",
+          "right": true
+        },
+        {
+          "text": "The cake is complacent.",
+          "right": false
+        },
+        {
+          "text": "He complacent the exam.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-091",
+    "type": "module",
+    "module": "words",
+    "topic": "disappointed",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "disappointed",
+    "pos": "adjective",
+    "say": "dis-uh-POYN-tid",
+    "meaning": "Sad because something wasn't as good as you hoped.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Dad was **disappointed** with my marks.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm **disappointed** the concert was cancelled.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Disappointed with, by or in",
+      "text": "She's **disappointed** in him."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the thing that lets you down",
+        "text": "The film was very disappointed."
+      }
+    ],
+    "rule": "disappointed person, disappointing film"
+  },
+  {
+    "id": "v7-words-feelings-092",
+    "type": "module",
+    "module": "words",
+    "topic": "rattled",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "rattled",
+    "pos": "adjective",
+    "say": "RAT-uld",
+    "meaning": "Shaken and nervous after something upsetting.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The loud thunder left the kids **rattled**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He got **rattled** when they changed the plan at the last minute.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ After a shock or pressure",
+      "text": "She was **rattled** by the angry call."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not with \"cool\" or \"steady\"",
+        "text": "He stayed rattled and cool all game."
+      }
+    ],
+    "rule": "shaken"
+  },
+  {
+    "id": "v7-words-feelings-093",
+    "type": "module",
+    "module": "words",
+    "topic": "impatient",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "impatient",
+    "pos": "adjective",
+    "say": "im-PAY-shunt",
+    "meaning": "Not able to wait calmly.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The kids are **impatient** for dinner.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Don't be **impatient**; she's almost here.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Impatient with a person, for a thing",
+      "text": "He gets **impatient** with slow drivers."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"unpatient\"",
+        "text": "I'm very unpatient."
+      }
+    ],
+    "rule": "impatient, not unpatient",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I'm unpatient today.",
+          "right": false
+        },
+        {
+          "text": "She gets impatient in long queues.",
+          "right": true
+        },
+        {
+          "text": "The queue is impatient me.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-094",
+    "type": "module",
+    "module": "words",
+    "topic": "heartwarming",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "heartwarming",
+    "pos": "adjective",
+    "say": "HART-wor-ming",
+    "meaning": "Making you feel happy and full of kindness.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It was **heartwarming** to see Grandpa play with the baby.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Her speech was so **heartwarming**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For the thing, not the person",
+      "text": "What a **heartwarming** story."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the person who feels it",
+        "text": "I am heartwarming after the story."
+      }
+    ],
+    "rule": "for the moment, not the person"
+  },
+  {
+    "id": "v7-words-feelings-095",
+    "type": "module",
+    "module": "words",
+    "topic": "rueful",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "rueful",
+    "pos": "adjective",
+    "say": "ROO-ful",
+    "meaning": "A little sorry about something, often with a small smile.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "He gave a **rueful** laugh about the burnt rice.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She was **rueful** about missing the early-bird offer.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a sorry, half-smiling look",
+      "text": "He gave a **rueful** shrug."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for real anger",
+        "text": "She was rueful and slammed the door."
+      }
+    ],
+    "rule": "sorry, half-smiling"
+  },
+  {
+    "id": "v7-words-feelings-096",
+    "type": "module",
+    "module": "words",
+    "topic": "curious",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "curious",
+    "pos": "adjective",
+    "say": "KYOOR-ee-us",
+    "meaning": "Wanting to know or learn about something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My daughter is **curious** about how planes fly.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm **curious** to see his new flat.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Curious about or to",
+      "text": "We're **curious** about the new café."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"curious for\"",
+        "text": "He is curious for the answer."
+      }
+    ],
+    "rule": "curious about / to",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The stars are curious her.",
+          "right": false
+        },
+        {
+          "text": "She curious the stars.",
+          "right": false
+        },
+        {
+          "text": "She's curious about the stars.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-feelings-097",
+    "type": "module",
+    "module": "words",
+    "topic": "bittersweet",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "feelings"
+    ],
+    "word": "bittersweet",
+    "pos": "adjective",
+    "say": "BIT-ur-sweet",
+    "meaning": "Happy and sad at the same time.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Moving out of my childhood home was **bittersweet**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Our last day of college felt **bittersweet**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For moments with joy and sadness",
+      "text": "Her farewell party was **bittersweet**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a purely happy moment",
+        "text": "Our holiday was perfect, totally bittersweet."
+      }
+    ],
+    "rule": "happy and sad together"
+  }
+]

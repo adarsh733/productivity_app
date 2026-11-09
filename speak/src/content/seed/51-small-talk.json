@@ -1,0 +1,680 @@
+[
+  {
+    "id": "v7-talk-01",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "Weekend",
+    "kind": "reply",
+    "moment": "How was your weekend?",
+    "they": "How was your weekend?",
+    "deadEnd": "Good.",
+    "reply": "Lazy, in a good way. Finally watched **Kantara**. Did you do anything fun?",
+    "formula": "feeling + one detail + ask back",
+    "more": [
+      {
+        "label": "Busy weekend",
+        "text": "Packed! My nephew's birthday, twenty kids. How was yours?"
+      },
+      {
+        "label": "Quiet weekend",
+        "text": "Very quiet. I just recharged, and I needed it. You?"
+      },
+      {
+        "label": "Bad weekend",
+        "text": "A bit rough, I had a cold. Better now. Yours?"
+      }
+    ],
+    "donts": [
+      "Stop at one word. It ends the chat.",
+      "List everything you did, hour by hour.",
+      "Complain for more than one line."
+    ]
+  },
+  {
+    "id": "v7-talk-02",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "Monday morning",
+    "kind": "reply",
+    "moment": "Monday morning",
+    "they": "How are you?",
+    "deadEnd": "Fine.",
+    "reply": "A little sleepy, but coffee helped. How about you?",
+    "formula": "feeling + detail + ask back",
+    "more": [
+      {
+        "label": "Good day",
+        "text": "Pretty good. I finished a tricky task. You?"
+      },
+      {
+        "label": "Busy day",
+        "text": "Busy, but nearly done. How's your day going?"
+      },
+      {
+        "label": "Quiet day",
+        "text": "All good. A quiet morning so far. Yours?"
+      }
+    ],
+    "donts": [
+      "Pretend everything is amazing.",
+      "Give your whole medical history."
+    ]
+  },
+  {
+    "id": "v7-talk-03",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "Lunch chat",
+    "kind": "reply",
+    "moment": "Lunch chat",
+    "they": "Have you eaten?",
+    "deadEnd": "Yes.",
+    "reply": "Yes, I tried the new cafe. Have you been?",
+    "formula": "answer + detail + question",
+    "more": [
+      {
+        "label": "Home food",
+        "text": "Brought lunch today. What did you get?"
+      },
+      {
+        "label": "Not yet",
+        "text": "Not yet. Know anywhere good nearby?"
+      },
+      {
+        "label": "Quick meal",
+        "text": "Just a sandwich. Are you heading out?"
+      }
+    ],
+    "donts": [
+      "Comment on how much they eat."
+    ]
+  },
+  {
+    "id": "v7-talk-04",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "Back from leave",
+    "kind": "reply",
+    "moment": "Back from leave",
+    "they": "How was your trip?",
+    "deadEnd": "Nice.",
+    "reply": "Really relaxing. We spent a day by the lake. Been there?",
+    "formula": "feeling + one scene + question",
+    "more": [
+      {
+        "label": "City trip",
+        "text": "Fun! We walked everywhere. Do you like city breaks?"
+      },
+      {
+        "label": "Family visit",
+        "text": "Good to see everyone. Any trips planned?"
+      },
+      {
+        "label": "Staying home",
+        "text": "Stayed home this time. It was lovely. How about you?"
+      }
+    ],
+    "donts": [
+      "List every stop on the trip."
+    ]
+  },
+  {
+    "id": "v7-talk-05",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "Waiting for a meeting",
+    "kind": "open",
+    "moment": "Waiting for a meeting",
+    "deadEnd": "Silence.",
+    "reply": "Have you worked with this team before?",
+    "formula": "shared moment + easy question",
+    "more": [
+      {
+        "label": "First visit",
+        "text": "Is this your first time at this office?"
+      },
+      {
+        "label": "Online call",
+        "text": "Where are you joining from today?"
+      },
+      {
+        "label": "Workshop",
+        "text": "What brought you to this workshop?"
+      }
+    ],
+    "donts": [
+      "Start with salary or personal questions."
+    ]
+  },
+  {
+    "id": "v7-talk-06",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "Coffee queue",
+    "kind": "open",
+    "moment": "Coffee queue",
+    "deadEnd": "Silence.",
+    "reply": "Have you tried the coffee here? Anything you'd recommend?",
+    "formula": "shared place + small question",
+    "more": [
+      {
+        "label": "Menu",
+        "text": "That looks good. What is it?"
+      },
+      {
+        "label": "Regular",
+        "text": "Do you come here often?"
+      },
+      {
+        "label": "Nearby",
+        "text": "Know any good lunch places around here?"
+      }
+    ],
+    "donts": [
+      "Interrupt someone wearing headphones."
+    ]
+  },
+  {
+    "id": "v7-talk-07",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "New neighbour",
+    "kind": "open",
+    "moment": "New neighbour",
+    "deadEnd": "Hello.",
+    "reply": "Hi, I just moved in upstairs. How long have you lived here?",
+    "formula": "introduce yourself + easy question",
+    "more": [
+      {
+        "label": "Lift",
+        "text": "Hi, I'm Arun from the third floor."
+      },
+      {
+        "label": "Garden",
+        "text": "Lovely evening. Do you walk here often?"
+      },
+      {
+        "label": "Building",
+        "text": "I'm new here. Where do we collect parcels?"
+      }
+    ],
+    "donts": [
+      "Ask personal questions before introducing yourself."
+    ]
+  },
+  {
+    "id": "v7-talk-08",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "Friend of a friend",
+    "kind": "open",
+    "moment": "Friend of a friend",
+    "deadEnd": "Hi.",
+    "reply": "Hi, I'm Neha. How do you know the host?",
+    "formula": "name + shared connection",
+    "more": [
+      {
+        "label": "College",
+        "text": "Did you and Riya meet in college?"
+      },
+      {
+        "label": "Party",
+        "text": "Have you tried the food yet?"
+      },
+      {
+        "label": "Event",
+        "text": "Have you been to one of these before?"
+      }
+    ],
+    "donts": [
+      "Turn introductions into an interview."
+    ]
+  },
+  {
+    "id": "v7-talk-09",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "They mention cooking",
+    "kind": "keep_going",
+    "moment": "They mention cooking",
+    "they": "I made pasta yesterday.",
+    "deadEnd": "Okay.",
+    "reply": "Nice! Was it a familiar recipe or something new?",
+    "formula": "pick one detail + ask about it",
+    "more": [
+      {
+        "label": "Recipe",
+        "text": "What went into the sauce?"
+      },
+      {
+        "label": "Experience",
+        "text": "How did it turn out?"
+      },
+      {
+        "label": "Recommendation",
+        "text": "Would you make it again?"
+      }
+    ],
+    "donts": [
+      "Switch straight to your own cooking story."
+    ]
+  },
+  {
+    "id": "v7-talk-10",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "They mention a film",
+    "kind": "keep_going",
+    "moment": "They mention a film",
+    "they": "I watched a film last night.",
+    "deadEnd": "Cool.",
+    "reply": "What did you like about it? No spoilers, please!",
+    "formula": "follow the detail",
+    "more": [
+      {
+        "label": "Mood",
+        "text": "Was it funny or more serious?"
+      },
+      {
+        "label": "Choice",
+        "text": "What made you pick that one?"
+      },
+      {
+        "label": "Verdict",
+        "text": "Would you recommend it?"
+      }
+    ],
+    "donts": [
+      "Demand a full plot summary."
+    ]
+  },
+  {
+    "id": "v7-talk-11",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "They start a hobby",
+    "kind": "keep_going",
+    "moment": "They start a hobby",
+    "they": "I started learning guitar.",
+    "deadEnd": "Good.",
+    "reply": "What made you want to try it?",
+    "formula": "show interest + invite a story",
+    "more": [
+      {
+        "label": "Progress",
+        "text": "What are you learning first?"
+      },
+      {
+        "label": "Enjoyment",
+        "text": "What part are you enjoying?"
+      },
+      {
+        "label": "Practice",
+        "text": "Are you taking lessons or learning on your own?"
+      }
+    ],
+    "donts": [
+      "Judge how fast they are improving."
+    ]
+  },
+  {
+    "id": "v7-talk-12",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "They had a busy week",
+    "kind": "keep_going",
+    "moment": "They had a busy week",
+    "they": "This week has been packed.",
+    "deadEnd": "Same.",
+    "reply": "Sounds tiring. What's kept you busiest?",
+    "formula": "acknowledge + gentle question",
+    "more": [
+      {
+        "label": "Support",
+        "text": "Want to talk about it?"
+      },
+      {
+        "label": "Relief",
+        "text": "Do you get a quieter day tomorrow?"
+      },
+      {
+        "label": "Light option",
+        "text": "Anything nice planned for the weekend?"
+      }
+    ],
+    "donts": [
+      "Compete over who is busier.",
+      "Push if they give short answers."
+    ]
+  },
+  {
+    "id": "v7-talk-13",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "Returning to work",
+    "kind": "exit",
+    "moment": "Returning to work",
+    "they": "So, what else is new?",
+    "deadEnd": "I am busy.",
+    "reply": "Good catching up. I need to finish something, but see you at lunch?",
+    "formula": "warm close + reason",
+    "more": [
+      {
+        "label": "Deadline",
+        "text": "Lovely chatting. I'd better get back to this report."
+      },
+      {
+        "label": "Call",
+        "text": "I have a call now. Catch you later!"
+      },
+      {
+        "label": "Break",
+        "text": "Thanks for the chat. Enjoy your coffee!"
+      }
+    ],
+    "donts": [
+      "Keep stepping away without saying goodbye."
+    ]
+  },
+  {
+    "id": "v7-talk-14",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "Leaving a gathering",
+    "kind": "exit",
+    "moment": "Leaving a gathering",
+    "deadEnd": "I am going.",
+    "reply": "It was lovely meeting you. I'm heading out. Enjoy the evening!",
+    "formula": "appreciation + clear goodbye",
+    "more": [
+      {
+        "label": "Host",
+        "text": "Thanks for having me. I had a great time."
+      },
+      {
+        "label": "New friend",
+        "text": "Great talking to you. Hope we meet again."
+      },
+      {
+        "label": "Group",
+        "text": "I'm off. Have a lovely evening, everyone!"
+      }
+    ],
+    "donts": [
+      "Promise to meet if you do not mean it."
+    ]
+  },
+  {
+    "id": "v7-talk-15",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "Ending a phone chat",
+    "kind": "exit",
+    "moment": "Ending a phone chat",
+    "they": "Anything else?",
+    "deadEnd": "Bye.",
+    "reply": "That's everything from me. Thanks for the chat. Speak soon!",
+    "formula": "clear finish + warm close",
+    "more": [
+      {
+        "label": "Friend",
+        "text": "I'll let you get on. Lovely hearing your news."
+      },
+      {
+        "label": "Family",
+        "text": "Dinner is ready. Can we catch up tomorrow?"
+      },
+      {
+        "label": "Colleague",
+        "text": "Thanks, that helps. Have a good afternoon!"
+      }
+    ],
+    "donts": [
+      "Invent an emergency to leave."
+    ]
+  },
+  {
+    "id": "v7-talk-16",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "Chat before a train",
+    "kind": "exit",
+    "moment": "Chat before a train",
+    "deadEnd": "Got to go.",
+    "reply": "That's my train. Really nice talking to you. Take care!",
+    "formula": "real cue + friendly close",
+    "more": [
+      {
+        "label": "Bus",
+        "text": "My bus is here. Have a good day!"
+      },
+      {
+        "label": "Appointment",
+        "text": "I need to head in now. Lovely meeting you."
+      },
+      {
+        "label": "Queue",
+        "text": "It's my turn. Enjoy the rest of your day!"
+      }
+    ],
+    "donts": [
+      "Keep talking after they say goodbye."
+    ]
+  },
+  {
+    "id": "v7-talk-17",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "You forgot their name",
+    "kind": "save_it",
+    "moment": "You forgot their name",
+    "they": "Good to see you again.",
+    "deadEnd": "Who are you?",
+    "reply": "Good to see you too. Sorry, could you remind me of your name?",
+    "formula": "warmth + honest request",
+    "more": [
+      {
+        "label": "Context",
+        "text": "We met at the workshop, right?"
+      },
+      {
+        "label": "Introduction",
+        "text": "I'm Kavya. Remind me of your name?"
+      },
+      {
+        "label": "Thanks",
+        "text": "Thanks, Sameer. How have you been?"
+      }
+    ],
+    "donts": [
+      "Guess a name repeatedly."
+    ]
+  },
+  {
+    "id": "v7-talk-18",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "You missed a sentence",
+    "kind": "save_it",
+    "moment": "You missed a sentence",
+    "they": "It happened yesterday.",
+    "deadEnd": "What?",
+    "reply": "Sorry, I missed that last bit. What happened yesterday?",
+    "formula": "brief apology + specific repeat",
+    "more": [
+      {
+        "label": "Noise",
+        "text": "It's noisy here. Could you say that again?"
+      },
+      {
+        "label": "Detail",
+        "text": "Did you say Tuesday or Thursday?"
+      },
+      {
+        "label": "Call",
+        "text": "Your voice cut out. Could you repeat that?"
+      }
+    ],
+    "donts": [
+      "Pretend you heard and guess."
+    ]
+  },
+  {
+    "id": "v7-talk-19",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "A joke falls flat",
+    "kind": "save_it",
+    "moment": "A joke falls flat",
+    "deadEnd": "You did not get it.",
+    "reply": "That sounded funnier in my head. Anyway, how was your day?",
+    "formula": "own the miss + move on",
+    "more": [
+      {
+        "label": "Gentle reset",
+        "text": "Bad joke. I'll retire that one."
+      },
+      {
+        "label": "Clarify",
+        "text": "Sorry, I meant that as a joke."
+      },
+      {
+        "label": "Change topic",
+        "text": "Speaking of lunch, have you eaten?"
+      }
+    ],
+    "donts": [
+      "Blame them for not laughing.",
+      "Explain the joke at length."
+    ]
+  },
+  {
+    "id": "v7-talk-20",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "everyday"
+    ],
+    "module": "smalltalk",
+    "topic": "You interrupted",
+    "kind": "save_it",
+    "moment": "You interrupted",
+    "they": "I was saying...",
+    "deadEnd": "But listen.",
+    "reply": "Sorry, I cut you off. Please finish what you were saying.",
+    "formula": "acknowledge + give space",
+    "more": [
+      {
+        "label": "Overlap",
+        "text": "Go ahead. You were first."
+      },
+      {
+        "label": "Return",
+        "text": "You were telling me about your trip."
+      },
+      {
+        "label": "Repair",
+        "text": "Sorry, I jumped in. What happened next?"
+      }
+    ],
+    "donts": [
+      "Apologise and immediately interrupt again."
+    ]
+  }
+]

@@ -898,3 +898,27 @@ rewrite describes as 60 text scenes, new 130 situations, +100 words / +60 phrase
 - [x] Checked the app at phone size and found the layout problems. 7 Codex design pictures in 3 looks (Bold poster, Playful game, Warm photo) saved in `docs/redesign-v6/`. Waiting on Adarsh's choice; no app code changed.
 - [x] Adarsh picked Bold poster + the games + a picture set per topic + no red text.
 - [x] Built: full-size picture cards with one idea per slide, tap-the-weak-word and pick-the-reply games, chat bubbles for examples, full-screen lessons, 46 Codex pictures, picture story circles, three equal tabs, new Ask page. Red text gone from cards. Checked at phone size; not committed; not yet tried on his real phone.
+- [x] Pushed to `v4-usable` and `master` on Adarsh's say-so. `adarsh-speak.netlify.app` answers "not found", so no live site at that address was confirmed.
+
+## 2026-11-08 — SPEAK: content + motion rethink (plan only)
+
+**Agenda:** plan per module (vocab · small talk · articulation · office phrases/idioms · stories) · full-card swipe up/sideways · stop repeats + fresh content · better feedback · minimal, simple · HTML plan + questions. No app code this session.
+
+- [x] Found why the app feels confusing: ~20 old card styles in one feed, one slide recipe forced on every card, 20-new-a-day cap then replays, swipe at 45% of finger.
+- [x] Plan page v7 written and shown (5 modules, one card shape each, Instagram swipe, seen-once cards, feedback). Adarsh approved it with changes.
+- [x] v2 of the plan with his answers: no pictures, 👍👎💬 with spoken comments, ✗ wrong-use line, everyday use of any-level words, "explain your thinking", ~1,500 cards, card life + batches from feedback, Supabase explained (not connected today; recommend switching on).
+- [x] Handoff for the build chat written.
+- [x] 4 Codex design pictures of the new cards (Words, Small talk, Say it better, comment sheet). Plan step 1 is next, in a fresh chat.
+- [x] Premium redraw on his ask: 2 glass looks (light glass, night glass) × 4 screens. Waiting on his pick. Supabase steps given; he said yes to the backup.
+- [x] /one-go relay v7 steps 1–3 built (Codex 3 steps, Antigravity 2, Claude 3): Night glass feed, full-card swipe, 5 modules × 20 cards, 👍👎💬 sheet, Me 'what the app learned'. 2 review rounds vs pictures. All checks + build green. Not committed; not tried on his phone. Old picture-card browser tests still target the old feed.
+
+## 2026-11-08 — SPEAK: v7 steps 4–6 (/one-go dispatch)
+
+**Agenda:** his verdict on the built screens vs the Night glass pictures · full ~1,500-card library · card life (seen-once, Sunday ♡ review) + AI batches of 30 from 👍👎💬 · Supabase backup (one SQL script, email sign-in under Me).
+
+- [x] Seen: built screens match Night glass — "Looks right, carry on". One run, 6-digit email code, all other ★ picks.
+- [x] Card library: 1,400 new cards (Words 580, Small talk 230, Say it better 230 incl. 64 Explain your thinking, Office phrases 280, Stories 80) + the 100 samples = 1,500; no repeats across files; 10% read by hand, English fixes made.
+- [x] Card life: seen-once list, Sunday review of ♡ cards with Knew it / Not yet (3d, 1w, 3w; retire after 3).
+- [x] AI batches of 30 from 👍👎💬 + level + seen list, second-AI check, Wrong English rechecks the batch; old top-up switched off. Proven on fake AI replies only.
+- [x] Supabase backup: one SQL script, 6-digit email code sign-in under Me, backup + restore. Proven on a fake Supabase only; waits on his URL + public key.
+- [x] All tests + build green; old picture-feed browser tests switched off with a note. Not committed; not tried on his phone.

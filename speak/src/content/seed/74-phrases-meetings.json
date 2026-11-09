@@ -1,0 +1,3152 @@
+[
+  {
+    "id": "v7-phrases-meetings-001",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Can everyone hear me?",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Can everyone hear me?",
+    "meaning": "Check that everyone can hear your sound.",
+    "useWhen": "Start of a video call, or after you unmute.",
+    "example": "Hi all, **can everyone hear me?** Great, let's begin.",
+    "tone": "friendly · checking",
+    "careful": "Wait for a yes or a nod before you start.",
+    "wrong": {
+      "label": "✗ Not to ask if people agree",
+      "text": "I think we should cut costs. Can everyone hear me?"
+    },
+    "similar": [
+      "Is my audio okay?",
+      "Can you all hear me okay?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-002",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's keep this brief.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's keep this brief.",
+    "meaning": "Let's make this meeting short.",
+    "useWhen": "Time is tight or the topic is small.",
+    "example": "We only have ten minutes, so **let's keep this brief**.",
+    "tone": "polite · direct",
+    "careful": "Then keep it brief yourself. Don't talk for long after it.",
+    "wrong": {
+      "label": "✗ Not for a long workshop",
+      "text": "It's a two-day workshop. Let's keep this brief."
+    },
+    "similar": [
+      "Let's make this quick.",
+      "This won't take long."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-003",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's get started.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's get started.",
+    "meaning": "It's time to begin the meeting.",
+    "useWhen": "Everyone has joined and it's time.",
+    "example": "It's ten o'clock, so **let's get started**.",
+    "tone": "friendly · very common",
+    "careful": "Give late joiners a minute or two first.",
+    "wrong": {
+      "label": "✗ Not at the end",
+      "text": "Thanks, everyone. That's all for today. Let's get started."
+    },
+    "similar": [
+      "Shall we begin?",
+      "Let's kick things off."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-004",
+    "type": "module",
+    "module": "phrases",
+    "topic": "To build on that point...",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "To build on that point...",
+    "meaning": "I want to add to what was just said.",
+    "useWhen": "You agree and have something extra.",
+    "example": "**To build on that point**, we could also email the old users.",
+    "tone": "polite · cooperative",
+    "careful": "Add something new. Don't just repeat their point.",
+    "wrong": {
+      "label": "✗ Not when you disagree",
+      "text": "To build on that point, I think it's completely wrong."
+    },
+    "similar": [
+      "Adding to that...",
+      "Following on from what Priya said..."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-005",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's not reinvent the wheel.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's not reinvent the wheel.",
+    "meaning": "Let's use what already works instead of starting over.",
+    "useWhen": "Someone wants to build something that already exists.",
+    "example": "The old template works fine. **Let's not reinvent the wheel**.",
+    "tone": "casual · practical",
+    "careful": "Say what already works, so it doesn't sound dismissive.",
+    "wrong": {
+      "label": "✗ Not about real wheels",
+      "text": "My car tyre is flat. Let's not reinvent the wheel."
+    },
+    "similar": [
+      "Let's use what we already have.",
+      "Why start from scratch?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-006",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Can you see my screen?",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Can you see my screen?",
+    "meaning": "Check that your shared screen is showing.",
+    "useWhen": "Right after you start sharing on a call.",
+    "example": "Okay, I'm sharing now. **Can you see my screen?**",
+    "tone": "friendly · checking",
+    "careful": "Wait for a yes before you start talking through it.",
+    "wrong": {
+      "label": "✗ Not to ask if they understand",
+      "text": "That's the plan for March. Can you see my screen?"
+    },
+    "similar": [
+      "Is my screen showing?",
+      "Are you seeing my slides?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-007",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Can I just jump in here?",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Can I just jump in here?",
+    "meaning": "May I say something now, while others talk?",
+    "useWhen": "You need to add a point mid-discussion.",
+    "example": "Sorry, **can I just jump in here?** That date won't work.",
+    "tone": "polite · informal",
+    "careful": "Keep it short after you jump in, then hand back.",
+    "wrong": {
+      "label": "✗ Not for joining a call late",
+      "text": "Sorry I'm late, the link was broken. Can I just jump in here?"
+    },
+    "similar": [
+      "If I could just come in here...",
+      "May I add a quick point?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-008",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Sorry, you're on mute.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Sorry, you're on mute.",
+    "meaning": "We can't hear you; your mic is off.",
+    "useWhen": "Someone talks on a call but no sound comes.",
+    "example": "Ravi, **sorry, you're on mute**. Could you try again?",
+    "tone": "friendly · helpful",
+    "careful": "Say it kindly. It happens to everyone.",
+    "wrong": {
+      "label": "✗ Not when someone is just quiet",
+      "text": "Neha hasn't said much today. Sorry, you're on mute."
+    },
+    "similar": [
+      "I think you're muted.",
+      "We can't hear you."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-009",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's stick to the agenda.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's stick to the agenda.",
+    "meaning": "Let's talk only about the planned topics.",
+    "useWhen": "The talk drifts away from the plan.",
+    "example": "Good idea, but **let's stick to the agenda** for now.",
+    "tone": "polite · firm",
+    "careful": "Offer a time for the off-topic point.",
+    "wrong": {
+      "label": "✗ Not when there is no agenda",
+      "text": "We didn't plan anything today. Let's stick to the agenda."
+    },
+    "similar": [
+      "Let's stay on track.",
+      "Let's keep to the plan."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-010",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's not boil the ocean.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's not boil the ocean.",
+    "meaning": "Let's not try to do everything at once.",
+    "useWhen": "A plan is getting far too big.",
+    "example": "Start with one city. **Let's not boil the ocean**.",
+    "tone": "casual · office-y",
+    "careful": "Office slang. Fine with colleagues; plainer words with new clients.",
+    "wrong": {
+      "label": "✗ Not about cooking or weather",
+      "text": "The water is too hot. Let's not boil the ocean."
+    },
+    "similar": [
+      "Let's keep the scope small.",
+      "Let's start with one thing."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-011",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Could you repeat that, please?",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Could you repeat that, please?",
+    "meaning": "Please say that again.",
+    "useWhen": "You missed what someone said.",
+    "example": "Sorry, the line broke. **Could you repeat that, please?**",
+    "tone": "polite · neutral",
+    "careful": "Say which part you missed, if you can.",
+    "wrong": {
+      "label": "✗ Not to ask someone to redo work",
+      "text": "Your report had errors. Could you repeat that, please?"
+    },
+    "similar": [
+      "Sorry, could you say that again?",
+      "I missed that last part."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-012",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Over to you.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Over to you.",
+    "meaning": "It's your turn to speak now.",
+    "useWhen": "You finish and pass to the next speaker.",
+    "example": "That's my update. **Over to you**, Meera.",
+    "tone": "friendly · very common",
+    "careful": "Say the person's name so they know it's them.",
+    "wrong": {
+      "label": "✗ Not before you've spoken",
+      "text": "Hi all. Over to you. Here's my update."
+    },
+    "similar": [
+      "Your turn, Sam.",
+      "Meera, would you like to go next?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-013",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I have a quick question.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "I have a quick question.",
+    "meaning": "I want to ask something short.",
+    "useWhen": "You need one small answer.",
+    "example": "**I have a quick question**: is the deadline Friday or Monday?",
+    "tone": "polite · very common",
+    "careful": "Keep it quick. Ask one thing, not five.",
+    "wrong": {
+      "label": "✗ Not for a long list",
+      "text": "I have a quick question. First, second, third, fourth..."
+    },
+    "similar": [
+      "Can I ask something?",
+      "Just one question..."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-014",
+    "type": "module",
+    "module": "phrases",
+    "topic": "What's the action item here?",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "What's the action item here?",
+    "meaning": "What must someone do after this?",
+    "useWhen": "A talk ends without a clear task.",
+    "example": "Okay, **what's the action item here?** Who calls the vendor?",
+    "tone": "direct · practical",
+    "careful": "Get a name and a date for each task.",
+    "wrong": {
+      "label": "✗ Not about a film",
+      "text": "That movie was great. What's the action item here?"
+    },
+    "similar": [
+      "What are the next steps?",
+      "What do we need to do?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-015",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'll take that as an action item.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "I'll take that as an action item.",
+    "meaning": "I'll own that task.",
+    "useWhen": "A task comes up and you can do it.",
+    "example": "Sure, **I'll take that as an action item** and share it Friday.",
+    "tone": "helpful · confident",
+    "careful": "Only say it if you will really do it.",
+    "wrong": {
+      "label": "✗ Not for someone else's task",
+      "text": "Ravi will fix it. I'll take that as an action item."
+    },
+    "similar": [
+      "I'll take care of that.",
+      "Leave that with me."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-016",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Can I add something?",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Can I add something?",
+    "meaning": "May I share one more point?",
+    "useWhen": "You have a point on this topic.",
+    "example": "**Can I add something?** The client also asked for a demo.",
+    "tone": "polite · very common",
+    "careful": "Wait for a small pause before asking.",
+    "wrong": {
+      "label": "✗ Not to change the topic",
+      "text": "Can I add something? Who wants pizza?"
+    },
+    "similar": [
+      "I'd like to add one point.",
+      "One more thing..."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-017",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Who owns this?",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Who owns this?",
+    "meaning": "Who is in charge of this task?",
+    "useWhen": "No one is clearly responsible.",
+    "example": "We keep missing this report. **Who owns this?**",
+    "tone": "direct · neutral",
+    "careful": "Ask calmly, so it doesn't sound like blame.",
+    "wrong": {
+      "label": "✗ Not to blame someone",
+      "text": "Who owns this mess? Who ruined it?"
+    },
+    "similar": [
+      "Who's responsible for this?",
+      "Who's driving this?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-018",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's go around the room.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's go around the room.",
+    "meaning": "Let's hear from each person in turn.",
+    "useWhen": "You want everyone's view or update.",
+    "example": "**Let's go around the room**. Arjun, you start.",
+    "tone": "friendly · guiding",
+    "careful": "On video calls, name the order so no one talks over others.",
+    "wrong": {
+      "label": "✗ Not about walking",
+      "text": "My legs are stiff. Let's go around the room."
+    },
+    "similar": [
+      "Let's hear from everyone.",
+      "Let's hear from each of you."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-019",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's do a quick round of updates.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's do a quick round of updates.",
+    "meaning": "Each person shares a short update.",
+    "useWhen": "Start of a team meeting.",
+    "example": "**Let's do a quick round of updates**. One minute each.",
+    "tone": "friendly · practical",
+    "careful": "Set a time limit so it stays quick.",
+    "wrong": {
+      "label": "✗ Not about software updates",
+      "text": "My phone is slow. Let's do a quick round of updates."
+    },
+    "similar": [
+      "Quick updates from everyone?",
+      "Let's go one by one."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-020",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's table this for now.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's table this for now.",
+    "meaning": "Let's stop discussing this and return later.",
+    "useWhen": "A topic is stuck or not urgent.",
+    "example": "We need more data. **Let's table this for now**.",
+    "tone": "polite · formal",
+    "careful": "In UK English, 'table' can mean discuss now. 'For now' keeps it clear.",
+    "wrong": {
+      "label": "✗ Not about furniture",
+      "text": "We need more chairs. Let's table this for now."
+    },
+    "similar": [
+      "Let's park this.",
+      "Let's come back to it next week."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-021",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Does anyone have questions?",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Does anyone have questions?",
+    "meaning": "Ask if people want to know more.",
+    "useWhen": "End of your part or the meeting.",
+    "example": "That's the plan. **Does anyone have questions?**",
+    "tone": "polite · open",
+    "careful": "Pause for a few seconds. People need time.",
+    "wrong": {
+      "label": "✗ Not to ask for answers",
+      "text": "I don't know the price. Does anyone have questions?"
+    },
+    "similar": [
+      "Any questions so far?",
+      "Anything I can clarify?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-022",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Can you give us a quick recap?",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Can you give us a quick recap?",
+    "meaning": "Please sum up what was said.",
+    "useWhen": "Someone joins late or the talk was long.",
+    "example": "Ravi just joined. **Can you give us a quick recap?**",
+    "tone": "polite · practical",
+    "careful": "Ask the right person, usually the one leading.",
+    "wrong": {
+      "label": "✗ Not for a long report",
+      "text": "Can you give us a quick recap of the whole year, in full detail?"
+    },
+    "similar": [
+      "Can you sum it up for us?",
+      "What have we decided so far?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-023",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's wrap up.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's wrap up.",
+    "meaning": "Let's finish the meeting.",
+    "useWhen": "Time is nearly over.",
+    "example": "It's almost five. **Let's wrap up**.",
+    "tone": "friendly · very common",
+    "careful": "Sum up the next steps before people leave.",
+    "wrong": {
+      "label": "✗ Not at the start",
+      "text": "Hi everyone, welcome. Let's wrap up."
+    },
+    "similar": [
+      "Let's end it there.",
+      "Let's finish here."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-024",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'd like to hear other views.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "I'd like to hear other views.",
+    "meaning": "I want others to share their opinion.",
+    "useWhen": "One or two people are doing all the talking.",
+    "example": "Thanks, Sam. **I'd like to hear other views** too. Neha?",
+    "tone": "polite · inclusive",
+    "careful": "Invite quiet people kindly; don't put them on the spot.",
+    "wrong": {
+      "label": "✗ Not about the scenery",
+      "text": "Let's book a room with a balcony. I'd like to hear other views."
+    },
+    "similar": [
+      "What do others think?",
+      "Does anyone see it differently?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-025",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Can we get some clarity on ownership?",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Can we get some clarity on ownership?",
+    "meaning": "Who exactly is responsible for this?",
+    "useWhen": "Tasks are falling between people.",
+    "example": "Both teams think the other is doing it. **Can we get some clarity on ownership?**",
+    "tone": "polite · firm",
+    "careful": "Make it about the task, not about blaming people.",
+    "wrong": {
+      "label": "✗ Not when the owner is clear",
+      "text": "Priya is leading it, as agreed. Can we get some clarity on ownership?"
+    },
+    "similar": [
+      "Who's taking the lead on this?",
+      "Who owns this piece?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-026",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Sorry to interrupt.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Sorry to interrupt.",
+    "meaning": "I'm cutting in, and I'm sorry for it.",
+    "useWhen": "You must speak while someone is talking.",
+    "example": "**Sorry to interrupt**, but the client is on the other line.",
+    "tone": "polite · very common",
+    "careful": "Interrupt only for something useful or urgent.",
+    "wrong": {
+      "label": "✗ Not while you're presenting",
+      "text": "I'm presenting. Sorry to interrupt, here's slide two."
+    },
+    "similar": [
+      "Sorry to cut in.",
+      "Excuse me for a second."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-027",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's take a step back.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's take a step back.",
+    "meaning": "Let's look at the bigger picture.",
+    "useWhen": "The talk is lost in small details.",
+    "example": "**Let's take a step back**. What problem are we solving?",
+    "tone": "calm · guiding",
+    "careful": "Follow it with one big-picture question.",
+    "wrong": {
+      "label": "✗ Not a real step",
+      "text": "A car is coming! Let's take a step back."
+    },
+    "similar": [
+      "Let's look at the bigger picture.",
+      "What are we really trying to do?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-028",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Go ahead.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Go ahead.",
+    "meaning": "Please, you speak first.",
+    "useWhen": "Two people start talking at once.",
+    "example": "Oh, sorry. **Go ahead**, Priya.",
+    "tone": "friendly · polite",
+    "careful": "Then really let them finish.",
+    "wrong": {
+      "label": "✗ Not to stop someone",
+      "text": "Go ahead. Please stop talking now."
+    },
+    "similar": [
+      "After you.",
+      "Please, carry on."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-029",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Correct me if I'm wrong.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Correct me if I'm wrong.",
+    "meaning": "I think this is right, but I may be wrong.",
+    "useWhen": "You state something you're not fully sure of.",
+    "example": "**Correct me if I'm wrong**, but the launch is on the 12th?",
+    "tone": "polite · humble",
+    "careful": "Use it when you're really unsure, or it sounds fake.",
+    "wrong": {
+      "label": "✗ Not when you're certain",
+      "text": "Correct me if I'm wrong, but my name is Arjun."
+    },
+    "similar": [
+      "If I remember right...",
+      "I might be wrong, but..."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-030",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's agree to disagree.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's agree to disagree.",
+    "meaning": "We see it differently, and that's fine.",
+    "useWhen": "A friendly debate is going nowhere.",
+    "example": "We won't settle this today. **Let's agree to disagree**.",
+    "tone": "calm · friendly",
+    "careful": "Not for decisions that must be made. Those need an answer.",
+    "wrong": {
+      "label": "✗ Not when a decision is needed today",
+      "text": "The client needs a yes now. Let's agree to disagree."
+    },
+    "similar": [
+      "We see it differently, and that's okay.",
+      "Let's leave it there."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-031",
+    "type": "module",
+    "module": "phrases",
+    "topic": "You froze for a second.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "You froze for a second.",
+    "meaning": "Your video stopped moving for a moment.",
+    "useWhen": "Someone's video or sound gets stuck on a call.",
+    "example": "Sorry, **you froze for a second**. Could you say that again?",
+    "tone": "friendly · helpful",
+    "careful": "Tell them the last thing you heard.",
+    "wrong": {
+      "label": "✗ Not about feeling cold",
+      "text": "The AC is on high. You froze for a second."
+    },
+    "similar": [
+      "You cut out for a moment.",
+      "Your video got stuck."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-032",
+    "type": "module",
+    "module": "phrases",
+    "topic": "That's out of scope for today.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "That's out of scope for today.",
+    "meaning": "That's not part of what we cover now.",
+    "useWhen": "Someone raises a topic beyond the plan.",
+    "example": "Pricing? **That's out of scope for today**. Let's add it to next week.",
+    "tone": "polite · firm",
+    "careful": "Say where the topic will go, so it isn't lost.",
+    "wrong": {
+      "label": "✗ Not for the main topic",
+      "text": "We're here for the launch plan. The launch? That's out of scope for today."
+    },
+    "similar": [
+      "Let's keep that for another meeting.",
+      "That's for a separate discussion."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-033",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let me share my screen.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let me share my screen.",
+    "meaning": "I'll show you what's on my computer.",
+    "useWhen": "You want to show a file or slides on a call.",
+    "example": "**Let me share my screen** so we can look at the numbers.",
+    "tone": "friendly · very common",
+    "careful": "Close private chats and tabs before you share.",
+    "wrong": {
+      "label": "✗ Not when there's no screen",
+      "text": "We're having tea outside. Let me share my screen."
+    },
+    "similar": [
+      "I'll put it on screen.",
+      "Let me show you."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-034",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's not get into the details now.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's not get into the details now.",
+    "meaning": "Let's keep this high-level for now.",
+    "useWhen": "Time is short or the group is too big for details.",
+    "example": "**Let's not get into the details now**. Ravi and I can sort them later.",
+    "tone": "polite · guiding",
+    "careful": "Say when the details will be covered.",
+    "wrong": {
+      "label": "✗ Not when details are the point",
+      "text": "This is the detailed review. Let's not get into the details now."
+    },
+    "similar": [
+      "Let's keep it high-level.",
+      "We can sort out the details later."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-035",
+    "type": "module",
+    "module": "phrases",
+    "topic": "What's the key takeaway?",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "What's the key takeaway?",
+    "meaning": "What's the one main point to remember?",
+    "useWhen": "End of a talk or a long discussion.",
+    "example": "Great talk. **What's the key takeaway** for the sales team?",
+    "tone": "curious · direct",
+    "careful": "Ask for one point, not a full summary.",
+    "wrong": {
+      "label": "✗ Not about food to go",
+      "text": "I'm hungry. What's the key takeaway?"
+    },
+    "similar": [
+      "What's the main point?",
+      "What should we remember from this?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-036",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Who's taking notes?",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Who's taking notes?",
+    "meaning": "Who is writing down what we say?",
+    "useWhen": "Start of a meeting.",
+    "example": "Before we begin, **who's taking notes?**",
+    "tone": "practical · neutral",
+    "careful": "If no one offers, take them yourself or ask someone.",
+    "wrong": {
+      "label": "✗ Not at the very end",
+      "text": "Thanks, everyone, bye! Who's taking notes?"
+    },
+    "similar": [
+      "Can someone take notes?",
+      "Can someone write up the minutes?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-037",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Could you elaborate on that?",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Could you elaborate on that?",
+    "meaning": "Please explain that in more detail.",
+    "useWhen": "A point is too short or unclear.",
+    "example": "You said costs went up. **Could you elaborate on that?**",
+    "tone": "polite · curious",
+    "careful": "Say which part you want more on.",
+    "wrong": {
+      "label": "✗ Not to ask for less detail",
+      "text": "That was far too long. Could you elaborate on that?"
+    },
+    "similar": [
+      "Could you say more about that?",
+      "What do you mean by that?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-038",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'll send a summary after the call.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "I'll send a summary after the call.",
+    "meaning": "I'll write up the main points and share them.",
+    "useWhen": "End of a meeting with decisions.",
+    "example": "Thanks, all. **I'll send a summary after the call**.",
+    "tone": "helpful · very common",
+    "careful": "Send it the same day, while it's fresh.",
+    "wrong": {
+      "label": "✗ Not for a tiny chat",
+      "text": "'Lunch at one?' 'Yes.' I'll send a summary after the call."
+    },
+    "similar": [
+      "I'll share the notes later today.",
+      "I'll follow up with the key points."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-039",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's timebox this to ten minutes.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's timebox this to ten minutes.",
+    "meaning": "Let's spend only ten minutes on this.",
+    "useWhen": "A topic could eat up the whole meeting.",
+    "example": "Budget is tricky. **Let's timebox this to ten minutes**.",
+    "tone": "practical · firm",
+    "careful": "Watch the clock and stop when time is up.",
+    "wrong": {
+      "label": "✗ Not for a quick yes or no",
+      "text": "Is lunch at one? Let's timebox this to ten minutes."
+    },
+    "similar": [
+      "Let's give this ten minutes.",
+      "Let's keep this to ten minutes."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-040",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's zoom out for a second.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's zoom out for a second.",
+    "meaning": "Let's look at the big picture.",
+    "useWhen": "The group is stuck on small details.",
+    "example": "**Let's zoom out for a second**. Does this help our customers?",
+    "tone": "calm · guiding",
+    "careful": "Ask one big question right after.",
+    "wrong": {
+      "label": "✗ Not about the Zoom app",
+      "text": "Let's zoom out for a second. I'm leaving the call now."
+    },
+    "similar": [
+      "Let's see the big picture.",
+      "What's the bigger goal here?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-041",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's start with the main item.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's start with the main item.",
+    "meaning": "Let's discuss the most important topic first.",
+    "useWhen": "Time is short, or one topic matters most.",
+    "example": "We have thirty minutes, so **let's start with the main item**.",
+    "tone": "practical · guiding",
+    "careful": "Name the item so everyone knows what it is.",
+    "wrong": {
+      "label": "✗ Not at the end of a meeting",
+      "text": "We're out of time. Let's start with the main item."
+    },
+    "similar": [
+      "Let's begin with the big one.",
+      "First, the most important thing."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-042",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'll set up a follow-up call.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "I'll set up a follow-up call.",
+    "meaning": "I'll book another meeting to continue.",
+    "useWhen": "Things are left open at the end.",
+    "example": "We need finance in this. **I'll set up a follow-up call** for Tuesday.",
+    "tone": "helpful · practical",
+    "careful": "Invite only the people who are needed.",
+    "wrong": {
+      "label": "✗ Not when everything is done",
+      "text": "All sorted, nothing left. I'll set up a follow-up call."
+    },
+    "similar": [
+      "I'll send an invite for next week.",
+      "Let's find another time to continue."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-043",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Any updates from your side?",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Any updates from your side?",
+    "meaning": "Do you have any news to share?",
+    "useWhen": "Checking in with a person or team.",
+    "example": "Hi Meera, **any updates from your side** on the vendor?",
+    "tone": "friendly · checking",
+    "careful": "Name the topic so they know what you mean.",
+    "wrong": {
+      "label": "✗ Not right after they gave one",
+      "text": "Thanks for the full update. Any updates from your side?"
+    },
+    "similar": [
+      "Anything new on your end?",
+      "How are things on your side?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-044",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's align on the goal first.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's align on the goal first.",
+    "meaning": "Let's agree on what we want before we plan.",
+    "useWhen": "People jump into the how before the what.",
+    "example": "Before we pick tools, **let's align on the goal first**.",
+    "tone": "calm · guiding",
+    "careful": "Write the goal where everyone can see it.",
+    "wrong": {
+      "label": "✗ Not about lining things up",
+      "text": "The chairs are crooked. Let's align on the goal first."
+    },
+    "similar": [
+      "Let's agree on what we want first.",
+      "What are we trying to achieve?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-045",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'd like to flag a risk.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "I'd like to flag a risk.",
+    "meaning": "I want to warn about a possible problem.",
+    "useWhen": "You see something that could go wrong.",
+    "example": "**I'd like to flag a risk**: the vendor may miss the date.",
+    "tone": "polite · serious",
+    "careful": "Bring a possible fix with the risk, if you can.",
+    "wrong": {
+      "label": "✗ Not for a problem already fixed",
+      "text": "The bug was fixed last week. I'd like to flag a risk."
+    },
+    "similar": [
+      "I see one possible problem.",
+      "One thing that worries me is..."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-046",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'll keep it short.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "I'll keep it short.",
+    "meaning": "I won't talk for long.",
+    "useWhen": "Time is tight or you speak last.",
+    "example": "I know we're late, so **I'll keep it short**.",
+    "tone": "polite · very common",
+    "careful": "Then really keep it short.",
+    "wrong": {
+      "label": "✗ Not before a long talk",
+      "text": "I'll keep it short. Now, slide one of forty..."
+    },
+    "similar": [
+      "Just a quick word.",
+      "This will only take a minute."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-047",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Can we get a show of hands?",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Can we get a show of hands?",
+    "meaning": "Raise your hand to vote or agree.",
+    "useWhen": "A quick vote in a group.",
+    "example": "Who prefers Friday? **Can we get a show of hands?**",
+    "tone": "friendly · practical",
+    "careful": "On video calls, ask people to use the raise-hand button.",
+    "wrong": {
+      "label": "✗ Not with just one person",
+      "text": "It's just you and me. Can we get a show of hands?"
+    },
+    "similar": [
+      "Hands up if you agree.",
+      "Let's take a quick vote."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-048",
+    "type": "module",
+    "module": "phrases",
+    "topic": "That's a good question.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "That's a good question.",
+    "meaning": "I like that question.",
+    "useWhen": "Someone asks something useful.",
+    "example": "**That's a good question**. Let me check the numbers.",
+    "tone": "warm · very common",
+    "careful": "Don't say it to every question, and then answer it.",
+    "wrong": {
+      "label": "✗ Not for a statement",
+      "text": "'I finished the report.' That's a good question."
+    },
+    "similar": [
+      "Great question.",
+      "I'm glad you asked."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-049",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Just to be clear...",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Just to be clear...",
+    "meaning": "I want to make sure there's no confusion.",
+    "useWhen": "Before you confirm a key fact or decision.",
+    "example": "**Just to be clear**, the deadline is Friday, not Monday?",
+    "tone": "polite · careful",
+    "careful": "Use it once, for the point that matters most.",
+    "wrong": {
+      "label": "✗ Not before something vague",
+      "text": "Just to be clear, it's sort of maybe next week-ish."
+    },
+    "similar": [
+      "To clarify...",
+      "So we're saying..."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-050",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's do a quick sanity check.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's do a quick sanity check.",
+    "meaning": "Let's quickly check this makes sense.",
+    "useWhen": "Before you send or share something important.",
+    "example": "Before we send it, **let's do a quick sanity check** on the totals.",
+    "tone": "practical · friendly",
+    "careful": "Common in offices. It's about the work, not anyone's mind.",
+    "wrong": {
+      "label": "✗ Not about anyone's mental health",
+      "text": "He seems stressed. Let's do a quick sanity check."
+    },
+    "similar": [
+      "Let's double-check this.",
+      "Does this add up?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-051",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let me check and get back to you.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let me check and get back to you.",
+    "meaning": "I'll find out and reply later.",
+    "useWhen": "You don't know the answer yet.",
+    "example": "Not sure about the price. **Let me check and get back to you**.",
+    "tone": "polite · honest",
+    "careful": "Say when you'll reply, and then do it.",
+    "wrong": {
+      "label": "✗ Not when you know the answer",
+      "text": "'What's your name?' Let me check and get back to you."
+    },
+    "similar": [
+      "I'll find out and let you know.",
+      "I'll confirm by tomorrow."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-052",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let me rephrase that.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let me rephrase that.",
+    "meaning": "I'll say it again in a different way.",
+    "useWhen": "You said something unclear or too strong.",
+    "example": "That came out wrong. **Let me rephrase that**.",
+    "tone": "calm · honest",
+    "careful": "Make the second version shorter and clearer.",
+    "wrong": {
+      "label": "✗ Not to say the same words again",
+      "text": "Let me rephrase that. The plan is bad. The plan is bad."
+    },
+    "similar": [
+      "Let me put it another way.",
+      "What I mean is..."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-053",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Shall we move on?",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Shall we move on?",
+    "meaning": "Can we go to the next topic?",
+    "useWhen": "A topic is done, or stuck.",
+    "example": "We've agreed on the date. **Shall we move on?**",
+    "tone": "polite · guiding",
+    "careful": "Check no one has a last point first.",
+    "wrong": {
+      "label": "✗ Not about getting over a breakup",
+      "text": "She left him last year. Shall we move on?"
+    },
+    "similar": [
+      "Let's go to the next item.",
+      "Next topic?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-054",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I didn't quite catch that.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "I didn't quite catch that.",
+    "meaning": "I didn't hear or understand that.",
+    "useWhen": "You missed some words.",
+    "example": "Sorry, **I didn't quite catch that**. Was it the 5th or the 15th?",
+    "tone": "polite · very common",
+    "careful": "Ask about the part you missed.",
+    "wrong": {
+      "label": "✗ Not about a ball",
+      "text": "The ball flew past me. I didn't quite catch that."
+    },
+    "similar": [
+      "Sorry, I missed that.",
+      "Could you say the last bit again?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-055",
+    "type": "module",
+    "module": "phrases",
+    "topic": "We seem to be going in circles.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "We seem to be going in circles.",
+    "meaning": "We keep repeating the same points.",
+    "useWhen": "A talk keeps coming back to the same place.",
+    "example": "**We seem to be going in circles**. Let's list the options and vote.",
+    "tone": "calm · honest",
+    "careful": "Offer a way out, like a vote or a deadline.",
+    "wrong": {
+      "label": "✗ Not after the first round",
+      "text": "We just started five minutes ago. We seem to be going in circles."
+    },
+    "similar": [
+      "We keep coming back to the same point.",
+      "This isn't moving forward."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-056",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks, everyone, for joining.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Thanks, everyone, for joining.",
+    "meaning": "Thank you all for coming to the meeting.",
+    "useWhen": "Start or end of a call.",
+    "example": "**Thanks, everyone, for joining**. Let's begin.",
+    "tone": "warm · very common",
+    "careful": "Keep it to one line, then begin.",
+    "wrong": {
+      "label": "✗ Not for one person",
+      "text": "It's just you and me, Ravi. Thanks, everyone, for joining."
+    },
+    "similar": [
+      "Thanks for coming, everyone.",
+      "Thank you all for your time."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-057",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Does that answer your question?",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Does that answer your question?",
+    "meaning": "Did I explain what you wanted to know?",
+    "useWhen": "After you answer someone.",
+    "example": "So the cost comes in phase two. **Does that answer your question?**",
+    "tone": "polite · checking",
+    "careful": "If they say no, ask what's still unclear.",
+    "wrong": {
+      "label": "✗ Not before you answer",
+      "text": "Good question. Does that answer your question?"
+    },
+    "similar": [
+      "Is that clear?",
+      "Did that help?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-058",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Just to add to that...",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Just to add to that...",
+    "meaning": "I have one more point on the same topic.",
+    "useWhen": "You agree and want to add a fact.",
+    "example": "**Just to add to that**, the client also wants it in French.",
+    "tone": "polite · cooperative",
+    "careful": "Keep it short so it stays an add-on.",
+    "wrong": {
+      "label": "✗ Not to change the topic",
+      "text": "Just to add to that, has anyone seen the new film?"
+    },
+    "similar": [
+      "Building on that...",
+      "One more thing on that..."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-059",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's touch base next week.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's touch base next week.",
+    "meaning": "Let's talk again briefly next week.",
+    "useWhen": "Ending a chat with things still open.",
+    "example": "Thanks, Sam. **Let's touch base next week** on the pricing.",
+    "tone": "friendly · very common",
+    "careful": "Put a date in the calendar, or it may not happen.",
+    "wrong": {
+      "label": "✗ Not for something due today",
+      "text": "The bill is due today. Let's touch base next week."
+    },
+    "similar": [
+      "Let's catch up next week.",
+      "Let's check in next week."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-060",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Just to play this back to you...",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Just to play this back to you...",
+    "meaning": "Let me repeat what I heard, to check it.",
+    "useWhen": "After someone explains something important.",
+    "example": "**Just to play this back to you**: you want three designs by Monday?",
+    "tone": "polite · careful",
+    "careful": "Repeat it in your own words, not theirs.",
+    "wrong": {
+      "label": "✗ Not about a recording",
+      "text": "I recorded the song. Just to play this back to you..."
+    },
+    "similar": [
+      "So if I understand you right...",
+      "Let me make sure I've got this."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-061",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Can we hear from the design team?",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Can we hear from the design team?",
+    "meaning": "Let the design team speak now.",
+    "useWhen": "You want one group's view.",
+    "example": "That's the plan from sales. **Can we hear from the design team?**",
+    "tone": "polite · inclusive",
+    "careful": "Give them time to unmute and start.",
+    "wrong": {
+      "label": "✗ Not when they aren't there",
+      "text": "The design team is on leave. Can we hear from the design team?"
+    },
+    "similar": [
+      "Design team, any thoughts?",
+      "Let's get the design view."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-062",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's hold that thought.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's hold that thought.",
+    "meaning": "Keep that idea; we'll come back to it.",
+    "useWhen": "A good point comes at the wrong time.",
+    "example": "Great idea, Neha. **Let's hold that thought** until the budget part.",
+    "tone": "polite · warm",
+    "careful": "Do come back to it, or it feels like a brush-off.",
+    "wrong": {
+      "label": "✗ Not to drop an idea forever",
+      "text": "Bad idea. Let's hold that thought and never mention it."
+    },
+    "similar": [
+      "Let's park that for a minute.",
+      "Can we come back to that?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-063",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I agree with that.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "I agree with that.",
+    "meaning": "I think the same.",
+    "useWhen": "You support what someone said.",
+    "example": "**I agree with that**. Friday is the safer date.",
+    "tone": "friendly · simple",
+    "careful": "Add a reason, so it's more than a nod.",
+    "wrong": {
+      "label": "✗ Not \"I am agree\"",
+      "text": "I am agree with that."
+    },
+    "similar": [
+      "I think so too.",
+      "That makes sense to me."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-064",
+    "type": "module",
+    "module": "phrases",
+    "topic": "We're running short on time.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "We're running short on time.",
+    "meaning": "We have little time left.",
+    "useWhen": "A meeting is near its end.",
+    "example": "**We're running short on time**, so let's pick the top two issues.",
+    "tone": "polite · practical",
+    "careful": "Say what you'll cut or move.",
+    "wrong": {
+      "label": "✗ Not at the start of a long meeting",
+      "text": "We've just begun, with two hours left. We're running short on time."
+    },
+    "similar": [
+      "We only have a few minutes left.",
+      "Time's nearly up."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-065",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's get everyone's buy-in.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's get everyone's buy-in.",
+    "meaning": "Let's make sure everyone agrees and supports it.",
+    "useWhen": "A decision needs the whole team behind it.",
+    "example": "Before we launch, **let's get everyone's buy-in**.",
+    "tone": "polite · cooperative",
+    "careful": "Ask people directly; silence isn't agreement.",
+    "wrong": {
+      "label": "✗ Not about buying something",
+      "text": "The shop is open. Let's get everyone's buy-in."
+    },
+    "similar": [
+      "Let's make sure everyone's on board.",
+      "Is everyone okay with this?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-066",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's take a five-minute break.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's take a five-minute break.",
+    "meaning": "Let's pause for five minutes.",
+    "useWhen": "A long meeting, or people look tired.",
+    "example": "We've been at it an hour. **Let's take a five-minute break**.",
+    "tone": "friendly · practical",
+    "careful": "Say the exact time you'll restart.",
+    "wrong": {
+      "label": "✗ Not for a lunch hour",
+      "text": "Let's take a five-minute break and come back at two after lunch."
+    },
+    "similar": [
+      "Let's pause for five minutes.",
+      "Quick break?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-067",
+    "type": "module",
+    "module": "phrases",
+    "topic": "That's a fair point.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "That's a fair point.",
+    "meaning": "You're right about that.",
+    "useWhen": "Someone makes a good argument, even against you.",
+    "example": "**That's a fair point**. Let's add more time for testing.",
+    "tone": "polite · open",
+    "careful": "If you still disagree, add a gentle 'but' after it.",
+    "wrong": {
+      "label": "✗ Not for a wild claim",
+      "text": "'The moon is made of cheese.' That's a fair point."
+    },
+    "similar": [
+      "You're right about that.",
+      "Good point."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-068",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Are we all clear on the next steps?",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Are we all clear on the next steps?",
+    "meaning": "Does everyone know what to do now?",
+    "useWhen": "End of a meeting.",
+    "example": "Ravi sends the deck; Meera calls the client. **Are we all clear on the next steps?**",
+    "tone": "polite · checking",
+    "careful": "Read the steps out, with names and dates.",
+    "wrong": {
+      "label": "✗ Not at the very start",
+      "text": "Hello, welcome, everyone. Are we all clear on the next steps?"
+    },
+    "similar": [
+      "Does everyone know what's next?",
+      "Any questions on who does what?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-069",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's go through the numbers.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's go through the numbers.",
+    "meaning": "Let's look at the figures one by one.",
+    "useWhen": "Reviewing sales, costs or results.",
+    "example": "**Let's go through the numbers** for March first.",
+    "tone": "practical · neutral",
+    "careful": "Share the sheet so people can follow.",
+    "wrong": {
+      "label": "✗ Not about phone numbers",
+      "text": "I lost my contacts. Let's go through the numbers."
+    },
+    "similar": [
+      "Let's look at the figures.",
+      "Let's walk through the data."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-070",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's double-click on that.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "meetings"
+    ],
+    "group": "meetings",
+    "phrase": "Let's double-click on that.",
+    "meaning": "Let's look at that point in more detail.",
+    "useWhen": "One point needs a closer look.",
+    "example": "Sales dropped in May. **Let's double-click on that**.",
+    "tone": "casual · office-y",
+    "careful": "Office slang. Fine with colleagues; plainer words with clients.",
+    "wrong": {
+      "label": "✗ Not about a mouse",
+      "text": "The file won't open. Let's double-click on that."
+    },
+    "similar": [
+      "Let's dig into that.",
+      "Can we look closer at that?"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-071",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Great job!",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "Great job!",
+    "meaning": "You did very well.",
+    "useWhen": "Someone finishes a task well.",
+    "example": "**Great job!** The client loved your slides.",
+    "tone": "warm · very common",
+    "careful": "Say what was great, so it feels real.",
+    "wrong": {
+      "label": "✗ Not before the work is done",
+      "text": "You haven't started yet? Great job!"
+    },
+    "similar": [
+      "Well done!",
+      "Nice work!"
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-072",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Credit goes to the whole team.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "Credit goes to the whole team.",
+    "meaning": "Everyone deserves the praise, not just me.",
+    "useWhen": "You're praised for team work.",
+    "example": "Thanks, but **credit goes to the whole team**.",
+    "tone": "humble · warm",
+    "careful": "Name one or two people, if you can.",
+    "wrong": {
+      "label": "✗ Not about credit cards",
+      "text": "The card bill is paid. Credit goes to the whole team."
+    },
+    "similar": [
+      "It was a team effort.",
+      "I had a lot of help."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-073",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Well done.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "Well done.",
+    "meaning": "You did that well.",
+    "useWhen": "Praising finished work.",
+    "example": "**Well done**, Arjun. The demo went smoothly.",
+    "tone": "warm · simple",
+    "careful": "Add one detail to make it personal.",
+    "wrong": {
+      "label": "✗ Not for something not done yet",
+      "text": "You'll start tomorrow? Well done."
+    },
+    "similar": [
+      "Nicely done.",
+      "Good work."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-074",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I couldn't have done it without you.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "I couldn't have done it without you.",
+    "meaning": "Your help was essential.",
+    "useWhen": "Thanking someone who really helped.",
+    "example": "Thanks for the late nights, Priya. **I couldn't have done it without you**.",
+    "tone": "warm · grateful",
+    "careful": "Save it for real help, or it sounds empty.",
+    "wrong": {
+      "label": "✗ Not for tiny help",
+      "text": "You passed me a pen. I couldn't have done it without you."
+    },
+    "similar": [
+      "You made this possible.",
+      "Thanks, I really needed your help."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-075",
+    "type": "module",
+    "module": "phrases",
+    "topic": "You knocked it out of the park.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "You knocked it out of the park.",
+    "meaning": "You did an amazing job.",
+    "useWhen": "A big task went very well.",
+    "example": "The pitch was perfect. **You knocked it out of the park**.",
+    "tone": "warm · informal",
+    "careful": "Informal. Great with colleagues; maybe not in a formal email.",
+    "wrong": {
+      "label": "✗ Not for an okay result",
+      "text": "It was fine, a bit late. You knocked it out of the park."
+    },
+    "similar": [
+      "You absolutely smashed it.",
+      "That was outstanding."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-076",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Nice work on the report.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "Nice work on the report.",
+    "meaning": "Your report was good.",
+    "useWhen": "A colleague shares a report.",
+    "example": "**Nice work on the report**. The charts made it clear.",
+    "tone": "warm · specific",
+    "careful": "Name one thing you liked in it.",
+    "wrong": {
+      "label": "✗ Not before you've read it",
+      "text": "I haven't opened it yet. Nice work on the report."
+    },
+    "similar": [
+      "Great report.",
+      "The report was really clear."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-077",
+    "type": "module",
+    "module": "phrases",
+    "topic": "That was a big win for us.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "That was a big win for us.",
+    "meaning": "That result really helped the team.",
+    "useWhen": "A deal, launch or goal succeeds.",
+    "example": "Closing that client? **That was a big win for us**.",
+    "tone": "warm · upbeat",
+    "careful": "Thank the people who made it happen.",
+    "wrong": {
+      "label": "✗ Not for a small task",
+      "text": "You booked the room. That was a big win for us."
+    },
+    "similar": [
+      "That was a huge step forward.",
+      "That really moved us forward."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-078",
+    "type": "module",
+    "module": "phrases",
+    "topic": "That was really helpful.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "That was really helpful.",
+    "meaning": "Your help made things easier.",
+    "useWhen": "Thanking someone for help or advice.",
+    "example": "Thanks for the call, Ravi. **That was really helpful**.",
+    "tone": "warm · simple",
+    "careful": "Say how it helped, if you can.",
+    "wrong": {
+      "label": "✗ Not for something that didn't help",
+      "text": "Your tip didn't work at all. That was really helpful."
+    },
+    "similar": [
+      "That helped a lot.",
+      "Thanks, that made it much easier."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-079",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Hats off to the design team.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "Hats off to the design team.",
+    "meaning": "The design team deserves big praise.",
+    "useWhen": "Praising a team in a meeting or email.",
+    "example": "The new app looks great. **Hats off to the design team**.",
+    "tone": "warm · informal",
+    "careful": "Say what they did that was great.",
+    "wrong": {
+      "label": "✗ Not about real hats",
+      "text": "It's indoors, so hats off to the design team."
+    },
+    "similar": [
+      "Big thanks to the design team.",
+      "The design team did a brilliant job."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-080",
+    "type": "module",
+    "module": "phrases",
+    "topic": "That's a game-changer.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "That's a game-changer.",
+    "meaning": "This will change things in a big way.",
+    "useWhen": "An idea or tool makes a huge difference.",
+    "example": "Saving two hours a day? **That's a game-changer**.",
+    "tone": "excited · informal",
+    "careful": "Overused. Save it for truly big changes.",
+    "wrong": {
+      "label": "✗ Not for a small tweak",
+      "text": "You changed the font colour. That's a game-changer."
+    },
+    "similar": [
+      "That changes everything.",
+      "That's a huge help."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-081",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks for your help.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "Thanks for your help.",
+    "meaning": "I'm grateful you helped me.",
+    "useWhen": "Anyone helps you.",
+    "example": "**Thanks for your help** with the slides, Meera.",
+    "tone": "polite · simple",
+    "careful": "Add what they helped with.",
+    "wrong": {
+      "label": "✗ Not when they said no",
+      "text": "You said you're too busy. Thanks for your help."
+    },
+    "similar": [
+      "Thanks a lot.",
+      "I appreciate your help."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-082",
+    "type": "module",
+    "module": "phrases",
+    "topic": "You've really raised the bar.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "You've really raised the bar.",
+    "meaning": "You set a new, higher standard.",
+    "useWhen": "Work is better than anything before.",
+    "example": "This is our best demo yet. **You've really raised the bar**.",
+    "tone": "warm · impressed",
+    "careful": "Don't make others feel small next to it.",
+    "wrong": {
+      "label": "✗ Not about a gym bar",
+      "text": "The weights are heavy. You've really raised the bar."
+    },
+    "similar": [
+      "This sets a new standard.",
+      "That's the best we've done."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-083",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I really appreciate it.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "I really appreciate it.",
+    "meaning": "Thank you; it means a lot.",
+    "useWhen": "Someone does you a favour.",
+    "example": "You stayed late to help. **I really appreciate it**.",
+    "tone": "warm · sincere",
+    "careful": "Say what 'it' is, so they know.",
+    "wrong": {
+      "label": "✗ Not \"I am appreciating it\"",
+      "text": "Thanks for the help. I am really appreciating it."
+    },
+    "similar": [
+      "Thanks so much.",
+      "That means a lot."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-084",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks for all your hard work on this.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "Thanks for all your hard work on this.",
+    "meaning": "Thank you for the effort you put in.",
+    "useWhen": "A big project ends.",
+    "example": "The launch went well. **Thanks for all your hard work on this**.",
+    "tone": "warm · sincere",
+    "careful": "Add one detail about what they did.",
+    "wrong": {
+      "label": "✗ Not for a two-minute task",
+      "text": "You forwarded the email. Thanks for all your hard work on this."
+    },
+    "similar": [
+      "Thanks for putting so much into this.",
+      "I know this took a lot of work."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-085",
+    "type": "module",
+    "module": "phrases",
+    "topic": "This is top-notch work.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "This is top-notch work.",
+    "meaning": "This is excellent work.",
+    "useWhen": "Work is of very high quality.",
+    "example": "Clean code and clear notes. **This is top-notch work**.",
+    "tone": "warm · impressed",
+    "careful": "Say what makes it top-notch.",
+    "wrong": {
+      "label": "✗ Not for rushed work",
+      "text": "It's full of typos. This is top-notch work."
+    },
+    "similar": [
+      "This is first-class work.",
+      "This is excellent."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-086",
+    "type": "module",
+    "module": "phrases",
+    "topic": "You nailed it.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "You nailed it.",
+    "meaning": "You did it perfectly.",
+    "useWhen": "Someone gets something exactly right.",
+    "example": "The client said yes in five minutes. **You nailed it**.",
+    "tone": "warm · informal",
+    "careful": "Informal. In a formal email, say 'excellent work'.",
+    "wrong": {
+      "label": "✗ Not for a near miss",
+      "text": "You got most of it wrong. You nailed it."
+    },
+    "similar": [
+      "Spot on.",
+      "Perfect, well done."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-087",
+    "type": "module",
+    "module": "phrases",
+    "topic": "That's exactly what we needed.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "That's exactly what we needed.",
+    "meaning": "This fits our need perfectly.",
+    "useWhen": "Someone delivers just the right thing.",
+    "example": "A one-page summary? **That's exactly what we needed**.",
+    "tone": "warm · grateful",
+    "careful": "Say why it fits, so they can do it again.",
+    "wrong": {
+      "label": "✗ Not for the wrong thing",
+      "text": "We asked for a chart and got a poem. That's exactly what we needed."
+    },
+    "similar": [
+      "That's just what we were looking for.",
+      "Perfect, that's what we wanted."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-088",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Good catch!",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "Good catch!",
+    "meaning": "Well spotted; you found a mistake.",
+    "useWhen": "Someone spots an error before it causes trouble.",
+    "example": "The date was wrong? **Good catch!** I'll fix it.",
+    "tone": "warm · quick",
+    "careful": "Thank them even if it was your mistake.",
+    "wrong": {
+      "label": "✗ Not for a mistake they made",
+      "text": "You sent the wrong file. Good catch!"
+    },
+    "similar": [
+      "Well spotted!",
+      "Nice find."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-089",
+    "type": "module",
+    "module": "phrases",
+    "topic": "You made it look easy.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "You made it look easy.",
+    "meaning": "You did a hard thing smoothly.",
+    "useWhen": "Someone handles something tough with skill.",
+    "example": "That client is tough. **You made it look easy**.",
+    "tone": "warm · impressed",
+    "careful": "Praise the skill; don't suggest the task was easy.",
+    "wrong": {
+      "label": "✗ Not for something that was easy",
+      "text": "You turned on the laptop. You made it look easy."
+    },
+    "similar": [
+      "You handled that so smoothly.",
+      "That was very well handled."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-090",
+    "type": "module",
+    "module": "phrases",
+    "topic": "You've outdone yourself.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "You've outdone yourself.",
+    "meaning": "This is even better than your usual great work.",
+    "useWhen": "Someone beats their own high standard.",
+    "example": "Another record month? **You've outdone yourself**.",
+    "tone": "warm · impressed",
+    "careful": "Use it for people who already do good work.",
+    "wrong": {
+      "label": "✗ Not for a mistake",
+      "text": "You missed the deadline. You've outdone yourself."
+    },
+    "similar": [
+      "This is your best yet.",
+      "You've topped your last one."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-091",
+    "type": "module",
+    "module": "phrases",
+    "topic": "That's a great idea.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "That's a great idea.",
+    "meaning": "I really like that suggestion.",
+    "useWhen": "Someone suggests something good.",
+    "example": "A shared calendar? **That's a great idea**.",
+    "tone": "warm · simple",
+    "careful": "Say what you'll do with the idea.",
+    "wrong": {
+      "label": "✗ Not for a plain fact",
+      "text": "'The meeting is at two.' That's a great idea."
+    },
+    "similar": [
+      "I love that idea.",
+      "Let's try that."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-092",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'm impressed by how quickly you picked it up.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "I'm impressed by how quickly you picked it up.",
+    "meaning": "You learned this fast.",
+    "useWhen": "A new person learns fast.",
+    "example": "Week one and running reports already? **I'm impressed by how quickly you picked it up**.",
+    "tone": "warm · encouraging",
+    "careful": "Don't add 'for a new person'. Keep the praise clean.",
+    "wrong": {
+      "label": "✗ Not about picking up a parcel",
+      "text": "The parcel came fast. I'm impressed by how quickly you picked it up."
+    },
+    "similar": [
+      "You learned that really fast.",
+      "You're a quick learner."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-093",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks for stepping in.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "Thanks for stepping in.",
+    "meaning": "Thank you for helping when someone was missing.",
+    "useWhen": "Someone covers for a colleague or a gap.",
+    "example": "Ravi was sick. **Thanks for stepping in** for the demo.",
+    "tone": "warm · grateful",
+    "careful": "Say what they covered.",
+    "wrong": {
+      "label": "✗ Not about entering a room",
+      "text": "Come in, come in. Thanks for stepping in."
+    },
+    "similar": [
+      "Thanks for covering.",
+      "Thanks for filling in."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-094",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Kudos to everyone involved.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "Kudos to everyone involved.",
+    "meaning": "Everyone who worked on this deserves praise.",
+    "useWhen": "Praising a group in a meeting or email.",
+    "example": "The event ran perfectly. **Kudos to everyone involved**.",
+    "tone": "warm · informal",
+    "careful": "'Kudos' is one word for praise. There is no 'a kudo'.",
+    "wrong": {
+      "label": "✗ Not \"a kudo\"",
+      "text": "Ravi, a kudo to you for this."
+    },
+    "similar": [
+      "Well done, everyone.",
+      "Great work, team."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-095",
+    "type": "module",
+    "module": "phrases",
+    "topic": "You were the unsung hero of this launch.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "You were the unsung hero of this launch.",
+    "meaning": "You did key work that few people noticed.",
+    "useWhen": "Praising quiet, behind-the-scenes work.",
+    "example": "Those night fixes, Meera? **You were the unsung hero of this launch**.",
+    "tone": "warm · sincere",
+    "careful": "Say it in front of others, so they notice too.",
+    "wrong": {
+      "label": "✗ Not for the person everyone praised",
+      "text": "Everyone cheered you on stage. You were the unsung hero of this launch."
+    },
+    "similar": [
+      "You did so much behind the scenes.",
+      "Your quiet work made this happen."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-096",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Keep it up.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "Keep it up.",
+    "meaning": "Keep doing this good work.",
+    "useWhen": "Someone is doing well and improving.",
+    "example": "Your reports are getting better. **Keep it up**.",
+    "tone": "warm · encouraging",
+    "careful": "Can sound like a boss. Peers may say 'nice work' instead.",
+    "wrong": {
+      "label": "✗ Not for something to stop",
+      "text": "You were late again today. Keep it up."
+    },
+    "similar": [
+      "Keep up the good work.",
+      "You're doing great."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-097",
+    "type": "module",
+    "module": "phrases",
+    "topic": "You were a great help on the call.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "You were a great help on the call.",
+    "meaning": "You helped a lot during that call.",
+    "useWhen": "After a call where someone supported you.",
+    "example": "Thanks, Sam. **You were a great help on the call**.",
+    "tone": "warm · grateful",
+    "careful": "Mention one thing they said that helped.",
+    "wrong": {
+      "label": "✗ Not \"a great helping\"",
+      "text": "You were a great helping on the call."
+    },
+    "similar": [
+      "Thanks for backing me up on the call.",
+      "You really helped me on that call."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-098",
+    "type": "module",
+    "module": "phrases",
+    "topic": "You saved the day.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "You saved the day.",
+    "meaning": "You fixed a problem just in time.",
+    "useWhen": "Someone rescues a bad situation.",
+    "example": "The projector died and you had a spare. **You saved the day**.",
+    "tone": "warm · grateful",
+    "careful": "Use it for real rescues, not small favours.",
+    "wrong": {
+      "label": "✗ Not about clicking Save",
+      "text": "I clicked Save on the file. You saved the day."
+    },
+    "similar": [
+      "You rescued us.",
+      "We'd have been stuck without you."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-099",
+    "type": "module",
+    "module": "phrases",
+    "topic": "This is really solid work.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "This is really solid work.",
+    "meaning": "This is strong, reliable work.",
+    "useWhen": "Work is careful and well done.",
+    "example": "Clear plan, no gaps. **This is really solid work**.",
+    "tone": "warm · steady",
+    "careful": "'Solid' is calm praise. For amazing work, go stronger.",
+    "wrong": {
+      "label": "✗ Not about something hard to touch",
+      "text": "This desk is heavy. This is really solid work."
+    },
+    "similar": [
+      "This is very good work.",
+      "This is well put together."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-100",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Your attention to detail really shows.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "Your attention to detail really shows.",
+    "meaning": "I can see how carefully you worked.",
+    "useWhen": "Work is careful and precise.",
+    "example": "Every number matches. **Your attention to detail really shows**.",
+    "tone": "warm · specific",
+    "careful": "Point to one detail you noticed.",
+    "wrong": {
+      "label": "✗ Not for messy work",
+      "text": "There are typos everywhere. Your attention to detail really shows."
+    },
+    "similar": [
+      "You've been really thorough.",
+      "You didn't miss a thing."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-101",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Great presentation today.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "Great presentation today.",
+    "meaning": "Your talk today was very good.",
+    "useWhen": "Right after someone presents.",
+    "example": "**Great presentation today**, Neha. The demo was clear.",
+    "tone": "warm · simple",
+    "careful": "Add one part you liked.",
+    "wrong": {
+      "label": "✗ Not before they present",
+      "text": "You're on next? Great presentation today."
+    },
+    "similar": [
+      "Your talk was great.",
+      "Loved your presentation."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-102",
+    "type": "module",
+    "module": "phrases",
+    "topic": "You did a great job under pressure.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "You did a great job under pressure.",
+    "meaning": "You stayed calm and did well when it was hard.",
+    "useWhen": "A tense deadline or a tough meeting.",
+    "example": "The client was angry, but **you did a great job under pressure**.",
+    "tone": "warm · respectful",
+    "careful": "Name the stress, not just the result.",
+    "wrong": {
+      "label": "✗ Not for a relaxed task",
+      "text": "You had a whole free week. You did a great job under pressure."
+    },
+    "similar": [
+      "You kept calm when it mattered.",
+      "You handled the pressure really well."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-103",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks for being so quick.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "Thanks for being so quick.",
+    "meaning": "Thank you for replying or acting fast.",
+    "useWhen": "Someone replies or helps fast.",
+    "example": "Got your reply in five minutes. **Thanks for being so quick**.",
+    "tone": "warm · simple",
+    "careful": "Say it when speed truly helped.",
+    "wrong": {
+      "label": "✗ Not for a slow reply",
+      "text": "A week later, you replied. Thanks for being so quick."
+    },
+    "similar": [
+      "Thanks for the fast reply.",
+      "That was quick, thank you."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-104",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I owe you one.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "I owe you one.",
+    "meaning": "You helped me; I'll help you back.",
+    "useWhen": "A colleague does you a favour.",
+    "example": "You covered my shift? **I owe you one**.",
+    "tone": "friendly · informal",
+    "careful": "Informal. Use with peers, not in a formal email.",
+    "wrong": {
+      "label": "✗ Not about money you borrowed",
+      "text": "You lent me five hundred rupees. I owe you one."
+    },
+    "similar": [
+      "Thanks, I owe you.",
+      "I'll return the favour."
+    ]
+  },
+  {
+    "id": "v7-phrases-meetings-105",
+    "type": "module",
+    "module": "phrases",
+    "topic": "You really pulled it off.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "praise"
+    ],
+    "group": "praise",
+    "phrase": "You really pulled it off.",
+    "meaning": "You managed something hard.",
+    "useWhen": "A risky plan succeeds.",
+    "example": "Launching in two weeks? **You really pulled it off**.",
+    "tone": "warm · impressed",
+    "careful": "Fine to sound surprised, but not too surprised.",
+    "wrong": {
+      "label": "✗ Not about removing something",
+      "text": "The sticker came off. You really pulled it off."
+    },
+    "similar": [
+      "You made it happen.",
+      "You really did it."
+    ]
+  }
+]

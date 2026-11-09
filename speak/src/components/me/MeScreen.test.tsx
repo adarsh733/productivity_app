@@ -1,10 +1,47 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import MeScreen from './MeScreen';
 import { db } from '../../db/db';
 import { addDays, todayKey } from '../../lib/date';
 import { emptyDay } from '../../features/session/day';
 import { grade, newReview } from '../../srs/scheduler';
+import type { SupabaseClient } from '@supabase/supabase-js';
+import { setSupabaseForTests } from '../../sync/supabase';
+
+/** A fake Supabase client for the backup row — never real keys. */
+function fakeClient(user: { id: string; email: string } | null = null) {
+  const state = { user, otp: [] as unknown[] };
+  const empty = () => {
+    const q = {
+      eq: () => q,
+      maybeSingle: async () => ({ data: null, error: null }),
+      then: (ok: (v: unknown) => unknown) => Promise.resolve({ data: [], error: null }).then(ok),
+    };
+    return q;
+  };
+  const client = {
+    auth: {
+      getUser: async () => ({ data: { user: state.user }, error: null }),
+      signInWithOtp: async (c: unknown) => {
+        state.otp.push(c);
+        return { data: {}, error: null };
+      },
+      verifyOtp: async (p: { email: string; token: string }) => {
+        if (p.token !== '123456') {
+          return { data: { user: null, session: null }, error: { message: 'Token has expired or is invalid' } };
+        }
+        state.user = { id: 'user-1', email: p.email };
+        return { data: { user: state.user, session: {} }, error: null };
+      },
+      signOut: async () => {
+        state.user = null;
+        return { error: null };
+      },
+    },
+    from: () => ({ select: empty, upsert: async () => ({ error: null }) }),
+  };
+  return { client: client as unknown as SupabaseClient, state };
+}
 
 const today = todayKey();
 const now = Date.now();
@@ -21,11 +58,15 @@ async function clearAll() {
     db.asks.clear(),
     db.meta.clear(),
     db.cards.clear(),
+    db.feedback.clear(),
   ]);
 }
 
 describe('MeScreen (v5)', () => {
-  beforeEach(clearAll);
+  beforeEach(async () => {
+    setSupabaseForTests(null);
+    await clearAll();
+  });
 
   it('shows the three stats and five rows with empty states on a fresh phone', async () => {
     render(<MeScreen />);
@@ -45,6 +86,9 @@ describe('MeScreen (v5)', () => {
     expect(screen.getByText('No chats yet')).toBeInTheDocument();
     expect(screen.getByText('Nothing asked yet')).toBeInTheDocument();
     expect(document.querySelectorAll('.me-row.is-empty')).toHaveLength(5);
+
+    expect(screen.getByRole('heading', { name: 'What the app learned from you' })).toBeInTheDocument();
+    expect(screen.getByTestId('me-learned-empty')).toBeInTheDocument();
   });
 
   it('opens the old tools sheet from the gear', () => {
@@ -140,5 +184,117 @@ describe('MeScreen (v5)', () => {
     expect((row?.value as { notes: Array<{ text: string }> }).notes.map((n) => n.text)).toEqual([
       'More cricket small talk',
     ]);
+  });
+
+  it('shows "What the app learned from you" newest first with a 44px remove button and removes lines', async () => {
+    await db.feedback.bulkPut([
+      {
+        id: 'fb-v7-words-01',
+        cardId: 'v7-words-01',
+        module: 'words',
+        reply: 'Got it: Words will get harder from the next batch.',
+        reasons: ['too_easy'],
+        at: now - 1000,
+      },
+      {
+        id: 'fb-v7-talk-01',
+        cardId: 'v7-talk-01',
+        module: 'smalltalk',
+        reply: "Got it: We'll use simpler examples for Small talk from the next batch.",
+        reasons: ['confusing'],
+        at: now,
+      },
+      {
+        id: 'fb-v7-better-01',
+        cardId: 'v7-better-01',
+        module: 'better',
+        reply: 'Hidden line',
+        reasons: ['loved'],
+        at: now + 1000,
+        hidden: true,
+      },
+    ]);
+
+    render(<MeScreen />);
+
+    expect(await screen.findByRole('heading', { name: 'What the app learned from you' })).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.getAllByTestId('me-learned-item')).toHaveLength(2);
+    });
+
+    const items = screen.getAllByTestId('me-learned-item');
+    expect(items[0]!.textContent).toContain("Got it: We'll use simpler examples for Small talk from the next batch.");
+    expect(items[1]!.textContent).toContain('Got it: Words will get harder from the next batch.');
+    expect(screen.queryByText('Hidden line')).toBeNull();
+
+    const removeBtn = screen.getByRole('button', {
+      name: "Remove: Got it: We'll use simpler examples for Small talk from the next batch.",
+    });
+    expect(removeBtn.className).toContain('tap');
+    expect(removeBtn.className).toContain('me-learned-remove');
+
+    fireEvent.click(removeBtn);
+
+    await waitFor(() => {
+      expect(screen.getAllByTestId('me-learned-item')).toHaveLength(1);
+    });
+    expect(screen.getByText('Got it: Words will get harder from the next batch.')).toBeInTheDocument();
+    expect(screen.queryByText("Got it: We'll use simpler examples for Small talk from the next batch.")).toBeNull();
+
+    const stored = await db.feedback.get('fb-v7-talk-01');
+    expect(stored?.hidden).toBe(true);
+  });
+});
+
+describe('MeScreen backup row (v7 step 6)', () => {
+  beforeEach(async () => {
+    await Promise.all([clearAll(), db.profile.clear(), db.outbox.clear()]);
+  });
+  afterEach(() => setSupabaseForTests(null));
+
+  it('says one plain line when backup is not switched on, under the stats', () => {
+    setSupabaseForTests(null);
+    render(<MeScreen />);
+    const row = screen.getByTestId('me-backup');
+    expect(row.textContent).toBe('Backup is not switched on yet');
+    expect(screen.queryByRole('button', { name: 'Send code' })).toBeNull();
+    // Sits between the stats and the rows.
+    const stats = document.querySelector('.me-stats')!;
+    const rows = document.querySelector('.me-rows')!;
+    expect(stats.compareDocumentPosition(row) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(row.compareDocumentPosition(rows) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
+  it('email → Send code → 6-digit code → Sign in → "Backed up" + Sign out', async () => {
+    const { client, state } = fakeClient();
+    setSupabaseForTests(client);
+    render(<MeScreen />);
+
+    const send = screen.getByRole('button', { name: 'Send code' }) as HTMLButtonElement;
+    expect(send.disabled).toBe(true);
+    fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'me@example.com' } });
+    fireEvent.click(send);
+
+    const codeBox = await screen.findByLabelText('6-digit code');
+    expect(state.otp).toEqual([{ email: 'me@example.com', options: { shouldCreateUser: true } }]);
+    expect(screen.getByText(/emailed to me@example\.com/)).toBeInTheDocument();
+
+    fireEvent.change(codeBox, { target: { value: '000000' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Sign in' }));
+    expect(await screen.findByRole('alert')).toBeInTheDocument();
+    expect(screen.getByRole('alert').textContent).toBe('Token has expired or is invalid');
+
+    fireEvent.change(codeBox, { target: { value: '12a3456' } });
+    expect((codeBox as HTMLInputElement).value).toBe('123456');
+    fireEvent.click(screen.getByRole('button', { name: 'Sign in' }));
+
+    const status = await screen.findByTestId('me-backup-status');
+    expect(status.textContent).toMatch(/^Backed up · /);
+    expect(screen.getByText('me@example.com')).toBeInTheDocument();
+    await waitFor(async () => expect((await db.profile.get('me'))?.lastSyncAt).toBeTypeOf('number'));
+
+    fireEvent.click(screen.getByRole('button', { name: 'Sign out' }));
+    expect(await screen.findByRole('button', { name: 'Send code' })).toBeInTheDocument();
   });
 });

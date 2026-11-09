@@ -1,0 +1,3400 @@
+[
+  {
+    "id": "v7-better-thinking-001",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I picked the cheaper vendor",
+    "thinking": true,
+    "mightSay": "Basically we went with the cheaper vendor only, because the other one was also good but cost was more.",
+    "better": "I picked the cheaper vendor. Their quality matched, and they cost 20% less.",
+    "changes": [
+      "decision first",
+      "one clear reason",
+      "19 words → 13"
+    ],
+    "next": {
+      "title": "Name the trade-off",
+      "lines": [
+        {
+          "label": "Trade-off",
+          "text": "Delivery takes two days longer, which we can live with."
+        }
+      ],
+      "note": "Show you saw the downside."
+    }
+  },
+  {
+    "id": "v7-better-thinking-002",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Halfway update on a report",
+    "thinking": false,
+    "mightSay": "So the report is going on, I have done some parts and some parts are remaining, it will get done.",
+    "better": "The report is half done. I'll send the draft on Thursday.",
+    "changes": [
+      "say how far",
+      "give a date",
+      "20 words → 11"
+    ],
+    "next": {
+      "title": "Even better",
+      "lines": [
+        {
+          "label": "Add what's left",
+          "text": "Sections one to three are done. The charts are next."
+        }
+      ],
+      "note": "Name the part that is left."
+    }
+  },
+  {
+    "id": "v7-better-thinking-003",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "I'm torn between two job offers",
+    "thinking": true,
+    "mightSay": "Both offers are good only, I am very confused, one is giving more money and one is near to home.",
+    "better": "I'm torn. One offer pays more; the other is ten minutes from home.",
+    "changes": [
+      "name the feeling",
+      "one line per option",
+      "20 words → 13"
+    ],
+    "next": {
+      "title": "Say what would decide it",
+      "lines": [
+        {
+          "label": "Decider",
+          "text": "If the commute is under 40 minutes, I'll take the higher pay."
+        }
+      ],
+      "note": "Tell them what tips the balance."
+    }
+  },
+  {
+    "id": "v7-better-thinking-004",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Late because the client changed the brief",
+    "thinking": false,
+    "mightSay": "Actually the client changed everything last minute, so that is why it got delayed from our side.",
+    "better": "The client changed the brief on Monday, so the design moves to next Wednesday.",
+    "changes": [
+      "cause, then new date",
+      "cut \"from our side\"",
+      "17 words → 14"
+    ],
+    "next": {
+      "title": "Even better",
+      "lines": [
+        {
+          "label": "Show it's handled",
+          "text": "We've agreed the new brief with them, so the date will hold."
+        }
+      ],
+      "note": "Show the new date is safe."
+    }
+  },
+  {
+    "id": "v7-better-thinking-005",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Here's how I see the problem",
+    "thinking": true,
+    "mightSay": "What I feel is, the problem is not the app, people are not knowing how to use it.",
+    "better": "I don't think the app is the problem. People don't know how to use it.",
+    "changes": [
+      "claim first",
+      "\"are not knowing\" → \"don't know\"",
+      "18 words → 15"
+    ],
+    "next": {
+      "title": "Back it up",
+      "lines": [
+        {
+          "label": "Evidence",
+          "text": "Most support calls ask where the save button is."
+        }
+      ],
+      "note": "One fact makes the view stick."
+    }
+  },
+  {
+    "id": "v7-better-thinking-006",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "Answering 'what do you do?' at a wedding",
+    "thinking": false,
+    "mightSay": "I am working in an IT company, in the software side, it's like a technical type of job only.",
+    "better": "I build the apps banks use for loans.",
+    "changes": [
+      "say what you make",
+      "skip the vague words",
+      "19 words → 8"
+    ],
+    "next": {
+      "title": "Second situation",
+      "lines": [
+        {
+          "label": "At a client meeting",
+          "text": "I lead the team that builds loan apps for banks."
+        }
+      ],
+      "note": "Same answer, a little more formal."
+    }
+  },
+  {
+    "id": "v7-better-thinking-007",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I said no to the new feature",
+    "thinking": true,
+    "mightSay": "I told no to that feature because it is not making sense now and time is less.",
+    "better": "I said no for now. We don't have time to build it well.",
+    "changes": [
+      "decision first",
+      "\"told no\" → \"said no\"",
+      "17 words → 13"
+    ],
+    "next": {
+      "title": "Leave the door open",
+      "lines": [
+        {
+          "label": "Later",
+          "text": "Let's look at it again after the March release."
+        }
+      ],
+      "note": "A no for now is not a no forever."
+    }
+  },
+  {
+    "id": "v7-better-thinking-008",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd wait one more week before launching",
+    "thinking": true,
+    "mightSay": "We should not launch now, we should wait one week or so, things are not fully ready.",
+    "better": "I'd wait one more week. Payments still fail on some phones.",
+    "changes": [
+      "recommendation first",
+      "name what's not ready",
+      "17 words → 11"
+    ],
+    "next": {
+      "title": "Name the cost of rushing",
+      "lines": [
+        {
+          "label": "Risk",
+          "text": "If we launch now, angry reviews will follow."
+        }
+      ],
+      "note": "Show why the wait is worth it."
+    }
+  },
+  {
+    "id": "v7-better-thinking-009",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Update when nothing has changed",
+    "thinking": false,
+    "mightSay": "Regarding the update, there is no update as such, everything is same only as last time.",
+    "better": "No change since Monday. We're still waiting on the legal review.",
+    "changes": [
+      "say \"no change\" plainly",
+      "say what you're waiting on",
+      "16 words → 11"
+    ],
+    "next": {
+      "title": "Even better",
+      "lines": [
+        {
+          "label": "Add when",
+          "text": "Legal says they'll reply by Friday."
+        }
+      ],
+      "note": "Give them the next date to watch."
+    }
+  },
+  {
+    "id": "v7-better-thinking-010",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd hire the second candidate",
+    "thinking": true,
+    "mightSay": "Both are good, but I am feeling the second one is better, she is having more experience.",
+    "better": "I'd hire the second candidate. She has run this kind of project before.",
+    "changes": [
+      "pick first",
+      "one solid reason",
+      "\"is having\" → \"has\""
+    ],
+    "next": {
+      "title": "Name the risk",
+      "lines": [
+        {
+          "label": "Risk",
+          "text": "She asked for more pay, so we'd need to stretch the budget."
+        }
+      ],
+      "note": "Show you weighed the downside."
+    }
+  },
+  {
+    "id": "v7-better-thinking-011",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Late because you were waiting on another team",
+    "thinking": false,
+    "mightSay": "We are not able to finish because the other team has not given their part yet.",
+    "better": "We're waiting on the data team's numbers. Once they arrive, we need two days.",
+    "changes": [
+      "name who you're waiting on",
+      "say what happens next"
+    ],
+    "next": {
+      "title": "Even better",
+      "lines": [
+        {
+          "label": "Ask for help",
+          "text": "Could you nudge their lead? It would help us hit Friday."
+        }
+      ],
+      "note": "Offer a way to unblock it."
+    }
+  },
+  {
+    "id": "v7-better-thinking-012",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Torn between staying late and coming in early",
+    "thinking": true,
+    "mightSay": "Should I sit late today or come early tomorrow, I am not sure what is better.",
+    "better": "I'll come in early tomorrow. I think better in the morning.",
+    "changes": [
+      "decide out loud",
+      "give your reason",
+      "16 words → 11"
+    ],
+    "next": {
+      "title": "Say the condition",
+      "lines": [
+        {
+          "label": "If",
+          "text": "If the client needs it tonight, I'll stay."
+        }
+      ],
+      "note": "Show what would change your plan."
+    }
+  },
+  {
+    "id": "v7-better-thinking-013",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "Explaining your job to a child",
+    "thinking": false,
+    "mightSay": "I am a data analyst, I analyse the data and make reports for the management to take decisions.",
+    "better": "I count things for a big company, so they know what to make more of.",
+    "changes": [
+      "words a child knows",
+      "drop the job title",
+      "18 words → 15"
+    ],
+    "next": {
+      "title": "Add an example",
+      "lines": [
+        {
+          "label": "Example",
+          "text": "If more people buy blue shoes, I tell them to make more blue shoes."
+        }
+      ],
+      "note": "A picture beats a definition."
+    }
+  },
+  {
+    "id": "v7-better-thinking-014",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I think the plan is too risky",
+    "thinking": true,
+    "mightSay": "I am not comfortable with this plan, it is too much risky, many things can go wrong.",
+    "better": "I think the plan is too risky. If one supplier fails, everything stops.",
+    "changes": [
+      "say the view",
+      "name the one risk",
+      "\"too much risky\" → \"too risky\""
+    ],
+    "next": {
+      "title": "Offer a safer path",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "Could we sign a second supplier as a backup?"
+        }
+      ],
+      "note": "Pair a worry with a way out."
+    }
+  },
+  {
+    "id": "v7-better-thinking-015",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Update with one blocker",
+    "thinking": false,
+    "mightSay": "Everything is going fine, just one small issue is there with the login, rest all is on track.",
+    "better": "We're on track, with one blocker: login fails for new users.",
+    "changes": [
+      "status first",
+      "name the blocker",
+      "18 words → 11"
+    ],
+    "next": {
+      "title": "Say what you need",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "I need an hour with Ravi to fix it."
+        }
+      ],
+      "note": "A blocker comes with a request."
+    }
+  },
+  {
+    "id": "v7-better-thinking-016",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I changed the order of the slides",
+    "thinking": true,
+    "mightSay": "I have changed the slides order, the price slide I have put before, it will be better.",
+    "better": "I moved the price slide up. Clients ask about cost first.",
+    "changes": [
+      "say the change",
+      "give the reason",
+      "17 words → 11"
+    ],
+    "next": {
+      "title": "Invite a check",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "Does that flow work for you?"
+        }
+      ],
+      "note": "Let the owner agree."
+    }
+  },
+  {
+    "id": "v7-better-thinking-017",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Delay caused by your own mistake",
+    "thinking": false,
+    "mightSay": "Actually there was some confusion and the file got deleted somehow, so it will take some more time.",
+    "better": "I deleted the file by mistake. I'm rebuilding it and will send it tomorrow at noon.",
+    "changes": [
+      "own it",
+      "no \"somehow\"",
+      "give a new time"
+    ],
+    "next": {
+      "title": "Add the fix",
+      "lines": [
+        {
+          "label": "Prevent it",
+          "text": "I've set up automatic backups, so it won't happen again."
+        }
+      ],
+      "note": "Show it won't repeat."
+    }
+  },
+  {
+    "id": "v7-better-thinking-018",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "How I got to this number",
+    "thinking": true,
+    "mightSay": "This number I got by doing some calculations with last year data and all.",
+    "better": "I took last year's sales and added 10% for the new store. That gives 5,500 units.",
+    "changes": [
+      "show the steps",
+      "end with the number"
+    ],
+    "next": {
+      "title": "Name the guess",
+      "lines": [
+        {
+          "label": "Assumption",
+          "text": "The 10% is a guess based on our last store opening."
+        }
+      ],
+      "note": "Say which part is an estimate."
+    }
+  },
+  {
+    "id": "v7-better-thinking-019",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "Telling a new neighbour what you do",
+    "thinking": false,
+    "mightSay": "I am in a private company only, in the accounts department, doing the accounts work.",
+    "better": "I'm an accountant. I make sure a hotel chain pays its bills on time.",
+    "changes": [
+      "plain job word",
+      "one real detail"
+    ],
+    "next": {
+      "title": "Turn it back",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "What about you? Do you work nearby?"
+        }
+      ],
+      "note": "Keep the chat going."
+    }
+  },
+  {
+    "id": "v7-better-thinking-020",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd test with ten users first",
+    "thinking": true,
+    "mightSay": "Before launching to all, I am thinking we can do one testing with ten users or so.",
+    "better": "I'd test with ten users first. We'll catch the big problems cheaply.",
+    "changes": [
+      "plan first",
+      "the reason in one line",
+      "17 words → 12"
+    ],
+    "next": {
+      "title": "Give a timeline",
+      "lines": [
+        {
+          "label": "Timing",
+          "text": "Testing takes a week, so we'd still launch this month."
+        }
+      ],
+      "note": "Show it barely delays you."
+    }
+  },
+  {
+    "id": "v7-better-thinking-021",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I want to drop one feature",
+    "thinking": true,
+    "mightSay": "I am feeling the chat feature we can remove, nobody is using it much.",
+    "better": "I'd drop the chat feature. Only 2% of users open it, and it slows every release.",
+    "changes": [
+      "proposal first",
+      "use a number"
+    ],
+    "next": {
+      "title": "Offer a fallback",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "We can bring it back if users ask for it."
+        }
+      ],
+      "note": "Make the change feel safe."
+    }
+  },
+  {
+    "id": "v7-better-thinking-022",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Update after a client call",
+    "thinking": false,
+    "mightSay": "I had the call with client, it went okay, they said some things, I will share details later.",
+    "better": "The call went well. They approved the design but want a lower price.",
+    "changes": [
+      "the result first",
+      "one key detail",
+      "18 words → 13"
+    ],
+    "next": {
+      "title": "Add the next step",
+      "lines": [
+        {
+          "label": "Next",
+          "text": "I'll send a revised quote by Wednesday."
+        }
+      ],
+      "note": "Close with what you'll do."
+    }
+  },
+  {
+    "id": "v7-better-thinking-023",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I chose the train over the flight",
+    "thinking": true,
+    "mightSay": "I booked the train only because flight was costly and also airport is very far from my place.",
+    "better": "I took the train. It's cheaper, and the station is ten minutes from home.",
+    "changes": [
+      "choice first",
+      "two short reasons",
+      "18 words → 14"
+    ],
+    "next": {
+      "title": "Name the trade-off",
+      "lines": [
+        {
+          "label": "Trade-off",
+          "text": "It takes four hours longer, but I can work on board."
+        }
+      ],
+      "note": "Admit the downside."
+    }
+  },
+  {
+    "id": "v7-better-thinking-024",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Delay because a teammate fell sick",
+    "thinking": false,
+    "mightSay": "One of our team member is not well since two days, so work is getting delayed.",
+    "better": "Priya has been ill since Tuesday, so testing will finish on Monday, not Friday.",
+    "changes": [
+      "cause, then new date",
+      "\"since two days\" → \"since Tuesday\""
+    ],
+    "next": {
+      "title": "Show the cover",
+      "lines": [
+        {
+          "label": "Plan",
+          "text": "Arjun is taking over her part today."
+        }
+      ],
+      "note": "Show someone is on it."
+    }
+  },
+  {
+    "id": "v7-better-thinking-025",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'm not sure yet, and what would decide it",
+    "thinking": true,
+    "mightSay": "Right now I cannot say anything, it depends on many things, let us see what happens.",
+    "better": "I'm not sure yet. If the client signs by Friday, I'd say go.",
+    "changes": [
+      "admit it",
+      "name the decider",
+      "16 words → 13"
+    ],
+    "next": {
+      "title": "Give a date",
+      "lines": [
+        {
+          "label": "When",
+          "text": "I'll have an answer by Friday evening."
+        }
+      ],
+      "note": "Uncertainty needs a deadline."
+    }
+  },
+  {
+    "id": "v7-better-thinking-026",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "Answering at a networking event",
+    "thinking": false,
+    "mightSay": "I am working as a senior consultant in a consulting firm, we do consulting for different clients.",
+    "better": "I help factories cut waste. Last year we saved one client 15% on materials.",
+    "changes": [
+      "what you do, not your title",
+      "one result",
+      "17 words → 14"
+    ],
+    "next": {
+      "title": "Ask back",
+      "lines": [
+        {
+          "label": "Turn it",
+          "text": "What brings you here tonight?"
+        }
+      ],
+      "note": "Leave room for them."
+    }
+  },
+  {
+    "id": "v7-better-thinking-027",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I picked this restaurant for the team dinner",
+    "thinking": true,
+    "mightSay": "I selected this place because it is good only, and also it is near.",
+    "better": "I picked this place because it's close to the office and has good veg options.",
+    "changes": [
+      "one sentence",
+      "real reasons"
+    ],
+    "next": {
+      "title": "Check with them",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "Does anyone have a food allergy I should mention?"
+        }
+      ],
+      "note": "Show you thought of everyone."
+    }
+  },
+  {
+    "id": "v7-better-thinking-028",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd split the project into two phases",
+    "thinking": true,
+    "mightSay": "This project is very big, so I am thinking we can do it in two parts.",
+    "better": "I'd split it into two phases: the core in May, extras in July.",
+    "changes": [
+      "proposal first",
+      "name each phase",
+      "16 words → 13"
+    ],
+    "next": {
+      "title": "Give the reason",
+      "lines": [
+        {
+          "label": "Why",
+          "text": "We get feedback early instead of guessing for six months."
+        }
+      ],
+      "note": "Say what the split buys."
+    }
+  },
+  {
+    "id": "v7-better-thinking-029",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Weekly update in stand-up",
+    "thinking": false,
+    "mightSay": "Yesterday I was doing the testing and all, today also I will do the same, no issues as such.",
+    "better": "Yesterday I tested checkout. Today I'll test refunds. No blockers.",
+    "changes": [
+      "yesterday, today, blockers",
+      "one line each",
+      "19 words → 10"
+    ],
+    "next": {
+      "title": "Even better",
+      "lines": [
+        {
+          "label": "Add a result",
+          "text": "Checkout passed, except for one bug in coupons."
+        }
+      ],
+      "note": "A result beats an activity."
+    }
+  },
+  {
+    "id": "v7-better-thinking-030",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Explaining a hunch you can't fully prove",
+    "thinking": true,
+    "mightSay": "I cannot prove it, but I am having a feeling that customers are not liking the new price.",
+    "better": "I can't prove it yet, but I think the new price is putting people off.",
+    "changes": [
+      "flag it as a hunch",
+      "\"am having a feeling\" → \"think\"",
+      "18 words → 15"
+    ],
+    "next": {
+      "title": "Say how to check",
+      "lines": [
+        {
+          "label": "Test",
+          "text": "We could ask ten customers this week."
+        }
+      ],
+      "note": "Turn the hunch into a test."
+    }
+  },
+  {
+    "id": "v7-better-thinking-031",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Late reply to a friend's message",
+    "thinking": false,
+    "mightSay": "Sorry sorry, I was very busy, I saw your message but I could not reply, you know how it is.",
+    "better": "Sorry for the slow reply! Work has been crazy this week.",
+    "changes": [
+      "one sorry",
+      "a short reason",
+      "20 words → 11"
+    ],
+    "next": {
+      "title": "Then answer them",
+      "lines": [
+        {
+          "label": "Reply",
+          "text": "Yes, Saturday works. Where should we meet?"
+        }
+      ],
+      "note": "Get to their question fast."
+    }
+  },
+  {
+    "id": "v7-better-thinking-032",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd rather call than email this client",
+    "thinking": true,
+    "mightSay": "Instead of mailing, better I will call them, on mail they are not replying properly.",
+    "better": "I'd rather call this client. They ignore long emails, but they pick up the phone.",
+    "changes": [
+      "choice first",
+      "the reason"
+    ],
+    "next": {
+      "title": "Close the loop",
+      "lines": [
+        {
+          "label": "After",
+          "text": "I'll send a short email after the call, so it's on record."
+        }
+      ],
+      "note": "Calls still need a written trail."
+    }
+  },
+  {
+    "id": "v7-better-thinking-033",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "Describing your role in a job interview",
+    "thinking": false,
+    "mightSay": "In my current company I am handling many things, like client, team, reports, everything I am doing.",
+    "better": "I lead a team of five and manage our three biggest clients.",
+    "changes": [
+      "be specific",
+      "numbers, not \"everything\"",
+      "17 words → 12"
+    ],
+    "next": {
+      "title": "Add a win",
+      "lines": [
+        {
+          "label": "Result",
+          "text": "Last year we kept all three clients and grew them by 20%."
+        }
+      ],
+      "note": "One result proves the role."
+    }
+  },
+  {
+    "id": "v7-better-thinking-034",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'm saying yes, with one condition",
+    "thinking": true,
+    "mightSay": "Okay I will do it, but only thing is that I need some help, otherwise it will be difficult.",
+    "better": "Yes, I'll do it, as long as I get one more person for testing.",
+    "changes": [
+      "yes first",
+      "make the condition clear",
+      "19 words → 14"
+    ],
+    "next": {
+      "title": "Say why",
+      "lines": [
+        {
+          "label": "Reason",
+          "text": "Testing alone would take me three weeks."
+        }
+      ],
+      "note": "The reason makes the condition fair."
+    }
+  },
+  {
+    "id": "v7-better-thinking-035",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "What I'd need to see to change my mind",
+    "thinking": true,
+    "mightSay": "I am not agreeing now, but maybe if something is there then I can think again.",
+    "better": "I'd change my mind if the pilot shows sales going up.",
+    "changes": [
+      "name the evidence",
+      "drop \"if something is there\"",
+      "16 words → 11"
+    ],
+    "next": {
+      "title": "Set a bar",
+      "lines": [
+        {
+          "label": "Number",
+          "text": "Say, 10% more sales in the first month."
+        }
+      ],
+      "note": "A clear bar keeps it fair."
+    }
+  },
+  {
+    "id": "v7-better-thinking-036",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Update that you finished early",
+    "thinking": false,
+    "mightSay": "The work which you gave is completed already, I finished it before itself.",
+    "better": "The deck is done, two days early. It's in the shared folder.",
+    "changes": [
+      "result first",
+      "\"before itself\" → \"early\""
+    ],
+    "next": {
+      "title": "Offer more",
+      "lines": [
+        {
+          "label": "Next",
+          "text": "Want me to start on the speaker notes?"
+        }
+      ],
+      "note": "Use the extra time."
+    }
+  },
+  {
+    "id": "v7-better-thinking-037",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd keep the old design for now",
+    "thinking": true,
+    "mightSay": "The new design is nice, but for now we keep the old one only.",
+    "better": "I'd keep the old design for now. Users know it, and we're mid-sale.",
+    "changes": [
+      "say the choice",
+      "two reasons"
+    ],
+    "next": {
+      "title": "Say when to switch",
+      "lines": [
+        {
+          "label": "When",
+          "text": "Let's switch after the sale ends."
+        }
+      ],
+      "note": "Give it a date."
+    }
+  },
+  {
+    "id": "v7-better-thinking-038",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Delivery stuck at customs",
+    "thinking": false,
+    "mightSay": "The shipment is stuck at customs and they are not clearing it, so we don't know when it will come.",
+    "better": "The shipment is held at customs. Our agent expects it cleared by Thursday.",
+    "changes": [
+      "say where it is",
+      "give a best guess",
+      "20 words → 13"
+    ],
+    "next": {
+      "title": "Plan B",
+      "lines": [
+        {
+          "label": "Backup",
+          "text": "If it slips again, we can send 50 units from the Pune store."
+        }
+      ],
+      "note": "Show a backup."
+    }
+  },
+  {
+    "id": "v7-better-thinking-039",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I think the delay is worth it",
+    "thinking": true,
+    "mightSay": "I know it is getting late, but it is okay only, the result will be much better.",
+    "better": "The delay is worth it. Two more weeks means the app works offline.",
+    "changes": [
+      "view first",
+      "name the gain",
+      "17 words → 13"
+    ],
+    "next": {
+      "title": "Name what it costs",
+      "lines": [
+        {
+          "label": "Cost",
+          "text": "We'll miss the trade show, but we won't demo a broken app."
+        }
+      ],
+      "note": "Weigh both sides out loud."
+    }
+  },
+  {
+    "id": "v7-better-thinking-040",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "Explaining your job to your grandmother",
+    "thinking": false,
+    "mightSay": "I am working in digital marketing, we do SEO, social media, campaigns, all that.",
+    "better": "When you see an ad on your phone, I'm one of the people who made it.",
+    "changes": [
+      "start from her world",
+      "no jargon"
+    ],
+    "next": {
+      "title": "Add one detail",
+      "lines": [
+        {
+          "label": "Example",
+          "text": "Last month I made the ads for a new biscuit."
+        }
+      ],
+      "note": "Give her something to picture."
+    }
+  },
+  {
+    "id": "v7-better-thinking-041",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I want a second opinion",
+    "thinking": true,
+    "mightSay": "I am not hundred percent sure on this, so better we take one more opinion from somebody.",
+    "better": "I'd like a second opinion. This contract has terms I haven't seen before.",
+    "changes": [
+      "say what you want",
+      "say why",
+      "17 words → 13"
+    ],
+    "next": {
+      "title": "Name who",
+      "lines": [
+        {
+          "label": "Who",
+          "text": "Could Meera from legal look at it by Wednesday?"
+        }
+      ],
+      "note": "Make the ask concrete."
+    }
+  },
+  {
+    "id": "v7-better-thinking-042",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Update on a bug fix",
+    "thinking": false,
+    "mightSay": "The bug is fixed mostly, some testing is pending, it should be okay I think.",
+    "better": "The fix is in. We're testing it now and will release by 5.",
+    "changes": [
+      "status first",
+      "a clear time"
+    ],
+    "next": {
+      "title": "Even better",
+      "lines": [
+        {
+          "label": "Who's affected",
+          "text": "Until then, users can still pay by card."
+        }
+      ],
+      "note": "Tell them the impact."
+    }
+  },
+  {
+    "id": "v7-better-thinking-043",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'm worried about the timeline",
+    "thinking": true,
+    "mightSay": "I am little bit tense about the dates, it is very tight, how we will manage.",
+    "better": "I'm worried about the timeline. We have six weeks of work and four weeks left.",
+    "changes": [
+      "name the worry",
+      "show the gap in numbers"
+    ],
+    "next": {
+      "title": "Suggest a fix",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "We could cut the reports page and add it in June."
+        }
+      ],
+      "note": "Bring a way forward."
+    }
+  },
+  {
+    "id": "v7-better-thinking-044",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Late to a meeting because of traffic",
+    "thinking": false,
+    "mightSay": "So sorry, there was too much traffic, the road was totally jammed, I left early only but still.",
+    "better": "Sorry I'm late, the traffic was bad. Please carry on, I'll catch up.",
+    "changes": [
+      "one short sorry",
+      "let them continue",
+      "18 words → 13"
+    ],
+    "next": {
+      "title": "Second situation",
+      "lines": [
+        {
+          "label": "Before the meeting",
+          "text": "Running ten minutes late. Please start without me."
+        }
+      ],
+      "note": "A heads-up beats a long sorry."
+    }
+  },
+  {
+    "id": "v7-better-thinking-045",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd ask the client before deciding",
+    "thinking": true,
+    "mightSay": "We can decide ourselves also, but better we ask the client once, otherwise problem may come.",
+    "better": "Let's check with the client first. They may want to keep the old logo.",
+    "changes": [
+      "proposal first",
+      "the real reason"
+    ],
+    "next": {
+      "title": "Keep it quick",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "I'll message them today and share their answer tomorrow."
+        }
+      ],
+      "note": "Show it won't slow things down."
+    }
+  },
+  {
+    "id": "v7-better-thinking-046",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd pay more for faster delivery",
+    "thinking": true,
+    "mightSay": "It is costing more, but I think we should take the fast delivery, because otherwise it will come late.",
+    "better": "I'd pay the extra 3,000 for fast delivery. Otherwise the parts miss the launch.",
+    "changes": [
+      "choice and cost",
+      "the reason",
+      "19 words → 14"
+    ],
+    "next": {
+      "title": "Compare",
+      "lines": [
+        {
+          "label": "Trade-off",
+          "text": "A late launch would cost far more than 3,000."
+        }
+      ],
+      "note": "Put the cost next to the risk."
+    }
+  },
+  {
+    "id": "v7-better-thinking-047",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "When your job title confuses people",
+    "thinking": false,
+    "mightSay": "My designation is solutions architect, it is little bit technical, you will not understand.",
+    "better": "I'm a solutions architect. I plan how a company's software fits together.",
+    "changes": [
+      "explain, don't dismiss",
+      "drop \"you will not understand\""
+    ],
+    "next": {
+      "title": "Add an example",
+      "lines": [
+        {
+          "label": "Example",
+          "text": "When a bank adds a new app, I make sure it talks to the old ones."
+        }
+      ],
+      "note": "One example makes it real."
+    }
+  },
+  {
+    "id": "v7-better-thinking-048",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd rent before buying a flat",
+    "thinking": true,
+    "mightSay": "Buying is good, but first we should take on rent and see, we are new to the city.",
+    "better": "I'd rent for a year first. We don't know the city well yet.",
+    "changes": [
+      "plan first",
+      "one reason",
+      "18 words → 13"
+    ],
+    "next": {
+      "title": "Name the gain",
+      "lines": [
+        {
+          "label": "Benefit",
+          "text": "By then we'll know which area suits us."
+        }
+      ],
+      "note": "Say what waiting buys."
+    }
+  },
+  {
+    "id": "v7-better-thinking-049",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Update with good and bad news",
+    "thinking": false,
+    "mightSay": "There is one good news and one bad news, client has signed, but they are wanting it earlier.",
+    "better": "Good news: the client signed. Bad news: they want it two weeks sooner.",
+    "changes": [
+      "label each part",
+      "\"one good news\" → \"good news\"",
+      "18 words → 13"
+    ],
+    "next": {
+      "title": "Add the plan",
+      "lines": [
+        {
+          "label": "Plan",
+          "text": "I'm checking with the team if we can meet the new date."
+        }
+      ],
+      "note": "End on what you're doing."
+    }
+  },
+  {
+    "id": "v7-better-thinking-050",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd move the meeting to the morning",
+    "thinking": true,
+    "mightSay": "We can shift the meeting to morning, evening time people are tired and not focusing.",
+    "better": "Can we move the meeting to 10 a.m.? People are sharper in the morning.",
+    "changes": [
+      "ask directly",
+      "one reason"
+    ],
+    "next": {
+      "title": "Add a second reason",
+      "lines": [
+        {
+          "label": "Also",
+          "text": "The Singapore team can join before they log off."
+        }
+      ],
+      "note": "Reasons about others land well."
+    }
+  },
+  {
+    "id": "v7-better-thinking-051",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Delay because testing found bugs",
+    "thinking": false,
+    "mightSay": "During testing many bugs came, so release is getting delayed, we are working on it.",
+    "better": "Testing found five serious bugs, so the release moves to Tuesday.",
+    "changes": [
+      "cause with a number",
+      "the new date",
+      "15 words → 11"
+    ],
+    "next": {
+      "title": "Explain why that's good",
+      "lines": [
+        {
+          "label": "Point",
+          "text": "It's better we find them than our customers do."
+        }
+      ],
+      "note": "Turn the delay into care."
+    }
+  },
+  {
+    "id": "v7-better-thinking-052",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "What I'm sure of and what I'm guessing",
+    "thinking": true,
+    "mightSay": "Some things I know, some things I am not knowing, so overall it may be like this.",
+    "better": "I'm sure sales dropped in June. I'm guessing the price rise caused it.",
+    "changes": [
+      "split fact and guess",
+      "label each",
+      "17 words → 13"
+    ],
+    "next": {
+      "title": "Say how to check",
+      "lines": [
+        {
+          "label": "Check",
+          "text": "We can compare with the stores that kept the old price."
+        }
+      ],
+      "note": "Show how you'd test the guess."
+    }
+  },
+  {
+    "id": "v7-better-thinking-053",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "The one reason that decided it for me",
+    "thinking": true,
+    "mightSay": "There are many reasons, like price, location, people, many things, so finally I decided.",
+    "better": "It came down to one thing: the team. I liked the people I'd work with.",
+    "changes": [
+      "one reason, not many",
+      "say it first"
+    ],
+    "next": {
+      "title": "Name the rest",
+      "lines": [
+        {
+          "label": "Also",
+          "text": "The pay and location were fine, but they didn't decide it."
+        }
+      ],
+      "note": "Mention the rest briefly."
+    }
+  },
+  {
+    "id": "v7-better-thinking-054",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "When you're between jobs",
+    "thinking": false,
+    "mightSay": "Right now I am not working anywhere, I left my last job, I am searching only.",
+    "better": "I'm between jobs. I left a bank in May, and I'm looking at fintech roles.",
+    "changes": [
+      "say it plainly",
+      "say what's next"
+    ],
+    "next": {
+      "title": "Add a detail",
+      "lines": [
+        {
+          "label": "Detail",
+          "text": "I'm also doing a short course in data analysis."
+        }
+      ],
+      "note": "Show you're moving forward."
+    }
+  },
+  {
+    "id": "v7-better-thinking-055",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd start small",
+    "thinking": true,
+    "mightSay": "Instead of doing everything at once, I am thinking we should start with something small and then see.",
+    "better": "I'd start with one product line. If it sells, we add the rest.",
+    "changes": [
+      "name the small start",
+      "say the next step",
+      "18 words → 13"
+    ],
+    "next": {
+      "title": "Give the reason",
+      "lines": [
+        {
+          "label": "Why",
+          "text": "We learn what works without betting the whole budget."
+        }
+      ],
+      "note": "Say what you protect."
+    }
+  },
+  {
+    "id": "v7-better-thinking-056",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Update to a boss who missed the meeting",
+    "thinking": false,
+    "mightSay": "In the meeting many things were discussed, I will tell you in detail when you are free.",
+    "better": "Quick summary: we approved the budget and moved the launch to June 10.",
+    "changes": [
+      "summary now, not later",
+      "the two decisions",
+      "17 words → 13"
+    ],
+    "next": {
+      "title": "Add what's needed",
+      "lines": [
+        {
+          "label": "For you",
+          "text": "They need your sign-off on the hiring plan by Friday."
+        }
+      ],
+      "note": "Tell them their part."
+    }
+  },
+  {
+    "id": "v7-better-thinking-057",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I didn't follow the usual process",
+    "thinking": true,
+    "mightSay": "I know process is there, but this time I did it directly, because there was urgency.",
+    "better": "I skipped the usual sign-off because the client needed it within an hour.",
+    "changes": [
+      "admit it",
+      "give the reason",
+      "16 words → 13"
+    ],
+    "next": {
+      "title": "Show it's safe",
+      "lines": [
+        {
+          "label": "Follow-up",
+          "text": "I've sent it for sign-off now, after the fact."
+        }
+      ],
+      "note": "Close the gap you opened."
+    }
+  },
+  {
+    "id": "v7-better-thinking-058",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Late payment to a vendor",
+    "thinking": false,
+    "mightSay": "Payment is in process, from accounts side it is pending, it will come soon.",
+    "better": "Your payment is late because our finance team was short-staffed. It goes out on Friday.",
+    "changes": [
+      "own the delay",
+      "a firm date"
+    ],
+    "next": {
+      "title": "Add an apology",
+      "lines": [
+        {
+          "label": "Sorry",
+          "text": "Sorry for the wait, and thanks for your patience."
+        }
+      ],
+      "note": "A short sorry keeps trust."
+    }
+  },
+  {
+    "id": "v7-better-thinking-059",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I think we're solving the wrong problem",
+    "thinking": true,
+    "mightSay": "We are all working on speed, but the actual problem is something else only.",
+    "better": "I think we're solving the wrong problem. Users leave at sign-up, not over speed.",
+    "changes": [
+      "say the view",
+      "point to the real problem"
+    ],
+    "next": {
+      "title": "Back it up",
+      "lines": [
+        {
+          "label": "Evidence",
+          "text": "Half of new users quit on the sign-up page."
+        }
+      ],
+      "note": "One number moves people."
+    }
+  },
+  {
+    "id": "v7-better-thinking-060",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Update on a hiring search",
+    "thinking": false,
+    "mightSay": "Hiring is going on, we have seen many profiles, some are good, let us see.",
+    "better": "We've interviewed eight people. Two are strong, and we'll pick by Friday.",
+    "changes": [
+      "numbers, not \"many\"",
+      "say when",
+      "15 words → 12"
+    ],
+    "next": {
+      "title": "Ask for input",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "Could you meet the final two on Thursday?"
+        }
+      ],
+      "note": "Bring them in early."
+    }
+  },
+  {
+    "id": "v7-better-thinking-061",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd hold off on hiring",
+    "thinking": true,
+    "mightSay": "We should not hire now, I think we should wait some time, because things are not clear.",
+    "better": "I'd hold off hiring until March. We don't know yet if the big contract will renew.",
+    "changes": [
+      "what and until when",
+      "the reason"
+    ],
+    "next": {
+      "title": "Offer a stopgap",
+      "lines": [
+        {
+          "label": "Meanwhile",
+          "text": "We could use a freelancer for the next two months."
+        }
+      ],
+      "note": "Show how you'd cope."
+    }
+  },
+  {
+    "id": "v7-better-thinking-062",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "When you run your own business",
+    "thinking": false,
+    "mightSay": "I have my own business, it is a small business only, nothing big.",
+    "better": "I run a bakery in Indiranagar. We supply cakes to five cafés.",
+    "changes": [
+      "don't shrink it",
+      "one real detail"
+    ],
+    "next": {
+      "title": "Invite interest",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "Do you have a favourite café nearby?"
+        }
+      ],
+      "note": "Give them a way in."
+    }
+  },
+  {
+    "id": "v7-better-thinking-063",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Weighing speed against quality",
+    "thinking": true,
+    "mightSay": "If we do fast, quality will suffer, if we do quality, it will take time.",
+    "better": "We can have it fast or polished, not both. I'd go polished, since clients will see it.",
+    "changes": [
+      "name the trade-off",
+      "make a pick"
+    ],
+    "next": {
+      "title": "Give the cost",
+      "lines": [
+        {
+          "label": "Cost",
+          "text": "Polished means one extra week."
+        }
+      ],
+      "note": "Put a number on the choice."
+    }
+  },
+  {
+    "id": "v7-better-thinking-064",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Weighing cost against comfort",
+    "thinking": true,
+    "mightSay": "The cheaper hotel is okay but very small, the other one is nice but costly, I am confused.",
+    "better": "The cheaper hotel saves 4,000, but the rooms are tiny. For three nights, I'd pay more.",
+    "changes": [
+      "name both sides",
+      "make a call"
+    ],
+    "next": {
+      "title": "Say what tips it",
+      "lines": [
+        {
+          "label": "Decider",
+          "text": "If it were one night, I'd take the cheap one."
+        }
+      ],
+      "note": "Show where your line is."
+    }
+  },
+  {
+    "id": "v7-better-thinking-065",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Report delayed by missing data",
+    "thinking": false,
+    "mightSay": "The report is not done because data is not there, once data comes I will do it.",
+    "better": "The report is waiting on March sales data. I'll finish it a day after it arrives.",
+    "changes": [
+      "name the missing piece",
+      "a clear promise"
+    ],
+    "next": {
+      "title": "Ask for help",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "Could you ask finance to send it by Wednesday?"
+        }
+      ],
+      "note": "Tell them how to speed it up."
+    }
+  },
+  {
+    "id": "v7-better-thinking-066",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd ask for more data",
+    "thinking": true,
+    "mightSay": "With this much data we cannot decide properly, I think we need some more data also.",
+    "better": "I'd wait for more data. Two weeks of sales is too little to judge.",
+    "changes": [
+      "say what you want",
+      "say why"
+    ],
+    "next": {
+      "title": "Set a limit",
+      "lines": [
+        {
+          "label": "When",
+          "text": "Four more weeks should be enough."
+        }
+      ],
+      "note": "Say how much is enough."
+    }
+  },
+  {
+    "id": "v7-better-thinking-067",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Update to family on a home repair",
+    "thinking": false,
+    "mightSay": "The plumber came and he did something, he said some part is needed, he will come again.",
+    "better": "The plumber fixed the leak for now. He's back on Saturday to replace the pipe.",
+    "changes": [
+      "what's done",
+      "what's next"
+    ],
+    "next": {
+      "title": "Add the cost",
+      "lines": [
+        {
+          "label": "Cost",
+          "text": "The new pipe will cost about 2,000."
+        }
+      ],
+      "note": "Families want the cost too."
+    }
+  },
+  {
+    "id": "v7-better-thinking-068",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I agree, but only partly",
+    "thinking": true,
+    "mightSay": "Yes, I am agreeing with you, but not fully, on some points I am having a different view.",
+    "better": "I agree on the price. I'm less sure about the launch date.",
+    "changes": [
+      "where you agree",
+      "then where you don't",
+      "18 words → 12"
+    ],
+    "next": {
+      "title": "Explain the doubt",
+      "lines": [
+        {
+          "label": "Why",
+          "text": "Two weeks leaves no time to train the sales team."
+        }
+      ],
+      "note": "Be specific about the part you doubt."
+    }
+  },
+  {
+    "id": "v7-better-thinking-069",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "Your job in one line on a video call",
+    "thinking": false,
+    "mightSay": "Hi, I am Rahul, I am from the tech team, I am working on the backend side and other things.",
+    "better": "Hi, I'm Rahul. I keep the payment system running.",
+    "changes": [
+      "one line",
+      "what you do, not your team",
+      "20 words → 9"
+    ],
+    "next": {
+      "title": "Add why you're here",
+      "lines": [
+        {
+          "label": "Context",
+          "text": "I'm here to answer questions about refunds."
+        }
+      ],
+      "note": "Tell them why you joined."
+    }
+  },
+  {
+    "id": "v7-better-thinking-070",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd say no to the discount",
+    "thinking": true,
+    "mightSay": "Discount we should not give, because if we give once then every time they will ask.",
+    "better": "I'd say no to the discount. If we give it once, they'll expect it every time.",
+    "changes": [
+      "decision first",
+      "normal word order"
+    ],
+    "next": {
+      "title": "Offer something instead",
+      "lines": [
+        {
+          "label": "Instead",
+          "text": "We could offer free delivery on this order."
+        }
+      ],
+      "note": "A no lands softer with an option."
+    }
+  },
+  {
+    "id": "v7-better-thinking-071",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I want to automate this task",
+    "thinking": true,
+    "mightSay": "Every week we are doing this manually, it is taking lot of time, so better we automate it.",
+    "better": "I'd like to automate the weekly report. It takes Anil six hours by hand.",
+    "changes": [
+      "say the proposal",
+      "the cost in hours",
+      "18 words → 14"
+    ],
+    "next": {
+      "title": "Show the payoff",
+      "lines": [
+        {
+          "label": "Payoff",
+          "text": "The script takes two days to build and saves 300 hours a year."
+        }
+      ],
+      "note": "Compare effort and saving."
+    }
+  },
+  {
+    "id": "v7-better-thinking-072",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Late because the approval took long",
+    "thinking": false,
+    "mightSay": "Approval was pending from management side, it took lot of time, so we got delayed.",
+    "better": "The approval took two weeks instead of two days, so we start on the 15th.",
+    "changes": [
+      "say the gap",
+      "the new start date"
+    ],
+    "next": {
+      "title": "Prevent it",
+      "lines": [
+        {
+          "label": "Next time",
+          "text": "For the next phase, I'll ask for approval a week early."
+        }
+      ],
+      "note": "Show you've learned."
+    }
+  },
+  {
+    "id": "v7-better-thinking-073",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd give the new joiner this task",
+    "thinking": true,
+    "mightSay": "This task I am thinking we can give to the new joiner, it will be good for her.",
+    "better": "I'd give this task to Neha. It's small, and she'll learn our tools fast.",
+    "changes": [
+      "name the person",
+      "two reasons",
+      "18 words → 14"
+    ],
+    "next": {
+      "title": "Add support",
+      "lines": [
+        {
+          "label": "Support",
+          "text": "I'll check in with her on day two."
+        }
+      ],
+      "note": "Show she won't be alone."
+    }
+  },
+  {
+    "id": "v7-better-thinking-074",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Update on a late shipment",
+    "thinking": false,
+    "mightSay": "The shipment has not come yet, we are following up, they are saying it will come.",
+    "better": "The shipment is two days late. The courier says Thursday morning.",
+    "changes": [
+      "how late",
+      "the new date",
+      "16 words → 11"
+    ],
+    "next": {
+      "title": "Even better",
+      "lines": [
+        {
+          "label": "Plan",
+          "text": "If it's not here by noon Thursday, I'll call their manager."
+        }
+      ],
+      "note": "Show you'll push."
+    }
+  },
+  {
+    "id": "v7-better-thinking-075",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd pick the simpler tool",
+    "thinking": true,
+    "mightSay": "The other tool is having many features, but I feel this simple one is better for us only.",
+    "better": "I'd pick the simpler tool. We need three features, and it has all three.",
+    "changes": [
+      "pick first",
+      "match it to the need",
+      "18 words → 14"
+    ],
+    "next": {
+      "title": "Name what you give up",
+      "lines": [
+        {
+          "label": "Trade-off",
+          "text": "We lose advanced reports, which nobody asked for."
+        }
+      ],
+      "note": "Show the loss is small."
+    }
+  },
+  {
+    "id": "v7-better-thinking-076",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "When they ask what your company makes",
+    "thinking": false,
+    "mightSay": "We are a manufacturing company, we make different types of products for industries.",
+    "better": "We make the plastic caps on shampoo bottles.",
+    "changes": [
+      "name one thing",
+      "something they've seen",
+      "13 words → 8"
+    ],
+    "next": {
+      "title": "Add scale",
+      "lines": [
+        {
+          "label": "Size",
+          "text": "About a million a day, for brands you'd know."
+        }
+      ],
+      "note": "One number makes it vivid."
+    }
+  },
+  {
+    "id": "v7-better-thinking-077",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd cut the meeting to thirty minutes",
+    "thinking": true,
+    "mightSay": "One hour meeting is too much, mostly we are just talking only.",
+    "better": "I'd cut this meeting to 30 minutes. We decide everything in the first half.",
+    "changes": [
+      "proposal first",
+      "the reason"
+    ],
+    "next": {
+      "title": "Make it work",
+      "lines": [
+        {
+          "label": "How",
+          "text": "If we share updates in writing first, 30 minutes is enough."
+        }
+      ],
+      "note": "Say how it will still work."
+    }
+  },
+  {
+    "id": "v7-better-thinking-078",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Delay in a home renovation, told to family",
+    "thinking": false,
+    "mightSay": "The kitchen work is still going on, the workers are not coming properly, it will take time.",
+    "better": "The kitchen will take two more weeks. The tiles arrived late.",
+    "changes": [
+      "new timing first",
+      "one cause",
+      "17 words → 11"
+    ],
+    "next": {
+      "title": "Add a plan",
+      "lines": [
+        {
+          "label": "Meanwhile",
+          "text": "We can cook on the small stove on the balcony until then."
+        }
+      ],
+      "note": "Help them cope."
+    }
+  },
+  {
+    "id": "v7-better-thinking-079",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd launch in one city first",
+    "thinking": true,
+    "mightSay": "Instead of all-India launch, I am suggesting we go with one city first and see.",
+    "better": "I'd launch in Pune first. It's big enough to learn from and cheap to fix.",
+    "changes": [
+      "name the city",
+      "say why"
+    ],
+    "next": {
+      "title": "Say what's next",
+      "lines": [
+        {
+          "label": "Then",
+          "text": "If it works for two months, we add Mumbai and Delhi."
+        }
+      ],
+      "note": "Show the path to the rest."
+    }
+  },
+  {
+    "id": "v7-better-thinking-080",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Update when the plan changed",
+    "thinking": false,
+    "mightSay": "There is some change in the plan, now we are doing it differently, I will explain.",
+    "better": "Change of plan: we're launching on the web first, and the app comes in August.",
+    "changes": [
+      "flag the change",
+      "say the new plan"
+    ],
+    "next": {
+      "title": "Say why",
+      "lines": [
+        {
+          "label": "Reason",
+          "text": "App store review takes too long for our date."
+        }
+      ],
+      "note": "People accept change with a reason."
+    }
+  },
+  {
+    "id": "v7-better-thinking-081",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I think the numbers look off",
+    "thinking": true,
+    "mightSay": "These numbers are looking little bit wrong to me, something is not matching somewhere.",
+    "better": "I think these numbers are off. Sales went up, but the total went down.",
+    "changes": [
+      "say the doubt",
+      "point to the mismatch"
+    ],
+    "next": {
+      "title": "Suggest a check",
+      "lines": [
+        {
+          "label": "Check",
+          "text": "Could we look at the March refunds?"
+        }
+      ],
+      "note": "Point to where the error might be."
+    }
+  },
+  {
+    "id": "v7-better-thinking-082",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd keep a client who pays late",
+    "thinking": true,
+    "mightSay": "He pays late always, I know, but still I am thinking we should not lose him.",
+    "better": "I'd keep this client. They pay late, but they're 30% of our revenue.",
+    "changes": [
+      "decision first",
+      "the reason that outweighs",
+      "16 words → 13"
+    ],
+    "next": {
+      "title": "Add a condition",
+      "lines": [
+        {
+          "label": "Fix",
+          "text": "Let's ask for half the fee upfront."
+        }
+      ],
+      "note": "Keep the client, fix the problem."
+    }
+  },
+  {
+    "id": "v7-better-thinking-083",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "When you've just switched careers",
+    "thinking": false,
+    "mightSay": "Earlier I was in banking, now I have changed my line, now I am doing UX design.",
+    "better": "I design apps now. Before that, I spent eight years in banking.",
+    "changes": [
+      "now first",
+      "past second",
+      "17 words → 12"
+    ],
+    "next": {
+      "title": "Link the two",
+      "lines": [
+        {
+          "label": "Link",
+          "text": "So I design a lot of banking apps."
+        }
+      ],
+      "note": "Show the switch makes sense."
+    }
+  },
+  {
+    "id": "v7-better-thinking-084",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Thinking out loud before deciding",
+    "thinking": true,
+    "mightSay": "Let me think... so if we do this, then that will happen, then... I don't know, it's confusing.",
+    "better": "Let me think out loud. If we hire now, we spend more but finish by June.",
+    "changes": [
+      "say you're thinking",
+      "one if, one then"
+    ],
+    "next": {
+      "title": "Then the other side",
+      "lines": [
+        {
+          "label": "Other side",
+          "text": "If we wait, we save money but finish in August."
+        }
+      ],
+      "note": "Lay out both before choosing."
+    }
+  },
+  {
+    "id": "v7-better-thinking-085",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Delay because the work grew",
+    "thinking": false,
+    "mightSay": "Work is increasing day by day, new requirements are coming, so time is also increasing.",
+    "better": "The work has grown from 10 screens to 18, so we need three more weeks.",
+    "changes": [
+      "show how it grew",
+      "the new time"
+    ],
+    "next": {
+      "title": "Offer a choice",
+      "lines": [
+        {
+          "label": "Choice",
+          "text": "Or we keep the date and leave out the extra screens."
+        }
+      ],
+      "note": "Let them choose scope or time."
+    }
+  },
+  {
+    "id": "v7-better-thinking-086",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Giving two options and your pick",
+    "thinking": true,
+    "mightSay": "There are two options, we can do this or we can do that, both are fine, you tell.",
+    "better": "Two options: hire now or use a freelancer. I'd use a freelancer for three months.",
+    "changes": [
+      "name both",
+      "give your pick",
+      "18 words → 15"
+    ],
+    "next": {
+      "title": "Give the reason",
+      "lines": [
+        {
+          "label": "Why",
+          "text": "It's cheaper, and we're not sure the work will last."
+        }
+      ],
+      "note": "A pick needs a why."
+    }
+  },
+  {
+    "id": "v7-better-thinking-087",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "One-line update on chat",
+    "thinking": false,
+    "mightSay": "Hi, good morning, hope you are doing well, just wanted to update that the work is going on.",
+    "better": "Morning! The draft is 80% done. Sending it by 3.",
+    "changes": [
+      "skip the warm-up",
+      "a number and a time",
+      "18 words → 10"
+    ],
+    "next": {
+      "title": "If there's a problem",
+      "lines": [
+        {
+          "label": "Blocker",
+          "text": "The draft is 80% done, but I need the logo file to finish."
+        }
+      ],
+      "note": "Put the ask in the same message."
+    }
+  },
+  {
+    "id": "v7-better-thinking-088",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd skip the family trip this year",
+    "thinking": true,
+    "mightSay": "This time I am thinking I will not come for the trip, there are some things going on.",
+    "better": "I'll skip the trip this year. I have exams the same week.",
+    "changes": [
+      "clear and kind",
+      "the real reason",
+      "18 words → 12"
+    ],
+    "next": {
+      "title": "Make it up to them",
+      "lines": [
+        {
+          "label": "Offer",
+          "text": "Can we do a dinner when you're back?"
+        }
+      ],
+      "note": "Offer something else."
+    }
+  },
+  {
+    "id": "v7-better-thinking-089",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd pick the flat closer to work",
+    "thinking": true,
+    "mightSay": "The other flat is bigger but this one is near office, so travelling will be less only.",
+    "better": "I'd take the flat near work. It saves me two hours a day.",
+    "changes": [
+      "choice first",
+      "the time saved",
+      "17 words → 13"
+    ],
+    "next": {
+      "title": "Name the trade-off",
+      "lines": [
+        {
+          "label": "Trade-off",
+          "text": "It's smaller, but I'd rather have the time."
+        }
+      ],
+      "note": "Say what you give up."
+    }
+  },
+  {
+    "id": "v7-better-thinking-090",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "Answering at a school reunion",
+    "thinking": false,
+    "mightSay": "Nothing much, same old, I am working in a company, life is going on.",
+    "better": "I'm a teacher now. I teach maths at a school in Chennai.",
+    "changes": [
+      "don't shrug it off",
+      "one real detail"
+    ],
+    "next": {
+      "title": "Ask back",
+      "lines": [
+        {
+          "label": "Turn it",
+          "text": "What about you? Still painting?"
+        }
+      ],
+      "note": "Reunions are for catching up both ways."
+    }
+  },
+  {
+    "id": "v7-better-thinking-091",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd wait for the sale",
+    "thinking": true,
+    "mightSay": "Buying now is not good I think, sale is coming next month, we can wait.",
+    "better": "I'd wait for the sale. It starts in two weeks, and the price drops by a third.",
+    "changes": [
+      "advice first",
+      "the saving"
+    ],
+    "next": {
+      "title": "Say when you wouldn't",
+      "lines": [
+        {
+          "label": "Unless",
+          "text": "If the old one breaks first, buy it now."
+        }
+      ],
+      "note": "Name the exception."
+    }
+  },
+  {
+    "id": "v7-better-thinking-092",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Late for dinner with friends",
+    "thinking": false,
+    "mightSay": "Guys I am on the way, just five minutes, coming, coming, don't worry.",
+    "better": "Running 20 minutes late. Please order without me!",
+    "changes": [
+      "a real time",
+      "let them start",
+      "13 words → 8"
+    ],
+    "next": {
+      "title": "Even better",
+      "lines": [
+        {
+          "label": "Add your order",
+          "text": "Running 20 minutes late. Order me the pasta, please!"
+        }
+      ],
+      "note": "Make it easy for them."
+    }
+  },
+  {
+    "id": "v7-better-thinking-093",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I trust this supplier",
+    "thinking": true,
+    "mightSay": "This supplier is very good, I am trusting him fully, he never gives any problem.",
+    "better": "I trust this supplier. In three years, they've never missed a date.",
+    "changes": [
+      "say it",
+      "give the proof",
+      "15 words → 12"
+    ],
+    "next": {
+      "title": "Add a check",
+      "lines": [
+        {
+          "label": "Still",
+          "text": "I'd still check the first batch of the new product."
+        }
+      ],
+      "note": "Trust plus a check."
+    }
+  },
+  {
+    "id": "v7-better-thinking-094",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Update on the budget",
+    "thinking": false,
+    "mightSay": "Budget-wise we are okay mostly, some extra expenses came but it is manageable.",
+    "better": "We're 5% over budget, mainly from travel. We'll still finish under the limit.",
+    "changes": [
+      "give the number",
+      "name the cause"
+    ],
+    "next": {
+      "title": "Add the fix",
+      "lines": [
+        {
+          "label": "Plan",
+          "text": "We're moving the last two visits to video calls."
+        }
+      ],
+      "note": "Show how you'll stay on track."
+    }
+  },
+  {
+    "id": "v7-better-thinking-095",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd rather fix it than replace it",
+    "thinking": true,
+    "mightSay": "Replacing is costly, I feel we can repair and use only, it is still working mostly.",
+    "better": "I'd fix it. The repair costs 2,000; a new one costs 15,000.",
+    "changes": [
+      "choice first",
+      "compare the costs",
+      "16 words → 12"
+    ],
+    "next": {
+      "title": "Say when to replace",
+      "lines": [
+        {
+          "label": "Limit",
+          "text": "If it breaks again this year, we replace it."
+        }
+      ],
+      "note": "Set a line."
+    }
+  },
+  {
+    "id": "v7-better-thinking-096",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd say sorry first",
+    "thinking": true,
+    "mightSay": "Even though it is not fully our mistake, I am thinking we should say sorry to them first.",
+    "better": "Let's apologise first, even if it's only partly our fault. It will calm things down.",
+    "changes": [
+      "proposal first",
+      "the reason",
+      "18 words → 15"
+    ],
+    "next": {
+      "title": "Then explain",
+      "lines": [
+        {
+          "label": "After",
+          "text": "Once they're calm, we can explain what happened."
+        }
+      ],
+      "note": "Sorry first, facts second."
+    }
+  },
+  {
+    "id": "v7-better-thinking-097",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "Explaining your job to someone in a very different field",
+    "thinking": false,
+    "mightSay": "I am in cybersecurity, we do threat detection, vulnerability management, all these things.",
+    "better": "I protect a company's computers from hackers. I find the weak spots before they do.",
+    "changes": [
+      "plain words",
+      "say what you protect"
+    ],
+    "next": {
+      "title": "Add an example",
+      "lines": [
+        {
+          "label": "Example",
+          "text": "Last week I stopped a fake email that looked like it came from our boss."
+        }
+      ],
+      "note": "A story beats a list."
+    }
+  },
+  {
+    "id": "v7-better-thinking-098",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd ask the team before promising a date",
+    "thinking": true,
+    "mightSay": "Date I cannot give now, first team I have to ask, then only I can say.",
+    "better": "Let me check with the team first. I'll give you a date by 4.",
+    "changes": [
+      "say what you'll do",
+      "a time to reply"
+    ],
+    "next": {
+      "title": "Say why",
+      "lines": [
+        {
+          "label": "Reason",
+          "text": "I'd rather give you a date we'll actually hit."
+        }
+      ],
+      "note": "Make waiting sound like care."
+    }
+  },
+  {
+    "id": "v7-better-thinking-099",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Delay because of a public holiday",
+    "thinking": false,
+    "mightSay": "Due to holiday, the office is closed, so the work will happen after the holiday only.",
+    "better": "The bank is closed on Monday for the holiday, so the transfer goes through on Tuesday.",
+    "changes": [
+      "name the holiday effect",
+      "the new day"
+    ],
+    "next": {
+      "title": "Plan ahead",
+      "lines": [
+        {
+          "label": "Next time",
+          "text": "I'll send payments before long weekends."
+        }
+      ],
+      "note": "Show you'll plan for it."
+    }
+  },
+  {
+    "id": "v7-better-thinking-100",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Update after testing",
+    "thinking": false,
+    "mightSay": "Testing is done, mostly everything is working, few small things are there.",
+    "better": "Testing is done. 47 of 50 checks passed, and the 3 failures are small.",
+    "changes": [
+      "use numbers",
+      "say how serious"
+    ],
+    "next": {
+      "title": "Say what's next",
+      "lines": [
+        {
+          "label": "Next",
+          "text": "We'll fix them tomorrow and release on Friday."
+        }
+      ],
+      "note": "Close with the plan."
+    }
+  },
+  {
+    "id": "v7-better-thinking-101",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd spend the bonus on a course",
+    "thinking": true,
+    "mightSay": "I am thinking to do one course with the bonus, it will help in career.",
+    "better": "I'm spending my bonus on a data course. It could get me a promotion next year.",
+    "changes": [
+      "the plan",
+      "what it leads to"
+    ],
+    "next": {
+      "title": "Name what you give up",
+      "lines": [
+        {
+          "label": "Trade-off",
+          "text": "The holiday can wait a year."
+        }
+      ],
+      "note": "Show you weighed it."
+    }
+  },
+  {
+    "id": "v7-better-thinking-102",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Here's my reasoning in three steps",
+    "thinking": true,
+    "mightSay": "So there are many points, first this, then also that, and then one more thing is there.",
+    "better": "I'd pick Tool B for three reasons: it's cheaper, it's faster, and the team knows it.",
+    "changes": [
+      "the pick first",
+      "say how many reasons"
+    ],
+    "next": {
+      "title": "Check they follow",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "Does that match what you've seen?"
+        }
+      ],
+      "note": "Invite a reply."
+    }
+  },
+  {
+    "id": "v7-better-thinking-103",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "When you work behind the scenes",
+    "thinking": false,
+    "mightSay": "My work is not visible to customers, it is all backend side, hard to explain.",
+    "better": "You won't see my work, but you'd notice if it broke. I keep the app's servers running.",
+    "changes": [
+      "make it concrete",
+      "no \"backend side\""
+    ],
+    "next": {
+      "title": "Add an example",
+      "lines": [
+        {
+          "label": "Example",
+          "text": "When the app opens in a second, that's my team."
+        }
+      ],
+      "note": "Show the result they feel."
+    }
+  },
+  {
+    "id": "v7-better-thinking-104",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Admitting what you don't know yet",
+    "thinking": true,
+    "mightSay": "That thing I am not knowing exactly, I will check and tell you.",
+    "better": "I don't know yet. I'll find out and reply by noon tomorrow.",
+    "changes": [
+      "say it straight",
+      "a time to reply"
+    ],
+    "next": {
+      "title": "Share what you do know",
+      "lines": [
+        {
+          "label": "Partly",
+          "text": "I know the price; I'm not sure about delivery yet."
+        }
+      ],
+      "note": "Give what you can now."
+    }
+  },
+  {
+    "id": "v7-better-thinking-105",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "A second delay on the same task",
+    "thinking": false,
+    "mightSay": "Again it is getting delayed, I know, sorry, some more issues came.",
+    "better": "I'm sorry, this is the second delay. The new date is the 20th, and I'm confident in it.",
+    "changes": [
+      "own it",
+      "why to trust the new date"
+    ],
+    "next": {
+      "title": "Show why",
+      "lines": [
+        {
+          "label": "Proof",
+          "text": "The last open item is done; only checks are left."
+        }
+      ],
+      "note": "A second delay needs proof."
+    }
+  },
+  {
+    "id": "v7-better-thinking-106",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd take the call myself",
+    "thinking": true,
+    "mightSay": "This call I will only take, because it is sensitive and I know the full background.",
+    "better": "I'll take this call myself. The client is upset, and I know the history.",
+    "changes": [
+      "decision first",
+      "two reasons",
+      "\"I will only take\" → \"myself\""
+    ],
+    "next": {
+      "title": "Keep the team in",
+      "lines": [
+        {
+          "label": "After",
+          "text": "I'll share notes with the team afterwards."
+        }
+      ],
+      "note": "Don't leave others out."
+    }
+  },
+  {
+    "id": "v7-better-thinking-107",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Update on a customer complaint",
+    "thinking": false,
+    "mightSay": "Regarding the complaint, we are looking into it, the team is checking.",
+    "better": "We found the cause: a billing error. Refunds go out today.",
+    "changes": [
+      "the cause",
+      "the fix"
+    ],
+    "next": {
+      "title": "Add what changes",
+      "lines": [
+        {
+          "label": "Prevention",
+          "text": "We've added a check, so it won't happen again."
+        }
+      ],
+      "note": "Customers want it fixed for good."
+    }
+  },
+  {
+    "id": "v7-better-thinking-108",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd stop the project now",
+    "thinking": true,
+    "mightSay": "This project is not going anywhere, I feel we should stop it before more money goes.",
+    "better": "I'd stop the project now. After six months, only 50 people use it.",
+    "changes": [
+      "say it plainly",
+      "the fact behind it",
+      "16 words → 13"
+    ],
+    "next": {
+      "title": "Say what to keep",
+      "lines": [
+        {
+          "label": "Keep",
+          "text": "The search code can go into the main app."
+        }
+      ],
+      "note": "Show what isn't wasted."
+    }
+  },
+  {
+    "id": "v7-better-thinking-109",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd keep things as they are",
+    "thinking": true,
+    "mightSay": "I don't think any change is required, it is working fine only, why to change.",
+    "better": "I'd keep things as they are. The current setup works, and changing it costs a month.",
+    "changes": [
+      "say the view",
+      "the cost of change"
+    ],
+    "next": {
+      "title": "Say what would change it",
+      "lines": [
+        {
+          "label": "Unless",
+          "text": "If complaints double, I'd look again."
+        }
+      ],
+      "note": "Show you're not just resisting."
+    }
+  },
+  {
+    "id": "v7-better-thinking-110",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "what-do-you-do"
+    ],
+    "module": "better",
+    "topic": "What do you do?",
+    "situation": "When they ask 'is that a good job?'",
+    "thinking": false,
+    "mightSay": "It is okay only, salary is fine, nothing so great.",
+    "better": "I like it. The work is interesting, and I'm learning a lot.",
+    "changes": [
+      "answer the real question",
+      "one honest reason"
+    ],
+    "next": {
+      "title": "Second situation",
+      "lines": [
+        {
+          "label": "If you don't like it",
+          "text": "It pays well, but I'm looking for something more creative."
+        }
+      ],
+      "note": "Honest, not negative."
+    }
+  },
+  {
+    "id": "v7-better-thinking-111",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Explaining a gut call to your manager",
+    "thinking": true,
+    "mightSay": "I don't have data for this, it is just my feeling, but we should go with it.",
+    "better": "This is a gut call. The client sounded unsure, so I'd send a smaller proposal.",
+    "changes": [
+      "name it as a gut call",
+      "say what you noticed"
+    ],
+    "next": {
+      "title": "Offer a check",
+      "lines": [
+        {
+          "label": "Check",
+          "text": "I can ask them one question tomorrow to confirm."
+        }
+      ],
+      "note": "Gut calls earn trust with a check."
+    }
+  },
+  {
+    "id": "v7-better-thinking-112",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explaining-a-delay"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Delay because your laptop crashed",
+    "thinking": false,
+    "mightSay": "My laptop got crashed suddenly, all the work was in that, so I need some time.",
+    "better": "My laptop crashed, and I lost today's work. I'll redo it and send it by 11 tomorrow.",
+    "changes": [
+      "\"got crashed\" → \"crashed\"",
+      "a new time"
+    ],
+    "next": {
+      "title": "Even better",
+      "lines": [
+        {
+          "label": "Fix",
+          "text": "I've moved everything to the cloud, so this won't happen again."
+        }
+      ],
+      "note": "Show it won't repeat."
+    }
+  },
+  {
+    "id": "v7-better-thinking-113",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd do the risky part first",
+    "thinking": true,
+    "mightSay": "The difficult part we should do first only, otherwise at the end it will create problem.",
+    "better": "Let's do the risky part first. If it fails, we find out early.",
+    "changes": [
+      "proposal first",
+      "the reason",
+      "16 words → 13"
+    ],
+    "next": {
+      "title": "Show the payoff",
+      "lines": [
+        {
+          "label": "Payoff",
+          "text": "After that, the rest of the project is safe ground."
+        }
+      ],
+      "note": "Say what you gain."
+    }
+  },
+  {
+    "id": "v7-better-thinking-114",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "giving-an-update"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Update before going on leave",
+    "thinking": false,
+    "mightSay": "I am going on leave from tomorrow, everything is mostly done, if anything is there you can call.",
+    "better": "I'm off from tomorrow until the 12th. The report is done; Kiran covers client calls.",
+    "changes": [
+      "dates first",
+      "who covers what",
+      "18 words → 15"
+    ],
+    "next": {
+      "title": "Add where",
+      "lines": [
+        {
+          "label": "Where",
+          "text": "All the files are in the shared folder, under April."
+        }
+      ],
+      "note": "Make sure no one needs to call you."
+    }
+  },
+  {
+    "id": "v7-better-thinking-115",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "explain-your-thinking"
+    ],
+    "module": "better",
+    "topic": "Explain your thinking",
+    "situation": "Why I'd work from the office on Mondays",
+    "thinking": true,
+    "mightSay": "Mondays I can come to office, because that day only all the planning is happening.",
+    "better": "I'd like to work from the office on Mondays. That's when we plan the week.",
+    "changes": [
+      "say the choice",
+      "the reason"
+    ],
+    "next": {
+      "title": "Add the benefit",
+      "lines": [
+        {
+          "label": "Benefit",
+          "text": "I can sort out questions face to face, not over chat."
+        }
+      ],
+      "note": "Show it helps the team."
+    }
+  }
+]

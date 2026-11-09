@@ -29,6 +29,10 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,webp,json}'],
         navigateFallback: '/index.html',
+        // The ~1,500-card library rides in the main bundle; above the 2 MB
+        // default the file is silently left out of the precache and the app
+        // stops opening offline (answer 13A).
+        maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
       },
     }),
   ],

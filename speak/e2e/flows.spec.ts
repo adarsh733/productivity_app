@@ -1,8 +1,9 @@
-﻿import { test, expect, type Page, type Route } from '@playwright/test';
+import { test, expect, type Page, type Route } from '@playwright/test';
 
-// End-to-end flows through the v5 shell: Feed · Ask · Me, with the old v4
-// screens behind the gear on Me. 375x812 (playwright.config). Every AI and
-// sync call is answered by page.route — nothing leaves the machine.
+// End-to-end flows through the shell: Feed · Ask · Me, with the old v4 screens
+// behind the gear on Me. The Feed is the v7 Night glass feed (module cards,
+// chip row, rail 👍 👎 💬 ♡ 🔊, feedback sheet). 375x812 (playwright.config).
+// Every AI and sync call is answered by page.route — nothing leaves the machine.
 
 /** One small checked answer for answer_ask (three teach cards). */
 const ASK_ANSWER = {
@@ -119,57 +120,48 @@ async function openOldTools(page: Page) {
   await expect(page.locator('.old-tools')).toBeVisible();
 }
 
+/** The card filling the screen right now (its top edge at the top). */
+async function cardOnScreen(page: Page): Promise<string | null> {
+  return page.evaluate(() => {
+    const cards = Array.from(document.querySelectorAll('article.v7-card')) as HTMLElement[];
+    return cards.find((c) => Math.abs(c.getBoundingClientRect().top) < 2)?.dataset.cardId ?? null;
+  });
+}
+
 /**
- * The feed picks cards at random, so to reach one named card every other card
- * is removed from this throwaway test browser's database, then Ask → Feed makes
- * the feed reload (same trick as v5-step4.spec.ts).
+ * Swipe up with a real finger (Chromium touch input): the feed scrolls one
+ * whole card and snaps. Headless Chromium finishes a touch scroll only when the
+ * next touch starts, so a touch that starts and is cancelled follows.
  */
-async function showOnlyCard(page: Page, cardId: string) {
-  await expect(page.locator('.card-frame')).toBeVisible({ timeout: 15000 });
-  await page.waitForTimeout(800); // let first-run seeding finish
-  const kept = await page.evaluate(async (keep) => {
-    const dbReq = indexedDB.open('speak');
-    const db = await new Promise<IDBDatabase>((resolve, reject) => {
-      dbReq.onsuccess = () => resolve(dbReq.result);
-      dbReq.onerror = () => reject(dbReq.error);
-    });
-    const tx = db.transaction('cards', 'readwrite');
-    const store = tx.objectStore('cards');
-    await new Promise<void>((resolve, reject) => {
-      const cur = store.openKeyCursor();
-      cur.onsuccess = () => {
-        const c = cur.result;
-        if (!c) return resolve();
-        if (c.primaryKey !== keep) store.delete(c.primaryKey);
-        c.continue();
-      };
-      cur.onerror = () => reject(cur.error);
-    });
-    await new Promise<void>((resolve) => {
-      tx.oncomplete = () => resolve();
-    });
-    db.close();
-    return true;
-  }, cardId);
-  expect(kept).toBe(true);
-  await tab(page, 'Ask').click();
-  await expect(page.locator('.ask-screen')).toBeVisible();
-  await tab(page, 'Feed').click();
-  await expect(page.locator(`article[aria-label="Card: ${cardId}"]`)).toBeVisible({ timeout: 15000 });
-}
-
-/** Swipe up on the card: the next card comes. */
 async function swipeUp(page: Page) {
-  const box = await page.locator('.card-frame').boundingBox();
-  if (!box) throw new Error('no card on screen');
-  const x = box.x + box.width / 2;
-  await page.mouse.move(x, box.y + box.height * 0.6);
-  await page.mouse.down();
-  await page.mouse.move(x, box.y + box.height * 0.2, { steps: 6 });
-  await page.mouse.up();
+  const cdp = await page.context().newCDPSession(page);
+  let t = Date.now() / 1000;
+  const send = (type: 'touchStart' | 'touchMove' | 'touchEnd' | 'touchCancel', x: number, y: number) => {
+    t += 0.016;
+    return cdp.send('Input.dispatchTouchEvent', {
+      type,
+      touchPoints: type === 'touchEnd' || type === 'touchCancel' ? [] : [{ x, y }],
+      timestamp: t,
+    });
+  };
+  // Start only once the feed is at rest on a card.
+  await expect
+    .poll(() => page.evaluate(() => {
+      const f = document.querySelector('.v7-vfeed') as HTMLElement;
+      return f.scrollTop % f.clientHeight;
+    }))
+    .toBe(0);
+  await send('touchStart', 180, 720);
+  for (let i = 1; i <= 15; i++) await send('touchMove', 180, 720 - i * 40);
+  await send('touchEnd', 180, 120);
+  await page.waitForTimeout(300);
+  await send('touchStart', 200, 20);
+  await send('touchCancel', 200, 20);
+  await cdp.detach();
+  await page.waitForTimeout(700);
 }
 
-test.describe('SPEAK v5 user flows', () => {
+test.describe('SPEAK user flows', () => {
   let consoleErrors: string[] = [];
 
   async function start(page: Page, mode: AiMode = 'ok') {
@@ -194,24 +186,33 @@ test.describe('SPEAK v5 user flows', () => {
   test('Flow 1: first open lands on the Feed, no onboarding gate; five cards advance', async ({ page }) => {
     await start(page);
     await expect(page.locator('.ob-title')).toHaveCount(0);
-    await expect(page.locator('.feed-screen')).toBeVisible({ timeout: 15000 });
-    await expect(page.locator('.poster')).toBeVisible();
+    await expect(page.locator('.v7-feed')).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('article.v7-card').first()).toBeVisible({ timeout: 15000 });
     await expect(tab(page, 'Feed')).toHaveClass(/is-active/);
+    await expect(page.locator('.v7-chiprow button[aria-selected="true"]')).toHaveText('Mix');
 
+    const seen = new Set<string>();
+    const first = await cardOnScreen(page);
+    expect(first).not.toBeNull();
+    seen.add(first!);
     for (let i = 0; i < 5; i++) {
       await swipeUp(page);
-      await page.waitForTimeout(400);
+      const id = await cardOnScreen(page);
+      expect(id).not.toBeNull();
+      expect(seen.has(id!)).toBe(false);
+      seen.add(id!);
     }
-    await expect(page.locator('.poster')).toBeVisible();
-    // XP is off in the v5 feed.
+    // Old picture cards and XP are gone from the feed.
+    await expect(page.locator('.poster')).toHaveCount(0);
     await expect(page.getByText(/XP today/i)).toHaveCount(0);
   });
 
-  test('Flow 2: save a card in the Feed → Me shows it under Saved', async ({ page }) => {
+  test('Flow 2: save a card with ♡ in the Feed → Me shows it under Saved', async ({ page }) => {
     await start(page);
-    await expect(page.locator('.feed-screen')).toBeVisible({ timeout: 15000 });
-    await page.getByRole('button', { name: /Bookmark card/i }).first().click();
-    await expect(page.locator('.toast')).toContainText('Saved');
+    const card = page.locator('article.v7-card').first();
+    await expect(card).toBeVisible({ timeout: 15000 });
+    await card.getByRole('button', { name: 'Save bookmark' }).click();
+    await expect(card.getByRole('button', { name: 'Remove bookmark' })).toBeVisible();
 
     await tab(page, 'Me').click();
     const saved = page.locator('.me-row[data-row="saved"] .me-row-sub');
@@ -274,40 +275,42 @@ test.describe('SPEAK v5 user flows', () => {
     await expect(page.locator('.me-screen')).toBeVisible();
   });
 
-  test('Flow 6: 🎤 Say mine on a Try card opens the say-it drill; mic denied still cancels cleanly', async ({
+  test('Flow 6: 👎 on a card → sheet → reason + comment → "Got it" → Me lists what the app learned', async ({
     page,
-    context,
   }) => {
-    await context.clearPermissions();
     await start(page);
-    await expect(page.locator('.feed-screen')).toBeVisible({ timeout: 15000 });
-    await showOnlyCard(page, 'try-smalltalk-monday-weekend');
-    await expect(page.locator('.try-face')).toBeVisible();
+    await page.locator('.v7-chiprow button', { hasText: /^Words$/ }).click();
+    const card = page.locator('article.v7-card').first();
+    await expect(card).toHaveAttribute('data-module', 'words', { timeout: 10000 });
 
-    await page.getByRole('button', { name: /Say my answer out loud/i }).click();
-    const sheet = page.locator('.old-tools');
+    await card.getByRole('button', { name: 'Thumbs down' }).click();
+    const sheet = page.getByRole('dialog', { name: 'What did you think?' });
     await expect(sheet).toBeVisible();
-    await expect(sheet.locator('.speak-drill-runner')).toBeVisible();
-    // The drill asks for HIS answer to this card's moment, not a generic prompt.
-    await expect(sheet).toContainText('How was your weekend');
+    await sheet.getByRole('button', { name: 'Too easy' }).click();
+    await sheet.getByRole('textbox', { name: 'Comment' }).fill('Too basic. I already use this word daily.');
+    await sheet.getByRole('button', { name: 'Send feedback' }).click();
+    await expect(sheet.locator('.v7-sheet-gotit')).toContainText(/^Got it/);
 
-    await sheet.locator('.deck-modal-close-btn').first().click();
-    await page.getByRole('button', { name: 'Close old tools' }).click();
-    await expect(page.locator('.old-tools')).toHaveCount(0);
-    await expect(page.locator('.feed-screen')).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(sheet).toHaveCount(0);
+    await tab(page, 'Me').click();
+    await expect(page.locator('[data-testid="me-learned-item"]').first()).toBeVisible({ timeout: 10000 });
   });
 
   test('Flow 7: reload keeps the Feed and progress, with no first-run screen', async ({ page }) => {
     await start(page);
-    await expect(page.locator('.feed-screen')).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('article.v7-card').first()).toBeVisible({ timeout: 15000 });
+    const first = await cardOnScreen(page);
     await swipeUp(page);
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(500);
 
     await page.reload();
     await expect(page.locator('.v5-shell')).toBeVisible({ timeout: 15000 });
-    await expect(page.locator('.feed-screen')).toBeVisible();
-    await expect(page.locator('.poster')).toBeVisible();
+    await expect(page.locator('.v7-feed')).toBeVisible();
+    await expect(page.locator('article.v7-card').first()).toBeVisible({ timeout: 15000 });
     await expect(page.locator('.ob-title')).toHaveCount(0);
+    // The card swiped past was recorded as viewed: it does not open the feed again.
+    expect(await cardOnScreen(page)).not.toBe(first);
   });
 
   test('Flow 8: keyboard — old Browse deck opens and Escape closes it', async ({ page }) => {

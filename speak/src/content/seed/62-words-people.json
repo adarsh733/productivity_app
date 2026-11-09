@@ -1,0 +1,4620 @@
+[
+  {
+    "id": "v7-words-people-001",
+    "type": "module",
+    "module": "words",
+    "topic": "friendly",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "friendly",
+    "pos": "adjective",
+    "say": "FREND-lee",
+    "meaning": "Kind and pleasant to talk to.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Our new neighbour is very **friendly**; she brought us sweets.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The waiter was **friendly** and found us a good table.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Everyone at the new gym was **friendly** to me."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not an adverb: say \"in a friendly way\"",
+        "text": "She smiled friendly at me."
+      }
+    ],
+    "rule": "an adjective, not an adverb"
+  },
+  {
+    "id": "v7-words-people-002",
+    "type": "module",
+    "module": "words",
+    "topic": "outgoing",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "outgoing",
+    "pos": "adjective",
+    "say": "OWT-goh-ing",
+    "meaning": "Happy to meet and talk to new people.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "My sister is **outgoing**; she talks to everyone at parties.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "Riya is **outgoing**, so she welcomes every new joiner.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He's more **outgoing** than his brother."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for things",
+        "text": "This sofa is very outgoing."
+      }
+    ],
+    "rule": "for people who enjoy meeting others"
+  },
+  {
+    "id": "v7-words-people-003",
+    "type": "module",
+    "module": "words",
+    "topic": "polite",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "polite",
+    "pos": "adjective",
+    "say": "puh-LITE",
+    "meaning": "Speaking and acting with good manners.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Say thank you to your aunt; be **polite**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He stayed **polite** even when the shopkeeper was rude.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It's **polite** to wait until everyone is served."
+    },
+    "wrong": [
+      {
+        "label": "✗ For how you do it, say \"politely\"",
+        "text": "He asked me polite to move."
+      }
+    ],
+    "rule": "polite to someone; politely for actions",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "She asked polite for water.",
+          "right": false
+        },
+        {
+          "text": "She was polite to the guard.",
+          "right": true
+        },
+        {
+          "text": "The road was polite.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-004",
+    "type": "module",
+    "module": "words",
+    "topic": "mature",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "mature",
+    "pos": "adjective",
+    "say": "muh-CHOOR",
+    "meaning": "Thinking and acting like a sensible adult.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My son is very **mature** for a twelve-year-old.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "It was **mature** of you to say sorry first.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For how people act",
+      "text": "She handled the fight in a **mature** way."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"old\"",
+        "text": "My grandfather is very mature; he is 80."
+      }
+    ],
+    "rule": "about good sense, not age"
+  },
+  {
+    "id": "v7-words-people-005",
+    "type": "module",
+    "module": "words",
+    "topic": "meticulous",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "meticulous",
+    "pos": "adjective",
+    "say": "muh-TIK-yuh-lus",
+    "meaning": "Very careful about every small detail.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Anu is **meticulous**; she checks every number twice.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My mother is **meticulous** about keeping the kitchen clean.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Meticulous about something",
+      "text": "He's **meticulous** about his notes."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"very good\"",
+        "text": "The movie was meticulous."
+      }
+    ],
+    "rule": "careful with details"
+  },
+  {
+    "id": "v7-words-people-006",
+    "type": "module",
+    "module": "words",
+    "topic": "rude",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "rude",
+    "pos": "adjective",
+    "say": "ROOD",
+    "meaning": "Not polite; hurting people with words or actions.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It's **rude** to use your phone at dinner.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The driver was **rude** and shouted at us.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'm sorry, I didn't mean to be **rude**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Needs \"be\"",
+        "text": "Don't rude to your sister."
+      }
+    ],
+    "rule": "be rude to someone",
+    "check": {
+      "question": "Your friend talks over everyone at dinner. He is being…",
+      "options": [
+        {
+          "text": "rude",
+          "right": true
+        },
+        {
+          "text": "polite",
+          "right": false
+        },
+        {
+          "text": "mature",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-007",
+    "type": "module",
+    "module": "words",
+    "topic": "sincere",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "sincere",
+    "pos": "adjective",
+    "say": "sin-SEER",
+    "meaning": "Meaning what you say; honest about your feelings.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "His apology felt **sincere**, so I forgave him.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I could tell her smile was **sincere**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For real feelings",
+      "text": "Please accept my **sincere** thanks."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"hard-working\"",
+        "text": "He is very sincere; he finishes his work on time."
+      }
+    ],
+    "rule": "honest, not hard-working"
+  },
+  {
+    "id": "v7-words-people-008",
+    "type": "module",
+    "module": "words",
+    "topic": "honest",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "honest",
+    "pos": "adjective",
+    "say": "ON-ist",
+    "meaning": "Telling the truth; not cheating.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Be **honest**: did you eat the last mango?",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "To be **honest**, I didn't like the movie.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He was **honest** about his mistake."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"an honest\", not \"a honest\"",
+        "text": "He is a honest man."
+      }
+    ],
+    "rule": "the h is silent: an honest person"
+  },
+  {
+    "id": "v7-words-people-009",
+    "type": "module",
+    "module": "words",
+    "topic": "humble",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "humble",
+    "pos": "adjective",
+    "say": "HUM-buhl",
+    "meaning": "Not showing off, even when you are good at something.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "She won the prize but stayed **humble**.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "Our boss is **humble**; he says \"we did it\", not \"I did it\".",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He's rich but very **humble**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"shy\"",
+        "text": "She is humble, so she never talks at parties."
+      }
+    ],
+    "rule": "no showing off",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "He topped the class but stayed humble.",
+          "right": true
+        },
+        {
+          "text": "My phone is very humble.",
+          "right": false
+        },
+        {
+          "text": "She humble to everyone.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-010",
+    "type": "module",
+    "module": "words",
+    "topic": "eloquent",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "eloquent",
+    "pos": "adjective",
+    "say": "EL-uh-kwunt",
+    "meaning": "Speaking clearly and well, in a way that moves people.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Her speech at the farewell was **eloquent**.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "He's so **eloquent**; he can explain anything.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For speech and speakers",
+      "text": "He gave an **eloquent** toast at the wedding."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"loud\"",
+        "text": "He is eloquent; you can hear him across the room."
+      }
+    ],
+    "rule": "speaks well, not loudly"
+  },
+  {
+    "id": "v7-words-people-011",
+    "type": "module",
+    "module": "words",
+    "topic": "kind",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "kind",
+    "pos": "adjective",
+    "say": "KYND",
+    "meaning": "Caring and gentle towards others.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It was **kind** of you to bring lunch.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The old man was **kind** and showed us the way.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Kind of you, kind to someone",
+      "text": "She is always **kind** to animals."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"kind of you\", not \"kind from you\"",
+        "text": "That was very kind from you."
+      }
+    ],
+    "rule": "kind of you; kind to someone"
+  },
+  {
+    "id": "v7-words-people-012",
+    "type": "module",
+    "module": "words",
+    "topic": "arrogant",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "arrogant",
+    "pos": "adjective",
+    "say": "AIR-uh-gunt",
+    "meaning": "Acting as if you are better than others.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "He's **arrogant**; he never listens to the team.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "Don't be **arrogant** just because you won once.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It sounds **arrogant** to say you never make mistakes."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not praise",
+        "text": "Great job, you were so arrogant on stage!"
+      }
+    ],
+    "rule": "a bad thing to be",
+    "check": {
+      "question": "Your cousin says, \"I'm the smartest one here.\" He sounds…",
+      "options": [
+        {
+          "text": "humble",
+          "right": false
+        },
+        {
+          "text": "arrogant",
+          "right": true
+        },
+        {
+          "text": "polite",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-013",
+    "type": "module",
+    "module": "words",
+    "topic": "lazy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "lazy",
+    "pos": "adjective",
+    "say": "LAY-zee",
+    "meaning": "Not wanting to work or make an effort.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I felt **lazy** on Sunday and stayed in bed.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Don't be **lazy**; let's walk to the shop.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "My dog is too **lazy** to chase the ball."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"tired\"",
+        "text": "I'm lazy after the long flight."
+      }
+    ],
+    "rule": "lazy means you don't want to; tired means you can't"
+  },
+  {
+    "id": "v7-words-people-014",
+    "type": "module",
+    "module": "words",
+    "topic": "confident",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "confident",
+    "pos": "adjective",
+    "say": "KON-fih-dunt",
+    "meaning": "Sure of yourself and what you can do.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "She was **confident** in the interview.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "He's **confident** enough to sing in front of everyone.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Confident about or in something",
+      "text": "I'm **confident** about my answer."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"confident on\"",
+        "text": "I am confident on this topic."
+      }
+    ],
+    "rule": "confident about or in something"
+  },
+  {
+    "id": "v7-words-people-015",
+    "type": "module",
+    "module": "words",
+    "topic": "resilient",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "resilient",
+    "pos": "adjective",
+    "say": "rih-ZIL-yunt",
+    "meaning": "Able to get back up after something bad happens.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My grandmother is **resilient**; she rebuilt the shop after the flood.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Kids are **resilient**; he was laughing again the next day.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The team stayed **resilient** after losing the big client."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"stubborn\"",
+        "text": "He's resilient; he never changes his mind."
+      }
+    ],
+    "rule": "bounce back, not refuse to change",
+    "check": {
+      "question": "You fail a test, feel sad for a day, then start again. You are…",
+      "options": [
+        {
+          "text": "resilient",
+          "right": true
+        },
+        {
+          "text": "lazy",
+          "right": false
+        },
+        {
+          "text": "rude",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-016",
+    "type": "module",
+    "module": "words",
+    "topic": "bossy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "bossy",
+    "pos": "adjective",
+    "say": "BOSS-ee",
+    "meaning": "Always telling others what to do.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My little sister is so **bossy**; she plans everyone's day.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Stop being **bossy** and let us choose the film.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I don't want to sound **bossy**, but please be on time."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a word for your boss",
+        "text": "My bossy said I can leave early."
+      }
+    ],
+    "rule": "a way of acting, not a job"
+  },
+  {
+    "id": "v7-words-people-017",
+    "type": "module",
+    "module": "words",
+    "topic": "considerate",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "considerate",
+    "pos": "adjective",
+    "say": "kun-SID-er-it",
+    "meaning": "Thinking about what other people feel and need.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It's **considerate** to keep the music low at night.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He's **considerate**; he always asks if we've eaten.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Thank you for being so **considerate**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"considerable\" (big)",
+        "text": "There was a considerate amount of traffic."
+      }
+    ],
+    "rule": "considerate = thoughtful; considerable = big"
+  },
+  {
+    "id": "v7-words-people-018",
+    "type": "module",
+    "module": "words",
+    "topic": "selfish",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "selfish",
+    "pos": "adjective",
+    "say": "SEL-fish",
+    "meaning": "Caring only about yourself.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It was **selfish** of me to finish all the ice cream.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Don't be **selfish**; share the fries.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He made a **selfish** choice and left us waiting."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"self-confident\"",
+        "text": "She's selfish, so she speaks up in meetings."
+      }
+    ],
+    "rule": "only thinking of yourself",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "He's selfish; he never shares his snacks.",
+          "right": true
+        },
+        {
+          "text": "The bag is selfish.",
+          "right": false
+        },
+        {
+          "text": "She selfished the cake.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-019",
+    "type": "module",
+    "module": "words",
+    "topic": "thoughtful",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "thoughtful",
+    "pos": "adjective",
+    "say": "THAWT-ful",
+    "meaning": "Kind, and remembering what others need.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "What a **thoughtful** gift; you remembered I love tea!",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He's **thoughtful**; he always texts after I travel.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It was **thoughtful** of you to call."
+    },
+    "wrong": [
+      {
+        "label": "✗ Needs a noun after it",
+        "text": "Thanks for your thoughtful."
+      }
+    ],
+    "rule": "a thoughtful gift, a thoughtful friend"
+  },
+  {
+    "id": "v7-words-people-020",
+    "type": "module",
+    "module": "words",
+    "topic": "empathetic",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "empathetic",
+    "pos": "adjective",
+    "say": "em-puh-THET-ik",
+    "meaning": "Able to feel what someone else is feeling.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Our manager was **empathetic** when my father was ill.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "Be **empathetic**; she's had a hard week.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Good nurses are **empathetic** towards their patients."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a noun: say \"empathy\"",
+        "text": "She has a lot of empathetic."
+      }
+    ],
+    "rule": "empathy is the noun"
+  },
+  {
+    "id": "v7-words-people-021",
+    "type": "module",
+    "module": "words",
+    "topic": "generous",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "generous",
+    "pos": "adjective",
+    "say": "JEN-er-us",
+    "meaning": "Happy to give time, money or help.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My uncle is **generous**; he paid for everyone's dinner.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "That's very **generous** of you, thank you!",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Generous with something",
+      "text": "She's **generous** with her time."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"big\" bad things",
+        "text": "We were stuck in a generous traffic jam."
+      }
+    ],
+    "rule": "generous with your time or money",
+    "check": {
+      "question": "A friend pays for your movie ticket and says, \"My treat.\" He is…",
+      "options": [
+        {
+          "text": "generous",
+          "right": true
+        },
+        {
+          "text": "selfish",
+          "right": false
+        },
+        {
+          "text": "bossy",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-022",
+    "type": "module",
+    "module": "words",
+    "topic": "sensible",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "sensible",
+    "pos": "adjective",
+    "say": "SEN-sih-buhl",
+    "meaning": "Showing good judgement; practical.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Wear **sensible** shoes; we'll walk a lot.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "That's a **sensible** plan; let's leave early.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It's **sensible** to save some money each month."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"sensitive\"",
+        "text": "He cried at the film; he's very sensible."
+      }
+    ],
+    "rule": "sensible = wise; sensitive = easily hurt"
+  },
+  {
+    "id": "v7-words-people-023",
+    "type": "module",
+    "module": "words",
+    "topic": "patient",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "patient",
+    "pos": "adjective",
+    "say": "PAY-shunt",
+    "meaning": "Able to wait calmly without getting angry.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Be **patient**; the rice needs ten more minutes.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She's so **patient** with her little brother.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Patient with someone",
+      "text": "Thank you for being **patient** with me."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a verb: needs \"be\"",
+        "text": "Please patient for five minutes."
+      }
+    ],
+    "rule": "be patient with someone"
+  },
+  {
+    "id": "v7-words-people-024",
+    "type": "module",
+    "module": "words",
+    "topic": "sensitive",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "sensitive",
+    "pos": "adjective",
+    "say": "SEN-sih-tiv",
+    "meaning": "Easily hurt or upset by what others say.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "He's **sensitive** about his weight, so don't joke about it.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "My brother is **sensitive**; he cries at sad films.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Sensitive about or to something",
+      "text": "She's **sensitive** to criticism."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"sensible\"",
+        "text": "It was a sensitive idea to book early."
+      }
+    ],
+    "rule": "sensitive = easily hurt; sensible = wise",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "He is sensitive about his exam marks.",
+          "right": true
+        },
+        {
+          "text": "It's sensitive to carry an umbrella.",
+          "right": false
+        },
+        {
+          "text": "She sensitived the news.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-025",
+    "type": "module",
+    "module": "words",
+    "topic": "condescending",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "condescending",
+    "pos": "adjective",
+    "say": "kon-dih-SEN-ding",
+    "meaning": "Talking to someone as if they are less clever.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "His tone was **condescending**: \"Let me explain it slowly for you.\"",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "Don't be **condescending**; she knows more about cars than you.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Condescending to someone",
+      "text": "He was **condescending** to the new intern."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"kind\" or \"helpful\"",
+        "text": "It's condescending of you to help me move."
+      }
+    ],
+    "rule": "talking down to someone"
+  },
+  {
+    "id": "v7-words-people-026",
+    "type": "module",
+    "module": "words",
+    "topic": "chatty",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "chatty",
+    "pos": "adjective",
+    "say": "CHAT-ee",
+    "meaning": "Liking to talk a lot, in a friendly way.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Grandma gets **chatty** after her evening tea.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The taxi driver was **chatty** the whole ride.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She's **chatty** in the mornings."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a verb: say \"chatted\"",
+        "text": "We chattied for an hour."
+      }
+    ],
+    "rule": "friendly lots of talk"
+  },
+  {
+    "id": "v7-words-people-027",
+    "type": "module",
+    "module": "words",
+    "topic": "tactful",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "tactful",
+    "pos": "adjective",
+    "say": "TAKT-ful",
+    "meaning": "Saying hard things in a careful, kind way.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Be **tactful** when you tell him the plan changed.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "She was **tactful** and called the haircut \"different\".",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "That was a **tactful** way to say no."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"tactical\" (a clever plan)",
+        "text": "We need a tactful plan to win the match."
+      }
+    ],
+    "rule": "careful with feelings",
+    "check": {
+      "question": "Your friend asks if you like her cooking. It's too salty. A tactful reply is…",
+      "options": [
+        {
+          "text": "\"It's terrible.\"",
+          "right": false
+        },
+        {
+          "text": "\"Maybe a little less salt next time?\"",
+          "right": true
+        },
+        {
+          "text": "\"I'll order pizza.\"",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-028",
+    "type": "module",
+    "module": "words",
+    "topic": "talkative",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "talkative",
+    "pos": "adjective",
+    "say": "TAW-kuh-tiv",
+    "meaning": "Talking a lot.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My nephew is **talkative**; he never stops asking questions.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "You're **talkative** today. Good news?",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She's quiet at work but **talkative** at home."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"good at speaking\"",
+        "text": "She's talkative, so she gave a great speech."
+      }
+    ],
+    "rule": "talks a lot, not talks well"
+  },
+  {
+    "id": "v7-words-people-029",
+    "type": "module",
+    "module": "words",
+    "topic": "blunt",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "blunt",
+    "pos": "adjective",
+    "say": "BLUNT",
+    "meaning": "Saying exactly what you think, without softening it.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "To be **blunt**, the report is late.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "He's **blunt**, but he's honest.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Blunt with someone",
+      "text": "Sorry to be **blunt**, but I can't come."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"blunt with\", not \"blunt on\"",
+        "text": "She was very blunt on me."
+      }
+    ],
+    "rule": "blunt with someone"
+  },
+  {
+    "id": "v7-words-people-030",
+    "type": "module",
+    "module": "words",
+    "topic": "gregarious",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "gregarious",
+    "pos": "adjective",
+    "say": "grih-GAIR-ee-us",
+    "meaning": "Loving to be around lots of people.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "He's **gregarious**; he knows everyone at the party.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "Our **gregarious** neighbour invites the whole street for Diwali.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She's **gregarious** and hates eating alone."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"greedy\"",
+        "text": "He's gregarious; he ate all the sweets."
+      }
+    ],
+    "rule": "loves company",
+    "check": {
+      "question": "Who is gregarious?",
+      "options": [
+        {
+          "text": "Sam, who loves big parties and new people.",
+          "right": true
+        },
+        {
+          "text": "Raj, who reads alone all weekend.",
+          "right": false
+        },
+        {
+          "text": "Leela, who never leaves home.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-031",
+    "type": "module",
+    "module": "words",
+    "topic": "stubborn",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "stubborn",
+    "pos": "adjective",
+    "say": "STUB-ern",
+    "meaning": "Not willing to change your mind.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My father is **stubborn**; he won't use the map.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Don't be **stubborn**; just ask for help.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Stubborn about something",
+      "text": "She's **stubborn** about doing it her way."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"strong\" things",
+        "text": "This table is very stubborn."
+      }
+    ],
+    "rule": "about people who will not change their mind"
+  },
+  {
+    "id": "v7-words-people-032",
+    "type": "module",
+    "module": "words",
+    "topic": "approachable",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "approachable",
+    "pos": "adjective",
+    "say": "uh-PROH-chuh-buhl",
+    "meaning": "Easy and friendly to talk to.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Our new manager is **approachable**; you can ask her anything.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "He looks serious, but he's very **approachable**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Try to look **approachable** at the help desk."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a verb: say \"approach\"",
+        "text": "Please approachable me any time."
+      }
+    ],
+    "rule": "easy to talk to"
+  },
+  {
+    "id": "v7-words-people-033",
+    "type": "module",
+    "module": "words",
+    "topic": "clever",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "clever",
+    "pos": "adjective",
+    "say": "KLEV-er",
+    "meaning": "Quick to learn and understand.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "That's a **clever** way to fold shirts!",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She's **clever**; she fixed my phone in a minute.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "What a **clever** idea."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a noun: say \"cleverness\"",
+        "text": "He has a lot of clever."
+      }
+    ],
+    "rule": "a clever person, a clever idea",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "She found a clever way to save time.",
+          "right": true
+        },
+        {
+          "text": "He has a lot of clever.",
+          "right": false
+        },
+        {
+          "text": "The milk is clever.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-034",
+    "type": "module",
+    "module": "words",
+    "topic": "down-to-earth",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "down-to-earth",
+    "pos": "adjective",
+    "say": "down-tuh-URTH",
+    "meaning": "Simple, honest and practical; not showy.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "She's famous but very **down-to-earth**.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "Our CEO is **down-to-earth**; he eats in the canteen with us.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I like him; he's **down-to-earth**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"sad\"",
+        "text": "I'm feeling down-to-earth today."
+      }
+    ],
+    "rule": "simple and real, not sad"
+  },
+  {
+    "id": "v7-words-people-035",
+    "type": "module",
+    "module": "words",
+    "topic": "candid",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "candid",
+    "pos": "adjective",
+    "say": "KAN-did",
+    "meaning": "Open and honest, even about hard things.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Thanks for the **candid** feedback; it helps.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "To be **candid**, I'm not ready to move.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She was **candid** about her mistakes."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"candidate\"",
+        "text": "He is a candid for the job."
+      }
+    ],
+    "rule": "candid = honest; a candidate wants a job"
+  },
+  {
+    "id": "v7-words-people-036",
+    "type": "module",
+    "module": "words",
+    "topic": "clumsy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "clumsy",
+    "pos": "adjective",
+    "say": "KLUM-zee",
+    "meaning": "Often dropping things or bumping into things.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm so **clumsy**; I broke another glass.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He's **clumsy** on the dance floor.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Sorry, that was **clumsy** of me."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"messy\"",
+        "text": "My room is clumsy."
+      }
+    ],
+    "rule": "about moving badly, not mess",
+    "check": {
+      "question": "You trip over your own feet. You feel…",
+      "options": [
+        {
+          "text": "clumsy",
+          "right": true
+        },
+        {
+          "text": "candid",
+          "right": false
+        },
+        {
+          "text": "humble",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-037",
+    "type": "module",
+    "module": "words",
+    "topic": "two-faced",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "two-faced",
+    "pos": "adjective",
+    "say": "too-FAYST",
+    "meaning": "Nice to your face, but mean behind your back.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "Don't trust him; he's **two-faced**.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "She was **two-faced**; she praised the plan, then complained to the boss.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It's **two-faced** to smile and then gossip."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"two jobs\"",
+        "text": "He's two-faced: a teacher and a singer."
+      }
+    ],
+    "rule": "fake, not busy"
+  },
+  {
+    "id": "v7-words-people-038",
+    "type": "module",
+    "module": "words",
+    "topic": "cheeky",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "cheeky",
+    "pos": "adjective",
+    "say": "CHEE-kee",
+    "meaning": "A little rude, but in a funny or playful way.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My nephew gave me a **cheeky** grin and took my biscuit.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "That was a **cheeky** reply!",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He made a **cheeky** comment about my hair."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for serious harm",
+        "text": "The thief was very cheeky and hit him."
+      }
+    ],
+    "rule": "playful, not dangerous"
+  },
+  {
+    "id": "v7-words-people-039",
+    "type": "module",
+    "module": "words",
+    "topic": "sarcastic",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "sarcastic",
+    "pos": "adjective",
+    "say": "sar-KAS-tik",
+    "meaning": "Saying the opposite of what you mean, to joke or tease.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "When I said \"nice parking\", I was being **sarcastic**.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "Don't be **sarcastic** with Grandpa; he takes it seriously.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Was that **sarcastic**, or do you really like it?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"honest\"",
+        "text": "He was sarcastic and told me the real price."
+      }
+    ],
+    "rule": "you mean the opposite",
+    "check": {
+      "question": "It's pouring with rain and your friend says, \"Lovely day for a picnic.\" She is being…",
+      "options": [
+        {
+          "text": "sarcastic",
+          "right": true
+        },
+        {
+          "text": "punctual",
+          "right": false
+        },
+        {
+          "text": "generous",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-040",
+    "type": "module",
+    "module": "words",
+    "topic": "pragmatic",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "pragmatic",
+    "pos": "adjective",
+    "say": "prag-MAT-ik",
+    "meaning": "Doing what works in real life, not what's perfect.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Let's be **pragmatic** and finish the main part first.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I'm being **pragmatic**: we can't afford both, so we pick one.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She's **pragmatic** about money."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"dramatic\"",
+        "text": "The movie ending was so pragmatic, I cried."
+      }
+    ],
+    "rule": "practical, not perfect"
+  },
+  {
+    "id": "v7-words-people-041",
+    "type": "module",
+    "module": "words",
+    "topic": "brave",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "brave",
+    "pos": "adjective",
+    "say": "BRAYV",
+    "meaning": "Not letting fear stop you.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My son was **brave** at the dentist.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "It was **brave** of you to speak first.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She was **brave** enough to ask for a raise."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a noun: say \"bravery\"",
+        "text": "He showed great brave."
+      }
+    ],
+    "rule": "brave enough to do something"
+  },
+  {
+    "id": "v7-words-people-042",
+    "type": "module",
+    "module": "words",
+    "topic": "genuine",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "genuine",
+    "pos": "adjective",
+    "say": "JEN-yoo-in",
+    "meaning": "Real and honest; not fake.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "She's a **genuine** friend; she always shows up.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "He has a **genuine** interest in his customers.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "His smile was **genuine**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"fair\" prices: say \"a fair price\"",
+        "text": "The shop gave me a genuine price."
+      }
+    ],
+    "rule": "real, not fair or cheap",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Her thanks felt genuine.",
+          "right": true
+        },
+        {
+          "text": "Give me a genuine rate.",
+          "right": false
+        },
+        {
+          "text": "He genuined the story.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-043",
+    "type": "module",
+    "module": "words",
+    "topic": "caring",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "caring",
+    "pos": "adjective",
+    "say": "KAIR-ing",
+    "meaning": "Showing that you love and look after others.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Our nurse was so **caring** with my father.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He's a **caring** friend; he calls when I'm sick.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She's **caring** towards her students."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"careful\"",
+        "text": "Be caring when you cross the road."
+      }
+    ],
+    "rule": "caring = loving; careful = safe"
+  },
+  {
+    "id": "v7-words-people-044",
+    "type": "module",
+    "module": "words",
+    "topic": "witty",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "witty",
+    "pos": "adjective",
+    "say": "WIT-ee",
+    "meaning": "Funny in a clever, quick way.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "Her **witty** reply made the whole table laugh.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "His speech was short and **witty**.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He's **witty** without being mean."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for silly falls",
+        "text": "He was so witty when he fell off his chair."
+      }
+    ],
+    "rule": "clever words, not silly actions"
+  },
+  {
+    "id": "v7-words-people-045",
+    "type": "module",
+    "module": "words",
+    "topic": "conscientious",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "conscientious",
+    "pos": "adjective",
+    "say": "kon-shee-EN-shus",
+    "meaning": "Careful to do your work well and on time.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "She's **conscientious**; she never misses a deadline.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "He's **conscientious** about taking his medicine.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Thanks for being so **conscientious** with the files."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"conscious\" (awake)",
+        "text": "He fainted, but he is conscientious now."
+      }
+    ],
+    "rule": "careful with duties",
+    "check": {
+      "question": "Your teammate double-checks everything and is never late. She is…",
+      "options": [
+        {
+          "text": "conscientious",
+          "right": true
+        },
+        {
+          "text": "conscious",
+          "right": false
+        },
+        {
+          "text": "careless",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-046",
+    "type": "module",
+    "module": "words",
+    "topic": "helpful",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "helpful",
+    "pos": "adjective",
+    "say": "HELP-ful",
+    "meaning": "Ready to help; making things easier.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Thanks, that's really **helpful**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The guard was **helpful** and showed us the gate.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Your notes were **helpful** for the exam."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a verb: say \"help\"",
+        "text": "Can you helpful me?"
+      }
+    ],
+    "rule": "a helpful person, helpful notes"
+  },
+  {
+    "id": "v7-words-people-047",
+    "type": "module",
+    "module": "words",
+    "topic": "charming",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "charming",
+    "pos": "adjective",
+    "say": "CHAR-ming",
+    "meaning": "Pleasant and easy to like.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "Her grandfather is **charming**; he tells great stories.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "What a **charming** little house!",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He was **charming** to all the guests."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"lucky\"",
+        "text": "This is my charming pen; I use it in exams."
+      }
+    ],
+    "rule": "pleasant, not lucky"
+  },
+  {
+    "id": "v7-words-people-048",
+    "type": "module",
+    "module": "words",
+    "topic": "strict",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "strict",
+    "pos": "adjective",
+    "say": "STRIKT",
+    "meaning": "Making people follow rules closely.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My parents were **strict** about bedtime.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "Our client is **strict** about deadlines.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Strict with someone, strict about something",
+      "text": "She's **strict** with her students."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a verb: say \"follow\"",
+        "text": "Please strict the rules."
+      }
+    ],
+    "rule": "strict with people, about rules",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The coach is strict about warm-ups.",
+          "right": true
+        },
+        {
+          "text": "Please strict the rules.",
+          "right": false
+        },
+        {
+          "text": "The rice is strict.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-049",
+    "type": "module",
+    "module": "words",
+    "topic": "cautious",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "cautious",
+    "pos": "adjective",
+    "say": "KAW-shus",
+    "meaning": "Careful to avoid danger or mistakes.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Be **cautious** on the wet stairs.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She's **cautious** with new people at first.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Cautious about something",
+      "text": "I'm **cautious** about lending money."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"conscious of\"",
+        "text": "I'm cautious of my weight."
+      }
+    ],
+    "rule": "careful, to stay safe"
+  },
+  {
+    "id": "v7-words-people-050",
+    "type": "module",
+    "module": "words",
+    "topic": "introspective",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "introspective",
+    "pos": "adjective",
+    "say": "in-truh-SPEK-tiv",
+    "meaning": "Thinking a lot about your own feelings and actions.",
+    "examples": [
+      {
+        "label": "Explain your thinking",
+        "text": "After the trip, I got **introspective** about my goals.",
+        "icon": "thinking"
+      },
+      {
+        "label": "With friends",
+        "text": "He's quiet and **introspective**, not unfriendly.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Writing a diary makes me more **introspective**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for checking others",
+        "text": "The manager was introspective and checked our work."
+      }
+    ],
+    "rule": "looking inside yourself"
+  },
+  {
+    "id": "v7-words-people-051",
+    "type": "module",
+    "module": "words",
+    "topic": "fussy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "fussy",
+    "pos": "adjective",
+    "say": "FUS-ee",
+    "meaning": "Hard to please; caring too much about small things.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My son is a **fussy** eater; he only eats rice.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Don't be **fussy**; any café is fine.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Fussy about something",
+      "text": "She's **fussy** about her tea."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"fuzzy\" (blurry)",
+        "text": "The photo is fussy."
+      }
+    ],
+    "rule": "hard to please",
+    "check": {
+      "question": "Your friend sends back her coffee three times. She is…",
+      "options": [
+        {
+          "text": "fussy",
+          "right": true
+        },
+        {
+          "text": "generous",
+          "right": false
+        },
+        {
+          "text": "brave",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-052",
+    "type": "module",
+    "module": "words",
+    "topic": "impulsive",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "impulsive",
+    "pos": "adjective",
+    "say": "im-PUL-siv",
+    "meaning": "Doing things suddenly, without thinking first.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "I was **impulsive** and booked the trip at midnight.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "Don't be **impulsive**; sleep on it.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He made an **impulsive** buy at the mall."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"impressive\"",
+        "text": "Your speech was so impulsive!"
+      }
+    ],
+    "rule": "sudden, without a plan"
+  },
+  {
+    "id": "v7-words-people-053",
+    "type": "module",
+    "module": "words",
+    "topic": "punctual",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "punctual",
+    "pos": "adjective",
+    "say": "PUNK-choo-ul",
+    "meaning": "Arriving on time.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Please be **punctual** for the client call.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My grandfather is always **punctual** for dinner.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She's never late; she's very **punctual**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"exact\"",
+        "text": "Tell me the punctual answer."
+      }
+    ],
+    "rule": "on time, not exact"
+  },
+  {
+    "id": "v7-words-people-054",
+    "type": "module",
+    "module": "words",
+    "topic": "ambitious",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "ambitious",
+    "pos": "adjective",
+    "say": "am-BISH-us",
+    "meaning": "Wanting to do well and achieve big things.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "She's **ambitious**; she wants to run the team in two years.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "That's an **ambitious** plan for one weekend!",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He's **ambitious** about his career."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a noun: say \"ambition\"",
+        "text": "My ambitious is to be a pilot."
+      }
+    ],
+    "rule": "ambition is the noun",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "She's ambitious and wants her own company.",
+          "right": true
+        },
+        {
+          "text": "My ambitious is to travel.",
+          "right": false
+        },
+        {
+          "text": "The tea is ambitious.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-055",
+    "type": "module",
+    "module": "words",
+    "topic": "headstrong",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "headstrong",
+    "pos": "adjective",
+    "say": "HED-strong",
+    "meaning": "Set on doing what you want, even when warned.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My **headstrong** cousin quit his job without telling anyone.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She's **headstrong**; she never listens to warnings.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "As a **headstrong** teenager, I ignored my parents."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"clever\"",
+        "text": "He's headstrong; he solved the maths quickly."
+      }
+    ],
+    "rule": "will not be told"
+  },
+  {
+    "id": "v7-words-people-056",
+    "type": "module",
+    "module": "words",
+    "topic": "loyal",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "loyal",
+    "pos": "adjective",
+    "say": "LOY-ul",
+    "meaning": "Always staying with and supporting someone.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "He's a **loyal** friend; he's stood by me for years.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "Our dog is **loyal**; he waits at the door.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Loyal to someone",
+      "text": "She's **loyal** to her team."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"loyal to\", not \"loyal with\"",
+        "text": "He's loyal with his friends."
+      }
+    ],
+    "rule": "loyal to someone"
+  },
+  {
+    "id": "v7-words-people-057",
+    "type": "module",
+    "module": "words",
+    "topic": "laid-back",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "laid-back",
+    "pos": "adjective",
+    "say": "layd-BAK",
+    "meaning": "Relaxed and calm; not worried.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "He's **laid-back**; nothing upsets him.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "Our office is **laid-back** on Fridays.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I like her **laid-back** style."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"lying down\"",
+        "text": "I was laid-back on the sofa all day."
+      }
+    ],
+    "rule": "relaxed, not lying down",
+    "check": {
+      "question": "Your flight is late and your friend says, \"No stress, we'll get there.\" He is…",
+      "options": [
+        {
+          "text": "laid-back",
+          "right": true
+        },
+        {
+          "text": "fussy",
+          "right": false
+        },
+        {
+          "text": "bossy",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-058",
+    "type": "module",
+    "module": "words",
+    "topic": "mean",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "mean",
+    "pos": "adjective",
+    "say": "MEEN",
+    "meaning": "Unkind; wanting to hurt someone.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Don't be **mean** to your brother.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "That was a **mean** joke.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Mean to someone",
+      "text": "It's **mean** to laugh when someone falls."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"mean to\", not \"mean with\"",
+        "text": "She was mean with me."
+      }
+    ],
+    "rule": "mean to someone"
+  },
+  {
+    "id": "v7-words-people-059",
+    "type": "module",
+    "module": "words",
+    "topic": "demanding",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "demanding",
+    "pos": "adjective",
+    "say": "dih-MAN-ding",
+    "meaning": "Asking a lot from others; needing much time or effort.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Our client is **demanding**, but fair.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "A new baby is very **demanding**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "My job is **demanding** this month."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"popular\": say \"in demand\"",
+        "text": "This phone is very demanding; everyone wants it."
+      }
+    ],
+    "rule": "needs a lot, not wanted a lot"
+  },
+  {
+    "id": "v7-words-people-060",
+    "type": "module",
+    "module": "words",
+    "topic": "magnanimous",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "magnanimous",
+    "pos": "adjective",
+    "say": "mag-NAN-ih-mus",
+    "meaning": "Kind and generous, even to someone who lost or hurt you.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "He was **magnanimous** in victory and praised the other team.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "It was **magnanimous** of her to forgive his mistake.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Be **magnanimous**; let him have the last word."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"huge\"",
+        "text": "We ate a magnanimous pizza."
+      }
+    ],
+    "rule": "big-hearted, not big",
+    "check": {
+      "question": "Your rival loses, and you say, \"You played really well.\" You are being…",
+      "options": [
+        {
+          "text": "magnanimous",
+          "right": true
+        },
+        {
+          "text": "stubborn",
+          "right": false
+        },
+        {
+          "text": "lazy",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-061",
+    "type": "module",
+    "module": "words",
+    "topic": "nosy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "nosy",
+    "pos": "adjective",
+    "say": "NOH-zee",
+    "meaning": "Too interested in other people's private lives.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Our **nosy** neighbour asks who visits us.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Sorry to be **nosy**, but are you two dating?",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Don't be **nosy**; it's her business."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not about your nose",
+        "text": "I have a nosy cold."
+      }
+    ],
+    "rule": "asking too much about others"
+  },
+  {
+    "id": "v7-words-people-062",
+    "type": "module",
+    "module": "words",
+    "topic": "supportive",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "supportive",
+    "pos": "adjective",
+    "say": "suh-POR-tiv",
+    "meaning": "Helping and encouraging someone.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My wife is very **supportive** of my new job.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Thanks for being so **supportive** this week.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Supportive of someone",
+      "text": "Her boss is **supportive** of her plans."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a verb: say \"support\"",
+        "text": "Please supportive me."
+      }
+    ],
+    "rule": "supportive of someone"
+  },
+  {
+    "id": "v7-words-people-063",
+    "type": "module",
+    "module": "words",
+    "topic": "easy-going",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "easy-going",
+    "pos": "adjective",
+    "say": "ee-zee-GOH-ing",
+    "meaning": "Calm and relaxed; not easily upset.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "He's **easy-going**; any plan works for him.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "My mum is **easy-going** about what we eat on Sundays.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She's **easy-going** and fun to travel with."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"easy to do\"",
+        "text": "The exam was easy-going."
+      }
+    ],
+    "rule": "for people, not tasks",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "My roommate is easy-going about noise.",
+          "right": true
+        },
+        {
+          "text": "The test was easy-going.",
+          "right": false
+        },
+        {
+          "text": "He easy-goes with everyone.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-064",
+    "type": "module",
+    "module": "words",
+    "topic": "mentor",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "mentor",
+    "pos": "noun",
+    "say": "MEN-tor",
+    "meaning": "An older or wiser person who guides you.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "My first boss was my **mentor**.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "She's a **mentor** to young cricketers.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Every new joiner gets a **mentor**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not an adjective",
+        "text": "He is very mentor to me."
+      }
+    ],
+    "rule": "a mentor, a person"
+  },
+  {
+    "id": "v7-words-people-065",
+    "type": "module",
+    "module": "words",
+    "topic": "unassuming",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "unassuming",
+    "pos": "adjective",
+    "say": "un-uh-SOO-ming",
+    "meaning": "Quiet and modest; not trying to impress.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "He's **unassuming**, but he's a great cook.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "The **unassuming** guy in the corner built the app.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She has an **unassuming** way of leading."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"not guessing\"",
+        "text": "I'm unassuming the answer."
+      }
+    ],
+    "rule": "quiet and modest"
+  },
+  {
+    "id": "v7-words-people-066",
+    "type": "module",
+    "module": "words",
+    "topic": "hard-working",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "hard-working",
+    "pos": "adjective",
+    "say": "hard-WUR-king",
+    "meaning": "Putting a lot of effort into your work.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "She's **hard-working** and always ready to help.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My parents were **hard-working** shop owners.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He's the most **hard-working** person on the team."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"difficult work\"",
+        "text": "This is a hard-working job."
+      }
+    ],
+    "rule": "for people, not jobs",
+    "check": {
+      "question": "Who is hard-working?",
+      "options": [
+        {
+          "text": "Mina, who studies every evening after work.",
+          "right": true
+        },
+        {
+          "text": "Tom, who sleeps until noon.",
+          "right": false
+        },
+        {
+          "text": "Anu, who skips every class.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-067",
+    "type": "module",
+    "module": "words",
+    "topic": "acquaintance",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "acquaintance",
+    "pos": "noun",
+    "say": "uh-KWAYN-tunse",
+    "meaning": "Someone you know a little, but not a close friend.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "He's not a friend, just an **acquaintance** from the gym.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "I met an old **acquaintance** at the conference.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She's more of an **acquaintance** than a friend."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a verb: say \"got to know\"",
+        "text": "I acquaintanced him last year."
+      }
+    ],
+    "rule": "a person you know a little"
+  },
+  {
+    "id": "v7-words-people-068",
+    "type": "module",
+    "module": "words",
+    "topic": "forgetful",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "forgetful",
+    "pos": "adjective",
+    "say": "fer-GET-ful",
+    "meaning": "Often forgetting things.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Grandpa is getting **forgetful**; he lost his glasses again.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Sorry I'm so **forgetful**; I'll send it now.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I get **forgetful** when I am tired."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"forgettable\" (easy to forget)",
+        "text": "He's so forgetful, nobody remembers him."
+      }
+    ],
+    "rule": "you forget; forgettable means others forget you"
+  },
+  {
+    "id": "v7-words-people-069",
+    "type": "module",
+    "module": "words",
+    "topic": "role model",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "role model",
+    "pos": "noun",
+    "say": "ROHL mod-ul",
+    "meaning": "Someone you look up to and want to be like.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My mother is my **role model**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He's a **role model** for kids in our area.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Try to be a good **role model**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a fashion model",
+        "text": "She's a role model on the ramp."
+      }
+    ],
+    "rule": "someone to copy",
+    "check": {
+      "question": "Who is a role model?",
+      "options": [
+        {
+          "text": "A teacher you want to be like.",
+          "right": true
+        },
+        {
+          "text": "Someone who walks the ramp in fashion shows.",
+          "right": false
+        },
+        {
+          "text": "A toy car.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-070",
+    "type": "module",
+    "module": "words",
+    "topic": "tenacious",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "tenacious",
+    "pos": "adjective",
+    "say": "tuh-NAY-shus",
+    "meaning": "Not giving up, even when it's hard.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "She's **tenacious**; she kept calling until the client replied.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "He's a **tenacious** player; he never gives up a match.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Be **tenacious** about your goals."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"tense\" (nervous)",
+        "text": "I'm tenacious before exams."
+      }
+    ],
+    "rule": "never gives up"
+  },
+  {
+    "id": "v7-words-people-071",
+    "type": "module",
+    "module": "words",
+    "topic": "stranger",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "stranger",
+    "pos": "noun",
+    "say": "STRAYN-jer",
+    "meaning": "Someone you don't know.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Don't open the door to a **stranger**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "A **stranger** helped me fix my flat tyre.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I sat next to a **stranger** on the train."
+    },
+    "wrong": [
+      {
+        "label": "✗ Needs \"a\": \"I'm a stranger here\"",
+        "text": "Sorry, I'm stranger here."
+      }
+    ],
+    "rule": "a stranger"
+  },
+  {
+    "id": "v7-words-people-072",
+    "type": "module",
+    "module": "words",
+    "topic": "well-meaning",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "well-meaning",
+    "pos": "adjective",
+    "say": "wel-MEE-ning",
+    "meaning": "Trying to help, even if it doesn't work out.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My **well-meaning** aunt keeps sending me job links.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "His advice was **well-meaning**, but wrong.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She's **well-meaning**, so don't be harsh."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"clear meaning\"",
+        "text": "The sign is well-meaning; it's easy to read."
+      }
+    ],
+    "rule": "means well",
+    "check": {
+      "question": "Your uncle gives you advice you never asked for, just to help. He is…",
+      "options": [
+        {
+          "text": "well-meaning",
+          "right": true
+        },
+        {
+          "text": "two-faced",
+          "right": false
+        },
+        {
+          "text": "lazy",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-073",
+    "type": "module",
+    "module": "words",
+    "topic": "colleague",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "colleague",
+    "pos": "noun",
+    "say": "KOL-eeg",
+    "meaning": "Someone you work with.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "My **colleague** covered for me today.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm meeting a **colleague** for coffee.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She's a **colleague**, not my boss."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"college\"",
+        "text": "I studied at a good colleague."
+      }
+    ],
+    "rule": "colleague = person; college = place"
+  },
+  {
+    "id": "v7-words-people-074",
+    "type": "module",
+    "module": "words",
+    "topic": "grounded",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "grounded",
+    "pos": "adjective",
+    "say": "GROWN-did",
+    "meaning": "Calm, sensible and in touch with real life.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "Even after the promotion, she stays **grounded**.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "A **grounded** leader keeps the team calm.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Yoga helps me feel **grounded**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"ground floor\"",
+        "text": "My flat is grounded, so there are no stairs."
+      }
+    ],
+    "rule": "calm and real"
+  },
+  {
+    "id": "v7-words-people-075",
+    "type": "module",
+    "module": "words",
+    "topic": "articulate",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "articulate",
+    "pos": "adjective",
+    "say": "ar-TIK-yuh-lit",
+    "meaning": "Able to say what you think clearly.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "She's **articulate**; her updates are short and clear.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "He's more **articulate** when he's relaxed.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Try to be **articulate** in the interview."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"artistic\"",
+        "text": "He's articulate; he paints well."
+      }
+    ],
+    "rule": "says things clearly",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "She gave an articulate answer in the meeting.",
+          "right": true
+        },
+        {
+          "text": "He's articulate; he draws well.",
+          "right": false
+        },
+        {
+          "text": "The cake is articulate.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-076",
+    "type": "module",
+    "module": "words",
+    "topic": "relative",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "relative",
+    "pos": "noun",
+    "say": "REL-uh-tiv",
+    "meaning": "Someone in your family.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "A **relative** is staying with us this week.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Is he a friend or a **relative**?",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "My closest **relative** lives in Pune."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"relationship\"",
+        "text": "We have a good relative with our neighbours."
+      }
+    ],
+    "rule": "a family member"
+  },
+  {
+    "id": "v7-words-people-077",
+    "type": "module",
+    "module": "words",
+    "topic": "opinionated",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "opinionated",
+    "pos": "adjective",
+    "say": "uh-PIN-yuh-nay-tid",
+    "meaning": "Sharing strong views, often without being asked.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "My uncle is **opinionated** about cricket.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "She's **opinionated**, but her ideas are good.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Don't be too **opinionated** in the first meeting."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for asking others",
+        "text": "He's opinionated; he always asks what we think."
+      }
+    ],
+    "rule": "gives views, not asks"
+  },
+  {
+    "id": "v7-words-people-078",
+    "type": "module",
+    "module": "words",
+    "topic": "guest",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "guest",
+    "pos": "noun",
+    "say": "GEST",
+    "meaning": "Someone you invite to your home or an event.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "A **guest** is coming for dinner tonight.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "You're my **guest**; I'll pay.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Make the **guest** feel at home."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"guess\"",
+        "text": "Let me guest the answer."
+      }
+    ],
+    "rule": "guest = visitor; guess = try an answer",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Our guest stayed for two nights.",
+          "right": true
+        },
+        {
+          "text": "Can you guest my age?",
+          "right": false
+        },
+        {
+          "text": "The guest of the tea is sweet.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-079",
+    "type": "module",
+    "module": "words",
+    "topic": "diplomatic",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "diplomatic",
+    "pos": "adjective",
+    "say": "dip-luh-MAT-ik",
+    "meaning": "Careful and calm when people disagree.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Be **diplomatic** when you tell the client no.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "She gave a **diplomatic** answer about whose food was best.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "That was a **diplomatic** way to end the fight."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"stubborn\"",
+        "text": "He was diplomatic and refused to listen."
+      }
+    ],
+    "rule": "calm with people who disagree"
+  },
+  {
+    "id": "v7-words-people-080",
+    "type": "module",
+    "module": "words",
+    "topic": "perceptive",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "perceptive",
+    "pos": "adjective",
+    "say": "per-SEP-tiv",
+    "meaning": "Quick to notice and understand things.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "You're **perceptive**; how did you know I was upset?",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "A **perceptive** manager spots problems early.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "That's a **perceptive** point."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"persuasive\"",
+        "text": "He's perceptive; he sold me three phones."
+      }
+    ],
+    "rule": "notices, not convinces"
+  },
+  {
+    "id": "v7-words-people-081",
+    "type": "module",
+    "module": "words",
+    "topic": "host",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "host",
+    "pos": "noun",
+    "say": "HOHST",
+    "meaning": "The person who invites guests and looks after them.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Our **host** made a big lunch.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Thanks for being a great **host**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The **host** greeted us at the door."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not the person visiting",
+        "text": "We were the host at their house last night."
+      }
+    ],
+    "rule": "host invites; guest visits",
+    "check": {
+      "question": "You invite friends home and cook for them. You are the…",
+      "options": [
+        {
+          "text": "host",
+          "right": true
+        },
+        {
+          "text": "guest",
+          "right": false
+        },
+        {
+          "text": "stranger",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-082",
+    "type": "module",
+    "module": "words",
+    "topic": "modest",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "modest",
+    "pos": "adjective",
+    "say": "MOD-ist",
+    "meaning": "Not talking much about your own success.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "He's **modest**; he never talks about his medals.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "She's too **modest** to take credit.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Don't be **modest**; you did great!"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a noun: say \"modesty\"",
+        "text": "I like her modest."
+      }
+    ],
+    "rule": "modesty is the noun"
+  },
+  {
+    "id": "v7-words-people-083",
+    "type": "module",
+    "module": "words",
+    "topic": "introvert",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "introvert",
+    "pos": "noun",
+    "say": "IN-truh-vurt",
+    "meaning": "Someone who gets energy from quiet time alone.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm an **introvert**; I love a quiet Sunday.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "As an **introvert**, he leaves parties early.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Being an **introvert** is not the same as being shy."
+    },
+    "wrong": [
+      {
+        "label": "✗ After \"very\", say \"introverted\"",
+        "text": "She is very introvert."
+      }
+    ],
+    "rule": "an introvert; very introverted"
+  },
+  {
+    "id": "v7-words-people-084",
+    "type": "module",
+    "module": "words",
+    "topic": "passionate",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "passionate",
+    "pos": "adjective",
+    "say": "PASH-uh-nit",
+    "meaning": "Feeling very strongly about something you love.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "She's **passionate** about football.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "He's **passionate** about good design.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Passionate about something",
+      "text": "I'm **passionate** about cooking."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"passionate about\", not \"passionate in\"",
+        "text": "I'm passionate in music."
+      }
+    ],
+    "rule": "passionate about something",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "He's passionate about old cars.",
+          "right": true
+        },
+        {
+          "text": "She's passionate in dance.",
+          "right": false
+        },
+        {
+          "text": "I passionate cooking.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-085",
+    "type": "module",
+    "module": "words",
+    "topic": "abrasive",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "abrasive",
+    "pos": "adjective",
+    "say": "uh-BRAY-siv",
+    "meaning": "Rough and rude in a way that upsets people.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "His **abrasive** emails upset the team.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "She can be **abrasive**, but she means well.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Try not to sound **abrasive** in the review."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"brave\"",
+        "text": "He was abrasive and saved the child."
+      }
+    ],
+    "rule": "rough with people"
+  },
+  {
+    "id": "v7-words-people-086",
+    "type": "module",
+    "module": "words",
+    "topic": "extrovert",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "extrovert",
+    "pos": "noun",
+    "say": "EK-struh-vurt",
+    "meaning": "Someone who gets energy from being with people.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "As an **extrovert**, she loves big weddings.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "Our son is an **extrovert**; he talks to every guest.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He's a real **extrovert**."
+    },
+    "wrong": [
+      {
+        "label": "✗ After \"very\", say \"extroverted\"",
+        "text": "He is very extrovert."
+      }
+    ],
+    "rule": "an extrovert; very extroverted"
+  },
+  {
+    "id": "v7-words-people-087",
+    "type": "module",
+    "module": "words",
+    "topic": "straightforward",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "straightforward",
+    "pos": "adjective",
+    "say": "strayt-FOR-werd",
+    "meaning": "Honest and clear; or easy to do.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "She's **straightforward**; you always know where you stand.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "The plan is **straightforward**: we meet at six.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He gave me a **straightforward** answer."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for directions: say \"straight ahead\"",
+        "text": "Walk straightforward and turn left."
+      }
+    ],
+    "rule": "clear and honest, not a direction",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The steps are straightforward.",
+          "right": true
+        },
+        {
+          "text": "Go straightforward to the gate.",
+          "right": false
+        },
+        {
+          "text": "She straightforwarded me.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-088",
+    "type": "module",
+    "module": "words",
+    "topic": "show-off",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "show-off",
+    "pos": "noun",
+    "say": "SHOH-off",
+    "meaning": "Someone who tries hard to impress others.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "Don't be a **show-off**; just enjoy the game.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "My cousin is a **show-off**; he talks about his car all day.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He's a bit of a **show-off**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a show you watch",
+        "text": "We watched a great show-off at the theatre."
+      }
+    ],
+    "rule": "a person, not a show"
+  },
+  {
+    "id": "v7-words-people-089",
+    "type": "module",
+    "module": "words",
+    "topic": "attentive",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "attentive",
+    "pos": "adjective",
+    "say": "uh-TEN-tiv",
+    "meaning": "Listening and noticing carefully.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Be **attentive** in the client call.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "The nurse was very **attentive** to Grandma.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Attentive to someone or something",
+      "text": "He's **attentive** to small details."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"present\"",
+        "text": "Please mark me attentive today."
+      }
+    ],
+    "rule": "attentive to something"
+  },
+  {
+    "id": "v7-words-people-090",
+    "type": "module",
+    "module": "words",
+    "topic": "aloof",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "aloof",
+    "pos": "adjective",
+    "say": "uh-LOOF",
+    "meaning": "Distant and not friendly; keeping away from others.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "He seems **aloof**, but he is just shy.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "Our new boss is a bit **aloof**.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She stayed **aloof** at the party."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"aloft\" (high up)",
+        "text": "The bird is aloof in the sky."
+      }
+    ],
+    "rule": "distant with people",
+    "check": {
+      "question": "Who is aloof?",
+      "options": [
+        {
+          "text": "A guest who stands alone and won't chat.",
+          "right": true
+        },
+        {
+          "text": "A friend who hugs everyone.",
+          "right": false
+        },
+        {
+          "text": "A child who tells jokes.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-091",
+    "type": "module",
+    "module": "words",
+    "topic": "know-it-all",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "know-it-all",
+    "pos": "noun",
+    "say": "NOH-it-awl",
+    "meaning": "Someone who acts as if they know everything.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "Don't be a **know-it-all**; let him explain.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "Nobody likes a **know-it-all** in meetings.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He's a bit of a **know-it-all**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not praise for an expert",
+        "text": "Our doctor is a real know-it-all; she's brilliant."
+      }
+    ],
+    "rule": "not a compliment"
+  },
+  {
+    "id": "v7-words-people-092",
+    "type": "module",
+    "module": "words",
+    "topic": "nitpicky",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "nitpicky",
+    "pos": "adjective",
+    "say": "NIT-pik-ee",
+    "meaning": "Finding fault with tiny, unimportant things.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Sorry to be **nitpicky**, but there's a typo.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My dad is **nitpicky** about how we fold towels.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Don't be **nitpicky** about the font."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a verb: say \"nitpicking\"",
+        "text": "Stop nitpicky my work."
+      }
+    ],
+    "rule": "picky about tiny things"
+  },
+  {
+    "id": "v7-words-people-093",
+    "type": "module",
+    "module": "words",
+    "topic": "gossip",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "gossip",
+    "pos": "noun",
+    "say": "GOS-ip",
+    "meaning": "Talk about other people's private lives.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Our aunt loves a bit of **gossip**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Don't tell him; he loves **gossip**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I don't like office **gossip**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for normal work chat",
+        "text": "Let's gossip about the project plan."
+      }
+    ],
+    "rule": "private news about people",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "There's a lot of gossip about the new couple.",
+          "right": true
+        },
+        {
+          "text": "Let's gossip about the budget numbers.",
+          "right": false
+        },
+        {
+          "text": "He gossips good.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-094",
+    "type": "module",
+    "module": "words",
+    "topic": "big-hearted",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "big-hearted",
+    "pos": "adjective",
+    "say": "big-HAR-tid",
+    "meaning": "Very kind and generous.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Our **big-hearted** neighbour cooks for the whole street.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He's **big-hearted**; he forgave me straight away.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "That's very **big-hearted** of you."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not about your health",
+        "text": "The doctor said I am big-hearted, so I need tests."
+      }
+    ],
+    "rule": "kind, not a health word"
+  },
+  {
+    "id": "v7-words-people-095",
+    "type": "module",
+    "module": "words",
+    "topic": "affable",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "affable",
+    "pos": "adjective",
+    "say": "AF-uh-buhl",
+    "meaning": "Friendly and easy to talk to.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "The host was **affable** and made everyone laugh.",
+        "icon": "friends"
+      },
+      {
+        "label": "At work",
+        "text": "He's **affable**, so clients like him.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She's **affable** with everyone."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"affordable\"",
+        "text": "This phone is very affable."
+      }
+    ],
+    "rule": "friendly, not cheap"
+  },
+  {
+    "id": "v7-words-people-096",
+    "type": "module",
+    "module": "words",
+    "topic": "careless",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "careless",
+    "pos": "adjective",
+    "say": "KAIR-lis",
+    "meaning": "Not careful; making mistakes.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I was **careless** and left the gas on.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "A **careless** typo cost us the deal.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It was **careless** of me to lose the key."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"carefree\" (relaxed)",
+        "text": "On holiday I felt careless and happy."
+      }
+    ],
+    "rule": "careless = mistakes; carefree = relaxed",
+    "check": {
+      "question": "You send an email to the wrong person. That was…",
+      "options": [
+        {
+          "text": "careless",
+          "right": true
+        },
+        {
+          "text": "careful",
+          "right": false
+        },
+        {
+          "text": "big-hearted",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-people-097",
+    "type": "module",
+    "module": "words",
+    "topic": "people-pleaser",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "people"
+    ],
+    "word": "people-pleaser",
+    "pos": "noun",
+    "say": "PEE-pul plee-zer",
+    "meaning": "Someone who says yes to everyone to keep them happy.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "As a **people-pleaser**, I said yes to three extra tasks.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "She's a **people-pleaser**; she never says no.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Stop being a **people-pleaser** and rest."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not praise for good service",
+        "text": "The hotel staff are real people-pleasers; ten stars!"
+      }
+    ],
+    "rule": "cannot say no"
+  }
+]

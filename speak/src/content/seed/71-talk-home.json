@@ -1,0 +1,3990 @@
+[
+  {
+    "id": "v7-talk-home-001",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Family lunch",
+    "kind": "reply",
+    "moment": "Have you eaten?",
+    "they": "Have you eaten?",
+    "deadEnd": "Yes.",
+    "reply": "Yes, too much! Mum's rajma wins again. Did you try the kheer?",
+    "formula": "answer + one detail + ask back",
+    "more": [
+      {
+        "label": "Not yet",
+        "text": "Not yet, I was waiting for you. Shall we eat together?"
+      },
+      {
+        "label": "Ate already",
+        "text": "I did, and I went back for seconds. What did you like?"
+      },
+      {
+        "label": "Ate outside",
+        "text": "I ate on the way, but I'll take dessert. What's good?"
+      }
+    ],
+    "donts": [
+      "Just say yes and walk away.",
+      "Comment on how much they're eating."
+    ]
+  },
+  {
+    "id": "v7-talk-home-002",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Family lunch",
+    "kind": "open",
+    "moment": "Distant relative at a family lunch",
+    "deadEnd": "Silence.",
+    "reply": "Hi, I'm Ravi's son. I don't think we've met properly. How are you related?",
+    "formula": "say who you are + easy question",
+    "more": [
+      {
+        "label": "Food line",
+        "text": "The biryani looks great. Have you tried it yet?"
+      },
+      {
+        "label": "Kids around",
+        "text": "Are any of these kids yours? They have so much energy."
+      },
+      {
+        "label": "Old photo",
+        "text": "I think I saw you in our old family album. Was that you?"
+      }
+    ],
+    "donts": [
+      "Wait for them to remember you.",
+      "Ask about their job or salary first."
+    ]
+  },
+  {
+    "id": "v7-talk-home-003",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Old stories",
+    "kind": "keep_going",
+    "moment": "Grandparent shares an old story",
+    "they": "When I was your age, we walked six kilometres to school.",
+    "deadEnd": "Okay.",
+    "reply": "Six kilometres! What was the road like back then?",
+    "formula": "pick one detail + ask about it",
+    "more": [
+      {
+        "label": "Then",
+        "text": "What did you do after school in those days?"
+      },
+      {
+        "label": "People",
+        "text": "Who did you walk with? Are you still in touch?"
+      },
+      {
+        "label": "Feeling",
+        "text": "Did you enjoy it, or was it hard every day?"
+      }
+    ],
+    "donts": [
+      "Check your phone while they talk.",
+      "Say \"I've heard this one\"."
+    ]
+  },
+  {
+    "id": "v7-talk-home-004",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Family lunch",
+    "kind": "exit",
+    "moment": "Leaving a long family lunch",
+    "deadEnd": "I'm going now.",
+    "reply": "This was lovely. I have to head out now, but thank you for the wonderful food.",
+    "formula": "thanks + reason + warm goodbye",
+    "more": [
+      {
+        "label": "Early start",
+        "text": "I've got an early start tomorrow. Thank you, this was so nice."
+      },
+      {
+        "label": "Long drive",
+        "text": "We have a long drive back, so we should leave. Come visit us soon."
+      },
+      {
+        "label": "To the host",
+        "text": "Thank you for having us, Auntie. I'm stuffed and very happy."
+      }
+    ],
+    "donts": [
+      "Leave without saying bye to the hosts.",
+      "Promise a visit you won't make."
+    ]
+  },
+  {
+    "id": "v7-talk-home-005",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Family lunch",
+    "kind": "save_it",
+    "moment": "You didn't recognise a relative",
+    "they": "You've grown so much! Remember me?",
+    "deadEnd": "No, who are you?",
+    "reply": "It's so good to see you! Help me out, when did we last meet?",
+    "formula": "warmth + honest small question",
+    "more": [
+      {
+        "label": "Ask kindly",
+        "text": "I'm sorry, my memory is bad. Remind me how we're related?"
+      },
+      {
+        "label": "Use a clue",
+        "text": "Were you at Neha's wedding last year?"
+      },
+      {
+        "label": "Own it",
+        "text": "I'm embarrassed, I've forgotten. Please tell me your name again."
+      }
+    ],
+    "donts": [
+      "Pretend and guess a name.",
+      "Say \"you look so different\"."
+    ]
+  },
+  {
+    "id": "v7-talk-home-006",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Catching up",
+    "kind": "reply",
+    "moment": "What's new?",
+    "they": "What's new?",
+    "deadEnd": "Nothing much.",
+    "reply": "Not much, but I finally started cooking at home. What about you?",
+    "formula": "one small update + ask back",
+    "more": [
+      {
+        "label": "Busy",
+        "text": "Work is crazy, but I got a weekend off. What are you up to?"
+      },
+      {
+        "label": "Big news",
+        "text": "Actually, I moved to a new flat! Tell me your news first."
+      },
+      {
+        "label": "Quiet",
+        "text": "Pretty quiet, which I like. Anything exciting with you?"
+      }
+    ],
+    "donts": [
+      "Stop at \"nothing much\".",
+      "Turn it into a list of complaints."
+    ]
+  },
+  {
+    "id": "v7-talk-home-007",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Meeting a partner",
+    "kind": "open",
+    "moment": "A friend's new partner",
+    "deadEnd": "Hi.",
+    "reply": "Hi, I'm Kiran. I've heard so much about you. How did you two meet?",
+    "formula": "name + kind line + easy question",
+    "more": [
+      {
+        "label": "At dinner",
+        "text": "So nice to finally meet you. What do you like to eat?"
+      },
+      {
+        "label": "At a party",
+        "text": "Hi! How do you know everyone here?"
+      },
+      {
+        "label": "Shy friend",
+        "text": "Arjun says you love films. Seen anything good lately?"
+      }
+    ],
+    "donts": [
+      "Share embarrassing stories about your friend.",
+      "Ask when they're getting married."
+    ]
+  },
+  {
+    "id": "v7-talk-home-008",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "New pet",
+    "kind": "keep_going",
+    "moment": "Friend just got a dog",
+    "they": "We just got a dog!",
+    "deadEnd": "Nice.",
+    "reply": "No way! What's the dog like? Show me a photo.",
+    "formula": "react + ask for one detail",
+    "more": [
+      {
+        "label": "Name",
+        "text": "What did you name the dog?"
+      },
+      {
+        "label": "Life now",
+        "text": "How are the first few nights going?"
+      },
+      {
+        "label": "Breed",
+        "text": "Is it a puppy or an older dog?"
+      }
+    ],
+    "donts": [
+      "Talk only about your own pets.",
+      "Tell them a dog is a lot of work."
+    ]
+  },
+  {
+    "id": "v7-talk-home-009",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "House party",
+    "kind": "exit",
+    "moment": "Leaving a party before midnight",
+    "deadEnd": "Bye, I'm going.",
+    "reply": "I have to call it a night. This was so much fun, thank you!",
+    "formula": "clear exit + thanks",
+    "more": [
+      {
+        "label": "Early day",
+        "text": "I have an early morning, so I'm heading off. Great party!"
+      },
+      {
+        "label": "To the host",
+        "text": "Thank you for having me. Let me know when the next one is."
+      },
+      {
+        "label": "To the group",
+        "text": "I'm off, everyone. Have fun and get home safe!"
+      }
+    ],
+    "donts": [
+      "Disappear without telling the host.",
+      "Make a long speech at the door."
+    ]
+  },
+  {
+    "id": "v7-talk-home-010",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Cancelled plans",
+    "kind": "save_it",
+    "moment": "You cancelled plans at the last minute",
+    "they": "We were waiting for you yesterday.",
+    "deadEnd": "Something came up.",
+    "reply": "I'm really sorry I cancelled so late. Can I take you out this week instead?",
+    "formula": "say sorry + offer a new plan",
+    "more": [
+      {
+        "label": "Short reason",
+        "text": "Sorry, work ran very late. Let me make it up to you."
+      },
+      {
+        "label": "Own it",
+        "text": "That wasn't fair to you. Lunch is on me this week."
+      },
+      {
+        "label": "Fix a date",
+        "text": "Sorry again. Does Saturday work for you?"
+      }
+    ],
+    "donts": [
+      "Give a long list of excuses.",
+      "Act like it was no big deal."
+    ]
+  },
+  {
+    "id": "v7-talk-home-011",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Wedding guests",
+    "kind": "reply",
+    "moment": "Which side are you from?",
+    "they": "Which side are you from?",
+    "deadEnd": "The groom.",
+    "reply": "The groom's side. We were in college together. And you?",
+    "formula": "side + how you know them + ask back",
+    "more": [
+      {
+        "label": "Family",
+        "text": "The bride's side. She's my cousin. How about you?"
+      },
+      {
+        "label": "Work",
+        "text": "I work with the groom. Are you family?"
+      },
+      {
+        "label": "Both",
+        "text": "Both, actually! I know them as a couple. You?"
+      }
+    ],
+    "donts": [
+      "Give one word and look away.",
+      "Ask about the wedding cost."
+    ]
+  },
+  {
+    "id": "v7-talk-home-012",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Wedding table",
+    "kind": "open",
+    "moment": "Stranger at your table at a wedding",
+    "deadEnd": "Silence.",
+    "reply": "Hi, I'm Priya. Is this seat free? How do you know the couple?",
+    "formula": "name + easy question about the day",
+    "more": [
+      {
+        "label": "Food",
+        "text": "Have you tried the chaat counter yet? I heard it's great."
+      },
+      {
+        "label": "Decor",
+        "text": "The lights here are beautiful. Have you seen the stage?"
+      },
+      {
+        "label": "Travel",
+        "text": "Did you come from far for the wedding?"
+      }
+    ],
+    "donts": [
+      "Sit in silence on your phone.",
+      "Start by criticising the food."
+    ]
+  },
+  {
+    "id": "v7-talk-home-013",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Wedding decor",
+    "kind": "keep_going",
+    "moment": "They planned the decoration",
+    "they": "I did all the decoration myself.",
+    "deadEnd": "Nice.",
+    "reply": "You did this? It looks amazing. Where did you get the idea for the flowers?",
+    "formula": "praise one detail + ask about it",
+    "more": [
+      {
+        "label": "Time",
+        "text": "How long did it take you to set it all up?"
+      },
+      {
+        "label": "Hard part",
+        "text": "What was the hardest part to get right?"
+      },
+      {
+        "label": "Favourite",
+        "text": "Which part are you proudest of?"
+      }
+    ],
+    "donts": [
+      "Point out what you would change.",
+      "Ask how much it cost."
+    ]
+  },
+  {
+    "id": "v7-talk-home-014",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Wedding reception",
+    "kind": "exit",
+    "moment": "Leaving the reception early",
+    "deadEnd": "I'm leaving.",
+    "reply": "It was a beautiful evening. We have to leave early, but congratulations again!",
+    "formula": "praise + reason + good wishes",
+    "more": [
+      {
+        "label": "Long drive",
+        "text": "We have a long drive home, so we're off. Wishing you both the best!"
+      },
+      {
+        "label": "Kids",
+        "text": "The kids are falling asleep, so we should go. Lovely wedding!"
+      },
+      {
+        "label": "Work",
+        "text": "I have work early tomorrow. So happy for you both!"
+      }
+    ],
+    "donts": [
+      "Leave without congratulating the couple.",
+      "Say you're bored."
+    ]
+  },
+  {
+    "id": "v7-talk-home-015",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Late to the wedding",
+    "kind": "save_it",
+    "moment": "You arrived after the ceremony",
+    "they": "You missed the main ceremony!",
+    "deadEnd": "Traffic was bad.",
+    "reply": "I'm so sorry I missed it. Please show me some photos. How was it?",
+    "formula": "say sorry + show interest",
+    "more": [
+      {
+        "label": "To the couple",
+        "text": "Sorry I was late. You both look wonderful. Congratulations!"
+      },
+      {
+        "label": "To family",
+        "text": "I missed the ceremony, sorry. Tell me, how did it go?"
+      },
+      {
+        "label": "Make it up",
+        "text": "I feel bad I missed it. Can I help with anything now?"
+      }
+    ],
+    "donts": [
+      "Blame the traffic for five minutes.",
+      "Pretend you saw it."
+    ]
+  },
+  {
+    "id": "v7-talk-home-016",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Marriage question",
+    "kind": "reply",
+    "moment": "When are you getting married?",
+    "they": "When are you getting married?",
+    "deadEnd": "Not now.",
+    "reply": "When the right person shows up! For now I'm enjoying work. How is your family?",
+    "formula": "light answer + change the topic",
+    "more": [
+      {
+        "label": "Smile",
+        "text": "You'll be the first to know, I promise. How have you been?"
+      },
+      {
+        "label": "Honest",
+        "text": "Not this year. I'm focused on other things right now."
+      },
+      {
+        "label": "Funny",
+        "text": "As soon as I find someone as nice as you! How is Uncle?"
+      }
+    ],
+    "donts": [
+      "Get angry or argue.",
+      "Explain your whole love life."
+    ]
+  },
+  {
+    "id": "v7-talk-home-017",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Cousin catch-up",
+    "kind": "open",
+    "moment": "Cousin you haven't met in years",
+    "deadEnd": "Hi.",
+    "reply": "It has been years! You look great. Where are you living these days?",
+    "formula": "warm surprise + easy question",
+    "more": [
+      {
+        "label": "Childhood",
+        "text": "Do you remember our summer holidays at Grandma's house?"
+      },
+      {
+        "label": "Life now",
+        "text": "Last I heard you were studying. What are you doing now?"
+      },
+      {
+        "label": "Family",
+        "text": "How are your parents? I haven't seen them in ages."
+      }
+    ],
+    "donts": [
+      "Say \"you have gained weight\".",
+      "Ask about money first."
+    ]
+  },
+  {
+    "id": "v7-talk-home-018",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Sibling news",
+    "kind": "keep_going",
+    "moment": "Sibling got a new job",
+    "they": "I got the new job!",
+    "deadEnd": "Good.",
+    "reply": "That's great news! What will you be doing there?",
+    "formula": "cheer + ask about the new thing",
+    "more": [
+      {
+        "label": "Start date",
+        "text": "When do you start?"
+      },
+      {
+        "label": "Team",
+        "text": "Have you met your new team yet?"
+      },
+      {
+        "label": "Celebrate",
+        "text": "We have to celebrate. Dinner this weekend?"
+      }
+    ],
+    "donts": [
+      "Ask about the salary in front of others.",
+      "Compare it to your own job."
+    ]
+  },
+  {
+    "id": "v7-talk-home-019",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Phone call",
+    "kind": "exit",
+    "moment": "Ending a call with a chatty aunt",
+    "they": "And one more thing...",
+    "deadEnd": "I have to go.",
+    "reply": "Auntie, I love talking to you. I have to start dinner now. Let's talk on Sunday?",
+    "formula": "warmth + reason + next time",
+    "more": [
+      {
+        "label": "Work",
+        "text": "I'm about to join a meeting. Can I call you back tonight?"
+      },
+      {
+        "label": "Busy day",
+        "text": "I have to run now, but this was nice. Take care!"
+      },
+      {
+        "label": "Next call",
+        "text": "Let me call you this weekend for a longer chat."
+      }
+    ],
+    "donts": [
+      "Hang up mid-sentence.",
+      "Keep saying \"okay, okay\" until they stop."
+    ]
+  },
+  {
+    "id": "v7-talk-home-020",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Forgot an anniversary",
+    "kind": "save_it",
+    "moment": "You forgot your cousin's anniversary",
+    "deadEnd": "I forgot. Sorry.",
+    "reply": "Happy anniversary, a day late! I feel terrible. How did you celebrate?",
+    "formula": "late wishes + own it + ask",
+    "more": [
+      {
+        "label": "Call",
+        "text": "I missed your day and I'm sorry. Can I take you both to dinner?"
+      },
+      {
+        "label": "Message",
+        "text": "Belated happy anniversary! You two are the best."
+      },
+      {
+        "label": "Honest",
+        "text": "I lost track of the date. Wishing you many more years together."
+      }
+    ],
+    "donts": [
+      "Make up an excuse.",
+      "Act like you remembered."
+    ]
+  },
+  {
+    "id": "v7-talk-home-021",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Old friend",
+    "kind": "reply",
+    "moment": "Long time! Where have you been?",
+    "they": "Long time! Where have you been?",
+    "deadEnd": "Busy.",
+    "reply": "I know, it has been too long! Work took over. How have you been?",
+    "formula": "agree + short reason + ask back",
+    "more": [
+      {
+        "label": "Moved",
+        "text": "I moved to Pune for work. Tell me everything with you."
+      },
+      {
+        "label": "Quiet life",
+        "text": "Just keeping to myself. I missed you though. What's new?"
+      },
+      {
+        "label": "Make a plan",
+        "text": "Too long! Let's fix a coffee this week."
+      }
+    ],
+    "donts": [
+      "Just say \"busy\" and stop.",
+      "Blame them for not calling."
+    ]
+  },
+  {
+    "id": "v7-talk-home-022",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Birthday party",
+    "kind": "open",
+    "moment": "Someone at a birthday party",
+    "deadEnd": "Silence.",
+    "reply": "Hi, I'm Sam. How do you know the birthday girl?",
+    "formula": "name + how you know the host",
+    "more": [
+      {
+        "label": "Cake",
+        "text": "That cake looks amazing. Do you know who made it?"
+      },
+      {
+        "label": "Music",
+        "text": "Good playlist tonight. Is this your kind of music?"
+      },
+      {
+        "label": "Games",
+        "text": "Are you joining the game? I need a partner."
+      }
+    ],
+    "donts": [
+      "Stand alone with your phone.",
+      "Ask how old the host is turning."
+    ]
+  },
+  {
+    "id": "v7-talk-home-023",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Quitting a job",
+    "kind": "keep_going",
+    "moment": "Friend quit their job",
+    "they": "I quit my job last week.",
+    "deadEnd": "Oh.",
+    "reply": "Big step! How are you feeling about it?",
+    "formula": "react + ask how they feel",
+    "more": [
+      {
+        "label": "Next",
+        "text": "What's next for you?"
+      },
+      {
+        "label": "Reason",
+        "text": "Was it a hard decision?"
+      },
+      {
+        "label": "Free time",
+        "text": "What are you doing with all the free time?"
+      }
+    ],
+    "donts": [
+      "Say it was a mistake.",
+      "Ask about their savings."
+    ]
+  },
+  {
+    "id": "v7-talk-home-024",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Night out",
+    "kind": "exit",
+    "moment": "Saying no to one more round",
+    "they": "One more round?",
+    "deadEnd": "No.",
+    "reply": "I'll stop here, I have an early day. You all have fun!",
+    "formula": "friendly no + reason + good wishes",
+    "more": [
+      {
+        "label": "Driving",
+        "text": "I'm driving, so I'm done. Next round is on me another day."
+      },
+      {
+        "label": "Tired",
+        "text": "I'm done for tonight. This was great."
+      },
+      {
+        "label": "Water",
+        "text": "I'm switching to water. You go ahead!"
+      }
+    ],
+    "donts": [
+      "Lecture them about drinking.",
+      "Give in when you don't want to."
+    ]
+  },
+  {
+    "id": "v7-talk-home-025",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Show spoiler",
+    "kind": "save_it",
+    "moment": "You spoiled the ending of a show",
+    "they": "Wait, I hadn't seen that episode!",
+    "deadEnd": "Oops.",
+    "reply": "I'm so sorry! I should have asked first. How far have you got?",
+    "formula": "say sorry + ask",
+    "more": [
+      {
+        "label": "Make it up",
+        "text": "My bad. I won't say another word about it."
+      },
+      {
+        "label": "Light",
+        "text": "Ugh, I'm the worst. Coffee is on me."
+      },
+      {
+        "label": "Keep it fun",
+        "text": "Sorry! Still worth watching, I promise."
+      }
+    ],
+    "donts": [
+      "Say \"it's not a big deal\".",
+      "Tell them more of the plot."
+    ]
+  },
+  {
+    "id": "v7-talk-home-026",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Wedding guests",
+    "kind": "reply",
+    "moment": "How do you know the couple?",
+    "they": "How do you know the couple?",
+    "deadEnd": "From work.",
+    "reply": "I work with the bride. We sit next to each other. How about you?",
+    "formula": "how you know them + detail + ask back",
+    "more": [
+      {
+        "label": "School",
+        "text": "The groom and I were in school together. You?"
+      },
+      {
+        "label": "Family",
+        "text": "I'm the bride's cousin. Are you family too?"
+      },
+      {
+        "label": "Neighbours",
+        "text": "We're neighbours. I've known her since she was little."
+      }
+    ],
+    "donts": [
+      "Give one word and turn away.",
+      "Share gossip about the couple."
+    ]
+  },
+  {
+    "id": "v7-talk-home-027",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Groom's friends",
+    "kind": "open",
+    "moment": "The groom's college friends",
+    "deadEnd": "Hello.",
+    "reply": "Hi, you must be his college gang. I've heard the stories! I'm Meera.",
+    "formula": "show you know of them + name",
+    "more": [
+      {
+        "label": "Ask",
+        "text": "So, who has the best story about the groom?"
+      },
+      {
+        "label": "Compliment",
+        "text": "You all are the life of this party."
+      },
+      {
+        "label": "Join in",
+        "text": "Mind if I join? I need some fun people."
+      }
+    ],
+    "donts": [
+      "Ask for embarrassing secrets.",
+      "Join a private chat uninvited."
+    ]
+  },
+  {
+    "id": "v7-talk-home-028",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Guests from abroad",
+    "kind": "keep_going",
+    "moment": "They flew in from abroad",
+    "they": "We flew in from Toronto for this.",
+    "deadEnd": "Nice.",
+    "reply": "All the way from Toronto! How was the flight?",
+    "formula": "pick the detail + ask about it",
+    "more": [
+      {
+        "label": "Stay",
+        "text": "How long are you in India for?"
+      },
+      {
+        "label": "Change",
+        "text": "Does home feel different when you come back?"
+      },
+      {
+        "label": "Plans",
+        "text": "Are you travelling anywhere after the wedding?"
+      }
+    ],
+    "donts": [
+      "Ask about their salary abroad.",
+      "Ask them to help you move abroad."
+    ]
+  },
+  {
+    "id": "v7-talk-home-029",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Saying bye",
+    "kind": "exit",
+    "moment": "Saying bye to the couple",
+    "deadEnd": "Bye.",
+    "reply": "You both look so happy. Thank you for having us. Congratulations!",
+    "formula": "praise + thanks + wishes",
+    "more": [
+      {
+        "label": "Short",
+        "text": "Congratulations again! Have a wonderful life together."
+      },
+      {
+        "label": "Busy couple",
+        "text": "I know you're busy, so I'll just say: so happy for you!"
+      },
+      {
+        "label": "Next time",
+        "text": "Come over once you're back from the honeymoon."
+      }
+    ],
+    "donts": [
+      "Hold them in a long chat.",
+      "Leave without saying bye."
+    ]
+  },
+  {
+    "id": "v7-talk-home-030",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Wrong name",
+    "kind": "save_it",
+    "moment": "You called the groom by the wrong name",
+    "they": "It's Rohan, actually.",
+    "deadEnd": "Same thing.",
+    "reply": "Rohan, of course! I'm so sorry. Congratulations, Rohan!",
+    "formula": "repeat the right name + say sorry",
+    "more": [
+      {
+        "label": "Laugh",
+        "text": "Rohan! Sorry, it has been a long day. You look great."
+      },
+      {
+        "label": "Own it",
+        "text": "Forgive me, Rohan. I won't forget again."
+      },
+      {
+        "label": "Move on",
+        "text": "Sorry, Rohan. The wedding is beautiful."
+      }
+    ],
+    "donts": [
+      "Argue that you were right.",
+      "Keep using the wrong name."
+    ]
+  },
+  {
+    "id": "v7-talk-home-031",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Job question",
+    "kind": "reply",
+    "moment": "How's your job?",
+    "they": "How's your job?",
+    "deadEnd": "Fine.",
+    "reply": "Good! I'm working on a new project. It keeps me busy. How is Uncle?",
+    "formula": "answer + one detail + ask back",
+    "more": [
+      {
+        "label": "Busy",
+        "text": "Busy, but I'm learning a lot. What about your work?"
+      },
+      {
+        "label": "New role",
+        "text": "I got a new role this year. I like it so far."
+      },
+      {
+        "label": "Simple",
+        "text": "It's going well, thank you. How is your health?"
+      }
+    ],
+    "donts": [
+      "Explain your whole job in detail.",
+      "Complain about your boss."
+    ]
+  },
+  {
+    "id": "v7-talk-home-032",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Partner's grandparents",
+    "kind": "open",
+    "moment": "Your partner's grandparents",
+    "deadEnd": "Hello.",
+    "reply": "Hello! I'm so happy to finally meet you. Ananya talks about you all the time.",
+    "formula": "warm greeting + kind line",
+    "more": [
+      {
+        "label": "Ask",
+        "text": "How are you keeping these days?"
+      },
+      {
+        "label": "Home",
+        "text": "Your house is so peaceful. Have you lived here long?"
+      },
+      {
+        "label": "Stories",
+        "text": "Ananya says you tell the best stories. Tell me one?"
+      }
+    ],
+    "donts": [
+      "Talk only to your partner.",
+      "Use slang they won't follow."
+    ]
+  },
+  {
+    "id": "v7-talk-home-033",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Cousin abroad",
+    "kind": "keep_going",
+    "moment": "Cousin is applying abroad",
+    "they": "I'm applying to universities in Germany.",
+    "deadEnd": "Good.",
+    "reply": "Germany! That's exciting. What do you want to study?",
+    "formula": "react + ask about the plan",
+    "more": [
+      {
+        "label": "City",
+        "text": "Which cities are you looking at?"
+      },
+      {
+        "label": "Language",
+        "text": "Are you learning German?"
+      },
+      {
+        "label": "Help",
+        "text": "Can I help with anything, like your essays?"
+      }
+    ],
+    "donts": [
+      "Tell them it's too hard to get in.",
+      "Talk about your own travel instead."
+    ]
+  },
+  {
+    "id": "v7-talk-home-034",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Marriage lecture",
+    "kind": "exit",
+    "moment": "Getting away from a marriage lecture",
+    "they": "At your age, you should settle down.",
+    "deadEnd": "Okay, okay.",
+    "reply": "I hear you, Auntie. I'll think about it. Let me go help in the kitchen.",
+    "formula": "acknowledge + polite reason to leave",
+    "more": [
+      {
+        "label": "Kind",
+        "text": "Thank you for caring. Let me go say hi to Grandma."
+      },
+      {
+        "label": "Light",
+        "text": "You'll be the first to know! Excuse me, I need some water."
+      },
+      {
+        "label": "Calm",
+        "text": "I'll keep that in mind. Excuse me for a minute."
+      }
+    ],
+    "donts": [
+      "Argue in front of everyone.",
+      "Roll your eyes."
+    ]
+  },
+  {
+    "id": "v7-talk-home-035",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Too salty",
+    "kind": "save_it",
+    "moment": "You said the food was too salty",
+    "they": "You said the food was too salty?",
+    "deadEnd": "Well, it was.",
+    "reply": "I said it badly. The food was lovely, I just like less salt. Sorry.",
+    "formula": "own it + soften + say sorry",
+    "more": [
+      {
+        "label": "Praise",
+        "text": "Sorry, that came out wrong. The dal was really good."
+      },
+      {
+        "label": "Light",
+        "text": "My taste buds are odd. Ignore me, please."
+      },
+      {
+        "label": "Help",
+        "text": "Sorry. Can I help you cook next time?"
+      }
+    ],
+    "donts": [
+      "Defend your comment.",
+      "Make it a bigger point."
+    ]
+  },
+  {
+    "id": "v7-talk-home-036",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Catching up",
+    "kind": "reply",
+    "moment": "How's life?",
+    "they": "How's life?",
+    "deadEnd": "Same old.",
+    "reply": "Pretty good, actually. I joined a running group. How about you?",
+    "formula": "feeling + one detail + ask back",
+    "more": [
+      {
+        "label": "Busy",
+        "text": "Busy but fun. Work is full on. What's new with you?"
+      },
+      {
+        "label": "Slow",
+        "text": "Slow and steady. I needed a calm month. You?"
+      },
+      {
+        "label": "Tough",
+        "text": "Bit of a tough week, honestly. Better now. You?"
+      }
+    ],
+    "donts": [
+      "Stop at \"same old\".",
+      "Unload every problem at once."
+    ]
+  },
+  {
+    "id": "v7-talk-home-037",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Friend's flatmate",
+    "kind": "open",
+    "moment": "A friend's flatmate",
+    "deadEnd": "Hi.",
+    "reply": "Hi, I'm Dev. Nice to meet you. How long have you two lived together?",
+    "formula": "name + easy question",
+    "more": [
+      {
+        "label": "Flat",
+        "text": "Your flat is great. Did you pick the plants?"
+      },
+      {
+        "label": "Work",
+        "text": "Do you work near here?"
+      },
+      {
+        "label": "Food",
+        "text": "Something smells good. Are you cooking?"
+      }
+    ],
+    "donts": [
+      "Ask about rent.",
+      "Treat them like they're not there."
+    ]
+  },
+  {
+    "id": "v7-talk-home-038",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "New hobby",
+    "kind": "keep_going",
+    "moment": "Friend is learning guitar",
+    "they": "I'm learning guitar.",
+    "deadEnd": "Cool.",
+    "reply": "Nice! What song are you trying to learn first?",
+    "formula": "pick one detail + ask about it",
+    "more": [
+      {
+        "label": "Teacher",
+        "text": "Are you taking classes or learning online?"
+      },
+      {
+        "label": "Progress",
+        "text": "How are your fingers holding up?"
+      },
+      {
+        "label": "Play",
+        "text": "Play something for me sometime?"
+      }
+    ],
+    "donts": [
+      "Tell them you played better.",
+      "Say it's hard to learn as an adult."
+    ]
+  },
+  {
+    "id": "v7-talk-home-039",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Weeknight visit",
+    "kind": "exit",
+    "moment": "Leaving a friend's place on a weeknight",
+    "deadEnd": "I'll go.",
+    "reply": "This was so good. I have work tomorrow, so I'll head home. Thanks for dinner!",
+    "formula": "thanks + reason + goodbye",
+    "more": [
+      {
+        "label": "Next time",
+        "text": "Let's do this again soon. My place next time."
+      },
+      {
+        "label": "Late",
+        "text": "It's getting late, I should go. This was fun."
+      },
+      {
+        "label": "Help",
+        "text": "Can I help you clear up before I leave?"
+      }
+    ],
+    "donts": [
+      "Leave with dishes everywhere.",
+      "Say \"I'm bored\"."
+    ]
+  },
+  {
+    "id": "v7-talk-home-040",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Awkward question",
+    "kind": "save_it",
+    "moment": "You asked about their ex",
+    "they": "We broke up, actually.",
+    "deadEnd": "Oh. Okay.",
+    "reply": "I'm sorry, I didn't know. We don't have to talk about it.",
+    "formula": "say sorry + give them space",
+    "more": [
+      {
+        "label": "Care",
+        "text": "I'm sorry. Are you doing okay?"
+      },
+      {
+        "label": "Change topic",
+        "text": "Sorry I brought it up. How is the new job?"
+      },
+      {
+        "label": "Support",
+        "text": "Here if you ever want to talk."
+      }
+    ],
+    "donts": [
+      "Ask what went wrong.",
+      "Say \"I knew it wouldn't last\"."
+    ]
+  },
+  {
+    "id": "v7-talk-home-041",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Next wedding",
+    "kind": "reply",
+    "moment": "You're next, right?",
+    "they": "You're next, right?",
+    "deadEnd": "No.",
+    "reply": "Let me enjoy this one first! Are you dancing at the sangeet?",
+    "formula": "light answer + change the topic",
+    "more": [
+      {
+        "label": "Funny",
+        "text": "Only if you plan it for me!"
+      },
+      {
+        "label": "Honest",
+        "text": "Not anytime soon. I'm happy as I am."
+      },
+      {
+        "label": "Turn it",
+        "text": "Ha! What about you?"
+      }
+    ],
+    "donts": [
+      "Get annoyed.",
+      "Explain your love life."
+    ]
+  },
+  {
+    "id": "v7-talk-home-042",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Buffet line",
+    "kind": "open",
+    "moment": "Waiting in the buffet line",
+    "deadEnd": "Silence.",
+    "reply": "This line is long, it must be good. Have you tried anything yet?",
+    "formula": "shared moment + easy question",
+    "more": [
+      {
+        "label": "Dish",
+        "text": "Is that paneer? Is it good?"
+      },
+      {
+        "label": "Dessert",
+        "text": "I'm saving room for dessert. Seen what they have?"
+      },
+      {
+        "label": "Know",
+        "text": "Are you from the bride or the groom side?"
+      }
+    ],
+    "donts": [
+      "Push ahead in the line.",
+      "Complain about the wait."
+    ]
+  },
+  {
+    "id": "v7-talk-home-043",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Bride's friend",
+    "kind": "keep_going",
+    "moment": "They're the bride's school friend",
+    "they": "I'm her school friend.",
+    "deadEnd": "Oh nice.",
+    "reply": "School friends! What was she like back then?",
+    "formula": "pick the detail + ask about it",
+    "more": [
+      {
+        "label": "Memory",
+        "text": "Got any good stories about her?"
+      },
+      {
+        "label": "Still close",
+        "text": "How did you two stay close all this time?"
+      },
+      {
+        "label": "Change",
+        "text": "Has she changed much?"
+      }
+    ],
+    "donts": [
+      "Ask for gossip about her past.",
+      "Talk only about your own school."
+    ]
+  },
+  {
+    "id": "v7-talk-home-044",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Dance floor",
+    "kind": "exit",
+    "moment": "Leaving the dance floor",
+    "they": "Come on, one more song!",
+    "deadEnd": "I'm tired.",
+    "reply": "You go ahead, I need a break and some water. Great moves, though!",
+    "formula": "reason + praise + let them carry on",
+    "more": [
+      {
+        "label": "Food",
+        "text": "I'm going to get food before it runs out."
+      },
+      {
+        "label": "Rest",
+        "text": "My feet need five minutes. I'll be back!"
+      },
+      {
+        "label": "Light",
+        "text": "That's my limit! You keep going."
+      }
+    ],
+    "donts": [
+      "Leave without a word.",
+      "Pull them off the floor with you."
+    ]
+  },
+  {
+    "id": "v7-talk-home-045",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Same question twice",
+    "kind": "save_it",
+    "moment": "You asked how the couple met, twice",
+    "they": "I told you a minute ago.",
+    "deadEnd": "Oh.",
+    "reply": "You did! Sorry, it's so loud I missed parts. It's a lovely story though.",
+    "formula": "own it + light reason + kind line",
+    "more": [
+      {
+        "label": "Laugh",
+        "text": "Ha, my memory! I loved it the first time too."
+      },
+      {
+        "label": "Ask more",
+        "text": "Sorry! Tell me again how he proposed?"
+      },
+      {
+        "label": "Move on",
+        "text": "My bad. Anyway, have you seen the dessert?"
+      }
+    ],
+    "donts": [
+      "Pretend you didn't ask.",
+      "Blame them for talking too softly."
+    ]
+  },
+  {
+    "id": "v7-talk-home-046",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Weight comment",
+    "kind": "reply",
+    "moment": "Why are you so thin these days?",
+    "they": "Why are you so thin these days?",
+    "deadEnd": "I'm not.",
+    "reply": "I've been running more, and I feel great. How have you been?",
+    "formula": "calm answer + ask back",
+    "more": [
+      {
+        "label": "Light",
+        "text": "I'm eating well, I promise! How are you?"
+      },
+      {
+        "label": "Kind",
+        "text": "Thanks for worrying. I'm healthy, really."
+      },
+      {
+        "label": "Change topic",
+        "text": "All good with me. Tell me, how is Uncle's knee?"
+      }
+    ],
+    "donts": [
+      "Get defensive.",
+      "Comment on their weight back."
+    ]
+  },
+  {
+    "id": "v7-talk-home-047",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "New in-laws",
+    "kind": "open",
+    "moment": "Your sister's new in-laws",
+    "deadEnd": "Hello.",
+    "reply": "Hello, I'm Neha's brother. We're so happy to have you in the family.",
+    "formula": "say who you are + warm line",
+    "more": [
+      {
+        "label": "Ask",
+        "text": "How was your journey here?"
+      },
+      {
+        "label": "Food",
+        "text": "Have you tried the sweets? Mum made them herself."
+      },
+      {
+        "label": "Next",
+        "text": "We should all have dinner together soon."
+      }
+    ],
+    "donts": [
+      "Joke about your sister's faults.",
+      "Stay silent behind your parents."
+    ]
+  },
+  {
+    "id": "v7-talk-home-048",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Parents' trip",
+    "kind": "keep_going",
+    "moment": "Parents just got back from a trip",
+    "they": "We just got back from Kerala.",
+    "deadEnd": "Nice.",
+    "reply": "Kerala! What was your favourite part?",
+    "formula": "react + ask about the best bit",
+    "more": [
+      {
+        "label": "Food",
+        "text": "How was the food?"
+      },
+      {
+        "label": "Photos",
+        "text": "Show me the photos!"
+      },
+      {
+        "label": "Again",
+        "text": "Would you go back?"
+      }
+    ],
+    "donts": [
+      "Say you have been there and it was better.",
+      "Ask how much it cost."
+    ]
+  },
+  {
+    "id": "v7-talk-home-049",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Relative's house",
+    "kind": "exit",
+    "moment": "Leaving a relative's house at night",
+    "deadEnd": "We're going.",
+    "reply": "Thank you for the lovely evening. It's late, so we should head home.",
+    "formula": "thanks + reason + goodbye",
+    "more": [
+      {
+        "label": "Next time",
+        "text": "Next time, you must come to our place."
+      },
+      {
+        "label": "Kids",
+        "text": "The kids are sleepy, so we'll go now. Thank you!"
+      },
+      {
+        "label": "Gift",
+        "text": "Thank you for everything, and for the sweets."
+      }
+    ],
+    "donts": [
+      "Leave without saying bye to the elders.",
+      "Stay at the door for an hour."
+    ]
+  },
+  {
+    "id": "v7-talk-home-050",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Politics at dinner",
+    "kind": "save_it",
+    "moment": "You brought up politics at dinner",
+    "they": "Let's not talk about this now.",
+    "deadEnd": "But I'm right.",
+    "reply": "Fair, I'm sorry I brought it up. Who wants more dessert?",
+    "formula": "agree + say sorry + change topic",
+    "more": [
+      {
+        "label": "Light",
+        "text": "Okay, okay, I'll stop. How is the new house?"
+      },
+      {
+        "label": "Calm",
+        "text": "You're right, not the time. Sorry, everyone."
+      },
+      {
+        "label": "Kind",
+        "text": "Sorry. Let's just enjoy the food."
+      }
+    ],
+    "donts": [
+      "Keep arguing.",
+      "Make a final point."
+    ]
+  },
+  {
+    "id": "v7-talk-home-051",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Shows and films",
+    "kind": "reply",
+    "moment": "Seen anything good lately?",
+    "they": "Seen anything good lately?",
+    "deadEnd": "No.",
+    "reply": "Yes, I just finished a crime show. It was so good. What are you watching?",
+    "formula": "one pick + why + ask back",
+    "more": [
+      {
+        "label": "Film",
+        "text": "I saw a funny film last week. Do you like comedies?"
+      },
+      {
+        "label": "Nothing",
+        "text": "Not really. Got a good one for me?"
+      },
+      {
+        "label": "Book",
+        "text": "Not a show, but a great book. Do you read much?"
+      }
+    ],
+    "donts": [
+      "Stop at \"no\".",
+      "Tell the whole story with spoilers."
+    ]
+  },
+  {
+    "id": "v7-talk-home-052",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Gym regular",
+    "kind": "open",
+    "moment": "A gym regular you see every day",
+    "deadEnd": "A nod.",
+    "reply": "Hi, we see each other every day. I'm Aditya. What are you training for?",
+    "formula": "shared moment + name + easy question",
+    "more": [
+      {
+        "label": "Advice",
+        "text": "You make that look easy. Any tips?"
+      },
+      {
+        "label": "Time",
+        "text": "Are you always here this early?"
+      },
+      {
+        "label": "Class",
+        "text": "Have you tried the evening class?"
+      }
+    ],
+    "donts": [
+      "Comment on their body.",
+      "Talk while they're mid-lift."
+    ]
+  },
+  {
+    "id": "v7-talk-home-053",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Solo trip",
+    "kind": "keep_going",
+    "moment": "Friend went on a solo trip",
+    "they": "I went on a solo trip to Spiti.",
+    "deadEnd": "Brave.",
+    "reply": "Spiti on your own! What was the best moment?",
+    "formula": "react + ask for one moment",
+    "more": [
+      {
+        "label": "Feeling",
+        "text": "Did you feel lonely, or free?"
+      },
+      {
+        "label": "People",
+        "text": "Did you meet anyone interesting?"
+      },
+      {
+        "label": "Again",
+        "text": "Would you travel solo again?"
+      }
+    ],
+    "donts": [
+      "Say it sounds dangerous.",
+      "Turn it into your trip story."
+    ]
+  },
+  {
+    "id": "v7-talk-home-054",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Gym chat",
+    "kind": "exit",
+    "moment": "Ending a chat at the gym",
+    "deadEnd": "I'm going.",
+    "reply": "I have to get back to my set. Good chatting, see you tomorrow!",
+    "formula": "reason + kind line + see you",
+    "more": [
+      {
+        "label": "Busy",
+        "text": "I'm short on time today. Catch you later!"
+      },
+      {
+        "label": "Class",
+        "text": "My class starts now. Have a good workout!"
+      },
+      {
+        "label": "Next time",
+        "text": "Let's talk more after, okay?"
+      }
+    ],
+    "donts": [
+      "Walk off mid-sentence.",
+      "Keep chatting while they want to train."
+    ]
+  },
+  {
+    "id": "v7-talk-home-055",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Missed call",
+    "kind": "save_it",
+    "moment": "You missed their call",
+    "they": "I called you three times!",
+    "deadEnd": "I was busy.",
+    "reply": "I'm so sorry, my phone was on silent. Is everything okay?",
+    "formula": "say sorry + short reason + check on them",
+    "more": [
+      {
+        "label": "Call back",
+        "text": "Sorry I missed you. Can I call you now?"
+      },
+      {
+        "label": "Worried",
+        "text": "Sorry! Everything all right?"
+      },
+      {
+        "label": "Own it",
+        "text": "My bad, I saw it late. What did you need?"
+      }
+    ],
+    "donts": [
+      "Say \"why so many calls?\"",
+      "Ignore it and change the topic."
+    ]
+  },
+  {
+    "id": "v7-talk-home-056",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Wedding food",
+    "kind": "reply",
+    "moment": "Did you try the food?",
+    "they": "Did you try the food?",
+    "deadEnd": "Yes.",
+    "reply": "Yes! The dal makhani is amazing. Have you been to the dessert table?",
+    "formula": "answer + one pick + ask back",
+    "more": [
+      {
+        "label": "Not yet",
+        "text": "Not yet. What should I try first?"
+      },
+      {
+        "label": "Full",
+        "text": "Too much, I can barely move. What did you like?"
+      },
+      {
+        "label": "Waiting",
+        "text": "I'm waiting for the line to get shorter. Is it good?"
+      }
+    ],
+    "donts": [
+      "Say it's too oily.",
+      "Just say yes and stop."
+    ]
+  },
+  {
+    "id": "v7-talk-home-057",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Couple's parents",
+    "kind": "open",
+    "moment": "The couple's parents at the reception",
+    "deadEnd": "Congratulations.",
+    "reply": "Congratulations, Uncle and Auntie! Everything looks beautiful. You must be so proud.",
+    "formula": "wishes + praise + kind line",
+    "more": [
+      {
+        "label": "Thanks",
+        "text": "Thank you for having us. It's a lovely wedding."
+      },
+      {
+        "label": "Ask",
+        "text": "How are you holding up? It must be a busy week."
+      },
+      {
+        "label": "Help",
+        "text": "If you need any help tonight, just tell me."
+      }
+    ],
+    "donts": [
+      "Comment on the cost.",
+      "Hold them for too long."
+    ]
+  },
+  {
+    "id": "v7-talk-home-058",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Honeymoon",
+    "kind": "keep_going",
+    "moment": "They mention the honeymoon",
+    "they": "They're going to Bali for the honeymoon.",
+    "deadEnd": "Okay.",
+    "reply": "Bali sounds perfect. Have you been there?",
+    "formula": "react + ask about it",
+    "more": [
+      {
+        "label": "Plans",
+        "text": "Do you know what they plan to do there?"
+      },
+      {
+        "label": "Travel",
+        "text": "Is that on your list too?"
+      },
+      {
+        "label": "Tips",
+        "text": "Any tips I should pass on to them?"
+      }
+    ],
+    "donts": [
+      "Make jokes about the honeymoon.",
+      "Ask about the cost."
+    ]
+  },
+  {
+    "id": "v7-talk-home-059",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Talkative guest",
+    "kind": "exit",
+    "moment": "Ending a chat with a talkative guest",
+    "they": "And then my son...",
+    "deadEnd": "I have to go.",
+    "reply": "That's lovely to hear. Please excuse me, I promised to help the bride's mum.",
+    "formula": "kind line + reason + excuse yourself",
+    "more": [
+      {
+        "label": "Food",
+        "text": "Excuse me, I need to grab some food. So nice talking to you."
+      },
+      {
+        "label": "Friend",
+        "text": "Sorry, my friend is waving at me. Enjoy the evening!"
+      },
+      {
+        "label": "Later",
+        "text": "Let's catch up later. I have to find my family."
+      }
+    ],
+    "donts": [
+      "Look bored or check your phone.",
+      "Walk away without a word."
+    ]
+  },
+  {
+    "id": "v7-talk-home-060",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Spilled food",
+    "kind": "save_it",
+    "moment": "You spilled food on someone",
+    "they": "Oh no, my saree!",
+    "deadEnd": "Sorry.",
+    "reply": "I'm so sorry! Let me get you some water and tissue right now.",
+    "formula": "say sorry + act fast",
+    "more": [
+      {
+        "label": "Help",
+        "text": "Here, let me help. Is it coming off?"
+      },
+      {
+        "label": "Offer",
+        "text": "I'm so sorry. Please let me pay for the cleaning."
+      },
+      {
+        "label": "Later",
+        "text": "Sorry again. Is it okay now?"
+      }
+    ],
+    "donts": [
+      "Laugh it off.",
+      "Blame the crowd."
+    ]
+  },
+  {
+    "id": "v7-talk-home-061",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Coming home",
+    "kind": "reply",
+    "moment": "When are you coming home?",
+    "they": "When are you coming home?",
+    "deadEnd": "Soon.",
+    "reply": "Next month, for Diwali! I can't wait. What should I bring?",
+    "formula": "a real date + feeling + ask",
+    "more": [
+      {
+        "label": "Not sure",
+        "text": "Not sure yet, work is busy. I'll tell you this week."
+      },
+      {
+        "label": "Soon",
+        "text": "In two weeks! Will you make my favourite food?"
+      },
+      {
+        "label": "Miss you",
+        "text": "I miss home too. I'm looking at tickets now."
+      }
+    ],
+    "donts": [
+      "Just say \"soon\" every time.",
+      "Make a promise you can't keep."
+    ]
+  },
+  {
+    "id": "v7-talk-home-062",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Quiet uncle",
+    "kind": "open",
+    "moment": "Quiet uncle at a family dinner",
+    "deadEnd": "Silence.",
+    "reply": "Uncle, how have you been? Are you still doing your morning walks?",
+    "formula": "warm hello + ask about something they like",
+    "more": [
+      {
+        "label": "News",
+        "text": "Did you see the cricket last night?"
+      },
+      {
+        "label": "Garden",
+        "text": "How is your garden doing?"
+      },
+      {
+        "label": "Help",
+        "text": "Can I get you anything to eat?"
+      }
+    ],
+    "donts": [
+      "Leave him sitting alone.",
+      "Talk loudly over him."
+    ]
+  },
+  {
+    "id": "v7-talk-home-063",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Niece's prize",
+    "kind": "keep_going",
+    "moment": "Niece won a school prize",
+    "they": "She won first prize in science!",
+    "deadEnd": "Good.",
+    "reply": "First prize! What was her project about?",
+    "formula": "cheer + ask about it",
+    "more": [
+      {
+        "label": "Ask her",
+        "text": "You must be proud! Can she show me?"
+      },
+      {
+        "label": "Next",
+        "text": "What does she want to try next?"
+      },
+      {
+        "label": "Treat",
+        "text": "This calls for ice cream. My treat!"
+      }
+    ],
+    "donts": [
+      "Compare her with other kids.",
+      "Talk about your own school prizes."
+    ]
+  },
+  {
+    "id": "v7-talk-home-064",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Video call",
+    "kind": "exit",
+    "moment": "Ending a video call with grandparents",
+    "they": "Are you eating properly?",
+    "deadEnd": "Yes. Bye.",
+    "reply": "Yes, I promise! I have to go now, but I'll call on Sunday. Love you!",
+    "formula": "answer + reason + next call",
+    "more": [
+      {
+        "label": "Late",
+        "text": "It's late for you, so get some rest. Talk soon!"
+      },
+      {
+        "label": "Busy",
+        "text": "I'm heading out now. Talk on the weekend?"
+      },
+      {
+        "label": "Warm",
+        "text": "Lovely seeing you both. Take care of yourselves."
+      }
+    ],
+    "donts": [
+      "End the call suddenly.",
+      "Keep saying \"bye, bye\" for five minutes."
+    ]
+  },
+  {
+    "id": "v7-talk-home-065",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Mixed-up aunts",
+    "kind": "save_it",
+    "moment": "You mixed up two aunts",
+    "they": "I'm Asha, not Usha.",
+    "deadEnd": "Same thing.",
+    "reply": "Asha Auntie, of course! I'm so sorry. How are you?",
+    "formula": "say the right name + sorry + ask",
+    "more": [
+      {
+        "label": "Laugh",
+        "text": "Sorry, Asha Auntie! Too many lovely aunts."
+      },
+      {
+        "label": "Own it",
+        "text": "My mistake, Asha Auntie. I won't mix it up again."
+      },
+      {
+        "label": "Move on",
+        "text": "Sorry! How is your new house, Asha Auntie?"
+      }
+    ],
+    "donts": [
+      "Argue that they look alike.",
+      "Keep using the wrong name."
+    ]
+  },
+  {
+    "id": "v7-talk-home-066",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "New flat",
+    "kind": "reply",
+    "moment": "How's the new flat?",
+    "they": "How's the new flat?",
+    "deadEnd": "Okay.",
+    "reply": "I love it. The light is great. You have to come over this weekend.",
+    "formula": "feeling + one detail + invite",
+    "more": [
+      {
+        "label": "Small",
+        "text": "Small, but cosy. Come see it sometime."
+      },
+      {
+        "label": "Problems",
+        "text": "The flat is great, the plumbing not so much! Any tips?"
+      },
+      {
+        "label": "Settling",
+        "text": "Still unpacking boxes. Ask me again next month!"
+      }
+    ],
+    "donts": [
+      "Just say \"okay\".",
+      "Talk only about rent."
+    ]
+  },
+  {
+    "id": "v7-talk-home-067",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "School gate",
+    "kind": "open",
+    "moment": "Another parent at the school gate",
+    "deadEnd": "A smile.",
+    "reply": "Hi, I think our kids are in the same class. I'm Rhea, Aarav's mum.",
+    "formula": "shared moment + name",
+    "more": [
+      {
+        "label": "Ask",
+        "text": "Which class is your child in?"
+      },
+      {
+        "label": "Event",
+        "text": "Are you going to the sports day?"
+      },
+      {
+        "label": "Weather",
+        "text": "Hot day for pick-up! How long have you been waiting?"
+      }
+    ],
+    "donts": [
+      "Ask about their child's marks.",
+      "Compare the kids."
+    ]
+  },
+  {
+    "id": "v7-talk-home-068",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "House-hunting",
+    "kind": "keep_going",
+    "moment": "Friend is house-hunting",
+    "they": "We're looking for a new place.",
+    "deadEnd": "Okay.",
+    "reply": "That's a big job! Which area are you looking at?",
+    "formula": "react + ask about it",
+    "more": [
+      {
+        "label": "Wish list",
+        "text": "What's the one thing you want in a new place?"
+      },
+      {
+        "label": "Progress",
+        "text": "Have you seen anything you like yet?"
+      },
+      {
+        "label": "Help",
+        "text": "Want me to send you a few places I know?"
+      }
+    ],
+    "donts": [
+      "Tell them prices are too high.",
+      "Ask about their budget."
+    ]
+  },
+  {
+    "id": "v7-talk-home-069",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Group plan",
+    "kind": "exit",
+    "moment": "Getting out of a group plan",
+    "they": "You're coming to Goa, right?",
+    "deadEnd": "No.",
+    "reply": "I would love to, but I can't this time. Send me lots of photos!",
+    "formula": "warm no + reason + wish them well",
+    "more": [
+      {
+        "label": "Money",
+        "text": "I'm saving this month, so I'll skip. Have a great trip!"
+      },
+      {
+        "label": "Work",
+        "text": "Work won't let me go. Next trip, for sure."
+      },
+      {
+        "label": "Short",
+        "text": "I'll sit this one out, but have fun!"
+      }
+    ],
+    "donts": [
+      "Say yes and drop out later.",
+      "Give a long list of reasons."
+    ]
+  },
+  {
+    "id": "v7-talk-home-070",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Arrived late",
+    "kind": "save_it",
+    "moment": "You arrived very late",
+    "they": "We started without you.",
+    "deadEnd": "Traffic.",
+    "reply": "I'm so sorry I'm late. What did I miss?",
+    "formula": "say sorry + catch up",
+    "more": [
+      {
+        "label": "Own it",
+        "text": "Sorry, everyone. I should have left earlier."
+      },
+      {
+        "label": "Make up",
+        "text": "Sorry I'm late! First round is on me."
+      },
+      {
+        "label": "Quick",
+        "text": "Sorry! Fill me in?"
+      }
+    ],
+    "donts": [
+      "Make a big entrance.",
+      "Blame the traffic for ten minutes."
+    ]
+  },
+  {
+    "id": "v7-talk-home-071",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Staying over",
+    "kind": "reply",
+    "moment": "Are you staying the night?",
+    "they": "Are you staying the night?",
+    "deadEnd": "No.",
+    "reply": "No, we're driving back after dinner. Are you staying?",
+    "formula": "answer + short plan + ask back",
+    "more": [
+      {
+        "label": "Staying",
+        "text": "Yes, we booked the hotel nearby. You?"
+      },
+      {
+        "label": "Not sure",
+        "text": "Not sure yet. It depends on how late it goes!"
+      },
+      {
+        "label": "Early",
+        "text": "We're leaving early tomorrow morning. And you?"
+      }
+    ],
+    "donts": [
+      "Complain about the hotel.",
+      "Stop at \"no\"."
+    ]
+  },
+  {
+    "id": "v7-talk-home-072",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Seen before",
+    "kind": "open",
+    "moment": "Someone you met at the last wedding",
+    "deadEnd": "Hi.",
+    "reply": "Hi! We met at Riya's wedding last year, right? I'm Nikhil.",
+    "formula": "shared memory + name",
+    "more": [
+      {
+        "label": "Ask",
+        "text": "How have you been since then?"
+      },
+      {
+        "label": "Memory",
+        "text": "You were the one who danced all night!"
+      },
+      {
+        "label": "Unsure",
+        "text": "I think we have met before. Was it at Riya's wedding?"
+      }
+    ],
+    "donts": [
+      "Pretend you know them well.",
+      "Ask why they're still single."
+    ]
+  },
+  {
+    "id": "v7-talk-home-073",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Wedding photographer",
+    "kind": "keep_going",
+    "moment": "They're the wedding photographer",
+    "they": "I'm the photographer.",
+    "deadEnd": "Nice.",
+    "reply": "That must be a busy job! What's your favourite moment to shoot?",
+    "formula": "react + ask about their work",
+    "more": [
+      {
+        "label": "Hard",
+        "text": "What's the hardest part of a wedding shoot?"
+      },
+      {
+        "label": "Tips",
+        "text": "Any tips for looking good in photos?"
+      },
+      {
+        "label": "Long day",
+        "text": "How many hours have you been on your feet?"
+      }
+    ],
+    "donts": [
+      "Ask for free photos.",
+      "Get in the way of their shot."
+    ]
+  },
+  {
+    "id": "v7-talk-home-074",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Before dessert",
+    "kind": "exit",
+    "moment": "Leaving before dessert",
+    "deadEnd": "I'm going.",
+    "reply": "We have to leave before dessert, sadly. It was a beautiful wedding!",
+    "formula": "reason + praise",
+    "more": [
+      {
+        "label": "Long way",
+        "text": "We have a long drive, so we're off. Congratulations!"
+      },
+      {
+        "label": "Kids",
+        "text": "The kids are tired, so we'll go. Lovely evening!"
+      },
+      {
+        "label": "Pack one",
+        "text": "Can we take one sweet for the road?"
+      }
+    ],
+    "donts": [
+      "Slip out without saying bye.",
+      "Complain about the timing."
+    ]
+  },
+  {
+    "id": "v7-talk-home-075",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Wrong table",
+    "kind": "save_it",
+    "moment": "You sat at the family-only table",
+    "they": "This table is for family.",
+    "deadEnd": "Oh.",
+    "reply": "I'm so sorry, I didn't know! Where should we sit?",
+    "formula": "say sorry + ask for help",
+    "more": [
+      {
+        "label": "Light",
+        "text": "Oops, my mistake. We'll move right away."
+      },
+      {
+        "label": "Thanks",
+        "text": "Thank you for telling us. Sorry about that."
+      },
+      {
+        "label": "Quick",
+        "text": "Sorry! Which table is ours?"
+      }
+    ],
+    "donts": [
+      "Argue about the seat.",
+      "Stay and pretend you're family."
+    ]
+  },
+  {
+    "id": "v7-talk-home-076",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Salary question",
+    "kind": "reply",
+    "moment": "How much do they pay you?",
+    "they": "How much do they pay you?",
+    "deadEnd": "Enough.",
+    "reply": "Enough to buy you lunch! It's a good job, and I'm happy there.",
+    "formula": "light answer + happy note",
+    "more": [
+      {
+        "label": "Change topic",
+        "text": "It pays the bills. How is your shop going?"
+      },
+      {
+        "label": "Honest",
+        "text": "I like to keep that private, but it's a good job."
+      },
+      {
+        "label": "Funny",
+        "text": "Not as much as I want! How are you?"
+      }
+    ],
+    "donts": [
+      "Get angry.",
+      "Share the number if you don't want to."
+    ]
+  },
+  {
+    "id": "v7-talk-home-077",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Teen cousin",
+    "kind": "open",
+    "moment": "A teenage cousin glued to their phone",
+    "deadEnd": "Silence.",
+    "reply": "What are you watching? Is it funny? Show me.",
+    "formula": "curious question about their thing",
+    "more": [
+      {
+        "label": "Games",
+        "text": "Is that a game? Can you teach me?"
+      },
+      {
+        "label": "Music",
+        "text": "Who are you listening to these days?"
+      },
+      {
+        "label": "School",
+        "text": "Which subject do you like most this year?"
+      }
+    ],
+    "donts": [
+      "Lecture them about phones.",
+      "Ask about their marks."
+    ]
+  },
+  {
+    "id": "v7-talk-home-078",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Uncle's health",
+    "kind": "keep_going",
+    "moment": "Uncle talks about his health",
+    "they": "My knees aren't what they used to be.",
+    "deadEnd": "Hmm.",
+    "reply": "I'm sorry, Uncle. Are you seeing a good doctor?",
+    "formula": "care + ask one kind question",
+    "more": [
+      {
+        "label": "Walks",
+        "text": "Does walking help, or make it worse?"
+      },
+      {
+        "label": "Help",
+        "text": "Can I help you find a doctor near you?"
+      },
+      {
+        "label": "Better",
+        "text": "Is it better on some days?"
+      }
+    ],
+    "donts": [
+      "Tell them it's just old age.",
+      "Talk about your own health instead."
+    ]
+  },
+  {
+    "id": "v7-talk-home-079",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Kitchen break",
+    "kind": "exit",
+    "moment": "Leaving the kitchen to rest",
+    "they": "Cut the onions, will you?",
+    "deadEnd": "I'm tired.",
+    "reply": "I'll finish these, then rest for a bit. I'm a little tired from the trip.",
+    "formula": "help a little + reason + rest",
+    "more": [
+      {
+        "label": "Honest",
+        "text": "Can I take a short break? I'll help again after."
+      },
+      {
+        "label": "Later",
+        "text": "Let me rest for twenty minutes, then I'm back."
+      },
+      {
+        "label": "Swap",
+        "text": "I'll set the table after a quick rest."
+      }
+    ],
+    "donts": [
+      "Walk out without a word.",
+      "Complain about the work."
+    ]
+  },
+  {
+    "id": "v7-talk-home-080",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Phone at dinner",
+    "kind": "save_it",
+    "moment": "You were caught on your phone at dinner",
+    "they": "Put that phone down!",
+    "deadEnd": "One minute.",
+    "reply": "Sorry, you're right. Phone is away. Tell me about your day.",
+    "formula": "agree + put it away + show interest",
+    "more": [
+      {
+        "label": "Work",
+        "text": "Sorry, it was a work message. Done now. What were you saying?"
+      },
+      {
+        "label": "Light",
+        "text": "Caught! It's in my pocket now."
+      },
+      {
+        "label": "Ask",
+        "text": "Sorry. So, how was the market today?"
+      }
+    ],
+    "donts": [
+      "Keep scrolling under the table.",
+      "Argue it was important."
+    ]
+  },
+  {
+    "id": "v7-talk-home-081",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Same company",
+    "kind": "reply",
+    "moment": "Still at the same company?",
+    "they": "Still at the same company?",
+    "deadEnd": "Yes.",
+    "reply": "Yes, five years now! I just moved to a new team. You?",
+    "formula": "answer + one update + ask back",
+    "more": [
+      {
+        "label": "New job",
+        "text": "No, I switched last year. I like it a lot. You?"
+      },
+      {
+        "label": "Looking",
+        "text": "Yes, but I'm looking around. Any tips?"
+      },
+      {
+        "label": "Happy",
+        "text": "Yes, and I'm happy there. What about you?"
+      }
+    ],
+    "donts": [
+      "Stop at \"yes\".",
+      "Bad-mouth your company."
+    ]
+  },
+  {
+    "id": "v7-talk-home-082",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "House-warming",
+    "kind": "open",
+    "moment": "Someone at a house-warming",
+    "deadEnd": "Hi.",
+    "reply": "Hi, I'm Tara. Lovely house, right? How do you know the hosts?",
+    "formula": "name + shared moment + easy question",
+    "more": [
+      {
+        "label": "Tour",
+        "text": "Have you seen the balcony yet? It's beautiful."
+      },
+      {
+        "label": "Food",
+        "text": "Did you try the samosas? They're still hot."
+      },
+      {
+        "label": "Area",
+        "text": "Do you live in this area too?"
+      }
+    ],
+    "donts": [
+      "Ask how much the house cost.",
+      "Point out flaws in the house."
+    ]
+  },
+  {
+    "id": "v7-talk-home-083",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Breakup",
+    "kind": "keep_going",
+    "moment": "Friend mentions a breakup",
+    "they": "We broke up last month.",
+    "deadEnd": "Oh.",
+    "reply": "I'm sorry. How are you holding up?",
+    "formula": "care + gentle question",
+    "more": [
+      {
+        "label": "Space",
+        "text": "Do you want to talk about it, or take your mind off it?"
+      },
+      {
+        "label": "Plans",
+        "text": "Want to get dinner this week?"
+      },
+      {
+        "label": "Support",
+        "text": "I'm around if you need anything."
+      }
+    ],
+    "donts": [
+      "Ask whose fault it was.",
+      "Say \"you deserve better\" right away."
+    ]
+  },
+  {
+    "id": "v7-talk-home-084",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "School gate goodbye",
+    "kind": "exit",
+    "moment": "Ending a chat at the school gate",
+    "deadEnd": "Bye.",
+    "reply": "Oh, the kids are out! Nice chatting with you. See you tomorrow.",
+    "formula": "reason + kind line + see you",
+    "more": [
+      {
+        "label": "Rush",
+        "text": "I have to run to work. Have a good day!"
+      },
+      {
+        "label": "Next",
+        "text": "Let's plan a playdate soon."
+      },
+      {
+        "label": "Short",
+        "text": "Good talking! See you at pick-up."
+      }
+    ],
+    "donts": [
+      "Walk off mid-chat.",
+      "Keep them waiting while their child stands alone."
+    ]
+  },
+  {
+    "id": "v7-talk-home-085",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Kid's name",
+    "kind": "save_it",
+    "moment": "You forgot their kid's name",
+    "they": "And this is my son.",
+    "deadEnd": "Hi, buddy.",
+    "reply": "Hi! Sorry, I've forgotten your name. Tell me again?",
+    "formula": "warmth + honest request",
+    "more": [
+      {
+        "label": "To parent",
+        "text": "Remind me of his name? My memory is terrible."
+      },
+      {
+        "label": "Kid",
+        "text": "High five! What's your name again?"
+      },
+      {
+        "label": "Own it",
+        "text": "I'm so sorry, I know we met. What's his name?"
+      }
+    ],
+    "donts": [
+      "Guess a name.",
+      "Call them \"buddy\" all evening to hide it."
+    ]
+  },
+  {
+    "id": "v7-talk-home-086",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "After the ceremony",
+    "kind": "reply",
+    "moment": "Wasn't the ceremony beautiful?",
+    "they": "Wasn't the ceremony beautiful?",
+    "deadEnd": "Yes.",
+    "reply": "So beautiful. I loved the moment they saw each other. Did you cry?",
+    "formula": "agree + one moment + ask",
+    "more": [
+      {
+        "label": "Music",
+        "text": "Yes! The music was lovely. Who picked it?"
+      },
+      {
+        "label": "Emotional",
+        "text": "Very! I teared up when her dad spoke."
+      },
+      {
+        "label": "Missed some",
+        "text": "I missed the start. What did I miss?"
+      }
+    ],
+    "donts": [
+      "Just say \"yes\".",
+      "Point out what went wrong."
+    ]
+  },
+  {
+    "id": "v7-talk-home-087",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Elder relative",
+    "kind": "open",
+    "moment": "An elder relative you don't recognise",
+    "they": "You must be Sunita's son!",
+    "deadEnd": "Yes.",
+    "reply": "Yes, I am! Sorry, help me, how do we know each other?",
+    "formula": "answer + honest question",
+    "more": [
+      {
+        "label": "Warm",
+        "text": "Yes! It's so nice to see you. Are you from Mum's side?"
+      },
+      {
+        "label": "Clue",
+        "text": "I think we met at my cousin's wedding?"
+      },
+      {
+        "label": "Ask",
+        "text": "Yes! And you are...? I want to get it right."
+      }
+    ],
+    "donts": [
+      "Pretend to know them.",
+      "Walk away quickly."
+    ]
+  },
+  {
+    "id": "v7-talk-home-088",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Their own wedding",
+    "kind": "keep_going",
+    "moment": "They mention their own wedding",
+    "they": "Our wedding was much simpler.",
+    "deadEnd": "Oh.",
+    "reply": "I would love to hear about it. Where did you get married?",
+    "formula": "show interest + ask",
+    "more": [
+      {
+        "label": "Year",
+        "text": "When was that?"
+      },
+      {
+        "label": "Best part",
+        "text": "What do you remember most from your day?"
+      },
+      {
+        "label": "Photos",
+        "text": "Do you still have the photos?"
+      }
+    ],
+    "donts": [
+      "Compare which wedding was better.",
+      "Change the topic quickly."
+    ]
+  },
+  {
+    "id": "v7-talk-home-089",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Hosts' parents",
+    "kind": "exit",
+    "moment": "Saying goodbye to the hosts' parents",
+    "deadEnd": "Okay, bye.",
+    "reply": "Thank you so much for everything, Uncle. It was a wonderful wedding.",
+    "formula": "thanks + praise + goodbye",
+    "more": [
+      {
+        "label": "Bless",
+        "text": "Take care, Auntie. Thank you for the lovely evening."
+      },
+      {
+        "label": "Travel",
+        "text": "We're leaving now. Please rest after this busy week!"
+      },
+      {
+        "label": "Visit",
+        "text": "You must visit us soon. Goodnight!"
+      }
+    ],
+    "donts": [
+      "Leave without saying bye to them.",
+      "Rush the goodbye."
+    ]
+  },
+  {
+    "id": "v7-talk-home-090",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Forgot the gift",
+    "kind": "save_it",
+    "moment": "You forgot the gift",
+    "deadEnd": "I forgot the gift.",
+    "reply": "Congratulations! Your gift is coming. I wanted to pick something special.",
+    "formula": "wishes + honest promise",
+    "more": [
+      {
+        "label": "Honest",
+        "text": "I left the gift at home. I'll send it this week!"
+      },
+      {
+        "label": "Light",
+        "text": "The gift is late, but my wishes are on time!"
+      },
+      {
+        "label": "Ask",
+        "text": "Is there something you two would like?"
+      }
+    ],
+    "donts": [
+      "Make up a big story.",
+      "Say nothing and hope they forget."
+    ]
+  },
+  {
+    "id": "v7-talk-home-091",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Sleep question",
+    "kind": "reply",
+    "moment": "Are you sleeping properly?",
+    "they": "Are you sleeping properly?",
+    "deadEnd": "Yes.",
+    "reply": "Mostly! Work was busy last week, but I'm sleeping better now.",
+    "formula": "honest answer + one detail",
+    "more": [
+      {
+        "label": "Not really",
+        "text": "Not really, but I'm trying to sleep earlier."
+      },
+      {
+        "label": "Reassure",
+        "text": "Yes, eight hours! Don't worry about me."
+      },
+      {
+        "label": "Turn it",
+        "text": "Pretty well. And you? Are you resting enough?"
+      }
+    ],
+    "donts": [
+      "Get annoyed at the question.",
+      "List every late night."
+    ]
+  },
+  {
+    "id": "v7-talk-home-092",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Relatives abroad",
+    "kind": "open",
+    "moment": "Video call with relatives abroad",
+    "deadEnd": "Hello? Can you hear me?",
+    "reply": "Hi! It's so good to see you. What time is it there?",
+    "formula": "warm hello + easy question",
+    "more": [
+      {
+        "label": "Weather",
+        "text": "Is it cold there yet?"
+      },
+      {
+        "label": "Kids",
+        "text": "How are the kids? They must be so big now!"
+      },
+      {
+        "label": "Visit",
+        "text": "When are you coming to India next?"
+      }
+    ],
+    "donts": [
+      "Talk about the bad network for five minutes.",
+      "Talk to everyone at once."
+    ]
+  },
+  {
+    "id": "v7-talk-home-093",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Family wedding news",
+    "kind": "keep_going",
+    "moment": "Aunt mentions a family wedding",
+    "they": "Your cousin is getting married in March!",
+    "deadEnd": "Nice.",
+    "reply": "March! That's so soon. Who is she marrying?",
+    "formula": "react + ask one detail",
+    "more": [
+      {
+        "label": "Place",
+        "text": "Where is the wedding?"
+      },
+      {
+        "label": "Plans",
+        "text": "Is it a big wedding or a small one?"
+      },
+      {
+        "label": "Help",
+        "text": "Does she need help with anything?"
+      }
+    ],
+    "donts": [
+      "Ask about the dowry or cost.",
+      "Ask \"why so fast?\""
+    ]
+  },
+  {
+    "id": "v7-talk-home-094",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Family debate",
+    "kind": "exit",
+    "moment": "Excusing yourself from a family debate",
+    "they": "What do you think? Tell them!",
+    "deadEnd": "No comment.",
+    "reply": "Both sides have a point. I'll let you two sort it out. More tea, anyone?",
+    "formula": "stay neutral + light exit",
+    "more": [
+      {
+        "label": "Leave",
+        "text": "Excuse me, I'll go check on the kids."
+      },
+      {
+        "label": "Light",
+        "text": "I'm staying out of this one!"
+      },
+      {
+        "label": "Kind",
+        "text": "Let's talk about something happy instead."
+      }
+    ],
+    "donts": [
+      "Pick a side in front of everyone.",
+      "Walk out in anger."
+    ]
+  },
+  {
+    "id": "v7-talk-home-095",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Lost job",
+    "kind": "save_it",
+    "moment": "You asked about a job they lost",
+    "they": "Actually, I lost that job.",
+    "deadEnd": "Oh. Okay.",
+    "reply": "I'm sorry, I didn't know. That must be hard. How are you doing?",
+    "formula": "say sorry + show care",
+    "more": [
+      {
+        "label": "Help",
+        "text": "I'm sorry. If you want, I can share your profile around."
+      },
+      {
+        "label": "Space",
+        "text": "Sorry I asked. We can talk about something else."
+      },
+      {
+        "label": "Support",
+        "text": "That's tough. I'm here if you need anything."
+      }
+    ],
+    "donts": [
+      "Ask why they were let go.",
+      "Give advice they didn't ask for."
+    ]
+  },
+  {
+    "id": "v7-talk-home-096",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "After a trip",
+    "kind": "reply",
+    "moment": "How was the trip?",
+    "they": "How was the trip?",
+    "deadEnd": "Good.",
+    "reply": "So good! The beaches were empty. Have you been to Gokarna?",
+    "formula": "feeling + one detail + ask back",
+    "more": [
+      {
+        "label": "Tiring",
+        "text": "Fun, but tiring. I need a holiday from my holiday!"
+      },
+      {
+        "label": "Short",
+        "text": "Too short! Two days wasn't enough. Where did you go last?"
+      },
+      {
+        "label": "Rainy",
+        "text": "It rained a lot, but we still had fun."
+      }
+    ],
+    "donts": [
+      "Stop at \"good\".",
+      "Show all three hundred photos."
+    ]
+  },
+  {
+    "id": "v7-talk-home-097",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "At a match",
+    "kind": "open",
+    "moment": "The person next to you at a match",
+    "deadEnd": "Silence.",
+    "reply": "What a catch! Who are you supporting today?",
+    "formula": "react to the moment + easy question",
+    "more": [
+      {
+        "label": "Score",
+        "text": "Do you think they can chase this?"
+      },
+      {
+        "label": "Regular",
+        "text": "Do you come to matches often?"
+      },
+      {
+        "label": "Player",
+        "text": "Who is your favourite player?"
+      }
+    ],
+    "donts": [
+      "Argue about teams.",
+      "Block their view to talk."
+    ]
+  },
+  {
+    "id": "v7-talk-home-098",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Running",
+    "kind": "keep_going",
+    "moment": "Friend started running",
+    "they": "I started running in the mornings.",
+    "deadEnd": "Good.",
+    "reply": "Nice! How far are you running these days?",
+    "formula": "react + ask about progress",
+    "more": [
+      {
+        "label": "Why",
+        "text": "What made you start?"
+      },
+      {
+        "label": "Race",
+        "text": "Are you training for a race?"
+      },
+      {
+        "label": "Join",
+        "text": "Can I join you one morning?"
+      }
+    ],
+    "donts": [
+      "Say running is bad for your knees.",
+      "Brag about your own fitness."
+    ]
+  },
+  {
+    "id": "v7-talk-home-099",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Leaving a house-warming",
+    "kind": "exit",
+    "moment": "Leaving a house-warming",
+    "deadEnd": "Okay, bye.",
+    "reply": "Your home is beautiful. Thank you for having me. Enjoy the new place!",
+    "formula": "praise + thanks + good wishes",
+    "more": [
+      {
+        "label": "Gift",
+        "text": "Hope you like the plant. Congratulations again!"
+      },
+      {
+        "label": "Next",
+        "text": "Have me over again once you're settled."
+      },
+      {
+        "label": "Late",
+        "text": "It's late, so I'm off. Lovely evening!"
+      }
+    ],
+    "donts": [
+      "Leave without thanking the hosts.",
+      "Point out what's missing."
+    ]
+  },
+  {
+    "id": "v7-talk-home-100",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Teasing too far",
+    "kind": "save_it",
+    "moment": "Your teasing went too far",
+    "they": "That wasn't funny.",
+    "deadEnd": "Relax, it was a joke.",
+    "reply": "You're right, that went too far. I'm sorry.",
+    "formula": "agree + say sorry",
+    "more": [
+      {
+        "label": "Own it",
+        "text": "I crossed a line. I'm really sorry."
+      },
+      {
+        "label": "Kind",
+        "text": "Sorry, I didn't mean to hurt you."
+      },
+      {
+        "label": "Later",
+        "text": "I've been thinking about it. Sorry again."
+      }
+    ],
+    "donts": [
+      "Say \"you're too sensitive\".",
+      "Make another joke."
+    ]
+  },
+  {
+    "id": "v7-talk-home-101",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Dancing",
+    "kind": "reply",
+    "moment": "Will you dance tonight?",
+    "they": "Will you dance tonight?",
+    "deadEnd": "No.",
+    "reply": "Maybe after a little food! Are you dancing?",
+    "formula": "light answer + ask back",
+    "more": [
+      {
+        "label": "Yes",
+        "text": "Of course! I've been practising all week."
+      },
+      {
+        "label": "Shy",
+        "text": "Only if you dance with me. I'm shy!"
+      },
+      {
+        "label": "No",
+        "text": "I'll cheer from here. You go for it!"
+      }
+    ],
+    "donts": [
+      "Just say \"no\".",
+      "Make fun of other dancers."
+    ]
+  },
+  {
+    "id": "v7-talk-home-102",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Hotel lobby",
+    "kind": "open",
+    "moment": "Other guests in the hotel lobby",
+    "deadEnd": "Silence.",
+    "reply": "Are you here for the wedding too? Which side are you from?",
+    "formula": "shared reason + easy question",
+    "more": [
+      {
+        "label": "Room",
+        "text": "How is your room? Mine has a great view."
+      },
+      {
+        "label": "Plans",
+        "text": "Are you going to the mehendi tonight?"
+      },
+      {
+        "label": "Travel",
+        "text": "Did you come in today?"
+      }
+    ],
+    "donts": [
+      "Ask about their room price.",
+      "Stay on your phone."
+    ]
+  },
+  {
+    "id": "v7-talk-home-103",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Wedding music",
+    "kind": "keep_going",
+    "moment": "They talk about the music",
+    "they": "This DJ is amazing.",
+    "deadEnd": "Yes.",
+    "reply": "So good! Which song made you get up and dance?",
+    "formula": "agree + ask a fun question",
+    "more": [
+      {
+        "label": "Favourite",
+        "text": "What's your all-time wedding song?"
+      },
+      {
+        "label": "Request",
+        "text": "Should we request something?"
+      },
+      {
+        "label": "Old songs",
+        "text": "Do you like the old songs or the new ones?"
+      }
+    ],
+    "donts": [
+      "Complain about the volume.",
+      "Just say \"yes\"."
+    ]
+  },
+  {
+    "id": "v7-talk-home-104",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Pre-wedding party",
+    "kind": "exit",
+    "moment": "Leaving a pre-wedding party",
+    "deadEnd": "I'm going.",
+    "reply": "This was so much fun. I need to rest for the big day. See you tomorrow!",
+    "formula": "praise + reason + see you",
+    "more": [
+      {
+        "label": "Busy day",
+        "text": "I have to be up early to help. Goodnight, everyone!"
+      },
+      {
+        "label": "Couple",
+        "text": "Get some sleep, you two! Big day tomorrow."
+      },
+      {
+        "label": "Short",
+        "text": "I'm off. See you at the wedding!"
+      }
+    ],
+    "donts": [
+      "Leave without saying bye to the couple.",
+      "Say you're bored."
+    ]
+  },
+  {
+    "id": "v7-talk-home-105",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "weddings"
+    ],
+    "module": "smalltalk",
+    "topic": "Wrong outfit praise",
+    "kind": "save_it",
+    "moment": "You praised the wrong person's outfit",
+    "they": "Actually, that's my sister's lehenga.",
+    "deadEnd": "Oh.",
+    "reply": "Oh, sorry! Well, you both look amazing tonight.",
+    "formula": "say sorry + kind line",
+    "more": [
+      {
+        "label": "Laugh",
+        "text": "Ha! Then I must tell your sister too. You look lovely."
+      },
+      {
+        "label": "Turn it",
+        "text": "Sorry! What are you wearing? It's so pretty."
+      },
+      {
+        "label": "Light",
+        "text": "My mistake! You two have great taste."
+      }
+    ],
+    "donts": [
+      "Argue about whose it is.",
+      "Go quiet and walk away."
+    ]
+  },
+  {
+    "id": "v7-talk-home-106",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Day at home",
+    "kind": "reply",
+    "moment": "What did you do all day?",
+    "they": "What did you do all day?",
+    "deadEnd": "Nothing.",
+    "reply": "Rested, mostly! I read a bit and slept well. How was your day?",
+    "formula": "one or two things + ask back",
+    "more": [
+      {
+        "label": "Work",
+        "text": "Worked from home. It was a busy day. Yours?"
+      },
+      {
+        "label": "Chores",
+        "text": "Laundry and groceries, the usual. What did you do?"
+      },
+      {
+        "label": "Fun",
+        "text": "I watched a film. It was nice. Want to see it?"
+      }
+    ],
+    "donts": [
+      "Say \"nothing\".",
+      "Get annoyed at the question."
+    ]
+  },
+  {
+    "id": "v7-talk-home-107",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Neighbour visit",
+    "kind": "open",
+    "moment": "Your parents' neighbour drops by",
+    "deadEnd": "Hello.",
+    "reply": "Hello, Auntie! Come in. Mum is in the kitchen. How have you been?",
+    "formula": "warm welcome + easy question",
+    "more": [
+      {
+        "label": "Tea",
+        "text": "Will you have some tea?"
+      },
+      {
+        "label": "Remember",
+        "text": "Do you remember me? I'm the younger one."
+      },
+      {
+        "label": "Ask",
+        "text": "How is your family doing?"
+      }
+    ],
+    "donts": [
+      "Leave them at the door.",
+      "Go back to your room straight away."
+    ]
+  },
+  {
+    "id": "v7-talk-home-108",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Renovation",
+    "kind": "keep_going",
+    "moment": "Parents are renovating the house",
+    "they": "We're redoing the kitchen.",
+    "deadEnd": "Okay.",
+    "reply": "That's exciting! What are you changing first?",
+    "formula": "react + ask about it",
+    "more": [
+      {
+        "label": "Style",
+        "text": "What colour are you going for?"
+      },
+      {
+        "label": "Time",
+        "text": "How long will it take?"
+      },
+      {
+        "label": "Help",
+        "text": "Do you need help choosing things?"
+      }
+    ],
+    "donts": [
+      "Say it's a waste of money.",
+      "Tell them how you would do it."
+    ]
+  },
+  {
+    "id": "v7-talk-home-109",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Family party",
+    "kind": "exit",
+    "moment": "Leaving a family party early",
+    "deadEnd": "I have to leave.",
+    "reply": "Sorry to leave early. I have to be at work early tomorrow. This was lovely.",
+    "formula": "say sorry + reason + kind line",
+    "more": [
+      {
+        "label": "Elders",
+        "text": "Let me say bye to Grandpa first. Thank you, everyone."
+      },
+      {
+        "label": "Long drive",
+        "text": "We have a long drive home. Thank you for having us!"
+      },
+      {
+        "label": "Next",
+        "text": "I'll stay longer next time, I promise."
+      }
+    ],
+    "donts": [
+      "Slip away without saying bye.",
+      "Give a fake reason."
+    ]
+  },
+  {
+    "id": "v7-talk-home-110",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "family"
+    ],
+    "module": "smalltalk",
+    "topic": "Laughed at a bad moment",
+    "kind": "save_it",
+    "moment": "You laughed during a serious moment",
+    "they": "Why are you laughing?",
+    "deadEnd": "Nothing.",
+    "reply": "I'm so sorry, that was a nervous laugh. I didn't mean it.",
+    "formula": "say sorry + honest reason",
+    "more": [
+      {
+        "label": "Own it",
+        "text": "Sorry, that was wrong of me. I'm listening."
+      },
+      {
+        "label": "Later",
+        "text": "I'm sorry about earlier. I was nervous."
+      },
+      {
+        "label": "Quiet",
+        "text": "Sorry. Please go on."
+      }
+    ],
+    "donts": [
+      "Laugh again.",
+      "Say \"it was funny, though\"."
+    ]
+  },
+  {
+    "id": "v7-talk-home-111",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Weekend plans",
+    "kind": "reply",
+    "moment": "Free this Saturday?",
+    "they": "Free this Saturday?",
+    "deadEnd": "Maybe.",
+    "reply": "Yes, I'm free in the evening. What are you thinking?",
+    "formula": "clear answer + ask about the plan",
+    "more": [
+      {
+        "label": "Busy",
+        "text": "Not this Saturday, sorry. How about Sunday?"
+      },
+      {
+        "label": "Morning",
+        "text": "Only in the morning. Breakfast?"
+      },
+      {
+        "label": "Keen",
+        "text": "Yes! I need a fun weekend. What's the plan?"
+      }
+    ],
+    "donts": [
+      "Say \"maybe\" and never reply.",
+      "Say yes before checking."
+    ]
+  },
+  {
+    "id": "v7-talk-home-112",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Train seatmate",
+    "kind": "open",
+    "moment": "Seatmate on a long train ride",
+    "deadEnd": "Silence.",
+    "reply": "Long ride, right? Are you going all the way to Delhi?",
+    "formula": "shared moment + easy question",
+    "more": [
+      {
+        "label": "Food",
+        "text": "Have you tried the food on this train?"
+      },
+      {
+        "label": "Work or home",
+        "text": "Going home or for work?"
+      },
+      {
+        "label": "View",
+        "text": "The views on this route are lovely. Do you take it often?"
+      }
+    ],
+    "donts": [
+      "Ask very personal questions.",
+      "Keep talking if they want to sleep."
+    ]
+  },
+  {
+    "id": "v7-talk-home-113",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Favourite show",
+    "kind": "keep_going",
+    "moment": "Friend is hooked on a show",
+    "they": "I can't stop watching this new show.",
+    "deadEnd": "Okay.",
+    "reply": "Which one? What do you love about it?",
+    "formula": "ask the name + ask why",
+    "more": [
+      {
+        "label": "Character",
+        "text": "Who is your favourite character?"
+      },
+      {
+        "label": "Start",
+        "text": "Should I start it? No spoilers!"
+      },
+      {
+        "label": "How far",
+        "text": "How many episodes in are you?"
+      }
+    ],
+    "donts": [
+      "Say it sounds boring.",
+      "Talk only about your own show."
+    ]
+  },
+  {
+    "id": "v7-talk-home-114",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Brunch",
+    "kind": "exit",
+    "moment": "Wrapping up a brunch",
+    "they": "Shall we get the bill?",
+    "deadEnd": "Yes, bye.",
+    "reply": "Yes! This was so good. Let's do it again next month.",
+    "formula": "agree + praise + next plan",
+    "more": [
+      {
+        "label": "Pay",
+        "text": "I'll get this one. You get the next!"
+      },
+      {
+        "label": "Busy",
+        "text": "I have to run to an errand. So nice to see you!"
+      },
+      {
+        "label": "Plan",
+        "text": "Same place next month?"
+      }
+    ],
+    "donts": [
+      "Leave before the bill comes.",
+      "Argue over the split for ten minutes."
+    ]
+  },
+  {
+    "id": "v7-talk-home-115",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "friends"
+    ],
+    "module": "smalltalk",
+    "topic": "Rude comment",
+    "kind": "save_it",
+    "moment": "You commented on their weight",
+    "they": "Did you just call me fat?",
+    "deadEnd": "I was joking.",
+    "reply": "No, I'm so sorry. That came out very wrong. You look great.",
+    "formula": "say sorry + take it back",
+    "more": [
+      {
+        "label": "Own it",
+        "text": "That was rude of me. I'm really sorry."
+      },
+      {
+        "label": "Honest",
+        "text": "I shouldn't comment on anyone's body. Sorry."
+      },
+      {
+        "label": "Move on",
+        "text": "Forget I said that. I'm sorry."
+      }
+    ],
+    "donts": [
+      "Say \"it's just a joke\".",
+      "Explain what you meant."
+    ]
+  }
+]

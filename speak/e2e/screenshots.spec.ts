@@ -1,5 +1,12 @@
 ﻿import { test } from '@playwright/test';
 
+// Switched off 2026-11-08 (Adarsh, steps 1-3 answer 9A): this spec drives the
+// old v4 screens and picture-card feed, which v7 replaced with the five module cards. The
+// new feed is covered by flows.spec.ts and v7-glass.spec.ts (pictures in
+// docs/redesign-v7/built-*.png). Kept for reference; delete or rewrite it if
+// the old screens it covers come back.
+test.skip(true, 'Old v5 feed picture test, switched off for v7 (answer 9A).');
+
 const VIEWPORTS = [
   { name: '320x568-SE', width: 320, height: 568 },
   { name: '375x812-Standard', width: 375, height: 812 },

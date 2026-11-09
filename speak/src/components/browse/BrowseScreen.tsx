@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import type { Card } from '../../types/contract';
 import { useBrowse } from '../../features/browse/useBrowse';
 import type { CategoryDeck } from '../../features/browse/categories';
@@ -10,7 +10,23 @@ export interface BrowseScreenProps {
 }
 
 export default function BrowseScreen({ onOpenCard }: BrowseScreenProps) {
-  const { query, setQuery, filteredDecks, matchingCards, deckStats } = useBrowse();
+  const { query, setQuery, filteredDecks, matchingCards: allMatches, deckStats: allDeckStats } = useBrowse();
+  // v7 module cards are not in the `Card` union: this screen's switches cannot
+  // show them, and a deck matched by tag (e.g. "meetings") must not open one.
+  const matchingCards = allMatches.filter(isOldCard);
+  const deckStats = useMemo(() => {
+    const out: typeof allDeckStats = {};
+    for (const [id, s] of Object.entries(allDeckStats)) {
+      if (s.cards.every(isOldCard)) {
+        out[id] = s;
+        continue;
+      }
+      const cards = s.cards.filter(isOldCard);
+      const seen = Math.min(s.seen, cards.length);
+      out[id] = { ...s, cards, total: cards.length, seen, percent: cards.length ? Math.round((seen / cards.length) * 100) : 0 };
+    }
+    return out;
+  }, [allDeckStats]);
   const [selectedDeck, setSelectedDeck] = useState<CategoryDeck | null>(null);
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
 
@@ -135,6 +151,11 @@ export default function BrowseScreen({ onOpenCard }: BrowseScreenProps) {
       )}
     </div>
   );
+}
+
+/** False for a v7 module card, which this screen cannot show. */
+function isOldCard(card: Card): boolean {
+  return (card.type as string) !== 'module';
 }
 
 function getCardTitle(card: Card): string {

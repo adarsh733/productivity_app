@@ -121,6 +121,46 @@ all feed top-up, misses, Ask, the evening chat and the weekly plan.
   (generate + check); background work stops when fewer than 12 are left.
 - **"Harder" may stretch one level past the open lesson level** (top-up only).
 
+## v7 steps 4-6 final review (2026-11-08) — owed, not blocked
+
+- **Backup is built but off: his Supabase keys.** He pastes the Project URL and
+  the public (anon) key into `speak/.env` (`VITE_SUPABASE_URL`,
+  `VITE_SUPABASE_ANON_KEY`), runs `speak/supabase/schema.sql` once (re-runnable;
+  its v7 block adds `card_feedback`, `seen_terms`, `saved_reviews` and relaxes
+  `events.grade`), and changes the sign-in email to show `{{ .Token }}`
+  (`docs/SETUP.md` step 1). Until then Me shows "Backup is not switched on yet".
+  Code sign-in, push and restore are proven only against a fake client.
+- **AI keys on Netlify.** Still none, so AI batches are proven only with fake
+  model replies. `src/features/auto/moduleBatch.walk.test.ts` walks one batch
+  through the real phone code and the real Netlify function (writer prompt,
+  card checks, check on the other provider, store, backup queue, feed, Wrong
+  English re-check); only the two model answers are fake.
+- **One live batch.** After the keys: read until a module has fewer than 60
+  unseen cards (Stories gets there first, at 41 read), open the app, and check
+  that ~30 new cards appear and read well. Unproven live: whether a real writer
+  keeps every card inside the 40-word slide cap and the ✗ line rule (bad cards
+  are dropped, so a weak writer means a thin batch), and whether a 10-card
+  `verify_batch` fits Groq's minute.
+- **Card English: 10% read by a person.** The final review read one card in ten
+  of every library file and scanned all 1,400 for Indian-English slips. Fixed:
+  Small talk at home had no contractions ("I am so sorry", 219 lines → "I'm so
+  sorry"); "one small doubt" → "question"; "family function" → "family party";
+  "Mom" → "Mum"; three Words example lines. The other 90% are checked by the
+  content tests (shape, ✗ line, no Hindi, no repeats), not by eye; his 👎 and
+  Wrong English are the backstop.
+- **Old picture specs switched off** (answer 9A): `poster`, `screenshots`,
+  `v5-learning`, `v5-step1`..`5`, `viewports` each start with a note and
+  `test.skip`. Rewrite or delete them if those screens come back.
+- **Module pictures are not always the -01 sample card.** With 1,500 cards the
+  day's order decides which card comes first, so `v7-glass` shoots the sample
+  when it is in the first 20, else the module's first card. Comparing with
+  `glass-B-1..4` is by look, not card for card. In the Sunday review picture the
+  ♡ is not filled (the test writes the review row straight in, not a save).
+- **A stray empty folder `D:\Adarsh\Mission AI\docs\`** sits outside the
+  project: earlier `v7-glass` runs from the project folder saved pictures one
+  level too high. Fixed (the spec now finds `docs/redesign-v7/` from its own
+  file); the empty folder was left for Adarsh to delete.
+
 ## v5 final review (2026-10-29) — owed, not blocked
 
 - **Live AI is proven only against mocks.** No AI key is on the Netlify site yet,

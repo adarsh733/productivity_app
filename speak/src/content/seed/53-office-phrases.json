@@ -1,0 +1,602 @@
+[
+  {
+    "id": "v7-phrases-01",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Keeping a meeting focused",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "meetings",
+    "phrase": "Let's take this offline.",
+    "meaning": "Let's discuss this later, with only the people who need to.",
+    "useWhen": "One topic is eating up a group meeting.",
+    "example": "Good point, Rahul. **Let's take this offline** after the call.",
+    "tone": "polite · very common",
+    "careful": "Don't use it to dodge a topic. Follow up the same day.",
+    "wrong": {
+      "label": "✗ Not about internet access",
+      "text": "The Wi-Fi stopped. Let's take this offline."
+    },
+    "similar": [
+      "Let's park this for now.",
+      "Can we pick this up after the call?"
+    ]
+  },
+  {
+    "id": "v7-phrases-02",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Could you walk us through it?",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "meetings",
+    "phrase": "Could you walk us through it?",
+    "meaning": "Explain it step by step.",
+    "useWhen": "You need to understand a process.",
+    "example": "Could you walk us through it, starting with the login?",
+    "tone": "polite · curious",
+    "careful": "Ask about a process, not someone's journey on foot.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "Could you walk us through it to the station?"
+    },
+    "similar": [
+      "Could you explain each step?",
+      "How does it work?"
+    ]
+  },
+  {
+    "id": "v7-phrases-03",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's come back to that.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "meetings",
+    "phrase": "Let's come back to that.",
+    "meaning": "Return to this topic later.",
+    "useWhen": "Another point needs attention first.",
+    "example": "Let's come back to that after we agree on the budget.",
+    "tone": "calm · guiding",
+    "careful": "Name when you will return to the topic.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "Let's come back to that yesterday."
+    },
+    "similar": [
+      "Let's discuss that later.",
+      "Can we return to that after lunch?"
+    ]
+  },
+  {
+    "id": "v7-phrases-04",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Are we on the same page?",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "meetings",
+    "phrase": "Are we on the same page?",
+    "meaning": "Do we understand or agree about this?",
+    "useWhen": "You want to check a shared understanding.",
+    "example": "I'll book the room; you'll order lunch. Are we on the same page?",
+    "tone": "friendly · checking",
+    "careful": "Don't assume silence means agreement.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "Are we on the same page? Please turn to page six."
+    },
+    "similar": [
+      "Does that match your understanding?",
+      "Do we agree on the plan?"
+    ]
+  },
+  {
+    "id": "v7-phrases-05",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Just following up.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "email",
+    "phrase": "Just following up.",
+    "meaning": "Asking again about an earlier message.",
+    "useWhen": "You are waiting for a reply.",
+    "example": "Just following up. Can you confirm Friday's booking?",
+    "tone": "polite · neutral",
+    "careful": "Mention the request; repeated reminders can feel pushy.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "Just following up. Nice to meet you for the first time."
+    },
+    "similar": [
+      "Any update on my earlier message?",
+      "Have you had a chance to check?"
+    ]
+  },
+  {
+    "id": "v7-phrases-06",
+    "type": "module",
+    "module": "phrases",
+    "topic": "For your reference.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "email",
+    "phrase": "For your reference.",
+    "meaning": "Here is information you may need later.",
+    "useWhen": "You are sharing useful background.",
+    "example": "For your reference, the receipt is attached.",
+    "tone": "neutral · helpful",
+    "careful": "State any action separately; this phrase doesn't request one.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "For your reference, approve this immediately."
+    },
+    "similar": [
+      "In case you need it later.",
+      "Here are the details."
+    ]
+  },
+  {
+    "id": "v7-phrases-07",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks for the heads-up.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "email",
+    "phrase": "Thanks for the heads-up.",
+    "meaning": "Thanks for warning or telling me early.",
+    "useWhen": "Someone tells you about a change.",
+    "example": "The train is delayed? Thanks for the heads-up.",
+    "tone": "friendly · informal",
+    "careful": "Use with familiar colleagues; formal emails may need plainer thanks.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "Thanks for the heads-up. I love your new haircut."
+    },
+    "similar": [
+      "Thanks for letting me know.",
+      "Thanks for the warning."
+    ]
+  },
+  {
+    "id": "v7-phrases-08",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I see your point.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "pushback",
+    "phrase": "I see your point.",
+    "meaning": "I understand your reason.",
+    "useWhen": "You want to acknowledge a view before responding.",
+    "example": "I see your point. I'd still prefer the earlier train.",
+    "tone": "respectful · calm",
+    "careful": "Understanding isn't agreement; explain your own view next.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "I see your point, so I automatically agree."
+    },
+    "similar": [
+      "I understand your concern.",
+      "I can see why you think that."
+    ]
+  },
+  {
+    "id": "v7-phrases-09",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'm not sure that will work.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "pushback",
+    "phrase": "I'm not sure that will work.",
+    "meaning": "I have doubts about this plan.",
+    "useWhen": "You need to raise a concern gently.",
+    "example": "I'm not sure that will work. The shop closes at six.",
+    "tone": "gentle · cautious",
+    "careful": "Add a reason so the other person can respond.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "I'm not sure that will work. It definitely works perfectly."
+    },
+    "similar": [
+      "I have a concern about that.",
+      "Could we try another way?"
+    ]
+  },
+  {
+    "id": "v7-phrases-10",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Could we meet halfway?",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "pushback",
+    "phrase": "Could we meet halfway?",
+    "meaning": "Could we both give up something to agree?",
+    "useWhen": "You want a compromise.",
+    "example": "You want six; I want eight. Could we meet halfway at seven?",
+    "tone": "cooperative · informal",
+    "careful": "This asks for a compromise, which may not be possible.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "Could we meet halfway? Only you must change."
+    },
+    "similar": [
+      "Can we find a compromise?",
+      "Could we both adjust a little?"
+    ]
+  },
+  {
+    "id": "v7-phrases-11",
+    "type": "module",
+    "module": "phrases",
+    "topic": "You handled that well.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "praise",
+    "phrase": "You handled that well.",
+    "meaning": "You dealt with a situation effectively.",
+    "useWhen": "Someone managed a difficult moment.",
+    "example": "That call was tense. You handled that well.",
+    "tone": "warm · specific",
+    "careful": "Say what they did well; avoid sounding surprised.",
+    "wrong": {
+      "label": "✗ Sounds surprised",
+      "text": "Wow, you actually handled that well!"
+    },
+    "similar": [
+      "You did a great job with that.",
+      "You kept things calm."
+    ]
+  },
+  {
+    "id": "v7-phrases-12",
+    "type": "module",
+    "module": "phrases",
+    "topic": "That made a real difference.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "praise",
+    "phrase": "That made a real difference.",
+    "meaning": "That had a useful, noticeable effect.",
+    "useWhen": "You want to show why help mattered.",
+    "example": "Thanks for checking the numbers. That made a real difference.",
+    "tone": "warm · appreciative",
+    "careful": "Name the effect when it is not obvious.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "That made a real difference. Nothing changed at all."
+    },
+    "similar": [
+      "That really helped.",
+      "Your help saved us time."
+    ]
+  },
+  {
+    "id": "v7-phrases-13",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks for going the extra mile.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "praise",
+    "phrase": "Thanks for going the extra mile.",
+    "meaning": "Thanks for doing more than expected.",
+    "useWhen": "Someone made an additional effort.",
+    "example": "You stayed to help clean up. Thanks for going the extra mile.",
+    "tone": "warm · appreciative",
+    "careful": "Don't use praise to demand unpaid extra work.",
+    "wrong": {
+      "label": "✗ Not to ask for more",
+      "text": "Thanks for going the extra mile. Can you work Sunday too?"
+    },
+    "similar": [
+      "Thanks for the extra effort.",
+      "I appreciate you doing more."
+    ]
+  },
+  {
+    "id": "v7-phrases-14",
+    "type": "module",
+    "module": "phrases",
+    "topic": "What's the latest we can leave?",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "deadlines",
+    "phrase": "What's the latest we can leave?",
+    "meaning": "When must we leave to be on time?",
+    "useWhen": "You need a departure deadline.",
+    "example": "Dinner starts at eight. What's the latest we can leave?",
+    "tone": "casual · practical",
+    "careful": "Specify leave, start, or finish; the deadline must be clear.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "What's the latest we can leave? I mean when can we arrive?"
+    },
+    "similar": [
+      "When do we need to leave by?",
+      "What's our departure deadline?"
+    ]
+  },
+  {
+    "id": "v7-phrases-15",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Could we have a little more time?",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "deadlines",
+    "phrase": "Could we have a little more time?",
+    "meaning": "Can the deadline move later?",
+    "useWhen": "You need extra time to finish.",
+    "example": "Could we have a little more time? I'll finish by tomorrow morning.",
+    "tone": "polite · direct",
+    "careful": "Offer a specific new time instead of leaving it open.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "Could we have a little more time? I mean less time."
+    },
+    "similar": [
+      "Could we extend the deadline?",
+      "Would tomorrow morning work?"
+    ]
+  },
+  {
+    "id": "v7-phrases-16",
+    "type": "module",
+    "module": "phrases",
+    "topic": "We're on track.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "deadlines",
+    "phrase": "We're on track.",
+    "meaning": "We are progressing as planned.",
+    "useWhen": "You are giving a progress update.",
+    "example": "The bags are packed. We're on track to leave at six.",
+    "tone": "reassuring · neutral",
+    "careful": "Use only if the planned result still looks achievable.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "We're on track. We will definitely miss our deadline."
+    },
+    "similar": [
+      "We're making good progress.",
+      "We're on schedule."
+    ]
+  },
+  {
+    "id": "v7-phrases-17",
+    "type": "module",
+    "module": "phrases",
+    "topic": "We're running behind.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "deadlines",
+    "phrase": "We're running behind.",
+    "meaning": "We are later than planned.",
+    "useWhen": "You need to flag a delay.",
+    "example": "We're running behind. Can you tell them we'll arrive at seven?",
+    "tone": "honest · neutral",
+    "careful": "Give a new estimate when you can.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "We're running behind. We finished early."
+    },
+    "similar": [
+      "We're behind schedule.",
+      "We're a little late."
+    ]
+  },
+  {
+    "id": "v7-phrases-18",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's play it by ear.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "idioms",
+    "phrase": "Let's play it by ear.",
+    "meaning": "Decide as things happen.",
+    "useWhen": "You cannot make a firm plan yet.",
+    "example": "If the rain stops, we'll go out. Let's play it by ear.",
+    "tone": "casual · flexible",
+    "careful": "Avoid this when someone needs a firm commitment.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "Let's play it by ear. Every detail is fixed."
+    },
+    "similar": [
+      "Let's decide later.",
+      "Let's see how things go."
+    ]
+  },
+  {
+    "id": "v7-phrases-19",
+    "type": "module",
+    "module": "phrases",
+    "topic": "We're in the same boat.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "idioms",
+    "phrase": "We're in the same boat.",
+    "meaning": "We share the same difficult situation.",
+    "useWhen": "You want someone to feel less alone.",
+    "example": "You haven't found a flat either? We're in the same boat.",
+    "tone": "friendly · sympathetic",
+    "careful": "Use for a shared difficulty, not just any similarity.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "You're struggling; everything is easy for me. We're in the same boat."
+    },
+    "similar": [
+      "We're dealing with the same problem.",
+      "I am in that situation too."
+    ]
+  },
+  {
+    "id": "v7-phrases-20",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's call it a day.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "everyday"
+    ],
+    "group": "idioms",
+    "phrase": "Let's call it a day.",
+    "meaning": "Let's stop working for today.",
+    "useWhen": "You have done enough for now.",
+    "example": "We've packed all the books. Let's call it a day.",
+    "tone": "casual · friendly",
+    "careful": "This ends the activity for today; it is not a short break.",
+    "wrong": {
+      "label": "✗ Wrong use",
+      "text": "Let's call it a day and restart in five minutes."
+    },
+    "similar": [
+      "Let's stop here for today.",
+      "We can finish the rest tomorrow."
+    ]
+  }
+]

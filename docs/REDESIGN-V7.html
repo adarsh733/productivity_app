@@ -1,0 +1,607 @@
+<title>Articulate v7 Plan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: one reading column; each module gets a working phone beside its rules. Phones are real swipe demos. */
+:root{
+  --bg:#f6f5f2; --paper:#ffffff; --ink:#1b1d22; --muted:#5d6270; --line:#e2e0da; --soft:#efede8;
+  --accent:#1f5fd6;
+  --good:#1a8a4a; --goodbg:#e3f4ea; --warn:#a86a00; --warnbg:#fdf1d8; --bad:#6d6f78; --badbg:#ecebe8;
+  --m-words:#11877a; --m-talk:#e0573f; --m-clear:#f0b429; --m-phrase:#6b4bd6; --m-story:#2a5bd7;
+  --on-m:#ffffff; --on-clear:#1b1d22;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15171b; --paper:#1d2026; --ink:#eceae5; --muted:#a3a7b2; --line:#30343c; --soft:#252931;
+  --accent:#7aa7ff; --good:#5fd08f; --goodbg:#183325; --warn:#f2c060; --warnbg:#3a2e14; --bad:#a3a7b2; --badbg:#2a2d33;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15171b; --paper:#1d2026; --ink:#eceae5; --muted:#a3a7b2; --line:#30343c; --soft:#252931;
+  --accent:#7aa7ff; --good:#5fd08f; --goodbg:#183325; --warn:#f2c060; --warnbg:#3a2e14; --bad:#a3a7b2; --badbg:#2a2d33;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,3.4vw,2rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0;max-width:66ch}
+.eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:700}
+section{display:flex;flex-direction:column;gap:20px}
+.lead{font-size:1.12rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--soft);color:var(--muted);white-space:nowrap}
+.from{font-size:.72rem;color:var(--muted);font-style:italic}
+
+/* hero */
+header{display:flex;flex-direction:column;gap:16px}
+.verdict{display:flex;gap:12px;flex-wrap:wrap}
+.pill{font-weight:700;font-size:.9rem;padding:6px 12px;border-radius:99px;background:var(--paper);border:1px solid var(--line)}
+
+/* problems */
+.probs{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+.prob{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.prob h3{font-size:1.02rem}
+.prob .proof{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+
+/* module chips */
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-weight:700;font-size:.92rem;padding:7px 14px;border-radius:99px;color:var(--on-m);background:var(--c)}
+.chip.clear{color:var(--on-clear)}
+.chip.mix{background:var(--ink);color:var(--bg)}
+
+/* module rows */
+.module{display:grid;grid-template-columns:320px minmax(0,1fr);gap:32px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px}
+@media (max-width:760px){.module{grid-template-columns:minmax(0,1fr);padding:18px}}
+.mhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.dot{width:14px;height:14px;border-radius:50%;background:var(--c);flex:none}
+.rules{display:flex;flex-direction:column;gap:14px;min-width:0}
+.rules dl{margin:0;display:grid;grid-template-columns:120px minmax(0,1fr);gap:8px 14px}
+@media (max-width:460px){.rules dl{grid-template-columns:minmax(0,1fr)} .rules dt{margin-top:6px}}
+.rules dt{font-weight:700;font-size:.85rem;color:var(--muted)}
+.rules dd{margin:0}
+.rules ul{margin:0;padding-left:18px}
+.gone{font-size:.9rem;color:var(--muted)}
+.gone s{color:var(--muted)}
+
+/* phone */
+.phone-col{display:flex;flex-direction:column;align-items:center;gap:10px}
+.phone{width:300px;max-width:100%;height:560px;border-radius:34px;border:10px solid #111317;background:#111317;overflow:hidden;position:relative;box-shadow:0 18px 40px -22px rgba(0,0,0,.45)}
+.screen{height:100%;width:100%;background:#fff;color:#1b1d22;display:flex;flex-direction:column;border-radius:24px;overflow:hidden}
+.ptop{flex:none;display:flex;gap:6px;padding:10px 10px 8px;overflow-x:auto;scrollbar-width:none;background:#fff}
+.ptop::-webkit-scrollbar{display:none}
+.pchip{flex:none;font:700 .68rem var(--body);padding:5px 9px;border-radius:99px;background:#efede8;color:#444}
+.pchip.on{background:#1b1d22;color:#fff}
+.vfeed{flex:1;min-height:0;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.vfeed::-webkit-scrollbar{display:none}
+.card{height:100%;scroll-snap-align:start;scroll-snap-stop:always;background:var(--c);color:var(--on-m);position:relative;display:flex;flex-direction:column}
+.card.clear{color:var(--on-clear)}
+.hrow{flex:1;min-height:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none}
+.hrow::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;padding:18px 54px 18px 18px;display:flex;flex-direction:column;gap:10px;overflow-y:auto}
+.k{font:700 .64rem var(--body);letter-spacing:.09em;text-transform:uppercase;opacity:.85}
+.big{font:800 2.05rem/1.02 var(--display);letter-spacing:-.01em}
+.mid{font:800 1.28rem/1.15 var(--display)}
+.say{font-size:.78rem;opacity:.85}
+.meaning{font:700 1rem/1.3 var(--body)}
+.box{background:rgba(255,255,255,.95);color:#1b1d22;border-radius:12px;padding:9px 11px;font-size:.84rem;line-height:1.4}
+.box .lbl{display:block;font:700 .62rem var(--body);letter-spacing:.08em;text-transform:uppercase;color:#6a6e78;margin-bottom:2px}
+.box b{background:#fff1b8;padding:0 2px;border-radius:3px}
+.box.no{background:rgba(255,255,255,.55)}
+.box.no .txt{text-decoration:line-through;text-decoration-color:rgba(0,0,0,.35)}
+.formula{align-self:flex-start;font:700 .72rem var(--body);padding:5px 10px;border-radius:99px;background:rgba(0,0,0,.22)}
+.card.clear .formula{background:rgba(0,0,0,.1)}
+.mini{display:flex;flex-direction:column;gap:7px}
+.opt{font:700 .86rem var(--body);text-align:left;padding:10px 12px;border-radius:12px;border:0;background:rgba(255,255,255,.95);color:#1b1d22;cursor:pointer}
+.opt.ok{background:#d6f5e2;outline:2px solid #1a8a4a}
+.opt.nope{background:#ececec;color:#777}
+.rail{position:absolute;right:8px;bottom:36px;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.rail span{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.95);color:#1b1d22;display:grid;place-items:center;font-size:.9rem}
+.bub{max-width:85%;padding:9px 12px;border-radius:16px;font-size:.86rem;line-height:1.35;background:rgba(255,255,255,.95);color:#1b1d22}
+.bub.them{align-self:flex-start;border-bottom-left-radius:4px}
+.bub.me{align-self:flex-end;border-bottom-right-radius:4px;background:#1b1d22;color:#fff}
+.bub.me b{background:transparent;color:#ffd38a}
+.bub.no{background:rgba(255,255,255,.4);color:rgba(0,0,0,.55);text-decoration:line-through}
+.dots{flex:none;display:flex;justify-content:center;gap:5px;padding:8px 0 12px}
+.dots i{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.35;transition:opacity .2s, width .2s}
+.dots i.on{opacity:1;width:16px;border-radius:4px}
+.ctrl{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.ctrl button{font:700 .82rem var(--body);padding:7px 12px;border-radius:99px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.ctrl button:focus-visible,.opt:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.hint{font-size:.78rem;color:var(--muted);text-align:center;max-width:300px}
+
+/* motion compare */
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.cbox{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.cbox ul{margin:0;padding-left:18px}
+.demo{display:grid;grid-template-columns:320px minmax(0,1fr);gap:32px;align-items:start}
+@media (max-width:760px){.demo{grid-template-columns:minmax(0,1fr)}}
+
+/* feedback mock */
+.fb{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.fbcard{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.line{border-radius:10px;padding:10px 12px;background:var(--soft);font-size:.95rem}
+.line .lbl{display:block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+del{color:var(--muted);text-decoration-thickness:2px}
+ins{text-decoration:none;background:var(--goodbg);color:var(--good);font-weight:700;padding:0 3px;border-radius:4px}
+.marks{display:flex;gap:8px;flex-wrap:wrap}
+.mk{font-weight:700;font-size:.82rem;padding:5px 10px;border-radius:99px}
+.mk.g{background:var(--goodbg);color:var(--good)} .mk.w{background:var(--warnbg);color:var(--warn)} .mk.b{background:var(--badbg);color:var(--bad)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap}
+.fakebtn{font-weight:700;font-size:.85rem;padding:8px 14px;border-radius:99px;border:1px solid var(--line);background:var(--bg)}
+.fakebtn.main{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.reasons{display:flex;flex-direction:column;gap:6px}
+.reasons div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:10px;font-size:.9rem;padding:7px 10px;border-radius:10px;background:var(--soft)}
+@media (max-width:460px){.reasons div{grid-template-columns:minmax(0,1fr)}}
+.reasons b{font-weight:700}
+
+/* lists & tables */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.92rem}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums;font-weight:700}
+.rulelist{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.rulelist li{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.rulelist li b{display:block}
+
+/* questions */
+.qs{display:flex;flex-direction:column;gap:12px}
+.q{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.q .opts{display:flex;flex-direction:column;gap:4px;font-size:.93rem}
+.q .rec{font-weight:700}
+.q .silent{font-size:.85rem;color:var(--muted)}
+.life{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap}
+.lstage,.lout{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;font-size:.9rem;min-width:0}
+.lstage{flex:1 1 150px}
+.lnum{font:800 1.1rem var(--display);color:var(--accent)}
+.larrow{align-self:center;font:800 1.4rem var(--display);color:var(--muted)}
+.lsplit{flex:2 1 300px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.lout span,.lstage span{color:var(--muted)}
+.loop{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;max-width:72ch}
+.cm{display:flex;flex-direction:column;gap:8px;background:var(--soft);border-radius:12px;padding:12px}
+.cmrow{display:flex;gap:6px;flex-wrap:wrap}
+.cmin{display:flex;gap:8px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:8px 12px;font-size:.9rem;color:var(--muted)}
+.cmin span:first-child{flex:1}
+.learned{font-size:.88rem;background:var(--goodbg);color:var(--good);border-radius:10px;padding:8px 12px;font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.step .n{font:800 1.6rem var(--display);color:var(--accent)}
+@media (prefers-reduced-motion: reduce){.vfeed,.hrow{scroll-behavior:auto}.dots i{transition:none}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">Articulate · plan v7 · 8 Nov 2026 · for Adarsh</span>
+  <h1>Less teaching, more ready-to-use English</h1>
+  <p class="lead">You said the app is easier to use now, but the content is confusing, it repeats, and the swipe feels odd. I read every card file and the swipe code. The short version: the feed mixes about 20 different card styles from four older versions of the app, every card is pushed through the same "rule, game, example, picture, try" shape, and after 20 new cards a day it starts replaying old ones.</p>
+  <p>This page proposes one fixed, simple card shape per module, an Instagram-style swipe, a no-repeat rule, and clearer feedback. Every phone on this page is a working demo you can swipe.</p>
+  <div class="verdict">
+    <span class="pill">✅ Version 2: your 8 Nov answers are in</span>
+    <span class="pill">🟡 Plan only, no app changes yet</span>
+    <span class="pill">1 open question: online backup (section 9)</span>
+  </div>
+</header>
+
+<section id="decided">
+  <span class="eyebrow">What you decided on 8 Nov</span>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Topic</th><th>Your answer</th><th>What changes in this plan</th></tr></thead>
+    <tbody>
+      <tr><td>Home</td><td>Chips are fine. Mix gives a mix; Words gives only vocabulary.</td><td>As shown in section 2</td></tr>
+      <tr><td>Pictures</td><td>Not sure we need them, or that they're accurate.</td><td>Pictures dropped. Cards use colour, icons, ✓/✗ marks and highlights instead (section 4)</td></tr>
+      <tr><td>Feedback</td><td>How I tell the app what I like is the weak part. I want 👍 / 👎 and comments, typed or spoken, that the AI reads.</td><td>Every card gets 👍 👎 💬. Comments shape the next batches (sections 6 and 7)</td></tr>
+      <tr><td>"Seen it already"</td><td>The app should track this itself.</td><td>The app remembers every card and word it has shown you. It's no longer a button</td></tr>
+      <tr><td>Mic button</td><td>Not sure I'd use it.</td><td>The 🎤 practice button leaves the card. The mic now sits inside 💬, so you can <i>say</i> your comment</td></tr>
+      <tr><td>Wrong use</td><td>Always tell me where a word should NOT be used.</td><td>Every word and phrase card gets a ✗ Don't-use-it-like-this line</td></tr>
+      <tr><td>Word level</td><td>Any level is fine, from everyday to advanced, but always in the simplest daily use.</td><td>Mixed levels. Examples come from home, friends and explaining your thinking, not only office</td></tr>
+      <tr><td>Thinking out loud</td><td>Show how to explain my thought process.</td><td>New "Explain your thinking" group in Say it better</td></tr>
+      <tr><td>Stories</td><td>Keep it as the 5th module.</td><td>Kept</td></tr>
+      <tr><td>Hindi</td><td>Ignore for now.</td><td>Stays hidden</td></tr>
+      <tr><td>Library size</td><td>You write the cards. A bigger library is fine.</td><td>About 1,500 cards at launch instead of 860</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="today">
+  <span class="eyebrow">1 · What is wrong today</span>
+  <h2>Six reasons the app feels confusing</h2>
+  <div class="probs">
+    <div class="prob"><h3>Too many card styles in one feed</h3><p>The feed draws from about 1,300 cards of 20 different styles: words, swaps, idioms, phrases, feelings, action verbs, pronunciation, breathing, "say it" lines, describe, explain, teach-back, situations and the new lessons. You can't tell what a card is for.</p><p class="proof">Proof: 23 content files in the app; only 8 of them were written for the current design.</p></div>
+    <div class="prob"><h3>Every card is forced into one shape</h3><p>A simple word still gets a rule slide, an analogy slide and a "your turn" slide. Vocabulary should be word, meaning, example. It isn't.</p><p class="proof">Proof: the slide maker builds the same 4–5 slides for every lesson card.</p></div>
+    <div class="prob"><h3>It teaches theory, not lines you can use</h3><p>Small talk opens with "They like you more than you think" and a research credit. You wanted replies you can say tomorrow at the coffee machine.</p><p class="proof">Proof: the first small-talk lesson is a mindset card citing Boothby et al. (2018).</p></div>
+    <div class="prob"><h3>Some English is too heavy</h3><p>"Wary" is defined as "keen caution about possible dangers or hidden traps", with "calculated, tactical vigilance before committing resources". Nobody talks like that.</p><p class="proof">Proof: the "feelings" deck, 80 cards in this style.</p></div>
+    <div class="prob"><h3>Repeats are built in</h3><p>Only 20 new cards are allowed per day. After that, the endless feed quietly refills with cards you have already seen. The same fix is also taught in several places: "revert" in 2 files, "do the needful" in 2, "doubt" in 9.</p><p class="proof">Proof: the daily limit is set to 20 new cards in the feed rules.</p></div>
+    <div class="prob"><h3>The swipe doesn't follow your finger</h3><p>The card moves only about half as far as your finger, lags a little, then vanishes, and the next card just appears. Slides fade in with a tiny nudge instead of sliding across. On the last slide, a sideways swipe suddenly jumps to the next card.</p><p class="proof">Proof: the card moves at 45% of your finger, with a 0.22-second delay.</p></div>
+  </div>
+</section>
+
+<section id="shape">
+  <span class="eyebrow">2 · The new shape</span>
+  <h2>Five modules, one card shape each</h2>
+  <p>A row of chips sits at the top of the feed. <b>Mix</b> rotates through all five. Tap a chip to see only that module. Each module has its own colour and <b>one fixed card shape</b>, so after a few swipes you always know what you're looking at. Cards have 1 to 3 slides, never more.</p>
+  <div class="chips">
+    <span class="chip mix">Mix</span>
+    <span class="chip" style="--c:var(--m-words)">Words</span>
+    <span class="chip" style="--c:var(--m-talk)">Small talk</span>
+    <span class="chip clear" style="--c:var(--m-clear)">Say it better</span>
+    <span class="chip" style="--c:var(--m-phrase)">Office phrases</span>
+    <span class="chip" style="--c:var(--m-story)">Stories</span>
+  </div>
+  <p class="muted">On every card: swipe <b>up</b> for the next card and <b>sideways</b> for more slides. The side buttons are 👍 Like, 👎 Dislike, 💬 Comment (type or speak), ♡ Save and 🔊 Hear it. The "Again / Got it" buttons are removed: swiping up means you got it, and saving brings a card back.</p>
+</section>
+
+<section id="modules">
+  <span class="eyebrow">3 · Module by module</span>
+  <h2>What each card looks like</h2>
+  <p class="muted">Swipe each phone sideways (or use the buttons under it). The words on these cards are real samples of the new style.</p>
+
+  <div class="module" style="--c:var(--m-words)">
+    <div class="phone-col" data-phone="words"></div>
+    <div class="rules">
+      <div class="mhead"><span class="dot"></span><h3>Words: vocabulary</h3></div>
+      <p>Exactly what you asked for: <b>a word, its meaning, and how to use it.</b> Nothing else.</p>
+      <dl>
+        <dt>Slide 1</dt><dd>Word · how to say it · meaning in plain words · two examples from <b>everyday life</b> (home, friends, explaining your thinking). The word is highlighted inside each example.</dd>
+        <dt>Slide 2</dt><dd>✓ Right use and ✗ wrong use, side by side, so you never use it in the wrong place.</dd>
+        <dt>Slide 3</dt><dd>A 5-second check on every 3rd word only: fill the gap with one tap.</dd>
+        <dt>Word level</dt><dd>Everyday to advanced, mixed, but always in the simplest daily use. Your example: <i>deafening</i>, "the party next door is deafening". <span class="from">[You said]</span></dd>
+        <dt>Library</dt><dd>600 words at launch, grouped by use: sounds and senses, feelings, people, thinking and deciding, work, money and time.</dd>
+      </dl>
+      <p class="gone">Removed from word cards: <s>rule slide</s> · <s>analogy picture</s> · <s>"your turn" slide</s> · <s>long dictionary definitions</s></p>
+    </div>
+  </div>
+
+  <div class="module" style="--c:var(--m-talk)">
+    <div class="phone-col" data-phone="talk"></div>
+    <div class="rules">
+      <div class="mhead"><span class="dot"></span><h3>Small talk</h3></div>
+      <p><b>"They say this, you can say this."</b> Real lines for real moments, plus what not to do.</p>
+      <dl>
+        <dt>Slide 1</dt><dd>What they say → the dead-end answer (crossed out) → one good reply → a short formula, like "feeling + one detail + ask back".</dd>
+        <dt>Slide 2</dt><dd>Three more replies for different moods: busy, quiet, bad weekend.</dd>
+        <dt>Slide 3</dt><dd>Don'ts, at most 3 lines.</dd>
+        <dt>5 card kinds</dt><dd><b>Reply</b> ("How was your day?") · <b>Open</b> (starting a chat with a new colleague) · <b>Keep it going</b> (follow-up questions, light to deep) · <b>Exit</b> (leaving politely) · <b>Save it</b> (after a silence or a bad joke).</dd>
+        <dt>Library</dt><dd>250 situations: office, family, friends, client calls, weddings.</dd>
+      </dl>
+      <p class="gone">Removed: <s>mindset lessons</s> · <s>research credits</s> · <s>analogies</s></p>
+    </div>
+  </div>
+
+  <div class="module" style="--c:var(--m-clear)">
+    <div class="phone-col" data-phone="clear"></div>
+    <div class="rules">
+      <div class="mhead"><span class="dot"></span><h3>Say it better: articulation</h3></div>
+      <p>As you asked: <b>no lessons, just before-and-after examples.</b> One thing said the usual way, then said better, and what changed.</p>
+      <dl>
+        <dt>Slide 1</dt><dd>"You might say" (the long, loose version) → "Better" (short and sharp) → 2–3 chips naming what changed, like "point first" or "19 words → 8".</dd>
+        <dt>Slide 2</dt><dd>An "even better" version or a second situation using the same trick.</dd>
+        <dt>Situations</dt><dd><b>Explain your thinking</b> (new: "why I chose this", "I'm torn between two options", "here's how I see it") · giving an update · explaining a delay · disagreeing politely · saying no · asking for help · explaining your work to a non-tech person · answering "what do you do?"</dd>
+        <dt>Library</dt><dd>250 before-and-after pairs. The Indian-English fixes ("revert", "do the needful", "prepone") live here once, not in three decks.</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="module" style="--c:var(--m-phrase)">
+    <div class="phone-col" data-phone="phrase"></div>
+    <div class="rules">
+      <div class="mhead"><span class="dot"></span><h3>Office phrases and idioms</h3></div>
+      <p>Phrases you hear in meetings and emails, explained so you can use them the same day.</p>
+      <dl>
+        <dt>Slide 1</dt><dd>Phrase · what it means · when to use it · one example in a meeting or email · a tone chip (polite, casual or formal).</dd>
+        <dt>Slide 2</dt><dd>Careful (how people misuse it) and 2 similar phrases.</dd>
+        <dt>Groups</dt><dd>Meetings · email · pushing back · praise · deadlines · plus a smaller set of common idioms ("back to the drawing board", "ballpark figure").</dd>
+        <dt>Library</dt><dd>300 phrases at launch.</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="module" style="--c:var(--m-story)">
+    <div class="phone-col" data-phone="story"></div>
+    <div class="rules">
+      <div class="mhead"><span class="dot"></span><h3>Stories</h3></div>
+      <p>The same idea as "Say it better": a dull report next to a real story, with the one trick used.</p>
+      <dl>
+        <dt>Slide 1</dt><dd>Report version → story version → the trick, in one line.</dd>
+        <dt>Slide 2</dt><dd>Optional "your turn": say or type your own two-line version and get feedback (see section 5).</dd>
+        <dt>Topics</dt><dd>Your day · a funny moment · a work win · explaining a business idea · a trip.</dd>
+        <dt>Library</dt><dd>100 pairs. <span class="from">[You said: keep Stories]</span></dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="look">
+  <span class="eyebrow">4 · Easy to read without pictures</span>
+  <h2>Seven visual rules, the same on every card</h2>
+  <p>The big pictures go. They took 60% of the card and were picked per topic, not per card, so they never explained anything. Instead, the <b>layout itself explains</b> the card:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Rule</th><th>What you see</th><th>Why it helps</th></tr></thead>
+    <tbody>
+      <tr><td>1 · Colour = module</td><td>Teal Words, coral Small talk, yellow Say it better, purple Office phrases, blue Stories</td><td>You know the card type before you read a word</td></tr>
+      <tr><td>2 · The word glows</td><td>The word you're learning is highlighted inside every example</td><td>Your eye goes straight to how it's used</td></tr>
+      <tr><td>3 · ✗ grey, ✓ white</td><td>The weak or wrong version is greyed out and crossed through; the good one is bright</td><td>Before and after reads in one glance, with no red</td></tr>
+      <tr><td>4 · Chat bubbles</td><td>Small talk is shown as a real chat: their bubble on the left, yours on the right</td><td>It looks like the moment you'll be in</td></tr>
+      <tr><td>5 · Change chips</td><td>Small pills under a better line: "point first" · "19 words → 8"</td><td>Names the trick, so you can reuse it</td></tr>
+      <tr><td>6 · Big type, few words</td><td>The headline fills the top third; no slide has more than 40 words</td><td>Readable in one breath, like a reel</td></tr>
+      <tr><td>7 · Little icons on labels</td><td>🏠 at home · 💼 at work · 🧠 explaining your thinking · 🔊 how to say it</td><td>Labels you can read without reading</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="motion">
+  <span class="eyebrow">5 · Swipe and animation</span>
+  <h2>The whole card moves with your finger</h2>
+  <div class="demo">
+    <div class="phone-col" data-phone="feed"></div>
+    <div class="rules">
+      <p>Try this phone: <b>scroll up</b> to change cards and <b>swipe sideways</b> to change slides. It's built the way the real app would be.</p>
+      <div class="compare">
+        <div class="cbox"><h3>Today</h3><ul><li>The card moves about half as far as your finger</li><li>It trails your finger slightly</li><li>The next card pops in from nowhere</li><li>Slides fade in place</li><li>A sideways swipe on the last slide jumps to a new card</li></ul></div>
+        <div class="cbox"><h3>New</h3><ul><li>The card sticks to your finger</li><li>The next card is already waiting underneath and slides up with it</li><li>Let go past about a quarter of the screen, or flick, and it snaps into place</li><li>Slides move across like an Instagram carousel</li><li>Sideways only changes slides; up only changes cards</li><li>Swipe down to go back</li></ul></div>
+      </div>
+      <p class="muted">How: it uses the phone's own built-in scrolling, the same thing Instagram and every photo gallery use. Because the phone does the work, it stays smooth even on a slow connection.</p>
+    </div>
+  </div>
+</section>
+
+<section id="fresh">
+  <span class="eyebrow">6 · The life of a card</span>
+  <h2>A card shows once. What you tell it decides what comes next.</h2>
+  <p>You're right that a fixed launch set alone would run dry and start repeating. So the launch library is only the starting stock. From then on, <b>new batches are written from your 👍, 👎 and comments</b>.</p>
+
+  <div class="life">
+    <div class="lstage"><span class="lnum">1</span><b>Waiting</b><span>In the library, never shown to you</span></div>
+    <div class="larrow">→</div>
+    <div class="lstage"><span class="lnum">2</span><b>Shown once</b><span>The app records the card <i>and</i> its word or phrase, forever</span></div>
+    <div class="larrow">→</div>
+    <div class="lsplit">
+      <div class="lout"><b>Swiped past</b><span>Done. It never comes back.</span></div>
+      <div class="lout"><b>👍 Liked</b><span>Done. The next batch makes more like it.</span></div>
+      <div class="lout"><b>♡ Saved</b><span>Comes back in the Sunday review: after 3 days, then 1 week, then 3 weeks. Get it right 3 times and it retires.</span></div>
+      <div class="lout"><b>👎 Disliked</b><span>Removed. Your reason is passed on to the next batch.</span></div>
+    </div>
+  </div>
+
+  <h3>How new batches are made</h3>
+  <ol class="loop">
+    <li><b>The trigger:</b> when a module has fewer than 60 unseen cards left, the app orders a fresh batch of 30. You never run dry, and nothing is replayed.</li>
+    <li><b>What the writer is told:</b> your recent 👍 and 👎 cards, your comments in your own words ("too basic", "more cricket examples"), your level per module, and the <b>full list of every word and phrase you've already seen</b>, so it can't repeat one.</li>
+    <li><b>The checker:</b> a second AI checks every card (natural English, correct meaning, ✗-use line present, not a repeat) before it reaches you. Anything doubtful is thrown away.</li>
+    <li><b>You see the effect:</b> under Me, a short "What the app learned from you" list, such as "More advanced words · fewer office examples · you like cricket". You can delete any line.</li>
+  </ol>
+
+  <div class="tablewrap"><table>
+    <thead><tr><th>Module</th><th>Cards at launch</th><th>Today</th><th>New per batch</th></tr></thead>
+    <tbody>
+      <tr><td>Words</td><td class="num">600</td><td>180 words + 80 feelings + 40 verbs, in mixed styles</td><td class="num">30</td></tr>
+      <tr><td>Small talk</td><td class="num">250</td><td>50 lessons, mostly theory</td><td class="num">30</td></tr>
+      <tr><td>Say it better</td><td class="num">250</td><td>116 phrases + 40 swaps + 32 fixes + 50 lessons, overlapping</td><td class="num">30</td></tr>
+      <tr><td>Office phrases</td><td class="num">300</td><td>64 idioms</td><td class="num">30</td></tr>
+      <tr><td>Stories</td><td class="num">100</td><td>50 lessons + 40 story moves + speaking prompts</td><td class="num">30</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Also: the 20-new-cards-a-day limit goes, the same idea is never taught in two places, and the old card styles leave the feed (kept, not deleted).</p>
+</section>
+
+<section id="feedback">
+  <span class="eyebrow">7 · Feedback</span>
+  <h2>You teach the app what you like</h2>
+  <p class="muted">You said this is the weak part, so it comes first. Part B (feedback on your answers) stays small, because speaking practice is now optional.</p>
+  <div class="fb">
+    <div class="fbcard">
+      <h3>A · 👍 👎 💬 on every card</h3>
+      <p class="muted">One tap is enough. Add a comment only when you feel like it.</p>
+      <div class="cm">
+        <div class="cmrow"><span class="fakebtn">👍</span><span class="fakebtn main">👎</span><span class="fakebtn">💬 Comment</span></div>
+        <div class="cmrow"><span class="mk b">Too easy</span><span class="mk b">Too hard</span><span class="mk b">Confusing</span><span class="mk b">Wrong English</span><span class="mk g">Loved this</span></div>
+        <div class="cmin"><span>"Too basic. I already use this word daily."</span><span>🎤</span><span>➤</span></div>
+      </div>
+      <div class="learned">✓ Got it: Words will get harder from the next batch.</div>
+      <ul style="margin:0;padding-left:18px;font-size:.92rem">
+        <li>👍 / 👎 is one tap. 👎 shows 4 quick reasons; picking one is optional.</li>
+        <li>💬 opens a box: <b>type</b> your comment, or hold 🎤 and <b>say</b> it. Your voice is turned into text.</li>
+        <li>The AI reads every comment and replies with one line saying what it will change. That line also appears under Me → What the app learned.</li>
+        <li>"Seen it already" is no longer a button. The app keeps track of that itself.</li>
+      </ul>
+    </div>
+    <div class="fbcard">
+      <h3>B · On your answer (optional)</h3>
+      <p class="muted">Only when you choose "your turn" on a Stories card, or use Ask.</p>
+      <div class="line"><span class="lbl">You said</span>I <del>did</del> the meeting and <del>told them about</del> the delay <del>only</del>.</div>
+      <div class="line"><span class="lbl">Better</span>I <ins>ran</ins> the meeting and <ins>explained</ins> the delay.</div>
+      <div class="marks"><span class="mk w">🟡 Close: 3 small fixes</span></div>
+      <p style="font-size:.92rem">You <b>run</b> a meeting rather than "do" one. "Explained" is shorter than "told them about". "Only" at the end isn't needed.</p>
+      <div class="btnrow"><span class="fakebtn">Try again</span><span class="fakebtn">♡ Save better line</span><span class="fakebtn main">Next</span></div>
+      <p class="muted" style="font-size:.88rem">Just three results: ✅ Great · 🟡 Close · 🔁 Try again. No scores out of 10 and no paragraphs. The changed words are highlighted so you see the fix at a glance. For speaking, it also adds one line on pace, like "a bit fast: 180 words a minute, aim for 150".</p>
+    </div>
+  </div>
+  <div class="reasons">
+    <div><b>Too easy / Too hard</b><span>That module moves up or down a level from the next batch</span></div>
+    <div><b>Confusing</b><span>The writer is told to use simpler examples for this kind of card</span></div>
+    <div><b>Wrong English</b><span>The card is removed, and its whole batch is checked again</span></div>
+    <div><b>Loved this / 👍</b><span>More cards like this one: same topic, style and level</span></div>
+    <div><b>Your comment</b><span>Read word for word by the writer of every future batch</span></div>
+  </div>
+</section>
+
+<section id="removed">
+  <span class="eyebrow">8 · Made simpler</span>
+  <h2>What leaves the screen</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Screen</th><th>Today</th><th>New</th></tr></thead>
+    <tbody>
+      <tr><td>Feed top</td><td>4 picture circles that open separate lessons</td><td>One row of module chips</td></tr>
+      <tr><td>Card</td><td>Big picture fills about 60% of the card, often unrelated (a treasure chest for "pre-empt")</td><td>No pictures. Text in the module's colour, using the 7 visual rules</td></tr>
+      <tr><td>Card end</td><td>Again ↻ / Got it ✓ buttons</td><td>Gone: swipe up to move on, ♡ to keep</td></tr>
+      <tr><td>Card slides</td><td>4–5 per card: rule, game, examples, analogy, try</td><td>1–3, fixed per module</td></tr>
+      <tr><td>Side buttons</td><td>Star, speaker, mic (practice), ⋯ (with 2 hidden options)</td><td>👍 · 👎 · 💬 (type or speak) · ♡ Save · 🔊 Hear</td></tr>
+      <tr><td>Me tab</td><td>Settings, learner memory, old tools</td><td>Saved cards first, then "What the app learned from you"</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="data">
+  <span class="eyebrow">9 · Where your data lives</span>
+  <h2>Today everything sits only on your phone</h2>
+  <p>You asked about Supabase. Here's the honest picture: the app keeps everything (cards, likes, saves, what it learned about you) <b>inside the browser on your phone</b>. Think of it as a notebook in your pocket. The code to back it up online to Supabase was written in August but <b>never switched on</b>: there is no Supabase project connected.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th></th><th>Phone only (today)</th><th>Phone + Supabase backup (recommended)</th></tr></thead>
+    <tbody>
+      <tr><td>Speed</td><td>Instant</td><td>Instant. The phone is still read first</td></tr>
+      <tr><td>Clear browser data or change phone</td><td>Everything is lost: every 👍, comment, save and what the app learned</td><td>Comes back on its own</td></tr>
+      <tr><td>New batches</td><td>Made only while the app is open</td><td>Can be made overnight, ready when you open the app</td></tr>
+      <tr><td>Cost</td><td>Free</td><td>Free tier (500 MB, far more than this app needs)</td></tr>
+      <tr><td>Your effort</td><td>None</td><td>About 10 minutes: create a free project, paste one setup script, copy 2 keys</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted"><b>Recommend: switch on Supabase</b> [Middle ground]. Your feedback becomes the most valuable thing in the app, so it shouldn't live in one browser. If you say nothing, I'll build phone-only first and add the backup in step 5.</p>
+</section>
+
+<section id="order">
+  <span class="eyebrow">10 · Build order</span>
+  <h2>Six steps, your sign-off after each</h2>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><h3>Swipe</h3><p>Full-card swipe up and sideways. Quick, and you'll feel it right away.</p></div>
+    <div class="step"><span class="n">2</span><h3>New card shapes</h3><p>5 shapes, module chips, the 7 visual rules, no pictures, with 20 sample cards per module for you to judge.</p></div>
+    <div class="step"><span class="n">3</span><h3>👍 👎 💬</h3><p>Like, dislike and typed or spoken comments, plus "What the app learned".</p></div>
+    <div class="step"><span class="n">4</span><h3>Full library</h3><p>About 1,500 checked cards. Duplicates merged; old card styles out of the feed.</p></div>
+    <div class="step"><span class="n">5</span><h3>Card life + batches</h3><p>Seen-once rule, the Sunday review, and new batches of 30 written from your feedback.</p></div>
+    <div class="step"><span class="n">6</span><h3>Backup</h3><p>Supabase on, if you say yes.</p></div>
+  </div>
+</section>
+
+</div>
+
+<script>
+const M = {
+  think:{c:'var(--m-clear)',cls:'clear'},
+  words:{c:'var(--m-words)'}, talk:{c:'var(--m-talk)'}, clear:{c:'var(--m-clear)',cls:'clear'},
+  phrase:{c:'var(--m-phrase)'}, story:{c:'var(--m-story)'}
+};
+const CARDS = {
+  words:[
+    `<span class="k">Word · adjective</span><div class="big">deafening</div><span class="say">🔊 DEF-uh-ning</span>
+     <div class="meaning">So loud you can't hear anything else.</div>
+     <div class="box"><span class="lbl">🏠 At home</span>"The party next door is <b>deafening</b>. I can't even hear the TV."</div>
+     <div class="box"><span class="lbl">🏏 With friends</span>"When Kohli hit the six, the noise in the stadium was <b>deafening</b>."</div>`,
+    `<span class="k">Use it right</span>
+     <div class="box"><span class="lbl">✓ For sounds</span>"The traffic outside my window is <b>deafening</b> in the morning."</div>
+     <div class="box no"><span class="lbl">✗ Not for smells, light or people</span><span class="txt">"Her perfume was deafening."</span></div>
+     <div class="box no"><span class="lbl">✗ Not for "very big"</span><span class="txt">"The bill was deafening."</span></div>
+     <span class="formula">only for sound</span>`,
+    `<span class="k">Quick check · 5 seconds</span><div class="mid">Which one is right?</div>
+     <div class="mini"><button class="opt" data-r="0">The sunlight was deafening.</button><button class="opt" data-r="1">The drums at the baraat were deafening.</button><button class="opt" data-r="0">His idea was deafening.</button></div>`
+  ],
+  talk:[
+    `<span class="k">Small talk · Reply</span>
+     <div class="bub them">How was your weekend?</div>
+     <div class="bub me no">Good.</div>
+     <div class="bub me">Lazy, in a good way. Finally watched <b>Kantara</b>. Did you do anything fun?</div>
+     <span class="formula">feeling + one detail + ask back</span>`,
+    `<span class="k">More ways to reply</span>
+     <div class="box"><span class="lbl">Busy weekend</span>"Packed! My nephew's birthday, twenty kids. How was yours?"</div>
+     <div class="box"><span class="lbl">Quiet weekend</span>"Very quiet. I just recharged, and I needed it. You?"</div>
+     <div class="box"><span class="lbl">Bad weekend</span>"A bit rough, I had a cold. Better now. Yours?"</div>`,
+    `<span class="k">Don't</span>
+     <div class="box">Stop at one word. It ends the chat.</div>
+     <div class="box">List everything you did, hour by hour.</div>
+     <div class="box">Complain for more than one line.</div>`
+  ],
+  clear:[
+    `<span class="k">Say it better · Explaining a delay</span>
+     <div class="box no"><span class="lbl">You might say</span><span class="txt">"Actually what happened is, the server was down, so because of that we could not do the release yesterday."</span></div>
+     <div class="box"><span class="lbl">Better</span>"Yesterday's release slipped because the server went down."</div>
+     <span class="formula">point first</span><span class="formula">cut "actually what happened is"</span><span class="formula">19 words → 8</span>`,
+    `<span class="k">Even better</span>
+     <div class="box"><span class="lbl">Add the next step</span>"Yesterday's release slipped because the server went down. We'll ship it today by 4."</div>
+     <div class="meaning">Answer their next question before they ask it.</div>`
+  ],
+  think:[
+    `<span class="k">Say it better · 🧠 Explain your thinking</span>
+     <div class="box no"><span class="lbl">You might say</span><span class="txt">"I am thinking that maybe we should go with second option only, because first one is having more cost."</span></div>
+     <div class="box"><span class="lbl">Better</span>"I'd go with option two. Option one costs more for the same result."</div>
+     <span class="formula">decision first</span><span class="formula">then one reason</span><span class="formula">19 words → 13</span>`,
+    `<span class="k">More ways to show your thinking</span>
+     <div class="box"><span class="lbl">Torn between two</span>"I'm torn. Option one is cheaper, but option two is faster."</div>
+     <div class="box"><span class="lbl">Changed your mind</span>"I was sure about Goa, but the prices changed my mind."</div>
+     <div class="box"><span class="lbl">How you see it</span>"The way I see it, we're paying for speed."</div>`
+  ],
+  phrase:[
+    `<span class="k">Office phrase · Meetings</span><div class="mid">"Let's take this offline."</div>
+     <div class="meaning">Let's discuss this later, with only the people who need to.</div>
+     <div class="box"><span class="lbl">Use when</span>One topic is eating up a group meeting.</div>
+     <div class="box"><span class="lbl">Example</span>"Good point, Rahul. <b>Let's take this offline</b> after the call."</div>
+     <span class="formula">polite · very common</span>`,
+    `<span class="k">Careful</span>
+     <div class="box">Don't use it to dodge a topic. Follow up the same day.</div>
+     <div class="box"><span class="lbl">Similar</span>"Let's park this for now."<br>"Can we pick this up after the call?"</div>`
+  ],
+  story:[
+    `<span class="k">Stories · Your day</span>
+     <div class="box no"><span class="lbl">Report</span><span class="txt">"I went to the airport, the flight was delayed, and I reached late."</span></div>
+     <div class="box"><span class="lbl">Story</span>"I had one job: reach Delhi by six for my cousin's sangeet. At the gate, the screen flashed: <b>Delayed, 4 hours.</b>"</div>
+     <span class="formula">start with what you wanted, then what got in the way</span>`,
+    `<span class="k">Your turn · optional</span><div class="mid">Tell today's commute in two lines.</div>
+     <div class="meaning">Line 1: what you wanted. Line 2: what got in the way.</div>
+     <div class="mini"><button class="opt">🎤 Say it</button><button class="opt">⌨ Type it</button></div>`
+  ]
+};
+
+function cardHTML(key){
+  const m = M[key];
+  const slides = CARDS[key].map(s => `<div class="slide">${s}</div>`).join('');
+  const dots = CARDS[key].map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('');
+  return `<article class="card ${m.cls||''}" style="--c:${m.c}">
+    <div class="hrow">${slides}</div>
+    <div class="rail" aria-hidden="true"><span>👍</span><span>👎</span><span>💬</span><span>♡</span><span>🔊</span></div>
+    <div class="dots">${dots}</div></article>`;
+}
+const CHIP_FOR = {think:'Say it better',words:'Words',talk:'Small talk',clear:'Say it better',phrase:'Office phrases',story:'Stories'};
+function topbar(on){
+  return `<div class="ptop">${['Mix','Words','Small talk','Say it better','Office phrases','Stories'].map(n=>`<span class="pchip ${n===on?'on':''}">${n}</span>`).join('')}</div>`;
+}
+function wire(col){
+  col.querySelectorAll('.card').forEach(card=>{
+    const row = card.querySelector('.hrow'), dots=[...card.querySelectorAll('.dots i')];
+    row.addEventListener('scroll',()=>{
+      const i = Math.round(row.scrollLeft/row.clientWidth);
+      dots.forEach((d,j)=>d.classList.toggle('on',i===j));
+    },{passive:true});
+  });
+  col.querySelectorAll('.opt[data-r]').forEach(b=>b.addEventListener('click',()=>{
+    b.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.add(o.dataset.r==='1'?'ok':'nope'));
+  }));
+}
+function activeCard(col){
+  const feed = col.querySelector('.vfeed');
+  const i = Math.round(feed.scrollTop/feed.clientHeight);
+  return col.querySelectorAll('.card')[i];
+}
+document.querySelectorAll('[data-phone]').forEach(col=>{
+  const key = col.dataset.phone;
+  const keys = key==='feed' ? ['words','talk','think','phrase','story','clear'] : key==='clear' ? ['clear','think'] : [key];
+  const multi = keys.length>1;
+  const onChip = key==='feed' ? 'Mix' : CHIP_FOR[key];
+  col.innerHTML = `<div class="phone"><div class="screen">${topbar(onChip)}<div class="vfeed">${keys.map(cardHTML).join('')}</div></div></div>
+    <div class="ctrl">
+      <button type="button" data-a="prev">◀ Slide</button><button type="button" data-a="next">Slide ▶</button>
+      ${multi?'<button type="button" data-a="up">↑ Next card</button><button type="button" data-a="down">↓ Back</button>':''}
+    </div>
+    <p class="hint">${key==='feed'?'On a phone, just swipe. On a laptop, scroll or use the buttons.':multi?'2 cards here: scroll up for the Explain-your-thinking card.':'Swipe sideways on the card, or use the buttons.'}</p>`;
+  wire(col);
+  const smooth = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  col.querySelectorAll('.ctrl button').forEach(b=>b.addEventListener('click',()=>{
+    const a=b.dataset.a, feed=col.querySelector('.vfeed');
+    if(a==='up'||a==='down'){ feed.scrollBy({top:(a==='up'?1:-1)*feed.clientHeight,behavior:smooth}); return; }
+    const row = activeCard(col).querySelector('.hrow');
+    row.scrollBy({left:(a==='next'?1:-1)*row.clientWidth,behavior:smooth});
+  }));
+});
+</script>

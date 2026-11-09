@@ -4,6 +4,8 @@ import { useMe } from '../../features/me/useMe';
 import { ArrowRightIcon, GearIcon } from '../shell/Icons';
 import EveningChat, { type EveningChatProps } from '../chat/EveningChat';
 import LearnerMemory from './LearnerMemory';
+import LearnedFromYou from './LearnedFromYou';
+import BackupRow from './BackupRow';
 
 export type MeRowId = 'saved' | 'weak' | 'stories' | 'chats' | 'asked';
 
@@ -162,6 +164,8 @@ export default function MeScreen({ onOpenOldTools, onOpenRow, chatProps }: MeScr
         </div>
       </div>
 
+      <BackupRow />
+
       <ul className="me-rows">
         {rows.map((r) => (
           <li key={r.id}>
@@ -184,6 +188,7 @@ export default function MeScreen({ onOpenOldTools, onOpenRow, chatProps }: MeScr
         ))}
       </ul>
 
+      <LearnedFromYou />
       <LearnerMemory knows={me.knows} onForget={me.forgetWish} />
     </section>
   );

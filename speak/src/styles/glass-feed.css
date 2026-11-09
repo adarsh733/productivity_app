@@ -1,0 +1,432 @@
+/* ── SPEAK — v7 Night Glass Feed styles ─────────────────────────────────────
+ *
+ * Title, chip row, empty state and the feedback sheet for FeedScreen.
+ * Measured off docs/redesign-v7/glass-B-1..4; values come from tokens.css.
+ * The title and chip row float over the full-screen card (see glass.css).
+ */
+
+/* ── Top: title + chip row, floating over the card ───────────────────────── */
+
+.v7-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  padding-top: var(--safe-top);
+  /* Touches on empty space fall through to the card underneath. */
+  pointer-events: none;
+}
+
+.v7-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--glass-title-pad-top) var(--glass-gutter) 0;
+}
+
+.v7-header-title {
+  margin: 0;
+  font-size: var(--glass-fs-title);
+  font-weight: var(--fw-black);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--glass-ink);
+}
+
+/* ── Chip row ────────────────────────────────────────────────────────────── */
+
+.v7-chiprow {
+  display: flex;
+  align-items: center;
+  gap: var(--glass-gap-sm);
+  margin-top: var(--s-1);
+  padding: 0 var(--s-3);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  pointer-events: auto;
+}
+
+.v7-chiprow::-webkit-scrollbar {
+  display: none;
+}
+
+/* The button is the 44 px tap target; the pill inside is what you see. */
+.v7-chip {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--glass-tap);
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.v7-chip-pill {
+  display: inline-flex;
+  align-items: center;
+  height: var(--glass-chip-h);
+  padding: 0 var(--glass-chip-pad-x);
+  border-radius: var(--r-pill);
+  font-size: var(--glass-fs-chip);
+  font-weight: var(--fw-medium);
+  color: var(--glass-ink-soft);
+  background: var(--glass-sheen), var(--glass-bg);
+  border: var(--glass-hairline) solid var(--glass-border-hi);
+  box-shadow: var(--glass-inset);
+  backdrop-filter: blur(var(--glass-blur-sm));
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm));
+  transition: background var(--dur-fast), color var(--dur-fast), transform var(--dur-fast);
+}
+
+.v7-chip:active .v7-chip-pill {
+  transform: scale(0.97);
+}
+
+.v7-chip.is-active .v7-chip-pill {
+  background: var(--glass-rail-btn-on-bg);
+  color: var(--glass-rail-btn-on-ink);
+  border-color: var(--glass-rail-btn-on-bg);
+  font-weight: var(--fw-bold);
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+
+.v7-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--glass-top-h) var(--s-6) var(--glass-bottom-h);
+  text-align: center;
+  color: var(--glass-ink);
+}
+
+.v7-empty-title {
+  font-size: var(--fs-6);
+  font-weight: var(--fw-black);
+  margin: 0 0 var(--s-2);
+}
+
+.v7-empty-sub {
+  font-size: var(--fs-3);
+  color: var(--glass-ink-muted);
+  margin: 0;
+}
+
+/* ── Feedback sheet (glass-B-4) ──────────────────────────────────────────── */
+
+/* The card stays visible behind, softly blurred. */
+.v7-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--glass-backdrop-tint);
+  backdrop-filter: blur(var(--glass-blur-backdrop));
+  -webkit-backdrop-filter: blur(var(--glass-blur-backdrop));
+  z-index: 60;
+  animation: v7FadeIn var(--dur) var(--ease);
+}
+
+.v7-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 480px;
+  max-height: 86dvh;
+  overflow-y: auto;
+  background: var(--glass-sheen), var(--glass-sheet-bg);
+  backdrop-filter: blur(var(--glass-blur-heavy)) saturate(1.4);
+  -webkit-backdrop-filter: blur(var(--glass-blur-heavy)) saturate(1.4);
+  border: var(--glass-rim) solid var(--glass-border-hi);
+  border-bottom: 0;
+  border-radius: var(--glass-sheet-r) var(--glass-sheet-r) 0 0;
+  /* Room at the bottom for the floating tab bar. */
+  padding:
+    var(--s-3)
+    var(--glass-panel-inset)
+    calc(var(--glass-tabbar-h) + var(--glass-tabbar-gap) + var(--s-3) + var(--safe-bottom));
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  animation: v7SlideUp var(--dur) cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-sizing: border-box;
+}
+
+@keyframes v7FadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes v7SlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* A 44 px tap area around the small grab handle. */
+.v7-sheet-handle {
+  align-self: center;
+  flex: none;
+  width: var(--glass-tap);
+  height: var(--glass-tap);
+  margin: calc(-1 * var(--s-3)) 0 calc(-1 * var(--s-6));
+  padding: 0;
+  border: 0;
+  background: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.v7-sheet-handle::before {
+  content: '';
+  width: var(--glass-handle-w);
+  height: var(--glass-handle-h);
+  border-radius: var(--r-pill);
+  background: var(--glass-ink-faint);
+}
+
+.v7-sheet-title {
+  margin: 0;
+  font-size: var(--glass-fs-sheet-title);
+  font-weight: var(--fw-black);
+  letter-spacing: -0.015em;
+  text-align: center;
+  color: var(--glass-ink);
+}
+
+.v7-sheet-thumbs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-3);
+}
+
+.v7-sheet-thumb-btn {
+  min-height: var(--glass-thumb-h);
+  border-radius: var(--glass-panel-r);
+  display: grid;
+  place-items: center;
+  background: var(--glass-sheen), var(--glass-bg-hi);
+  border: var(--glass-rim) solid var(--glass-border-hi);
+  box-shadow: var(--glass-inset);
+  color: var(--glass-ink);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+
+.v7-sheet-thumb-btn .v7-icon-sm {
+  width: var(--glass-icon-lg);
+  height: var(--glass-icon-lg);
+}
+
+.v7-sheet-thumb-btn.is-active {
+  background: var(--glass-rail-btn-on-bg);
+  color: var(--glass-rail-btn-on-ink);
+  border-color: var(--glass-rail-btn-on-bg);
+}
+
+/* One row of reason chips; it scrolls sideways when the screen is narrow. */
+.v7-sheet-chips {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--glass-gap-sm);
+  margin: calc(-1 * var(--s-2)) 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.v7-sheet-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.v7-sheet-chip {
+  flex: none;
+  min-height: var(--glass-tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.v7-sheet-chip .v7-chip-pill {
+  height: var(--glass-chip-h);
+  padding: 0 var(--glass-chip-pad-sm);
+  color: var(--glass-ink);
+}
+
+.v7-sheet-chip.is-active .v7-chip-pill {
+  background: var(--glass-rail-btn-on-bg);
+  color: var(--glass-rail-btn-on-ink);
+  border-color: var(--glass-rail-btn-on-bg);
+  font-weight: var(--fw-bold);
+}
+
+.v7-sheet-input-row {
+  display: flex;
+  align-items: center;
+  min-height: var(--glass-thumb-h);
+  background: var(--glass-sheen), var(--glass-bg);
+  border: var(--glass-rim) solid var(--glass-border-hi);
+  box-shadow: var(--glass-inset);
+  border-radius: var(--glass-panel-r);
+  padding: 0 var(--s-1) 0 var(--s-4);
+  gap: 0;
+  box-sizing: border-box;
+}
+
+.v7-sheet-input {
+  flex: 1;
+  min-width: 0;
+  align-self: stretch;
+  min-height: var(--glass-tap);
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--glass-ink);
+  font-size: var(--glass-fs-input);
+  line-height: var(--lh-body);
+}
+
+.v7-sheet-input::placeholder {
+  color: var(--glass-ink-muted);
+}
+
+.v7-sheet-action-btn {
+  min-width: var(--glass-tap);
+  min-height: var(--glass-tap);
+  width: var(--glass-tap);
+  height: var(--glass-tap);
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--glass-ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 0;
+  transition: transform var(--dur-fast), opacity var(--dur-fast);
+}
+
+.v7-sheet-action-btn:active {
+  transform: scale(0.92);
+}
+
+.v7-sheet-action-btn.is-listening {
+  color: var(--m-talk-coral);
+  animation: v7Pulse 1s infinite alternate;
+}
+
+@keyframes v7Pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.15); }
+}
+
+.v7-sheet-divider {
+  width: var(--glass-hairline);
+  height: var(--s-6);
+  background: var(--glass-border-hi);
+  flex: none;
+}
+
+.v7-sheet-gotit {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--glass-panel-r);
+  background: var(--glass-sheen), var(--glass-right-bg);
+  border: var(--glass-rim) solid var(--glass-right-border);
+  box-shadow: var(--glass-right-shadow);
+  color: var(--glass-ink);
+  font-size: var(--fs-3);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+}
+
+.v7-sheet-gotit-icon {
+  flex: none;
+  width: var(--glass-icon-lg);
+  height: var(--glass-icon-lg);
+  color: var(--glass-ink);
+}
+
+/* ── Sunday review: label + "Knew it" / "Not yet" on a due ♡ card ─────────── */
+
+/* The rail host lets the review bar sit on the card itself, not on the rail. */
+.v7-rail.v7-rail-host {
+  display: contents;
+}
+
+.v7-rail.v7-rail-host > .v7-rail {
+  position: absolute;
+}
+
+.v7-review {
+  position: absolute;
+  left: var(--glass-gutter);
+  right: var(--glass-gutter);
+  bottom: calc(var(--glass-tabbar-h) + var(--glass-tabbar-gap) + var(--safe-bottom, 0px) + 36px);
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.v7-review-label {
+  font-size: var(--glass-fs-kicker);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--glass-ink);
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--glass-tabbar-bg);
+  border: 1px solid var(--glass-tabbar-border);
+  backdrop-filter: blur(var(--glass-blur-md));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
+}
+
+.v7-review-btns {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.v7-review-btn {
+  flex: 1;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: var(--glass-fs-chip);
+  font-weight: 700;
+  color: var(--glass-ink);
+  background: var(--glass-tabbar-bg);
+  border: 1px solid var(--glass-tabbar-border);
+  backdrop-filter: blur(var(--glass-blur-md));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  cursor: pointer;
+}
+
+.v7-review-btn.is-knew {
+  background: var(--glass-tab-on-bg);
+  border-color: var(--glass-tab-on-border);
+}
+
+.v7-review-btn:active {
+  transform: scale(0.97);
+}

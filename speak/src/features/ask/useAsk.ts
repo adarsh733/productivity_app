@@ -69,8 +69,9 @@ export function useAsk(opts: UseAskOptions = {}): UseAskReturn {
   /** Bumped whenever the shown answer is cleared, so a late retry cannot bring it back. */
   const viewTicket = useRef(0);
 
+  // v7 module cards are not `AnyCard`: the library search skips them.
   const cards = useLiveQuery(
-    () => db.cards.where('status').equals('active').toArray(),
+    () => db.cards.where('status').equals('active').filter((c) => (c.type as string) !== 'module').toArray(),
     [],
   ) as AnyCard[] | undefined;
   const recent = useLiveQuery(() => db.asks.orderBy('createdAt').reverse().limit(5).toArray(), []);

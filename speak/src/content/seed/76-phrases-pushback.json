@@ -1,0 +1,2552 @@
+[
+  {
+    "id": "v7-phrases-pushback-001",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Disagreeing gently",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I'm not sure I agree.",
+    "meaning": "I see it differently, but I'm open to talk.",
+    "useWhen": "You doubt an idea and want to stay friendly.",
+    "example": "**I'm not sure I agree.** Can we look at last month's data?",
+    "tone": "polite · soft",
+    "careful": "Give your reason right after, or it sounds like a flat no.",
+    "wrong": {
+      "label": "✗ Not an answer to a question",
+      "text": "\"Is the meeting at 3?\" \"I'm not sure I agree.\""
+    },
+    "similar": [
+      "I'm not fully convinced.",
+      "I have a different view."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-002",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Testing an idea",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Let me play devil's advocate.",
+    "meaning": "I'll argue the other side to test the idea.",
+    "useWhen": "Everyone agrees too fast and you want to check for holes.",
+    "example": "**Let me play devil's advocate.** What if customers don't want this?",
+    "tone": "friendly · thoughtful",
+    "careful": "Use it once a meeting. Too often and you seem negative.",
+    "wrong": {
+      "label": "✗ Not for your real, firm view",
+      "text": "Let me play devil's advocate: I will not sign this contract."
+    },
+    "similar": [
+      "Just to argue the other side...",
+      "Let me push on this a little."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-003",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Asking to disagree",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Can I push back on that?",
+    "meaning": "May I question what you just said?",
+    "useWhen": "A senior person says something you think is wrong.",
+    "example": "**Can I push back on that?** I think two weeks is too short.",
+    "tone": "polite · direct",
+    "careful": "Ask it calmly, then give one clear reason.",
+    "wrong": {
+      "label": "✗ Not about moving furniture",
+      "text": "Can I push back on that chair? It's in the way."
+    },
+    "similar": [
+      "Can I challenge that a little?",
+      "I'd like to question that."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-004",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Disagreeing firmly but politely",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "With respect, I disagree.",
+    "meaning": "I respect you, but I don't agree.",
+    "useWhen": "You must disagree clearly with someone senior.",
+    "example": "**With respect, I disagree.** The client asked for the opposite.",
+    "tone": "formal · firm",
+    "careful": "Tone matters. Said sharply, it sounds rude.",
+    "wrong": {
+      "label": "✗ Not for small, casual chat",
+      "text": "\"Nice weather today.\" \"With respect, I disagree.\""
+    },
+    "similar": [
+      "I respectfully disagree.",
+      "I take a different view."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-005",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Questioning a starting point",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I'd like to challenge that assumption.",
+    "meaning": "I think the idea we're starting from may be wrong.",
+    "useWhen": "A plan rests on something nobody has checked.",
+    "example": "**I'd like to challenge that assumption.** Do users really want an app?",
+    "tone": "formal · thoughtful",
+    "careful": "Name the assumption clearly, so it doesn't feel personal.",
+    "wrong": {
+      "label": "✗ Not for a plain, proven fact",
+      "text": "The invite says 3 p.m. I'd like to challenge that assumption."
+    },
+    "similar": [
+      "Are we sure that's true?",
+      "Let's check that first."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-006",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Saying a plan doesn't suit you",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "That won't work for me.",
+    "meaning": "This time, plan or deal doesn't suit me.",
+    "useWhen": "A time, plan or deal is bad for you.",
+    "example": "A 7 a.m. call? **That won't work for me.** How about 10?",
+    "tone": "direct · neutral",
+    "careful": "Offer another option right after, so it isn't a dead end.",
+    "wrong": {
+      "label": "✗ Not for refusing a gift",
+      "text": "\"Here's a birthday cake for you!\" \"That won't work for me.\""
+    },
+    "similar": [
+      "That doesn't suit me.",
+      "Can we find another time?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-007",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Showing you listened, then disagreeing",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I hear you, but...",
+    "meaning": "I understand your point, but I still see it differently.",
+    "useWhen": "Someone feels strongly and you want to show you listened.",
+    "example": "**I hear you, but** the budget is fixed this quarter.",
+    "tone": "friendly · calm",
+    "careful": "Don't say it on every point. It can sound like you aren't listening.",
+    "wrong": {
+      "label": "✗ Not when you fully agree",
+      "text": "\"Let's ship Friday.\" \"I hear you, but yes, Friday is perfect.\""
+    },
+    "similar": [
+      "I get that, but...",
+      "Fair point, but..."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-008",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Declining softly",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I'd rather not.",
+    "meaning": "I prefer not to do that.",
+    "useWhen": "You're asked to do something optional you don't want to do.",
+    "example": "Present at the town hall? **I'd rather not** this time.",
+    "tone": "polite · soft",
+    "careful": "For a task you must do, it sounds unprofessional. Give a reason.",
+    "wrong": {
+      "label": "✗ Not for picking between two things",
+      "text": "\"Tea or coffee?\" \"I'd rather not coffee.\""
+    },
+    "similar": [
+      "I'll pass, thanks.",
+      "I'd prefer not to."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-009",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Naming a worry",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I'm not comfortable with that.",
+    "meaning": "This feels wrong or risky to me.",
+    "useWhen": "A request crosses a line, like sharing private data.",
+    "example": "Send the client's numbers to a vendor? **I'm not comfortable with that.**",
+    "tone": "calm · firm",
+    "careful": "Say why, so it's about the risk, not the person.",
+    "wrong": {
+      "label": "✗ Not about a chair or bed",
+      "text": "This sofa is too hard. I'm not comfortable with that."
+    },
+    "similar": [
+      "That doesn't sit right with me.",
+      "I have doubts about that."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-010",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Stopping a losing project",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Let's not throw good money after bad.",
+    "meaning": "Let's stop spending on something that is already failing.",
+    "useWhen": "A project keeps losing money and someone wants to spend more.",
+    "example": "The pilot lost money twice. **Let's not throw good money after bad.**",
+    "tone": "direct · idiom",
+    "careful": "Have the numbers ready. It's strong to say about someone's project.",
+    "wrong": {
+      "label": "✗ Not about torn or fake notes",
+      "text": "This note is torn. Let's not throw good money after bad."
+    },
+    "similar": [
+      "Let's cut our losses.",
+      "Let's stop funding this."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-011",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Suggesting an alternative",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Can we look at another option?",
+    "meaning": "Can we consider a different way?",
+    "useWhen": "The plan on the table worries you.",
+    "example": "That vendor is slow. **Can we look at another option?**",
+    "tone": "polite · open",
+    "careful": "It works better if you bring one option yourself.",
+    "wrong": {
+      "label": "✗ Not when there is no choice",
+      "text": "The tax date is set by law. Can we look at another option?"
+    },
+    "similar": [
+      "Is there another way?",
+      "What are our other choices?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-012",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Raising risks",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Have we considered the risks?",
+    "meaning": "Have we thought about what could go wrong?",
+    "useWhen": "A team is excited and moving fast.",
+    "example": "Launching in all cities at once? **Have we considered the risks?**",
+    "tone": "careful · neutral",
+    "careful": "Name one real risk, or it sounds like vague worry.",
+    "wrong": {
+      "label": "✗ Not for small daily choices",
+      "text": "Pizza for lunch? Have we considered the risks?"
+    },
+    "similar": [
+      "What could go wrong here?",
+      "What's the downside?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-013",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Flagging a worry",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I have a concern.",
+    "meaning": "Something about this worries me.",
+    "useWhen": "You want to raise one clear worry in a meeting.",
+    "example": "**I have a concern.** The test phase is only two days.",
+    "tone": "calm · neutral",
+    "careful": "Say the concern right away. Don't leave people guessing.",
+    "wrong": {
+      "label": "✗ Not meaning \"I own a business\"",
+      "text": "I have a concern in Pune that sells shoes."
+    },
+    "similar": [
+      "One thing worries me.",
+      "I'd like to flag something."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-014",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Offering another way",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I'd suggest a different approach.",
+    "meaning": "I think we should do this another way.",
+    "useWhen": "You agree with the goal, not the method.",
+    "example": "**I'd suggest a different approach:** test with ten users first.",
+    "tone": "polite · confident",
+    "careful": "Explain your approach in one line right after.",
+    "wrong": {
+      "label": "✗ Not about roads or routes",
+      "text": "Traffic is bad on MG Road. I'd suggest a different approach."
+    },
+    "similar": [
+      "How about we try it this way?",
+      "Another way could be..."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-015",
+    "type": "module",
+    "module": "phrases",
+    "topic": "A formal no",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I'll have to respectfully decline.",
+    "meaning": "I must say no, politely.",
+    "useWhen": "You refuse a formal offer, request or invite.",
+    "example": "Thank you for the offer. **I'll have to respectfully decline.**",
+    "tone": "formal · polite",
+    "careful": "Too formal for a teammate. With friends, say \"Sorry, I can't.\"",
+    "wrong": {
+      "label": "✗ Not for small, casual offers",
+      "text": "\"Want a biscuit?\" \"I'll have to respectfully decline.\""
+    },
+    "similar": [
+      "I must politely decline.",
+      "Thank you, but I'll pass."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-016",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Buying time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Let me think about it.",
+    "meaning": "I need time before I answer.",
+    "useWhen": "You're asked for a quick yes and need to check first.",
+    "example": "A new role in Dubai? **Let me think about it** and reply Monday.",
+    "tone": "polite · neutral",
+    "careful": "Give a time for your answer, or it sounds like a hidden no.",
+    "wrong": {
+      "label": "✗ Not for simple facts",
+      "text": "\"What's your name?\" \"Let me think about it.\""
+    },
+    "similar": [
+      "Can I get back to you?",
+      "Give me a day to think."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-017",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Reopening a choice",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Can we revisit this decision?",
+    "meaning": "Can we talk about this choice again?",
+    "useWhen": "New facts appear after something was decided.",
+    "example": "Costs went up 20%. **Can we revisit this decision?**",
+    "tone": "polite · formal",
+    "careful": "Bring the new fact. Reopening without one annoys people.",
+    "wrong": {
+      "label": "✗ Not with nothing new to add",
+      "text": "\"We chose blue a minute ago.\" \"Can we revisit this decision?\""
+    },
+    "similar": [
+      "Can we reopen this?",
+      "Can we look at this again?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-018",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Holding someone to a deal",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "That's not what we agreed.",
+    "meaning": "This is different from our agreement.",
+    "useWhen": "Someone changes the price, terms or scope.",
+    "example": "The quote says $5,000 now? We said $4,000. **That's not what we agreed.**",
+    "tone": "firm · calm",
+    "careful": "Keep the email or note ready to show what was agreed.",
+    "wrong": {
+      "label": "✗ Not for a plain difference of taste",
+      "text": "\"I think blue looks better.\" \"That's not what we agreed.\""
+    },
+    "similar": [
+      "That's different from our deal.",
+      "We agreed on something else."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-019",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Getting back to the goal",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "What problem are we trying to solve?",
+    "meaning": "What is the real problem here?",
+    "useWhen": "People argue about fixes before naming the problem.",
+    "example": "Before we buy new software, **what problem are we trying to solve?**",
+    "tone": "calm · thoughtful",
+    "careful": "Ask it with real curiosity, not as a put-down.",
+    "wrong": {
+      "label": "✗ Not when the problem is plain and urgent",
+      "text": "The office is on fire! What problem are we trying to solve?"
+    },
+    "similar": [
+      "What's the real goal here?",
+      "What are we fixing?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-020",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Warning about where it leads",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "That's a slippery slope.",
+    "meaning": "One small step could lead to bigger bad steps.",
+    "useWhen": "A small exception could become the normal way.",
+    "example": "One free extra feature? **That's a slippery slope.** Next they'll want ten.",
+    "tone": "cautious · idiom",
+    "careful": "Explain the chain of steps, or it sounds like fear, not reason.",
+    "wrong": {
+      "label": "✗ Not about a wet floor",
+      "text": "Careful, the floor is wet. That's a slippery slope."
+    },
+    "similar": [
+      "That could open the floodgates.",
+      "Where does it stop?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-021",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Saying no to more work",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I can't take that on right now.",
+    "meaning": "I don't have time for that task now.",
+    "useWhen": "Your plate is full and someone adds a task.",
+    "example": "**I can't take that on right now.** I could help next week.",
+    "tone": "polite · direct",
+    "careful": "Offer a later time or another person if you can.",
+    "wrong": {
+      "label": "✗ Not about carrying something",
+      "text": "This box is heavy. I can't take that on right now."
+    },
+    "similar": [
+      "My plate is full right now.",
+      "I don't have room for that this week."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-022",
+    "type": "module",
+    "module": "phrases",
+    "topic": "A clear, kind no",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I'm going to have to say no.",
+    "meaning": "My answer is no, and I'm sorry about it.",
+    "useWhen": "You've thought about it and the answer is final.",
+    "example": "Weekend work again? **I'm going to have to say no** this time.",
+    "tone": "firm · polite",
+    "careful": "Keep it short. A long excuse invites bargaining.",
+    "wrong": {
+      "label": "✗ Not for something you will do",
+      "text": "I'm going to have to say no, so I'll send it tonight."
+    },
+    "similar": [
+      "I'll have to pass.",
+      "My answer is no, sorry."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-023",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Asking for the reason",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Could you explain why?",
+    "meaning": "Please tell me the reason behind this.",
+    "useWhen": "A decision surprises you and you want to understand it.",
+    "example": "The launch moved again. **Could you explain why?**",
+    "tone": "polite · curious",
+    "careful": "Keep your tone soft. Said sharply, it sounds like an attack.",
+    "wrong": {
+      "label": "✗ Not right after the reason was given",
+      "text": "\"It's late because the server crashed.\" \"Could you explain why?\""
+    },
+    "similar": [
+      "What's the reason for that?",
+      "Can you help me understand?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-024",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Pointing to the decision-maker",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "That's not my call to make.",
+    "meaning": "I don't have the power to decide this.",
+    "useWhen": "Someone asks you to approve something above your role.",
+    "example": "A discount for the client? **That's not my call to make.** Ask Priya.",
+    "tone": "neutral · honest",
+    "careful": "Say who can decide, or it sounds like you're dodging.",
+    "wrong": {
+      "label": "✗ Not about a phone call",
+      "text": "I'll ring the client later. That's not my call to make."
+    },
+    "similar": [
+      "That's up to my manager.",
+      "I can't decide that."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-025",
+    "type": "module",
+    "module": "phrases",
+    "topic": "An unfair comparison",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "We're comparing apples and oranges.",
+    "meaning": "These two things are too different to compare.",
+    "useWhen": "Someone compares two things that aren't alike.",
+    "example": "A startup's numbers against a bank's? **We're comparing apples and oranges.**",
+    "tone": "casual · idiom",
+    "careful": "Say what makes them different, so it isn't a brush-off.",
+    "wrong": {
+      "label": "✗ Not about real fruit",
+      "text": "At the market, we're comparing apples and oranges for price."
+    },
+    "similar": [
+      "That's not a fair comparison.",
+      "Those two aren't alike."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-026",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Asking for data",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Let's look at the numbers first.",
+    "meaning": "Let's check the facts before we decide.",
+    "useWhen": "A choice is being made on gut feeling.",
+    "example": "Before we hire two more people, **let's look at the numbers first.**",
+    "tone": "calm · practical",
+    "careful": "Bring the numbers yourself if you can.",
+    "wrong": {
+      "label": "✗ Not about phone numbers",
+      "text": "Before I call him, let's look at the numbers first."
+    },
+    "similar": [
+      "What does the data say?",
+      "Let's check the facts."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-027",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Not deciding alone",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I'd need to check with my manager.",
+    "meaning": "I can't agree without my manager's okay.",
+    "useWhen": "Someone wants a quick yes that is beyond your role.",
+    "example": "A two-week extension? **I'd need to check with my manager.**",
+    "tone": "polite · neutral",
+    "careful": "Don't hide behind it every time. Use it when it's true.",
+    "wrong": {
+      "label": "✗ Not for things you can decide",
+      "text": "Can I have a glass of water? I'd need to check with my manager."
+    },
+    "similar": [
+      "Let me run it by my boss.",
+      "I'll need approval first."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-028",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Soft disagreement",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I see it a bit differently.",
+    "meaning": "My view is slightly different from yours.",
+    "useWhen": "You disagree but want to keep it light.",
+    "example": "**I see it a bit differently.** I think price matters more than design.",
+    "tone": "soft · friendly",
+    "careful": "Then share your view clearly. Don't stop at the phrase.",
+    "wrong": {
+      "label": "✗ Not about your eyesight",
+      "text": "I need new glasses. I see it a bit differently."
+    },
+    "similar": [
+      "My take is a little different.",
+      "I'd look at it another way."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-029",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Sorting what matters",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Is that a must-have or a nice-to-have?",
+    "meaning": "Do we truly need this, or is it just a bonus?",
+    "useWhen": "There's a long list of requests and too little time.",
+    "example": "Dark mode? **Is that a must-have or a nice-to-have?**",
+    "tone": "practical · neutral",
+    "careful": "Ask about features and tasks, never about a person.",
+    "wrong": {
+      "label": "✗ Not about people",
+      "text": "Is Rahul a must-have or a nice-to-have on the team?"
+    },
+    "similar": [
+      "Do we really need this now?",
+      "Is this essential?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-030",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Warning about future cases",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "That sets a risky precedent.",
+    "meaning": "If we do this once, people will expect it again.",
+    "useWhen": "A one-time favour could become the rule.",
+    "example": "A refund after 90 days? **That sets a risky precedent.**",
+    "tone": "formal · careful",
+    "careful": "Say which future cases worry you.",
+    "wrong": {
+      "label": "✗ Not for a normal, one-off event",
+      "text": "He took one sick day. That sets a risky precedent."
+    },
+    "similar": [
+      "Others will expect the same.",
+      "That could become the rule."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-031",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Flagging an issue gently",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "That might be a problem.",
+    "meaning": "This could cause trouble.",
+    "useWhen": "You spot an issue and want to raise it softly.",
+    "example": "The client is on leave next week. **That might be a problem.**",
+    "tone": "soft · neutral",
+    "careful": "For a big, sure problem, say it plainly: \"That is a problem.\"",
+    "wrong": {
+      "label": "✗ Not for a disaster happening now",
+      "text": "The site is down for every user. That might be a problem."
+    },
+    "similar": [
+      "That could be tricky.",
+      "I see an issue there."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-032",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Slowing a decision down",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Let's not rush this.",
+    "meaning": "Let's take time to get this right.",
+    "useWhen": "People want to decide too fast on something big.",
+    "example": "It's a five-year contract. **Let's not rush this.**",
+    "tone": "calm · careful",
+    "careful": "Suggest a date to decide, or it sounds like delay.",
+    "wrong": {
+      "label": "✗ Not for urgent work",
+      "text": "The client's payments are failing. Let's not rush this."
+    },
+    "similar": [
+      "Let's take our time on this.",
+      "No need to decide today."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-033",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Suggesting a new method",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Can we try it another way?",
+    "meaning": "Can we use a different method?",
+    "useWhen": "The current way keeps failing.",
+    "example": "The long email didn't work. **Can we try it another way?** A quick call?",
+    "tone": "friendly · open",
+    "careful": "Say what the other way is.",
+    "wrong": {
+      "label": "✗ Not about trying on clothes",
+      "text": "This shirt is tight. Can we try it another way?"
+    },
+    "similar": [
+      "Let's try something else.",
+      "What if we change the method?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-034",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Needing more proof",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I'm not convinced yet.",
+    "meaning": "You haven't persuaded me so far.",
+    "useWhen": "You're open, but need more facts.",
+    "example": "Nice idea, but **I'm not convinced yet.** Any user data?",
+    "tone": "honest · open",
+    "careful": "Say what would convince you.",
+    "wrong": {
+      "label": "✗ Not for something you saw yourself",
+      "text": "I watched it happen myself, but I'm not convinced yet."
+    },
+    "similar": [
+      "I need more to go on.",
+      "You haven't sold me yet."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-035",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Beyond your authority",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "That's above my pay grade.",
+    "meaning": "That decision belongs to someone more senior.",
+    "useWhen": "You joke lightly that a question is for the bosses.",
+    "example": "Should we merge the teams? **That's above my pay grade.**",
+    "tone": "casual · humorous",
+    "careful": "Keep it light. Don't use it with clients or to dodge your own work.",
+    "wrong": {
+      "label": "✗ Not about your salary",
+      "text": "I asked HR for a raise, but it's above my pay grade."
+    },
+    "similar": [
+      "That's one for the bosses.",
+      "Not my decision, I'm afraid."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-036",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Calling out unfairness",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I don't think that's fair.",
+    "meaning": "This treats someone badly or unequally.",
+    "useWhen": "Work or blame is shared unevenly.",
+    "example": "One person does all the night shifts? **I don't think that's fair.**",
+    "tone": "direct · calm",
+    "careful": "Stay calm and stick to the facts.",
+    "wrong": {
+      "label": "✗ Not for a fair rule you just dislike",
+      "text": "Everyone gets the same two days off. I don't think that's fair."
+    },
+    "similar": [
+      "That doesn't seem right.",
+      "That feels uneven."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-037",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Suggesting a small test",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "What if we tried it on a small scale first?",
+    "meaning": "Let's test it small before going big.",
+    "useWhen": "A big rollout feels risky.",
+    "example": "**What if we tried it on a small scale first?** One city, one month.",
+    "tone": "friendly · practical",
+    "careful": "Say how small and for how long.",
+    "wrong": {
+      "label": "✗ Not about a weighing scale",
+      "text": "Put the rice bag down. What if we tried it on a small scale first?"
+    },
+    "similar": [
+      "Let's run a pilot first.",
+      "Can we test it with a few users?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-038",
+    "type": "module",
+    "module": "phrases",
+    "topic": "A quick no for now",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Not right now, sorry.",
+    "meaning": "I can't at the moment.",
+    "useWhen": "A colleague asks for help while you're busy.",
+    "example": "Help with the slides? **Not right now, sorry.** After lunch?",
+    "tone": "casual · friendly",
+    "careful": "Too short for a client or senior. Add a reason there.",
+    "wrong": {
+      "label": "✗ Not to say sorry for being late",
+      "text": "I'm 20 minutes late. Not right now, sorry."
+    },
+    "similar": [
+      "Can it wait a bit?",
+      "I'm tied up right now."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-039",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Too busy for more",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I don't have the bandwidth.",
+    "meaning": "I don't have the time or energy for more.",
+    "useWhen": "You're too busy to take on another task.",
+    "example": "A new client too? **I don't have the bandwidth** this month.",
+    "tone": "casual · office",
+    "careful": "Some find it jargon. \"I don't have time\" is plainer.",
+    "wrong": {
+      "label": "✗ Not about money",
+      "text": "That phone costs too much. I don't have the bandwidth."
+    },
+    "similar": [
+      "I'm stretched thin.",
+      "I don't have time for that."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-040",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Asking for a record",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I'll need that in writing.",
+    "meaning": "Please put it in an email or document.",
+    "useWhen": "A promise or change matters and you want a record.",
+    "example": "You'll cover travel costs? Great, **I'll need that in writing.**",
+    "tone": "firm · polite",
+    "careful": "Keep it light, or it sounds like you don't trust them.",
+    "wrong": {
+      "label": "✗ Not for a casual chat",
+      "text": "\"Want to grab lunch?\" \"I'll need that in writing.\""
+    },
+    "similar": [
+      "Could you email me that?",
+      "Can you put that in an email?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-041",
+    "type": "module",
+    "module": "phrases",
+    "topic": "A polite no",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "I'm afraid I can't.",
+    "meaning": "Sorry, I'm not able to.",
+    "useWhen": "You must refuse and want to sound kind.",
+    "example": "Join the 9 p.m. call? **I'm afraid I can't.** I have a family dinner.",
+    "tone": "polite · common",
+    "careful": "\"Afraid\" here means sorry, not scared.",
+    "wrong": {
+      "label": "✗ Not to say yes",
+      "text": "I'm afraid I can't, so I'll be there at 6."
+    },
+    "similar": [
+      "Sorry, I can't.",
+      "Unfortunately, I won't be able to."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-042",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Staying in your lane",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "That's outside my role.",
+    "meaning": "This task isn't part of my job.",
+    "useWhen": "You're asked to do another team's work.",
+    "example": "Fixing the payroll? **That's outside my role.** Finance handles it.",
+    "tone": "neutral · direct",
+    "careful": "Point to who can help, or it sounds unhelpful.",
+    "wrong": {
+      "label": "✗ Not for basic help anyone gives",
+      "text": "Hold the door? That's outside my role."
+    },
+    "similar": [
+      "That's not part of my job.",
+      "That's for another team."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-043",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Talking before acting",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Can we discuss this first?",
+    "meaning": "Let's talk before anyone acts.",
+    "useWhen": "Someone is about to act without asking the team.",
+    "example": "Before you email the client, **can we discuss this first?**",
+    "tone": "polite · calm",
+    "careful": "Suggest a quick time, like \"five minutes now\".",
+    "wrong": {
+      "label": "✗ Not after it's already done",
+      "text": "You sent it yesterday? Can we discuss this first?"
+    },
+    "similar": [
+      "Can we talk before you send it?",
+      "Let's talk it through."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-044",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Agreeing what comes first",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Can we agree on the priority first?",
+    "meaning": "Let's decide what matters most before we plan.",
+    "useWhen": "Too many tasks pull the team in different directions.",
+    "example": "Bugs or the new feature? **Can we agree on the priority first?**",
+    "tone": "practical · calm",
+    "careful": "Then write the order down so it sticks.",
+    "wrong": {
+      "label": "✗ Not for a single task",
+      "text": "There's only one job today. Can we agree on the priority first?"
+    },
+    "similar": [
+      "What matters most here?",
+      "Let's rank these first."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-045",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Testing an idea hard",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "pushback"
+    ],
+    "group": "pushback",
+    "phrase": "Let's stress-test this idea.",
+    "meaning": "Let's find every way this idea could fail.",
+    "useWhen": "A big plan needs checking before you commit.",
+    "example": "Before we pitch, **let's stress-test this idea** with hard questions.",
+    "tone": "confident · office",
+    "careful": "Make it about the idea, not the person who had it.",
+    "wrong": {
+      "label": "✗ Not about feeling stressed",
+      "text": "Work is too much this week. Let's stress-test this idea."
+    },
+    "similar": [
+      "Let's poke holes in it.",
+      "What could break this?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-046",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Asking the deadline",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "When is this due?",
+    "meaning": "By what date or time do you need this?",
+    "useWhen": "Someone gives you a task with no date.",
+    "example": "Sure, I'll do the report. **When is this due?**",
+    "tone": "neutral · common",
+    "careful": "Ask at the start, not the day before.",
+    "wrong": {
+      "label": "✗ Not for something already sent",
+      "text": "I emailed it this morning. When is this due?"
+    },
+    "similar": [
+      "What's the deadline?",
+      "When do you need this by?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-047",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Asking for more time",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "Can we push the deadline?",
+    "meaning": "Can we move the deadline later?",
+    "useWhen": "You need more time and want to ask early.",
+    "example": "The data came late. **Can we push the deadline** to Thursday?",
+    "tone": "polite · direct",
+    "careful": "\"Push\" usually means later. Say the new date to avoid confusion.",
+    "wrong": {
+      "label": "✗ Not meaning earlier",
+      "text": "The client wants it sooner. Can we push the deadline to Monday instead of Friday?"
+    },
+    "similar": [
+      "Can we move it to next week?",
+      "Could we get a few more days?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-048",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Setting a date",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "Can you finish it by Friday?",
+    "meaning": "Is Friday possible for you to complete this?",
+    "useWhen": "You're giving a task and need a date.",
+    "example": "**Can you finish it by Friday?** The client meets us Monday.",
+    "tone": "polite · clear",
+    "careful": "\"By Friday\" means Friday or before, not after.",
+    "wrong": {
+      "label": "✗ Not \"till Friday\"",
+      "text": "Can you finish it till Friday?"
+    },
+    "similar": [
+      "Is Friday doable?",
+      "Could you get it done by Friday?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-049",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Little time left",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "We're cutting it close.",
+    "meaning": "We have only just enough time.",
+    "useWhen": "The work may only just finish in time.",
+    "example": "The flight is at 6 and we leave at 4:30. **We're cutting it close.**",
+    "tone": "casual · common",
+    "careful": "Say it early so people can plan.",
+    "wrong": {
+      "label": "✗ Not about a haircut",
+      "text": "My hair is very short now. We're cutting it close."
+    },
+    "similar": [
+      "That's a close one.",
+      "We barely have time."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-050",
+    "type": "module",
+    "module": "phrases",
+    "topic": "A date that cannot move",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "The deadline is non-negotiable.",
+    "meaning": "The date cannot change at all.",
+    "useWhen": "A date is fixed by law, a client or an event.",
+    "example": "Tax filing closes on the 31st. **The deadline is non-negotiable.**",
+    "tone": "firm · formal",
+    "careful": "Only say it if it's truly fixed, or people stop trusting your dates.",
+    "wrong": {
+      "label": "✗ Not about price",
+      "text": "The price of this laptop? The deadline is non-negotiable."
+    },
+    "similar": [
+      "That date can't move.",
+      "There's no flexibility on the date."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-051",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Promising today",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "I'll send it by end of day.",
+    "meaning": "You'll have it before the workday ends today.",
+    "useWhen": "You promise something for today.",
+    "example": "Thanks for the notes. **I'll send it by end of day.**",
+    "tone": "neutral · common",
+    "careful": "Say whose end of day if you're in different time zones.",
+    "wrong": {
+      "label": "✗ Not for tomorrow morning",
+      "text": "I'll send it by end of day, around 10 a.m. tomorrow."
+    },
+    "similar": [
+      "You'll have it by tonight.",
+      "I'll get it to you by 6."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-052",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Warning of a delay",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "The timeline is slipping.",
+    "meaning": "We're starting to fall behind the plan.",
+    "useWhen": "Small delays are adding up.",
+    "example": "Two tasks are late. **The timeline is slipping.** Let's re-plan.",
+    "tone": "neutral · serious",
+    "careful": "Say by how much, and what you'll do about it.",
+    "wrong": {
+      "label": "✗ Not when you're early",
+      "text": "We finished early, so the timeline is slipping."
+    },
+    "similar": [
+      "We're falling behind.",
+      "Things are running late."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-053",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Nearly finished",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "It's almost done.",
+    "meaning": "Only a little work is left.",
+    "useWhen": "Someone checks on a task that's nearly finished.",
+    "example": "The deck? **It's almost done.** Ten more minutes.",
+    "tone": "casual · reassuring",
+    "careful": "Only say it if it's true. Give a time if you can.",
+    "wrong": {
+      "label": "✗ Not when you've barely started",
+      "text": "I opened the file just now. It's almost done."
+    },
+    "similar": [
+      "Nearly there.",
+      "Just the final touches left."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-054",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Planning from the deadline",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "Let's work backwards from the date.",
+    "meaning": "Start at the deadline and plan each step before it.",
+    "useWhen": "You have a fixed date and many steps.",
+    "example": "Launch is on the 30th. **Let's work backwards from the date.**",
+    "tone": "practical · office",
+    "careful": "Write each step down with its own date.",
+    "wrong": {
+      "label": "✗ Not when there is no date yet",
+      "text": "We have no deadline yet. Let's work backwards from the date."
+    },
+    "similar": [
+      "Let's plan back from the deadline.",
+      "What needs to happen by when?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-055",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Being realistic",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "Let's not overpromise.",
+    "meaning": "Let's not promise more than we can deliver.",
+    "useWhen": "Someone wants to give the client a very early date.",
+    "example": "Two weeks sounds tight. **Let's not overpromise.**",
+    "tone": "careful · practical",
+    "careful": "Suggest the real date right away.",
+    "wrong": {
+      "label": "✗ Not for a promise you always keep",
+      "text": "We always reply within a day. Let's not overpromise."
+    },
+    "similar": [
+      "Let's be realistic.",
+      "Let's keep the promise small."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-056",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Asking for a short extension",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "I need one more day.",
+    "meaning": "I need just one day longer.",
+    "useWhen": "You're close but need a little more time.",
+    "example": "The numbers need a check. **I need one more day.** Is Thursday okay?",
+    "tone": "honest · direct",
+    "careful": "Ask before the deadline, not after it.",
+    "wrong": {
+      "label": "✗ Not after you've missed the date",
+      "text": "It was due last week. I need one more day."
+    },
+    "similar": [
+      "Could I have until tomorrow?",
+      "Can I send it tomorrow instead?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-057",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Asking for an honest date",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "What's a realistic date?",
+    "meaning": "When can it really be done?",
+    "useWhen": "You doubt the date someone gave.",
+    "example": "Monday seems tight. **What's a realistic date?**",
+    "tone": "calm · practical",
+    "careful": "Then hold them to it, kindly.",
+    "wrong": {
+      "label": "✗ Not about a romantic date",
+      "text": "Coffee or dinner, what's a realistic date?"
+    },
+    "similar": [
+      "When can you really finish?",
+      "What date can you commit to?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-058",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Checking if a date can move",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "Is the date fixed?",
+    "meaning": "Can the deadline change, or not?",
+    "useWhen": "Before you plan or ask for more time.",
+    "example": "**Is the date fixed,** or can we go a week later?",
+    "tone": "neutral · direct",
+    "careful": "Ask early in the project, not at the end.",
+    "wrong": {
+      "label": "✗ Not about repairs",
+      "text": "My watch broke last week. Is the date fixed?"
+    },
+    "similar": [
+      "Is that a hard deadline?",
+      "Can the date move?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-059",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Quick turnaround",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "I can turn it around by tomorrow.",
+    "meaning": "I can finish and return it by tomorrow.",
+    "useWhen": "Someone needs a fast reply on a piece of work.",
+    "example": "Send me the draft. **I can turn it around by tomorrow.**",
+    "tone": "confident · office",
+    "careful": "Only promise it if tomorrow is truly free.",
+    "wrong": {
+      "label": "✗ Not about flipping something over",
+      "text": "This table is upside down. I can turn it around by tomorrow."
+    },
+    "similar": [
+      "I can get it back to you tomorrow.",
+      "You'll have it tomorrow."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-060",
+    "type": "module",
+    "module": "phrases",
+    "topic": "A rule of thumb for dates",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "Under-promise and over-deliver.",
+    "meaning": "Promise a little less, then do a little more.",
+    "useWhen": "You're advising someone how to set dates.",
+    "example": "Tell them Friday, aim for Wednesday. **Under-promise and over-deliver.**",
+    "tone": "advice · common saying",
+    "careful": "Don't pad every date a lot. People notice.",
+    "wrong": {
+      "label": "✗ Not as an excuse to be late",
+      "text": "I said Friday and sent it Monday. Under-promise and over-deliver."
+    },
+    "similar": [
+      "Set a safe date, then beat it.",
+      "Promise less, deliver more."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-061",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Good news on time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "We're ahead of schedule.",
+    "meaning": "We're earlier than planned.",
+    "useWhen": "You share a good progress update.",
+    "example": "Testing finished a week early. **We're ahead of schedule.**",
+    "tone": "positive · common",
+    "careful": "Don't relax too much. Things can still slip.",
+    "wrong": {
+      "label": "✗ Not when you're late",
+      "text": "We're two days late, so we're ahead of schedule."
+    },
+    "similar": [
+      "We're running early.",
+      "We're ahead of plan."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-062",
+    "type": "module",
+    "module": "phrases",
+    "topic": "A date that can't move",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "That's a hard deadline.",
+    "meaning": "This date cannot change.",
+    "useWhen": "You tell people a date is fixed.",
+    "example": "The expo opens on the 5th. **That's a hard deadline.**",
+    "tone": "firm · neutral",
+    "careful": "\"Hard\" means fixed here, not difficult.",
+    "wrong": {
+      "label": "✗ Not meaning \"difficult\"",
+      "text": "The task is tough but due next month. That's a hard deadline."
+    },
+    "similar": [
+      "That date is set in stone.",
+      "There's no moving that date."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-063",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Very little time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "It's going to be tight.",
+    "meaning": "We may only just make it.",
+    "useWhen": "Time is short, but it's still possible.",
+    "example": "Two days for ten pages? **It's going to be tight,** but doable.",
+    "tone": "honest · casual",
+    "careful": "Say if you need help to make it.",
+    "wrong": {
+      "label": "✗ Not when it's already impossible",
+      "text": "It's due in an hour and needs a week. It's going to be tight."
+    },
+    "similar": [
+      "We're short on time.",
+      "It'll be a close call."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-064",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Asking for flexibility",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "Is there any wiggle room?",
+    "meaning": "Can the date or terms bend a little?",
+    "useWhen": "You want a bit of give on a date or price.",
+    "example": "Friday is hard for us. **Is there any wiggle room?**",
+    "tone": "casual · friendly",
+    "careful": "Too casual for formal emails. Use \"Is there any flexibility?\"",
+    "wrong": {
+      "label": "✗ Not about a spare room",
+      "text": "Is there any wiggle room at the hotel for my mother?"
+    },
+    "similar": [
+      "Is there any flexibility?",
+      "Can it bend a little?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-065",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Adding spare time",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "Let's build in some slack.",
+    "meaning": "Let's add extra time in case things go wrong.",
+    "useWhen": "You plan a schedule with risky steps.",
+    "example": "Approvals are slow. **Let's build in some slack** before launch.",
+    "tone": "practical · office",
+    "careful": "Say how much: a day, a week.",
+    "wrong": {
+      "label": "✗ Not about the Slack app",
+      "text": "Let's build in some slack. I'll make a new channel."
+    },
+    "similar": [
+      "Let's add a buffer.",
+      "Let's leave some spare time."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-066",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Fixing a deadline",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "Let's set a date.",
+    "meaning": "Let's agree on a deadline.",
+    "useWhen": "Talk keeps going with no date agreed.",
+    "example": "We all like the plan. **Let's set a date.** How about the 15th?",
+    "tone": "clear · friendly",
+    "careful": "Write the date in the meeting notes.",
+    "wrong": {
+      "label": "✗ Not about your phone's clock",
+      "text": "My phone shows 1970. Let's set a date."
+    },
+    "similar": [
+      "Let's pick a deadline.",
+      "What day shall we aim for?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-067",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Room for delays",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "We need a buffer.",
+    "meaning": "We need extra time for surprises.",
+    "useWhen": "A plan has no spare time at all.",
+    "example": "Testing ends on launch day? **We need a buffer.**",
+    "tone": "practical · neutral",
+    "careful": "Explain what could go wrong.",
+    "wrong": {
+      "label": "✗ Not about a video loading",
+      "text": "The video keeps stopping. We need a buffer."
+    },
+    "similar": [
+      "We need some spare time.",
+      "Let's leave a margin."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-068",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Promising a day",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "I'll have it ready by Monday.",
+    "meaning": "It will be finished on or before Monday.",
+    "useWhen": "You commit to a day for your work.",
+    "example": "Got it. **I'll have it ready by Monday** morning.",
+    "tone": "confident · common",
+    "careful": "Say morning or evening if it matters.",
+    "wrong": {
+      "label": "✗ Not \"from Monday\"",
+      "text": "I'll have it ready from Monday."
+    },
+    "similar": [
+      "It'll be done by Monday.",
+      "Expect it on Monday."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-069",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Promising a time estimate",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "I'll give you an ETA by noon.",
+    "meaning": "By noon, I'll tell you when it will be done.",
+    "useWhen": "You don't know the finish time yet.",
+    "example": "Still checking the bug. **I'll give you an ETA by noon.**",
+    "tone": "office · neutral",
+    "careful": "ETA means expected time. Then really send it by noon.",
+    "wrong": {
+      "label": "✗ Not the finish time itself",
+      "text": "I'll give you an ETA by noon, so the work is done at noon."
+    },
+    "similar": [
+      "I'll tell you the timing by 12.",
+      "I'll update you on timing by noon."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-070",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Spreading dates out",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "Can we stagger the deadlines?",
+    "meaning": "Can the deadlines fall on different days?",
+    "useWhen": "Several tasks are due at the same time.",
+    "example": "Three reports due Friday? **Can we stagger the deadlines?**",
+    "tone": "practical · office",
+    "careful": "Suggest an order and the dates.",
+    "wrong": {
+      "label": "✗ Not for a single task",
+      "text": "There's just one report. Can we stagger the deadlines?"
+    },
+    "similar": [
+      "Can we spread them out?",
+      "Can we space out the dates?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-071",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Asking how much time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "How long will it take?",
+    "meaning": "How much time do you need?",
+    "useWhen": "Before you plan around someone's task.",
+    "example": "The fix sounds simple. **How long will it take?**",
+    "tone": "neutral · common",
+    "careful": "Ask for a range if they're unsure.",
+    "wrong": {
+      "label": "✗ Not \"how much long\"",
+      "text": "How much long will it take?"
+    },
+    "similar": [
+      "How much time do you need?",
+      "What's your estimate?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-072",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Confirming a date",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "Let's lock in the date.",
+    "meaning": "Let's make this date final.",
+    "useWhen": "Everyone agrees and you want to stop changes.",
+    "example": "Everyone's free on the 20th. **Let's lock in the date.**",
+    "tone": "casual · decisive",
+    "careful": "Send a calendar invite right after.",
+    "wrong": {
+      "label": "✗ Not when people still can't make it",
+      "text": "Two people can't come that day. Let's lock in the date."
+    },
+    "similar": [
+      "Let's confirm the date.",
+      "Let's make it final."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-073",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Simple delay news",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "It got delayed.",
+    "meaning": "It's late. It didn't happen on time.",
+    "useWhen": "You explain that something is late.",
+    "example": "The shipment? **It got delayed.** It arrives Tuesday now.",
+    "tone": "plain · neutral",
+    "careful": "Add the new date and the reason.",
+    "wrong": {
+      "label": "✗ Not \"is got delayed\"",
+      "text": "The order is got delayed."
+    },
+    "similar": [
+      "It's running late.",
+      "It's been pushed back."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-074",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Speeding something up",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "Can we fast-track this?",
+    "meaning": "Can we do this faster than usual?",
+    "useWhen": "Something is urgent and the usual process is slow.",
+    "example": "The client is waiting. **Can we fast-track this** approval?",
+    "tone": "office · direct",
+    "careful": "Say why it's urgent. Not every task can jump the queue.",
+    "wrong": {
+      "label": "✗ Not for something already done",
+      "text": "It was approved yesterday. Can we fast-track this?"
+    },
+    "similar": [
+      "Can we speed this up?",
+      "Can this jump the queue?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-075",
+    "type": "module",
+    "module": "phrases",
+    "topic": "An early warning",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "We're at risk of slipping.",
+    "meaning": "We may miss the date if nothing changes.",
+    "useWhen": "You see a delay coming and want to warn early.",
+    "example": "The designer is sick. **We're at risk of slipping** by two days.",
+    "tone": "serious · office",
+    "careful": "Say what would fix it.",
+    "wrong": {
+      "label": "✗ Not once you've already missed it",
+      "text": "The deadline was yesterday. We're at risk of slipping."
+    },
+    "similar": [
+      "We might miss the date.",
+      "The date is at risk."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-076",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Owning a delay",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "We missed the deadline.",
+    "meaning": "We didn't finish on time.",
+    "useWhen": "You're honest that the date has passed.",
+    "example": "**We missed the deadline.** Here's what happened, and the new date.",
+    "tone": "honest · direct",
+    "careful": "Own it, give the new date, skip long excuses.",
+    "wrong": {
+      "label": "✗ Not before the date has passed",
+      "text": "It's due tomorrow. We missed the deadline."
+    },
+    "similar": [
+      "We're past the deadline.",
+      "We didn't make the date."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-077",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Pausing work",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "It's on hold for now.",
+    "meaning": "It's paused, not cancelled.",
+    "useWhen": "Work stops for a while but may restart.",
+    "example": "The app redesign? **It's on hold for now,** until the budget is clear.",
+    "tone": "neutral · common",
+    "careful": "Say what would restart it.",
+    "wrong": {
+      "label": "✗ Not meaning cancelled for good",
+      "text": "It's on hold for now. We'll never do it."
+    },
+    "similar": [
+      "It's paused for now.",
+      "We've parked it for now."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-078",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Asking to change the date",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "Can we move the date?",
+    "meaning": "Can the deadline or meeting be on another day?",
+    "useWhen": "A clash or delay makes the date hard.",
+    "example": "My team is at the offsite that week. **Can we move the date?**",
+    "tone": "polite · simple",
+    "careful": "Suggest a new date in the same message.",
+    "wrong": {
+      "label": "✗ Not for a date already past",
+      "text": "The event was last week. Can we move the date?"
+    },
+    "similar": [
+      "Could we do another day?",
+      "Can we reschedule?"
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-079",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Flagging urgency",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "This is time-sensitive.",
+    "meaning": "This must be done soon, or it loses value.",
+    "useWhen": "A task has a short window.",
+    "example": "The offer ends at 5. **This is time-sensitive.**",
+    "tone": "serious · office",
+    "careful": "Give the exact time. Don't use it on every email.",
+    "wrong": {
+      "label": "✗ Not about feelings",
+      "text": "She cries easily. She is time-sensitive."
+    },
+    "similar": [
+      "This is urgent.",
+      "This can't wait."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-080",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Too little time",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "That's an aggressive timeline.",
+    "meaning": "That's a very short time for this work.",
+    "useWhen": "A deadline seems too ambitious.",
+    "example": "A full app in two weeks? **That's an aggressive timeline.**",
+    "tone": "polite · office",
+    "careful": "It's not about anger. Say what time you'd need.",
+    "wrong": {
+      "label": "✗ Not about an angry person",
+      "text": "He shouted at me. That's an aggressive timeline."
+    },
+    "similar": [
+      "That's very ambitious.",
+      "That's a lot in a short time."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-081",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Early next morning",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "First thing tomorrow.",
+    "meaning": "Early tomorrow, before other work.",
+    "useWhen": "You promise it at the start of the next day.",
+    "example": "\"When can I see it?\" \"**First thing tomorrow.**\"",
+    "tone": "casual · common",
+    "careful": "It means early, like 9 or 10, not after lunch.",
+    "wrong": {
+      "label": "✗ Not for tomorrow evening",
+      "text": "I'll send it first thing tomorrow, around 7 p.m."
+    },
+    "similar": [
+      "Tomorrow morning.",
+      "As soon as I'm in tomorrow."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-082",
+    "type": "module",
+    "module": "phrases",
+    "topic": "The very last moment",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "We're down to the wire.",
+    "meaning": "We're at the last moment before the deadline.",
+    "useWhen": "The deadline is hours away and work isn't done.",
+    "example": "Launch is at 9 and we're still testing. **We're down to the wire.**",
+    "tone": "casual · idiom",
+    "careful": "Not for something days away.",
+    "wrong": {
+      "label": "✗ Not about cables",
+      "text": "The internet cable broke. We're down to the wire."
+    },
+    "similar": [
+      "It's the last minute.",
+      "We're right at the deadline."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-083",
+    "type": "module",
+    "module": "phrases",
+    "topic": "The deadline is today",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "It's due today.",
+    "meaning": "Today is the last day for this.",
+    "useWhen": "You remind someone the deadline is today.",
+    "example": "Quick reminder about the expense form: **it's due today.**",
+    "tone": "neutral · clear",
+    "careful": "Add a time if it's due before end of day.",
+    "wrong": {
+      "label": "✗ Not \"today is the due\"",
+      "text": "Today is the due for the report."
+    },
+    "similar": [
+      "Today is the deadline.",
+      "It needs to go in today."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-084",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Agreeing to a date",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "End of week works for me.",
+    "meaning": "Friday, or the end of this week, is fine for me.",
+    "useWhen": "Someone suggests the end of the week as a date.",
+    "example": "\"Can I send it Friday?\" \"Sure, **end of week works for me.**\"",
+    "tone": "friendly · casual",
+    "careful": "Check if \"end of week\" means Friday or Sunday.",
+    "wrong": {
+      "label": "✗ Not when you then ask for sooner",
+      "text": "End of week works for me, but please send it Monday."
+    },
+    "similar": [
+      "Friday is fine.",
+      "That works for me."
+    ]
+  },
+  {
+    "id": "v7-phrases-pushback-085",
+    "type": "module",
+    "module": "phrases",
+    "topic": "The busiest push",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "deadlines"
+    ],
+    "group": "deadlines",
+    "phrase": "It's crunch time.",
+    "meaning": "This is the short, intense time before a deadline.",
+    "useWhen": "The team must work hard to finish soon.",
+    "example": "The audit is next week. **It's crunch time,** everyone.",
+    "tone": "casual · energetic",
+    "careful": "Don't make every week crunch time. People burn out.",
+    "wrong": {
+      "label": "✗ Not about snacks",
+      "text": "Chips and biscuits on the table? It's crunch time."
+    },
+    "similar": [
+      "It's the final push.",
+      "All hands on deck."
+    ]
+  }
+]

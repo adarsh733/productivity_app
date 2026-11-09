@@ -5,7 +5,7 @@ import AskScreen from './components/ask/AskScreen';
 import MeScreen from './components/me/MeScreen';
 import OldToolsSheet, { type OldToolView } from './components/me/OldToolsSheet';
 import { useAppOpen } from './features/you/useAppOpen';
-import { useAutoTopUp } from './features/auto/useAutoTopUp';
+import { useModuleBatches } from './features/auto/useModuleBatches';
 import { useAutoPlan } from './features/auto/useAutoPlan';
 import { useSync } from './sync/useSync';
 import type { Card } from './types/contract';
@@ -17,7 +17,7 @@ interface OldTools {
 
 export default function App() {
   useAppOpen();
-  useAutoTopUp();
+  useModuleBatches();
   useAutoPlan();
   useSync();
   const [activeTab, setActiveTab] = useState<AppTab>('feed');

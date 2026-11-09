@@ -1,0 +1,3344 @@
+[
+  {
+    "id": "v7-better-pushback-001",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with your manager's plan",
+    "thinking": false,
+    "mightSay": "Sir, your plan is wrong, it will not work at all.",
+    "better": "I see the goal. I'm worried the timeline is too tight for testing.",
+    "changes": [
+      "agree with the goal first",
+      "name the concern, not the person"
+    ],
+    "next": {
+      "title": "Offer a way forward",
+      "lines": [
+        {
+          "label": "Suggest",
+          "text": "Could we keep the plan and add one more week for testing?"
+        }
+      ],
+      "note": "Bring an option, not just a problem."
+    }
+  },
+  {
+    "id": "v7-better-pushback-002",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to weekend work",
+    "thinking": false,
+    "mightSay": "I can't come on weekend, I have some personal work.",
+    "better": "I can't work this weekend. I can start early on Monday instead.",
+    "changes": [
+      "clear no",
+      "offer what you can do"
+    ],
+    "next": {
+      "title": "If it's urgent",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "If it can't wait, I can give it one hour on Sunday evening."
+        }
+      ],
+      "note": "A firm no with an option still sounds helpful."
+    }
+  },
+  {
+    "id": "v7-better-pushback-003",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking a senior to review your work",
+    "thinking": false,
+    "mightSay": "Please check my work once and tell me if anything is wrong.",
+    "better": "Could you review the pricing section by Thursday? I'm least sure about the discounts.",
+    "changes": [
+      "say what to review",
+      "give a date",
+      "point to the weak spot"
+    ],
+    "next": {
+      "title": "Make it easy",
+      "lines": [
+        {
+          "label": "Add",
+          "text": "It's two pages. Ten minutes should be enough."
+        }
+      ],
+      "note": "Busy people say yes to small, clear asks."
+    }
+  },
+  {
+    "id": "v7-better-pushback-004",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining what an app update does",
+    "thinking": false,
+    "mightSay": "We have done some backend optimisations and UI enhancements in the new build.",
+    "better": "The new version opens faster and the buttons are easier to find.",
+    "changes": [
+      "what they'll notice",
+      "no tech words"
+    ],
+    "next": {
+      "title": "Add one example",
+      "lines": [
+        {
+          "label": "Example",
+          "text": "Your order history now loads in one second, not five."
+        }
+      ],
+      "note": "Describe the change from their side of the screen."
+    }
+  },
+  {
+    "id": "v7-better-pushback-005",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing in a group chat",
+    "thinking": false,
+    "mightSay": "No no, this is totally wrong, everyone please listen to me.",
+    "better": "I see it a bit differently. Can I share one point before we decide?",
+    "changes": [
+      "soften the start",
+      "ask for space, not attention"
+    ],
+    "next": {
+      "title": "Move it to a call",
+      "lines": [
+        {
+          "label": "Suggest",
+          "text": "Happy to explain on a quick call if that's easier."
+        }
+      ],
+      "note": "Long disagreements go better outside the group."
+    }
+  },
+  {
+    "id": "v7-better-pushback-006",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a friend who wants a loan",
+    "thinking": false,
+    "mightSay": "Actually right now I am having some tight situation, so it will be difficult.",
+    "better": "I'm sorry, I can't lend money right now.",
+    "changes": [
+      "short and kind",
+      "no long story"
+    ],
+    "next": {
+      "title": "Still help",
+      "lines": [
+        {
+          "label": "Offer",
+          "text": "I can't lend it, but I can help you look at other options."
+        }
+      ],
+      "note": "You don't owe a reason for saying no to a loan."
+    }
+  },
+  {
+    "id": "v7-better-pushback-007",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking IT to fix your laptop",
+    "thinking": false,
+    "mightSay": "My laptop is not working properly, please do something urgently.",
+    "better": "My laptop freezes every time I open Excel. Could someone look at it today?",
+    "changes": [
+      "describe what happens",
+      "say when you need it"
+    ],
+    "next": {
+      "title": "Give the details",
+      "lines": [
+        {
+          "label": "Details",
+          "text": "It started after yesterday's update. The error says 'not responding'."
+        }
+      ],
+      "note": "The more exact you are, the faster the fix."
+    }
+  },
+  {
+    "id": "v7-better-pushback-008",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining a bug to a client",
+    "thinking": false,
+    "mightSay": "There was one small bug in the code which got introduced in last deployment.",
+    "better": "Since Tuesday's update, some invoices showed the wrong total. We've fixed it.",
+    "changes": [
+      "what they saw",
+      "when",
+      "that it's fixed"
+    ],
+    "next": {
+      "title": "Say what's next",
+      "lines": [
+        {
+          "label": "Next",
+          "text": "We've corrected those invoices and added a check so it won't happen again."
+        }
+      ],
+      "note": "Clients want the impact and the fix, not the code."
+    }
+  },
+  {
+    "id": "v7-better-pushback-009",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Indian-English fix",
+    "situation": "Saying you'll reply later, without 'revert'",
+    "thinking": false,
+    "mightSay": "I will revert back to you by evening.",
+    "better": "I'll get back to you by this evening.",
+    "changes": [
+      "'get back to you', not 'revert'",
+      "drop the extra 'back'"
+    ],
+    "next": {
+      "title": "Even better",
+      "lines": [
+        {
+          "label": "Specific",
+          "text": "I'll send you the numbers by 6 p.m. today."
+        }
+      ],
+      "note": "Outside India, 'revert' means 'undo', not 'reply'."
+    }
+  },
+  {
+    "id": "v7-better-pushback-010",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with a client's idea",
+    "thinking": false,
+    "mightSay": "Sir, this idea will not work, we have tried before only.",
+    "better": "That could work. When we tried something similar, sign-ups dropped, so I'd test it small first.",
+    "changes": [
+      "start open",
+      "share the evidence",
+      "suggest a test"
+    ],
+    "next": {
+      "title": "Make it their choice",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "Would you like us to try it in one city first?"
+        }
+      ],
+      "note": "Clients accept a test more easily than a no."
+    }
+  },
+  {
+    "id": "v7-better-pushback-011",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a wedding invite",
+    "thinking": false,
+    "mightSay": "I will try my best to come but I am not sure, so many things are there.",
+    "better": "Thank you so much for inviting me. I'm sorry, I won't be able to make it.",
+    "changes": [
+      "thanks first",
+      "a clear answer, no maybe"
+    ],
+    "next": {
+      "title": "Show you care",
+      "lines": [
+        {
+          "label": "Add",
+          "text": "I'd love to see the photos, and I'll call you that week."
+        }
+      ],
+      "note": "A clear no is kinder than a maybe they wait on."
+    }
+  },
+  {
+    "id": "v7-better-pushback-012",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking a colleague to cover a meeting",
+    "thinking": false,
+    "mightSay": "Can you attend my 3 o'clock meeting, I am busy.",
+    "better": "Could you cover my 3 p.m. client call? I'll send you the notes and the two open points.",
+    "changes": [
+      "ask, don't tell",
+      "say what they'll get"
+    ],
+    "next": {
+      "title": "Thank them",
+      "lines": [
+        {
+          "label": "Return",
+          "text": "Thanks, I owe you one. Happy to cover one of yours next week."
+        }
+      ],
+      "note": "Make the favour small and offer one back."
+    }
+  },
+  {
+    "id": "v7-better-pushback-013",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining the cloud to a parent",
+    "thinking": false,
+    "mightSay": "Cloud means data is stored in remote servers which are accessed over internet.",
+    "better": "Your photos are kept on the company's computers, so you can see them on any phone.",
+    "changes": [
+      "start from their photos",
+      "no 'servers'"
+    ],
+    "next": {
+      "title": "Answer the worry",
+      "lines": [
+        {
+          "label": "Reassure",
+          "text": "If your phone is lost, the photos are still there."
+        }
+      ],
+      "note": "Start from what they use, not how it works."
+    }
+  },
+  {
+    "id": "v7-better-pushback-014",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with a friend's restaurant pick",
+    "thinking": false,
+    "mightSay": "That place is very bad, I am not coming there.",
+    "better": "I'm not keen on that one. How about the new place near the station?",
+    "changes": [
+      "a soft 'not keen'",
+      "offer another option"
+    ],
+    "next": {
+      "title": "Keep it easy",
+      "lines": [
+        {
+          "label": "Add",
+          "text": "But if everyone wants your pick, I'm in."
+        }
+      ],
+      "note": "With friends, a light touch keeps the plan fun."
+    }
+  },
+  {
+    "id": "v7-better-pushback-015",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a client's extra request",
+    "thinking": false,
+    "mightSay": "This is out of scope, we cannot do it.",
+    "better": "That isn't part of this phase. I can send a quote to add it.",
+    "changes": [
+      "plain words",
+      "turn the no into an option"
+    ],
+    "next": {
+      "title": "Give a date",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "Or we can add it to phase two, starting in March."
+        }
+      ],
+      "note": "A paid option protects the work and the client."
+    }
+  },
+  {
+    "id": "v7-better-pushback-016",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking a friend to help you move house",
+    "thinking": false,
+    "mightSay": "You are free on Sunday, right? Come to my place, we are shifting.",
+    "better": "I'm moving house on Sunday. Could you help for a couple of hours in the morning?",
+    "changes": [
+      "ask, don't assume",
+      "say how long"
+    ],
+    "next": {
+      "title": "Make it worth it",
+      "lines": [
+        {
+          "label": "Offer",
+          "text": "Lunch is on me, and I'll help when you move."
+        }
+      ],
+      "note": "A clear time makes it easy to say yes."
+    }
+  },
+  {
+    "id": "v7-better-pushback-017",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining why a website is slow",
+    "thinking": false,
+    "mightSay": "Website is slow due to heavy payload and less server capacity.",
+    "better": "The pages have large pictures, and too many people visit at once. Both slow it down.",
+    "changes": [
+      "two plain causes",
+      "no jargon"
+    ],
+    "next": {
+      "title": "Say the fix",
+      "lines": [
+        {
+          "label": "Fix",
+          "text": "Smaller pictures and a bigger plan will make it twice as fast."
+        }
+      ],
+      "note": "Pair each cause with what you'll do about it."
+    }
+  },
+  {
+    "id": "v7-better-pushback-018",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with a parent about a big purchase",
+    "thinking": false,
+    "mightSay": "Papa, you don't understand, this car is not good.",
+    "better": "I can see why you like it. I'm worried about the running cost. Can we compare two more?",
+    "changes": [
+      "respect first",
+      "one clear concern",
+      "suggest a step"
+    ],
+    "next": {
+      "title": "Bring facts",
+      "lines": [
+        {
+          "label": "Facts",
+          "text": "This one costs about ₹3,000 more a month in fuel."
+        }
+      ],
+      "note": "Numbers keep the talk calm."
+    }
+  },
+  {
+    "id": "v7-better-pushback-019",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a last-minute meeting",
+    "thinking": false,
+    "mightSay": "I cannot join, I already have so many calls today.",
+    "better": "I can't make it at 4 today. Could we do 11 tomorrow?",
+    "changes": [
+      "clear no",
+      "another time"
+    ],
+    "next": {
+      "title": "Stay in the loop",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "If it has to be today, please send me the notes and I'll reply by evening."
+        }
+      ],
+      "note": "Offer a path so the work still moves."
+    }
+  },
+  {
+    "id": "v7-better-pushback-020",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking for help with a tool you don't know",
+    "thinking": false,
+    "mightSay": "I don't know this software at all, please teach me everything.",
+    "better": "I'm new to Jira. Could you show me how to create and assign a ticket?",
+    "changes": [
+      "name the tool",
+      "ask for one task"
+    ],
+    "next": {
+      "title": "Ask for a time",
+      "lines": [
+        {
+          "label": "Time",
+          "text": "Ten minutes after lunch would be enough."
+        }
+      ],
+      "note": "A small, specific ask gets a quick yes."
+    }
+  },
+  {
+    "id": "v7-better-pushback-021",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining data privacy to a relative",
+    "thinking": false,
+    "mightSay": "Data privacy means your PII should not be shared with third parties without consent.",
+    "better": "Apps collect your name, number and location. Privacy means they can't share it without asking you.",
+    "changes": [
+      "what they collect",
+      "what privacy protects"
+    ],
+    "next": {
+      "title": "Give one tip",
+      "lines": [
+        {
+          "label": "Tip",
+          "text": "Before you tap 'Allow', ask: does this app really need my location?"
+        }
+      ],
+      "note": "One habit is more useful than the rules."
+    }
+  },
+  {
+    "id": "v7-better-pushback-022",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with the meeting's conclusion",
+    "thinking": false,
+    "mightSay": "I don't agree with what everyone decided, it is not correct.",
+    "better": "Before we close, I have one concern about the budget. Can I raise it?",
+    "changes": [
+      "ask before you object",
+      "name the area"
+    ],
+    "next": {
+      "title": "Say it in one line",
+      "lines": [
+        {
+          "label": "Concern",
+          "text": "The plan needs ₹5 lakh, but we only approved ₹3 lakh."
+        }
+      ],
+      "note": "One fact moves a room more than a long speech."
+    }
+  },
+  {
+    "id": "v7-better-pushback-023",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to lending your car",
+    "thinking": false,
+    "mightSay": "Actually my car has some issue, and my father also needs it, so...",
+    "better": "I'm sorry, I don't lend my car. I hope you find one.",
+    "changes": [
+      "a simple rule",
+      "no made-up excuse"
+    ],
+    "next": {
+      "title": "Help another way",
+      "lines": [
+        {
+          "label": "Offer",
+          "text": "I can drop you at the station on Saturday, if that helps."
+        }
+      ],
+      "note": "A rule is easier to say than a new excuse every time."
+    }
+  },
+  {
+    "id": "v7-better-pushback-024",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking your manager for more people",
+    "thinking": false,
+    "mightSay": "We are short of resources, please give more resources.",
+    "better": "To launch by June, we need one more developer. Without one, we'd slip to August.",
+    "changes": [
+      "'people', not 'resources'",
+      "link the ask to the goal",
+      "show the cost of no"
+    ],
+    "next": {
+      "title": "Offer a choice",
+      "lines": [
+        {
+          "label": "Choice",
+          "text": "Or we can launch in June with two fewer features."
+        }
+      ],
+      "note": "Give your manager a decision, not a complaint."
+    }
+  },
+  {
+    "id": "v7-better-pushback-025",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining what a database is",
+    "thinking": false,
+    "mightSay": "Database is a structured collection of data stored electronically.",
+    "better": "A database is where the app keeps its lists: customers, orders and prices.",
+    "changes": [
+      "everyday words",
+      "real examples"
+    ],
+    "next": {
+      "title": "Show it",
+      "lines": [
+        {
+          "label": "Example",
+          "text": "When you search for an order, the app looks it up in the database."
+        }
+      ],
+      "note": "One real moment beats a definition."
+    }
+  },
+  {
+    "id": "v7-better-pushback-026",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing when you're the junior person",
+    "thinking": false,
+    "mightSay": "Sorry, I may be wrong, I am very junior, but maybe this is not right?",
+    "better": "Can I share a concern? The test data shows a different result.",
+    "changes": [
+      "drop the apology",
+      "lead with evidence"
+    ],
+    "next": {
+      "title": "Ask a question",
+      "lines": [
+        {
+          "label": "Question",
+          "text": "Could we check the numbers again before we send it?"
+        }
+      ],
+      "note": "A question lets you disagree without fighting rank."
+    }
+  },
+  {
+    "id": "v7-better-pushback-027",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a relative's job favour",
+    "thinking": false,
+    "mightSay": "Uncle, I will see what I can do, I will try.",
+    "better": "I can't recommend him for the role, but I can share the job link.",
+    "changes": [
+      "no false hope",
+      "offer what you can"
+    ],
+    "next": {
+      "title": "Keep it warm",
+      "lines": [
+        {
+          "label": "Add",
+          "text": "I'm happy to look at his CV and give him tips."
+        }
+      ],
+      "note": "'I'll try' is a promise you may not keep."
+    }
+  },
+  {
+    "id": "v7-better-pushback-028",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking a stranger for directions",
+    "thinking": false,
+    "mightSay": "Hello, metro station is where?",
+    "better": "Excuse me, could you tell me the way to the metro station?",
+    "changes": [
+      "a polite opener",
+      "a full question"
+    ],
+    "next": {
+      "title": "Check you got it",
+      "lines": [
+        {
+          "label": "Repeat",
+          "text": "So, left at the bank, then straight on? Thank you!"
+        }
+      ],
+      "note": "Saying it back saves a wrong turn."
+    }
+  },
+  {
+    "id": "v7-better-pushback-029",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining a dashboard to the sales team",
+    "thinking": false,
+    "mightSay": "This dashboard shows KPIs and metrics with filters for drill-down analysis.",
+    "better": "This page shows your sales this week, who's ahead, and which deals are stuck.",
+    "changes": [
+      "answer their questions",
+      "no jargon"
+    ],
+    "next": {
+      "title": "Show the first click",
+      "lines": [
+        {
+          "label": "Start",
+          "text": "Each morning, look at the 'Stuck deals' box first."
+        }
+      ],
+      "note": "Tell them what to do with it, not just what it is."
+    }
+  },
+  {
+    "id": "v7-better-pushback-030",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with feedback you got",
+    "thinking": false,
+    "mightSay": "That is not true, I did all the work properly.",
+    "better": "Thanks for the feedback. Could you share an example? I'd like to understand it.",
+    "changes": [
+      "thank first",
+      "ask for an example"
+    ],
+    "next": {
+      "title": "Then give your side",
+      "lines": [
+        {
+          "label": "Your view",
+          "text": "On the March report, I used the template we agreed. Should that change?"
+        }
+      ],
+      "note": "Understand first, then explain."
+    }
+  },
+  {
+    "id": "v7-better-pushback-031",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a second helping",
+    "thinking": false,
+    "mightSay": "No no, I cannot eat more, please don't give.",
+    "better": "It was delicious, thank you. I'm really full.",
+    "changes": [
+      "praise the food",
+      "a gentle no"
+    ],
+    "next": {
+      "title": "If they insist",
+      "lines": [
+        {
+          "label": "Again",
+          "text": "I'd love to, but I really can't. Could I take some home?"
+        }
+      ],
+      "note": "Praise makes the no feel kind."
+    }
+  },
+  {
+    "id": "v7-better-pushback-032",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking for help when you're stuck",
+    "thinking": false,
+    "mightSay": "I am stuck since morning, nothing is working.",
+    "better": "I've been stuck on the login error for two hours. Could you take a look?",
+    "changes": [
+      "name the problem",
+      "say how long"
+    ],
+    "next": {
+      "title": "Show what you tried",
+      "lines": [
+        {
+          "label": "Tried",
+          "text": "I've cleared the cache and checked the keys. Neither fixed it."
+        }
+      ],
+      "note": "Saying what you tried saves their time."
+    }
+  },
+  {
+    "id": "v7-better-pushback-033",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining why a small change takes a week",
+    "thinking": false,
+    "mightSay": "It looks small but actually there are many dependencies in the code.",
+    "better": "The button is small, but it touches payments, so we have to test every way to pay.",
+    "changes": [
+      "the real reason",
+      "no 'dependencies'"
+    ],
+    "next": {
+      "title": "Break down the week",
+      "lines": [
+        {
+          "label": "Plan",
+          "text": "Two days to build, three days to test."
+        }
+      ],
+      "note": "A breakdown makes the time feel fair."
+    }
+  },
+  {
+    "id": "v7-better-pushback-034",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with a deadline someone set",
+    "thinking": false,
+    "mightSay": "This deadline is impossible, nobody can do this.",
+    "better": "I don't think we can do it well by Friday. Wednesday next week is realistic.",
+    "changes": [
+      "'I don't think', not 'impossible'",
+      "offer a date"
+    ],
+    "next": {
+      "title": "Give a choice",
+      "lines": [
+        {
+          "label": "Choice",
+          "text": "Or by Friday with only the main screen ready."
+        }
+      ],
+      "note": "Trade scope for time, out loud."
+    }
+  },
+  {
+    "id": "v7-better-pushback-035",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a sales call",
+    "thinking": false,
+    "mightSay": "Not interested, don't call again.",
+    "better": "Thanks, but I'm not interested. Please take my number off your list.",
+    "changes": [
+      "polite and firm",
+      "a clear request"
+    ],
+    "next": {
+      "title": "If they push",
+      "lines": [
+        {
+          "label": "Again",
+          "text": "I've decided. Thank you for your time."
+        }
+      ],
+      "note": "Repeat the same line, calmly."
+    }
+  },
+  {
+    "id": "v7-better-pushback-036",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking someone to explain again",
+    "thinking": false,
+    "mightSay": "I didn't understand anything, tell again.",
+    "better": "Sorry, could you explain the last step again? I missed how the totals add up.",
+    "changes": [
+      "a polite ask",
+      "say which part"
+    ],
+    "next": {
+      "title": "Check you understood",
+      "lines": [
+        {
+          "label": "Repeat",
+          "text": "So the tax is added after the discount. Is that right?"
+        }
+      ],
+      "note": "Saying it back shows what you got."
+    }
+  },
+  {
+    "id": "v7-better-pushback-037",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining a password reset to an elder",
+    "thinking": false,
+    "mightSay": "Click on forgot password, then OTP will come, enter it and reset.",
+    "better": "Tap 'Forgot password'. You'll get a code by text. Type it in, then choose a new password.",
+    "changes": [
+      "one step at a time",
+      "'code', not 'OTP'"
+    ],
+    "next": {
+      "title": "Add a safety line",
+      "lines": [
+        {
+          "label": "Warn",
+          "text": "Never tell that code to anyone who calls you."
+        }
+      ],
+      "note": "Short steps and one warning are easy to remember."
+    }
+  },
+  {
+    "id": "v7-better-pushback-038",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with a colleague's estimate",
+    "thinking": false,
+    "mightSay": "Your estimate is wrong, it will take much more time.",
+    "better": "I think it may take longer. Testing alone took us a week last time.",
+    "changes": [
+      "'I think'",
+      "use past evidence"
+    ],
+    "next": {
+      "title": "Suggest a buffer",
+      "lines": [
+        {
+          "label": "Buffer",
+          "text": "Could we say three weeks, to be safe?"
+        }
+      ],
+      "note": "Past work is a fair judge."
+    }
+  },
+  {
+    "id": "v7-better-pushback-039",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a new project while you're full",
+    "thinking": false,
+    "mightSay": "I am already overloaded, how can I take more?",
+    "better": "I'd like to help, but I'm full until the 20th. Which task should I drop to take this on?",
+    "changes": [
+      "show you're willing",
+      "let them choose the trade"
+    ],
+    "next": {
+      "title": "Offer a date",
+      "lines": [
+        {
+          "label": "Date",
+          "text": "I could start on it on the 21st."
+        }
+      ],
+      "note": "Let your manager pick the priority."
+    }
+  },
+  {
+    "id": "v7-better-pushback-040",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking for a reference letter",
+    "thinking": false,
+    "mightSay": "Sir, please give me one reference letter, it is urgent.",
+    "better": "Would you be willing to write me a reference for a project manager role? It's due on the 15th.",
+    "changes": [
+      "ask if they're willing",
+      "the role",
+      "the date"
+    ],
+    "next": {
+      "title": "Make it easy",
+      "lines": [
+        {
+          "label": "Help",
+          "text": "I can send a short list of projects we did together."
+        }
+      ],
+      "note": "Give them the facts so they can write it quickly."
+    }
+  },
+  {
+    "id": "v7-better-pushback-041",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining AI to your grandparents",
+    "thinking": false,
+    "mightSay": "AI is machine learning models trained on huge datasets to predict outputs.",
+    "better": "AI is a computer program that has read a lot and can answer questions in plain words.",
+    "changes": [
+      "what it does",
+      "no tech words"
+    ],
+    "next": {
+      "title": "Show it working",
+      "lines": [
+        {
+          "label": "Try",
+          "text": "Ask it: 'What can I cook with potatoes?' and see."
+        }
+      ],
+      "note": "Let them try one thing."
+    }
+  },
+  {
+    "id": "v7-better-pushback-042",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing about who owns a task",
+    "thinking": false,
+    "mightSay": "This is not my work, it is your team's work.",
+    "better": "I think this sits with the data team. Can we check with Priya and confirm?",
+    "changes": [
+      "'I think'",
+      "suggest a check"
+    ],
+    "next": {
+      "title": "Offer to help",
+      "lines": [
+        {
+          "label": "Help",
+          "text": "Once it's clear, I'm happy to hand over my notes."
+        }
+      ],
+      "note": "Settle it with a fact, not a fight."
+    }
+  },
+  {
+    "id": "v7-better-pushback-043",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to staying late",
+    "thinking": false,
+    "mightSay": "I can't stay, I have to go, sorry sorry.",
+    "better": "I need to leave at 6 today. I'll finish this first thing tomorrow.",
+    "changes": [
+      "calm, no repeated sorry",
+      "say when it's done"
+    ],
+    "next": {
+      "title": "If it can't wait",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "If it's urgent, I can send you my part before I go."
+        }
+      ],
+      "note": "Give a time, not an apology."
+    }
+  },
+  {
+    "id": "v7-better-pushback-044",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking a neighbour to collect a parcel",
+    "thinking": false,
+    "mightSay": "Please take my parcel, I am not there.",
+    "better": "Hi, I'm out on Thursday. Could you collect a parcel for me if it comes?",
+    "changes": [
+      "greet first",
+      "say when"
+    ],
+    "next": {
+      "title": "Thank them",
+      "lines": [
+        {
+          "label": "Thanks",
+          "text": "Thank you, I'll pick it up from you in the evening."
+        }
+      ],
+      "note": "Say how long it will stay with them."
+    }
+  },
+  {
+    "id": "v7-better-pushback-045",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining what testing is",
+    "thinking": false,
+    "mightSay": "Testing is QA process for validating functional and non-functional requirements.",
+    "better": "Testing means we use the app the way you would, to catch problems before you do.",
+    "changes": [
+      "from their side",
+      "why it matters"
+    ],
+    "next": {
+      "title": "Give an example",
+      "lines": [
+        {
+          "label": "Example",
+          "text": "We tried paying with an expired card to make sure it shows a clear message."
+        }
+      ],
+      "note": "One real check makes it concrete."
+    }
+  },
+  {
+    "id": "v7-better-pushback-046",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Indian-English fix",
+    "situation": "Saying the job is done, without 'done the needful'",
+    "thinking": false,
+    "mightSay": "I have done the needful, kindly check.",
+    "better": "I've updated the address in the system. Please check it's right.",
+    "changes": [
+      "say what you did",
+      "'please', not 'kindly'"
+    ],
+    "next": {
+      "title": "Even better",
+      "lines": [
+        {
+          "label": "Specific",
+          "text": "I've updated your address. Your next bill will go to the new one."
+        }
+      ],
+      "note": "'Done the needful' hides what you actually did."
+    }
+  },
+  {
+    "id": "v7-better-pushback-047",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with a design choice",
+    "thinking": false,
+    "mightSay": "This design is not looking good, change it.",
+    "better": "I like the layout. The grey text is hard to read on a phone, though.",
+    "changes": [
+      "something you like",
+      "a specific problem"
+    ],
+    "next": {
+      "title": "Suggest a fix",
+      "lines": [
+        {
+          "label": "Try",
+          "text": "Could we try darker text and see?"
+        }
+      ],
+      "note": "Name the problem; let the designer pick the fix."
+    }
+  },
+  {
+    "id": "v7-better-pushback-048",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a trip with friends",
+    "thinking": false,
+    "mightSay": "I'll see, I'm not sure, let me check and tell.",
+    "better": "I'll skip this one, but have a great time. Send pictures!",
+    "changes": [
+      "a clear no",
+      "a warm close"
+    ],
+    "next": {
+      "title": "Plan another",
+      "lines": [
+        {
+          "label": "Next",
+          "text": "I'd love to join the next one. Maybe in March?"
+        }
+      ],
+      "note": "A quick no lets them plan."
+    }
+  },
+  {
+    "id": "v7-better-pushback-049",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking for advice on a career move",
+    "thinking": false,
+    "mightSay": "Should I leave my job or not? Tell me what to do.",
+    "better": "I've got an offer from a startup. Could I get your view on the risks?",
+    "changes": [
+      "the real situation",
+      "ask for a view, not a decision"
+    ],
+    "next": {
+      "title": "Ask a sharp question",
+      "lines": [
+        {
+          "label": "Question",
+          "text": "What would you check before joining a startup?"
+        }
+      ],
+      "note": "A specific question gets a useful answer."
+    }
+  },
+  {
+    "id": "v7-better-pushback-050",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining a security risk to your boss",
+    "thinking": false,
+    "mightSay": "There is a vulnerability in our system which can be exploited by hackers.",
+    "better": "Anyone with our old password can still open the customer list. We should change it today.",
+    "changes": [
+      "what could happen",
+      "what to do"
+    ],
+    "next": {
+      "title": "Give the cost",
+      "lines": [
+        {
+          "label": "Cost",
+          "text": "It takes one hour. A leak could cost us our biggest client."
+        }
+      ],
+      "note": "Compare the small fix to the big risk."
+    }
+  },
+  {
+    "id": "v7-better-pushback-051",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing without saying 'but'",
+    "thinking": false,
+    "mightSay": "Good idea, but it won't work.",
+    "better": "Good idea. And if we try it, we'll need a bigger budget.",
+    "changes": [
+      "'and' instead of 'but'",
+      "raise the condition"
+    ],
+    "next": {
+      "title": "Solve it together",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "How could we make the budget work?"
+        }
+      ],
+      "note": "'But' cancels what came before it."
+    }
+  },
+  {
+    "id": "v7-better-pushback-052",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a colleague's shortcut",
+    "thinking": false,
+    "mightSay": "No, we can't do like this, it is wrong method.",
+    "better": "I'd rather not skip the review. If something breaks, it's on both of us.",
+    "changes": [
+      "'I'd rather not'",
+      "the reason"
+    ],
+    "next": {
+      "title": "Offer a faster way",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "I can review it in an hour, so we still make the deadline."
+        }
+      ],
+      "note": "Keep the goal; change the method."
+    }
+  },
+  {
+    "id": "v7-better-pushback-053",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking for help without sounding helpless",
+    "thinking": false,
+    "mightSay": "I am not able to do anything, I am totally lost.",
+    "better": "I've done the first half. I need help with the formula in step 3.",
+    "changes": [
+      "show progress",
+      "name the gap"
+    ],
+    "next": {
+      "title": "Ask for the right amount",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "Ten minutes on a call would do it."
+        }
+      ],
+      "note": "Progress plus one gap sounds capable."
+    }
+  },
+  {
+    "id": "v7-better-pushback-054",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining an API to a business partner",
+    "thinking": false,
+    "mightSay": "API is an interface through which two systems communicate with each other.",
+    "better": "Our app can send orders straight to your system, so no one has to type them in.",
+    "changes": [
+      "what it does for them",
+      "no 'interface'"
+    ],
+    "next": {
+      "title": "Name the benefit",
+      "lines": [
+        {
+          "label": "Benefit",
+          "text": "That saves your team about two hours a day."
+        }
+      ],
+      "note": "Talk about the result, not the tech."
+    }
+  },
+  {
+    "id": "v7-better-pushback-055",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing in writing",
+    "thinking": false,
+    "mightSay": "As per my last mail, I already told this is incorrect.",
+    "better": "I think the figure in row 4 may be off. Could you check it against the March report?",
+    "changes": [
+      "no 'as per my last mail'",
+      "point to the exact spot"
+    ],
+    "next": {
+      "title": "Keep the door open",
+      "lines": [
+        {
+          "label": "Close",
+          "text": "Happy to talk it through if that's easier."
+        }
+      ],
+      "note": "In writing, softer words read as normal."
+    }
+  },
+  {
+    "id": "v7-better-pushback-056",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a discount request",
+    "thinking": false,
+    "mightSay": "Sorry, we can't give discount, rate is fixed.",
+    "better": "This is our best price. I can add free delivery, though.",
+    "changes": [
+      "firm on price",
+      "offer something else"
+    ],
+    "next": {
+      "title": "If they push",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "For a yearly order, I can do 5% off."
+        }
+      ],
+      "note": "Trade a discount for something you want."
+    }
+  },
+  {
+    "id": "v7-better-pushback-057",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking for help early, not at the deadline",
+    "thinking": false,
+    "mightSay": "Deadline is today and I am still not finished, please help.",
+    "better": "I'm behind on the report due Friday. Could we talk today about what to cut?",
+    "changes": [
+      "ask days before",
+      "suggest a solution"
+    ],
+    "next": {
+      "title": "Show your plan",
+      "lines": [
+        {
+          "label": "Plan",
+          "text": "I can finish the numbers. I need help with the charts."
+        }
+      ],
+      "note": "Early asks give people room to help."
+    }
+  },
+  {
+    "id": "v7-better-pushback-058",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining a server outage to customers",
+    "thinking": false,
+    "mightSay": "Due to technical issue in server, services were down.",
+    "better": "Our app was down for two hours this morning. It's working again now.",
+    "changes": [
+      "what happened",
+      "that it's fixed"
+    ],
+    "next": {
+      "title": "Say sorry and what's next",
+      "lines": [
+        {
+          "label": "Next",
+          "text": "We're sorry. We've added a backup so this is less likely to happen again."
+        }
+      ],
+      "note": "Customers want to know what, how long, and that it's fixed."
+    }
+  },
+  {
+    "id": "v7-better-pushback-059",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with a senior in public",
+    "thinking": false,
+    "mightSay": "Sir, with respect, you are wrong in this point.",
+    "better": "Can I add one thing? Last quarter's numbers point the other way.",
+    "changes": [
+      "ask to add",
+      "let the data disagree"
+    ],
+    "next": {
+      "title": "Take the rest offline",
+      "lines": [
+        {
+          "label": "Offer",
+          "text": "I can send you the figures after the meeting."
+        }
+      ],
+      "note": "Let them save face in front of others."
+    }
+  },
+  {
+    "id": "v7-better-pushback-060",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a promotion you don't want",
+    "thinking": false,
+    "mightSay": "I don't want this post, please give to someone else.",
+    "better": "Thank you for thinking of me. I'd like to stay hands-on for now.",
+    "changes": [
+      "thank first",
+      "say what you want"
+    ],
+    "next": {
+      "title": "Leave room for later",
+      "lines": [
+        {
+          "label": "Later",
+          "text": "Could we talk about it again next year?"
+        }
+      ],
+      "note": "Turn a no into a career plan."
+    }
+  },
+  {
+    "id": "v7-better-pushback-061",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking a teammate to check your numbers",
+    "thinking": false,
+    "mightSay": "Just check my sheet once, I think it is fine.",
+    "better": "Could you check the totals in my budget sheet? A second look would really help.",
+    "changes": [
+      "say what to check",
+      "say why"
+    ],
+    "next": {
+      "title": "Point to the risky part",
+      "lines": [
+        {
+          "label": "Focus",
+          "text": "I'm least sure about the tax column."
+        }
+      ],
+      "note": "Point them to the spot that worries you."
+    }
+  },
+  {
+    "id": "v7-better-pushback-062",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining a budget spreadsheet to family",
+    "thinking": false,
+    "mightSay": "Column B is inflow, column C is outflow, and D is the net balance.",
+    "better": "This column is what comes in, this one is what we spend, and this shows what's left.",
+    "changes": [
+      "plain names",
+      "in, out, left"
+    ],
+    "next": {
+      "title": "Show the answer",
+      "lines": [
+        {
+          "label": "Point",
+          "text": "This number at the bottom is what we can save each month."
+        }
+      ],
+      "note": "Lead them to the one number that matters."
+    }
+  },
+  {
+    "id": "v7-better-pushback-063",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with a relative's advice",
+    "thinking": false,
+    "mightSay": "Aunty, your thinking is old, things are different now.",
+    "better": "Thank you, I know you care. I've thought about it, and I'd like to try it my way.",
+    "changes": [
+      "thank them",
+      "no 'old thinking'"
+    ],
+    "next": {
+      "title": "Keep them close",
+      "lines": [
+        {
+          "label": "Add",
+          "text": "I'll tell you how it goes."
+        }
+      ],
+      "note": "You can disagree and still keep the warmth."
+    }
+  },
+  {
+    "id": "v7-better-pushback-064",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a party on a weeknight",
+    "thinking": false,
+    "mightSay": "Weekday party? No way, I have office tomorrow.",
+    "better": "I'll pass tonight, I've got an early start. Have fun!",
+    "changes": [
+      "a light no",
+      "a short reason"
+    ],
+    "next": {
+      "title": "Suggest another time",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "I'm free on Saturday, if anyone's up for it."
+        }
+      ],
+      "note": "Short and cheerful works with friends."
+    }
+  },
+  {
+    "id": "v7-better-pushback-065",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking HR about leave rules",
+    "thinking": false,
+    "mightSay": "What is the leave policy? Please explain all the rules.",
+    "better": "Could you tell me how many days of leave I can carry into next year?",
+    "changes": [
+      "one clear question",
+      "not 'all the rules'"
+    ],
+    "next": {
+      "title": "Add your case",
+      "lines": [
+        {
+          "label": "Context",
+          "text": "I have eight days left and I'm planning a trip in January."
+        }
+      ],
+      "note": "Your own case gets a direct answer."
+    }
+  },
+  {
+    "id": "v7-better-pushback-066",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining what you built this month",
+    "thinking": false,
+    "mightSay": "I worked on many tickets and did refactoring and bug fixes.",
+    "better": "This month I made checkout faster. Orders now go through in half the time.",
+    "changes": [
+      "one main result",
+      "a number"
+    ],
+    "next": {
+      "title": "Add what's next",
+      "lines": [
+        {
+          "label": "Next",
+          "text": "Next month I'll fix the search page."
+        }
+      ],
+      "note": "Lead with the result people can feel."
+    }
+  },
+  {
+    "id": "v7-better-pushback-067",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing on a hiring choice",
+    "thinking": false,
+    "mightSay": "That candidate is not good, I don't like him.",
+    "better": "I'd go with the second candidate. She has done this exact job before.",
+    "changes": [
+      "your pick",
+      "a fact, not a feeling"
+    ],
+    "next": {
+      "title": "Name your concern",
+      "lines": [
+        {
+          "label": "Concern",
+          "text": "The first one was strong, but he's never managed a team."
+        }
+      ],
+      "note": "Compare them on the job, not as people."
+    }
+  },
+  {
+    "id": "v7-better-pushback-068",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to free work for a friend's business",
+    "thinking": false,
+    "mightSay": "Actually these days I am very busy, so it will be difficult for me.",
+    "better": "I'd love to see your business grow, but I can't take on free work right now.",
+    "changes": [
+      "support first",
+      "a clear no"
+    ],
+    "next": {
+      "title": "Offer smaller help",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "I can give you an hour of advice next week."
+        }
+      ],
+      "note": "A small free help keeps the friendship."
+    }
+  },
+  {
+    "id": "v7-better-pushback-069",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking a client for missing details",
+    "thinking": false,
+    "mightSay": "You have not sent all the details, so we cannot start.",
+    "better": "To start, we just need two things: your logo and the delivery address.",
+    "changes": [
+      "no blame",
+      "list exactly what's needed"
+    ],
+    "next": {
+      "title": "Add a date",
+      "lines": [
+        {
+          "label": "Date",
+          "text": "If we get them by Wednesday, we'll deliver on time."
+        }
+      ],
+      "note": "Link the ask to what they want."
+    }
+  },
+  {
+    "id": "v7-better-pushback-070",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining a cost estimate to a client",
+    "thinking": false,
+    "mightSay": "The total cost is ₹4 lakh as per our estimation.",
+    "better": "It's ₹4 lakh: ₹3 lakh to build and ₹1 lakh for testing and setup.",
+    "changes": [
+      "split the number",
+      "what each part buys"
+    ],
+    "next": {
+      "title": "Show a cheaper choice",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "Without the phone app, it's ₹3 lakh."
+        }
+      ],
+      "note": "A breakdown makes a price feel fair."
+    }
+  },
+  {
+    "id": "v7-better-pushback-071",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with a vendor's price",
+    "thinking": false,
+    "mightSay": "Your rate is too high, reduce it.",
+    "better": "Your quote is higher than the others we've had. Can you do better on price?",
+    "changes": [
+      "compare, don't attack",
+      "ask a question"
+    ],
+    "next": {
+      "title": "Give a number",
+      "lines": [
+        {
+          "label": "Target",
+          "text": "We can sign this week at ₹50,000."
+        }
+      ],
+      "note": "A clear target speeds things up."
+    }
+  },
+  {
+    "id": "v7-better-pushback-072",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to your boss, with an option",
+    "thinking": false,
+    "mightSay": "Not possible, I have too much already.",
+    "better": "I can't do both by Friday. I can do the report now and the deck on Monday.",
+    "changes": [
+      "a clear limit",
+      "a plan"
+    ],
+    "next": {
+      "title": "Let them choose",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "Or which one matters more this week?"
+        }
+      ],
+      "note": "Your boss sets the priority; you give the facts."
+    }
+  },
+  {
+    "id": "v7-better-pushback-073",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking for feedback on a draft",
+    "thinking": false,
+    "mightSay": "Please see my draft and give comments.",
+    "better": "Could you read my draft and tell me if the main point is clear?",
+    "changes": [
+      "one question",
+      "the kind of feedback"
+    ],
+    "next": {
+      "title": "Give a time",
+      "lines": [
+        {
+          "label": "Time",
+          "text": "It's one page. Any time before Thursday is fine."
+        }
+      ],
+      "note": "A clear question gets better feedback."
+    }
+  },
+  {
+    "id": "v7-better-pushback-074",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining backups to a small shop owner",
+    "thinking": false,
+    "mightSay": "You need regular backups with offsite storage for disaster recovery.",
+    "better": "Every night, a copy of your sales records goes online. If the computer breaks, nothing is lost.",
+    "changes": [
+      "what happens",
+      "why it matters"
+    ],
+    "next": {
+      "title": "Say the cost",
+      "lines": [
+        {
+          "label": "Cost",
+          "text": "It costs ₹300 a month."
+        }
+      ],
+      "note": "Owners decide on cost and risk."
+    }
+  },
+  {
+    "id": "v7-better-pushback-075",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with a teammate's priority",
+    "thinking": false,
+    "mightSay": "Why are you doing this first? That one is more important.",
+    "better": "I'd put the payment bug first. It's stopping customers from paying.",
+    "changes": [
+      "your view",
+      "the reason"
+    ],
+    "next": {
+      "title": "Ask their reason",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "What made you pick the report first?"
+        }
+      ],
+      "note": "They might know something you don't."
+    }
+  },
+  {
+    "id": "v7-better-pushback-076",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no and offering a later date",
+    "thinking": false,
+    "mightSay": "This week not possible.",
+    "better": "I can't this week, but I can do next Tuesday.",
+    "changes": [
+      "a full sentence",
+      "a new date"
+    ],
+    "next": {
+      "title": "Even better",
+      "lines": [
+        {
+          "label": "Specific",
+          "text": "Next Tuesday at 2 works. Shall I send an invite?"
+        }
+      ],
+      "note": "A date in the no makes it a yes for later."
+    }
+  },
+  {
+    "id": "v7-better-pushback-077",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking a friend to read your CV",
+    "thinking": false,
+    "mightSay": "Check my CV and tell me, is it good or not?",
+    "better": "Could you read my CV? I'd love to know if my last job sounds strong enough.",
+    "changes": [
+      "a polite ask",
+      "one focus"
+    ],
+    "next": {
+      "title": "Thank them",
+      "lines": [
+        {
+          "label": "Thanks",
+          "text": "Coffee's on me this weekend!"
+        }
+      ],
+      "note": "A focused ask is quicker for them."
+    }
+  },
+  {
+    "id": "v7-better-pushback-078",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining why the app needs an update",
+    "thinking": false,
+    "mightSay": "Update is mandatory because of security patches and compatibility.",
+    "better": "This update fixes a safety problem and keeps the app working on new phones.",
+    "changes": [
+      "plain reasons",
+      "no 'patches'"
+    ],
+    "next": {
+      "title": "Say how long",
+      "lines": [
+        {
+          "label": "Time",
+          "text": "It takes about two minutes."
+        }
+      ],
+      "note": "People update faster when they know it's quick."
+    }
+  },
+  {
+    "id": "v7-better-pushback-079",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing after you first agreed",
+    "thinking": false,
+    "mightSay": "Sorry, earlier I said yes but actually I don't agree.",
+    "better": "I've thought more about it, and I've changed my mind. Here's why.",
+    "changes": [
+      "own the change",
+      "promise a reason"
+    ],
+    "next": {
+      "title": "Give the reason",
+      "lines": [
+        {
+          "label": "Reason",
+          "text": "The new numbers show it will cost twice what we thought."
+        }
+      ],
+      "note": "Changing your mind with a reason sounds thoughtful."
+    }
+  },
+  {
+    "id": "v7-better-pushback-080",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to taking notes again",
+    "thinking": false,
+    "mightSay": "Why always me? Someone else take notes.",
+    "better": "I've taken notes the last three times. Could we rotate?",
+    "changes": [
+      "the fact",
+      "a fair fix"
+    ],
+    "next": {
+      "title": "Suggest a system",
+      "lines": [
+        {
+          "label": "System",
+          "text": "Maybe we take turns, in alphabetical order?"
+        }
+      ],
+      "note": "A system is easier to agree to than a complaint."
+    }
+  },
+  {
+    "id": "v7-better-pushback-081",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking for an introduction",
+    "thinking": false,
+    "mightSay": "You know Mr. Rao, no? Please connect me to him.",
+    "better": "Would you be comfortable introducing me to Mr. Rao? I'd like to ask him about the logistics role.",
+    "changes": [
+      "ask if they're comfortable",
+      "say why"
+    ],
+    "next": {
+      "title": "Make it easy",
+      "lines": [
+        {
+          "label": "Help",
+          "text": "I can send a short note you can forward."
+        }
+      ],
+      "note": "Make the introduction one click for them."
+    }
+  },
+  {
+    "id": "v7-better-pushback-082",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining why you can't have both fast and cheap",
+    "thinking": false,
+    "mightSay": "Sir, you can't get everything, fast and cheap both is not possible.",
+    "better": "We can do it fast or we can do it cheap. Doing both means cutting quality.",
+    "changes": [
+      "two choices",
+      "the real cost"
+    ],
+    "next": {
+      "title": "Show the options",
+      "lines": [
+        {
+          "label": "Options",
+          "text": "Fast: ₹6 lakh in a month. Cheaper: ₹4 lakh in three months."
+        }
+      ],
+      "note": "Put numbers on each choice."
+    }
+  },
+  {
+    "id": "v7-better-pushback-083",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Pointing out a mistake in a slide",
+    "thinking": false,
+    "mightSay": "Your slide is having a mistake.",
+    "better": "Quick one: slide 5 says 2023, but I think it's 2024.",
+    "changes": [
+      "a light opener",
+      "the exact spot"
+    ],
+    "next": {
+      "title": "Say it privately",
+      "lines": [
+        {
+          "label": "Message",
+          "text": "Spotted a typo on slide 5. Want me to fix it?"
+        }
+      ],
+      "note": "A private message saves them embarrassment."
+    }
+  },
+  {
+    "id": "v7-better-pushback-084",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a team outing",
+    "thinking": false,
+    "mightSay": "I won't come, team outings are boring.",
+    "better": "I'll miss this one, I have a family plan. Have a great time!",
+    "changes": [
+      "a polite reason",
+      "a warm close"
+    ],
+    "next": {
+      "title": "Show you're still in",
+      "lines": [
+        {
+          "label": "Add",
+          "text": "Count me in for the next lunch."
+        }
+      ],
+      "note": "Keep the door open to the team."
+    }
+  },
+  {
+    "id": "v7-better-pushback-085",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking for a quick call to get unstuck",
+    "thinking": false,
+    "mightSay": "Can we connect? I have some doubts.",
+    "better": "Could we do a 10-minute call today? I'm stuck on how to price the add-ons.",
+    "changes": [
+      "how long",
+      "what it's about"
+    ],
+    "next": {
+      "title": "Offer times",
+      "lines": [
+        {
+          "label": "Times",
+          "text": "I'm free at 12 or after 4."
+        }
+      ],
+      "note": "Busy people say yes to short calls."
+    }
+  },
+  {
+    "id": "v7-better-pushback-086",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining two-step login to a parent",
+    "thinking": false,
+    "mightSay": "Two-factor authentication adds an extra layer of security.",
+    "better": "After your password, the bank sends a code to your phone. Only you can see it.",
+    "changes": [
+      "what they'll see",
+      "why it's safe"
+    ],
+    "next": {
+      "title": "Add the rule",
+      "lines": [
+        {
+          "label": "Rule",
+          "text": "If you didn't try to log in, ignore the code and tell me."
+        }
+      ],
+      "note": "One rule protects them from scams."
+    }
+  },
+  {
+    "id": "v7-better-pushback-087",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Indian-English fix",
+    "situation": "Announcing an earlier date, without 'preponed'",
+    "thinking": false,
+    "mightSay": "The meeting has been preponed to Monday.",
+    "better": "The meeting has moved earlier, to Monday.",
+    "changes": [
+      "'moved earlier', not 'preponed'",
+      "clear to everyone"
+    ],
+    "next": {
+      "title": "Even better",
+      "lines": [
+        {
+          "label": "Specific",
+          "text": "We've moved the meeting earlier, to Monday at 10. Does that work?"
+        }
+      ],
+      "note": "'Prepone' is mostly used in India; 'bring forward' works everywhere."
+    }
+  },
+  {
+    "id": "v7-better-pushback-088",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Questioning a decision made without you",
+    "thinking": false,
+    "mightSay": "Why nobody asked me before deciding this?",
+    "better": "I saw the decision on vendors. I'd like to share a concern before we sign.",
+    "changes": [
+      "a calm opening",
+      "ask for a say now"
+    ],
+    "next": {
+      "title": "Ask for next time",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "Could I be in the loop on vendor choices from now on?"
+        }
+      ],
+      "note": "Fix this one, then fix the process."
+    }
+  },
+  {
+    "id": "v7-better-pushback-089",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a volunteering request",
+    "thinking": false,
+    "mightSay": "Sorry, no time for all this.",
+    "better": "Thank you for asking. I can't commit this month.",
+    "changes": [
+      "thank them",
+      "a clear limit"
+    ],
+    "next": {
+      "title": "Offer something small",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "I can share the poster on my page."
+        }
+      ],
+      "note": "A small yes softens a big no."
+    }
+  },
+  {
+    "id": "v7-better-pushback-090",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking for help in a group chat",
+    "thinking": false,
+    "mightSay": "Anyone? Urgent help needed!!!",
+    "better": "Does anyone know how to export the client list from the CRM? I need it by 3.",
+    "changes": [
+      "the exact question",
+      "the time"
+    ],
+    "next": {
+      "title": "Thank and close",
+      "lines": [
+        {
+          "label": "Close",
+          "text": "Got it, thanks Ravi!"
+        }
+      ],
+      "note": "Close the loop so others know it's solved."
+    }
+  },
+  {
+    "id": "v7-better-pushback-091",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining what a product manager does",
+    "thinking": false,
+    "mightSay": "PM owns the roadmap and drives cross-functional alignment.",
+    "better": "I decide what the app should do next, and make sure the team builds it well.",
+    "changes": [
+      "what you do",
+      "no jargon"
+    ],
+    "next": {
+      "title": "Add an example",
+      "lines": [
+        {
+          "label": "Example",
+          "text": "This month I chose to add a dark mode, because users asked for it most."
+        }
+      ],
+      "note": "One real decision explains the job."
+    }
+  },
+  {
+    "id": "v7-better-pushback-092",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with a friend's travel plan",
+    "thinking": false,
+    "mightSay": "Goa in May? Are you mad? It will be too hot.",
+    "better": "Goa in May might be very hot. What about Shimla instead?",
+    "changes": [
+      "no 'are you mad'",
+      "offer another place"
+    ],
+    "next": {
+      "title": "Leave it open",
+      "lines": [
+        {
+          "label": "Add",
+          "text": "But if you're set on Goa, I'm in."
+        }
+      ],
+      "note": "Suggest, then let them choose."
+    }
+  },
+  {
+    "id": "v7-better-pushback-093",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a neighbour's favour",
+    "thinking": false,
+    "mightSay": "Sorry aunty, I am not free, maybe some other time.",
+    "better": "I'm sorry, I can't water the plants this week. I'm travelling too.",
+    "changes": [
+      "a clear no",
+      "an honest reason"
+    ],
+    "next": {
+      "title": "Help find someone",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "Maybe the Mehtas upstairs could help?"
+        }
+      ],
+      "note": "Point them to someone who can."
+    }
+  },
+  {
+    "id": "v7-better-pushback-094",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking a parent for advice",
+    "thinking": false,
+    "mightSay": "Mummy, tell me what to do, I am confused.",
+    "better": "Mum, can I ask your advice? I'm choosing between two flats.",
+    "changes": [
+      "ask first",
+      "say the decision"
+    ],
+    "next": {
+      "title": "Share the details",
+      "lines": [
+        {
+          "label": "Details",
+          "text": "One is closer to work. The other is bigger and cheaper."
+        }
+      ],
+      "note": "Give them the facts so they can help."
+    }
+  },
+  {
+    "id": "v7-better-pushback-095",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining automation to an office team",
+    "thinking": false,
+    "mightSay": "We are implementing automation to optimise manual workflows.",
+    "better": "The system will fill in the daily report for you, so you won't have to copy numbers.",
+    "changes": [
+      "what changes for them",
+      "no buzzwords"
+    ],
+    "next": {
+      "title": "Answer the worry",
+      "lines": [
+        {
+          "label": "Reassure",
+          "text": "Your job stays. You'll just spend less time copying."
+        }
+      ],
+      "note": "People worry first about their jobs."
+    }
+  },
+  {
+    "id": "v7-better-pushback-096",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Partly agreeing, then adding your view",
+    "thinking": false,
+    "mightSay": "Yes but no, I partially agree only.",
+    "better": "I agree on the timeline. On the budget, I see it differently.",
+    "changes": [
+      "say what you agree on",
+      "then the difference"
+    ],
+    "next": {
+      "title": "Explain the difference",
+      "lines": [
+        {
+          "label": "Reason",
+          "text": "We'll need about 20% more for testing."
+        }
+      ],
+      "note": "Agreement first makes the rest easier to hear."
+    }
+  },
+  {
+    "id": "v7-better-pushback-097",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a request outside your role",
+    "thinking": false,
+    "mightSay": "This is not my job.",
+    "better": "That's outside my area. Leela in finance handles refunds.",
+    "changes": [
+      "no 'not my job'",
+      "point to the right person"
+    ],
+    "next": {
+      "title": "Help a bit",
+      "lines": [
+        {
+          "label": "Offer",
+          "text": "I can copy her on this email now."
+        }
+      ],
+      "note": "Passing it on well still sounds helpful."
+    }
+  },
+  {
+    "id": "v7-better-pushback-098",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking someone busy for five minutes",
+    "thinking": false,
+    "mightSay": "Are you free? I want to talk to you.",
+    "better": "When you have five minutes today, could I ask you about the new contract?",
+    "changes": [
+      "their time first",
+      "the topic"
+    ],
+    "next": {
+      "title": "Be ready",
+      "lines": [
+        {
+          "label": "Prepare",
+          "text": "I'll have my two questions ready."
+        }
+      ],
+      "note": "Prepared asks stay short."
+    }
+  },
+  {
+    "id": "v7-better-pushback-099",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining a chart to someone who hates numbers",
+    "thinking": false,
+    "mightSay": "As you can see, Y-axis is revenue and X-axis is months, and there is a positive trend.",
+    "better": "In short: sales have gone up every month since January.",
+    "changes": [
+      "the story, not the axes",
+      "one line"
+    ],
+    "next": {
+      "title": "Add one number",
+      "lines": [
+        {
+          "label": "Number",
+          "text": "We've doubled since January."
+        }
+      ],
+      "note": "One number is enough for most people."
+    }
+  },
+  {
+    "id": "v7-better-pushback-100",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Saying you see it differently, with a reason",
+    "thinking": false,
+    "mightSay": "I have a different opinion.",
+    "better": "I see it differently. Our customers are mostly over 50, so the app has to stay simple.",
+    "changes": [
+      "your view",
+      "a clear reason"
+    ],
+    "next": {
+      "title": "Invite a reply",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "Does that change anything for you?"
+        }
+      ],
+      "note": "A reason turns an opinion into a point."
+    }
+  },
+  {
+    "id": "v7-better-pushback-101",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to an unpaid trial task",
+    "thinking": false,
+    "mightSay": "I cannot do so much work for free, sir.",
+    "better": "I'm happy to do a short task. For anything over two hours, I'd need to be paid.",
+    "changes": [
+      "set a limit",
+      "stay positive"
+    ],
+    "next": {
+      "title": "Offer another proof",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "I can share samples of similar work instead."
+        }
+      ],
+      "note": "Protect your time without losing the chance."
+    }
+  },
+  {
+    "id": "v7-better-pushback-102",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking for help after a mistake",
+    "thinking": false,
+    "mightSay": "Something went wrong, I don't know how it happened.",
+    "better": "I sent the wrong file to the client. Could you help me fix it before they open it?",
+    "changes": [
+      "own the mistake",
+      "ask for one thing"
+    ],
+    "next": {
+      "title": "Show your plan",
+      "lines": [
+        {
+          "label": "Plan",
+          "text": "I'll email them now. Can you check my message?"
+        }
+      ],
+      "note": "Own it fast and come with a plan."
+    }
+  },
+  {
+    "id": "v7-better-pushback-103",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining online payment safety to an elder",
+    "thinking": false,
+    "mightSay": "Never share OTP, CVV, PIN with anyone, it is a scam.",
+    "better": "The bank will never ask for your code on a call. If someone does, hang up.",
+    "changes": [
+      "one simple rule",
+      "what to do"
+    ],
+    "next": {
+      "title": "Add one check",
+      "lines": [
+        {
+          "label": "Check",
+          "text": "Before paying, look for the lock sign next to the website name."
+        }
+      ],
+      "note": "One rule at a time is easy to remember."
+    }
+  },
+  {
+    "id": "v7-better-pushback-104",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with a landlord about repairs",
+    "thinking": false,
+    "mightSay": "This repair is your responsibility, I won't pay.",
+    "better": "The leak was there before I moved in. I think the repair should be on you.",
+    "changes": [
+      "the fact",
+      "a calm 'I think'"
+    ],
+    "next": {
+      "title": "Point to the agreement",
+      "lines": [
+        {
+          "label": "Proof",
+          "text": "The agreement says major repairs are the owner's cost. I can send photos."
+        }
+      ],
+      "note": "Facts and photos settle it calmly."
+    }
+  },
+  {
+    "id": "v7-better-pushback-105",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no without a long excuse",
+    "thinking": false,
+    "mightSay": "Actually what happened is, my cousin is coming and then I have one function and also...",
+    "better": "I can't make it, sorry. Thanks for asking.",
+    "changes": [
+      "short",
+      "no excuse needed"
+    ],
+    "next": {
+      "title": "Add warmth",
+      "lines": [
+        {
+          "label": "Add",
+          "text": "Hope it goes really well!"
+        }
+      ],
+      "note": "Long excuses sound less true, not more."
+    }
+  },
+  {
+    "id": "v7-better-pushback-106",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking for training",
+    "thinking": false,
+    "mightSay": "I don't know Excel properly, please send me for training.",
+    "better": "Could I take an advanced Excel course? It would cut my reporting time in half.",
+    "changes": [
+      "ask clearly",
+      "show the benefit"
+    ],
+    "next": {
+      "title": "Make it easy",
+      "lines": [
+        {
+          "label": "Detail",
+          "text": "There's a two-day course in May. It costs ₹8,000."
+        }
+      ],
+      "note": "Give your manager the facts to say yes."
+    }
+  },
+  {
+    "id": "v7-better-pushback-107",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining a launch plan to marketing",
+    "thinking": false,
+    "mightSay": "We will do phased rollout with feature flags from Q3.",
+    "better": "We'll open it to 10% of users in July, then to everyone in August.",
+    "changes": [
+      "dates, not 'Q3'",
+      "no 'feature flags'"
+    ],
+    "next": {
+      "title": "Say what you need",
+      "lines": [
+        {
+          "label": "Ask",
+          "text": "Could you have the emails ready by July 1?"
+        }
+      ],
+      "note": "Tell them their part and when."
+    }
+  },
+  {
+    "id": "v7-better-pushback-108",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with a reviewer's comment",
+    "thinking": false,
+    "mightSay": "Your comment is not valid, I have done it correctly.",
+    "better": "Thanks for the comment. I did it this way to keep it fast. Does that work for you?",
+    "changes": [
+      "thank first",
+      "give your reason",
+      "ask"
+    ],
+    "next": {
+      "title": "Offer to change",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "If you still prefer the other way, I'm happy to change it."
+        }
+      ],
+      "note": "Explain, then stay open."
+    }
+  },
+  {
+    "id": "v7-better-pushback-109",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to a meeting with no agenda",
+    "thinking": false,
+    "mightSay": "What is this meeting for? I won't join without knowing.",
+    "better": "Could you share the agenda? Then I'll know if I'm needed.",
+    "changes": [
+      "ask, don't refuse",
+      "the reason"
+    ],
+    "next": {
+      "title": "Offer another way",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "If it's just an update, I'm happy to read the notes."
+        }
+      ],
+      "note": "Asking for an agenda is a polite filter."
+    }
+  },
+  {
+    "id": "v7-better-pushback-110",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking someone to share the workload",
+    "thinking": false,
+    "mightSay": "I am doing everything alone, you also do something.",
+    "better": "I've got the report and the client calls this week. Could you take the client calls?",
+    "changes": [
+      "show the load",
+      "ask for one thing"
+    ],
+    "next": {
+      "title": "Offer a swap",
+      "lines": [
+        {
+          "label": "Return",
+          "text": "I'll take your Friday review in exchange."
+        }
+      ],
+      "note": "Make it a fair swap."
+    }
+  },
+  {
+    "id": "v7-better-pushback-111",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining a data report to a client",
+    "thinking": false,
+    "mightSay": "The report has many metrics, please go through all the sheets.",
+    "better": "The main point: repeat orders rose 15% this quarter. Page 2 shows why.",
+    "changes": [
+      "the headline first",
+      "where to look"
+    ],
+    "next": {
+      "title": "Add the next step",
+      "lines": [
+        {
+          "label": "Next",
+          "text": "We suggest more loyalty offers next quarter."
+        }
+      ],
+      "note": "Clients read the first line; make it count."
+    }
+  },
+  {
+    "id": "v7-better-pushback-112",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing with a plan everyone likes",
+    "thinking": false,
+    "mightSay": "Everyone is saying yes, but I think it is a bad idea.",
+    "better": "I like where this is going. Can I argue the other side for a minute?",
+    "changes": [
+      "support first",
+      "ask to test the idea"
+    ],
+    "next": {
+      "title": "Raise the risk",
+      "lines": [
+        {
+          "label": "Risk",
+          "text": "If the supplier is late, the whole launch slips."
+        }
+      ],
+      "note": "Testing a plan helps it, even when everyone agrees."
+    }
+  },
+  {
+    "id": "v7-better-pushback-113",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Saying no",
+    "situation": "Saying no to investing in a cousin's business",
+    "thinking": false,
+    "mightSay": "Let me think, I will discuss with family and tell you later.",
+    "better": "I'm glad you're starting this. I'm not putting money into businesses right now.",
+    "changes": [
+      "encourage first",
+      "a clear no"
+    ],
+    "next": {
+      "title": "Offer other help",
+      "lines": [
+        {
+          "label": "Option",
+          "text": "I can help you write the plan or meet people."
+        }
+      ],
+      "note": "Support without money is still support."
+    }
+  },
+  {
+    "id": "v7-better-pushback-114",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking a shop for a refund",
+    "thinking": false,
+    "mightSay": "This product is defective, give my money back.",
+    "better": "This kettle stopped working after two days. I'd like a refund, please.",
+    "changes": [
+      "the facts",
+      "a calm ask"
+    ],
+    "next": {
+      "title": "Have proof ready",
+      "lines": [
+        {
+          "label": "Proof",
+          "text": "Here's the bill. I bought it on Saturday."
+        }
+      ],
+      "note": "Facts and the bill make it quick."
+    }
+  },
+  {
+    "id": "v7-better-pushback-115",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining work to a non-tech person",
+    "situation": "Explaining why the old system must go",
+    "thinking": false,
+    "mightSay": "Legacy system is not scalable and has a lot of technical debt.",
+    "better": "The old system crashes on big sales days, and fixing it costs more each year.",
+    "changes": [
+      "what goes wrong",
+      "what it costs"
+    ],
+    "next": {
+      "title": "Show the gain",
+      "lines": [
+        {
+          "label": "Gain",
+          "text": "The new one handles three times the orders for less money."
+        }
+      ],
+      "note": "Compare old and new in money and trouble."
+    }
+  }
+]

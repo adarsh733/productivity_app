@@ -1,0 +1,965 @@
+[
+  {
+    "id": "v7-words-01",
+    "type": "module",
+    "module": "words",
+    "topic": "Loud sounds",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "deafening",
+    "pos": "adjective",
+    "say": "DEF-uh-ning",
+    "meaning": "So loud you can't hear anything else.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The party next door is **deafening**. I can't even hear the TV.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "When Kohli hit the six, the noise in the stadium was **deafening**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For sounds",
+      "text": "The traffic outside my window is **deafening** in the morning."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for smells, light or people",
+        "text": "Her perfume was deafening."
+      },
+      {
+        "label": "✗ Not for \"very big\"",
+        "text": "The bill was deafening."
+      }
+    ],
+    "rule": "only for sound",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The sunlight was deafening.",
+          "right": false
+        },
+        {
+          "text": "The drums at the baraat were deafening.",
+          "right": true
+        },
+        {
+          "text": "His idea was deafening.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-02",
+    "type": "module",
+    "module": "words",
+    "topic": "damp",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "damp",
+    "pos": "adjective",
+    "say": "DAMP",
+    "meaning": "Slightly wet.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The towels are still **damp**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "This bench is **damp**; sit over here.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "My shoes are **damp** from the rain."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "The soup is damp."
+      }
+    ],
+    "rule": "slightly wet, not liquid"
+  },
+  {
+    "id": "v7-words-03",
+    "type": "module",
+    "module": "words",
+    "topic": "relieved",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "relieved",
+    "pos": "adjective",
+    "say": "rih-LEEVD",
+    "meaning": "Glad because a worry has gone away.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm **relieved** the keys were in my bag.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She looked **relieved** when I said I was safe.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I felt **relieved** after the test."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "I relieved when you called."
+      }
+    ],
+    "rule": "feel relieved",
+    "check": {
+      "question": "Your missing cat comes home. How do you feel?",
+      "options": [
+        {
+          "text": "Damp.",
+          "right": false
+        },
+        {
+          "text": "Stale.",
+          "right": false
+        },
+        {
+          "text": "Relieved.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-04",
+    "type": "module",
+    "module": "words",
+    "topic": "reliable",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "reliable",
+    "pos": "adjective",
+    "say": "rih-LY-uh-buhl",
+    "meaning": "Someone or something you can count on.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "This old washing machine is still **reliable**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Ask Neha. She's **reliable** and always turns up.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We need a **reliable** internet connection."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "You can reliable on me."
+      }
+    ],
+    "rule": "reliable describes; rely is the verb"
+  },
+  {
+    "id": "v7-words-05",
+    "type": "module",
+    "module": "words",
+    "topic": "awkward",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "awkward",
+    "pos": "adjective",
+    "say": "AWK-wuhd",
+    "meaning": "Uncomfortable or difficult to handle.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "There was an **awkward** silence after my joke.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "This box is **awkward** to carry alone.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It felt **awkward** asking for my money back."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "I awkward when nobody replied."
+      }
+    ],
+    "rule": "feel awkward"
+  },
+  {
+    "id": "v7-words-06",
+    "type": "module",
+    "module": "words",
+    "topic": "hesitate",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "hesitate",
+    "pos": "verb",
+    "say": "HEZ-ih-tayt",
+    "meaning": "Pause because you are unsure.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "Don't **hesitate** to call if you need help.",
+        "icon": "friends"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I **hesitate** to agree because we have no backup plan.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I sometimes **hesitate** before asking a question."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "I am hesitate to ask."
+      }
+    ],
+    "rule": "hesitate; be hesitant",
+    "check": {
+      "question": "Which sentence is right?",
+      "options": [
+        {
+          "text": "I hesitate of ask.",
+          "right": false
+        },
+        {
+          "text": "Don't hesitate to ask.",
+          "right": true
+        },
+        {
+          "text": "I am hesitate.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-07",
+    "type": "module",
+    "module": "words",
+    "topic": "stale",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "stale",
+    "pos": "adjective",
+    "say": "STAYL",
+    "meaning": "No longer fresh.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "This bread is **stale**; use the new loaf.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "These biscuits taste **stale**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The crackers went **stale** overnight."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "This bread is stale; it just came fresh from the oven."
+      }
+    ],
+    "rule": "stale bread; sour milk"
+  },
+  {
+    "id": "v7-words-08",
+    "type": "module",
+    "module": "words",
+    "topic": "spare",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "spare",
+    "pos": "adjective",
+    "say": "SPAIR",
+    "meaning": "Extra and available if needed.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Keep a **spare** key with Mum.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Do you have a **spare** ticket?",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We have a **spare** chair in the kitchen."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "We have a spare of chair."
+      }
+    ],
+    "rule": "a spare key or chair"
+  },
+  {
+    "id": "v7-words-09",
+    "type": "module",
+    "module": "words",
+    "topic": "reasonable",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "reasonable",
+    "pos": "adjective",
+    "say": "REE-zuh-nuh-buhl",
+    "meaning": "Fair and sensible.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "That's a **reasonable** price for dinner.",
+        "icon": "friends"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "A week seems **reasonable** for this repair.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Your request for more time is **reasonable**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "I reasonable with your idea."
+      }
+    ],
+    "rule": "a reasonable price or request",
+    "check": {
+      "question": "Which describes a fair price?",
+      "options": [
+        {
+          "text": "A reasonable price.",
+          "right": true
+        },
+        {
+          "text": "A relieved price.",
+          "right": false
+        },
+        {
+          "text": "A damp price.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-10",
+    "type": "module",
+    "module": "words",
+    "topic": "overwhelmed",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "overwhelmed",
+    "pos": "adjective",
+    "say": "oh-vuh-WELMD",
+    "meaning": "Feeling that there is too much to handle.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I feel **overwhelmed** by all these boxes.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She's **overwhelmed**; let's help with dinner.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I felt **overwhelmed** on my first day."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "I am overwhelm by the noise."
+      }
+    ],
+    "rule": "feel overwhelmed"
+  },
+  {
+    "id": "v7-words-11",
+    "type": "module",
+    "module": "words",
+    "topic": "roughly",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "roughly",
+    "pos": "adverb",
+    "say": "RUF-lee",
+    "meaning": "About; not an exact amount.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Dinner will be ready in **roughly** ten minutes.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "That's **roughly** half our budget.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The walk takes **roughly** an hour."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "It takes roughly of an hour."
+      }
+    ],
+    "rule": "roughly + amount"
+  },
+  {
+    "id": "v7-words-12",
+    "type": "module",
+    "module": "words",
+    "topic": "notice",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "notice",
+    "pos": "verb",
+    "say": "NOH-tis",
+    "meaning": "See or become aware of something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Did you **notice** the leak under the sink?",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Sorry I'm late. I didn't **notice** the time.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I did not **notice** the sign."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "Did you notice about the leak?"
+      }
+    ],
+    "rule": "notice something",
+    "check": {
+      "question": "Which sentence is right?",
+      "options": [
+        {
+          "text": "Did you notice about the sign?",
+          "right": false
+        },
+        {
+          "text": "Did you notice to the sign?",
+          "right": false
+        },
+        {
+          "text": "Did you notice the sign?",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-13",
+    "type": "module",
+    "module": "words",
+    "topic": "flexible",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "flexible",
+    "pos": "adjective",
+    "say": "FLEK-sih-buhl",
+    "meaning": "Able or willing to change.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "I'm **flexible** about where we eat.",
+        "icon": "friends"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "We need a **flexible** plan in case it rains.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "My hours are **flexible** this week."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "I flexible about the date."
+      }
+    ],
+    "rule": "be flexible about something"
+  },
+  {
+    "id": "v7-words-14",
+    "type": "module",
+    "module": "words",
+    "topic": "worthwhile",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "worthwhile",
+    "pos": "adjective",
+    "say": "wurth-WYL",
+    "meaning": "Worth the time or effort.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Sorting the cupboard was **worthwhile**; we found the charger.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The long walk was **worthwhile** for that view.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Learning to cook has been **worthwhile**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "The ticket is worthwhile 500 rupees."
+      }
+    ],
+    "rule": "a worthwhile trip; worth 500 rupees"
+  },
+  {
+    "id": "v7-words-15",
+    "type": "module",
+    "module": "words",
+    "topic": "clarify",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "clarify",
+    "pos": "verb",
+    "say": "KLAIR-ih-fy",
+    "meaning": "Make something easier to understand.",
+    "examples": [
+      {
+        "label": "Explain your thinking",
+        "text": "Can you **clarify** what you mean by cheaper?",
+        "icon": "thinking"
+      },
+      {
+        "label": "With friends",
+        "text": "Let me **clarify**: I can drive there, not back.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Could you **clarify** the last step?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "Could you clarify me?"
+      }
+    ],
+    "rule": "clarify a point, not a person",
+    "check": {
+      "question": "Which request is right?",
+      "options": [
+        {
+          "text": "Could you clarify to the plan?",
+          "right": false
+        },
+        {
+          "text": "Could you clarify the plan?",
+          "right": true
+        },
+        {
+          "text": "Could you clarify me?",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-16",
+    "type": "module",
+    "module": "words",
+    "topic": "likely",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "likely",
+    "pos": "adjective",
+    "say": "LYK-lee",
+    "meaning": "Expected to happen; probably true.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It's **likely** to rain before dinner.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "The bus is **likely** to be quicker today.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "They are **likely** to arrive late."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "They likely to arrive late."
+      }
+    ],
+    "rule": "be likely to"
+  },
+  {
+    "id": "v7-words-17",
+    "type": "module",
+    "module": "words",
+    "topic": "trade-off",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "trade-off",
+    "pos": "noun",
+    "say": "TRAYD-off",
+    "meaning": "A benefit you give up to get another benefit.",
+    "examples": [
+      {
+        "label": "Explain your thinking",
+        "text": "The **trade-off** is less space for lower rent.",
+        "icon": "thinking"
+      },
+      {
+        "label": "With friends",
+        "text": "There's a **trade-off**: cheaper tickets, but no refunds.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "A longer commute is the **trade-off** for a bigger home."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "The trade-off is cheaper and closer, with no downside."
+      }
+    ],
+    "rule": "a gain with a cost"
+  },
+  {
+    "id": "v7-words-18",
+    "type": "module",
+    "module": "words",
+    "topic": "assume",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "assume",
+    "pos": "verb",
+    "say": "uh-SOOM",
+    "meaning": "Believe something without checking it.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "Don't **assume** everyone wants pizza.",
+        "icon": "friends"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I **assume** it's open, but I'll check.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We should not **assume** the price includes delivery."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "I assumed about the price."
+      }
+    ],
+    "rule": "assume that something is true",
+    "check": {
+      "question": "Which means believing without checking?",
+      "options": [
+        {
+          "text": "Assume.",
+          "right": true
+        },
+        {
+          "text": "Clarify.",
+          "right": false
+        },
+        {
+          "text": "Notice.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-19",
+    "type": "module",
+    "module": "words",
+    "topic": "subtle",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "subtle",
+    "pos": "adjective",
+    "say": "SUT-uhl",
+    "meaning": "Small or not easy to notice.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "There's a **subtle** smell of lemon in this soap.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "The difference is **subtle**, but the second sounds kinder.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She gave me a **subtle** hint to leave."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "The explosion was subtle and shook the whole street."
+      }
+    ],
+    "rule": "small or hard to notice"
+  },
+  {
+    "id": "v7-words-20",
+    "type": "module",
+    "module": "words",
+    "topic": "manageable",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "everyday"
+    ],
+    "word": "manageable",
+    "pos": "adjective",
+    "say": "MAN-ij-uh-buhl",
+    "meaning": "Possible to handle without too much difficulty.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "One room a day feels **manageable**.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "The cost is **manageable** if we share it.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Breaking the job into steps makes it **manageable**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong use",
+        "text": "I can manageable this alone."
+      }
+    ],
+    "rule": "manageable describes; manage is the verb"
+  }
+]

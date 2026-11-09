@@ -1,0 +1,4578 @@
+[
+  {
+    "id": "v7-words-work-001",
+    "type": "module",
+    "module": "words",
+    "topic": "deadline",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "deadline",
+    "pos": "noun",
+    "say": "DED-line",
+    "meaning": "The last day or time to finish something.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "The **deadline** for the report is Friday at 5.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "The **deadline** to pay the electricity bill is tomorrow.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We met the **deadline** with an hour to spare."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for start times",
+        "text": "The deadline of the meeting is 3 p.m."
+      }
+    ],
+    "rule": "meet or miss a deadline"
+  },
+  {
+    "id": "v7-words-work-002",
+    "type": "module",
+    "module": "words",
+    "topic": "efficient",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "efficient",
+    "pos": "adjective",
+    "say": "ih-FISH-unt",
+    "meaning": "Getting a lot done without wasting time or effort.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Our new billing system is far more **efficient**.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My mum is so **efficient**; dinner is ready in twenty minutes.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Answering emails twice a day is more **efficient**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for skill in a language",
+        "text": "He is very efficient in English."
+      }
+    ],
+    "rule": "efficient = no waste"
+  },
+  {
+    "id": "v7-words-work-003",
+    "type": "module",
+    "module": "words",
+    "topic": "task",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "task",
+    "pos": "noun",
+    "say": "TASK",
+    "meaning": "One piece of work you have to do.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "My first **task** today is to call the client.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Folding laundry is my least favourite **task**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll finish this **task** before lunch."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for your job title",
+        "text": "My task is a software engineer."
+      }
+    ],
+    "rule": "do or finish a task",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "My next task is to book the venue.",
+          "right": true
+        },
+        {
+          "text": "My task is a teacher.",
+          "right": false
+        },
+        {
+          "text": "I tasked to the office.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-004",
+    "type": "module",
+    "module": "words",
+    "topic": "productive",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "productive",
+    "pos": "adjective",
+    "say": "pruh-DUK-tiv",
+    "meaning": "Getting a lot of useful work done.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Today was **productive**: I closed ten tickets.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "I had a **productive** Sunday and cleaned the whole kitchen.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Short meetings keep the team **productive**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not when nothing got done",
+        "text": "The meeting was productive; nothing was decided."
+      }
+    ],
+    "rule": "a productive day or meeting"
+  },
+  {
+    "id": "v7-words-work-005",
+    "type": "module",
+    "module": "words",
+    "topic": "bandwidth",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "bandwidth",
+    "pos": "noun",
+    "say": "BAND-width",
+    "meaning": "The time and energy you have free for more work.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I don't have the **bandwidth** for a new project this month.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I said no because I have no **bandwidth** until the launch is done.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Does anyone have the **bandwidth** to review this today?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for describing people",
+        "text": "He is a very bandwidth person."
+      }
+    ],
+    "rule": "have the bandwidth for something"
+  },
+  {
+    "id": "v7-words-work-006",
+    "type": "module",
+    "module": "words",
+    "topic": "busy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "busy",
+    "pos": "adjective",
+    "say": "BIZ-ee",
+    "meaning": "Having a lot to do, with no free time.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I'm **busy** until four. Can we talk after that?",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "Saturday is **busy**, but Sunday works for me.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Sorry, I'm **busy** with a call right now."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"busy on\"",
+        "text": "She is busy on cooking dinner."
+      }
+    ],
+    "rule": "busy with something; busy doing",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I'm busy with packing.",
+          "right": true
+        },
+        {
+          "text": "I'm busy on packing.",
+          "right": false
+        },
+        {
+          "text": "I'm busy to pack.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-007",
+    "type": "module",
+    "module": "words",
+    "topic": "postpone",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "postpone",
+    "pos": "verb",
+    "say": "pohst-POHN",
+    "meaning": "Move something to a later time.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Let's **postpone** the review to Monday.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "We had to **postpone** the trip because of the rain.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Can we **postpone** the call by an hour?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Only later, never earlier",
+        "text": "Let's postpone the meeting from 11 to 9 a.m."
+      }
+    ],
+    "rule": "postpone to a later time"
+  },
+  {
+    "id": "v7-words-work-008",
+    "type": "module",
+    "module": "words",
+    "topic": "leave",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "leave",
+    "pos": "noun",
+    "say": "LEEV",
+    "meaning": "Days you are allowed to take off work.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I'm on **leave** next week for my sister's wedding.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Dad took **leave** to look after me when I was ill.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I've applied for three days of **leave**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"leaves\"",
+        "text": "I'm taking two leaves next week."
+      }
+    ],
+    "rule": "on leave; days of leave"
+  },
+  {
+    "id": "v7-words-work-009",
+    "type": "module",
+    "module": "words",
+    "topic": "schedule",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "schedule",
+    "pos": "verb",
+    "say": "SHED-yool",
+    "meaning": "Fix a time for something to happen.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Can you **schedule** a call with the client for Thursday?",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "I'll **schedule** the plumber for Saturday morning.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let's **schedule** the demo after lunch."
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"about\"",
+        "text": "Let's schedule about the meeting."
+      }
+    ],
+    "rule": "schedule something for a time",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Let's schedule about the trip.",
+          "right": false
+        },
+        {
+          "text": "Let's schedule the trip for May.",
+          "right": true
+        },
+        {
+          "text": "Let's schedule on the trip.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-010",
+    "type": "module",
+    "module": "words",
+    "topic": "leverage",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "leverage",
+    "pos": "verb",
+    "say": "LEV-uh-rij",
+    "meaning": "Use something you already have to get a better result.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "We can **leverage** last year's design and save a week.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I want to **leverage** our client list before we spend on ads.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let's **leverage** the data we already have."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for small everyday things",
+        "text": "I'll leverage a pen to sign this."
+      }
+    ],
+    "rule": "leverage what you already have"
+  },
+  {
+    "id": "v7-words-work-011",
+    "type": "module",
+    "module": "words",
+    "topic": "shift",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "shift",
+    "pos": "noun",
+    "say": "SHIFT",
+    "meaning": "A set block of working hours.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "My **shift** starts at 7 and ends at 3.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My brother works the night **shift** at the hospital.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Can someone cover my **shift** on Friday?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for moving house",
+        "text": "We did a shift to a new flat last month."
+      }
+    ],
+    "rule": "a day or night shift"
+  },
+  {
+    "id": "v7-words-work-012",
+    "type": "module",
+    "module": "words",
+    "topic": "assign",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "assign",
+    "pos": "verb",
+    "say": "uh-SINE",
+    "meaning": "Give someone a piece of work to do.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I'll **assign** the bug to Meera.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Mum likes to **assign** chores on Sunday morning.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Who did they **assign** to the new client?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong word order",
+        "text": "He assigned to me the report."
+      }
+    ],
+    "rule": "assign a task to someone",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Please assign to me the bug.",
+          "right": false
+        },
+        {
+          "text": "Please assign on me the bug.",
+          "right": false
+        },
+        {
+          "text": "Please assign the bug to me.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-013",
+    "type": "module",
+    "module": "words",
+    "topic": "overtime",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "overtime",
+    "pos": "noun",
+    "say": "OH-ver-time",
+    "meaning": "Extra hours you work after your normal time.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I did two hours of **overtime** to finish the slides.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Dad is doing **overtime** all week, so he's home late.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Do we get paid for **overtime**?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"overtimes\"",
+        "text": "I did many overtimes this month."
+      }
+    ],
+    "rule": "do or work overtime"
+  },
+  {
+    "id": "v7-words-work-014",
+    "type": "module",
+    "module": "words",
+    "topic": "delegate",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "delegate",
+    "pos": "verb",
+    "say": "DEL-ih-gate",
+    "meaning": "Give part of your work to someone else to do.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Learn to **delegate**; you can't do it all yourself.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "On weekends I **delegate** the shopping to my son.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll **delegate** the slides to Arjun."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"delegate the task to\"",
+        "text": "I delegated Arjun the slides."
+      }
+    ],
+    "rule": "delegate a task to someone"
+  },
+  {
+    "id": "v7-words-work-015",
+    "type": "module",
+    "module": "words",
+    "topic": "proactive",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "proactive",
+    "pos": "adjective",
+    "say": "proh-AK-tiv",
+    "meaning": "Acting early to stop a problem before it happens.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "She was **proactive** and warned the client about the delay.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I'm being **proactive**, so I'll book the room before it fills up.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "A **proactive** check saved us a week."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for fixing it afterwards",
+        "text": "He was proactive and fixed the bug after the client complained."
+      }
+    ],
+    "rule": "proactive about something",
+    "check": {
+      "question": "Which one is proactive?",
+      "options": [
+        {
+          "text": "Fixing the leak after the flood.",
+          "right": false
+        },
+        {
+          "text": "Checking the pipes before the rains.",
+          "right": true
+        },
+        {
+          "text": "Ignoring the leak.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-016",
+    "type": "module",
+    "module": "words",
+    "topic": "finish",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "finish",
+    "pos": "verb",
+    "say": "FIN-ish",
+    "meaning": "Come to the end of something you are doing.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I'll **finish** the report by six.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "**Finish** your dinner before you watch TV.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Did you **finish** the slides?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Finish + -ing, not \"to\"",
+        "text": "I finished to write the email."
+      }
+    ],
+    "rule": "finish doing something"
+  },
+  {
+    "id": "v7-words-work-017",
+    "type": "module",
+    "module": "words",
+    "topic": "approve",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "approve",
+    "pos": "verb",
+    "say": "uh-PROOV",
+    "meaning": "Officially say yes to a plan or a request.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "My manager has to **approve** my leave.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Did the society **approve** the new parking plan?",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The client will **approve** the design today."
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"to\"",
+        "text": "Please approve to my request."
+      }
+    ],
+    "rule": "approve a request"
+  },
+  {
+    "id": "v7-words-work-018",
+    "type": "module",
+    "module": "words",
+    "topic": "delay",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "delay",
+    "pos": "noun",
+    "say": "dih-LAY",
+    "meaning": "Time lost when something happens later than planned.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Sorry for the **delay** in replying.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "There's a two-hour **delay** on our train.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The rain caused a **delay** at the airport."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a person",
+        "text": "Sorry, I am delay today."
+      }
+    ],
+    "rule": "a delay in something",
+    "check": {
+      "question": "Your flight leaves two hours late. What is that?",
+      "options": [
+        {
+          "text": "A delay.",
+          "right": true
+        },
+        {
+          "text": "A deadline.",
+          "right": false
+        },
+        {
+          "text": "A shift.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-019",
+    "type": "module",
+    "module": "words",
+    "topic": "review",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "review",
+    "pos": "verb",
+    "say": "rih-VYOO",
+    "meaning": "Look at something carefully to check it.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Can you **review** my email before I send it?",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "We sat down to **review** the month's spending.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll **review** the contract tonight."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for replying",
+        "text": "Please review back to me by Monday."
+      }
+    ],
+    "rule": "review a document"
+  },
+  {
+    "id": "v7-words-work-020",
+    "type": "module",
+    "module": "words",
+    "topic": "feasible",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "feasible",
+    "pos": "adjective",
+    "say": "FEE-zuh-bul",
+    "meaning": "Possible to do and likely to work.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Is a June launch **feasible** with this team?",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "Two weeks isn't **feasible**, so I suggested four.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We need a **feasible** plan, not a dream."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for people",
+        "text": "He is a very feasible person."
+      }
+    ],
+    "rule": "a feasible plan"
+  },
+  {
+    "id": "v7-words-work-021",
+    "type": "module",
+    "module": "words",
+    "topic": "update",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "update",
+    "pos": "noun",
+    "say": "UP-date",
+    "meaning": "New information about how something is going.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I'll send you a quick **update** after the call.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "Any **update** on the cab? It was due at eight.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Here's an **update**: the parcel is on its way."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"updation\"",
+        "text": "Please share the updation by Friday."
+      }
+    ],
+    "rule": "give or send an update",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Please send the updation.",
+          "right": false
+        },
+        {
+          "text": "Please update me the status.",
+          "right": false
+        },
+        {
+          "text": "Please send me an update.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-022",
+    "type": "module",
+    "module": "words",
+    "topic": "milestone",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "milestone",
+    "pos": "noun",
+    "say": "MILE-stone",
+    "meaning": "An important point you reach in a project.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Finishing the design was our first big **milestone**.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My son's first word was a big **milestone** for us.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We hit every **milestone** on time."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for tiny tasks",
+        "text": "Replying to Ravi's email was today's milestone."
+      }
+    ],
+    "rule": "reach or hit a milestone"
+  },
+  {
+    "id": "v7-words-work-023",
+    "type": "module",
+    "module": "words",
+    "topic": "handle",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "handle",
+    "pos": "verb",
+    "say": "HAN-dul",
+    "meaning": "Deal with a task or a problem.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Can you **handle** the client call today?",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "I'll **handle** dinner; you rest.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She can **handle** pressure well."
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"with\"",
+        "text": "I will handle with it."
+      }
+    ],
+    "rule": "handle something"
+  },
+  {
+    "id": "v7-words-work-024",
+    "type": "module",
+    "module": "words",
+    "topic": "bottleneck",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "bottleneck",
+    "pos": "noun",
+    "say": "BOT-ul-nek",
+    "meaning": "One slow step that holds everything else up.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Approvals are our biggest **bottleneck** right now.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "One bathroom for six people is a real **bottleneck** in the morning.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Testing is the **bottleneck**, so let's add a tester."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for any problem",
+        "text": "My headache is a bottleneck."
+      }
+    ],
+    "rule": "the bottleneck in a process",
+    "check": {
+      "question": "Which one is a bottleneck?",
+      "options": [
+        {
+          "text": "A fast new laptop.",
+          "right": false
+        },
+        {
+          "text": "One tester for ten developers.",
+          "right": true
+        },
+        {
+          "text": "A long lunch break.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-025",
+    "type": "module",
+    "module": "words",
+    "topic": "redundant",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "redundant",
+    "pos": "adjective",
+    "say": "rih-DUN-dunt",
+    "meaning": "Not needed, because something else already does the job.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "This step is **redundant**; the system checks it anyway.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I cut the second meeting because it was **redundant**.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Please remove the **redundant** slides."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"boring\"",
+        "text": "The film was redundant, so I fell asleep."
+      }
+    ],
+    "rule": "redundant = not needed"
+  },
+  {
+    "id": "v7-words-work-026",
+    "type": "module",
+    "module": "words",
+    "topic": "progress",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "progress",
+    "pos": "noun",
+    "say": "PROH-gres",
+    "meaning": "Moving forward towards finishing something.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "We made good **progress** on the app today.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "My guitar lessons? Slow **progress**, but I'm getting there.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Any **progress** on the visa?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"progresses\"",
+        "text": "We made many progresses this week."
+      }
+    ],
+    "rule": "make progress"
+  },
+  {
+    "id": "v7-words-work-027",
+    "type": "module",
+    "module": "words",
+    "topic": "backlog",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "backlog",
+    "pos": "noun",
+    "say": "BAK-log",
+    "meaning": "A pile of work that is waiting to be done.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "After my leave, I had a huge **backlog** of emails.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "There's a **backlog** of washing after the trip.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let's clear the **backlog** before new work comes in."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for one task",
+        "text": "I have one backlog today: call Ravi."
+      }
+    ],
+    "rule": "a backlog of work",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "We have a backlogs of order.",
+          "right": false
+        },
+        {
+          "text": "We have a backlog of orders.",
+          "right": true
+        },
+        {
+          "text": "We backlog the orders.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-028",
+    "type": "module",
+    "module": "words",
+    "topic": "urgent",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "urgent",
+    "pos": "adjective",
+    "say": "UR-junt",
+    "meaning": "Needs to be done right now.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "This is **urgent**; the client is waiting.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Call me back. It's **urgent**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I have an **urgent** call to make."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"very much urgent\"",
+        "text": "This is very much urgent."
+      }
+    ],
+    "rule": "an urgent task"
+  },
+  {
+    "id": "v7-words-work-029",
+    "type": "module",
+    "module": "words",
+    "topic": "deliverable",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "deliverable",
+    "pos": "noun",
+    "say": "dih-LIV-uh-ruh-bul",
+    "meaning": "A finished piece of work you have promised to hand in.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "The first **deliverable** is the design, due Friday.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I listed each **deliverable** so the client knows what they're paying for.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let's agree on the **deliverable** before we start."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for parcels",
+        "text": "The courier has my deliverable."
+      }
+    ],
+    "rule": "a project deliverable"
+  },
+  {
+    "id": "v7-words-work-030",
+    "type": "module",
+    "module": "words",
+    "topic": "scalable",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "scalable",
+    "pos": "adjective",
+    "say": "SKAY-luh-bul",
+    "meaning": "Able to grow bigger without breaking.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Our app needs to be **scalable** for a million users.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I picked this tool because it's **scalable** and cheap.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "A **scalable** plan works for 10 customers or 10,000."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"can be weighed\"",
+        "text": "This bag is scalable; put it on the machine."
+      }
+    ],
+    "rule": "a scalable system or plan",
+    "check": {
+      "question": "Which one is scalable?",
+      "options": [
+        {
+          "text": "A shop that can serve only one person.",
+          "right": false
+        },
+        {
+          "text": "A website that works for ten or ten million.",
+          "right": true
+        },
+        {
+          "text": "A plan that breaks if two people join.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-031",
+    "type": "module",
+    "module": "words",
+    "topic": "sort out",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "sort out",
+    "pos": "phrasal verb",
+    "say": "sort OWT",
+    "meaning": "Fix a problem or put things in order.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I'll **sort out** the login issue today.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Let's **sort out** the cupboard this weekend.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Don't worry, we'll **sort out** the tickets."
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"about\"",
+        "text": "I will sort out about the bill."
+      }
+    ],
+    "rule": "sort out a problem"
+  },
+  {
+    "id": "v7-words-work-032",
+    "type": "module",
+    "module": "words",
+    "topic": "workaround",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "workaround",
+    "pos": "noun",
+    "say": "WURK-uh-round",
+    "meaning": "A way to get past a problem without fully fixing it.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "The printer's broken, but here's a **workaround**: email it to me.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "The lift is out, so the stairs are our **workaround**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We found a **workaround** until IT fixes the bug."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a permanent fix",
+        "text": "The workaround fixed the problem forever."
+      }
+    ],
+    "rule": "a workaround for a problem"
+  },
+  {
+    "id": "v7-words-work-033",
+    "type": "module",
+    "module": "words",
+    "topic": "hand over",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "hand over",
+    "pos": "phrasal verb",
+    "say": "hand OH-ver",
+    "meaning": "Give your work or a thing to someone else.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I'll **hand over** my tasks before I go on leave.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "**Hand over** the remote. It's my turn.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Please **hand over** the keys to the new tenant."
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong word order",
+        "text": "I handed over to him the file."
+      }
+    ],
+    "rule": "hand over something to someone",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I'll hand over to Sara the project.",
+          "right": false
+        },
+        {
+          "text": "I'll hand over the project to Sara.",
+          "right": true
+        },
+        {
+          "text": "I'll hand Sara over the project.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-034",
+    "type": "module",
+    "module": "words",
+    "topic": "escalate",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "escalate",
+    "pos": "verb",
+    "say": "ES-kuh-late",
+    "meaning": "Pass a problem to someone more senior to deal with.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "If they don't reply by noon, **escalate** it to the manager.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "The noise didn't stop, so we had to **escalate** it to the society.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll **escalate** this issue if it isn't fixed today."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for small questions",
+        "text": "I escalated where the pens are kept."
+      }
+    ],
+    "rule": "escalate an issue to someone"
+  },
+  {
+    "id": "v7-words-work-035",
+    "type": "module",
+    "module": "words",
+    "topic": "iterate",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "iterate",
+    "pos": "verb",
+    "say": "IT-uh-rate",
+    "meaning": "Improve something by trying, checking and changing it again and again.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Let's ship a simple version and **iterate** from there.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "We **iterate** every week because users tell us what is wrong.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We'll **iterate** on the design after the feedback."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"say again\"",
+        "text": "Please iterate your phone number."
+      }
+    ],
+    "rule": "iterate on something"
+  },
+  {
+    "id": "v7-words-work-036",
+    "type": "module",
+    "module": "words",
+    "topic": "catch up",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "catch up",
+    "pos": "phrasal verb",
+    "say": "kach UP",
+    "meaning": "Do the work you have fallen behind on.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I need a quiet day to **catch up** on emails.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "On Sunday I **catch up** on sleep.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll **catch up** on the notes I missed."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"catch up on\"",
+        "text": "I will catch up the pending work."
+      }
+    ],
+    "rule": "catch up on something",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I'll catch up the emails.",
+          "right": false
+        },
+        {
+          "text": "I'll catch on up my emails.",
+          "right": false
+        },
+        {
+          "text": "I'll catch up on my emails.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-037",
+    "type": "module",
+    "module": "words",
+    "topic": "prioritise",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "prioritise",
+    "pos": "verb",
+    "say": "pry-OR-ih-tize",
+    "meaning": "Decide what is most important and do that first.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "**Prioritise** the bug that the client found.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "This month we **prioritise** rent, then holidays.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I **prioritise** my day the night before."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for everything at once",
+        "text": "I prioritised all ten tasks first."
+      }
+    ],
+    "rule": "prioritise one thing over another"
+  },
+  {
+    "id": "v7-words-work-038",
+    "type": "module",
+    "module": "words",
+    "topic": "follow up",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "follow up",
+    "pos": "phrasal verb",
+    "say": "fol-oh UP",
+    "meaning": "Check back on something later to move it along.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I'll **follow up** with the client on Monday.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Did you **follow up** with the plumber?",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let me **follow up** on that email."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"follow up with\"",
+        "text": "I will follow up you tomorrow."
+      }
+    ],
+    "rule": "follow up with someone"
+  },
+  {
+    "id": "v7-words-work-039",
+    "type": "module",
+    "module": "words",
+    "topic": "overdue",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "overdue",
+    "pos": "adjective",
+    "say": "oh-ver-DYOO",
+    "meaning": "Later than the time it was due.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "The invoice is two weeks **overdue**.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My library book is **overdue**. I'll return it today.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "This update is long **overdue**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for early things",
+        "text": "We finished a week early; the project is overdue."
+      }
+    ],
+    "rule": "overdue = past the due date",
+    "check": {
+      "question": "The bill was due on the 1st. Today is the 10th. The bill is...",
+      "options": [
+        {
+          "text": "on time.",
+          "right": false
+        },
+        {
+          "text": "overdue.",
+          "right": true
+        },
+        {
+          "text": "efficient.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-040",
+    "type": "module",
+    "module": "words",
+    "topic": "consensus",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "consensus",
+    "pos": "noun",
+    "say": "kun-SEN-sus",
+    "meaning": "Agreement from most or all of a group.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "We reached a **consensus** on the new logo.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I waited for **consensus** because the whole team has to live with it.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "There's no **consensus** yet, so let's vote."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not one person's view",
+        "text": "My consensus is that we should wait."
+      }
+    ],
+    "rule": "reach a consensus"
+  },
+  {
+    "id": "v7-words-work-041",
+    "type": "module",
+    "module": "words",
+    "topic": "hectic",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "hectic",
+    "pos": "adjective",
+    "say": "HEK-tik",
+    "meaning": "Very busy and rushed.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "It's a **hectic** week with three launches.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Mornings are **hectic** when the kids have school.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Sorry I missed your call; today was **hectic**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for people",
+        "text": "My boss is very hectic."
+      }
+    ],
+    "rule": "a hectic day or week"
+  },
+  {
+    "id": "v7-words-work-042",
+    "type": "module",
+    "module": "words",
+    "topic": "onboarding",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "onboarding",
+    "pos": "noun",
+    "say": "ON-bor-ding",
+    "meaning": "Helping a new person settle in and get started.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Her **onboarding** takes a week: laptop, logins, then training.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "The gym's **onboarding** was just a five-minute tour.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Good **onboarding** helps new hires stay."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for boarding a plane",
+        "text": "Onboarding for the flight starts at gate 12."
+      }
+    ],
+    "rule": "onboarding for new people",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Onboarding of the flight is at 6.",
+          "right": false
+        },
+        {
+          "text": "I onboarding the bus.",
+          "right": false
+        },
+        {
+          "text": "Our onboarding for new staff takes three days.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-043",
+    "type": "module",
+    "module": "words",
+    "topic": "workload",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "workload",
+    "pos": "noun",
+    "say": "WURK-lode",
+    "meaning": "The amount of work you have to do.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "My **workload** doubled when Sam left.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Sharing the cooking cuts my **workload** at home.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Is your **workload** okay this week?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"a heavy workload\"",
+        "text": "I have too many workloads."
+      }
+    ],
+    "rule": "a heavy or light workload"
+  },
+  {
+    "id": "v7-words-work-044",
+    "type": "module",
+    "module": "words",
+    "topic": "appraisal",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "appraisal",
+    "pos": "noun",
+    "say": "uh-PRAY-zul",
+    "meaning": "A meeting where your manager judges how well you have worked.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "My yearly **appraisal** is next Tuesday.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Dad was happy after his **appraisal** and took us out for dinner.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'm preparing notes for my **appraisal**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"appreciation\"",
+        "text": "Thanks for the kind appraisal of my help yesterday."
+      }
+    ],
+    "rule": "a performance appraisal"
+  },
+  {
+    "id": "v7-words-work-045",
+    "type": "module",
+    "module": "words",
+    "topic": "autonomy",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "autonomy",
+    "pos": "noun",
+    "say": "aw-TON-uh-mee",
+    "meaning": "Freedom to decide how you do your own work.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "My manager gives me a lot of **autonomy**.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I took this job for the **autonomy**, not the pay.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Teams with **autonomy** often move faster."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a verb",
+        "text": "Please autonomy me on this task."
+      }
+    ],
+    "rule": "autonomy over your work",
+    "check": {
+      "question": "Which one shows autonomy?",
+      "options": [
+        {
+          "text": "My boss checks every email I send.",
+          "right": false
+        },
+        {
+          "text": "I choose how and when I do my tasks.",
+          "right": true
+        },
+        {
+          "text": "I need approval to take a break.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-046",
+    "type": "module",
+    "module": "words",
+    "topic": "effort",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "effort",
+    "pos": "noun",
+    "say": "EF-ert",
+    "meaning": "The hard work and energy you put into something.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Thanks for the extra **effort** on this report.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Cooking for twenty people took real **effort**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She puts a lot of **effort** into her work."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"put in effort\"",
+        "text": "I did a lot of efforts."
+      }
+    ],
+    "rule": "put effort into something"
+  },
+  {
+    "id": "v7-words-work-047",
+    "type": "module",
+    "module": "words",
+    "topic": "initiative",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "initiative",
+    "pos": "noun",
+    "say": "ih-NISH-uh-tiv",
+    "meaning": "Doing something useful without being told to.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "She took the **initiative** and fixed the form.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My son showed **initiative** and made breakfast for everyone.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Good job taking the **initiative** on this."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"take the initiative\"",
+        "text": "He did initiative to call the client."
+      }
+    ],
+    "rule": "take the initiative"
+  },
+  {
+    "id": "v7-words-work-048",
+    "type": "module",
+    "module": "words",
+    "topic": "skill",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "skill",
+    "pos": "noun",
+    "say": "SKIL",
+    "meaning": "Something you can do well because you have learned it.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Writing clear emails is a useful **skill**.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Cooking rice perfectly is a real **skill**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Negotiation is a **skill** you can learn."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a degree",
+        "text": "My skill is a B.Com."
+      }
+    ],
+    "rule": "learn or build a skill",
+    "check": {
+      "question": "Which one is a skill?",
+      "options": [
+        {
+          "text": "Being born in May.",
+          "right": false
+        },
+        {
+          "text": "Being tall.",
+          "right": false
+        },
+        {
+          "text": "Typing fast.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-049",
+    "type": "module",
+    "module": "words",
+    "topic": "accountable",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "accountable",
+    "pos": "adjective",
+    "say": "uh-KOWN-tuh-bul",
+    "meaning": "Responsible for something and expected to explain what happened.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "The team lead is **accountable** for the release date.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "I hold myself **accountable** for the family budget.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "If it goes wrong, I'm **accountable**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"good with numbers\"",
+        "text": "She is accountable; she does our taxes."
+      }
+    ],
+    "rule": "accountable for something"
+  },
+  {
+    "id": "v7-words-work-050",
+    "type": "module",
+    "module": "words",
+    "topic": "benchmark",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "benchmark",
+    "pos": "noun",
+    "say": "BENCH-mark",
+    "meaning": "A standard you use to compare and judge things.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Last year's sales are our **benchmark**.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I used the old app's speed as a **benchmark** for the new one.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "This report sets the **benchmark** for quality."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a deadline",
+        "text": "The benchmark for the report is Friday."
+      }
+    ],
+    "rule": "a benchmark to compare with"
+  },
+  {
+    "id": "v7-words-work-051",
+    "type": "module",
+    "module": "words",
+    "topic": "goal",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "goal",
+    "pos": "noun",
+    "say": "GOHL",
+    "meaning": "Something you want to achieve.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Our **goal** this quarter is fifty new clients.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My **goal** is to walk 8,000 steps a day.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let's set one clear **goal** for the week."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"reach\" or \"meet\" a goal",
+        "text": "I did my goal of five calls."
+      }
+    ],
+    "rule": "set, reach or meet a goal",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I did my goal.",
+          "right": false
+        },
+        {
+          "text": "I reached my goal.",
+          "right": true
+        },
+        {
+          "text": "I goaled it.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-052",
+    "type": "module",
+    "module": "words",
+    "topic": "responsible",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "responsible",
+    "pos": "adjective",
+    "say": "rih-SPON-suh-bul",
+    "meaning": "In charge of something and expected to take care of it.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Who is **responsible** for the client invoices?",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My sister is **responsible** for feeding the dog.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'm **responsible** for the event budget."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"responsible for\"",
+        "text": "I am responsible of the team."
+      }
+    ],
+    "rule": "responsible for something"
+  },
+  {
+    "id": "v7-words-work-053",
+    "type": "module",
+    "module": "words",
+    "topic": "feedback",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "feedback",
+    "pos": "noun",
+    "say": "FEED-bak",
+    "meaning": "Comments on what went well and what to improve.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Thanks for the **feedback** on my slides.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My kids give honest **feedback** on my cooking.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Can I get your **feedback** before Friday?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"feedbacks\"",
+        "text": "I got many feedbacks on the talk."
+      }
+    ],
+    "rule": "give or get feedback"
+  },
+  {
+    "id": "v7-words-work-054",
+    "type": "module",
+    "module": "words",
+    "topic": "credit",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "credit",
+    "pos": "noun",
+    "say": "KRED-it",
+    "meaning": "Praise for something good you did.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Priya deserves the **credit** for this idea.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Give the kids **credit**; they cleaned the whole house.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She took **credit** for my work, which hurt."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"credits\"",
+        "text": "I want to give credits to my team."
+      }
+    ],
+    "rule": "give someone credit for something",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The credits goes to Ravi.",
+          "right": false
+        },
+        {
+          "text": "Ravi credit it.",
+          "right": false
+        },
+        {
+          "text": "The credit goes to Ravi.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-055",
+    "type": "module",
+    "module": "words",
+    "topic": "contingency",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "contingency",
+    "pos": "noun",
+    "say": "kun-TIN-jun-see",
+    "meaning": "A backup plan in case something goes wrong.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Keep ten percent of the budget for **contingency**.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I added a **contingency** day because the vendor is often late.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "What's our **contingency** if the speaker cancels?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the main plan",
+        "text": "Our contingency is to launch on Monday as planned."
+      }
+    ],
+    "rule": "a contingency plan"
+  },
+  {
+    "id": "v7-words-work-056",
+    "type": "module",
+    "module": "words",
+    "topic": "promotion",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "promotion",
+    "pos": "noun",
+    "say": "pruh-MOH-shun",
+    "meaning": "A move up to a higher job at work.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "She got a **promotion** to team lead.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "We had cake to celebrate Dad's **promotion**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'm hoping for a **promotion** this year."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"a promotion\"",
+        "text": "I got promotion last month."
+      }
+    ],
+    "rule": "get a promotion"
+  },
+  {
+    "id": "v7-words-work-057",
+    "type": "module",
+    "module": "words",
+    "topic": "setback",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "setback",
+    "pos": "noun",
+    "say": "SET-bak",
+    "meaning": "A problem that stops progress for a while.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Losing the client was a **setback**, but we'll recover.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "His knee injury was a **setback** before the marathon.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It's a small **setback**, not the end."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a verb",
+        "text": "The rain setbacked our plans."
+      }
+    ],
+    "rule": "a setback, not the end",
+    "check": {
+      "question": "Which one is a setback?",
+      "options": [
+        {
+          "text": "You finish early.",
+          "right": false
+        },
+        {
+          "text": "Your laptop breaks the day before the demo.",
+          "right": true
+        },
+        {
+          "text": "Your boss praises you.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-058",
+    "type": "module",
+    "module": "words",
+    "topic": "resign",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "resign",
+    "pos": "verb",
+    "say": "rih-ZINE",
+    "meaning": "Officially leave your job.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "He decided to **resign** after ten years.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My aunt will **resign** and move to Goa.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I plan to **resign** at the end of the month."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"resign from\"",
+        "text": "I resigned the company in May."
+      }
+    ],
+    "rule": "resign from a job"
+  },
+  {
+    "id": "v7-words-work-059",
+    "type": "module",
+    "module": "words",
+    "topic": "hiccup",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "hiccup",
+    "pos": "noun",
+    "say": "HIK-up",
+    "meaning": "A small, short problem.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "There was a small **hiccup** with the payment, but it's fixed.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "The party went well, apart from one **hiccup** with the cake.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Just a **hiccup**; we're back on track."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for big disasters",
+        "text": "The fire that closed the office was a hiccup."
+      }
+    ],
+    "rule": "a small hiccup"
+  },
+  {
+    "id": "v7-words-work-060",
+    "type": "module",
+    "module": "words",
+    "topic": "diligent",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "diligent",
+    "pos": "adjective",
+    "say": "DIL-ih-junt",
+    "meaning": "Careful and hard-working in everything you do.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "She's **diligent** and checks every number twice.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My nephew is a **diligent** student; he never skips homework.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "A **diligent** review caught the error."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"clever\"",
+        "text": "He solved it in seconds; so diligent!"
+      }
+    ],
+    "rule": "diligent = careful and hard-working",
+    "check": {
+      "question": "Who is diligent?",
+      "options": [
+        {
+          "text": "Someone who rushes and skips steps.",
+          "right": false
+        },
+        {
+          "text": "Someone who is always late.",
+          "right": false
+        },
+        {
+          "text": "Someone who checks every detail.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-061",
+    "type": "module",
+    "module": "words",
+    "topic": "apply",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "apply",
+    "pos": "verb",
+    "say": "uh-PLY",
+    "meaning": "Formally ask for a job, leave or a place.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I'm going to **apply** for the manager role.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My cousin will **apply** to three colleges.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "You can **apply** online by Friday."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"apply for\"",
+        "text": "I applied leave for Monday."
+      }
+    ],
+    "rule": "apply for a job; apply to a place"
+  },
+  {
+    "id": "v7-words-work-062",
+    "type": "module",
+    "module": "words",
+    "topic": "streamline",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "streamline",
+    "pos": "verb",
+    "say": "STREEM-line",
+    "meaning": "Make a process simpler and quicker.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "We can **streamline** approvals by cutting one step.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "I **streamline** my mornings by packing my bag at night.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let's **streamline** the order form."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for making it longer",
+        "text": "We streamlined the form by adding ten questions."
+      }
+    ],
+    "rule": "streamline a process"
+  },
+  {
+    "id": "v7-words-work-063",
+    "type": "module",
+    "module": "words",
+    "topic": "interview",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "interview",
+    "pos": "noun",
+    "say": "IN-ter-vyoo",
+    "meaning": "A formal meeting where you answer questions for a job.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I have a job **interview** at ten tomorrow.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "How did your **interview** go?",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I prepared for the **interview** all weekend."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"had an interview\"",
+        "text": "I gave an interview at a bank yesterday."
+      }
+    ],
+    "rule": "have or attend an interview",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I gave an interview at a bank yesterday.",
+          "right": false
+        },
+        {
+          "text": "I had an interview at a bank yesterday.",
+          "right": true
+        },
+        {
+          "text": "I took interview at a bank yesterday.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-064",
+    "type": "module",
+    "module": "words",
+    "topic": "brief",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "brief",
+    "pos": "noun",
+    "say": "BREEF",
+    "meaning": "Short instructions that explain a piece of work.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "The client's **brief** asks for three logo ideas.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I reread the **brief** before starting, so I build the right thing.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Can you send me the **brief** for the ad?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a summary of past results",
+        "text": "Here's the brief of what we sold last year."
+      }
+    ],
+    "rule": "a brief for a piece of work"
+  },
+  {
+    "id": "v7-words-work-065",
+    "type": "module",
+    "module": "words",
+    "topic": "mandate",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "mandate",
+    "pos": "noun",
+    "say": "MAN-date",
+    "meaning": "An official order, or the power to do something.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Our **mandate** is to cut costs by ten percent.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "We have a **mandate** from the board, so we can move fast.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The new team's **mandate** is customer support."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"compulsory\"",
+        "text": "Wearing your ID card is mandate."
+      }
+    ],
+    "rule": "a mandate to do something"
+  },
+  {
+    "id": "v7-words-work-066",
+    "type": "module",
+    "module": "words",
+    "topic": "fix",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "fix",
+    "pos": "verb",
+    "say": "FIKS",
+    "meaning": "Repair something or solve a problem.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Can you **fix** the link in the email?",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Dad will **fix** the tap this weekend.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll **fix** the bug before lunch."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for illness",
+        "text": "The doctor fixed my fever."
+      }
+    ],
+    "rule": "fix a thing or a problem",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Can you fix my cold?",
+          "right": false
+        },
+        {
+          "text": "Can you fix the printer?",
+          "right": true
+        },
+        {
+          "text": "Can you fix to the printer?",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-067",
+    "type": "module",
+    "module": "words",
+    "topic": "agenda",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "agenda",
+    "pos": "noun",
+    "say": "uh-JEN-duh",
+    "meaning": "A list of things to talk about in a meeting.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "First on the **agenda** is the budget.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Sunday's **agenda**: laundry, groceries, then a nap.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Please share the **agenda** before the call."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for what was decided",
+        "text": "The agenda shows what we decided in the meeting."
+      }
+    ],
+    "rule": "on the agenda"
+  },
+  {
+    "id": "v7-words-work-068",
+    "type": "module",
+    "module": "words",
+    "topic": "check",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "check",
+    "pos": "verb",
+    "say": "CHEK",
+    "meaning": "Look at something to make sure it is right.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Please **check** the figures before you send them.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "**Check** the gas is off before we leave.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll **check** my calendar and get back to you."
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"about\"",
+        "text": "Please check about the train timings."
+      }
+    ],
+    "rule": "check something"
+  },
+  {
+    "id": "v7-words-work-069",
+    "type": "module",
+    "module": "words",
+    "topic": "minutes",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "minutes",
+    "pos": "noun",
+    "say": "MIN-its",
+    "meaning": "The written notes of what was said and decided in a meeting.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Can you take the **minutes** today?",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Our building committee shares the **minutes** after every meeting.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll send the **minutes** after the call."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"minute\" for one meeting",
+        "text": "I'll send the minute of the meeting."
+      }
+    ],
+    "rule": "take the minutes",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I'll send the minute of the meeting.",
+          "right": false
+        },
+        {
+          "text": "I'll send the meeting's minute notes.",
+          "right": false
+        },
+        {
+          "text": "I'll send the minutes of the meeting.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-070",
+    "type": "module",
+    "module": "words",
+    "topic": "oversight",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "oversight",
+    "pos": "noun",
+    "say": "OH-ver-site",
+    "meaning": "A mistake made because you didn't notice something.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Missing the client's name was an **oversight**; sorry.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "It was an **oversight**, so I added a checklist step.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The wrong date was a simple **oversight**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for something done on purpose",
+        "text": "He lied on purpose; it was an oversight."
+      }
+    ],
+    "rule": "an honest miss"
+  },
+  {
+    "id": "v7-words-work-071",
+    "type": "module",
+    "module": "words",
+    "topic": "draft",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "draft",
+    "pos": "noun",
+    "say": "DRAHFT",
+    "meaning": "An early version of writing that is not final yet.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Here's the first **draft** of the proposal.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "I wrote a **draft** of my wedding speech.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It's just a **draft**, so please add comments."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the signed copy",
+        "text": "The signed draft of the contract is in the safe."
+      }
+    ],
+    "rule": "a first or rough draft"
+  },
+  {
+    "id": "v7-words-work-072",
+    "type": "module",
+    "module": "words",
+    "topic": "point person",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "point person",
+    "pos": "noun",
+    "say": "POINT pur-sun",
+    "meaning": "The one person everyone goes to for a task.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Ravi is the **point person** for the launch.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Mum is the **point person** for the wedding food.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Who's the **point person** on the client side?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a whole group",
+        "text": "The whole team is our point person."
+      }
+    ],
+    "rule": "the point person for something",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Asha is pointing person for travel.",
+          "right": false
+        },
+        {
+          "text": "Asha is the point person for travel.",
+          "right": true
+        },
+        {
+          "text": "Asha points person the travel.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-073",
+    "type": "module",
+    "module": "words",
+    "topic": "client",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "client",
+    "pos": "noun",
+    "say": "KLY-unt",
+    "meaning": "A person or company that pays you for work or advice.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "The **client** wants the logo in blue.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My aunt's tailoring **client** came to collect her dress.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We have a call with the **client** at four."
+    },
+    "wrong": [
+      {
+        "label": "✗ For shops, say \"customer\"",
+        "text": "The supermarket's clients queued at the till."
+      }
+    ],
+    "rule": "a client pays for a service"
+  },
+  {
+    "id": "v7-words-work-074",
+    "type": "module",
+    "module": "words",
+    "topic": "stakeholder",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "stakeholder",
+    "pos": "noun",
+    "say": "STAYK-hole-der",
+    "meaning": "Anyone who is affected by a project or cares how it goes.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Let's tell every **stakeholder** before we change the date.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I asked each **stakeholder** first, so no one is surprised.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The finance team is a key **stakeholder**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for someone with no link",
+        "text": "My neighbour is a stakeholder in our office app."
+      }
+    ],
+    "rule": "a key stakeholder"
+  },
+  {
+    "id": "v7-words-work-075",
+    "type": "module",
+    "module": "words",
+    "topic": "cohesive",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "cohesive",
+    "pos": "adjective",
+    "say": "koh-HEE-siv",
+    "meaning": "Working well together as one united whole.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "After the offsite, the team felt more **cohesive**.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I reordered the slides so the story is **cohesive**.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "A **cohesive** plan links every step to the goal."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for glue",
+        "text": "Use cohesive tape on the box."
+      }
+    ],
+    "rule": "a cohesive team or story",
+    "check": {
+      "question": "Which team is cohesive?",
+      "options": [
+        {
+          "text": "No one talks to each other.",
+          "right": false
+        },
+        {
+          "text": "Everyone works towards the same goal.",
+          "right": true
+        },
+        {
+          "text": "Each person does their own thing.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-076",
+    "type": "module",
+    "module": "words",
+    "topic": "report",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "report",
+    "pos": "noun",
+    "say": "rih-PORT",
+    "meaning": "A written account of what happened or what you found.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "The monthly **report** is due on the 5th.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My son's school **report** came today.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll write a short **report** on the trip."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"write a report\"",
+        "text": "I will do the report writing today."
+      }
+    ],
+    "rule": "write a report on something"
+  },
+  {
+    "id": "v7-words-work-077",
+    "type": "module",
+    "module": "words",
+    "topic": "proposal",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "proposal",
+    "pos": "noun",
+    "say": "pruh-POH-zul",
+    "meaning": "A written plan that asks someone to agree to it.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "We sent the **proposal** to the client on Monday.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Our **proposal** to the society was a new garden.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll draft a **proposal** for the new tool."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"purpose\"",
+        "text": "What is the proposal of this meeting?"
+      }
+    ],
+    "rule": "send or accept a proposal"
+  },
+  {
+    "id": "v7-words-work-078",
+    "type": "module",
+    "module": "words",
+    "topic": "project",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "project",
+    "pos": "noun",
+    "say": "PROJ-ekt",
+    "meaning": "A planned piece of work with a clear end.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "This **project** ends in March.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Painting the bedroom is our weekend **project**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'm leading a new **project** this year."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for daily habits",
+        "text": "Brushing my teeth is a project."
+      }
+    ],
+    "rule": "work on a project",
+    "check": {
+      "question": "Which one is a project?",
+      "options": [
+        {
+          "text": "Drinking water.",
+          "right": false
+        },
+        {
+          "text": "Building a new website by June.",
+          "right": true
+        },
+        {
+          "text": "Saying hello.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-079",
+    "type": "module",
+    "module": "words",
+    "topic": "target",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "target",
+    "pos": "noun",
+    "say": "TAR-git",
+    "meaning": "A number or result you are trying to reach.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Our sales **target** is 200 orders this month.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "My **target** is to save 5,000 rupees a month.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We hit our **target** a week early."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"hit\" or \"meet\" a target",
+        "text": "We achieved to the target."
+      }
+    ],
+    "rule": "hit or meet a target"
+  },
+  {
+    "id": "v7-words-work-080",
+    "type": "module",
+    "module": "words",
+    "topic": "pivot",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "pivot",
+    "pos": "verb",
+    "say": "PIV-ut",
+    "meaning": "Change direction or plan completely.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Sales were slow, so we decided to **pivot** to schools.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "We had to **pivot** because users wanted the chat, not the shop.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The startup will **pivot** to a new market."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for tiny changes",
+        "text": "I pivoted from a blue pen to a black one."
+      }
+    ],
+    "rule": "pivot to something new"
+  },
+  {
+    "id": "v7-words-work-081",
+    "type": "module",
+    "module": "words",
+    "topic": "behind schedule",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "behind schedule",
+    "pos": "phrase",
+    "say": "bih-HIND SHED-yool",
+    "meaning": "Later than planned.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "The project is two weeks **behind schedule**.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "The builders are **behind schedule** on our flat.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We're **behind schedule**, so let's skip the extra slide."
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"of\"",
+        "text": "We are behind of schedule."
+      }
+    ],
+    "rule": "behind schedule = late",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "We are behind of schedule.",
+          "right": false
+        },
+        {
+          "text": "We are schedule behind.",
+          "right": false
+        },
+        {
+          "text": "We are behind schedule.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-082",
+    "type": "module",
+    "module": "words",
+    "topic": "shortlist",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "shortlist",
+    "pos": "verb",
+    "say": "SHORT-list",
+    "meaning": "Pick a few best options from a longer list.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "We'll **shortlist** five people for interviews.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Let's **shortlist** three schools and visit them.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "They plan to **shortlist** two vendors by Friday."
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"for\"",
+        "text": "We shortlisted for three hotels."
+      }
+    ],
+    "rule": "shortlist a few options"
+  },
+  {
+    "id": "v7-words-work-083",
+    "type": "module",
+    "module": "words",
+    "topic": "on time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "on time",
+    "pos": "phrase",
+    "say": "on TIME",
+    "meaning": "At the planned time, not late.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Please join the meeting **on time**.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "The train arrived **on time** for once.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We delivered the project **on time**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"in correct time\"",
+        "text": "I reached the office in correct time."
+      }
+    ],
+    "rule": "on time = not late"
+  },
+  {
+    "id": "v7-words-work-084",
+    "type": "module",
+    "module": "words",
+    "topic": "ramp up",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "ramp up",
+    "pos": "phrasal verb",
+    "say": "ramp UP",
+    "meaning": "Increase something step by step.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "We'll **ramp up** hiring after the funding.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "I'm going to **ramp up** my running before the race.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let's **ramp up** production for the festive season."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for slowing down",
+        "text": "We ramped up and worked fewer hours."
+      }
+    ],
+    "rule": "ramp up something",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "We'll ramp marketing upping.",
+          "right": false
+        },
+        {
+          "text": "We'll ramp up marketing next month.",
+          "right": true
+        },
+        {
+          "text": "We'll ramp on marketing.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-085",
+    "type": "module",
+    "module": "words",
+    "topic": "expedite",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "expedite",
+    "pos": "verb",
+    "say": "EK-spuh-dite",
+    "meaning": "Make something happen faster.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Can you **expedite** the payment? The vendor is waiting.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I asked them to **expedite** the order, since the launch can't move.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We paid extra to **expedite** the delivery."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for people",
+        "text": "Please expedite yourself to the meeting."
+      }
+    ],
+    "rule": "expedite an order or a request"
+  },
+  {
+    "id": "v7-words-work-086",
+    "type": "module",
+    "module": "words",
+    "topic": "multitask",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "multitask",
+    "pos": "verb",
+    "say": "MUL-tee-task",
+    "meaning": "Do several things at the same time.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I **multitask** during long calls, but I miss details.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Mum cooks, talks and helps with homework; she loves to **multitask**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It's hard to **multitask** and still do good work."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a noun",
+        "text": "I am doing multitask all day."
+      }
+    ],
+    "rule": "multitask = many things at once"
+  },
+  {
+    "id": "v7-words-work-087",
+    "type": "module",
+    "module": "words",
+    "topic": "wrap up",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "wrap up",
+    "pos": "phrasal verb",
+    "say": "rap UP",
+    "meaning": "Finish something, often a meeting or a task.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Let's **wrap up** the meeting in five minutes.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "We'll **wrap up** dinner and then watch the match.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Can we **wrap up** this topic and move on?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Wrong form",
+        "text": "The meeting got wrap up at six."
+      }
+    ],
+    "rule": "wrap up a meeting",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Let's wrap the call up on.",
+          "right": false
+        },
+        {
+          "text": "Let's wrap up the call.",
+          "right": true
+        },
+        {
+          "text": "The call got wrap up.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-088",
+    "type": "module",
+    "module": "words",
+    "topic": "break",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "break",
+    "pos": "noun",
+    "say": "BRAYK",
+    "meaning": "A short time when you stop working to rest.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Let's take a ten-minute **break**.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "I need a **break** from screens this weekend.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll call you after my lunch **break**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"take a break\"",
+        "text": "I will do a break now."
+      }
+    ],
+    "rule": "take a break"
+  },
+  {
+    "id": "v7-words-work-089",
+    "type": "module",
+    "module": "words",
+    "topic": "sign off",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "sign off",
+    "pos": "phrasal verb",
+    "say": "sine OFF",
+    "meaning": "Give final approval to something.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "My boss needs to **sign off** on the budget.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Dad has to **sign off** on any trip longer than two days.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We need the client to **sign off** before we print."
+    },
+    "wrong": [
+      {
+        "label": "✗ Say \"sign off on\"",
+        "text": "Please sign off to the plan."
+      }
+    ],
+    "rule": "sign off on something"
+  },
+  {
+    "id": "v7-words-work-090",
+    "type": "module",
+    "module": "words",
+    "topic": "tangible",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "tangible",
+    "pos": "adjective",
+    "say": "TAN-juh-bul",
+    "meaning": "Real and clear enough to see or measure.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "We need **tangible** results, not just ideas.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I showed a **tangible** number, a 20 percent cost cut, so they agreed.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The training had **tangible** benefits."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for vague things",
+        "text": "Her idea was tangible, but no one could say what it was."
+      }
+    ],
+    "rule": "tangible results or benefits",
+    "check": {
+      "question": "Which one is tangible?",
+      "options": [
+        {
+          "text": "A vague good feeling.",
+          "right": false
+        },
+        {
+          "text": "A rumour.",
+          "right": false
+        },
+        {
+          "text": "A 10% rise in sales.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-091",
+    "type": "module",
+    "module": "words",
+    "topic": "juggle",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "juggle",
+    "pos": "verb",
+    "say": "JUG-ul",
+    "meaning": "Manage several tasks at once and keep them all going.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "This month I **juggle** three clients.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "She has to **juggle** work and a newborn baby.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It's hard to **juggle** a job and night classes."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for one task",
+        "text": "I'm juggling my one report."
+      }
+    ],
+    "rule": "juggle two or more things"
+  },
+  {
+    "id": "v7-words-work-092",
+    "type": "module",
+    "module": "words",
+    "topic": "loop in",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "loop in",
+    "pos": "phrasal verb",
+    "say": "loop IN",
+    "meaning": "Add someone to a chat or email so they know what's happening.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Let me **loop in** Neha from finance.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Remember to **loop in** Grandma on the party plans.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll **loop in** the designer on this email."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for removing someone",
+        "text": "Please loop in Raj; he doesn't need these emails."
+      }
+    ],
+    "rule": "loop someone in"
+  },
+  {
+    "id": "v7-words-work-093",
+    "type": "module",
+    "module": "words",
+    "topic": "rush",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "rush",
+    "pos": "verb",
+    "say": "RUSH",
+    "meaning": "Hurry, or do something too quickly.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Don't **rush** the report; get it right.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "We had to **rush** to catch the train.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Sorry, I have to **rush**. I'm late for a call."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for crowds",
+        "text": "There is a lot of rush at the station."
+      }
+    ],
+    "rule": "rush to do something",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "There is much rush at the mall.",
+          "right": false
+        },
+        {
+          "text": "Don't rush the decision.",
+          "right": true
+        },
+        {
+          "text": "I rushed of the train.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-work-094",
+    "type": "module",
+    "module": "words",
+    "topic": "polish",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "polish",
+    "pos": "verb",
+    "say": "POL-ish",
+    "meaning": "Make a piece of work better with small final changes.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I'll **polish** the slides tonight.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "She wants to **polish** her speech before the wedding.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The idea is good; we just need to **polish** the wording."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a big rewrite",
+        "text": "Let's polish it by changing the whole plan."
+      }
+    ],
+    "rule": "polish a draft"
+  },
+  {
+    "id": "v7-words-work-095",
+    "type": "module",
+    "module": "words",
+    "topic": "heads-down",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "heads-down",
+    "pos": "adjective",
+    "say": "HEDZ-down",
+    "meaning": "Fully focused on your work, with no breaks or chats.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I'm **heads-down** on the launch this week.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I went **heads-down** for a day, so I turned off chat.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Give me two **heads-down** hours to finish this."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for feeling sad",
+        "text": "He's heads-down because he lost the deal."
+      }
+    ],
+    "rule": "heads-down on something"
+  },
+  {
+    "id": "v7-words-work-096",
+    "type": "module",
+    "module": "words",
+    "topic": "tidy up",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "work"
+    ],
+    "word": "tidy up",
+    "pos": "phrasal verb",
+    "say": "TY-dee UP",
+    "meaning": "Make something neat, or fix its small messy parts.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Let me **tidy up** the spreadsheet before I share it.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "**Tidy up** your room before the guests come.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll **tidy up** the notes and send them."
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"of\"",
+        "text": "Please tidy up of the desk."
+      }
+    ],
+    "rule": "tidy up a room or a file",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Tidy of the files up, please.",
+          "right": false
+        },
+        {
+          "text": "Do tidy the up files.",
+          "right": false
+        },
+        {
+          "text": "Tidy up the files, please.",
+          "right": true
+        }
+      ]
+    }
+  }
+]

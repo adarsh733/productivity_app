@@ -54,7 +54,8 @@ export type CardType =
   | 'explain' // a topic to explain in 60s (news, history, philosophy)
   | 'teach_back' // something you learned, explained back
   | 'situation' // a real-life speaking prompt: incident, office call, feeling, opinion, life story
-  | 'teach'; // v5: a Learn / Use / Fix / Try / Ask-them card in one of the 4 skills (TeachCard)
+  | 'teach' // v5: a Learn / Use / Fix / Try / Ask-them card in one of the 4 skills (TeachCard)
+  | 'module'; // v7: a card in one of the 5 feed modules (ModuleCard)
 
 interface CardBase {
   id: string;
@@ -299,6 +300,190 @@ export interface TeachCard extends CardBase {
 
 /** Every card the app can hold, old and v5. */
 export type AnyCard = Card | TeachCard;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// v7 Night glass (2026-11-08, docs/REDESIGN-V7.html steps 1-3, approved by
+// Adarsh "Yes, all ★"). Additive only — nothing above changed shape.
+// Five feed modules, each card one to three slides. Feedback stays on the phone.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type ModuleId = 'words' | 'smalltalk' | 'better' | 'phrases' | 'stories';
+export const MODULES: readonly ModuleId[] = ['words', 'smalltalk', 'better', 'phrases', 'stories'];
+export const MODULE_LABEL: Record<ModuleId, string> = {
+  words: 'Words',
+  smalltalk: 'Small talk',
+  better: 'Say it better',
+  phrases: 'Office phrases',
+  stories: 'Stories',
+};
+export type FeedFilter = 'mix' | ModuleId;
+export type LineIcon = 'home' | 'work' | 'friends' | 'thinking';
+/** `text` may mark the highlighted words as `**word**`. */
+export interface LabeledLine {
+  label: string;
+  text: string;
+  icon?: LineIcon;
+}
+
+/**
+ * NOT part of `Card` or `AnyCard`: old components close their card `switch`
+ * with an exhaustive `never` check, so module cards stay out of those unions
+ * and every old reader skips `type: 'module'`. v7 code reads `ModuleCard`.
+ */
+interface ModuleCardBase extends CardBase {
+  type: 'module';
+  module: ModuleId;
+  topic: string;
+}
+
+export interface WordsCard extends ModuleCardBase {
+  module: 'words';
+  word: string;
+  pos: string;
+  say: string;
+  meaning: string;
+  examples: [LabeledLine, LabeledLine];
+  right: LabeledLine;
+  /** 1-2 lines. */
+  wrong: LabeledLine[];
+  rule: string;
+  /** 3 options, exactly one right. */
+  check?: { question: string; options: { text: string; right: boolean }[] };
+}
+
+export interface SmallTalkCard extends ModuleCardBase {
+  module: 'smalltalk';
+  kind: 'reply' | 'open' | 'keep_going' | 'exit' | 'save_it';
+  moment: string;
+  they?: string;
+  deadEnd: string;
+  reply: string;
+  formula: string;
+  /** 3 lines. */
+  more: LabeledLine[];
+  /** 1-3 lines. */
+  donts: string[];
+}
+
+export interface SayBetterCard extends ModuleCardBase {
+  module: 'better';
+  situation: string;
+  /** The "Explain your thinking" group. */
+  thinking: boolean;
+  mightSay: string;
+  better: string;
+  /** 2-3 chips. */
+  changes: string[];
+  /** `lines`: 1-3. */
+  next: { title: string; lines: LabeledLine[]; note?: string };
+}
+
+export interface OfficePhraseCard extends ModuleCardBase {
+  module: 'phrases';
+  group: 'meetings' | 'email' | 'pushback' | 'praise' | 'deadlines' | 'idioms';
+  phrase: string;
+  meaning: string;
+  useWhen: string;
+  example: string;
+  tone: string;
+  careful: string;
+  wrong: LabeledLine;
+  similar: [string, string];
+}
+
+export interface StoryCard extends ModuleCardBase {
+  module: 'stories';
+  report: string;
+  story: string;
+  trick: string;
+  yourTurn?: { prompt: string; hint: string };
+}
+
+export type ModuleCard = WordsCard | SmallTalkCard | SayBetterCard | OfficePhraseCard | StoryCard;
+
+export type FeedbackReason = 'too_easy' | 'too_hard' | 'confusing' | 'wrong_english' | 'loved';
+
+/**
+ * `db.feedback`. No longer phone-only: backed up from step 6 (v7 steps 4-6,
+ * outbox table `feedback` → remote `card_feedback`).
+ */
+export interface CardFeedback {
+  /** `fb-<cardId>`: one row per card, updated in place. */
+  id: string;
+  cardId: string;
+  module: ModuleId;
+  thumb?: 'up' | 'down';
+  reasons: FeedbackReason[];
+  comment?: string;
+  /** "Got it: ..." */
+  reply: string;
+  at: Millis;
+  /** Removed from the Me list. */
+  hidden?: boolean;
+}
+
+// v7 steps 4-6 (2026-11-08, docs/REDESIGN-V7.html steps 4-6). Additive only:
+// card levels per module, the seen-once list, the ♡ Sunday review and AI
+// batches. AiTask does NOT change: batches ride `expand_seed` with payload
+// `ModuleBatchRequest`.
+
+export type ModuleLevel = 1 | 2 | 3 | 4 | 5; // start 2; Too easy +1, Too hard -1, clamped
+
+/** One head he has already seen in a module. Shown once, never again. */
+export interface SeenTerm {
+  /** `${module}:${head.toLowerCase()}` */
+  id: string;
+  module: ModuleId;
+  head: string;
+  cardId: string;
+  at: Millis;
+}
+
+/** A ♡ card's Sunday review state: 3 days, 1 week, 3 weeks; retired after 3 rights. */
+export interface SavedReview {
+  cardId: string;
+  module: ModuleId;
+  savedAt: Millis;
+  /** Index into SAVED_REVIEW_DAYS. */
+  step: 0 | 1 | 2;
+  due: DayKey;
+  rights: number;
+  retiredAt?: Millis;
+  lastAnswer?: 'knew' | 'not_yet';
+}
+
+/** One AI batch for a module. Phone-only (`db.batches`). */
+export interface ModuleBatch {
+  /** `batch-${module}-${at}` */
+  id: string;
+  module: ModuleId;
+  at: Millis;
+  level: ModuleLevel;
+  asked: number;
+  /** Card ids kept after the checks. */
+  kept: string[];
+  dropped: number;
+  status: 'running' | 'done' | 'failed';
+  recheckedAt?: Millis;
+}
+
+/** The `expand_seed` payload for a module batch. */
+export interface ModuleBatchRequest {
+  type: 'module';
+  module: ModuleId;
+  /** 1-10 per call. */
+  count: number;
+  level: ModuleLevel;
+  /** Heads he liked. */
+  liked: string[];
+  disliked: { head: string; reasons: FeedbackReason[] }[];
+  /** His words, newest first, max 20. */
+  comments: string[];
+  /** Every head already seen in this module. */
+  seen: string[];
+  /** First id to use, e.g. v7-ai-words-0001. */
+  startId: string;
+}
 
 /** How reshaped old cards carry the new parts (`CardBase.skill`). */
 export interface SkillTag {
@@ -869,6 +1054,8 @@ export interface Profile {
   micProfile?: MicProfile;
   /** AG-008 §5 — this week's coach plan. Undo clears it and restores weights. */
   weekPlan?: WeekPlan;
+  /** v7 steps 4-6: card level per module (start 2; Too easy +1, Too hard -1, clamped 1-5). */
+  moduleLevels?: Partial<Record<ModuleId, ModuleLevel>>;
 }
 
 /**

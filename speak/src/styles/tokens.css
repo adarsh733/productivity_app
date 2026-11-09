@@ -143,6 +143,193 @@
     100dvh - var(--safe-top) - var(--header-h) - var(--actions-h) -
       var(--urge-h) - var(--tabbar-h) - var(--safe-bottom)
   );
+
+  /* v7 Night glass — measured off docs/redesign-v7/glass-B-1..4 (2 px per pt).
+     Every colour, size and glow glass.css / glass-feed.css use lives here. */
+  --glass-night: #07090c;
+  --glass-ink: #ffffff;
+  --glass-ink-soft: rgba(255, 255, 255, 0.9);
+  --glass-ink-muted: rgba(255, 255, 255, 0.74);
+  --glass-ink-faint: rgba(255, 255, 255, 0.45);
+  --glass-bg: rgba(255, 255, 255, 0.075);
+  --glass-bg-hi: rgba(255, 255, 255, 0.13);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-border-hi: rgba(255, 255, 255, 0.32);
+  --glass-sheen: linear-gradient(160deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.02) 100%);
+  --glass-inset: inset 0 1.5px 0 rgba(255, 255, 255, 0.42), inset 0 0 24px rgba(255, 255, 255, 0.07), inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+  --glass-blur: 22px;
+  --glass-blur-sm: 12px;
+  --glass-blur-md: 16px;
+  --glass-blur-lg: 24px;
+  --glass-blur-heavy: 34px;
+  --glass-blur-backdrop: 1.5px;
+  --glass-shadow: 0 -12px 40px rgba(0, 0, 0, 0.45);
+  --glass-panel-shadow: 0 14px 34px rgba(0, 0, 0, 0.38), 0 2px 6px rgba(0, 0, 0, 0.2);
+  --glass-weak-bg: rgba(255, 255, 255, 0.06);
+  --glass-weak-border: rgba(255, 255, 255, 0.16);
+  --glass-weak-ink: rgba(255, 255, 255, 0.48);
+  --glass-strike: rgba(255, 255, 255, 0.55);
+  --glass-strike-strong: rgba(255, 255, 255, 0.6);
+  --glass-strong-bg: rgba(255, 255, 255, 0.1);
+  --glass-strong-shadow: 0 0 34px rgba(255, 165, 40, 0.65), 0 0 10px rgba(255, 205, 120, 0.85), inset 0 0 6px rgba(255, 215, 140, 0.55), inset 0 -18px 30px rgba(255, 160, 50, 0.3);
+  --glass-rail-btn-bg: rgba(255, 255, 255, 0.07);
+  --glass-rail-btn-border: rgba(255, 255, 255, 0.24);
+  --glass-rail-btn-hover-bg: rgba(255, 255, 255, 0.16);
+  --glass-rail-btn-on-bg: #ffffff;
+  --glass-rail-btn-on-ink: #0b0d10;
+  --glass-rail-shadow: 0 6px 18px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  --glass-tabbar-bg: rgba(255, 255, 255, 0.07);
+  --glass-tabbar-border: rgba(255, 255, 255, 0.2);
+  --glass-tabbar-shadow: 0 14px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --glass-tab-on-bg: rgba(255, 255, 255, 0.13);
+  --glass-tab-on-border: rgba(255, 255, 255, 0.2);
+  --glass-sheet-bg: rgba(255, 255, 255, 0.1);
+  --glass-backdrop-tint: rgba(0, 0, 0, 0.12);
+  --glass-right-bg: rgba(52, 211, 153, 0.24);
+  --glass-right-border: rgba(110, 240, 170, 0.75);
+  --glass-right-shadow: 0 0 22px rgba(16, 185, 129, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+  /* sizes */
+  --glass-hairline: 1px;
+  --glass-rim: 1.5px;
+  --glass-gap-xs: 2px;
+  --glass-gap-sm: 6px;
+  --glass-tap: 44px;
+  --glass-chip-h: 32px;
+  --glass-chip-pad-x: 13px;
+  --glass-chip-pad-sm: 10px;
+  --glass-pill-h: 36px;
+  --glass-pill-pad-x: 12px;
+  --glass-gutter: 22px;
+  --glass-panel-inset: 14px;
+  --glass-panel-pad-y: 19px;
+  --glass-panel-pad-x: 22px;
+  --glass-panel-r: 20px;
+  --glass-bubble-r: 26px;
+  --glass-rail-gutter: 70px;
+  --glass-rail-inset: 10px;
+  --glass-rail-gap: 13px;
+  --glass-rail-top: 150px;
+  --glass-top-h: 128px;
+  --glass-title-pad-top: 18px;
+  --glass-tabbar-h: 68px;
+  --glass-tabbar-gap: 10px;
+  --glass-bottom-h: 112px;
+  --glass-dots-bottom: 92px;
+  --glass-icon-sm: 18px;
+  --glass-icon-md: 22px;
+  --glass-icon-lg: 26px;
+  --glass-icon-tab: 26px;
+  --glass-dot: 7px;
+  --glass-dot-on-w: 7px;
+  --glass-dot-off: 0.4;
+  --glass-dot-on: 1;
+  --glass-sheet-r: 34px;
+  --glass-handle-w: 36px;
+  --glass-handle-h: 5px;
+  --glass-thumb-h: 52px;
+  --glass-tail-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 20'%3E%3Cpath d='M0 0C0 10 6 17 16 20H0Z'/%3E%3C/svg%3E");
+
+  /* type (v7 only: the glass look is bigger and heavier than the old feed) */
+  --glass-fs-title: 1.75rem;
+  --glass-fs-kicker: 0.8125rem;
+  --glass-fs-kicker-lg: 1rem;
+  --glass-fs-chip: 0.875rem;
+  --glass-fs-hero: 3.875rem;
+  --glass-fs-phrase: 2.5rem;
+  --glass-fs-say: 1.1875rem;
+  --glass-fs-meaning: 1.625rem;
+  --glass-fs-panel: 1.4375rem;
+  --glass-fs-bubble: 1.75rem;
+  --glass-fs-strong: 1.5625rem;
+  --glass-fs-bubble-me: 1.5625rem;
+  --glass-fs-input: 1.0625rem;
+  --glass-fw-semi: 600;
+  --glass-fs-pill: 0.875rem;
+  --glass-fs-sheet-title: 1.75rem;
+  --glass-fs-tab: 0.875rem;
+  --glass-ls-kicker: 0.28em;
+  --glass-ls-hero: -0.035em;
+  --glass-lh-snug: 1.22;
+
+  --glass-gap: 16px;
+
+  --glass-rim-strong: 2px;
+
+  /* Words: deep green */
+  --m-words-bg: #03110c;
+  --m-words-glow-1: rgba(30, 230, 150, 0.8);
+  --m-words-glow-2: rgba(20, 200, 170, 0.6);
+  --m-words-glow-3: rgba(20, 210, 140, 0.4);
+  --m-words-glow-4: rgba(8, 90, 60, 0.3);
+  --m-words-rim: rgba(90, 255, 175, 0.95);
+  --m-words-tint: rgba(70, 230, 160, 0.13);
+  --m-words-edge: rgba(170, 255, 215, 0.5);
+  --m-words-accent: #34d399;
+  --m-words-hl: #5cf09c;
+  --m-words-hl-glow: rgba(74, 240, 140, 0.6);
+  --m-words-hl-shadow: 0 0 14px var(--m-words-hl-glow);
+
+  /* Small talk: plum, coral reply bubble */
+  --m-talk-bg: #1a0716;
+  --m-talk-glow-1: rgba(255, 50, 150, 0.7);
+  --m-talk-glow-2: rgba(190, 40, 130, 0.6);
+  --m-talk-glow-3: rgba(255, 120, 85, 0.75);
+  --m-talk-glow-4: rgba(110, 20, 70, 0.6);
+  --m-talk-rim: rgba(255, 90, 180, 0.9);
+  --m-talk-tint: rgba(255, 140, 200, 0.1);
+  --m-talk-edge: rgba(255, 200, 230, 0.45);
+  --m-talk-coral: #f57c68;
+  --m-talk-coral-hi: #fbb0a0;
+  --m-talk-coral-mid: #f8907c;
+  --m-talk-coral-ink: #120709;
+  --m-talk-coral-glow: rgba(250, 110, 85, 0.6);
+  --m-talk-coral-fill: linear-gradient(150deg, var(--m-talk-coral-hi) 0%, var(--m-talk-coral-mid) 40%, var(--m-talk-coral) 100%);
+  --m-talk-coral-shadow: 0 0 44px rgba(255, 110, 80, 0.75), 0 0 14px rgba(255, 160, 130, 0.7), inset 0 1.5px 0 rgba(255, 255, 255, 0.6), inset 0 -10px 24px rgba(240, 90, 70, 0.35);
+  --m-talk-hl-shadow: none;
+
+  /* Say it better: amber */
+  --m-better-bg: #0d0803;
+  --m-better-glow-1: rgba(255, 160, 35, 0.95);
+  --m-better-glow-2: rgba(255, 135, 25, 0.78);
+  --m-better-glow-3: rgba(250, 155, 45, 0.7);
+  --m-better-glow-4: rgba(140, 70, 12, 0.6);
+  --m-better-rim: rgba(255, 175, 60, 0.6);
+  --m-better-tint: rgba(255, 195, 120, 0.1);
+  --m-better-edge: rgba(255, 225, 180, 0.45);
+  --m-better-accent: #fbbf24;
+  --m-better-border: rgba(255, 210, 120, 1);
+  --m-better-glow: rgba(245, 158, 11, 0.5);
+  --m-better-strong-fill: linear-gradient(180deg, rgba(255, 200, 120, 0.16) 0%, rgba(220, 130, 40, 0.18) 60%, rgba(245, 150, 40, 0.34) 100%);
+  --m-better-hl-shadow: 0 0 12px var(--m-better-glow);
+
+  /* Office phrases: purple */
+  --m-phrases-bg: #0c0718;
+  --m-phrases-glow-1: rgba(160, 100, 255, 0.65);
+  --m-phrases-glow-2: rgba(110, 80, 245, 0.55);
+  --m-phrases-glow-3: rgba(195, 130, 255, 0.4);
+  --m-phrases-glow-4: rgba(60, 30, 120, 0.55);
+  --m-phrases-rim: rgba(190, 150, 255, 0.9);
+  --m-phrases-tint: rgba(190, 160, 255, 0.08);
+  --m-phrases-edge: rgba(220, 205, 255, 0.45);
+  --m-phrases-accent: #a78bfa;
+  --m-phrases-hl: #c9b6ff;
+  --m-phrases-hl-glow: rgba(167, 139, 250, 0.6);
+  --m-phrases-hl-shadow: 0 0 12px var(--m-phrases-hl-glow);
+
+  /* Stories: blue */
+  --m-stories-bg: #040a18;
+  --m-stories-glow-1: rgba(60, 130, 255, 0.65);
+  --m-stories-glow-2: rgba(30, 160, 240, 0.55);
+  --m-stories-glow-3: rgba(100, 170, 255, 0.4);
+  --m-stories-glow-4: rgba(15, 40, 110, 0.6);
+  --m-stories-rim: rgba(120, 180, 255, 0.9);
+  --m-stories-tint: rgba(140, 190, 255, 0.08);
+  --m-stories-edge: rgba(195, 225, 255, 0.45);
+  --m-stories-accent: #60a5fa;
+  --m-stories-hl: #9cc8ff;
+  --m-stories-hl-glow: rgba(96, 165, 250, 0.6);
+  --m-stories-hl-shadow: 0 0 12px var(--m-stories-hl-glow);
 }
 
 * {

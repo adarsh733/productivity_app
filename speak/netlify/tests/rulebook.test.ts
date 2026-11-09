@@ -49,9 +49,25 @@ describe('rulebook.ts is the rulebook, sliced per job', () => {
 
   // Each job carries the chapters it needs, and not the ones it does not.
   const MUST_CARRY: Record<RulebookTask, string[]> = {
-    expand_seed: ['## 0. Purpose', '## 1. Universal card rules', '### 2.4 STORIES', '### 3.3 Dedupe'],
+    expand_seed: [
+      '## 0. Purpose',
+      '## 1. Universal card rules',
+      '### 2.4 STORIES',
+      '### 3.3 Dedupe',
+      '## 9. v7 module cards (Adarsh, 2026-11-08)',
+      '### 9.1 The five shapes',
+      '### 9.2 Rules on every module card',
+      '### 9.3 How his feedback steers a batch',
+    ],
     classify_inbox: ['## 1. Universal card rules', '### 2.1 WORDS', '### 4.1 Classify first'],
-    verify_batch: ['R1 INVENTED', 'R17 MEANING', '### 2.3 SMALL TALK', '### 7.2 Never state as fact'],
+    verify_batch: [
+      'R1 INVENTED',
+      'R17 MEANING',
+      '### 2.3 SMALL TALK',
+      '### 7.2 Never state as fact',
+      '## 9. v7 module cards (Adarsh, 2026-11-08)',
+      '### 9.2 Rules on every module card',
+    ],
     review_recording: ['## 5. Voice practice chat', 'Never quote words not in the transcript', '### 1.4 Indian English'],
     plan_week: ['### 3.1 How much is new', '### 3.4 Steering by his asks and weak spots'],
     answer_ask: ['## 4. Answering "Ask" questions', '### 4.3 When to add to weak spots', 'Everything he asks comes back'],
@@ -59,11 +75,13 @@ describe('rulebook.ts is the rulebook, sliced per job', () => {
   };
   const MUST_NOT_CARRY: Partial<Record<RulebookTask, string[]>> = {
     expand_seed: ['## 6. Verification rules', '## 5. Voice practice chat'],
-    classify_inbox: ['## 6. Verification rules', '## 5. Voice practice chat'],
-    verify_batch: ['## 5. Voice practice chat', '### 1.7 Fitting the app'],
+    classify_inbox: ['## 6. Verification rules', '## 5. Voice practice chat', '## 9. v7 module cards'],
+    // 9.1 and 9.3 are left out of the checker to stay under the Groq cap; its job lines name the shapes.
+    verify_batch: ['## 5. Voice practice chat', '### 1.7 Fitting the app', '### 9.1 The five shapes', '### 9.3 How his feedback'],
     review_recording: ['## 6. Verification rules', '### 2.1 WORDS'],
     plan_week: ['## 6. Verification rules', '## 5. Voice practice chat'],
-    answer_ask: ['## 6. Verification rules', '## 5. Voice practice chat'],
+    answer_ask: ['## 6. Verification rules', '## 5. Voice practice chat', '## 9. v7 module cards'],
+    coach_chat: ['## 9. v7 module cards'],
   };
 
   it.each(TASKS)('%s: carries the chapters this job needs', (task) => {
@@ -81,5 +99,19 @@ describe('rulebook.ts is the rulebook, sliced per job', () => {
   it('the checker slice holds all seventeen reject codes', () => {
     const part = rulebookFor('verify_batch');
     for (let n = 1; n <= 17; n++) expect(part).toMatch(new RegExp(`\\| R${n} [A-Z-]+ \\|`));
+  });
+
+  it('chapter 9 (v7 module cards) comes after the frozen chapter 8 and carries the module rules', () => {
+    const at8 = RULEBOOK.indexOf('## 8. Frozen additions (Adarsh, 2026-10-29)');
+    const at9 = RULEBOOK.indexOf('## 9. v7 module cards (Adarsh, 2026-11-08)');
+    expect(at8).toBeGreaterThan(0);
+    expect(at9).toBeGreaterThan(at8);
+    const ch9 = RULEBOOK.slice(at9);
+    for (const rule of ['40 words on a slide', '✗ wrong-use line', 'No Hindi on screen', 'no analogy', 'Never repeat a head']) {
+      expect(ch9).toContain(rule);
+    }
+    for (const shape of ['**Words**', '**Small talk**', '**Say it better**', '**Office phrases**', '**Stories**']) {
+      expect(ch9).toContain(shape);
+    }
   });
 });

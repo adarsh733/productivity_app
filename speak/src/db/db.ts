@@ -3,16 +3,20 @@ import type {
   AskRecord,
   Card,
   CardEvent,
+  CardFeedback,
   CardType,
   ChatSession,
   DayRecord,
   InboxItem,
   LabSession,
   LessonProgress,
+  ModuleBatch,
   Profile,
   ProductionEvent,
   Recording,
   Review,
+  SavedReview,
+  SeenTerm,
   StoryBankEntry,
   VoiceSample,
   WeakSpot,
@@ -57,6 +61,14 @@ export class SpeakDB extends Dexie {
   chats!: Table<ChatSession, string>;
   /** v6: the day's best moments, saved from evening chat. Phone-only. */
   storyBank!: Table<StoryBankEntry, string>;
+  /** v7: his 👍 👎 and notes on module cards, one row per card. Backed up from v8 (outbox `feedback`). */
+  feedback!: Table<CardFeedback, string>;
+  /** v8: every head he has seen, per module (the seen-once rule). Synced (outbox `seen`). */
+  seen!: Table<SeenTerm, string>;
+  /** v8: ♡ cards on the Sunday review. Synced (outbox `savedReviews`). */
+  savedReviews!: Table<SavedReview, string>;
+  /** v8: AI batches per module. Phone-only, never enqueued. */
+  batches!: Table<ModuleBatch, string>;
 
   constructor(name = 'speak') {
     super(name);
@@ -107,6 +119,23 @@ export class SpeakDB extends Dexie {
       weakSpots: 'id, createdAt',
       chats: 'id, day',
       storyBank: 'id, day',
+    });
+
+    // v7 — Night glass: card feedback (thumbs, reasons, comment). Additive,
+    // same rule as v2. Phone-only: `feedback` is not in the `OutboxRow` union,
+    // so nothing is enqueued for Supabase.
+    this.version(7).stores({
+      feedback: 'id, cardId, module, at',
+    });
+
+    // v8 — v7 steps 4-6: the seen-once list, the ♡ Sunday review and AI
+    // batches. Additive, same rule as v2. `seen` and `savedReviews` are synced
+    // (and `feedback` from now on) through the `OutboxRow` union; `batches`
+    // is phone-only and deliberately not in it.
+    this.version(8).stores({
+      seen: 'id, module, at',
+      savedReviews: 'cardId, due',
+      batches: 'id, module, at',
     });
   }
 }
@@ -184,7 +213,11 @@ export interface OutboxRow {
     | 'profile'
     | 'cards'
     | 'labSessions'
-    | 'voiceSamples';
+    | 'voiceSamples'
+    // v8 (v7 steps 4-6)
+    | 'feedback'
+    | 'seen'
+    | 'savedReviews';
   /** Primary key of the row in its own table. */
   key: string;
   op: 'put' | 'delete';

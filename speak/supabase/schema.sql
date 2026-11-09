@@ -169,6 +169,68 @@ alter table public.inbox  add column if not exists origin           text;
 -- without this column a restore would silently drop the plan. Null = no plan.
 alter table public.profile add column if not exists week_plan jsonb;
 
+-- ── v7 (2026-11-08) — card life backup ──────────────────────────────────────
+-- The v7 feed writes things a new phone must not lose: his 👍 👎 and notes on
+-- module cards, the seen-once list, the ♡ Sunday review and the AI-written
+-- cards (those ride the existing `cards` table with source = 'ai').
+
+-- Events fix. The v7 feed queues `card_viewed` events, which carry no grade
+-- (and the other production events carry no card at all). With `grade not
+-- null` and no `type` column every one of them failed to push and sat in the
+-- outbox for ever. Re-runnable: dropping a not-null that is already gone is a
+-- no-op in Postgres.
+alter table public.events alter column grade     drop not null;
+alter table public.events alter column card_id   drop not null;
+alter table public.events alter column card_type drop not null;
+alter table public.events alter column mode      drop not null;
+alter table public.events add column if not exists type text;
+create index if not exists events_type_idx on public.events (user_id, type);
+
+-- Too easy / Too hard move the level per module (1-5). Null = never moved.
+alter table public.profile add column if not exists module_levels jsonb;
+
+-- card_feedback: one row per card (`fb-<cardId>`), updated in place.
+create table if not exists public.card_feedback (
+  user_id    uuid not null references auth.users(id) on delete cascade,
+  id         text not null,
+  card_id    text not null,
+  module     text not null,
+  thumb      text,
+  reasons    text[] not null default '{}',
+  comment    text,
+  reply      text not null default '',
+  at         timestamptz not null,
+  hidden     boolean not null default false,
+  primary key (user_id, id)
+);
+create index if not exists card_feedback_module_idx on public.card_feedback (user_id, module, at desc);
+
+-- seen_terms: every head he has seen, per module (`<module>:<head>`).
+create table if not exists public.seen_terms (
+  user_id    uuid not null references auth.users(id) on delete cascade,
+  id         text not null,
+  module     text not null,
+  head       text not null,
+  card_id    text not null,
+  at         timestamptz not null,
+  primary key (user_id, id)
+);
+
+-- saved_reviews: ♡ cards on the Sunday review (3 days, 1 week, 3 weeks).
+create table if not exists public.saved_reviews (
+  user_id     uuid not null references auth.users(id) on delete cascade,
+  card_id     text not null,
+  module      text not null,
+  saved_at    timestamptz not null,
+  step        int  not null default 0,
+  due         date not null,
+  rights      int  not null default 0,
+  retired_at  timestamptz,
+  last_answer text,
+  primary key (user_id, card_id)
+);
+create index if not exists saved_reviews_due_idx on public.saved_reviews (user_id, due);
+
 -- ── RLS ─────────────────────────────────────────────────────────────────────
 alter table public.profile       enable row level security;
 alter table public.cards         enable row level security;
@@ -178,12 +240,16 @@ alter table public.days          enable row level security;
 alter table public.inbox         enable row level security;
 alter table public.lab_sessions  enable row level security;
 alter table public.voice_samples enable row level security;
+alter table public.card_feedback enable row level security;
+alter table public.seen_terms    enable row level security;
+alter table public.saved_reviews enable row level security;
 
 do $$
 declare t text;
 begin
   foreach t in array array['profile','cards','reviews','events','days','inbox',
-                           'lab_sessions','voice_samples'] loop
+                           'lab_sessions','voice_samples',
+                           'card_feedback','seen_terms','saved_reviews'] loop
     execute format('drop policy if exists own_rows on public.%I', t);
     execute format(
       'create policy own_rows on public.%I for all to authenticated

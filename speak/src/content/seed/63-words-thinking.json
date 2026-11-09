@@ -1,0 +1,4620 @@
+[
+  {
+    "id": "v7-words-thinking-001",
+    "type": "module",
+    "module": "words",
+    "topic": "decide",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "decide",
+    "pos": "verb",
+    "say": "dih-SIDE",
+    "meaning": "To choose after thinking.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Let's **decide** what to cook tonight.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "You **decide** the movie; I chose last time.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I can't **decide** between the blue shirt and the white one."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"decide for\" + -ing",
+        "text": "I decided for going by train."
+      }
+    ],
+    "rule": "decide to + verb"
+  },
+  {
+    "id": "v7-words-thinking-002",
+    "type": "module",
+    "module": "words",
+    "topic": "conclude",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "conclude",
+    "pos": "verb",
+    "say": "kun-KLOOD",
+    "meaning": "To decide something is true after looking at the facts.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The lights are off, so I **conclude** the shop is closed.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "The bill is wrong twice, so I **conclude** the app has a bug.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "After two tries, I **conclude** this route is faster."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for finishing a meal or chore",
+        "text": "I will conclude my lunch and call you."
+      }
+    ],
+    "rule": "conclude that ..."
+  },
+  {
+    "id": "v7-words-thinking-003",
+    "type": "module",
+    "module": "words",
+    "topic": "guess",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "guess",
+    "pos": "verb",
+    "say": "GES",
+    "meaning": "To give an answer without being sure.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "**Guess** who called me today!",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I **guess** the match starts at eight.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I can't **guess** the password."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"guess about\" + an answer",
+        "text": "Can you guess about my age?"
+      }
+    ],
+    "rule": "guess + the answer",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I guess it will rain.",
+          "right": true
+        },
+        {
+          "text": "I guess about it will rain.",
+          "right": false
+        },
+        {
+          "text": "I am guess it rains.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-004",
+    "type": "module",
+    "module": "words",
+    "topic": "judge",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "judge",
+    "pos": "verb",
+    "say": "JUJ",
+    "meaning": "To form an opinion about someone or something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Don't **judge** a book by its cover.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Don't **judge** him; he had a bad day.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It's hard to **judge** the distance in the dark."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"judge on\" a person",
+        "text": "Please don't judge on me."
+      }
+    ],
+    "rule": "judge someone, no \"on\""
+  },
+  {
+    "id": "v7-words-thinking-005",
+    "type": "module",
+    "module": "words",
+    "topic": "dilemma",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "dilemma",
+    "pos": "noun",
+    "say": "dih-LEM-uh",
+    "meaning": "A hard choice between two options.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Pizza or biryani: a real **dilemma**.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "My **dilemma**: the better job or the shorter commute.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She faced a **dilemma**: tell her friend or keep quiet."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for any small problem",
+        "text": "My phone battery is a dilemma."
+      }
+    ],
+    "rule": "a hard choice between two"
+  },
+  {
+    "id": "v7-words-thinking-006",
+    "type": "module",
+    "module": "words",
+    "topic": "choose",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "choose",
+    "pos": "verb",
+    "say": "CHOOZ",
+    "meaning": "To pick one from many.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "**Choose** any chair you like.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We let the kids **choose** the dessert.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I can't **choose** a colour for the wall."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"choose\" for the past",
+        "text": "Yesterday I choose the red one."
+      }
+    ],
+    "rule": "choose, chose, chosen",
+    "check": {
+      "question": "Which sentence is right?",
+      "options": [
+        {
+          "text": "Yesterday I choose tea.",
+          "right": false
+        },
+        {
+          "text": "Yesterday I chose tea.",
+          "right": true
+        },
+        {
+          "text": "Yesterday I chosen tea.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-007",
+    "type": "module",
+    "module": "words",
+    "topic": "estimate",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "estimate",
+    "pos": "verb",
+    "say": "ES-tih-mate",
+    "meaning": "To make a rough guess about a number, cost or time.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I **estimate** the trip will cost five thousand.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I **estimate** it takes ten minutes to walk there.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Can you **estimate** how long the repair will take?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for exact numbers",
+        "text": "I estimate I have exactly 342 rupees."
+      }
+    ],
+    "rule": "a rough number"
+  },
+  {
+    "id": "v7-words-thinking-008",
+    "type": "module",
+    "module": "words",
+    "topic": "compare",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "compare",
+    "pos": "verb",
+    "say": "kum-PAIR",
+    "meaning": "To look at how two things are alike or different.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Let's **compare** prices before we buy.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Don't **compare** yourself to your cousin.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I like to **compare** two phones before I choose."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"compare between\"",
+        "text": "Let's compare between these two shirts."
+      }
+    ],
+    "rule": "compare A with B"
+  },
+  {
+    "id": "v7-words-thinking-009",
+    "type": "module",
+    "module": "words",
+    "topic": "priority",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "priority",
+    "pos": "noun",
+    "say": "pry-OR-ih-tee",
+    "meaning": "The thing that matters most right now.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Sleep is my **priority** this week.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "Fixing the leak is the **priority**; painting can wait.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "My first **priority** is my health."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not as a verb",
+        "text": "I will priority this task."
+      }
+    ],
+    "rule": "a priority; to prioritise",
+    "check": {
+      "question": "Which sentence is right?",
+      "options": [
+        {
+          "text": "I priority my kids.",
+          "right": false
+        },
+        {
+          "text": "My kids are prioritying.",
+          "right": false
+        },
+        {
+          "text": "My priority is my kids.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-010",
+    "type": "module",
+    "module": "words",
+    "topic": "nuance",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "nuance",
+    "pos": "noun",
+    "say": "NOO-ahns",
+    "meaning": "A small, fine difference in meaning or feeling.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "There's a **nuance** between \"alone\" and \"lonely\".",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "Her smile had a **nuance** of sadness.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The film is full of **nuance**; watch it slowly."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a big, clear difference",
+        "text": "The nuance between day and night is huge."
+      }
+    ],
+    "rule": "a small difference"
+  },
+  {
+    "id": "v7-words-thinking-011",
+    "type": "module",
+    "module": "words",
+    "topic": "doubt",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "doubt",
+    "pos": "noun",
+    "say": "DOWT",
+    "meaning": "A feeling that something may not be true.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I **doubt** the shop is open this late.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I have no **doubt** you'll love the food.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I **doubt** he will come on time."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a question you want to ask",
+        "text": "I have a doubt: where is the station?"
+      }
+    ],
+    "rule": "a doubt is \"not sure it's true\""
+  },
+  {
+    "id": "v7-words-thinking-012",
+    "type": "module",
+    "module": "words",
+    "topic": "doubtful",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "doubtful",
+    "pos": "adjective",
+    "say": "DOWT-ful",
+    "meaning": "Not likely; or not sure.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It's **doubtful** the rain will stop soon.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He looked **doubtful** when I said I'd cook.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'm **doubtful** about the new plan."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not as a verb",
+        "text": "I doubtful he will come."
+      }
+    ],
+    "rule": "be doubtful about",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I doubtful it.",
+          "right": false
+        },
+        {
+          "text": "It's doubtful he'll come.",
+          "right": true
+        },
+        {
+          "text": "He doubtfuls me.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-013",
+    "type": "module",
+    "module": "words",
+    "topic": "sure",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "sure",
+    "pos": "adjective",
+    "say": "SHOOR",
+    "meaning": "Certain; with no doubt.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Are you **sure** you locked the door?",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm **sure** she'll like the gift.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'm not **sure** what time the train leaves."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"surely\" in place of \"sure\"",
+        "text": "I am surely that he left."
+      }
+    ],
+    "rule": "be sure about"
+  },
+  {
+    "id": "v7-words-thinking-014",
+    "type": "module",
+    "module": "words",
+    "topic": "instinct",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "instinct",
+    "pos": "noun",
+    "say": "IN-stinkt",
+    "meaning": "A feeling that tells you what to do, without thinking.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My **instinct** said the milk was off.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Trust your **instinct**; the road looks unsafe.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "My first **instinct** was to call my mum."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not as an adjective",
+        "text": "I had an instinct feeling about it."
+      }
+    ],
+    "rule": "instinct (noun); instinctive (adj)"
+  },
+  {
+    "id": "v7-words-thinking-015",
+    "type": "module",
+    "module": "words",
+    "topic": "rationale",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "rationale",
+    "pos": "noun",
+    "say": "rash-uh-NAHL",
+    "meaning": "The reasons behind a choice.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "What's the **rationale** for moving the sofa again?",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "My **rationale** is simple: the earlier train is cheaper.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Tell me the **rationale** before we spend the money."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a person",
+        "text": "He is very rationale."
+      }
+    ],
+    "rule": "rationale (noun); rational (adj)",
+    "check": {
+      "question": "Which sentence is right?",
+      "options": [
+        {
+          "text": "What's the rationale for this?",
+          "right": true
+        },
+        {
+          "text": "She is very rationale.",
+          "right": false
+        },
+        {
+          "text": "Let's rationale it.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-016",
+    "type": "module",
+    "module": "words",
+    "topic": "probably",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "probably",
+    "pos": "adverb",
+    "say": "PROB-uh-blee",
+    "meaning": "Very likely, but not certain.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'll **probably** be home by seven.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "It's **probably** going to rain, so take an umbrella.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He's **probably** stuck in traffic."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for something 100% sure",
+        "text": "The sun will probably rise tomorrow."
+      }
+    ],
+    "rule": "very likely"
+  },
+  {
+    "id": "v7-words-thinking-017",
+    "type": "module",
+    "module": "words",
+    "topic": "evidence",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "evidence",
+    "pos": "noun",
+    "say": "EV-ih-dens",
+    "meaning": "Facts that show something is true.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The crumbs are **evidence** that someone ate my biscuits.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "There's no **evidence** that the new diet works.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Do you have any **evidence** for that?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"evidences\"",
+        "text": "He showed me three evidences."
+      }
+    ],
+    "rule": "no plural; a piece of evidence"
+  },
+  {
+    "id": "v7-words-thinking-018",
+    "type": "module",
+    "module": "words",
+    "topic": "mistake",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "mistake",
+    "pos": "noun",
+    "say": "mih-STAKE",
+    "meaning": "Something done wrong by accident.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Sorry, I made a **mistake** with the order.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Everyone makes a **mistake** sometimes.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I made a **mistake** in the bill."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"do a mistake\"",
+        "text": "I did a mistake yesterday."
+      }
+    ],
+    "rule": "make a mistake",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I did a mistake.",
+          "right": false
+        },
+        {
+          "text": "I mistaked.",
+          "right": false
+        },
+        {
+          "text": "I made a mistake.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-019",
+    "type": "module",
+    "module": "words",
+    "topic": "factor",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "factor",
+    "pos": "noun",
+    "say": "FAK-ter",
+    "meaning": "One thing that changes a result.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Price is a big **factor** when we buy a car.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "Traffic is one **factor**; the weather is another.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Distance was the main **factor** in my choice."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not as a verb for \"cause\"",
+        "text": "The rain factored my delay."
+      }
+    ],
+    "rule": "one thing that changes a result"
+  },
+  {
+    "id": "v7-words-thinking-020",
+    "type": "module",
+    "module": "words",
+    "topic": "plausible",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "plausible",
+    "pos": "adjective",
+    "say": "PLAW-zuh-bul",
+    "meaning": "Possible and easy to believe.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "His excuse sounds **plausible**: the lift was broken.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "It's **plausible** the parcel went to the neighbour.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "That's a **plausible** reason for being late."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a person you trust",
+        "text": "My brother is very plausible."
+      }
+    ],
+    "rule": "a plausible story or reason"
+  },
+  {
+    "id": "v7-words-thinking-021",
+    "type": "module",
+    "module": "words",
+    "topic": "reason",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "reason",
+    "pos": "noun",
+    "say": "REE-zun",
+    "meaning": "Why something happens, or why you do it.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The **reason** I'm late is the rain.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Give me one good **reason** to stay home.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "There's a **reason** the shop is empty."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"the reason is because\"",
+        "text": "The reason is because I was sick."
+      }
+    ],
+    "rule": "the reason is that",
+    "check": {
+      "question": "Which sentence is right?",
+      "options": [
+        {
+          "text": "The reason is because I slept.",
+          "right": false
+        },
+        {
+          "text": "The reason is that I overslept.",
+          "right": true
+        },
+        {
+          "text": "The reason of I slept.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-022",
+    "type": "module",
+    "module": "words",
+    "topic": "alternative",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "alternative",
+    "pos": "noun",
+    "say": "awl-TER-nuh-tiv",
+    "meaning": "Another choice you can pick instead.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "If the metro is full, the bus is an **alternative**.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "We need an **alternative** in case it rains.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Is there a cheaper **alternative**?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"every other\"",
+        "text": "I go to the gym on alternative days."
+      }
+    ],
+    "rule": "another choice; alternate = every other"
+  },
+  {
+    "id": "v7-words-thinking-023",
+    "type": "module",
+    "module": "words",
+    "topic": "option",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "option",
+    "pos": "noun",
+    "say": "OP-shun",
+    "meaning": "One of the things you can choose.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "There's one more **option**: we eat out.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Is there a veg **option** on the menu?",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Taking a cab is the fastest **option**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not as a verb",
+        "text": "I will option the blue one."
+      }
+    ],
+    "rule": "an option; to opt for"
+  },
+  {
+    "id": "v7-words-thinking-024",
+    "type": "module",
+    "module": "words",
+    "topic": "compromise",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "compromise",
+    "pos": "noun",
+    "say": "KOM-pruh-mize",
+    "meaning": "An agreement where both sides give up a little.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Our **compromise**: I cook, you wash up.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We wanted different films, so we found a **compromise**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let's **compromise** and leave at nine."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for quietly putting up with something",
+        "text": "I compromised the noise from upstairs."
+      }
+    ],
+    "rule": "both give a little",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I compromised the cold food.",
+          "right": false
+        },
+        {
+          "text": "Let's compromise the TV.",
+          "right": false
+        },
+        {
+          "text": "We found a compromise: half each.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-025",
+    "type": "module",
+    "module": "words",
+    "topic": "inevitable",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "inevitable",
+    "pos": "adjective",
+    "say": "in-EV-ih-tuh-bul",
+    "meaning": "Sure to happen; you can't stop it.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "With two kids, a messy house is **inevitable**.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "Some delay is **inevitable** in the monsoon.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Getting older is **inevitable**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"very important\"",
+        "text": "Water is inevitable for life."
+      }
+    ],
+    "rule": "sure to happen"
+  },
+  {
+    "id": "v7-words-thinking-026",
+    "type": "module",
+    "module": "words",
+    "topic": "plan",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "plan",
+    "pos": "noun",
+    "say": "PLAN",
+    "meaning": "What you decide to do before you do it.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "What's the **plan** for Sunday?",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Let's **plan** the trip tonight.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I **plan** to call her after lunch."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"plan to\" + -ing",
+        "text": "I plan to going to Goa."
+      }
+    ],
+    "rule": "plan to + verb"
+  },
+  {
+    "id": "v7-words-thinking-027",
+    "type": "module",
+    "module": "words",
+    "topic": "drawback",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "drawback",
+    "pos": "noun",
+    "say": "DRAW-bak",
+    "meaning": "A bad side of something that is mostly good.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The flat is nice; the only **drawback** is the stairs.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "The one **drawback** of the cheap flight is the 5 a.m. start.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "A big **drawback** of this phone is the battery."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for money back",
+        "text": "The shop gave me a drawback of 200."
+      }
+    ],
+    "rule": "one bad side",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I got a drawback on my ticket.",
+          "right": false
+        },
+        {
+          "text": "The drawback is the long drive.",
+          "right": true
+        },
+        {
+          "text": "He drawbacked from the plan.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-028",
+    "type": "module",
+    "module": "words",
+    "topic": "figure out",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "figure out",
+    "pos": "phrasal verb",
+    "say": "FIG-yer OWT",
+    "meaning": "To understand or solve something after thinking.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I can't **figure out** this new TV remote.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We'll **figure out** dinner later.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Help me **figure out** the train times."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for drawing",
+        "text": "Please figure out a cat for my son."
+      }
+    ],
+    "rule": "figure out a problem"
+  },
+  {
+    "id": "v7-words-thinking-029",
+    "type": "module",
+    "module": "words",
+    "topic": "upside",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "upside",
+    "pos": "noun",
+    "say": "UP-side",
+    "meaning": "The good side of something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The **upside** of a small flat: less cleaning.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "It's raining, but the **upside** is the roads are empty.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The **upside** of waking early is a quiet house."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"above\"",
+        "text": "The fan is upside the bed."
+      }
+    ],
+    "rule": "the good side"
+  },
+  {
+    "id": "v7-words-thinking-030",
+    "type": "module",
+    "module": "words",
+    "topic": "arbitrary",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "arbitrary",
+    "pos": "adjective",
+    "say": "AR-bih-trair-ee",
+    "meaning": "Chosen with no real reason.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Bedtime at 9:47 feels **arbitrary**.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "The order of names was **arbitrary**; we just picked.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The fine felt **arbitrary** to me."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a careful choice",
+        "text": "After a week of research, our pick was arbitrary."
+      }
+    ],
+    "rule": "no real reason",
+    "check": {
+      "question": "Your boss picks a date for no reason. The date is...",
+      "options": [
+        {
+          "text": "Plausible.",
+          "right": false
+        },
+        {
+          "text": "Logical.",
+          "right": false
+        },
+        {
+          "text": "Arbitrary.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-031",
+    "type": "module",
+    "module": "words",
+    "topic": "make up your mind",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "make up your mind",
+    "pos": "idiom",
+    "say": "make UP yor MIND",
+    "meaning": "To finally decide.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "**Make up your mind**: tea or coffee?",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "**Make up your mind** before the shop closes.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Please **make up your mind** about the trip by Friday."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"make your mind\"",
+        "text": "Make your mind fast!"
+      }
+    ],
+    "rule": "make up your mind"
+  },
+  {
+    "id": "v7-words-thinking-032",
+    "type": "module",
+    "module": "words",
+    "topic": "downside",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "downside",
+    "pos": "noun",
+    "say": "DOWN-side",
+    "meaning": "The bad side of something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The **downside** of a big dog: hair everywhere.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "The **downside** of this route is the toll.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "One **downside** of working late: no dinner with family."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"below\"",
+        "text": "The shop is downside the building."
+      }
+    ],
+    "rule": "the bad side"
+  },
+  {
+    "id": "v7-words-thinking-033",
+    "type": "module",
+    "module": "words",
+    "topic": "wonder",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "wonder",
+    "pos": "verb",
+    "say": "WUN-der",
+    "meaning": "To think about something you don't know.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I **wonder** if the parcel came.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I **wonder** what she'll wear to the wedding.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I **wonder** why the lights went off."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not with question order after it",
+        "text": "I wonder where is the key."
+      }
+    ],
+    "rule": "I wonder where the key is",
+    "check": {
+      "question": "Which sentence is right?",
+      "options": [
+        {
+          "text": "I wonder what time is it.",
+          "right": false
+        },
+        {
+          "text": "I wondering what time.",
+          "right": false
+        },
+        {
+          "text": "I wonder what time it is.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-034",
+    "type": "module",
+    "module": "words",
+    "topic": "hindsight",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "hindsight",
+    "pos": "noun",
+    "say": "HIND-site",
+    "meaning": "Understanding a thing only after it has happened.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "In **hindsight**, we should have left earlier.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "In **hindsight**, the cheaper hotel was the better pick.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "In **hindsight**, I should have carried a jacket."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the future",
+        "text": "In hindsight, I will book the tickets."
+      }
+    ],
+    "rule": "in hindsight + the past"
+  },
+  {
+    "id": "v7-words-thinking-035",
+    "type": "module",
+    "module": "words",
+    "topic": "intuitive",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "intuitive",
+    "pos": "adjective",
+    "say": "in-TOO-ih-tiv",
+    "meaning": "Easy to understand without being taught.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The new washing machine is **intuitive**; no manual needed.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "The app is **intuitive**, so my dad uses it alone.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The menu is **intuitive**: one tap to order."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not as the noun",
+        "text": "I had an intuitive that he would call."
+      }
+    ],
+    "rule": "intuitive (adj); intuition (noun)"
+  },
+  {
+    "id": "v7-words-thinking-036",
+    "type": "module",
+    "module": "words",
+    "topic": "realise",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "realise",
+    "pos": "verb",
+    "say": "REE-uh-lize",
+    "meaning": "To suddenly understand or notice something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Did you **realise** the gas was on?",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I didn't **realise** it was your birthday!",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I **realise** now that I was wrong."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for feeling pain",
+        "text": "I realised a pain in my leg."
+      }
+    ],
+    "rule": "realise something is true",
+    "check": {
+      "question": "Which sentence is right?",
+      "options": [
+        {
+          "text": "I didn't realised you here.",
+          "right": false
+        },
+        {
+          "text": "I didn't realise you were here.",
+          "right": true
+        },
+        {
+          "text": "I realising you were here.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-037",
+    "type": "module",
+    "module": "words",
+    "topic": "brainstorm",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "brainstorm",
+    "pos": "verb",
+    "say": "BRAIN-storm",
+    "meaning": "To share many ideas quickly, as a group.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Let's **brainstorm** names for the puppy.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We sat down to **brainstorm** party ideas.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let's **brainstorm** ten gift ideas, then pick one."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for worry or stress",
+        "text": "Exams gave me a brainstorm."
+      }
+    ],
+    "rule": "brainstorm ideas"
+  },
+  {
+    "id": "v7-words-thinking-038",
+    "type": "module",
+    "module": "words",
+    "topic": "suppose",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "suppose",
+    "pos": "verb",
+    "say": "suh-POZE",
+    "meaning": "To think something is true, without being sure.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I **suppose** we could order in tonight.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I **suppose** he forgot the time.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I **suppose** you're right."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"suppose to\" for a duty",
+        "text": "I am suppose to call her."
+      }
+    ],
+    "rule": "I suppose; I am supposed to"
+  },
+  {
+    "id": "v7-words-thinking-039",
+    "type": "module",
+    "module": "words",
+    "topic": "reconsider",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "reconsider",
+    "pos": "verb",
+    "say": "ree-kun-SID-er",
+    "meaning": "To think again about a decision.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Please **reconsider** the trip; the roads are flooded.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "After the price went up, I had to **reconsider**.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Will you **reconsider** if I help you?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"reconsider again\"",
+        "text": "Please reconsider it again."
+      }
+    ],
+    "rule": "re- already means again",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Please reconsider again.",
+          "right": false
+        },
+        {
+          "text": "Please reconsider your answer.",
+          "right": true
+        },
+        {
+          "text": "Please re-reconsider.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-040",
+    "type": "module",
+    "module": "words",
+    "topic": "deduce",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "deduce",
+    "pos": "verb",
+    "say": "dih-DYOOS",
+    "meaning": "To work out an answer from clues.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "From the wet floor, I **deduce** it rained.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "From the empty box, I **deduce** the kids found the sweets.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Can you **deduce** who left the tap on?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for taking money away",
+        "text": "They deduced 500 from my pay."
+      }
+    ],
+    "rule": "deduce from clues; deduct money"
+  },
+  {
+    "id": "v7-words-thinking-041",
+    "type": "module",
+    "module": "words",
+    "topic": "change your mind",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "change your mind",
+    "pos": "idiom",
+    "say": "CHAYNJ yor MIND",
+    "meaning": "To decide something different from before.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Call me if you **change your mind** about dinner.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "You can **change your mind**; the ticket is free to cancel.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Did you **change your mind** about the colour?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"change the mind\"",
+        "text": "I changed the mind about the movie."
+      }
+    ],
+    "rule": "change your mind"
+  },
+  {
+    "id": "v7-words-thinking-042",
+    "type": "module",
+    "module": "words",
+    "topic": "rethink",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "rethink",
+    "pos": "verb",
+    "say": "ree-THINK",
+    "meaning": "To think about a plan again and change it.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We need to **rethink** the kitchen layout.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "The bus is too slow; let me **rethink** my route.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let's **rethink** our weekend plans."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"remember\"",
+        "text": "I rethought my old school days."
+      }
+    ],
+    "rule": "rethink a plan",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I rethink my school days.",
+          "right": false
+        },
+        {
+          "text": "Rethink me the address.",
+          "right": false
+        },
+        {
+          "text": "Let's rethink the plan.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-043",
+    "type": "module",
+    "module": "words",
+    "topic": "pros and cons",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "pros and cons",
+    "pos": "noun",
+    "say": "PROZE and KONZ",
+    "meaning": "The good points and the bad points.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Let's list the **pros and cons** of a new car.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I weighed the **pros and cons** before I said yes.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "What are the **pros and cons** of living here?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for one side only",
+        "text": "The only pros and cons is the price."
+      }
+    ],
+    "rule": "always both sides"
+  },
+  {
+    "id": "v7-words-thinking-044",
+    "type": "module",
+    "module": "words",
+    "topic": "overthink",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "overthink",
+    "pos": "verb",
+    "say": "oh-ver-THINK",
+    "meaning": "To think about something too much, so you worry.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Don't **overthink** it; just send the message.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I **overthink** every text I send.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Try not to **overthink** the gift."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for careful, useful checking",
+        "text": "Good pilots overthink the safety list."
+      }
+    ],
+    "rule": "too much thinking"
+  },
+  {
+    "id": "v7-words-thinking-045",
+    "type": "module",
+    "module": "words",
+    "topic": "contemplate",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "contemplate",
+    "pos": "verb",
+    "say": "KON-tem-plate",
+    "meaning": "To think about something slowly and seriously.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm starting to **contemplate** a move to Pune.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "Before I even **contemplate** a new job, I'll save some money.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She's starting to **contemplate** a career change."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"contemplate about\"",
+        "text": "I contemplated about the offer."
+      }
+    ],
+    "rule": "contemplate something, no \"about\"",
+    "check": {
+      "question": "Which sentence is right?",
+      "options": [
+        {
+          "text": "I'm contemplating a move.",
+          "right": true
+        },
+        {
+          "text": "I contemplated about it.",
+          "right": false
+        },
+        {
+          "text": "I contemplate on to go.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-046",
+    "type": "module",
+    "module": "words",
+    "topic": "opinion",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "opinion",
+    "pos": "noun",
+    "say": "uh-PIN-yun",
+    "meaning": "What you think about something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "In my **opinion**, the old sofa looks better.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "What's your **opinion** of the new café?",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Everyone has an **opinion** about cricket."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"according to my opinion\"",
+        "text": "According to my opinion, it's late."
+      }
+    ],
+    "rule": "in my opinion"
+  },
+  {
+    "id": "v7-words-thinking-047",
+    "type": "module",
+    "module": "words",
+    "topic": "jump to conclusions",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "jump to conclusions",
+    "pos": "idiom",
+    "say": "JUMP to kun-KLOO-zhunz",
+    "meaning": "To decide too fast, before you know the facts.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Don't **jump to conclusions**; maybe her phone died.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He didn't reply, but let's not **jump to conclusions**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I tend to **jump to conclusions** when I am tired."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for finishing quickly",
+        "text": "Let's jump to conclusions and end the meeting."
+      }
+    ],
+    "rule": "deciding too fast"
+  },
+  {
+    "id": "v7-words-thinking-048",
+    "type": "module",
+    "module": "words",
+    "topic": "agree",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "agree",
+    "pos": "verb",
+    "say": "uh-GREE",
+    "meaning": "To have the same opinion.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I **agree**; the room needs a fan.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We all **agree** the food was great.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I **agree** with you."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"I am agree\"",
+        "text": "I am agree with you."
+      }
+    ],
+    "rule": "I agree",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I am agree.",
+          "right": false
+        },
+        {
+          "text": "I agree with you.",
+          "right": true
+        },
+        {
+          "text": "I agreeing you.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-049",
+    "type": "module",
+    "module": "words",
+    "topic": "on the fence",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "on the fence",
+    "pos": "idiom",
+    "say": "on the FENS",
+    "meaning": "Not able to decide between two sides.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm still **on the fence** about the new sofa.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Half of us want the beach; my cousin is **on the fence**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'm **on the fence** about the job offer."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for being angry",
+        "text": "Dad is on the fence because I came home late."
+      }
+    ],
+    "rule": "can't decide"
+  },
+  {
+    "id": "v7-words-thinking-050",
+    "type": "module",
+    "module": "words",
+    "topic": "scrutinise",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "scrutinise",
+    "pos": "verb",
+    "say": "SKROO-tih-nize",
+    "meaning": "To look at something very closely.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Mum will **scrutinise** the bill line by line.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "Before I sign, I **scrutinise** every page.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Please **scrutinise** the contract before you sign it."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a quick look",
+        "text": "I scrutinised the menu in one second."
+      }
+    ],
+    "rule": "a very close look"
+  },
+  {
+    "id": "v7-words-thinking-051",
+    "type": "module",
+    "module": "words",
+    "topic": "consider",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "consider",
+    "pos": "verb",
+    "say": "kun-SID-er",
+    "meaning": "To think about something before deciding.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We should **consider** a smaller car.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Would you **consider** moving to Bangalore?",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "**Consider** the weather before you plan the trip."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"consider to\" + verb",
+        "text": "I'm considering to buy a bike."
+      }
+    ],
+    "rule": "consider + -ing",
+    "check": {
+      "question": "Which sentence is right?",
+      "options": [
+        {
+          "text": "I'm considering to move.",
+          "right": false
+        },
+        {
+          "text": "I consider to moving.",
+          "right": false
+        },
+        {
+          "text": "I'm considering moving.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-052",
+    "type": "module",
+    "module": "words",
+    "topic": "torn",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "torn",
+    "pos": "adjective",
+    "say": "TORN",
+    "meaning": "Unable to choose between two things you want.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm **torn** between the red dress and the blue one.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He's **torn** between two job offers.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'm **torn** about where to go on holiday."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"tired\"",
+        "text": "After the gym I felt torn."
+      }
+    ],
+    "rule": "torn between A and B"
+  },
+  {
+    "id": "v7-words-thinking-053",
+    "type": "module",
+    "module": "words",
+    "topic": "expect",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "expect",
+    "pos": "verb",
+    "say": "ik-SPEKT",
+    "meaning": "To think something will happen.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I **expect** the guests at eight.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I didn't **expect** you to come!",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We **expect** rain this evening."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"wait\"",
+        "text": "I am expecting at the bus stop for you."
+      }
+    ],
+    "rule": "expect something; wait for someone"
+  },
+  {
+    "id": "v7-words-thinking-054",
+    "type": "module",
+    "module": "words",
+    "topic": "biased",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "biased",
+    "pos": "adjective",
+    "say": "BY-ust",
+    "meaning": "Unfairly liking one side more.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Mum is **biased**; she says my brother cooks better.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The referee was **biased** toward the home team.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'm **biased**, but my city has the best food."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"bias\" as the describing word",
+        "text": "He is very bias."
+      }
+    ],
+    "rule": "biased (adj); a bias (noun)",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "He is biased.",
+          "right": true
+        },
+        {
+          "text": "He is bias.",
+          "right": false
+        },
+        {
+          "text": "He is biasing.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-055",
+    "type": "module",
+    "module": "words",
+    "topic": "speculate",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "speculate",
+    "pos": "verb",
+    "say": "SPEK-yoo-late",
+    "meaning": "To guess about something without the facts.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The neighbours **speculate** about the new family.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Let's not **speculate**; we'll know tomorrow.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "People **speculate** about why the shop closed."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a sure fact",
+        "text": "I speculate my birthday is in June."
+      }
+    ],
+    "rule": "guess without facts"
+  },
+  {
+    "id": "v7-words-thinking-056",
+    "type": "module",
+    "module": "words",
+    "topic": "prefer",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "prefer",
+    "pos": "verb",
+    "say": "prih-FER",
+    "meaning": "To like one thing more than another.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I **prefer** tea in the morning.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Do you **prefer** the hills or the beach?",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I **prefer** walking to driving."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"prefer than\"",
+        "text": "I prefer tea than coffee."
+      }
+    ],
+    "rule": "prefer A to B"
+  },
+  {
+    "id": "v7-words-thinking-057",
+    "type": "module",
+    "module": "words",
+    "topic": "logical",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "logical",
+    "pos": "adjective",
+    "say": "LOJ-ih-kul",
+    "meaning": "Clear and making sense, step by step.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It's **logical** to shop before the festival rush.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "The **logical** step is to call the bank first.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "That's a **logical** way to pack the bag."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for feelings",
+        "text": "I felt very logical after the movie."
+      }
+    ],
+    "rule": "makes sense",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I felt logical after lunch.",
+          "right": false
+        },
+        {
+          "text": "That's a logical plan.",
+          "right": true
+        },
+        {
+          "text": "He logicals the bill.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-058",
+    "type": "module",
+    "module": "words",
+    "topic": "depend",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "depend",
+    "pos": "verb",
+    "say": "dih-PEND",
+    "meaning": "To change based on something else.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Our dinner plans **depend** on the weather.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "It may **depend** on the traffic.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Our trip will **depend** on the price of tickets."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"depend of\"",
+        "text": "It depends of the weather."
+      }
+    ],
+    "rule": "depend on"
+  },
+  {
+    "id": "v7-words-thinking-059",
+    "type": "module",
+    "module": "words",
+    "topic": "practical",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "practical",
+    "pos": "adjective",
+    "say": "PRAK-tih-kul",
+    "meaning": "Useful and sensible in real life.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Flat shoes are more **practical** for the market.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "A small car is more **practical** in city traffic.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "That's a **practical** gift for a new mum."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"real\" or \"true\"",
+        "text": "Is this a practical story or made up?"
+      }
+    ],
+    "rule": "useful in real life"
+  },
+  {
+    "id": "v7-words-thinking-060",
+    "type": "module",
+    "module": "words",
+    "topic": "ponder",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "ponder",
+    "pos": "verb",
+    "say": "PON-der",
+    "meaning": "To think about something carefully for a while.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I sat with my tea to **ponder** the question.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I need a day to **ponder** this offer.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She stopped to **ponder** what he said."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a fast answer",
+        "text": "Quick, ponder the answer in two seconds!"
+      }
+    ],
+    "rule": "slow, careful thinking",
+    "check": {
+      "question": "You think slowly about a big choice. You...",
+      "options": [
+        {
+          "text": "Ponder it.",
+          "right": true
+        },
+        {
+          "text": "Guess it.",
+          "right": false
+        },
+        {
+          "text": "Rule it.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-061",
+    "type": "module",
+    "module": "words",
+    "topic": "obvious",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "obvious",
+    "pos": "adjective",
+    "say": "OB-vee-us",
+    "meaning": "Easy to see or understand.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It's **obvious** the dog ate the cake.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The answer was **obvious**, but I missed it.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It's **obvious** you're tired; go to bed."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for something hidden",
+        "text": "The secret was obvious; nobody knew."
+      }
+    ],
+    "rule": "easy to see"
+  },
+  {
+    "id": "v7-words-thinking-062",
+    "type": "module",
+    "module": "words",
+    "topic": "realistic",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "realistic",
+    "pos": "adjective",
+    "say": "ree-uh-LIS-tik",
+    "meaning": "Based on what can really happen.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Is it **realistic** to clean the whole house today?",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "A **realistic** budget for the trip is ten thousand.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let's set a **realistic** goal."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"real\"",
+        "text": "Is that a realistic diamond?"
+      }
+    ],
+    "rule": "can really happen"
+  },
+  {
+    "id": "v7-words-thinking-063",
+    "type": "module",
+    "module": "words",
+    "topic": "confusing",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "confusing",
+    "pos": "adjective",
+    "say": "kun-FYOO-zing",
+    "meaning": "Hard to understand.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "This recipe is **confusing**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The new metro map is so **confusing**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The instructions are **confusing**; let me read them again."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for how you feel",
+        "text": "I am confusing about the time."
+      }
+    ],
+    "rule": "it's confusing; I'm confused",
+    "check": {
+      "question": "Which sentence is right?",
+      "options": [
+        {
+          "text": "I am confusing.",
+          "right": false
+        },
+        {
+          "text": "I confusing.",
+          "right": false
+        },
+        {
+          "text": "I am confused.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-064",
+    "type": "module",
+    "module": "words",
+    "topic": "valid",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "valid",
+    "pos": "adjective",
+    "say": "VAL-id",
+    "meaning": "Accepted, or still good to use.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Is your passport still **valid**?",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "That's a **valid** point; I hadn't thought of it.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "This ticket is **valid** for two days."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a person",
+        "text": "My friend is very valid."
+      }
+    ],
+    "rule": "a valid ticket or point"
+  },
+  {
+    "id": "v7-words-thinking-065",
+    "type": "module",
+    "module": "words",
+    "topic": "discern",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "discern",
+    "pos": "verb",
+    "say": "dih-SERN",
+    "meaning": "To notice or tell something, with care.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "In the dark, I could barely **discern** the stairs.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "It's hard to **discern** a real review from a fake one.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Can you **discern** any change in the photo?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for loud, clear things",
+        "text": "I discerned the loud fireworks."
+      }
+    ],
+    "rule": "notice with care"
+  },
+  {
+    "id": "v7-words-thinking-066",
+    "type": "module",
+    "module": "words",
+    "topic": "risky",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "risky",
+    "pos": "adjective",
+    "say": "RIS-kee",
+    "meaning": "Possibly dangerous, or likely to go wrong.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Leaving the door open is **risky**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Driving in this storm is **risky**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It's **risky** to pay before you see the flat."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a brave person",
+        "text": "My sister is very risky; she climbs mountains."
+      }
+    ],
+    "rule": "a risky plan",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "She is a risky girl.",
+          "right": false
+        },
+        {
+          "text": "Swimming here is risky.",
+          "right": true
+        },
+        {
+          "text": "I risky the money.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-067",
+    "type": "module",
+    "module": "words",
+    "topic": "criteria",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "criteria",
+    "pos": "noun",
+    "say": "kry-TEER-ee-uh",
+    "meaning": "The things you use to judge or choose.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My **criteria** for a flat: light, quiet, near a park.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "Price and size are my two **criteria**.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "What are your **criteria** for a good school?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for one thing",
+        "text": "My only criteria is price."
+      }
+    ],
+    "rule": "criteria (many); criterion (one)"
+  },
+  {
+    "id": "v7-words-thinking-068",
+    "type": "module",
+    "module": "words",
+    "topic": "safe bet",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "safe bet",
+    "pos": "noun",
+    "say": "SAFE BET",
+    "meaning": "A choice that will very likely work.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Pasta is a **safe bet** for the kids.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Chocolate is a **safe bet** for a gift.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Leaving at eight is a **safe bet** to beat traffic."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a risky choice",
+        "text": "Skydiving is a safe bet for a first date."
+      }
+    ],
+    "rule": "very likely to work"
+  },
+  {
+    "id": "v7-words-thinking-069",
+    "type": "module",
+    "module": "words",
+    "topic": "justify",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "justify",
+    "pos": "verb",
+    "say": "JUS-tih-fy",
+    "meaning": "To give a good reason for something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "How do you **justify** a third pair of shoes?",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I can **justify** the price: it lasts ten years.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Can you **justify** the cost of the trip?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"justify for\"",
+        "text": "Justify for your answer."
+      }
+    ],
+    "rule": "justify something",
+    "check": {
+      "question": "Which sentence is right?",
+      "options": [
+        {
+          "text": "Justify for your choice.",
+          "right": false
+        },
+        {
+          "text": "I justified about it.",
+          "right": false
+        },
+        {
+          "text": "Can you justify the cost?",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-070",
+    "type": "module",
+    "module": "words",
+    "topic": "counterintuitive",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "counterintuitive",
+    "pos": "adjective",
+    "say": "kown-ter-in-TOO-ih-tiv",
+    "meaning": "The opposite of what you'd expect.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It's **counterintuitive**, but a short rest can make you faster.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "It's **counterintuitive**, but leaving later avoided the jam.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It sounds **counterintuitive**, but slowing down saved time."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"wrong\"",
+        "text": "Your sum is counterintuitive; two plus two is five."
+      }
+    ],
+    "rule": "against what you'd expect"
+  },
+  {
+    "id": "v7-words-thinking-071",
+    "type": "module",
+    "module": "words",
+    "topic": "gut feeling",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "gut feeling",
+    "pos": "noun",
+    "say": "GUT FEE-ling",
+    "meaning": "A strong feeling you can't explain.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I have a **gut feeling** we forgot something.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "My **gut feeling** says this shop is a scam.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Trust your **gut feeling** about people."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a stomach ache",
+        "text": "I had a gut feeling after the spicy food."
+      }
+    ],
+    "rule": "a feeling, not pain"
+  },
+  {
+    "id": "v7-words-thinking-072",
+    "type": "module",
+    "module": "words",
+    "topic": "predict",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "predict",
+    "pos": "verb",
+    "say": "prih-DIKT",
+    "meaning": "To say what will happen in the future.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I **predict** the kids will be asleep by nine.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Nobody can **predict** the weather in Mumbai.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Can you **predict** who will win?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the past",
+        "text": "I predicted yesterday's score after the match."
+      }
+    ],
+    "rule": "about the future",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I predict rain tomorrow.",
+          "right": true
+        },
+        {
+          "text": "I predict yesterday.",
+          "right": false
+        },
+        {
+          "text": "Predict me the result.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-073",
+    "type": "module",
+    "module": "words",
+    "topic": "second thoughts",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "second thoughts",
+    "pos": "noun",
+    "say": "SEK-und THAWTS",
+    "meaning": "Doubts about a choice you made.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm having **second thoughts** about the haircut.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He had **second thoughts** and stayed home.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Any **second thoughts** about the trip?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"another idea\"",
+        "text": "My second thoughts is to order pizza."
+      }
+    ],
+    "rule": "doubts after deciding"
+  },
+  {
+    "id": "v7-words-thinking-074",
+    "type": "module",
+    "module": "words",
+    "topic": "suspect",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "suspect",
+    "pos": "verb",
+    "say": "suh-SPEKT",
+    "meaning": "To think something is true, often something bad.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I **suspect** the cat broke the vase.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I **suspect** the battery is the problem.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I **suspect** he's not telling the truth."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"suspect on\"",
+        "text": "I suspect on my neighbour."
+      }
+    ],
+    "rule": "suspect someone, no \"on\""
+  },
+  {
+    "id": "v7-words-thinking-075",
+    "type": "module",
+    "module": "words",
+    "topic": "premise",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "premise",
+    "pos": "noun",
+    "say": "PREM-is",
+    "meaning": "The idea a story or argument is built on.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The film's **premise** is simple: a dog finds its way home.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "Your plan rests on one **premise**: the train is on time.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I don't agree with the **premise** of that question."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"promise\"",
+        "text": "I gave her a premise to call."
+      }
+    ],
+    "rule": "the starting idea",
+    "check": {
+      "question": "Which sentence is right?",
+      "options": [
+        {
+          "text": "He kept his premise.",
+          "right": false
+        },
+        {
+          "text": "I premise to come.",
+          "right": false
+        },
+        {
+          "text": "The premise of the show is fun.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-076",
+    "type": "module",
+    "module": "words",
+    "topic": "think over",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "think over",
+    "pos": "phrasal verb",
+    "say": "THINK OH-ver",
+    "meaning": "To think about something before you decide.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Let me **think over** your offer tonight.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "**Think over** what I said, then call me.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I need a day to **think over** the price."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"think over about\"",
+        "text": "Let me think over about it."
+      }
+    ],
+    "rule": "think over something"
+  },
+  {
+    "id": "v7-words-thinking-077",
+    "type": "module",
+    "module": "words",
+    "topic": "deliberate",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "deliberate",
+    "pos": "adjective",
+    "say": "dih-LIB-er-it",
+    "meaning": "Done on purpose, not by accident.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Leaving the last biscuit was a **deliberate** choice.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "That pause in his joke was **deliberate**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Was the mistake **deliberate**?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for an accident",
+        "text": "I slipped on the wet floor; it was deliberate."
+      }
+    ],
+    "rule": "on purpose"
+  },
+  {
+    "id": "v7-words-thinking-078",
+    "type": "module",
+    "module": "words",
+    "topic": "weigh up",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "weigh up",
+    "pos": "phrasal verb",
+    "say": "WAY UP",
+    "meaning": "To think about the good and bad before choosing.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Let's **weigh up** the cost of a new fridge.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I'll **weigh up** both offers and decide.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We need to **weigh up** the two flats."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a kitchen scale",
+        "text": "Please weigh up the rice for me."
+      }
+    ],
+    "rule": "think through both sides",
+    "check": {
+      "question": "You think about the good and bad of two jobs. You...",
+      "options": [
+        {
+          "text": "Jump up the two jobs.",
+          "right": false
+        },
+        {
+          "text": "Weigh up the two jobs.",
+          "right": true
+        },
+        {
+          "text": "Weigh the two jobs on a scale.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-079",
+    "type": "module",
+    "module": "words",
+    "topic": "settle on",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "settle on",
+    "pos": "phrasal verb",
+    "say": "SET-ul ON",
+    "meaning": "To finally choose something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We always **settle on** pizza on Fridays.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "After an hour, let's just **settle on** a film.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Did you **settle on** a name for the baby?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for paying a bill",
+        "text": "I'll settle on the bill."
+      }
+    ],
+    "rule": "finally choose"
+  },
+  {
+    "id": "v7-words-thinking-080",
+    "type": "module",
+    "module": "words",
+    "topic": "caveat",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "caveat",
+    "pos": "noun",
+    "say": "KAV-ee-at",
+    "meaning": "A small warning or condition you add.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "One **caveat**: the oven takes ages to heat up.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "Yes, I'll come, with one **caveat**: I must leave by ten.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The deal looks good, but there's a **caveat**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the main point",
+        "text": "The caveat of my talk is: buy our product."
+      }
+    ],
+    "rule": "a small warning"
+  },
+  {
+    "id": "v7-words-thinking-081",
+    "type": "module",
+    "module": "words",
+    "topic": "rule out",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "rule out",
+    "pos": "phrasal verb",
+    "say": "ROOL OWT",
+    "meaning": "To decide something is not possible.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We can **rule out** the beach; it's raining.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "The doctor wants to **rule out** a fracture.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I can't **rule out** a delay."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"choose\"",
+        "text": "We ruled out the hotel and booked it."
+      }
+    ],
+    "rule": "not possible",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "We ruled out the beach, so we booked it.",
+          "right": false
+        },
+        {
+          "text": "We ruled out the beach because of the rain.",
+          "right": true
+        },
+        {
+          "text": "Rule out me the answer.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-082",
+    "type": "module",
+    "module": "words",
+    "topic": "narrow down",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "narrow down",
+    "pos": "phrasal verb",
+    "say": "NAR-oh DOWN",
+    "meaning": "To make a list of choices smaller.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Let's **narrow down** the paint colours to three.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "First **narrow down** the hotels by price.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I managed to **narrow down** the list to two phones."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for adding more",
+        "text": "Let's narrow down the list by adding ten names."
+      }
+    ],
+    "rule": "make a list smaller"
+  },
+  {
+    "id": "v7-words-thinking-083",
+    "type": "module",
+    "module": "words",
+    "topic": "come up with",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "come up with",
+    "pos": "phrasal verb",
+    "say": "KUM UP with",
+    "meaning": "To think of an idea or an answer.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Can you **come up with** a name for the cat?",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We need to **come up with** a plan for Sunday.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She can **come up with** a joke for anything."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for arriving with someone",
+        "text": "I'll come up with my sister to the party."
+      }
+    ],
+    "rule": "come up with an idea"
+  },
+  {
+    "id": "v7-words-thinking-084",
+    "type": "module",
+    "module": "words",
+    "topic": "back up",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "back up",
+    "pos": "phrasal verb",
+    "say": "BAK UP",
+    "meaning": "To support something with facts.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "**Back up** your story; show me the receipt.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "Use numbers to **back up** your point.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Can you **back up** that claim?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"go back home\"",
+        "text": "I'll back up home after the movie."
+      }
+    ],
+    "rule": "back up a point",
+    "check": {
+      "question": "Which sentence is right?",
+      "options": [
+        {
+          "text": "I'll back up home at six.",
+          "right": false
+        },
+        {
+          "text": "Numbers back up my point.",
+          "right": true
+        },
+        {
+          "text": "Back up me to the station.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-085",
+    "type": "module",
+    "module": "words",
+    "topic": "hypothetical",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "hypothetical",
+    "pos": "adjective",
+    "say": "hy-puh-THET-ih-kul",
+    "meaning": "Imagined, not real; a \"what if\".",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It's a **hypothetical** question: what if we moved abroad?",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "Let's take a **hypothetical** case: the train is cancelled.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "That's only a **hypothetical** problem for now."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a fact",
+        "text": "My hypothetical birthday is in May."
+      }
+    ],
+    "rule": "a \"what if\""
+  },
+  {
+    "id": "v7-words-thinking-086",
+    "type": "module",
+    "module": "words",
+    "topic": "make sense",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "make sense",
+    "pos": "phrase",
+    "say": "make SENS",
+    "meaning": "To be clear and easy to understand.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Does this recipe **make sense** to you?",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "His excuse doesn't **make sense**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It would **make sense** to leave early."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"do sense\"",
+        "text": "That doesn't do sense."
+      }
+    ],
+    "rule": "it makes sense"
+  },
+  {
+    "id": "v7-words-thinking-087",
+    "type": "module",
+    "module": "words",
+    "topic": "in theory",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "in theory",
+    "pos": "phrase",
+    "say": "in THEER-ee",
+    "meaning": "What should happen, but may not in real life.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "**In theory**, the plumber comes at ten.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "**In theory**, the shortcut saves time; in real life, it is jammed.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "**In theory**, the diet works."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for something that already happened",
+        "text": "In theory, I ate lunch at one."
+      }
+    ],
+    "rule": "should, but may not",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "In theory, I was born in 1990.",
+          "right": false
+        },
+        {
+          "text": "I theory it.",
+          "right": false
+        },
+        {
+          "text": "In theory, the bus comes every ten minutes.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-088",
+    "type": "module",
+    "module": "words",
+    "topic": "hunch",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "hunch",
+    "pos": "noun",
+    "say": "HUNCH",
+    "meaning": "A feeling that something is true, without proof.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I have a **hunch** the keys are in the car.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "My **hunch** is she'll say yes.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Call it a **hunch**, but I think he's lying."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a fact you checked",
+        "text": "I counted twice; it's a hunch there are ten."
+      }
+    ],
+    "rule": "a feeling, no proof"
+  },
+  {
+    "id": "v7-words-thinking-089",
+    "type": "module",
+    "module": "words",
+    "topic": "in practice",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "in practice",
+    "pos": "phrase",
+    "say": "in PRAK-tis",
+    "meaning": "What really happens in real life.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "**In practice**, the kids eat whatever is in the fridge.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "The rule says nine; **in practice**, we start at ten.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "**In practice**, the new road takes longer."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for what should happen",
+        "text": "In practice it should work, but nobody has tried it."
+      }
+    ],
+    "rule": "what really happens"
+  },
+  {
+    "id": "v7-words-thinking-090",
+    "type": "module",
+    "module": "words",
+    "topic": "far-fetched",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "far-fetched",
+    "pos": "adjective",
+    "say": "far-FECHT",
+    "meaning": "Very hard to believe.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "His story about a tiger on the road is **far-fetched**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Winning the lottery twice sounds **far-fetched**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The plot of that film is **far-fetched**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for something far away",
+        "text": "The shop is far-fetched from my house."
+      }
+    ],
+    "rule": "hard to believe",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The station is far-fetched from here.",
+          "right": false
+        },
+        {
+          "text": "I far-fetched the ball.",
+          "right": false
+        },
+        {
+          "text": "That excuse is far-fetched.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-091",
+    "type": "module",
+    "module": "words",
+    "topic": "certain",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "certain",
+    "pos": "adjective",
+    "say": "SER-tun",
+    "meaning": "Completely sure.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Are you **certain** the stove is off?",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm **certain** we've met before.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'm **certain** the shop opens at nine."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"certainly\" in place of \"certain\"",
+        "text": "I am certainly about it."
+      }
+    ],
+    "rule": "be certain about"
+  },
+  {
+    "id": "v7-words-thinking-092",
+    "type": "module",
+    "module": "words",
+    "topic": "gamble",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "gamble",
+    "pos": "noun",
+    "say": "GAM-bul",
+    "meaning": "A risky choice that may or may not work.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Buying fruit online is a bit of a **gamble**.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "Skipping the umbrella was a **gamble**, and I lost.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Taking the shortcut is a **gamble** at rush hour."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a sure thing",
+        "text": "Two plus two is four; that's a gamble."
+      }
+    ],
+    "rule": "a risky choice"
+  },
+  {
+    "id": "v7-words-thinking-093",
+    "type": "module",
+    "module": "words",
+    "topic": "unsure",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "unsure",
+    "pos": "adjective",
+    "say": "un-SHOOR",
+    "meaning": "Not certain.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I'm **unsure** which bus goes to the mall.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She was **unsure** about the dress.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'm **unsure** what to cook today."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not as a verb",
+        "text": "I unsure about it."
+      }
+    ],
+    "rule": "be unsure about",
+    "check": {
+      "question": "Which sentence is right?",
+      "options": [
+        {
+          "text": "I unsure the time.",
+          "right": false
+        },
+        {
+          "text": "I am unsuring.",
+          "right": false
+        },
+        {
+          "text": "I'm unsure about the time.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-094",
+    "type": "module",
+    "module": "words",
+    "topic": "no-brainer",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "no-brainer",
+    "pos": "noun",
+    "say": "noh-BRAY-ner",
+    "meaning": "A very easy choice.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Free delivery? That's a **no-brainer**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Taking the AC bus in May is a **no-brainer**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Saying yes to a free upgrade was a **no-brainer**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a hard choice",
+        "text": "Which city to move to? A real no-brainer; I'm stuck."
+      }
+    ],
+    "rule": "a very easy choice"
+  },
+  {
+    "id": "v7-words-thinking-095",
+    "type": "module",
+    "module": "words",
+    "topic": "implication",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "implication",
+    "pos": "noun",
+    "say": "im-plih-KAY-shun",
+    "meaning": "A possible result of an action or decision.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Think about the **implication** of moving schools for the kids.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "The **implication** is clear: we leave earlier or miss the train.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "What's the **implication** of this new rule for us?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"application\"",
+        "text": "I filled the implication form for the job."
+      }
+    ],
+    "rule": "a possible result"
+  },
+  {
+    "id": "v7-words-thinking-096",
+    "type": "module",
+    "module": "words",
+    "topic": "for now",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "for now",
+    "pos": "phrase",
+    "say": "for NOW",
+    "meaning": "At the moment, but it may change.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Let's keep the old sofa **for now**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "That's all **for now**; see you later.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "**For now**, the plan is to stay home."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"a moment ago\"",
+        "text": "He called me for now, five minutes ago."
+      }
+    ],
+    "rule": "for the moment",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "He left for now, at two.",
+          "right": false
+        },
+        {
+          "text": "Use this charger for now.",
+          "right": true
+        },
+        {
+          "text": "I for now am eating.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-thinking-097",
+    "type": "module",
+    "module": "words",
+    "topic": "bottom line",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "thinking"
+    ],
+    "word": "bottom line",
+    "pos": "noun",
+    "say": "BOT-um LINE",
+    "meaning": "The most important point.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The **bottom line**: we can't afford a new car.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "The **bottom line** is we need to leave by six.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Here's the **bottom line**: we need more time."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a small detail",
+        "text": "The bottom line is the colour of the pen."
+      }
+    ],
+    "rule": "the main point"
+  }
+]

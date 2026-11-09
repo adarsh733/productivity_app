@@ -1,0 +1,4578 @@
+[
+  {
+    "id": "v7-words-money-001",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "afford",
+    "pos": "verb",
+    "say": "uh-FORD",
+    "meaning": "Have enough money to pay for something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We can't **afford** a new sofa this month.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Can you **afford** the Goa trip in December?",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I can finally **afford** my own flat."
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"for\" before the thing",
+        "text": "I can't afford for a car."
+      }
+    ],
+    "rule": "afford something; afford to do something"
+  },
+  {
+    "id": "v7-words-money-002",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "expense",
+    "pos": "noun",
+    "say": "ik-SPENS",
+    "meaning": "Money you spend on something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "School fees are our biggest **expense** every year.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "Keep the taxi bill; it's a work **expense**.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Rent is my largest monthly **expense**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"costly\"",
+        "text": "This phone is very expense."
+      }
+    ],
+    "rule": "an expense (noun); expensive (adjective)"
+  },
+  {
+    "id": "v7-words-money-003",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "budget",
+    "pos": "noun",
+    "say": "BUJ-it",
+    "meaning": "A plan for how much money you will spend.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Our food **budget** is 8,000 rupees a month.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "The client's **budget** for this project is small.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let's stay within the **budget** for the party."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"out of budget\"",
+        "text": "We went out of budget on the wedding."
+      }
+    ],
+    "rule": "on budget; over budget; within budget",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The trip went over budget.",
+          "right": true
+        },
+        {
+          "text": "The trip went out of budget.",
+          "right": false
+        },
+        {
+          "text": "The trip was very budget.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-004",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "instalment",
+    "pos": "noun",
+    "say": "in-STAWL-ment",
+    "meaning": "One part of a payment, paid over time.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The last **instalment** for the fridge is due on Friday.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I paid the first **instalment** for the bike today.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Each **instalment** is 2,000 rupees a month."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the full amount",
+        "text": "I paid the whole house as one instalment."
+      }
+    ],
+    "rule": "pay in instalments; one instalment"
+  },
+  {
+    "id": "v7-words-money-005",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "frugal",
+    "pos": "adjective",
+    "say": "FROO-gul",
+    "meaning": "Careful not to spend more money than needed.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My grandmother is **frugal**; she reuses every plastic bag.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We had a **frugal** trip: buses, cheap rooms, street food.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Living a **frugal** life helped him save for a house."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a low price",
+        "text": "This shirt is very frugal, only 200 rupees."
+      }
+    ],
+    "rule": "frugal people and habits"
+  },
+  {
+    "id": "v7-words-money-006",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "discount",
+    "pos": "noun",
+    "say": "DIS-kount",
+    "meaning": "Money taken off the normal price.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The shop gave us a 10% **discount** on the fridge.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Show your student card and you get a **discount**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Ask if there's a **discount** for paying in cash."
+    },
+    "wrong": [
+      {
+        "label": "✗ Needs \"a\"",
+        "text": "Can you give discount?"
+      }
+    ],
+    "rule": "a discount; 20% off",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Can you discount me?",
+          "right": false
+        },
+        {
+          "text": "Can you give me a discount?",
+          "right": true
+        },
+        {
+          "text": "Can you do discount?",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-007",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "savings",
+    "pos": "noun",
+    "say": "SAY-vingz",
+    "meaning": "Money you have kept and not spent.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We used our **savings** to pay for the wedding.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I'd rather not touch my **savings** for a new phone.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She keeps her **savings** in a fixed deposit."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not one \"saving\" for money you keep",
+        "text": "I have a saving of 50,000 rupees."
+      }
+    ],
+    "rule": "savings = money kept"
+  },
+  {
+    "id": "v7-words-money-008",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "refund",
+    "pos": "noun",
+    "say": "REE-fund",
+    "meaning": "Money given back when you return something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I returned the shoes and got a full **refund**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The concert was cancelled, so we'll get a **refund**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The airline promised a **refund** within seven days."
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"back\"",
+        "text": "They will refund back the money."
+      }
+    ],
+    "rule": "get a refund; refund the money"
+  },
+  {
+    "id": "v7-words-money-009",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "interest",
+    "pos": "noun",
+    "say": "IN-trest",
+    "meaning": "Extra money paid for borrowing, or earned on savings.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The bank pays 7% **interest** on this deposit.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I'm paying the loan off early to save on **interest**.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Credit cards charge high **interest** if you pay late."
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"s\" for money",
+        "text": "The bank gave me interests."
+      }
+    ],
+    "rule": "interest on a loan or savings",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The loan has 10% interests.",
+          "right": false
+        },
+        {
+          "text": "The loan is 10% interesting.",
+          "right": false
+        },
+        {
+          "text": "The loan has 10% interest.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-010",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "lavish",
+    "pos": "adjective",
+    "say": "LAV-ish",
+    "meaning": "Very rich and costly, more than needed.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "They threw a **lavish** party for their son's wedding.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The hotel breakfast was **lavish**: thirty dishes!",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We don't need a **lavish** birthday; cake at home is fine."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for small, simple things",
+        "text": "We had a lavish cup of tea from the stall."
+      }
+    ],
+    "rule": "a lavish party, gift or meal"
+  },
+  {
+    "id": "v7-words-money-011",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "bill",
+    "pos": "noun",
+    "say": "BIL",
+    "meaning": "A paper showing how much you must pay.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The electricity **bill** was high this summer.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Can we get the **bill**, please?",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll pay the phone **bill** online tonight."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not a verb for paying",
+        "text": "I billed the restaurant and left."
+      }
+    ],
+    "rule": "pay a bill; ask for the bill"
+  },
+  {
+    "id": "v7-words-money-012",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "loan",
+    "pos": "noun",
+    "say": "LOHN",
+    "meaning": "Money you borrow and must pay back.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We took a **loan** to buy the flat.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "Her car **loan** will be paid off next year.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The bank approved my education **loan**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Needs \"a\"",
+        "text": "I will take loan from the bank."
+      }
+    ],
+    "rule": "take out a loan; pay back a loan",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I took loan.",
+          "right": false
+        },
+        {
+          "text": "I took out a loan.",
+          "right": true
+        },
+        {
+          "text": "I loaned from the bank.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-013",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "change",
+    "pos": "noun",
+    "say": "CHAYNJ",
+    "meaning": "The money you get back when you pay more than the price.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Keep the **change**; it's only ten rupees.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Do you have **change** for a 500 note?",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The shopkeeper gave me the wrong **change**."
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"s\" for coins",
+        "text": "Do you have changes?"
+      }
+    ],
+    "rule": "change (no s) = small money back"
+  },
+  {
+    "id": "v7-words-money-014",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "debt",
+    "pos": "noun",
+    "say": "DET",
+    "meaning": "Money you owe someone.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "They finally cleared their **debt** last year.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I don't want to go into **debt** for a holiday.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Credit card **debt** grows fast if you don't pay it."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"debit\"",
+        "text": "He is in big debit."
+      }
+    ],
+    "rule": "in debt; pay off a debt"
+  },
+  {
+    "id": "v7-words-money-015",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "extravagant",
+    "pos": "adjective",
+    "say": "ik-STRAV-uh-gunt",
+    "meaning": "Spending far too much money.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Buying a new phone every year is **extravagant**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Their wedding was **extravagant**: three days and two bands.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It felt **extravagant** to take a taxi for one kilometre."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for fair, normal spending",
+        "text": "Buying school books is extravagant."
+      }
+    ],
+    "rule": "too much spending, often for show",
+    "check": {
+      "question": "Which one is extravagant?",
+      "options": [
+        {
+          "text": "Paying for groceries.",
+          "right": false
+        },
+        {
+          "text": "Buying a bus ticket.",
+          "right": false
+        },
+        {
+          "text": "Flying a band in from Paris for a birthday.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-016",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "save",
+    "pos": "verb",
+    "say": "SAYV",
+    "meaning": "Keep money instead of spending it.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We **save** a little every month for the kids.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm trying to **save** for a new bike.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "If we cook at home, we **save** a lot."
+    },
+    "wrong": [
+      {
+        "label": "✗ \"In\" the bank, not \"on\"",
+        "text": "I save my money on the bank."
+      }
+    ],
+    "rule": "save money; save for something"
+  },
+  {
+    "id": "v7-words-money-017",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "invest",
+    "pos": "verb",
+    "say": "in-VEST",
+    "meaning": "Put money into something to make more later.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My dad wants to **invest** in gold.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I'd **invest** in a good laptop; it will last years.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Many young people **invest** a small amount each month."
+    },
+    "wrong": [
+      {
+        "label": "✗ Needs \"in\"",
+        "text": "I want to invest the share market."
+      }
+    ],
+    "rule": "invest in something"
+  },
+  {
+    "id": "v7-words-money-018",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "waste",
+    "pos": "verb",
+    "say": "WAYST",
+    "meaning": "Use money or time badly, on nothing useful.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Don't **waste** food; the kids can eat it tomorrow.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We **waste** so much money on delivery fees.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let's not **waste** the whole Sunday on our phones."
+    },
+    "wrong": [
+      {
+        "label": "✗ \"On\", not \"in\"",
+        "text": "I wasted 2,000 rupees in snacks."
+      }
+    ],
+    "rule": "waste money or time on something",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Don't waste money on junk.",
+          "right": true
+        },
+        {
+          "text": "Don't waste money in junk.",
+          "right": false
+        },
+        {
+          "text": "Don't waste of money.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-019",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "splurge",
+    "pos": "verb",
+    "say": "SPLURJ",
+    "meaning": "Spend a lot of money on a treat, just once.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Let's **splurge** on a nice dinner for Mum's birthday.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I don't usually **splurge**, but these shoes were perfect.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "After my first salary, I'll **splurge** on a good watch."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for everyday buying",
+        "text": "I splurge on milk and bread daily."
+      }
+    ],
+    "rule": "splurge on a one-time treat"
+  },
+  {
+    "id": "v7-words-money-020",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "lucrative",
+    "pos": "adjective",
+    "say": "LOO-kruh-tiv",
+    "meaning": "Bringing in a lot of money.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Selling cakes from home turned out to be **lucrative**.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "It's a **lucrative** job, but the hours are long.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Wedding photography can be a **lucrative** business."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for things that cost a lot",
+        "text": "This phone is too lucrative for me."
+      }
+    ],
+    "rule": "lucrative = earns a lot, not costs a lot"
+  },
+  {
+    "id": "v7-words-money-021",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "borrow",
+    "pos": "verb",
+    "say": "BOR-oh",
+    "meaning": "Take something you will give back.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Can I **borrow** your charger for an hour?",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I had to **borrow** money from my brother for the deposit.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Can I **borrow** 500 rupees till Friday?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for giving",
+        "text": "Can you borrow me your pen?"
+      }
+    ],
+    "rule": "borrow FROM someone; lend TO someone",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Can you borrow me your car?",
+          "right": false
+        },
+        {
+          "text": "Can I borrow your car?",
+          "right": true
+        },
+        {
+          "text": "Can I borrow to you my car?",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-022",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "thrifty",
+    "pos": "adjective",
+    "say": "THRIF-tee",
+    "meaning": "Good at saving money and not wasting it.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My mum is **thrifty**; she never throws away leftovers.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Being **thrifty**, he bought a second-hand bike.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "A **thrifty** family can save even on a small salary."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for things",
+        "text": "This bag is very thrifty."
+      }
+    ],
+    "rule": "thrifty people and habits"
+  },
+  {
+    "id": "v7-words-money-023",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "lend",
+    "pos": "verb",
+    "say": "LEND",
+    "meaning": "Give something that will be given back.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Can you **lend** me your umbrella?",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I don't like to **lend** money to friends.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "My sister will **lend** me her saree for the wedding."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for taking",
+        "text": "Can I lend your bike tomorrow?"
+      }
+    ],
+    "rule": "lend something TO someone"
+  },
+  {
+    "id": "v7-words-money-024",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "value for money",
+    "pos": "phrase",
+    "say": "VAL-yoo for MUN-ee",
+    "meaning": "Good quality for the price you pay.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "This mixer is real **value for money**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The buffet is **value for money**: forty dishes for 600.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Second-hand books are great **value for money**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"valuable for money\"",
+        "text": "The phone is valuable for money."
+      }
+    ],
+    "rule": "good value for money",
+    "check": {
+      "question": "Which one is value for money?",
+      "options": [
+        {
+          "text": "A torn shirt for a high price.",
+          "right": false
+        },
+        {
+          "text": "A good shirt for a fair price.",
+          "right": true
+        },
+        {
+          "text": "A plain shirt for triple the price.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-025",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "nominal",
+    "pos": "adjective",
+    "say": "NOM-ih-nul",
+    "meaning": "Very small, much less than the real cost.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The society charges a **nominal** fee for the gym.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "There's a **nominal** charge of 50 rupees for the form.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The school asks only a **nominal** amount for books."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for big amounts",
+        "text": "The nominal rent is 40,000 a month."
+      }
+    ],
+    "rule": "a nominal fee = a small one"
+  },
+  {
+    "id": "v7-words-money-026",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "owe",
+    "pos": "verb",
+    "say": "OH",
+    "meaning": "Need to pay back money to someone.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I still **owe** my brother 2,000 rupees.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "You **owe** me a coffee for last time!",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "How much do I **owe** you for the tickets?"
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"to\" before the person",
+        "text": "You owe to me 500 rupees."
+      }
+    ],
+    "rule": "owe someone money"
+  },
+  {
+    "id": "v7-words-money-027",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "rip-off",
+    "pos": "noun",
+    "say": "RIP-off",
+    "meaning": "Something that costs far more than it should.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Two hundred for a cup of tea? What a **rip-off**!",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "That taxi fare was a total **rip-off**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The hotel minibar is a **rip-off**; buy water outside."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not in formal emails",
+        "text": "Dear Sir, your invoice is a rip-off."
+      }
+    ],
+    "rule": "casual: far too pricey",
+    "check": {
+      "question": "Which one is a rip-off?",
+      "options": [
+        {
+          "text": "Paying 300 for a bottle of water.",
+          "right": true
+        },
+        {
+          "text": "Paying 20 for a bottle of water.",
+          "right": false
+        },
+        {
+          "text": "Getting free water.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-028",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "bargain",
+    "pos": "noun",
+    "say": "BAR-gin",
+    "meaning": "Something bought for less than its usual price.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "This sofa was a **bargain** at half price.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I got these jeans for 400. What a **bargain**!",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The flight was a **bargain** because we booked early."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for something overpriced",
+        "text": "It cost double. What a bargain!"
+      }
+    ],
+    "rule": "a bargain = a cheap, good buy"
+  },
+  {
+    "id": "v7-words-money-029",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "tip",
+    "pos": "noun",
+    "say": "TIP",
+    "meaning": "Extra money you give for good service.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We left a **tip** for the delivery person.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The waiter was lovely, so let's leave a big **tip**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Is the **tip** already in the bill?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a fee you must pay",
+        "text": "The tip for the passport is 1,500 rupees."
+      }
+    ],
+    "rule": "leave a tip; give a tip"
+  },
+  {
+    "id": "v7-words-money-030",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "exorbitant",
+    "pos": "adjective",
+    "say": "ig-ZOR-bih-tunt",
+    "meaning": "Far too high in price.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The hospital charged an **exorbitant** fee for one night.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Airport food prices are **exorbitant**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Rents in this area have become **exorbitant**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for things, only prices",
+        "text": "The car is exorbitant."
+      }
+    ],
+    "rule": "an exorbitant price, fee or rent",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The hotel staff were exorbitant.",
+          "right": false
+        },
+        {
+          "text": "The fee was exorbitant.",
+          "right": true
+        },
+        {
+          "text": "The sky was exorbitant.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-031",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "deal",
+    "pos": "noun",
+    "say": "DEEL",
+    "meaning": "A good price, or an agreement.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I got a good **deal** on this washing machine.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "You pay for lunch, I'll pay for coffee. **Deal**?",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Check online first; you might find a better **deal**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"price\"",
+        "text": "What is the deal of this phone?"
+      }
+    ],
+    "rule": "a good deal on something"
+  },
+  {
+    "id": "v7-words-money-032",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "cost-effective",
+    "pos": "adjective",
+    "say": "kost-ih-FEK-tiv",
+    "meaning": "Giving good results for the money spent.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Video calls are more **cost-effective** than flying to Mumbai.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Solar panels are **cost-effective** over ten years.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Buying rice in bulk is more **cost-effective**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"cheap and bad\"",
+        "text": "The shoes were cost-effective; they broke in a week."
+      }
+    ],
+    "rule": "cost-effective = worth what you pay"
+  },
+  {
+    "id": "v7-words-money-033",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "receipt",
+    "pos": "noun",
+    "say": "rih-SEET",
+    "meaning": "A paper that proves you paid.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Keep the **receipt** in case the shirt doesn't fit.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "Send me the taxi **receipt** and I'll pay you back.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Can I have a **receipt**, please?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not before you pay",
+        "text": "I got the receipt but haven't paid yet."
+      }
+    ],
+    "rule": "a receipt after paying; a bill before",
+    "check": {
+      "question": "When do you get a receipt?",
+      "options": [
+        {
+          "text": "Before you order.",
+          "right": false
+        },
+        {
+          "text": "After you pay.",
+          "right": true
+        },
+        {
+          "text": "When you borrow money.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-034",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "budget-friendly",
+    "pos": "adjective",
+    "say": "BUJ-it FREND-lee",
+    "meaning": "Cheap enough for a small budget.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Dal and rice is a **budget-friendly** dinner.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Let's find a **budget-friendly** hotel near the beach.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "This phone is **budget-friendly** and still works well."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for people",
+        "text": "My friend is very budget-friendly."
+      }
+    ],
+    "rule": "budget-friendly things, places, plans"
+  },
+  {
+    "id": "v7-words-money-035",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "windfall",
+    "pos": "noun",
+    "say": "WIND-fawl",
+    "meaning": "Money you get suddenly and did not expect.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The tax refund was a nice **windfall**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He won a quiz and spent the **windfall** on a trip.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "If I get a **windfall**, I'll pay off my loan."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for your normal salary",
+        "text": "My monthly salary is a windfall."
+      }
+    ],
+    "rule": "a windfall = surprise money"
+  },
+  {
+    "id": "v7-words-money-036",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "cash",
+    "pos": "noun",
+    "say": "KASH",
+    "meaning": "Money in notes and coins.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Keep some **cash** at home for emergencies.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The stall takes only **cash**, no cards.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Do you want to pay by card or in **cash**?"
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"s\"",
+        "text": "I don't have cashes."
+      }
+    ],
+    "rule": "cash (no s); pay in cash",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I'll pay in cashes.",
+          "right": false
+        },
+        {
+          "text": "I'll cash in pay.",
+          "right": false
+        },
+        {
+          "text": "I'll pay in cash.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-037",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "subscription",
+    "pos": "noun",
+    "say": "sub-SKRIP-shun",
+    "meaning": "Money you pay regularly to keep using something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Let's cancel the music **subscription**; nobody uses it.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Four of us share one streaming **subscription**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "My gym **subscription** ends next month."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a one-time buy",
+        "text": "I bought a subscription of this book."
+      }
+    ],
+    "rule": "a subscription to something, paid again and again"
+  },
+  {
+    "id": "v7-words-money-038",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "fee",
+    "pos": "noun",
+    "say": "FEE",
+    "meaning": "Money paid for a service.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The school **fee** goes up every year.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "The bank charges a small **fee** for each transfer.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "What's the doctor's **fee** for one visit?"
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for things in a shop",
+        "text": "The fee of this shirt is 900."
+      }
+    ],
+    "rule": "a fee for a service; a price for a thing"
+  },
+  {
+    "id": "v7-words-money-039",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "renew",
+    "pos": "verb",
+    "say": "rih-NYOO",
+    "meaning": "Pay again to keep something going.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I need to **renew** my passport before the trip.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "Don't forget to **renew** the car insurance this month.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "You can **renew** the library card online."
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"back\"",
+        "text": "I will renew back my membership."
+      }
+    ],
+    "rule": "renew a passport, licence or plan",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I renewed back my licence.",
+          "right": false
+        },
+        {
+          "text": "I renewed my licence.",
+          "right": true
+        },
+        {
+          "text": "My licence renewed me.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-040",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "prudent",
+    "pos": "adjective",
+    "say": "PROO-dunt",
+    "meaning": "Careful and sensible, thinking about later.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It's **prudent** to keep three months' salary saved.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I think it's **prudent** to wait before buying a car.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "A **prudent** choice is to compare prices first."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"proud\"",
+        "text": "She is prudent of her son."
+      }
+    ],
+    "rule": "prudent = careful and wise"
+  },
+  {
+    "id": "v7-words-money-041",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "rent",
+    "pos": "noun",
+    "say": "RENT",
+    "meaning": "Money you pay to live in or use someone else's place.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Our **rent** goes up by 5% every year.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We split the **rent** three ways.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The **rent** is due on the first of every month."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for buying a house",
+        "text": "We paid rent and now we own the house."
+      }
+    ],
+    "rule": "pay rent to the owner"
+  },
+  {
+    "id": "v7-words-money-042",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "penalty",
+    "pos": "noun",
+    "say": "PEN-ul-tee",
+    "meaning": "Money you pay as punishment for breaking a rule.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Pay the card bill on time to avoid a **penalty**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He paid a **penalty** for parking in the wrong spot.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "There's a **penalty** for paying the loan late."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a reward",
+        "text": "She got a penalty for top marks."
+      }
+    ],
+    "rule": "a penalty for something late or wrong",
+    "check": {
+      "question": "When do you pay a penalty?",
+      "options": [
+        {
+          "text": "When you win a prize.",
+          "right": false
+        },
+        {
+          "text": "When you get a discount.",
+          "right": false
+        },
+        {
+          "text": "When you pay a bill late.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-043",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "deposit",
+    "pos": "noun",
+    "say": "dih-POZ-it",
+    "meaning": "Money paid first, as a promise, often given back later.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The owner wants two months' rent as a **deposit**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We paid a small **deposit** to book the hall.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We'll get our **deposit** back when we leave the flat."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the full price",
+        "text": "I paid the full price as a deposit and owe nothing."
+      }
+    ],
+    "rule": "a deposit on a flat or booking"
+  },
+  {
+    "id": "v7-words-money-044",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "cut back",
+    "pos": "phrasal verb",
+    "say": "kut BAK",
+    "meaning": "Spend less or use less.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We need to **cut back** on eating out.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I'll **cut back** on taxis and take the metro.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Prices are up, so we're trying to **cut back**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for cutting things",
+        "text": "Please cut back the paper into squares."
+      }
+    ],
+    "rule": "cut back on something"
+  },
+  {
+    "id": "v7-words-money-045",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "meagre",
+    "pos": "adjective",
+    "say": "MEE-gur",
+    "meaning": "Very small; not enough.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "They lived on a **meagre** pension.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "His first salary was **meagre**, but he saved some.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The rain left a **meagre** harvest this year."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for thin people",
+        "text": "The boy is meagre."
+      }
+    ],
+    "rule": "a meagre amount, salary or meal",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "He earns a meagre salary.",
+          "right": true
+        },
+        {
+          "text": "His meagre house is huge.",
+          "right": false
+        },
+        {
+          "text": "She is meagre at maths.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-046",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "salary",
+    "pos": "noun",
+    "say": "SAL-uh-ree",
+    "meaning": "Money you earn from your job each month.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "My **salary** comes on the last day of the month.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Half my **salary** goes on rent and food.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She asked for a higher **salary** at the interview."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a one-time payment",
+        "text": "I got a salary for fixing his laptop."
+      }
+    ],
+    "rule": "a monthly salary from a job"
+  },
+  {
+    "id": "v7-words-money-047",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "pay off",
+    "pos": "phrasal verb",
+    "say": "pay OFF",
+    "meaning": "Pay all the money you owe.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We'll **pay off** the car loan next year.",
+        "icon": "home"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "I want to **pay off** my debt before I travel.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It took five years to **pay off** the flat."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"pay of\"",
+        "text": "I want to pay of my loan."
+      }
+    ],
+    "rule": "pay off a loan or debt"
+  },
+  {
+    "id": "v7-words-money-048",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "bonus",
+    "pos": "noun",
+    "say": "BOH-nus",
+    "meaning": "Extra money on top of your salary.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Everyone got a **bonus** at Diwali.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "We'll use my **bonus** for a new TV.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "My **bonus** depends on how the team does."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for your normal pay",
+        "text": "My bonus comes every month as my salary."
+      }
+    ],
+    "rule": "a bonus = extra pay",
+    "check": {
+      "question": "Which one is a bonus?",
+      "options": [
+        {
+          "text": "Your usual monthly pay.",
+          "right": false
+        },
+        {
+          "text": "Extra money for a good year.",
+          "right": true
+        },
+        {
+          "text": "Money you borrow.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-049",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "shell out",
+    "pos": "phrasal verb",
+    "say": "shel OWT",
+    "meaning": "Pay a lot, often without wanting to.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We had to **shell out** 5,000 for the plumber.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I'm not going to **shell out** that much for a concert.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Parents **shell out** a lot for school fees."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not in formal writing",
+        "text": "Please shell out the invoice amount."
+      }
+    ],
+    "rule": "casual: pay a lot"
+  },
+  {
+    "id": "v7-words-money-050",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "hefty",
+    "pos": "adjective",
+    "say": "HEF-tee",
+    "meaning": "Large, often too much.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We got a **hefty** electricity bill this month.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "Missing the deadline means a **hefty** fine.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "He paid a **hefty** price for the new phone."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for small amounts",
+        "text": "We paid a hefty fee of ten rupees."
+      }
+    ],
+    "rule": "a hefty bill, fine or price"
+  },
+  {
+    "id": "v7-words-money-051",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "broke",
+    "pos": "adjective",
+    "say": "BROHK",
+    "meaning": "Having no money right now.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "I'm **broke** till payday; let's eat at home.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "After the trip, we were totally **broke**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Sorry, I can't come; I'm **broke** this week."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"broken\" for money",
+        "text": "I am broken this month."
+      }
+    ],
+    "rule": "casual: be broke",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I'm broken this month.",
+          "right": false
+        },
+        {
+          "text": "I'm broke this month.",
+          "right": true
+        },
+        {
+          "text": "I'm broking this month.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-052",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "haggle",
+    "pos": "verb",
+    "say": "HAG-ul",
+    "meaning": "Argue about a price to make it lower.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My aunt loves to **haggle** at the vegetable market.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Don't pay what he asks; **haggle** a bit.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "You can **haggle** at street stalls, not in malls."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not where prices are fixed",
+        "text": "I haggled with the supermarket cashier."
+      }
+    ],
+    "rule": "haggle with someone over a price"
+  },
+  {
+    "id": "v7-words-money-053",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "pricey",
+    "pos": "adjective",
+    "say": "PRY-see",
+    "meaning": "Costing a lot; a casual word for expensive.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "That café is a bit **pricey**, but the coffee is great.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "Mangoes are **pricey** this early in the season.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The hotel looks **pricey**; let's check other options."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the price itself",
+        "text": "The price is pricey."
+      }
+    ],
+    "rule": "things are pricey; prices are high"
+  },
+  {
+    "id": "v7-words-money-054",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "dues",
+    "pos": "noun",
+    "say": "DYOOZ",
+    "meaning": "Money you still have to pay.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Please clear your society **dues** by the tenth.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "Pay your club **dues** before the new year.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "All his credit card **dues** are now paid."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"a due\"",
+        "text": "I have a due of 2,000 rupees."
+      }
+    ],
+    "rule": "pay your dues",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Please pay your due.",
+          "right": false
+        },
+        {
+          "text": "Please dues your payment.",
+          "right": false
+        },
+        {
+          "text": "Please pay your dues.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-055",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "incremental",
+    "pos": "adjective",
+    "say": "in-kruh-MEN-tul",
+    "meaning": "Growing in small steps.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "We'll make **incremental** changes to the app each week.",
+        "icon": "work"
+      },
+      {
+        "label": "Explain your thinking",
+        "text": "**Incremental** savings add up over a year.",
+        "icon": "thinking"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Small, **incremental** raises each year helped him."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for big jumps",
+        "text": "The price made an incremental jump to double."
+      }
+    ],
+    "rule": "small steps, one after another"
+  },
+  {
+    "id": "v7-words-money-056",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "worth",
+    "pos": "adjective",
+    "say": "WURTH",
+    "meaning": "Having a certain value, or good enough for the cost.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "This old ring is **worth** a lot of money.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The long drive was **worth** it for that view.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Is the course **worth** the fee?"
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"of\"",
+        "text": "The house is worth of ten million."
+      }
+    ],
+    "rule": "worth + an amount; worth it"
+  },
+  {
+    "id": "v7-words-money-057",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "timely",
+    "pos": "adjective",
+    "say": "TIME-lee",
+    "meaning": "Happening at the right time, not late.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Thanks for the **timely** reminder about the meeting.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "A **timely** visit to the doctor caught it early.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We need **timely** payments from the client."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not after a verb",
+        "text": "Please pay timely."
+      }
+    ],
+    "rule": "a timely reply; pay on time",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Please reply timely.",
+          "right": false
+        },
+        {
+          "text": "Thanks for the timely reply.",
+          "right": true
+        },
+        {
+          "text": "Please timely the reply.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-058",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "split the bill",
+    "pos": "phrase",
+    "say": "split the BIL",
+    "meaning": "Share the cost of a meal or bill.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "Shall we **split the bill** four ways?",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "My flatmate and I **split the bill** for electricity.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let's **split the bill**; it's easier."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not when one person pays",
+        "text": "He paid it all, so we split the bill."
+      }
+    ],
+    "rule": "everyone pays a share"
+  },
+  {
+    "id": "v7-words-money-059",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "in advance",
+    "pos": "phrase",
+    "say": "in ud-VANS",
+    "meaning": "Before the time something happens.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Book the train tickets **in advance** for Diwali.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "Send me the slides a day **in advance**.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "You must pay the rent **in advance**."
+    },
+    "wrong": [
+      {
+        "label": "✗ No \"before\" with it",
+        "text": "I booked it before in advance."
+      }
+    ],
+    "rule": "do something in advance"
+  },
+  {
+    "id": "v7-words-money-060",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "interim",
+    "pos": "adjective",
+    "say": "IN-tuh-rim",
+    "meaning": "For now, until something final is ready.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "This is an **interim** plan until the boss decides.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "We're in an **interim** flat until ours is ready.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The school has an **interim** principal this year."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for things that last",
+        "text": "Our interim house of twenty years."
+      }
+    ],
+    "rule": "for now, until the real one",
+    "check": {
+      "question": "Which one is interim?",
+      "options": [
+        {
+          "text": "A plan for now, until the final one.",
+          "right": true
+        },
+        {
+          "text": "A plan that lasts forever.",
+          "right": false
+        },
+        {
+          "text": "A plan from ten years ago.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-061",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "overpriced",
+    "pos": "adjective",
+    "say": "oh-ver-PRYST",
+    "meaning": "Costing more than it is really worth.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Popcorn at the cinema is so **overpriced**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "That jacket is **overpriced**; I saw it online for less.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The rooms near the station are **overpriced**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for good value",
+        "text": "It's cheap and great, so overpriced!"
+      }
+    ],
+    "rule": "costs more than it's worth"
+  },
+  {
+    "id": "v7-words-money-062",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "ahead of time",
+    "pos": "phrase",
+    "say": "uh-HED uv TIME",
+    "meaning": "Earlier than needed.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Please send the report **ahead of time**.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "We packed **ahead of time**, so the morning was calm.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Arrive **ahead of time** for the interview."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"ahead of the time\"",
+        "text": "I reached ahead of the time."
+      }
+    ],
+    "rule": "ahead of time = early"
+  },
+  {
+    "id": "v7-words-money-063",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "hurry",
+    "pos": "verb",
+    "say": "HUR-ee",
+    "meaning": "Move or act fast because time is short.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "**Hurry**, the bus leaves in five minutes!",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "No need to **hurry**; the client is late too.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We had to **hurry** to catch the train."
+    },
+    "wrong": [
+      {
+        "label": "✗ Needs \"a\" as a noun",
+        "text": "I am in hurry."
+      }
+    ],
+    "rule": "hurry up; be in a hurry",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Sorry, I'm in hurry.",
+          "right": false
+        },
+        {
+          "text": "Sorry, I'm hurry.",
+          "right": false
+        },
+        {
+          "text": "Sorry, I'm in a hurry.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-064",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "time-consuming",
+    "pos": "adjective",
+    "say": "TIME kun-SYOO-ming",
+    "meaning": "Taking a lot of time.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Checking every invoice by hand is **time-consuming**.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Making biryani is **time-consuming** but worth it.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Filling in this form is very **time-consuming**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for people",
+        "text": "My manager is time-consuming."
+      }
+    ],
+    "rule": "a time-consuming task"
+  },
+  {
+    "id": "v7-words-money-065",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "perpetual",
+    "pos": "adjective",
+    "say": "per-PECH-oo-ul",
+    "meaning": "Never ending, or happening again and again.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "There's a **perpetual** traffic jam outside our building.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "He's in a **perpetual** hurry, even on Sundays.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The office printer is a **perpetual** problem."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for something that happened once",
+        "text": "I had a perpetual cold last Tuesday."
+      }
+    ],
+    "rule": "never-ending or always coming back"
+  },
+  {
+    "id": "v7-words-money-066",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "weekday",
+    "pos": "noun",
+    "say": "WEEK-day",
+    "meaning": "Any day from Monday to Friday.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "On a **weekday**, I wake up at six.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The mall is quiet on a **weekday** morning.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The shop is open every **weekday** till nine."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for Saturday or Sunday",
+        "text": "Sunday is my favourite weekday."
+      }
+    ],
+    "rule": "weekday = Monday to Friday",
+    "check": {
+      "question": "Which day is a weekday?",
+      "options": [
+        {
+          "text": "Saturday",
+          "right": false
+        },
+        {
+          "text": "Wednesday",
+          "right": true
+        },
+        {
+          "text": "Sunday",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-067",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "kill time",
+    "pos": "phrase",
+    "say": "kil TIME",
+    "meaning": "Do something to pass time while you wait.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "We played cards to **kill time** at the airport.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "I scroll my phone to **kill time** in the queue.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We got there early, so we walked around to **kill time**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for saving time",
+        "text": "Take the metro to kill time; it's faster."
+      }
+    ],
+    "rule": "pass time while you wait"
+  },
+  {
+    "id": "v7-words-money-068",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "fortnight",
+    "pos": "noun",
+    "say": "FORT-nite",
+    "meaning": "Two weeks.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My parents are visiting for a **fortnight**.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "We'll send the report every **fortnight**.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll be back in a **fortnight**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a few days",
+        "text": "We stayed a fortnight, just Friday to Monday."
+      }
+    ],
+    "rule": "a fortnight = two weeks"
+  },
+  {
+    "id": "v7-words-money-069",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "run out of time",
+    "pos": "phrase",
+    "say": "run OWT uv TIME",
+    "meaning": "Have no time left.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "We always **run out of time** in these meetings.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Start packing now, or we'll **run out of time**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Don't spend too long on one question, or you'll **run out of time**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"of the time\"",
+        "text": "We ran out of the time."
+      }
+    ],
+    "rule": "run out of time",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "We ran out of the time.",
+          "right": false
+        },
+        {
+          "text": "We ran out of time.",
+          "right": true
+        },
+        {
+          "text": "We ran out time.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-070",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "fleeting",
+    "pos": "adjective",
+    "say": "FLEE-ting",
+    "meaning": "Lasting a very short time.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "We had a **fleeting** chat at the wedding.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "There was a **fleeting** moment of quiet before the kids woke up.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I caught a **fleeting** look at the actor."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for long things",
+        "text": "It was a fleeting ten-year job."
+      }
+    ],
+    "rule": "very short"
+  },
+  {
+    "id": "v7-words-money-071",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "overnight",
+    "pos": "adverb",
+    "say": "oh-ver-NITE",
+    "meaning": "During the night.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Soak the beans **overnight**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We took a bus **overnight** to Goa.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Leave the phone charging **overnight**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a whole week",
+        "text": "We stayed overnight for seven days."
+      }
+    ],
+    "rule": "through the night"
+  },
+  {
+    "id": "v7-words-money-072",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "make time",
+    "pos": "phrase",
+    "say": "mayk TIME",
+    "meaning": "Find time for something, even when busy.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I always **make time** for my kids' school play.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "Can you **make time** for a quick call today?",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Try to **make time** for a walk every day."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"do time\"",
+        "text": "Can you do time for me today?"
+      }
+    ],
+    "rule": "make time for something or someone",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I'll make time for you.",
+          "right": true
+        },
+        {
+          "text": "I'll do time for you.",
+          "right": false
+        },
+        {
+          "text": "I'll time make for you.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-073",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "lately",
+    "pos": "adverb",
+    "say": "LAYT-lee",
+    "meaning": "In the last few days or weeks.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "Have you seen any good films **lately**?",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "I've been sleeping badly **lately**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Prices have gone up a lot **lately**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"late\"",
+        "text": "I came lately to work today."
+      }
+    ],
+    "rule": "lately = recently; late = after the time"
+  },
+  {
+    "id": "v7-words-money-074",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "time off",
+    "pos": "noun",
+    "say": "time OFF",
+    "meaning": "Time when you are not working.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "I'm taking some **time off** after the launch.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "We'll visit Grandma when I get **time off**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "She needs **time off** to rest."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for time at work",
+        "text": "I had time off all day in meetings."
+      }
+    ],
+    "rule": "take time off work"
+  },
+  {
+    "id": "v7-words-money-075",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "imminent",
+    "pos": "adjective",
+    "say": "IM-ih-nunt",
+    "meaning": "About to happen very soon.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "The launch is **imminent**; everyone is on standby.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "Look at those dark clouds; rain is **imminent**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "With the exam **imminent**, she studied all night."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"eminent\" (famous)",
+        "text": "He is an imminent doctor."
+      }
+    ],
+    "rule": "imminent = very soon",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "She is an imminent singer.",
+          "right": false
+        },
+        {
+          "text": "The storm is imminent.",
+          "right": true
+        },
+        {
+          "text": "I imminent the meeting.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-076",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "nowadays",
+    "pos": "adverb",
+    "say": "NOW-uh-dayz",
+    "meaning": "These days; at the present time.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "**Nowadays** everyone pays by phone.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Kids **nowadays** know more about phones than we do.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "**Nowadays** I work from home twice a week."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the past",
+        "text": "Nowadays, back in 1990, we wrote letters."
+      }
+    ],
+    "rule": "nowadays = these days"
+  },
+  {
+    "id": "v7-words-money-077",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "off-peak",
+    "pos": "adjective",
+    "say": "off-PEEK",
+    "meaning": "At a quieter, often cheaper time.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We shop at **off-peak** hours to skip the queues.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "**Off-peak** train tickets are much cheaper.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We go to the gym at **off-peak** times to avoid the crowds."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for the busiest time",
+        "text": "Rush hour is off-peak."
+      }
+    ],
+    "rule": "off-peak = quiet, cheaper time"
+  },
+  {
+    "id": "v7-words-money-078",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "meanwhile",
+    "pos": "adverb",
+    "say": "MEEN-wile",
+    "meaning": "At the same time, while something else happens.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The rice is cooking. **Meanwhile**, cut the onions.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "IT is fixing the server; **meanwhile**, use the backup.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll call the plumber. **Meanwhile**, turn off the tap."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"after a long time\"",
+        "text": "He finally came back meanwhile."
+      }
+    ],
+    "rule": "at the same time",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The tea is brewing. Meanwhile, set the table.",
+          "right": true
+        },
+        {
+          "text": "Meanwhile is my favourite day.",
+          "right": false
+        },
+        {
+          "text": "I meanwhile the work.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-079",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "rush hour",
+    "pos": "noun",
+    "say": "RUSH ow-er",
+    "meaning": "The busy time when people go to or from work.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Don't drive in **rush hour**; it takes forever.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "The metro is packed during **rush hour**.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Let's leave at four to beat the **rush hour**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a quiet time",
+        "text": "At 2 a.m. the roads are full of rush hour."
+      }
+    ],
+    "rule": "the busy travel hours"
+  },
+  {
+    "id": "v7-words-money-080",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "sporadic",
+    "pos": "adjective",
+    "say": "spuh-RAD-ik",
+    "meaning": "Happening now and then, not regularly.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We get **sporadic** power cuts in summer.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "His replies are **sporadic**, so call him instead.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "There was only **sporadic** rain this monsoon."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for something regular",
+        "text": "My sporadic gym visits are every day at six."
+      }
+    ],
+    "rule": "now and then, no pattern"
+  },
+  {
+    "id": "v7-words-money-081",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "so far",
+    "pos": "phrase",
+    "say": "soh FAR",
+    "meaning": "Up to now.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "**So far**, the client is happy.",
+        "icon": "work"
+      },
+      {
+        "label": "With friends",
+        "text": "How's the new job **so far**?",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We've saved 20,000 **so far** this year."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a finished past time",
+        "text": "So far, I went to Goa in 2019."
+      }
+    ],
+    "rule": "so far + have done",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "So far, I've read two chapters.",
+          "right": true
+        },
+        {
+          "text": "So far, I read two chapters in 2010.",
+          "right": false
+        },
+        {
+          "text": "So far I will read two chapters.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-082",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "round the clock",
+    "pos": "phrase",
+    "say": "rownd the KLOK",
+    "meaning": "All day and all night.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "The team worked **round the clock** to fix the bug.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "The hospital canteen is open **round the clock**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The pharmacy near us is open **round the clock**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a few hours",
+        "text": "The shop is open round the clock, ten to six."
+      }
+    ],
+    "rule": "24 hours a day"
+  },
+  {
+    "id": "v7-words-money-083",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "in time",
+    "pos": "phrase",
+    "say": "in TIME",
+    "meaning": "Early enough, before it's too late.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We reached the station just **in time**.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "Will the report be ready **in time** for Monday?",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I got home **in time** to see the match."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not when you were too late",
+        "text": "We missed the train, but we were in time."
+      }
+    ],
+    "rule": "in time = early enough"
+  },
+  {
+    "id": "v7-words-money-084",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "every now and then",
+    "pos": "phrase",
+    "say": "EV-ree now und THEN",
+    "meaning": "Sometimes, not often.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "We meet for coffee **every now and then**.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "**Every now and then** I cook for the whole family.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I check my savings **every now and then**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for every day",
+        "text": "I brush my teeth every now and then, twice a day."
+      }
+    ],
+    "rule": "sometimes, not regularly",
+    "check": {
+      "question": "What does every now and then mean?",
+      "options": [
+        {
+          "text": "Every hour",
+          "right": false
+        },
+        {
+          "text": "Sometimes",
+          "right": true
+        },
+        {
+          "text": "Never",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-085",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "transient",
+    "pos": "adjective",
+    "say": "TRAN-zee-unt",
+    "meaning": "Lasting only a short time.",
+    "examples": [
+      {
+        "label": "Explain your thinking",
+        "text": "The price jump is **transient**; it will settle next month.",
+        "icon": "thinking"
+      },
+      {
+        "label": "At home",
+        "text": "The pain was **transient**; it went away in minutes.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Bad moods are **transient**, so don't decide anything now."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for things that last",
+        "text": "They had a transient marriage of fifty years."
+      }
+    ],
+    "rule": "short-lived, passing"
+  },
+  {
+    "id": "v7-words-money-086",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "last minute",
+    "pos": "noun",
+    "say": "last MIN-it",
+    "meaning": "The latest possible time.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "He always sends the slides at the **last minute**.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "We packed at the **last minute** and forgot the charger.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Don't leave the shopping till the **last minute**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for early",
+        "text": "I booked a month ahead, at the last minute."
+      }
+    ],
+    "rule": "at the last minute = very late"
+  },
+  {
+    "id": "v7-words-money-087",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "for the time being",
+    "pos": "phrase",
+    "say": "for the TIME bee-ing",
+    "meaning": "For now, but not forever.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We're staying with my parents **for the time being**.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "Use the old laptop **for the time being**.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "**For the time being**, let's keep it simple."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for forever",
+        "text": "I'll live here for the time being, for the rest of my life."
+      }
+    ],
+    "rule": "for now",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "For the time being, I was born in 1990.",
+          "right": false
+        },
+        {
+          "text": "Use my pen for the time being.",
+          "right": true
+        },
+        {
+          "text": "I'll love you for the time being, forever.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-088",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "ages",
+    "pos": "noun",
+    "say": "AY-jiz",
+    "meaning": "A very long time (casual).",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "I haven't seen you in **ages**!",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "The queue at the bank took **ages**.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "It's been **ages** since we went to the movies."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not in formal writing",
+        "text": "Dear Sir, your reply took ages."
+      }
+    ],
+    "rule": "casual: a very long time"
+  },
+  {
+    "id": "v7-words-money-089",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "once in a while",
+    "pos": "phrase",
+    "say": "wuns in uh WILE",
+    "meaning": "Sometimes, not often.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "We order pizza **once in a while**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Call your parents **once in a while**!",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "**Once in a while**, I take the long way home."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"only once\"",
+        "text": "I went to Paris once in a while, in 2015."
+      }
+    ],
+    "rule": "now and then"
+  },
+  {
+    "id": "v7-words-money-090",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "hard-earned",
+    "pos": "adjective",
+    "say": "hard-URND",
+    "meaning": "Earned with a lot of work.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Don't waste your **hard-earned** money on that.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "She spent her **hard-earned** bonus on her parents.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "We used our **hard-earned** savings for the house."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for money you did not work for",
+        "text": "My lottery win is hard-earned."
+      }
+    ],
+    "rule": "hard-earned money or rest",
+    "check": {
+      "question": "Which one is hard-earned?",
+      "options": [
+        {
+          "text": "Money found on the street.",
+          "right": false
+        },
+        {
+          "text": "Money from a year of overtime.",
+          "right": true
+        },
+        {
+          "text": "A gift from your uncle.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-091",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "a while",
+    "pos": "noun",
+    "say": "uh WILE",
+    "meaning": "Some time, not very long or very short.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "Wait **a while**; she's on her way.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "It's been **a while** since we visited Grandma.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "I'll rest for **a while** and then start."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"since a while\"",
+        "text": "I'm waiting since a while."
+      }
+    ],
+    "rule": "for a while; after a while"
+  },
+  {
+    "id": "v7-words-money-092",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "temporary",
+    "pos": "adjective",
+    "say": "TEM-puh-ruh-ree",
+    "meaning": "Lasting only for a short time.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "It's a **temporary** job for the summer.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "This is a **temporary** fix until the plumber comes.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The road is closed, but it's **temporary**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not \"temporarily\" before a noun",
+        "text": "It's a temporarily job."
+      }
+    ],
+    "rule": "a temporary job; temporarily closed"
+  },
+  {
+    "id": "v7-words-money-093",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "annual",
+    "pos": "adjective",
+    "say": "AN-yoo-ul",
+    "meaning": "Happening once a year.",
+    "examples": [
+      {
+        "label": "At work",
+        "text": "Our **annual** review is in March.",
+        "icon": "work"
+      },
+      {
+        "label": "At home",
+        "text": "The **annual** school fee is due in April.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "The **annual** family trip is my favourite week."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for every month",
+        "text": "The annual electricity bill comes every month."
+      }
+    ],
+    "rule": "annual = once a year",
+    "check": {
+      "question": "Which one is annual?",
+      "options": [
+        {
+          "text": "A daily walk.",
+          "right": false
+        },
+        {
+          "text": "A weekly meeting.",
+          "right": false
+        },
+        {
+          "text": "A birthday party.",
+          "right": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-money-094",
+    "type": "module",
+    "module": "words",
+    "topic": "Time",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "time"
+    ],
+    "word": "occasional",
+    "pos": "adjective",
+    "say": "uh-KAY-zhuh-nul",
+    "meaning": "Happening sometimes, not often.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I enjoy the **occasional** sweet after dinner.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We have the **occasional** movie night.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "There may be **occasional** delays on this route."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not after a verb",
+        "text": "I occasional go to the gym."
+      }
+    ],
+    "rule": "the occasional treat; go occasionally"
+  },
+  {
+    "id": "v7-words-money-095",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "penny-pinching",
+    "pos": "adjective",
+    "say": "PEN-ee pin-ching",
+    "meaning": "Too careful with money, in a mean way.",
+    "examples": [
+      {
+        "label": "With friends",
+        "text": "He's so **penny-pinching** he won't share a taxi.",
+        "icon": "friends"
+      },
+      {
+        "label": "At home",
+        "text": "Our **penny-pinching** landlord won't fix the fan.",
+        "icon": "home"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Stop being **penny-pinching**; it's her birthday."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not praise",
+        "text": "My penny-pinching mum kindly bought us all gifts."
+      }
+    ],
+    "rule": "penny-pinching is not a compliment; thrifty is"
+  },
+  {
+    "id": "v7-words-money-096",
+    "type": "module",
+    "module": "words",
+    "topic": "Money",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "money"
+    ],
+    "word": "cheap",
+    "pos": "adjective",
+    "say": "CHEEP",
+    "meaning": "Low in price.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Vegetables are **cheap** at the weekly market.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "That hotel is **cheap** but very clean.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ Use it right",
+      "text": "Buses are **cheap** and run every ten minutes."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for prices",
+        "text": "The price is cheap."
+      }
+    ],
+    "rule": "things are cheap; prices are low",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The ticket price is cheap.",
+          "right": false
+        },
+        {
+          "text": "The tickets are cheap.",
+          "right": true
+        },
+        {
+          "text": "The tickets are cheaply.",
+          "right": false
+        }
+      ]
+    }
+  }
+]

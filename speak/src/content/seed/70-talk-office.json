@@ -1,0 +1,4003 @@
+[
+  {
+    "id": "v7-talk-office-001",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "How's the new project going?",
+    "kind": "reply",
+    "moment": "How's the new project going?",
+    "they": "How's the new project going?",
+    "deadEnd": "It's okay.",
+    "reply": "Busy, but fun. We just finished the first demo. How's your week looking?",
+    "formula": "feeling + one detail + ask back",
+    "more": [
+      {
+        "label": "Going well",
+        "text": "Really well. The team clicks, which helps. What are you on now?"
+      },
+      {
+        "label": "Stressful",
+        "text": "A bit hectic, tight deadline. Should calm down next week. You?"
+      },
+      {
+        "label": "Just started",
+        "text": "Still early days. Lots of reading so far. How's yours?"
+      }
+    ],
+    "donts": [
+      "Stop at one word.",
+      "Complain about the client by name."
+    ]
+  },
+  {
+    "id": "v7-talk-office-002",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "New colleague at the next desk",
+    "kind": "open",
+    "moment": "New colleague at the next desk",
+    "deadEnd": "Silence.",
+    "reply": "Hi, I'm Rohan. I sit right here. Which team have you joined?",
+    "formula": "name + where you sit + easy question",
+    "more": [
+      {
+        "label": "Offer help",
+        "text": "Hi! If you need the Wi-Fi password or the good coffee, just ask."
+      },
+      {
+        "label": "First week",
+        "text": "Welcome! Is this your first week here?"
+      },
+      {
+        "label": "Shared view",
+        "text": "Hi, I'm Rohan. Nice view from this corner, isn't it?"
+      }
+    ],
+    "donts": [
+      "Ask about their salary.",
+      "Wait for them to say hello first."
+    ]
+  },
+  {
+    "id": "v7-talk-office-003",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "They mention a new puppy",
+    "kind": "keep_going",
+    "moment": "They mention a new puppy",
+    "they": "We just got a puppy!",
+    "deadEnd": "Nice.",
+    "reply": "Oh, lovely! What's the puppy's name?",
+    "formula": "react + one easy question",
+    "more": [
+      {
+        "label": "Breed",
+        "text": "What kind of dog is it?"
+      },
+      {
+        "label": "Sleep",
+        "text": "Is it letting you sleep at night?"
+      },
+      {
+        "label": "Photo",
+        "text": "Do you have a photo? I'd love to see."
+      }
+    ],
+    "donts": [
+      "Jump straight to your own pet story.",
+      "Say you don't like dogs."
+    ]
+  },
+  {
+    "id": "v7-talk-office-004",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "A colleague keeps chatting at your desk",
+    "kind": "exit",
+    "moment": "A colleague keeps chatting at your desk",
+    "they": "And then guess what happened next...",
+    "deadEnd": "I'm busy.",
+    "reply": "I want to hear the rest! Can you tell me at lunch? I need to finish this first.",
+    "formula": "show interest + later + reason",
+    "more": [
+      {
+        "label": "Deadline",
+        "text": "This report is due at four. Catch up after?"
+      },
+      {
+        "label": "Focus time",
+        "text": "Great story. I'm going into focus mode now. Talk later!"
+      },
+      {
+        "label": "Coffee",
+        "text": "Save it for our coffee break? I'm stuck on this."
+      }
+    ],
+    "donts": [
+      "Keep typing while they talk.",
+      "Sigh or look at the clock."
+    ]
+  },
+  {
+    "id": "v7-talk-office-005",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "You called a colleague by the wrong name",
+    "kind": "save_it",
+    "moment": "You called a colleague by the wrong name",
+    "they": "It's Neha, actually.",
+    "deadEnd": "Whatever.",
+    "reply": "Sorry, Neha! My brain mixed things up. Won't happen again.",
+    "formula": "quick sorry + right name + move on",
+    "more": [
+      {
+        "label": "Light",
+        "text": "Oops, sorry Neha. Too little coffee today."
+      },
+      {
+        "label": "Honest",
+        "text": "Sorry, Neha. I'm still learning everyone's names."
+      },
+      {
+        "label": "Move on",
+        "text": "Thanks, Neha. So, about the report..."
+      }
+    ],
+    "donts": [
+      "Make a long speech about it.",
+      "Blame them for looking like someone else."
+    ]
+  },
+  {
+    "id": "v7-talk-office-006",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "How's everything on your side?",
+    "kind": "reply",
+    "moment": "How's everything on your side?",
+    "they": "How's everything on your side?",
+    "deadEnd": "All good.",
+    "reply": "All good, thanks. The team's busy, but in a good way. How about you?",
+    "formula": "answer + one detail + ask back",
+    "more": [
+      {
+        "label": "Busy",
+        "text": "Busy month, lots of launches. How's it going there?"
+      },
+      {
+        "label": "Calm",
+        "text": "Nice and calm this week. Hope it is the same for you?"
+      },
+      {
+        "label": "Weather",
+        "text": "Good! It finally rained here. What's it like there?"
+      }
+    ],
+    "donts": [
+      "Share inside problems with the client.",
+      "Say only fine and wait."
+    ]
+  },
+  {
+    "id": "v7-talk-office-007",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "First minute of a client call",
+    "kind": "open",
+    "moment": "First minute of a client call",
+    "deadEnd": "So, let's start.",
+    "reply": "Hi Mark, good to see you. How's your week going so far?",
+    "formula": "greet by name + easy question",
+    "more": [
+      {
+        "label": "Where",
+        "text": "Hi Mark! Are you in the office today or at home?"
+      },
+      {
+        "label": "Weekend",
+        "text": "Morning, Mark. Did you have a good weekend?"
+      },
+      {
+        "label": "Their time",
+        "text": "Hi Mark, thanks for making time. Busy day there?"
+      }
+    ],
+    "donts": [
+      "Jump straight into the slides.",
+      "Ask a personal question on the first call."
+    ]
+  },
+  {
+    "id": "v7-talk-office-008",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Client mentions a trip abroad",
+    "kind": "keep_going",
+    "moment": "Client mentions a trip abroad",
+    "they": "I'm off to Japan next week.",
+    "deadEnd": "Okay.",
+    "reply": "How exciting! Is it for work or a holiday?",
+    "formula": "react + one question",
+    "more": [
+      {
+        "label": "First time",
+        "text": "Is this your first time in Japan?"
+      },
+      {
+        "label": "Plans",
+        "text": "What are you most looking forward to?"
+      },
+      {
+        "label": "Food",
+        "text": "Nice! Are you planning to try the street food?"
+      }
+    ],
+    "donts": [
+      "Turn it into your own travel story.",
+      "Ask how much the trip costs."
+    ]
+  },
+  {
+    "id": "v7-talk-office-009",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Ending a client call on a good note",
+    "kind": "exit",
+    "moment": "Ending a client call on a good note",
+    "they": "I think that covers everything.",
+    "deadEnd": "Okay, bye.",
+    "reply": "Great call, thanks Mark. I'll send the notes today. Have a good weekend!",
+    "formula": "thanks + next step + warm wish",
+    "more": [
+      {
+        "label": "Midweek",
+        "text": "Thanks, Mark. Notes by tonight. Enjoy the rest of your week!"
+      },
+      {
+        "label": "Follow up",
+        "text": "Really helpful. I'll follow up on pricing by Friday."
+      },
+      {
+        "label": "Before a trip",
+        "text": "Thanks! Enjoy your trip, and talk when you're back."
+      }
+    ],
+    "donts": [
+      "Hang up without a next step.",
+      "Add a new topic in the last minute."
+    ]
+  },
+  {
+    "id": "v7-talk-office-010",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "You got the client's company name wrong",
+    "kind": "save_it",
+    "moment": "You got the client's company name wrong",
+    "they": "It's Brightline, not Brightway.",
+    "deadEnd": "Same thing.",
+    "reply": "Sorry, Brightline! Thanks for catching that. I'll fix it in our notes too.",
+    "formula": "sorry + right name + fix",
+    "more": [
+      {
+        "label": "Light",
+        "text": "Brightline, of course. My mistake, sorry!"
+      },
+      {
+        "label": "Thanks",
+        "text": "Thanks for correcting me. Brightline it is."
+      },
+      {
+        "label": "Move on",
+        "text": "Sorry about that. So, for Brightline's launch..."
+      }
+    ],
+    "donts": [
+      "Argue that the names sound alike.",
+      "Keep saying sorry for minutes."
+    ]
+  },
+  {
+    "id": "v7-talk-office-011",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Busy day?",
+    "kind": "reply",
+    "moment": "Busy day?",
+    "they": "Busy day?",
+    "deadEnd": "Yes.",
+    "reply": "Very! Back-to-back calls since nine. How's yours going?",
+    "formula": "answer + one detail + ask back",
+    "more": [
+      {
+        "label": "Calm",
+        "text": "Not too bad, actually. A quiet one for once. You?"
+      },
+      {
+        "label": "Nearly done",
+        "text": "Busy, but I'm nearly through it. How about you?"
+      },
+      {
+        "label": "Good busy",
+        "text": "Busy, but the good kind. We shipped something today!"
+      }
+    ],
+    "donts": [
+      "List every task on your plate.",
+      "Say yes and turn back to your screen."
+    ]
+  },
+  {
+    "id": "v7-talk-office-012",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Lift ride with a senior",
+    "kind": "open",
+    "moment": "Lift ride with a senior",
+    "deadEnd": "Stare at the floor numbers.",
+    "reply": "Morning! Heading to the town hall too?",
+    "formula": "greeting + shared moment",
+    "more": [
+      {
+        "label": "Weekend",
+        "text": "Good morning! Did you have a good weekend?"
+      },
+      {
+        "label": "Weather",
+        "text": "Morning! Nice to see the sun again, isn't it?"
+      },
+      {
+        "label": "Their talk",
+        "text": "Hi! I liked your update at the all-hands yesterday."
+      }
+    ],
+    "donts": [
+      "Pitch your project in the lift.",
+      "Ask about promotions."
+    ]
+  },
+  {
+    "id": "v7-talk-office-013",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "They're training for a marathon",
+    "kind": "keep_going",
+    "moment": "They're training for a marathon",
+    "they": "I'm training for the Mumbai marathon.",
+    "deadEnd": "Wow.",
+    "reply": "That's amazing! How far are you running these days?",
+    "formula": "react + ask about progress",
+    "more": [
+      {
+        "label": "Start",
+        "text": "What got you into running?"
+      },
+      {
+        "label": "Routine",
+        "text": "Do you run before work or after?"
+      },
+      {
+        "label": "First",
+        "text": "Is this your first full marathon?"
+      }
+    ],
+    "donts": [
+      "Say running is bad for knees.",
+      "Talk only about your own gym."
+    ]
+  },
+  {
+    "id": "v7-talk-office-014",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Ending a long hallway chat",
+    "kind": "exit",
+    "moment": "Ending a long hallway chat",
+    "they": "Oh, and one more thing...",
+    "deadEnd": "I have to go.",
+    "reply": "Let's pick this up later? I'm due in a meeting in two minutes.",
+    "formula": "pick it up later + reason",
+    "more": [
+      {
+        "label": "Lunch",
+        "text": "Tell me at lunch? I have to run now."
+      },
+      {
+        "label": "Message",
+        "text": "Message me the link? I need to get back."
+      },
+      {
+        "label": "Warm",
+        "text": "Good chat! Let's continue tomorrow."
+      }
+    ],
+    "donts": [
+      "Walk away mid-sentence.",
+      "Make up a fake meeting every time."
+    ]
+  },
+  {
+    "id": "v7-talk-office-015",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "You forgot a colleague's birthday",
+    "kind": "save_it",
+    "moment": "You forgot a colleague's birthday",
+    "they": "It was my birthday yesterday.",
+    "deadEnd": "Oh.",
+    "reply": "Oh no, I missed it! Happy belated birthday. Did you do anything nice?",
+    "formula": "own it + wish + ask",
+    "more": [
+      {
+        "label": "Treat",
+        "text": "Happy belated birthday! Coffee is on me today."
+      },
+      {
+        "label": "Honest",
+        "text": "Sorry I missed it! How did you celebrate?"
+      },
+      {
+        "label": "Warm",
+        "text": "Belated wishes! Hope it was a lovely day."
+      }
+    ],
+    "donts": [
+      "Pretend you knew all along.",
+      "Make a big drama about it."
+    ]
+  },
+  {
+    "id": "v7-talk-office-016",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "How's the weather in Bangalore?",
+    "kind": "reply",
+    "moment": "How's the weather in Bangalore?",
+    "they": "How's the weather in Bangalore?",
+    "deadEnd": "Fine.",
+    "reply": "Lovely today, cool and cloudy. What's it like where you are?",
+    "formula": "answer + one detail + ask back",
+    "more": [
+      {
+        "label": "Rainy",
+        "text": "Rainy all week! Good weather for coffee. How about there?"
+      },
+      {
+        "label": "Hot",
+        "text": "Getting warm. Summer's coming. Is it cold there?"
+      },
+      {
+        "label": "Changing",
+        "text": "It changes every hour! What's it like on your side?"
+      }
+    ],
+    "donts": [
+      "Give a long weather report.",
+      "Complain about the city."
+    ]
+  },
+  {
+    "id": "v7-talk-office-017",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Client arrives early to the meeting",
+    "kind": "open",
+    "moment": "Client arrives early to the meeting",
+    "deadEnd": "We'll wait for the others.",
+    "reply": "Hi Sara, you're early! Can I get you a coffee while we wait?",
+    "formula": "warm greeting + small offer",
+    "more": [
+      {
+        "label": "Travel",
+        "text": "Welcome! Was the traffic okay?"
+      },
+      {
+        "label": "Their day",
+        "text": "Good to see you, Sara. How's your day been?"
+      },
+      {
+        "label": "Office",
+        "text": "Hi! Have you been to this office before?"
+      }
+    ],
+    "donts": [
+      "Start the agenda before everyone is in.",
+      "Leave them alone in the room."
+    ]
+  },
+  {
+    "id": "v7-talk-office-018",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Client's company just won an award",
+    "kind": "keep_going",
+    "moment": "Client's company just won an award",
+    "they": "We won the industry award last week.",
+    "deadEnd": "Congrats.",
+    "reply": "Congratulations! That's big news. What was it for?",
+    "formula": "praise + ask for the story",
+    "more": [
+      {
+        "label": "Team",
+        "text": "Well deserved! How did the team celebrate?"
+      },
+      {
+        "label": "The work",
+        "text": "Amazing! What was the project behind it?"
+      },
+      {
+        "label": "The event",
+        "text": "Congrats! Were you there to receive it?"
+      }
+    ],
+    "donts": [
+      "Hint that you helped them win it.",
+      "Change the topic straight to business."
+    ]
+  },
+  {
+    "id": "v7-talk-office-019",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Leaving a client dinner",
+    "kind": "exit",
+    "moment": "Leaving a client dinner",
+    "they": "This was really nice.",
+    "deadEnd": "Okay, bye.",
+    "reply": "It really was. Thanks for a lovely evening. Travel safe, and see you Monday!",
+    "formula": "thanks + warm wish + next meeting",
+    "more": [
+      {
+        "label": "Early start",
+        "text": "Thank you! I have an early start, so I'll head off. See you soon."
+      },
+      {
+        "label": "Food",
+        "text": "Thanks, the food was great. Have a good night!"
+      },
+      {
+        "label": "Next time",
+        "text": "Lovely evening. Next dinner is on us!"
+      }
+    ],
+    "donts": [
+      "Talk about the bill.",
+      "Leave without saying goodbye to the host."
+    ]
+  },
+  {
+    "id": "v7-talk-office-020",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Your internet dropped mid-sentence",
+    "kind": "save_it",
+    "moment": "Your internet dropped mid-sentence",
+    "they": "You dropped off there.",
+    "deadEnd": "Network issue.",
+    "reply": "Sorry about that, my internet dropped. Where did I lose you?",
+    "formula": "sorry + reason + pick up",
+    "more": [
+      {
+        "label": "Repeat",
+        "text": "Sorry! Let me start that point again."
+      },
+      {
+        "label": "Camera off",
+        "text": "My line is weak. Can I turn my camera off for a bit?"
+      },
+      {
+        "label": "Phone",
+        "text": "Sorry, should I dial in by phone instead?"
+      }
+    ],
+    "donts": [
+      "Blame the internet company for minutes.",
+      "Carry on as if nothing happened."
+    ]
+  },
+  {
+    "id": "v7-talk-office-021",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Any plans for the long weekend?",
+    "kind": "reply",
+    "moment": "Any plans for the long weekend?",
+    "they": "Any plans for the long weekend?",
+    "deadEnd": "No.",
+    "reply": "Just a short trip to Lonavala with friends. What about you?",
+    "formula": "plan + one detail + ask back",
+    "more": [
+      {
+        "label": "Staying in",
+        "text": "Not much. Sleep, films and good food. You?"
+      },
+      {
+        "label": "Family",
+        "text": "Visiting my parents. Mum's already planning the menu! You?"
+      },
+      {
+        "label": "Not sure",
+        "text": "Still deciding! Any ideas?"
+      }
+    ],
+    "donts": [
+      "Say no and stop.",
+      "Brag about a costly trip."
+    ]
+  },
+  {
+    "id": "v7-talk-office-022",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Team lunch with new faces",
+    "kind": "open",
+    "moment": "Team lunch with new faces",
+    "deadEnd": "Eat quietly and check your phone.",
+    "reply": "Hi, I don't think we've met. I'm Arjun, from design. Which team are you on?",
+    "formula": "introduce + easy question",
+    "more": [
+      {
+        "label": "Food",
+        "text": "Hi! Have you tried the paneer here? It's good."
+      },
+      {
+        "label": "Also new",
+        "text": "Hi, I'm Arjun. Are you new to the team too?"
+      },
+      {
+        "label": "The event",
+        "text": "Nice turnout today. Do you usually come to these?"
+      }
+    ],
+    "donts": [
+      "Talk only to the people you know.",
+      "Ask how much they earn."
+    ]
+  },
+  {
+    "id": "v7-talk-office-023",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "They just moved house",
+    "kind": "keep_going",
+    "moment": "They just moved house",
+    "they": "I just moved to a new flat.",
+    "deadEnd": "Good.",
+    "reply": "Oh, nice! Which area did you move to?",
+    "formula": "react + ask one detail",
+    "more": [
+      {
+        "label": "Settling",
+        "text": "How are you settling in?"
+      },
+      {
+        "label": "Commute",
+        "text": "Is it closer to the office?"
+      },
+      {
+        "label": "Boxes",
+        "text": "Still unpacking boxes?"
+      }
+    ],
+    "donts": [
+      "Ask how much the rent is.",
+      "Tell them they picked a bad area."
+    ]
+  },
+  {
+    "id": "v7-talk-office-024",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Getting off a call that runs over",
+    "kind": "exit",
+    "moment": "Getting off a call that runs over",
+    "they": "Before you go, one quick thing...",
+    "deadEnd": "I can't.",
+    "reply": "Sure, if it is quick! I have another call at three. Or can we cover it tomorrow?",
+    "formula": "willing + time limit + other option",
+    "more": [
+      {
+        "label": "Message",
+        "text": "Can you drop it in a message? I'm late for my next call."
+      },
+      {
+        "label": "Two minutes",
+        "text": "I've got two minutes. Go for it!"
+      },
+      {
+        "label": "Tomorrow",
+        "text": "Let's book ten minutes tomorrow for it."
+      }
+    ],
+    "donts": [
+      "Just leave the call.",
+      "Stay quiet and miss your next meeting."
+    ]
+  },
+  {
+    "id": "v7-talk-office-025",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "You laughed at the wrong moment",
+    "kind": "save_it",
+    "moment": "You laughed at the wrong moment",
+    "they": "I'm actually serious.",
+    "deadEnd": "Sorry, it's funny.",
+    "reply": "Sorry, I misread that. I thought you were joking. Tell me more.",
+    "formula": "sorry + honest reason + listen",
+    "more": [
+      {
+        "label": "Short",
+        "text": "My bad, I didn't realise. Go on."
+      },
+      {
+        "label": "Caring",
+        "text": "Sorry, that was rude of me. Are you okay?"
+      },
+      {
+        "label": "Reset",
+        "text": "I'm sorry. I'm listening now, properly."
+      }
+    ],
+    "donts": [
+      "Laugh again.",
+      "Explain why it was funny."
+    ]
+  },
+  {
+    "id": "v7-talk-office-026",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Can you hear me okay?",
+    "kind": "reply",
+    "moment": "Can you hear me okay?",
+    "they": "Can you hear me okay?",
+    "deadEnd": "Yes.",
+    "reply": "Yes, loud and clear! Can you hear me too?",
+    "formula": "answer + check back",
+    "more": [
+      {
+        "label": "Too low",
+        "text": "A little low. Could you speak up a bit?"
+      },
+      {
+        "label": "Echo",
+        "text": "Yes, but there's a small echo. Much better now!"
+      },
+      {
+        "label": "Video",
+        "text": "Yes, perfect. Your video froze for a second, though."
+      }
+    ],
+    "donts": [
+      "Say yes when you can't hear them.",
+      "Start without checking."
+    ]
+  },
+  {
+    "id": "v7-talk-office-027",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Meeting a client in person for the first time",
+    "kind": "open",
+    "moment": "Meeting a client in person for the first time",
+    "deadEnd": "Shake hands without a word.",
+    "reply": "Hi Priya, finally in person! It's great to put a face to the name.",
+    "formula": "greeting + nice line about meeting",
+    "more": [
+      {
+        "label": "Travel",
+        "text": "Hi Priya! How was the trip over?"
+      },
+      {
+        "label": "After calls",
+        "text": "So good to meet you properly after all those calls."
+      },
+      {
+        "label": "Office",
+        "text": "Welcome! Did you find the place easily?"
+      }
+    ],
+    "donts": [
+      "Comment on how they look.",
+      "Talk about work in the first minute."
+    ]
+  },
+  {
+    "id": "v7-talk-office-028",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Client mentions their busy season",
+    "kind": "keep_going",
+    "moment": "Client mentions their busy season",
+    "they": "It's our busy season right now.",
+    "deadEnd": "Okay.",
+    "reply": "I bet! How long does the busy season usually last?",
+    "formula": "show you get it + ask",
+    "more": [
+      {
+        "label": "Team",
+        "text": "How is your team handling it?"
+      },
+      {
+        "label": "Peak",
+        "text": "When is the peak usually?"
+      },
+      {
+        "label": "Help",
+        "text": "Anything we can do to make it easier?"
+      }
+    ],
+    "donts": [
+      "Push a new deal right then.",
+      "Say you're even busier."
+    ]
+  },
+  {
+    "id": "v7-talk-office-029",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Closing a client visit",
+    "kind": "exit",
+    "moment": "Closing a client visit",
+    "they": "Thanks for having us.",
+    "deadEnd": "Okay.",
+    "reply": "Thank you for coming! It was great to show you around. Safe trip back.",
+    "formula": "thanks + one highlight + wish",
+    "more": [
+      {
+        "label": "Next steps",
+        "text": "Thanks for coming. Let's speak next week about next steps."
+      },
+      {
+        "label": "Lunch",
+        "text": "Thanks! Glad you liked the lunch. See you soon."
+      },
+      {
+        "label": "Team",
+        "text": "Thank you. The team really enjoyed meeting you."
+      }
+    ],
+    "donts": [
+      "Rush them out the door.",
+      "Forget to walk them out."
+    ]
+  },
+  {
+    "id": "v7-talk-office-030",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "You didn't get the client's joke",
+    "kind": "save_it",
+    "moment": "You didn't get the client's joke",
+    "they": "That was a joke, by the way.",
+    "deadEnd": "Oh. Okay.",
+    "reply": "Ah, it went right past me! Good one. I'll catch the next one.",
+    "formula": "own it + laugh at yourself",
+    "more": [
+      {
+        "label": "Honest",
+        "text": "Sorry, I missed that! Too focused on my notes."
+      },
+      {
+        "label": "Light",
+        "text": "You got me. I was taking it seriously!"
+      },
+      {
+        "label": "Later",
+        "text": "Ha! Tell me again later, I want to get it."
+      }
+    ],
+    "donts": [
+      "Pretend you got it all along.",
+      "Ask them to explain it in front of everyone."
+    ]
+  },
+  {
+    "id": "v7-talk-office-031",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "How's the new role treating you?",
+    "kind": "reply",
+    "moment": "How's the new role treating you?",
+    "they": "How's the new role treating you?",
+    "deadEnd": "Good.",
+    "reply": "Really well, thanks. Lots to learn, but the team is great. How are things with you?",
+    "formula": "feeling + one detail + ask back",
+    "more": [
+      {
+        "label": "Busy",
+        "text": "Busy! More meetings than I expected. You?"
+      },
+      {
+        "label": "Learning",
+        "text": "Still learning the ropes, but I like it. How's your team?"
+      },
+      {
+        "label": "Mixed",
+        "text": "Mostly good. Some long days. How about you?"
+      }
+    ],
+    "donts": [
+      "Complain about your old team.",
+      "Brag about the raise."
+    ]
+  },
+  {
+    "id": "v7-talk-office-032",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Someone from another team in the pantry",
+    "kind": "open",
+    "moment": "Someone from another team in the pantry",
+    "deadEnd": "Make tea in silence.",
+    "reply": "Hi! I see you here every morning. I'm Meera, from finance. Which team are you on?",
+    "formula": "shared place + name + easy question",
+    "more": [
+      {
+        "label": "Snack",
+        "text": "Have you tried those new biscuits? Worth it?"
+      },
+      {
+        "label": "Coffee",
+        "text": "Is the coffee machine working today?"
+      },
+      {
+        "label": "Their day",
+        "text": "Morning! How's your day starting?"
+      }
+    ],
+    "donts": [
+      "Ask what they earn.",
+      "Complain about your manager."
+    ]
+  },
+  {
+    "id": "v7-talk-office-033",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "They're learning to drive",
+    "kind": "keep_going",
+    "moment": "They're learning to drive",
+    "they": "I'm learning to drive.",
+    "deadEnd": "Good luck.",
+    "reply": "Nice! How's it going so far?",
+    "formula": "react + ask about progress",
+    "more": [
+      {
+        "label": "Test",
+        "text": "When's your driving test?"
+      },
+      {
+        "label": "Teacher",
+        "text": "Is someone in the family teaching you?"
+      },
+      {
+        "label": "Traffic",
+        "text": "Have you driven in city traffic yet?"
+      }
+    ],
+    "donts": [
+      "Tell scary accident stories.",
+      "Laugh at their mistakes."
+    ]
+  },
+  {
+    "id": "v7-talk-office-034",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Leaving the office party early",
+    "kind": "exit",
+    "moment": "Leaving the office party early",
+    "they": "Leaving already?",
+    "deadEnd": "Yes, bye.",
+    "reply": "I'm afraid so. Early start tomorrow. Thanks, it was a fun evening!",
+    "formula": "yes + reason + thanks",
+    "more": [
+      {
+        "label": "Family",
+        "text": "Yes, I promised my family I'd be home. Have fun!"
+      },
+      {
+        "label": "Long day",
+        "text": "Long day for me. Enjoy, and see you tomorrow!"
+      },
+      {
+        "label": "Host",
+        "text": "Thanks for organising this. Great party!"
+      }
+    ],
+    "donts": [
+      "Slip out without a word.",
+      "Make a big speech."
+    ]
+  },
+  {
+    "id": "v7-talk-office-035",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "You were caught yawning",
+    "kind": "save_it",
+    "moment": "You were caught yawning",
+    "they": "Are we boring you?",
+    "deadEnd": "Yes.",
+    "reply": "Not at all, sorry! Late night with my little one. I'm with you.",
+    "formula": "sorry + honest reason + back in",
+    "more": [
+      {
+        "label": "Coffee",
+        "text": "Sorry! Too little coffee today. Please go on."
+      },
+      {
+        "label": "Honest",
+        "text": "Not you, I promise. Bad sleep. I'm listening."
+      },
+      {
+        "label": "Light",
+        "text": "Sorry! That yawn had nothing to do with you."
+      }
+    ],
+    "donts": [
+      "Say yes, even as a joke.",
+      "Yawn again."
+    ]
+  },
+  {
+    "id": "v7-talk-office-036",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "How's business these days?",
+    "kind": "reply",
+    "moment": "How's business these days?",
+    "they": "How's business these days?",
+    "deadEnd": "Fine.",
+    "reply": "Pretty good, thanks. We just opened a team in Pune. How's it been for you?",
+    "formula": "answer + one detail + ask back",
+    "more": [
+      {
+        "label": "Busy",
+        "text": "Busy, which is good! How about on your side?"
+      },
+      {
+        "label": "Steady",
+        "text": "Steady, no complaints. How's your year going?"
+      },
+      {
+        "label": "Growing",
+        "text": "Growing nicely. We hired five people this month. You?"
+      }
+    ],
+    "donts": [
+      "Share private numbers.",
+      "Complain about money."
+    ]
+  },
+  {
+    "id": "v7-talk-office-037",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Client's pet appears on camera",
+    "kind": "open",
+    "moment": "Client's pet appears on camera",
+    "deadEnd": "Ignore it.",
+    "reply": "Oh, who's this? Hello there! What's their name?",
+    "formula": "notice + friendly question",
+    "more": [
+      {
+        "label": "Dog",
+        "text": "What a cute dog! Is he always this curious?"
+      },
+      {
+        "label": "Cat",
+        "text": "Your cat wants to join the call!"
+      },
+      {
+        "label": "Age",
+        "text": "Is that your dog? How old is he?"
+      }
+    ],
+    "donts": [
+      "Look annoyed.",
+      "Keep talking about it for ten minutes."
+    ]
+  },
+  {
+    "id": "v7-talk-office-038",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Client talks about a new office",
+    "kind": "keep_going",
+    "moment": "Client talks about a new office",
+    "they": "We moved into a new office.",
+    "deadEnd": "Nice.",
+    "reply": "Congrats! How do you like the new space?",
+    "formula": "react + ask how it feels",
+    "more": [
+      {
+        "label": "Where",
+        "text": "Where is it? Closer to the city?"
+      },
+      {
+        "label": "Team",
+        "text": "Does the team like it?"
+      },
+      {
+        "label": "Visit",
+        "text": "We'd love to visit sometime!"
+      }
+    ],
+    "donts": [
+      "Ask how much the rent is.",
+      "Say your office is bigger."
+    ]
+  },
+  {
+    "id": "v7-talk-office-039",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Ending small talk to start the agenda",
+    "kind": "exit",
+    "moment": "Ending small talk to start the agenda",
+    "they": "And the traffic here is crazy...",
+    "deadEnd": "Okay, work now.",
+    "reply": "Ha, I can imagine! Shall we get started? I know your time is tight.",
+    "formula": "react + shall we + respect time",
+    "more": [
+      {
+        "label": "Agenda",
+        "text": "Fun! Let me share the agenda, and we can begin."
+      },
+      {
+        "label": "Later",
+        "text": "Let's continue that after the call! Shall we start?"
+      },
+      {
+        "label": "On time",
+        "text": "Good to catch up. Let's dive in so we finish on time."
+      }
+    ],
+    "donts": [
+      "Cut them off mid-sentence.",
+      "Let small talk eat half the call."
+    ]
+  },
+  {
+    "id": "v7-talk-office-040",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Your child walked into the call",
+    "kind": "save_it",
+    "moment": "Your child walked into the call",
+    "they": "Who's that?",
+    "deadEnd": "Nobody.",
+    "reply": "That's my son. Say hi! Sorry, one second while I settle him.",
+    "formula": "say who + quick sorry + pause",
+    "more": [
+      {
+        "label": "Short",
+        "text": "Sorry, my daughter! Back in a moment."
+      },
+      {
+        "label": "Light",
+        "text": "Meet our newest team member! One second."
+      },
+      {
+        "label": "After",
+        "text": "Sorry about that. Where were we?"
+      }
+    ],
+    "donts": [
+      "Shout at the child on camera.",
+      "Keep saying sorry."
+    ]
+  },
+  {
+    "id": "v7-talk-office-041",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "You look tired today.",
+    "kind": "reply",
+    "moment": "You look tired today.",
+    "they": "You look tired today.",
+    "deadEnd": "I am.",
+    "reply": "I am a bit! Up late finishing a deck. Coffee is helping. How are you?",
+    "formula": "agree + reason + ask back",
+    "more": [
+      {
+        "label": "Sleep",
+        "text": "Bad sleep last night. Nothing coffee can't fix. You?"
+      },
+      {
+        "label": "Busy",
+        "text": "Long week! Nearly the weekend, though."
+      },
+      {
+        "label": "Light",
+        "text": "Is it that obvious? Thanks for noticing!"
+      }
+    ],
+    "donts": [
+      "Get upset.",
+      "Tell them they look tired too."
+    ]
+  },
+  {
+    "id": "v7-talk-office-042",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "First day of a new joiner",
+    "kind": "open",
+    "moment": "First day of a new joiner",
+    "deadEnd": "Wait for them to speak.",
+    "reply": "Hi, welcome! I'm Kiran. How's the first day going?",
+    "formula": "welcome + name + easy question",
+    "more": [
+      {
+        "label": "Help",
+        "text": "Welcome! Shout if you need anything, I sit right there."
+      },
+      {
+        "label": "Lunch",
+        "text": "Hi! Want to join us for lunch today?"
+      },
+      {
+        "label": "Before",
+        "text": "Welcome aboard! Where were you before this?"
+      }
+    ],
+    "donts": [
+      "Dump all the office gossip on them.",
+      "Ask their salary."
+    ]
+  },
+  {
+    "id": "v7-talk-office-043",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "They mention their kids' exams",
+    "kind": "keep_going",
+    "moment": "They mention their kids' exams",
+    "they": "My kids have exams this week.",
+    "deadEnd": "Okay.",
+    "reply": "Ah, exam week! How are they holding up?",
+    "formula": "react + ask how they are",
+    "more": [
+      {
+        "label": "Which class",
+        "text": "Which classes are they in?"
+      },
+      {
+        "label": "The parent",
+        "text": "And how are you holding up?"
+      },
+      {
+        "label": "After",
+        "text": "Any plans to celebrate after?"
+      }
+    ],
+    "donts": [
+      "Ask about their marks.",
+      "Compare them with your kids."
+    ]
+  },
+  {
+    "id": "v7-talk-office-044",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Moving on from a lunch table",
+    "kind": "exit",
+    "moment": "Moving on from a lunch table",
+    "they": "Want another tea?",
+    "deadEnd": "No, bye.",
+    "reply": "I'll skip, thanks. I have a review at two. Good chat, see you around!",
+    "formula": "no thanks + reason + warm close",
+    "more": [
+      {
+        "label": "Work",
+        "text": "Thanks, but I'd better get back to my desk."
+      },
+      {
+        "label": "Tomorrow",
+        "text": "Next time! Let's do lunch again tomorrow."
+      },
+      {
+        "label": "Walk back",
+        "text": "I'm heading up. Anyone walking back?"
+      }
+    ],
+    "donts": [
+      "Just stand up and leave.",
+      "Make up a strange reason."
+    ]
+  },
+  {
+    "id": "v7-talk-office-045",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Your camera turned on by surprise",
+    "kind": "save_it",
+    "moment": "Your camera turned on by surprise",
+    "they": "Oh, we can see you!",
+    "deadEnd": "Switch it off without a word.",
+    "reply": "Ha, surprise! Sorry, I'm not quite ready. Give me one second.",
+    "formula": "laugh + sorry + one second",
+    "more": [
+      {
+        "label": "Light",
+        "text": "Well, now you've seen my messy room!"
+      },
+      {
+        "label": "Short",
+        "text": "Oops, sorry! Turning it off for a moment."
+      },
+      {
+        "label": "Stay on",
+        "text": "Okay, I'll stay on then. Hello, everyone!"
+      }
+    ],
+    "donts": [
+      "Panic and leave the call.",
+      "Act like it didn't happen."
+    ]
+  },
+  {
+    "id": "v7-talk-office-046",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Were you able to find our office?",
+    "kind": "reply",
+    "moment": "Were you able to find our office?",
+    "they": "Were you able to find our office?",
+    "deadEnd": "Yes.",
+    "reply": "Yes, easily! The map was spot on. Lovely building, by the way.",
+    "formula": "answer + detail + compliment",
+    "more": [
+      {
+        "label": "Got lost",
+        "text": "In the end! I went to the wrong gate first."
+      },
+      {
+        "label": "Traffic",
+        "text": "Yes, but the traffic was slow. Worth it, though."
+      },
+      {
+        "label": "Helped",
+        "text": "Yes, your guard pointed me the right way. Thanks!"
+      }
+    ],
+    "donts": [
+      "Complain about the drive for minutes.",
+      "Blame their directions."
+    ]
+  },
+  {
+    "id": "v7-talk-office-047",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Client visiting your office",
+    "kind": "open",
+    "moment": "Client visiting your office",
+    "deadEnd": "Please sit.",
+    "reply": "Welcome, Mr. Shah! Good to have you here. Can I get you tea or coffee?",
+    "formula": "welcome + name + offer",
+    "more": [
+      {
+        "label": "Drive",
+        "text": "Welcome! How was the drive in?"
+      },
+      {
+        "label": "Tour",
+        "text": "Good to see you. Want a quick look around first?"
+      },
+      {
+        "label": "Team",
+        "text": "Welcome! The team's been looking forward to this."
+      }
+    ],
+    "donts": [
+      "Make them wait alone at reception.",
+      "Start with a sales pitch."
+    ]
+  },
+  {
+    "id": "v7-talk-office-048",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Client mentions cricket",
+    "kind": "keep_going",
+    "moment": "Client mentions cricket",
+    "they": "Did you see India's win yesterday?",
+    "deadEnd": "No.",
+    "reply": "I caught the last few overs! What a finish. Did you watch it live?",
+    "formula": "share a bit + ask back",
+    "more": [
+      {
+        "label": "Missed it",
+        "text": "I missed it! Was it a close game?"
+      },
+      {
+        "label": "Player",
+        "text": "Yes! Who was your player of the match?"
+      },
+      {
+        "label": "Next game",
+        "text": "Are you watching the next one?"
+      }
+    ],
+    "donts": [
+      "Pretend you watched it.",
+      "Start a fight over players."
+    ]
+  },
+  {
+    "id": "v7-talk-office-049",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Leaving a chat at a trade fair",
+    "kind": "exit",
+    "moment": "Leaving a chat at a trade fair",
+    "they": "So that's what we do.",
+    "deadEnd": "Okay, thanks.",
+    "reply": "Really interesting. Can I take your card? I'll send you a note next week.",
+    "formula": "react + card + follow-up",
+    "more": [
+      {
+        "label": "Our stand",
+        "text": "Thanks! I need to get back to our stand. Let's talk soon."
+      },
+      {
+        "label": "Next talk",
+        "text": "Lovely meeting you. I'm off to the next talk."
+      },
+      {
+        "label": "Connect",
+        "text": "Great chat. I'll connect you with our product lead."
+      }
+    ],
+    "donts": [
+      "Walk off mid-chat to wave at someone else.",
+      "Promise a call you won't make."
+    ]
+  },
+  {
+    "id": "v7-talk-office-050",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "You forgot the client's question",
+    "kind": "save_it",
+    "moment": "You forgot the client's question",
+    "they": "So, what do you think?",
+    "deadEnd": "Umm...",
+    "reply": "Sorry, I was making notes. Could you say the last part again?",
+    "formula": "honest + ask again",
+    "more": [
+      {
+        "label": "Check",
+        "text": "Just to be sure, you're asking about the timeline?"
+      },
+      {
+        "label": "Short",
+        "text": "Sorry, I lost the thread. Could you repeat that?"
+      },
+      {
+        "label": "Later",
+        "text": "Good question. Let me check and get back to you today."
+      }
+    ],
+    "donts": [
+      "Answer a different question.",
+      "Guess and hope."
+    ]
+  },
+  {
+    "id": "v7-talk-office-051",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "How was the offsite?",
+    "kind": "reply",
+    "moment": "How was the offsite?",
+    "they": "How was the offsite?",
+    "deadEnd": "Okay.",
+    "reply": "So much fun! The treasure hunt was the best part. Were you there last year?",
+    "formula": "feeling + highlight + question",
+    "more": [
+      {
+        "label": "Tiring",
+        "text": "Fun, but tiring. I slept the whole Sunday! You?"
+      },
+      {
+        "label": "Food",
+        "text": "Good! The food alone was worth it."
+      },
+      {
+        "label": "Useful",
+        "text": "Useful, actually. We planned the whole quarter."
+      }
+    ],
+    "donts": [
+      "Complain about who wasn't invited.",
+      "Share gossip from the trip."
+    ]
+  },
+  {
+    "id": "v7-talk-office-052",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Office party where you know nobody",
+    "kind": "open",
+    "moment": "Office party where you know nobody",
+    "deadEnd": "Stand by the snacks alone.",
+    "reply": "Hi, I'm Asha. I don't know anyone yet. Mind if I join you?",
+    "formula": "name + honest line + ask to join",
+    "more": [
+      {
+        "label": "Food",
+        "text": "Have you tried the starters? Which one's good?"
+      },
+      {
+        "label": "Music",
+        "text": "Great music! Who picked the playlist?"
+      },
+      {
+        "label": "Team",
+        "text": "Hi! Which team are you from?"
+      }
+    ],
+    "donts": [
+      "Stay glued to your phone.",
+      "Leave in five minutes."
+    ]
+  },
+  {
+    "id": "v7-talk-office-053",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "They went on a trek",
+    "kind": "keep_going",
+    "moment": "They went on a trek",
+    "they": "I just did the Hampta Pass trek.",
+    "deadEnd": "Cool.",
+    "reply": "Wow! How many days did it take?",
+    "formula": "react + one question",
+    "more": [
+      {
+        "label": "Hard part",
+        "text": "Was it tough on the last day?"
+      },
+      {
+        "label": "View",
+        "text": "What was the view like at the top?"
+      },
+      {
+        "label": "Next",
+        "text": "Planning another one soon?"
+      }
+    ],
+    "donts": [
+      "Say you'd never do something so hard.",
+      "Switch to your own trip."
+    ]
+  },
+  {
+    "id": "v7-talk-office-054",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Escaping a long story politely",
+    "kind": "exit",
+    "moment": "Escaping a long story politely",
+    "they": "...and that's only the first part.",
+    "deadEnd": "Too long.",
+    "reply": "Ha, I need the rest! Over coffee tomorrow? I've got to dash now.",
+    "formula": "interest + later + reason",
+    "more": [
+      {
+        "label": "Meeting",
+        "text": "Hold that thought, I've got a meeting. Tell me later?"
+      },
+      {
+        "label": "Lunch",
+        "text": "Save the rest for lunch! I need to run."
+      },
+      {
+        "label": "Honest",
+        "text": "Love this, but I'm on a deadline. Part two later?"
+      }
+    ],
+    "donts": [
+      "Walk off while they talk.",
+      "Say you're bored."
+    ]
+  },
+  {
+    "id": "v7-talk-office-055",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "You brought up a touchy topic",
+    "kind": "save_it",
+    "moment": "You brought up a touchy topic",
+    "they": "I'd rather not talk about that.",
+    "deadEnd": "Why?",
+    "reply": "Of course, sorry. So, how's the new project going?",
+    "formula": "sorry + change topic",
+    "more": [
+      {
+        "label": "Short",
+        "text": "Sorry, my mistake. Let's leave it."
+      },
+      {
+        "label": "Caring",
+        "text": "Sorry, I didn't mean to pry."
+      },
+      {
+        "label": "Move on",
+        "text": "Fair enough. Did you see the new cafe downstairs?"
+      }
+    ],
+    "donts": [
+      "Ask why.",
+      "Keep saying sorry and make it bigger."
+    ]
+  },
+  {
+    "id": "v7-talk-office-056",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "How was your flight?",
+    "kind": "reply",
+    "moment": "How was your flight?",
+    "they": "How was your flight?",
+    "deadEnd": "Fine.",
+    "reply": "Smooth, thanks! I even got a little sleep. Glad to be here.",
+    "formula": "answer + detail + nice close",
+    "more": [
+      {
+        "label": "Late",
+        "text": "A bit late, but fine. Good to finally be here!"
+      },
+      {
+        "label": "Bumpy",
+        "text": "Bumpy for a bit, but I made it! Thanks for asking."
+      },
+      {
+        "label": "Early",
+        "text": "Very early, but smooth. The coffee is helping."
+      }
+    ],
+    "donts": [
+      "Complain about the airline for minutes.",
+      "Say only fine."
+    ]
+  },
+  {
+    "id": "v7-talk-office-057",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Dinner with a client",
+    "kind": "open",
+    "moment": "Dinner with a client",
+    "deadEnd": "Read the menu in silence.",
+    "reply": "Thanks for coming. Have you been here before? I hear the biryani is great.",
+    "formula": "thanks + place + suggestion",
+    "more": [
+      {
+        "label": "Their day",
+        "text": "How was the rest of your day?"
+      },
+      {
+        "label": "Favourite",
+        "text": "Do you have a favourite dish here?"
+      },
+      {
+        "label": "City",
+        "text": "How are you liking the city so far?"
+      }
+    ],
+    "donts": [
+      "Start with the contract.",
+      "Order for them without asking."
+    ]
+  },
+  {
+    "id": "v7-talk-office-058",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Client is new in the role",
+    "kind": "keep_going",
+    "moment": "Client is new in the role",
+    "they": "I just took over this role last month.",
+    "deadEnd": "Okay.",
+    "reply": "Congratulations! How's the first month been?",
+    "formula": "praise + ask how it feels",
+    "more": [
+      {
+        "label": "Before",
+        "text": "Nice! Where were you before this?"
+      },
+      {
+        "label": "Team",
+        "text": "How are you finding the team?"
+      },
+      {
+        "label": "Plans",
+        "text": "What are you most excited about in the role?"
+      }
+    ],
+    "donts": [
+      "Talk about the person who had the job before.",
+      "Test what they know."
+    ]
+  },
+  {
+    "id": "v7-talk-office-059",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Ending a client call that went over time",
+    "kind": "exit",
+    "moment": "Ending a client call that went over time",
+    "they": "Oh, we went over!",
+    "deadEnd": "Yes, bye.",
+    "reply": "We did, thanks for the extra time. I'll send the notes by tonight. Bye for now!",
+    "formula": "thanks for the time + next step",
+    "more": [
+      {
+        "label": "Sorry",
+        "text": "Sorry for running over! I'll keep the next one tight."
+      },
+      {
+        "label": "Follow up",
+        "text": "Let's pick the rest up on Thursday."
+      },
+      {
+        "label": "Short",
+        "text": "Thanks, Anna. Talk soon!"
+      }
+    ],
+    "donts": [
+      "Keep going for five more minutes.",
+      "Leave without a next step."
+    ]
+  },
+  {
+    "id": "v7-talk-office-060",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Awkward pause after hello",
+    "kind": "save_it",
+    "moment": "Awkward pause after hello",
+    "they": "So...",
+    "deadEnd": "So...",
+    "reply": "So! Did you have a good weekend? Ours was a rainy one.",
+    "formula": "easy question + small share",
+    "more": [
+      {
+        "label": "Week",
+        "text": "How's your week been so far?"
+      },
+      {
+        "label": "Weather",
+        "text": "How's the weather there today?"
+      },
+      {
+        "label": "Agenda",
+        "text": "Shall I share the agenda while others join?"
+      }
+    ],
+    "donts": [
+      "Wait for them to fill the silence.",
+      "Start with a problem."
+    ]
+  },
+  {
+    "id": "v7-talk-office-061",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Did you watch the match last night?",
+    "kind": "reply",
+    "moment": "Did you watch the match last night?",
+    "they": "Did you watch the match last night?",
+    "deadEnd": "No.",
+    "reply": "Only the second half! That last goal was unreal. Did you see it?",
+    "formula": "answer + detail + ask",
+    "more": [
+      {
+        "label": "Missed it",
+        "text": "I missed it! Was it good?"
+      },
+      {
+        "label": "Not a fan",
+        "text": "I don't follow football much. Who won?"
+      },
+      {
+        "label": "Big fan",
+        "text": "Yes! I was shouting at my TV. You?"
+      }
+    ],
+    "donts": [
+      "Fake that you watched it.",
+      "Start a fight over teams."
+    ]
+  },
+  {
+    "id": "v7-talk-office-062",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Sharing a cab after work",
+    "kind": "open",
+    "moment": "Sharing a cab after work",
+    "deadEnd": "Put your earphones in.",
+    "reply": "Long day? I'm wiped out. Which side of town are you headed?",
+    "formula": "shared feeling + easy question",
+    "more": [
+      {
+        "label": "Route",
+        "text": "Do you take this route every day?"
+      },
+      {
+        "label": "Weekend",
+        "text": "Any plans for the weekend?"
+      },
+      {
+        "label": "Music",
+        "text": "Mind if we keep the music low?"
+      }
+    ],
+    "donts": [
+      "Talk about work drama.",
+      "Spend the ride on calls."
+    ]
+  },
+  {
+    "id": "v7-talk-office-063",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "They're redoing their kitchen",
+    "kind": "keep_going",
+    "moment": "They're redoing their kitchen",
+    "they": "We're redoing our kitchen.",
+    "deadEnd": "Okay.",
+    "reply": "Fun! What are you changing?",
+    "formula": "react + ask one detail",
+    "more": [
+      {
+        "label": "When",
+        "text": "When will it be done?"
+      },
+      {
+        "label": "Cooking",
+        "text": "Are you surviving without a kitchen?"
+      },
+      {
+        "label": "Photos",
+        "text": "Show me the photos when it's done!"
+      }
+    ],
+    "donts": [
+      "Ask how much it costs.",
+      "Tell horror stories about builders."
+    ]
+  },
+  {
+    "id": "v7-talk-office-064",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Ending a chat to join a meeting",
+    "kind": "exit",
+    "moment": "Ending a chat to join a meeting",
+    "they": "Did you hear about the new rules?",
+    "deadEnd": "Later.",
+    "reply": "Not yet! Tell me after? My meeting starts now.",
+    "formula": "interest + later + reason",
+    "more": [
+      {
+        "label": "Message",
+        "text": "Send me the link? I'm late for a call."
+      },
+      {
+        "label": "Lunch",
+        "text": "Tell me at lunch, I have to go!"
+      },
+      {
+        "label": "Short",
+        "text": "Ooh, save it for me. Meeting now!"
+      }
+    ],
+    "donts": [
+      "Leave without a word.",
+      "Pretend to listen while walking away."
+    ]
+  },
+  {
+    "id": "v7-talk-office-065",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "You spilled coffee on their desk",
+    "kind": "save_it",
+    "moment": "You spilled coffee on their desk",
+    "they": "Oh no, my papers!",
+    "deadEnd": "Sorry.",
+    "reply": "I'm so sorry! Let me grab some tissues. Are your papers okay?",
+    "formula": "sorry + help + check",
+    "more": [
+      {
+        "label": "Fix",
+        "text": "So sorry. I'll print fresh copies for you."
+      },
+      {
+        "label": "Clean",
+        "text": "My fault! Let me clean it up right now."
+      },
+      {
+        "label": "Treat",
+        "text": "I'm sorry. The next coffee is on me."
+      }
+    ],
+    "donts": [
+      "Say sorry and walk off.",
+      "Blame the cup."
+    ]
+  },
+  {
+    "id": "v7-talk-office-066",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Busy quarter for you?",
+    "kind": "reply",
+    "moment": "Busy quarter for you?",
+    "they": "Busy quarter for you?",
+    "deadEnd": "Yes.",
+    "reply": "Very! Three launches since April. It's been fun, though. How about yours?",
+    "formula": "answer + detail + ask back",
+    "more": [
+      {
+        "label": "Calm",
+        "text": "Steady, which is nice for a change. Yours?"
+      },
+      {
+        "label": "Nearly over",
+        "text": "Busy, but it's nearly over. How's it going there?"
+      },
+      {
+        "label": "Growing",
+        "text": "Very busy. We're hiring to keep up! You?"
+      }
+    ],
+    "donts": [
+      "Complain about workload to a client.",
+      "Share private numbers."
+    ]
+  },
+  {
+    "id": "v7-talk-office-067",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Video call with a client's new manager",
+    "kind": "open",
+    "moment": "Video call with a client's new manager",
+    "deadEnd": "Shall we begin?",
+    "reply": "Hi Daniel, welcome! Great to meet you. How are you settling in?",
+    "formula": "welcome + name + easy question",
+    "more": [
+      {
+        "label": "Where",
+        "text": "Hi Daniel! Are you based in London too?"
+      },
+      {
+        "label": "Before",
+        "text": "Good to meet you. Were you at the company before?"
+      },
+      {
+        "label": "Their day",
+        "text": "Hi Daniel! Thanks for joining. How's your day going?"
+      }
+    ],
+    "donts": [
+      "Talk about the old manager.",
+      "Jump straight to problems."
+    ]
+  },
+  {
+    "id": "v7-talk-office-068",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Client mentions the heat",
+    "kind": "keep_going",
+    "moment": "Client mentions the heat",
+    "they": "It's so hot here this week.",
+    "deadEnd": "Here too.",
+    "reply": "Oh no! How hot is it? Is the AC keeping up?",
+    "formula": "sympathy + one question",
+    "more": [
+      {
+        "label": "Normal?",
+        "text": "Is this normal for this time of year?"
+      },
+      {
+        "label": "Weekend",
+        "text": "Hope you have a cool weekend planned!"
+      },
+      {
+        "label": "Same here",
+        "text": "Same here, forty degrees! How are you coping?"
+      }
+    ],
+    "donts": [
+      "Turn it into a climate debate.",
+      "Complain more than they do."
+    ]
+  },
+  {
+    "id": "v7-talk-office-069",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Saying goodbye after a site visit",
+    "kind": "exit",
+    "moment": "Saying goodbye after a site visit",
+    "they": "Thanks for the tour.",
+    "deadEnd": "Okay.",
+    "reply": "Thank you for having us! It really helped to see it in person. Talk next week.",
+    "formula": "thanks + what helped + next step",
+    "more": [
+      {
+        "label": "Team",
+        "text": "Please thank the team, they were so helpful."
+      },
+      {
+        "label": "Notes",
+        "text": "Thanks! I'll send our notes by Friday."
+      },
+      {
+        "label": "Come back",
+        "text": "Lovely visit. Hope to come back soon!"
+      }
+    ],
+    "donts": [
+      "Leave without thanking the host.",
+      "Point out problems on the way out."
+    ]
+  },
+  {
+    "id": "v7-talk-office-070",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "You quoted the wrong number",
+    "kind": "save_it",
+    "moment": "You quoted the wrong number",
+    "they": "I thought it was ten, not twelve?",
+    "deadEnd": "Oh.",
+    "reply": "You're right, it's ten. Sorry, my mistake. Thanks for catching it.",
+    "formula": "agree + right number + thanks",
+    "more": [
+      {
+        "label": "Check",
+        "text": "Let me check and confirm by email today."
+      },
+      {
+        "label": "Fix",
+        "text": "Good catch. I'll fix it in the deck."
+      },
+      {
+        "label": "Short",
+        "text": "Ten, yes. Sorry about that!"
+      }
+    ],
+    "donts": [
+      "Argue before you check.",
+      "Hide it and hope they forget."
+    ]
+  },
+  {
+    "id": "v7-talk-office-071",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "How's work from home going?",
+    "kind": "reply",
+    "moment": "How's work from home going?",
+    "they": "How's work from home going?",
+    "deadEnd": "Fine.",
+    "reply": "Pretty good! I save two hours on travel. I do miss the chats, though. You?",
+    "formula": "answer + one good + one miss + ask",
+    "more": [
+      {
+        "label": "Hard days",
+        "text": "Some days are tough. My neighbours love drilling!"
+      },
+      {
+        "label": "Love it",
+        "text": "Love it. My dog is the best coworker. You?"
+      },
+      {
+        "label": "Mixed",
+        "text": "Mixed. Quiet, but lonely sometimes. How about you?"
+      }
+    ],
+    "donts": [
+      "Say you barely work.",
+      "Complain about the office for minutes."
+    ]
+  },
+  {
+    "id": "v7-talk-office-072",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Your manager's manager in the corridor",
+    "kind": "open",
+    "moment": "Your manager's manager in the corridor",
+    "deadEnd": "Look down and walk past.",
+    "reply": "Good morning, Vikram! How was the trip to Delhi?",
+    "formula": "greeting + name + something you know",
+    "more": [
+      {
+        "label": "Plain",
+        "text": "Morning! How's your week going?"
+      },
+      {
+        "label": "Their talk",
+        "text": "Hi! I enjoyed your talk at the town hall."
+      },
+      {
+        "label": "Weekend",
+        "text": "Good morning! Good weekend?"
+      }
+    ],
+    "donts": [
+      "Ask for a raise.",
+      "Complain about your manager."
+    ]
+  },
+  {
+    "id": "v7-talk-office-073",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "They mention a new phone",
+    "kind": "keep_going",
+    "moment": "They mention a new phone",
+    "they": "I finally got a new phone.",
+    "deadEnd": "Nice.",
+    "reply": "Ooh, which one did you get?",
+    "formula": "react + ask one detail",
+    "more": [
+      {
+        "label": "Like it?",
+        "text": "Do you like it so far?"
+      },
+      {
+        "label": "Camera",
+        "text": "How's the camera?"
+      },
+      {
+        "label": "Old one",
+        "text": "What happened to the old one?"
+      }
+    ],
+    "donts": [
+      "Ask what it cost.",
+      "Say yours is better."
+    ]
+  },
+  {
+    "id": "v7-talk-office-074",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Leaving a team dinner",
+    "kind": "exit",
+    "moment": "Leaving a team dinner",
+    "they": "Stay for dessert!",
+    "deadEnd": "No.",
+    "reply": "I wish! I have an early call tomorrow. Thanks, this was really fun.",
+    "formula": "warm no + reason + thanks",
+    "more": [
+      {
+        "label": "Family",
+        "text": "Next time! My family is waiting. Enjoy!"
+      },
+      {
+        "label": "Long drive",
+        "text": "Long drive home for me. See you all tomorrow!"
+      },
+      {
+        "label": "Host",
+        "text": "Thanks for planning this. Great evening!"
+      }
+    ],
+    "donts": [
+      "Leave without saying bye.",
+      "Say you're bored."
+    ]
+  },
+  {
+    "id": "v7-talk-office-075",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "You were late to their meeting",
+    "kind": "save_it",
+    "moment": "You were late to their meeting",
+    "they": "We started without you.",
+    "deadEnd": "Traffic.",
+    "reply": "Sorry I'm late. Please carry on, I'll catch up from the notes.",
+    "formula": "short sorry + don't stop them",
+    "more": [
+      {
+        "label": "Reason",
+        "text": "Sorry, my last call ran over. Please go on."
+      },
+      {
+        "label": "Later",
+        "text": "Sorry! I'll check with you after for what I missed."
+      },
+      {
+        "label": "Short",
+        "text": "Apologies. Carry on!"
+      }
+    ],
+    "donts": [
+      "Give a long excuse.",
+      "Ask them to start again."
+    ]
+  },
+  {
+    "id": "v7-talk-office-076",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Are you based in Pune?",
+    "kind": "reply",
+    "moment": "Are you based in Pune?",
+    "they": "Are you based in Pune?",
+    "deadEnd": "Yes.",
+    "reply": "Yes, born and raised! Have you ever been?",
+    "formula": "answer + detail + ask",
+    "more": [
+      {
+        "label": "Moved",
+        "text": "I am now. I moved from Indore two years ago. You?"
+      },
+      {
+        "label": "Nearby",
+        "text": "Close! Just outside, about an hour away."
+      },
+      {
+        "label": "Travel",
+        "text": "Mostly, though I travel to Mumbai a lot."
+      }
+    ],
+    "donts": [
+      "Answer yes and stop.",
+      "Give your full address."
+    ]
+  },
+  {
+    "id": "v7-talk-office-077",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Client has a noisy background",
+    "kind": "open",
+    "moment": "Client has a noisy background",
+    "deadEnd": "I can't hear you.",
+    "reply": "Hi Tom! Sounds lively there. Are you at the office today?",
+    "formula": "greet + kind remark + question",
+    "more": [
+      {
+        "label": "Cafe",
+        "text": "Are you in a cafe? It sounds busy!"
+      },
+      {
+        "label": "Mute tip",
+        "text": "It's a bit noisy. Shall we all mute when not speaking?"
+      },
+      {
+        "label": "Busy house",
+        "text": "Sounds like a busy house today!"
+      }
+    ],
+    "donts": [
+      "Complain about the noise.",
+      "Pretend you can hear when you can't."
+    ]
+  },
+  {
+    "id": "v7-talk-office-078",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Client talks about hiring",
+    "kind": "keep_going",
+    "moment": "Client talks about hiring",
+    "they": "We're hiring a lot this year.",
+    "deadEnd": "Good.",
+    "reply": "That's great news! Which teams are growing?",
+    "formula": "react + ask one detail",
+    "more": [
+      {
+        "label": "Hard?",
+        "text": "Is it hard to find good people?"
+      },
+      {
+        "label": "How many",
+        "text": "How many are you planning to hire?"
+      },
+      {
+        "label": "Why",
+        "text": "Exciting! New projects coming up?"
+      }
+    ],
+    "donts": [
+      "Ask about salaries.",
+      "Push your own services straight away."
+    ]
+  },
+  {
+    "id": "v7-talk-office-079",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Ending a first call with a new client",
+    "kind": "exit",
+    "moment": "Ending a first call with a new client",
+    "they": "This was helpful.",
+    "deadEnd": "Thanks, bye.",
+    "reply": "I'm glad! Thanks for your time. I'll send a summary today, and we'll talk Thursday.",
+    "formula": "glad + thanks + next step",
+    "more": [
+      {
+        "label": "Questions",
+        "text": "Thanks! Feel free to write if anything comes up."
+      },
+      {
+        "label": "Meet the team",
+        "text": "Great first chat. Looking forward to meeting the team."
+      },
+      {
+        "label": "Short",
+        "text": "Thanks, Sarah. Talk soon!"
+      }
+    ],
+    "donts": [
+      "Push for a deal in the last minute.",
+      "Leave without a next date."
+    ]
+  },
+  {
+    "id": "v7-talk-office-080",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "The client caught a typo in your slide",
+    "kind": "save_it",
+    "moment": "The client caught a typo in your slide",
+    "they": "There's a typo on slide three.",
+    "deadEnd": "Doesn't matter.",
+    "reply": "Good catch, thanks! I'll fix it before I send the deck.",
+    "formula": "thanks + fix",
+    "more": [
+      {
+        "label": "Light",
+        "text": "Sharp eyes! Fixing it now."
+      },
+      {
+        "label": "Short",
+        "text": "Thanks for spotting that."
+      },
+      {
+        "label": "Check all",
+        "text": "Thanks! I'll check the rest of the slides too."
+      }
+    ],
+    "donts": [
+      "Blame a colleague.",
+      "Say it doesn't matter."
+    ]
+  },
+  {
+    "id": "v7-talk-office-081",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Settling in okay?",
+    "kind": "reply",
+    "moment": "Settling in okay?",
+    "they": "Settling in okay?",
+    "deadEnd": "Yes.",
+    "reply": "Yes, thanks! Everyone's been so helpful. Still learning where the good coffee is.",
+    "formula": "answer + detail + light line",
+    "more": [
+      {
+        "label": "Slowly",
+        "text": "Slowly! Lots of new names to learn. Any tips?"
+      },
+      {
+        "label": "Going well",
+        "text": "Really well. My team is lovely."
+      },
+      {
+        "label": "Busy",
+        "text": "Yes, though my calendar filled up fast!"
+      }
+    ],
+    "donts": [
+      "Complain about your old job.",
+      "Say yes and walk away."
+    ]
+  },
+  {
+    "id": "v7-talk-office-082",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Colleague back from a trip",
+    "kind": "open",
+    "moment": "Colleague back from a trip",
+    "deadEnd": "Oh, you're back.",
+    "reply": "Welcome back! How was the trip? Did you get some rest?",
+    "formula": "welcome back + easy question",
+    "more": [
+      {
+        "label": "Photos",
+        "text": "Welcome back! Did you take lots of photos?"
+      },
+      {
+        "label": "Where",
+        "text": "Hey, you are back! Where did you go again?"
+      },
+      {
+        "label": "Inbox",
+        "text": "Welcome back! Ready to face the inbox?"
+      }
+    ],
+    "donts": [
+      "Bury them in work in the first minute.",
+      "Ask how much it cost."
+    ]
+  },
+  {
+    "id": "v7-talk-office-083",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "They started yoga",
+    "kind": "keep_going",
+    "moment": "They started yoga",
+    "they": "I've started doing yoga.",
+    "deadEnd": "Good.",
+    "reply": "Nice! Do you go to a class or follow videos?",
+    "formula": "react + ask one detail",
+    "more": [
+      {
+        "label": "When",
+        "text": "Morning or evening?"
+      },
+      {
+        "label": "Feeling",
+        "text": "Do you feel the difference yet?"
+      },
+      {
+        "label": "Start",
+        "text": "What made you start?"
+      }
+    ],
+    "donts": [
+      "Say yoga is boring.",
+      "Give them health advice."
+    ]
+  },
+  {
+    "id": "v7-talk-office-084",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Getting back to a deadline",
+    "kind": "exit",
+    "moment": "Getting back to a deadline",
+    "they": "So anyway, about the weekend...",
+    "deadEnd": "I'm busy.",
+    "reply": "Ah, I want to hear it! But my deadline is at five. Tell me tomorrow?",
+    "formula": "interest + deadline + later",
+    "more": [
+      {
+        "label": "Coffee",
+        "text": "Coffee after five? I need to finish this first."
+      },
+      {
+        "label": "Short",
+        "text": "Hold that! Deadline calling."
+      },
+      {
+        "label": "Honest",
+        "text": "Sorry, I'm racing a deadline. Catch up later?"
+      }
+    ],
+    "donts": [
+      "Ignore them.",
+      "Make them feel bad for chatting."
+    ]
+  },
+  {
+    "id": "v7-talk-office-085",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "You talked about someone who just walked in",
+    "kind": "save_it",
+    "moment": "You talked about someone who just walked in",
+    "they": "Talking about me?",
+    "deadEnd": "No!",
+    "reply": "Only good things! I was saying how you saved the launch last week.",
+    "formula": "honest + something kind",
+    "more": [
+      {
+        "label": "Light",
+        "text": "Yes! All good, I promise."
+      },
+      {
+        "label": "Bring them in",
+        "text": "Yes, join us! We were talking about your talk."
+      },
+      {
+        "label": "Short",
+        "text": "Ha, only praise!"
+      }
+    ],
+    "donts": [
+      "Say no when they clearly heard you.",
+      "Go quiet and make it more awkward."
+    ]
+  },
+  {
+    "id": "v7-talk-office-086",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Did you have a good break?",
+    "kind": "reply",
+    "moment": "Did you have a good break?",
+    "they": "Did you have a good break?",
+    "deadEnd": "Yes.",
+    "reply": "Lovely, thanks! I spent a week at my parents'. How was yours?",
+    "formula": "answer + detail + ask back",
+    "more": [
+      {
+        "label": "Restful",
+        "text": "Very restful. I barely looked at my phone! You?"
+      },
+      {
+        "label": "Trip",
+        "text": "Yes! We went to Goa. Did you get time off?"
+      },
+      {
+        "label": "Short",
+        "text": "Too short, but good! How about you?"
+      }
+    ],
+    "donts": [
+      "Say you worked all through it.",
+      "Give a day-by-day report."
+    ]
+  },
+  {
+    "id": "v7-talk-office-087",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Client at a trade fair",
+    "kind": "open",
+    "moment": "Client at a trade fair",
+    "deadEnd": "Here's our brochure.",
+    "reply": "Hi! Good to see you here. Have you seen anything interesting yet?",
+    "formula": "greeting + easy question",
+    "more": [
+      {
+        "label": "Keynote",
+        "text": "Hi! Are you going to the keynote later?"
+      },
+      {
+        "label": "Our stand",
+        "text": "Welcome to our stand! How's the fair so far?"
+      },
+      {
+        "label": "Travel",
+        "text": "Hi! Did you fly in for this?"
+      }
+    ],
+    "donts": [
+      "Start with a hard sell.",
+      "Look past them for bigger clients."
+    ]
+  },
+  {
+    "id": "v7-talk-office-088",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Client mentions a conference",
+    "kind": "keep_going",
+    "moment": "Client mentions a conference",
+    "they": "I'm speaking at a conference next month.",
+    "deadEnd": "Nice.",
+    "reply": "Congrats! What's your talk about?",
+    "formula": "praise + ask one detail",
+    "more": [
+      {
+        "label": "Where",
+        "text": "Where is it this year?"
+      },
+      {
+        "label": "Ready?",
+        "text": "Are you nervous, or all set?"
+      },
+      {
+        "label": "Watch",
+        "text": "Will the talk be online later? I'd love to watch."
+      }
+    ],
+    "donts": [
+      "Ask if you can speak too.",
+      "Switch to your own talks."
+    ]
+  },
+  {
+    "id": "v7-talk-office-089",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "Ending a chat with a client at the airport",
+    "kind": "exit",
+    "moment": "Ending a chat with a client at the airport",
+    "they": "My gate is opening.",
+    "deadEnd": "Okay, bye.",
+    "reply": "Go, go! Lovely bumping into you. Safe flight, and talk next week!",
+    "formula": "let them go + warm wish",
+    "more": [
+      {
+        "label": "Follow up",
+        "text": "Safe flight! I'll email you about the demo."
+      },
+      {
+        "label": "Short",
+        "text": "Have a good trip!"
+      },
+      {
+        "label": "The team",
+        "text": "Safe travels. Say hi to the team!"
+      }
+    ],
+    "donts": [
+      "Hold them for one more point.",
+      "Start a work topic now."
+    ]
+  },
+  {
+    "id": "v7-talk-office-090",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "client-calls"
+    ],
+    "module": "smalltalk",
+    "topic": "You were talking on mute",
+    "kind": "save_it",
+    "moment": "You were talking on mute",
+    "they": "You're on mute.",
+    "deadEnd": "Oh.",
+    "reply": "Oops, sorry! I gave a great speech to nobody. Let me start again.",
+    "formula": "laugh + sorry + restart",
+    "more": [
+      {
+        "label": "Short",
+        "text": "Sorry, I was on mute. As I was saying..."
+      },
+      {
+        "label": "Check",
+        "text": "Can you hear me now?"
+      },
+      {
+        "label": "Light",
+        "text": "Classic me! Okay, from the top."
+      }
+    ],
+    "donts": [
+      "Get flustered and rush.",
+      "Blame the app."
+    ]
+  },
+  {
+    "id": "v7-talk-office-091",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Ready for the holidays?",
+    "kind": "reply",
+    "moment": "Ready for the holidays?",
+    "they": "Ready for the holidays?",
+    "deadEnd": "Yes.",
+    "reply": "So ready! Going home to Kochi for a week. Are you travelling?",
+    "formula": "feeling + plan + ask",
+    "more": [
+      {
+        "label": "Almost",
+        "text": "Almost! Just two more days of work. You?"
+      },
+      {
+        "label": "Rest",
+        "text": "Yes! The plan is to sleep a lot. How about you?"
+      },
+      {
+        "label": "Family",
+        "text": "Yes, the whole family is coming over. Busy but fun!"
+      }
+    ],
+    "donts": [
+      "Say you hate holidays.",
+      "Brag about the trip."
+    ]
+  },
+  {
+    "id": "v7-talk-office-092",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Someone wearing a cricket team jersey",
+    "kind": "open",
+    "moment": "Someone wearing a cricket team jersey",
+    "deadEnd": "Say nothing.",
+    "reply": "Nice jersey! Big fan of the team? Did you see last night's game?",
+    "formula": "notice + friendly question",
+    "more": [
+      {
+        "label": "Player",
+        "text": "Who's your favourite player?"
+      },
+      {
+        "label": "Stadium",
+        "text": "Have you watched them at the stadium?"
+      },
+      {
+        "label": "Match day",
+        "text": "Brave to wear that to the office! Big match tonight?"
+      }
+    ],
+    "donts": [
+      "Mock their team.",
+      "Start a fight about players."
+    ]
+  },
+  {
+    "id": "v7-talk-office-093",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "They're reading a good book",
+    "kind": "keep_going",
+    "moment": "They're reading a good book",
+    "they": "I'm reading a great book right now.",
+    "deadEnd": "Cool.",
+    "reply": "Oh, which one? What's it about?",
+    "formula": "react + ask one detail",
+    "more": [
+      {
+        "label": "Why",
+        "text": "What do you like about it?"
+      },
+      {
+        "label": "Kind",
+        "text": "Do you read stories mostly?"
+      },
+      {
+        "label": "Borrow",
+        "text": "Can I borrow it when you're done?"
+      }
+    ],
+    "donts": [
+      "Say reading is boring.",
+      "Spoil the ending if you've read it."
+    ]
+  },
+  {
+    "id": "v7-talk-office-094",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Wrapping up a one-on-one",
+    "kind": "exit",
+    "moment": "Wrapping up a one-on-one",
+    "they": "Anything else?",
+    "deadEnd": "No. Bye.",
+    "reply": "That's all from me. Thanks, this really helped. Same time next week?",
+    "formula": "done + thanks + next time",
+    "more": [
+      {
+        "label": "Notes",
+        "text": "Nothing else. I'll send a short summary."
+      },
+      {
+        "label": "Thanks",
+        "text": "No, I'm good. Thanks for the advice!"
+      },
+      {
+        "label": "Next time",
+        "text": "All set. Talk next Tuesday!"
+      }
+    ],
+    "donts": [
+      "Bring up a big topic as they leave.",
+      "Walk out without a thank you."
+    ]
+  },
+  {
+    "id": "v7-talk-office-095",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Your mic was on by mistake",
+    "kind": "save_it",
+    "moment": "Your mic was on by mistake",
+    "they": "We can hear you, by the way.",
+    "deadEnd": "Mute fast and say nothing.",
+    "reply": "Oops, sorry everyone! That was my family. Muting now.",
+    "formula": "laugh + sorry + fix",
+    "more": [
+      {
+        "label": "Light",
+        "text": "Well, now you know what I'm having for lunch!"
+      },
+      {
+        "label": "Short",
+        "text": "Sorry! Muting."
+      },
+      {
+        "label": "Back to it",
+        "text": "Sorry about that. Back to the call."
+      }
+    ],
+    "donts": [
+      "Leave the call in a panic.",
+      "Act like it wasn't you."
+    ]
+  },
+  {
+    "id": "v7-talk-office-096",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "How was the training?",
+    "kind": "reply",
+    "moment": "How was the training?",
+    "they": "How was the training?",
+    "deadEnd": "Okay.",
+    "reply": "Better than I expected! I learned a neat Excel trick. Want me to show you?",
+    "formula": "feeling + one thing learned + offer",
+    "more": [
+      {
+        "label": "Long",
+        "text": "Useful, but long. Two full days!"
+      },
+      {
+        "label": "Fun",
+        "text": "Fun! The trainer was really good."
+      },
+      {
+        "label": "Mixed",
+        "text": "Some of it was new, some I knew. Going next time?"
+      }
+    ],
+    "donts": [
+      "Call it a waste in front of others.",
+      "Say okay and stop."
+    ]
+  },
+  {
+    "id": "v7-talk-office-097",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Waiting at the printer",
+    "kind": "open",
+    "moment": "Waiting at the printer",
+    "deadEnd": "Stare at the machine.",
+    "reply": "Is it jammed again? This printer has a mind of its own.",
+    "formula": "shared moment + light line",
+    "more": [
+      {
+        "label": "Help",
+        "text": "Need a hand? I think the paper tray is stuck."
+      },
+      {
+        "label": "Big job",
+        "text": "Big print job today?"
+      },
+      {
+        "label": "Hurry",
+        "text": "Busy day? Printers always know when you are in a hurry."
+      }
+    ],
+    "donts": [
+      "Read their printout.",
+      "Grab their pages."
+    ]
+  },
+  {
+    "id": "v7-talk-office-098",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "They mention their hometown",
+    "kind": "keep_going",
+    "moment": "They mention their hometown",
+    "they": "I'm from Jaipur, actually.",
+    "deadEnd": "Okay.",
+    "reply": "Oh, lovely! What do you miss most about it?",
+    "formula": "react + ask one detail",
+    "more": [
+      {
+        "label": "Visits",
+        "text": "How often do you get to go back?"
+      },
+      {
+        "label": "Food",
+        "text": "What should I eat if I visit?"
+      },
+      {
+        "label": "Places",
+        "text": "Any place I must see there?"
+      }
+    ],
+    "donts": [
+      "Say anything bad about the city.",
+      "Make jokes about people from there."
+    ]
+  },
+  {
+    "id": "v7-talk-office-099",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Leaving a farewell party",
+    "kind": "exit",
+    "moment": "Leaving a farewell party",
+    "they": "You're heading off?",
+    "deadEnd": "Yes.",
+    "reply": "I am. All the best in the new job, Ravi! Let's stay in touch.",
+    "formula": "yes + best wishes + stay in touch",
+    "more": [
+      {
+        "label": "Number",
+        "text": "Yes. Keep in touch, and send me your new number!"
+      },
+      {
+        "label": "Thanks",
+        "text": "Thanks for everything you taught me. Good luck!"
+      },
+      {
+        "label": "Coffee",
+        "text": "I'll miss you. Coffee when you're settled in?"
+      }
+    ],
+    "donts": [
+      "Leave without saying bye to them.",
+      "Ask about their new salary."
+    ]
+  },
+  {
+    "id": "v7-talk-office-100",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "You mixed up two colleagues",
+    "kind": "save_it",
+    "moment": "You mixed up two colleagues",
+    "they": "That was Pooja's work, not mine.",
+    "deadEnd": "Same team.",
+    "reply": "Sorry, you're right! I mixed you up. Then I must tell Pooja well done.",
+    "formula": "sorry + correct + move on",
+    "more": [
+      {
+        "label": "Short",
+        "text": "My mistake, sorry. Thanks for telling me."
+      },
+      {
+        "label": "Light",
+        "text": "Oops! Too many great people on this team."
+      },
+      {
+        "label": "Ask",
+        "text": "Sorry! What are you working on these days?"
+      }
+    ],
+    "donts": [
+      "Say you all look the same.",
+      "Keep calling them by the wrong name."
+    ]
+  },
+  {
+    "id": "v7-talk-office-101",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Long day?",
+    "kind": "reply",
+    "moment": "Long day?",
+    "they": "Long day?",
+    "deadEnd": "Yes.",
+    "reply": "Very! Five calls and one big deadline. Heading home to sleep. You?",
+    "formula": "answer + detail + ask back",
+    "more": [
+      {
+        "label": "Good day",
+        "text": "Long, but good. We closed a big deal!"
+      },
+      {
+        "label": "Nearly over",
+        "text": "Yes, but almost over. Any plans tonight?"
+      },
+      {
+        "label": "Not bad",
+        "text": "Not too bad, actually. How was yours?"
+      }
+    ],
+    "donts": [
+      "Unload all your stress.",
+      "Say yes and walk off."
+    ]
+  },
+  {
+    "id": "v7-talk-office-102",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "A colleague's new desk plant",
+    "kind": "open",
+    "moment": "A colleague's new desk plant",
+    "deadEnd": "Walk past.",
+    "reply": "Love the new plant! Is it easy to take care of?",
+    "formula": "notice + easy question",
+    "more": [
+      {
+        "label": "Name",
+        "text": "Does it have a name yet?"
+      },
+      {
+        "label": "Where",
+        "text": "Where did you get it? I want one."
+      },
+      {
+        "label": "Light",
+        "text": "Your desk looks so fresh now!"
+      }
+    ],
+    "donts": [
+      "Say it will die soon.",
+      "Touch it without asking."
+    ]
+  },
+  {
+    "id": "v7-talk-office-103",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "They're planning their wedding",
+    "kind": "keep_going",
+    "moment": "They're planning their wedding",
+    "they": "We're planning our wedding!",
+    "deadEnd": "Congrats.",
+    "reply": "Congratulations! When's the big day?",
+    "formula": "praise + ask one detail",
+    "more": [
+      {
+        "label": "Where",
+        "text": "Where's it going to be?"
+      },
+      {
+        "label": "Planning",
+        "text": "How's the planning going? Stressful?"
+      },
+      {
+        "label": "Best part",
+        "text": "What part are you most excited about?"
+      }
+    ],
+    "donts": [
+      "Ask how much it costs.",
+      "Share wedding horror stories."
+    ]
+  },
+  {
+    "id": "v7-talk-office-104",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Leaving a group chat in the pantry",
+    "kind": "exit",
+    "moment": "Leaving a group chat in the pantry",
+    "they": "Anyway, more tea?",
+    "deadEnd": "Bye.",
+    "reply": "I'll pass, thanks. I need to get back. Good chatting, everyone!",
+    "formula": "no thanks + reason + warm close",
+    "more": [
+      {
+        "label": "Call",
+        "text": "Got a call in five. See you all at lunch!"
+      },
+      {
+        "label": "Short",
+        "text": "Back to work for me. Bye, everyone!"
+      },
+      {
+        "label": "Tomorrow",
+        "text": "Same time tomorrow?"
+      }
+    ],
+    "donts": [
+      "Slip away without a word.",
+      "Make everyone feel like they're slacking."
+    ]
+  },
+  {
+    "id": "v7-talk-office-105",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "You forgot what you were saying",
+    "kind": "save_it",
+    "moment": "You forgot what you were saying",
+    "they": "You were saying?",
+    "deadEnd": "Nothing.",
+    "reply": "Wait, I've lost it! It'll come back. What were you going to say?",
+    "formula": "admit + light line + hand over",
+    "more": [
+      {
+        "label": "Light",
+        "text": "It's gone! Must not have been important."
+      },
+      {
+        "label": "Ask",
+        "text": "Sorry, where was I?"
+      },
+      {
+        "label": "Later",
+        "text": "Lost it! I'll tell you when it comes back."
+      }
+    ],
+    "donts": [
+      "Panic and go quiet.",
+      "Make up something random."
+    ]
+  },
+  {
+    "id": "v7-talk-office-106",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Survived the review meeting?",
+    "kind": "reply",
+    "moment": "Survived the review meeting?",
+    "they": "Survived the review meeting?",
+    "deadEnd": "Yes.",
+    "reply": "Just about! Some tough questions, but it went well. How was your day?",
+    "formula": "answer + detail + ask back",
+    "more": [
+      {
+        "label": "Went well",
+        "text": "Yes, it went great! They liked the plan."
+      },
+      {
+        "label": "Hard",
+        "text": "Barely! I need a coffee. Want one?"
+      },
+      {
+        "label": "Mixed",
+        "text": "Mostly. A few changes to make. You?"
+      }
+    ],
+    "donts": [
+      "Complain about the reviewers.",
+      "Share private feedback."
+    ]
+  },
+  {
+    "id": "v7-talk-office-107",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Sitting next to someone at a training",
+    "kind": "open",
+    "moment": "Sitting next to someone at a training",
+    "deadEnd": "Look at your phone.",
+    "reply": "Hi, I'm Dev. Is this your first session in this series?",
+    "formula": "name + easy question",
+    "more": [
+      {
+        "label": "Team",
+        "text": "Hi! Which team are you from?"
+      },
+      {
+        "label": "Topic",
+        "text": "Do you use this tool much in your work?"
+      },
+      {
+        "label": "Coffee",
+        "text": "Did you find the coffee? I'm already in need."
+      }
+    ],
+    "donts": [
+      "Talk while the trainer is speaking.",
+      "Complain about having to attend."
+    ]
+  },
+  {
+    "id": "v7-talk-office-108",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "They went to a concert",
+    "kind": "keep_going",
+    "moment": "They went to a concert",
+    "they": "I went to a concert on Saturday.",
+    "deadEnd": "Nice.",
+    "reply": "Fun! Who did you see?",
+    "formula": "react + ask one detail",
+    "more": [
+      {
+        "label": "Worth it?",
+        "text": "How was it? Worth the crowd?"
+      },
+      {
+        "label": "Song",
+        "text": "Did they play your favourite song?"
+      },
+      {
+        "label": "Next",
+        "text": "Going to any more this year?"
+      }
+    ],
+    "donts": [
+      "Make fun of their music.",
+      "Ask how much the tickets cost."
+    ]
+  },
+  {
+    "id": "v7-talk-office-109",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Ending a chat in the lift",
+    "kind": "exit",
+    "moment": "Ending a chat in the lift",
+    "they": "So how's your project going?",
+    "deadEnd": "Fine, bye.",
+    "reply": "Really well, thanks! This is my floor. Good to see you, have a nice day!",
+    "formula": "short answer + my floor + warm wish",
+    "more": [
+      {
+        "label": "Later",
+        "text": "Good! I'll tell you more over lunch. My floor!"
+      },
+      {
+        "label": "Short",
+        "text": "This is me. See you around!"
+      },
+      {
+        "label": "Coffee",
+        "text": "Let's catch up properly over coffee. Bye!"
+      }
+    ],
+    "donts": [
+      "Hold the doors to keep talking.",
+      "Step out mid-sentence."
+    ]
+  },
+  {
+    "id": "v7-talk-office-110",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Long silence in the lift",
+    "kind": "save_it",
+    "moment": "Long silence in the lift",
+    "deadEnd": "Stare at your phone.",
+    "reply": "Quiet morning, isn't it? Are you on the fifth floor too?",
+    "formula": "light line + easy question",
+    "more": [
+      {
+        "label": "Their day",
+        "text": "Busy day ahead?"
+      },
+      {
+        "label": "Weather",
+        "text": "Did you get caught in the rain?"
+      },
+      {
+        "label": "Weekend",
+        "text": "Nearly the weekend! Any plans?"
+      }
+    ],
+    "donts": [
+      "Force a long chat.",
+      "Ask personal questions."
+    ]
+  },
+  {
+    "id": "v7-talk-office-111",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "How's your team doing?",
+    "kind": "reply",
+    "moment": "How's your team doing?",
+    "they": "How's your team doing?",
+    "deadEnd": "Good.",
+    "reply": "Really well! We just welcomed two new people. How's yours?",
+    "formula": "answer + detail + ask back",
+    "more": [
+      {
+        "label": "Busy",
+        "text": "Busy, but we're coping. How about your team?"
+      },
+      {
+        "label": "Proud",
+        "text": "Great! They nailed the last release."
+      },
+      {
+        "label": "Change",
+        "text": "Lots of change, but good change. Yours?"
+      }
+    ],
+    "donts": [
+      "Complain about a team member.",
+      "Say good and stop."
+    ]
+  },
+  {
+    "id": "v7-talk-office-112",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Walking out of the office together",
+    "kind": "open",
+    "moment": "Walking out of the office together",
+    "deadEnd": "Walk in silence.",
+    "reply": "Finally done for the day! Are you heading to the metro too?",
+    "formula": "shared feeling + easy question",
+    "more": [
+      {
+        "label": "Plans",
+        "text": "Any plans tonight?"
+      },
+      {
+        "label": "Their day",
+        "text": "How was your day?"
+      },
+      {
+        "label": "Food",
+        "text": "I'm starving. Know a good place nearby?"
+      }
+    ],
+    "donts": [
+      "Talk about work all the way.",
+      "Put headphones on mid-chat."
+    ]
+  },
+  {
+    "id": "v7-talk-office-113",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "They're learning a new language",
+    "kind": "keep_going",
+    "moment": "They're learning a new language",
+    "they": "I'm learning French.",
+    "deadEnd": "Good.",
+    "reply": "Ooh! How's it going? Can you say something?",
+    "formula": "react + ask + light challenge",
+    "more": [
+      {
+        "label": "Why",
+        "text": "What made you pick French?"
+      },
+      {
+        "label": "How",
+        "text": "Are you using an app or a class?"
+      },
+      {
+        "label": "Trip",
+        "text": "Planning a trip to France?"
+      }
+    ],
+    "donts": [
+      "Say it's useless.",
+      "Correct their accent."
+    ]
+  },
+  {
+    "id": "v7-talk-office-114",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "Heading home while others stay late",
+    "kind": "exit",
+    "moment": "Heading home while others stay late",
+    "they": "You're leaving?",
+    "deadEnd": "Yes, bye.",
+    "reply": "Yes, my part is done for today. Don't stay too late! See you tomorrow.",
+    "formula": "yes + reason + kind wish",
+    "more": [
+      {
+        "label": "Offer help",
+        "text": "Yes, unless you need a hand with anything?"
+      },
+      {
+        "label": "Family",
+        "text": "Yes, I promised to be home for dinner. Good night!"
+      },
+      {
+        "label": "Short",
+        "text": "Heading off! Have a good evening."
+      }
+    ],
+    "donts": [
+      "Say sorry for leaving on time.",
+      "Brag that you're done."
+    ]
+  },
+  {
+    "id": "v7-talk-office-115",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "smalltalk",
+      "office"
+    ],
+    "module": "smalltalk",
+    "topic": "You asked about a project that got cancelled",
+    "kind": "save_it",
+    "moment": "You asked about a project that got cancelled",
+    "they": "Oh, that got cancelled.",
+    "deadEnd": "Why?",
+    "reply": "Ah, sorry, I didn't know. What are you working on now?",
+    "formula": "sorry + new question",
+    "more": [
+      {
+        "label": "Kind",
+        "text": "Sorry to hear that. You put a lot into it."
+      },
+      {
+        "label": "Short",
+        "text": "Oh, I missed that news. What's next for you?"
+      },
+      {
+        "label": "Fresh start",
+        "text": "Fresh start, then! Anything exciting coming up?"
+      }
+    ],
+    "donts": [
+      "Ask who's to blame.",
+      "Keep asking about it."
+    ]
+  }
+]

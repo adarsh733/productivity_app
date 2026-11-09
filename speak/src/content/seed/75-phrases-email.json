@@ -1,0 +1,2702 @@
+[
+  {
+    "id": "v7-phrases-email-001",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Hope you're doing well.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Hope you're doing well.",
+    "meaning": "A friendly opening line for an email.",
+    "useWhen": "Starting an email to someone you know a little.",
+    "example": "Hi Priya, hope you're doing well. Sharing the plan for next week.",
+    "tone": "friendly · very common",
+    "careful": "Use it once, at the start. Skip it in quick replies on a busy thread.",
+    "wrong": {
+      "label": "✗ Not as a closing line",
+      "text": "Please send the report today. Hope you're doing well."
+    },
+    "similar": [
+      "Hope your week is going well.",
+      "I hope all is well."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-002",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Moving Ravi to BCC.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Moving Ravi to BCC.",
+    "meaning": "Ravi still gets this email, but later replies won't include him.",
+    "useWhen": "Someone introduced you, and now you two talk directly.",
+    "example": "Thanks for the intro, Ravi! Moving Ravi to BCC. Hi Meera, great to meet you.",
+    "tone": "polite · courteous",
+    "careful": "Say it at the top, so Ravi knows why the replies stop.",
+    "wrong": {
+      "label": "✗ He still gets this email",
+      "text": "Moving Ravi to BCC, so he won't see this message."
+    },
+    "similar": [
+      "Moving you to BCC to spare your inbox.",
+      "Taking you off the thread now."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-003",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Please find attached.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Please find attached.",
+    "meaning": "The file you need is attached to this email.",
+    "useWhen": "You send a file with the email.",
+    "example": "Please find attached the signed contract.",
+    "tone": "formal · very common",
+    "careful": "Name the file. In casual emails, \"I've attached it\" sounds friendlier.",
+    "wrong": {
+      "label": "✗ Only when a file is attached",
+      "text": "Please find attached my thoughts in the email below."
+    },
+    "similar": [
+      "Attached is the contract.",
+      "Here's the file you asked for."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-004",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Looping in the finance team.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Looping in the finance team.",
+    "meaning": "I'm adding the finance team to this email.",
+    "useWhen": "Others need to see the thread or help with it.",
+    "example": "Looping in the finance team, as they handle refunds.",
+    "tone": "friendly · common",
+    "careful": "Say why you're adding them, so they know what to do.",
+    "wrong": {
+      "label": "✗ It means adding, not removing",
+      "text": "Looping in the finance team, so they stop getting these emails."
+    },
+    "similar": [
+      "Adding the finance team here.",
+      "Copying the finance team."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-005",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Per my last email...",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Per my last email...",
+    "meaning": "As I already said in my earlier email.",
+    "useWhen": "Someone asks again about something you already answered.",
+    "example": "Per my last email, the deadline is 12 May.",
+    "tone": "formal · can sound annoyed",
+    "careful": "It often reads as irritated. Softer: \"As I mentioned earlier.\"",
+    "wrong": {
+      "label": "✗ Only when you're repeating a point",
+      "text": "Per my last email, happy birthday!"
+    },
+    "similar": [
+      "As mentioned earlier,",
+      "As I said in my email,"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-006",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks for your quick reply.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Thanks for your quick reply.",
+    "meaning": "Thank you for answering so fast.",
+    "useWhen": "Someone replied sooner than you expected.",
+    "example": "Thanks for your quick reply. That solves it.",
+    "tone": "warm · polite",
+    "careful": "Only if it really was quick. After a week, it sounds sarcastic.",
+    "wrong": {
+      "label": "✗ Not for a slow reply",
+      "text": "Thanks for your quick reply after three weeks."
+    },
+    "similar": [
+      "Thanks for getting back so fast.",
+      "Thanks for the prompt reply."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-007",
+    "type": "module",
+    "module": "phrases",
+    "topic": "As discussed on the call...",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "As discussed on the call...",
+    "meaning": "Here is what we agreed when we spoke.",
+    "useWhen": "Writing after a call to put the points in writing.",
+    "example": "As discussed on the call, we'll launch on Monday.",
+    "tone": "neutral · professional",
+    "careful": "List only what you both agreed. Don't slip in new points.",
+    "wrong": {
+      "label": "✗ Only if there was a call",
+      "text": "As discussed on the call, here's my first message to you."
+    },
+    "similar": [
+      "As we agreed on the call,",
+      "Following our call,"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-008",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let me know if you have any questions.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Let me know if you have any questions.",
+    "meaning": "Ask me if anything is unclear.",
+    "useWhen": "Ending an email that explains something.",
+    "example": "The steps are below. Let me know if you have any questions.",
+    "tone": "polite · very common",
+    "careful": "Mean it, and reply quickly when they do ask.",
+    "wrong": {
+      "label": "✗ Not after a simple thank-you",
+      "text": "Thanks for lunch! Let me know if you have any questions."
+    },
+    "similar": [
+      "Happy to answer any questions.",
+      "Shout if anything's unclear."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-009",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Please feel free to reach out.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Please feel free to reach out.",
+    "meaning": "You are welcome to contact me anytime.",
+    "useWhen": "Offering help to a client or a new contact.",
+    "example": "If you need anything for the event, please feel free to reach out.",
+    "tone": "warm · professional",
+    "careful": "Add how to reach you, by email or phone. Otherwise it feels empty.",
+    "wrong": {
+      "label": "✗ Not for something they must do",
+      "text": "Please feel free to reach out and pay the bill today."
+    },
+    "similar": [
+      "Don't hesitate to get in touch.",
+      "You can always email me."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-010",
+    "type": "module",
+    "module": "phrases",
+    "topic": "To close the loop...",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "To close the loop...",
+    "meaning": "To finish this topic and tell everyone the final result.",
+    "useWhen": "Giving the last update on something that was open.",
+    "example": "To close the loop, the client approved the design today.",
+    "tone": "professional · tidy",
+    "careful": "Use it when the matter is truly finished.",
+    "wrong": {
+      "label": "✗ Not to start a new topic",
+      "text": "To close the loop, I want to propose a new project."
+    },
+    "similar": [
+      "Just a final update:",
+      "To wrap this up,"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-011",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Looking forward to hearing from you.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Looking forward to hearing from you.",
+    "meaning": "I hope you reply soon.",
+    "useWhen": "Ending an email that needs an answer.",
+    "example": "I've shared the quote. Looking forward to hearing from you.",
+    "tone": "polite · formal",
+    "careful": "Fine for clients. With teammates, \"Let me know\" is lighter.",
+    "wrong": {
+      "label": "✗ Not after they said no",
+      "text": "Thanks for telling me you're not interested. Looking forward to hearing from you."
+    },
+    "similar": [
+      "I look forward to your reply.",
+      "Hope to hear from you soon."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-012",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I wanted to check in on the proposal.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "I wanted to check in on the proposal.",
+    "meaning": "I'm politely asking for an update on the proposal.",
+    "useWhen": "You sent something and haven't heard back.",
+    "example": "Hi Sameer, I wanted to check in on the proposal we sent last week.",
+    "tone": "polite · gentle",
+    "careful": "Add one clear question, like \"Any decision yet?\"",
+    "wrong": {
+      "label": "✗ Not a hotel check-in",
+      "text": "I wanted to check in on the proposal at 2 p.m. with my bags."
+    },
+    "similar": [
+      "Any update on the proposal?",
+      "Just following up on the proposal."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-013",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Sorry for the late reply.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Sorry for the late reply.",
+    "meaning": "I'm sorry I took long to answer.",
+    "useWhen": "You reply days after their email.",
+    "example": "Sorry for the late reply. Here are the numbers you asked for.",
+    "tone": "polite · honest",
+    "careful": "Say it once, then give the answer. No long excuses.",
+    "wrong": {
+      "label": "✗ Not for a fast reply",
+      "text": "(sent five minutes later) Sorry for the late reply."
+    },
+    "similar": [
+      "Apologies for the delay.",
+      "Sorry it took me a while."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-014",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Just a quick note to say thanks.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Just a quick note to say thanks.",
+    "meaning": "A short email only to thank someone.",
+    "useWhen": "Someone helped and you want to thank them in writing.",
+    "example": "Just a quick note to say thanks for covering the client call.",
+    "tone": "warm · light",
+    "careful": "Keep it short, and name what they did.",
+    "wrong": {
+      "label": "✗ Not to sneak in a big request",
+      "text": "Just a quick note to say thanks. Also, here are ten tasks for you."
+    },
+    "similar": [
+      "Thanks so much for your help.",
+      "Wanted to say a big thank you."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-015",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Just to recap...",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Just to recap...",
+    "meaning": "Here is a short summary of what we said.",
+    "useWhen": "Ending a long thread or writing call notes.",
+    "example": "Just to recap: Neha sends the draft, and we review on Friday.",
+    "tone": "clear · professional",
+    "careful": "Keep the recap shorter than the talk. Bullet points help.",
+    "wrong": {
+      "label": "✗ Not for brand-new information",
+      "text": "Just to recap, here is a new plan nobody has seen."
+    },
+    "similar": [
+      "To sum up,",
+      "Quick summary:"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-016",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks in advance.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Thanks in advance.",
+    "meaning": "Thank you now for help you will give.",
+    "useWhen": "Asking for a small favour.",
+    "example": "Could you share the slides by noon? Thanks in advance.",
+    "tone": "polite · common",
+    "careful": "It can sound like they have no choice. For big asks, thank them afterwards.",
+    "wrong": {
+      "label": "✗ Not after they've helped",
+      "text": "You fixed it yesterday. Thanks in advance!"
+    },
+    "similar": [
+      "Thanks for your help with this.",
+      "I'd really appreciate it."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-017",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Hope this helps.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Hope this helps.",
+    "meaning": "I hope my answer is useful.",
+    "useWhen": "Ending an email where you answered a question.",
+    "example": "The form is on page 3. Hope this helps.",
+    "tone": "friendly · modest",
+    "careful": "Use it after giving help, not after giving an order.",
+    "wrong": {
+      "label": "✗ Not after bad news",
+      "text": "Your leave request is rejected. Hope this helps."
+    },
+    "similar": [
+      "I hope that's useful.",
+      "Let me know if you need more."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-018",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Please see below.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Please see below.",
+    "meaning": "The details are further down in this email.",
+    "useWhen": "Your answer or the old thread sits under your short note.",
+    "example": "Please see below for the meeting notes.",
+    "tone": "neutral · common",
+    "careful": "Make sure there really is something below.",
+    "wrong": {
+      "label": "✗ Not for an attached file",
+      "text": "Please see below the PDF I attached."
+    },
+    "similar": [
+      "Details below.",
+      "Please see my answers below."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-019",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Could you shed some light on this?",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Could you shed some light on this?",
+    "meaning": "Could you explain this to me?",
+    "useWhen": "Something is unclear and they know more.",
+    "example": "The bill has a new charge. Could you shed some light on this?",
+    "tone": "polite · curious",
+    "careful": "Say what exactly is unclear, so they can answer fast.",
+    "wrong": {
+      "label": "✗ Not about real lights",
+      "text": "The room is too dark. Could you shed some light on this?"
+    },
+    "similar": [
+      "Could you explain this?",
+      "Could you help me understand this?"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-020",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Please advise.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Please advise.",
+    "meaning": "Please tell me what I should do.",
+    "useWhen": "You need a decision from someone senior or an expert.",
+    "example": "The vendor wants a 10% price rise. Please advise.",
+    "tone": "formal · brief",
+    "careful": "Alone, it can feel cold. Add the options: \"Should we accept or push back?\"",
+    "wrong": {
+      "label": "✗ Not for sharing news",
+      "text": "I got married last week. Please advise."
+    },
+    "similar": [
+      "How would you like me to proceed?",
+      "What do you suggest?"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-021",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I've attached the file.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "I've attached the file.",
+    "meaning": "The file is with this email.",
+    "useWhen": "You send a document in a normal email.",
+    "example": "I've attached the file. The totals are on the second sheet.",
+    "tone": "friendly · simple",
+    "careful": "Check the file is really attached before you hit send.",
+    "wrong": {
+      "label": "✗ Not for paper on a desk",
+      "text": "I've attached the file to your desk with tape."
+    },
+    "similar": [
+      "Attached is the file.",
+      "The file is attached."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-022",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'll keep you posted.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "I'll keep you posted.",
+    "meaning": "I'll tell you when there is news.",
+    "useWhen": "Something is still in progress.",
+    "example": "The courier hasn't confirmed yet. I'll keep you posted.",
+    "tone": "friendly · reassuring",
+    "careful": "Then actually send the update, even if it's \"no news yet\".",
+    "wrong": {
+      "label": "✗ Not for a finished task",
+      "text": "The job is done and closed. I'll keep you posted."
+    },
+    "similar": [
+      "I'll update you soon.",
+      "I'll let you know."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-023",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Could you please confirm?",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Could you please confirm?",
+    "meaning": "Please tell me yes or no, so I know for sure.",
+    "useWhen": "You need a clear answer before you act.",
+    "example": "We have you down for Tuesday at 4. Could you please confirm?",
+    "tone": "polite · clear",
+    "careful": "Say what to confirm: the date, the price or the name.",
+    "wrong": {
+      "label": "✗ Not for an open question",
+      "text": "What did you think of the movie? Could you please confirm?"
+    },
+    "similar": [
+      "Can you confirm this works?",
+      "Please let me know if that's right."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-024",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let me know if that works for you.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Let me know if that works for you.",
+    "meaning": "Tell me if this plan suits you.",
+    "useWhen": "You suggest a time or a plan.",
+    "example": "How about Thursday at 11? Let me know if that works for you.",
+    "tone": "friendly · flexible",
+    "careful": "Offer a second option if you can.",
+    "wrong": {
+      "label": "✗ Not for a fixed order",
+      "text": "You must submit it today. Let me know if that works for you."
+    },
+    "similar": [
+      "Does that suit you?",
+      "Would that work?"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-025",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'll leave it with you.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "I'll leave it with you.",
+    "meaning": "The decision or next step is yours now.",
+    "useWhen": "You've given all the facts and they must decide.",
+    "example": "Both quotes are attached. I'll leave it with you.",
+    "tone": "calm · professional",
+    "careful": "It ends your part. Don't use it when you still owe them work.",
+    "wrong": {
+      "label": "✗ Not when you still have work to do",
+      "text": "I'll leave it with you, and I'll finish my part tomorrow."
+    },
+    "similar": [
+      "Over to you.",
+      "Your call."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-026",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Noted, thanks.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Noted, thanks.",
+    "meaning": "I've read it and I'll keep it in mind.",
+    "useWhen": "A short reply to an update or instruction.",
+    "example": "The office is closed on Friday. — Noted, thanks.",
+    "tone": "brief · neutral",
+    "careful": "Very short, so it can feel cold. Add a line if their email was long or kind.",
+    "wrong": {
+      "label": "✗ Not as an answer to a question",
+      "text": "Can you join at 3? — Noted, thanks."
+    },
+    "similar": [
+      "Got it, thanks.",
+      "Thanks, will do."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-027",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks for flagging this.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Thanks for flagging this.",
+    "meaning": "Thank you for pointing out this problem.",
+    "useWhen": "Someone warns you about a mistake or risk.",
+    "example": "Good catch on the wrong date. Thanks for flagging this.",
+    "tone": "appreciative · professional",
+    "careful": "Then say what you'll do about it.",
+    "wrong": {
+      "label": "✗ Not about real flags",
+      "text": "Thanks for flagging this for Independence Day."
+    },
+    "similar": [
+      "Thanks for pointing this out.",
+      "Good catch, thank you."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-028",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Happy to help.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Happy to help.",
+    "meaning": "I was glad to help you.",
+    "useWhen": "Replying when someone thanks you.",
+    "example": "Thanks for the notes! — Happy to help.",
+    "tone": "warm · friendly",
+    "careful": "Short and kind. It closes the thread nicely.",
+    "wrong": {
+      "label": "✗ Not when they helped you",
+      "text": "You fixed my laptop. Happy to help!"
+    },
+    "similar": [
+      "Glad I could help.",
+      "Anytime."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-029",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Happy to jump on a call.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Happy to jump on a call.",
+    "meaning": "I'm willing to talk on the phone or a video call.",
+    "useWhen": "The email thread is getting long or confusing.",
+    "example": "This is tricky by email. Happy to jump on a call if that's easier.",
+    "tone": "friendly · flexible",
+    "careful": "Suggest a time, or ask for theirs.",
+    "wrong": {
+      "label": "✗ Not for meeting in person",
+      "text": "Happy to jump on a call at your office desk tomorrow."
+    },
+    "similar": [
+      "Shall we discuss on a call?",
+      "Free for a quick call?"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-030",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Further to my email...",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Further to my email...",
+    "meaning": "Adding to the email I sent before.",
+    "useWhen": "You send extra details after your own earlier email.",
+    "example": "Further to my email this morning, here is the updated price list.",
+    "tone": "formal · polite",
+    "careful": "Quite formal. With teammates, \"Adding to my last email\" is fine.",
+    "wrong": {
+      "label": "✗ Not for a first email",
+      "text": "Further to my email, let me introduce myself."
+    },
+    "similar": [
+      "Following up on my earlier email,",
+      "Adding to my last email,"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-031",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks for reaching out.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Thanks for reaching out.",
+    "meaning": "Thank you for contacting me.",
+    "useWhen": "Replying to someone who wrote to you first.",
+    "example": "Thanks for reaching out. Yes, we deliver to Pune.",
+    "tone": "polite · warm",
+    "careful": "Use it when they started the conversation, not you.",
+    "wrong": {
+      "label": "✗ Not when you wrote first",
+      "text": "Hi, I'm Karan from sales. Thanks for reaching out."
+    },
+    "similar": [
+      "Thanks for getting in touch.",
+      "Thanks for your email."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-032",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'm reaching out about the order.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "I'm reaching out about the order.",
+    "meaning": "I'm writing to you about the order.",
+    "useWhen": "Starting a first email, so they know the topic.",
+    "example": "Hi team, I'm reaching out about the order placed on 3 June.",
+    "tone": "polite · neutral",
+    "careful": "Give the order number in the same line.",
+    "wrong": {
+      "label": "✗ Not for reaching with your hand",
+      "text": "The box is up high, so I'm reaching out about the order."
+    },
+    "similar": [
+      "I'm writing about the order.",
+      "I have a question about the order."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-033",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'll get back to you by Friday.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "I'll get back to you by Friday.",
+    "meaning": "I'll reply with an answer no later than Friday.",
+    "useWhen": "You need time but want to give a clear date.",
+    "example": "Let me check with the team. I'll get back to you by Friday.",
+    "tone": "clear · reliable",
+    "careful": "Keep the date. If you can't, write before Friday to say so.",
+    "wrong": {
+      "label": "✗ \"By Friday\" means no later than Friday",
+      "text": "I'll get back to you by Friday, sometime next month."
+    },
+    "similar": [
+      "You'll hear from me by Friday.",
+      "I'll reply by the end of the week."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-034",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Please treat this as urgent.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Please treat this as urgent.",
+    "meaning": "Please handle this before your other work.",
+    "useWhen": "Something truly can't wait.",
+    "example": "The site is down for customers. Please treat this as urgent.",
+    "tone": "firm · serious",
+    "careful": "Use it rarely, and say why. If you overuse it, people ignore it.",
+    "wrong": {
+      "label": "✗ Not for small things",
+      "text": "Please treat this as urgent: where are the spare pens?"
+    },
+    "similar": [
+      "This needs attention today.",
+      "This is time-sensitive."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-035",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Copying Arjun for visibility.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Copying Arjun for visibility.",
+    "meaning": "I'm adding Arjun so he can see this, not so he acts on it.",
+    "useWhen": "A senior or teammate should know what's happening.",
+    "example": "Copying Arjun for visibility, since he owns the budget.",
+    "tone": "professional · neutral",
+    "careful": "Copying a boss can feel like a threat. Use it to inform, not to complain.",
+    "wrong": {
+      "label": "✗ Not when you need him to act",
+      "text": "Copying Arjun for visibility. Arjun, please fix this today."
+    },
+    "similar": [
+      "Adding Arjun so he's aware.",
+      "CCing Arjun for his information."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-036",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Adding Neha to the thread.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Adding Neha to the thread.",
+    "meaning": "I'm including Neha in this email chain.",
+    "useWhen": "Someone new needs to join the conversation.",
+    "example": "Adding Neha to the thread. She handles bookings.",
+    "tone": "friendly · neutral",
+    "careful": "Tell her what she needs to read or do.",
+    "wrong": {
+      "label": "✗ Not about sewing",
+      "text": "Adding Neha to the thread, so she can fix my button."
+    },
+    "similar": [
+      "Looping Neha in.",
+      "Bringing Neha into this."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-037",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I've copied my manager.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "I've copied my manager.",
+    "meaning": "My manager can see this email too.",
+    "useWhen": "Your manager should know, or may need to decide.",
+    "example": "I've copied my manager, as this needs her approval.",
+    "tone": "neutral · formal",
+    "careful": "Give a reason, or it can sound like you're complaining to the boss.",
+    "wrong": {
+      "label": "✗ Not about copying someone's work",
+      "text": "I've copied my manager's answers into my test."
+    },
+    "similar": [
+      "My manager is in CC.",
+      "I've included my manager here."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-038",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Please ignore my last email.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Please ignore my last email.",
+    "meaning": "My earlier email was a mistake. Don't act on it.",
+    "useWhen": "You sent something wrong or too early.",
+    "example": "Please ignore my last email. The correct date is the 14th.",
+    "tone": "honest · quick",
+    "careful": "Give the correct information in the same email.",
+    "wrong": {
+      "label": "✗ Not if the email still stands",
+      "text": "Please ignore my last email. I meant every word of it."
+    },
+    "similar": [
+      "Sorry, my last email was wrong.",
+      "Correction to my last email:"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-039",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Please confirm receipt.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Please confirm receipt.",
+    "meaning": "Please tell me you got this email or file.",
+    "useWhen": "Sending something important, like a contract or payment.",
+    "example": "The signed contract is attached. Please confirm receipt.",
+    "tone": "formal · clear",
+    "careful": "Use it only for important items, not every email.",
+    "wrong": {
+      "label": "✗ Not about a shop bill",
+      "text": "Please confirm receipt: was the bill ₹250 or ₹300?"
+    },
+    "similar": [
+      "Could you confirm you got this?",
+      "Please let me know it arrived."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-040",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Happy to elaborate if needed.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Happy to elaborate if needed.",
+    "meaning": "I can explain in more detail if you want.",
+    "useWhen": "You kept the email short on purpose.",
+    "example": "That's the short version. Happy to elaborate if needed.",
+    "tone": "polite · helpful",
+    "careful": "It's an offer, so keep the email itself short.",
+    "wrong": {
+      "label": "✗ Not after a very long email",
+      "text": "Here are twelve pages on the plan. Happy to elaborate if needed."
+    },
+    "similar": [
+      "Happy to share more details.",
+      "I can explain more if that helps."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-041",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Sorry, I missed this.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Sorry, I missed this.",
+    "meaning": "I didn't notice your email earlier.",
+    "useWhen": "You find an email you overlooked.",
+    "example": "Sorry, I missed this. Yes, Monday works.",
+    "tone": "honest · casual",
+    "careful": "Give the answer right after it. Don't over-apologise.",
+    "wrong": {
+      "label": "✗ Not on its own — add the answer",
+      "text": "Can you send the report? — Sorry, I missed this."
+    },
+    "similar": [
+      "Apologies, this slipped past me.",
+      "Sorry, just seeing this now."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-042",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks for your understanding.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Thanks for your understanding.",
+    "meaning": "Thank you for accepting this problem calmly.",
+    "useWhen": "You give bad news, like a delay or a change.",
+    "example": "The shop is closed on Monday. Thanks for your understanding.",
+    "tone": "polite · formal",
+    "careful": "Some people find it pushy. \"Thanks for your patience\" can feel softer.",
+    "wrong": {
+      "label": "✗ Not about knowing a subject",
+      "text": "Thanks for your understanding of algebra."
+    },
+    "similar": [
+      "Thanks for being flexible.",
+      "We appreciate your patience."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-043",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Have a great weekend.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Have a great weekend.",
+    "meaning": "A friendly goodbye before the weekend.",
+    "useWhen": "Ending an email on Friday afternoon.",
+    "example": "The draft is attached. Have a great weekend.",
+    "tone": "warm · casual",
+    "careful": "Only on a Friday, or late on Thursday.",
+    "wrong": {
+      "label": "✗ Not at the start of the week",
+      "text": "Happy Monday! Have a great weekend."
+    },
+    "similar": [
+      "Enjoy your weekend.",
+      "Have a good one."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-044",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'd appreciate your input.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "I'd appreciate your input.",
+    "meaning": "I'd like your opinion on this.",
+    "useWhen": "Asking a colleague to share ideas.",
+    "example": "Here's the first draft. I'd appreciate your input on the title.",
+    "tone": "polite · respectful",
+    "careful": "Say which part, and by when.",
+    "wrong": {
+      "label": "✗ Not for typing in data",
+      "text": "I'd appreciate your input of 500 rows into the sheet."
+    },
+    "similar": [
+      "I'd love your thoughts.",
+      "What do you think?"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-045",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let me know if I've missed anything.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Let me know if I've missed anything.",
+    "meaning": "Tell me if I left something out.",
+    "useWhen": "Sending a summary or list for others to check.",
+    "example": "Notes from today are below. Let me know if I've missed anything.",
+    "tone": "humble · team-minded",
+    "careful": "Then add what they send, and thank them.",
+    "wrong": {
+      "label": "✗ Not for a personal message",
+      "text": "Happy birthday, Mum! Let me know if I've missed anything."
+    },
+    "similar": [
+      "Feel free to add anything I missed.",
+      "Did I miss anything?"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-046",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Best regards.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Best regards.",
+    "meaning": "A polite way to end an email, before your name.",
+    "useWhen": "Signing off a work email.",
+    "example": "Thanks again for your time. Best regards, Anita",
+    "tone": "polite · standard",
+    "careful": "Fine for almost any work email. With close teammates, \"Thanks\" is enough.",
+    "wrong": {
+      "label": "✗ Only at the end, before your name",
+      "text": "Best regards, can you send the file?"
+    },
+    "similar": [
+      "Best wishes,",
+      "All the best,"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-047",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Here's a quick summary.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Here's a quick summary.",
+    "meaning": "These are the key points, in short.",
+    "useWhen": "A long thread or report needs a short version.",
+    "example": "Here's a quick summary: we're on budget, but two weeks late.",
+    "tone": "clear · helpful",
+    "careful": "Keep it quick: three points at most.",
+    "wrong": {
+      "label": "✗ Not before a long essay",
+      "text": "Here's a quick summary, in twenty paragraphs."
+    },
+    "similar": [
+      "In short,",
+      "The short version:"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-048",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Kind regards.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Kind regards.",
+    "meaning": "A warm, polite email sign-off.",
+    "useWhen": "Ending an email to a client or someone you don't know well.",
+    "example": "Please find the quote attached. Kind regards, Karan",
+    "tone": "polite · warm",
+    "careful": "\"Regards\" alone can seem cold. \"Kind regards\" is safer.",
+    "wrong": {
+      "label": "✗ Too formal for a friend's text",
+      "text": "Movie at 7? Kind regards, Karan"
+    },
+    "similar": [
+      "Warm regards,",
+      "With thanks,"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-049",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Can we set up a quick call?",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Can we set up a quick call?",
+    "meaning": "Can we plan a short phone or video call?",
+    "useWhen": "An issue is easier to talk through than to type.",
+    "example": "Can we set up a quick call to agree on the timeline?",
+    "tone": "friendly · direct",
+    "careful": "Offer two time slots to save back-and-forth.",
+    "wrong": {
+      "label": "✗ Not for a long workshop",
+      "text": "Can we set up a quick call? It will take all day."
+    },
+    "similar": [
+      "Could we hop on a call?",
+      "Do you have 15 minutes to talk?"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-050",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks for bearing with us.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Thanks for bearing with us.",
+    "meaning": "Thank you for waiting patiently while we fix this.",
+    "useWhen": "A delay or problem affects a customer or client.",
+    "example": "Your order is now on its way. Thanks for bearing with us.",
+    "tone": "warm · apologetic",
+    "careful": "It's spelled \"bearing\", not \"baring\".",
+    "wrong": {
+      "label": "✗ Wrong spelling",
+      "text": "Thanks for baring with us."
+    },
+    "similar": [
+      "Thanks for your patience.",
+      "Thanks for waiting."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-051",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks for the update.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Thanks for the update.",
+    "meaning": "Thank you for telling me the latest news.",
+    "useWhen": "Someone shares progress or a change.",
+    "example": "Thanks for the update. Glad the shipment left on time.",
+    "tone": "polite · neutral",
+    "careful": "Add one line that shows you read it.",
+    "wrong": {
+      "label": "✗ Not when you gave the update",
+      "text": "Here's my progress report. Thanks for the update."
+    },
+    "similar": [
+      "Thanks for letting me know.",
+      "Good to know, thanks."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-052",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'm writing to ask about the delivery date.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "I'm writing to ask about the delivery date.",
+    "meaning": "The reason for my email is the delivery date.",
+    "useWhen": "Opening a first email to a company or supplier.",
+    "example": "I'm writing to ask about the delivery date for order 4471.",
+    "tone": "polite · formal",
+    "careful": "Put the question in the first line, as here.",
+    "wrong": {
+      "label": "✗ Not on a phone call",
+      "text": "Hello, it's Priya on the phone. I'm writing to ask about the delivery date."
+    },
+    "similar": [
+      "I'd like to check the delivery date.",
+      "Could you tell me the delivery date?"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-053",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Please let me know your thoughts.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Please let me know your thoughts.",
+    "meaning": "Please tell me what you think.",
+    "useWhen": "You share a draft, a plan or an idea.",
+    "example": "The new logo is attached. Please let me know your thoughts.",
+    "tone": "polite · open",
+    "careful": "Add a date if you need the reply soon.",
+    "wrong": {
+      "label": "✗ Not for a plain yes-or-no fact",
+      "text": "Is the office open on Sunday? Please let me know your thoughts."
+    },
+    "similar": [
+      "What do you think?",
+      "I'd love your feedback."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-054",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'll pass this on to the team.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "I'll pass this on to the team.",
+    "meaning": "I'll share this message with my team.",
+    "useWhen": "Someone sends praise, feedback or a request for the team.",
+    "example": "Thank you for the kind words. I'll pass this on to the team.",
+    "tone": "warm · helpful",
+    "careful": "Then actually forward it.",
+    "wrong": {
+      "label": "✗ Not for something private",
+      "text": "Thanks for sharing your health news. I'll pass this on to the team."
+    },
+    "similar": [
+      "I'll share this with the team.",
+      "I'll let the team know."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-055",
+    "type": "module",
+    "module": "phrases",
+    "topic": "With reference to your email...",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "With reference to your email...",
+    "meaning": "About the email you sent me.",
+    "useWhen": "Replying formally to one specific email.",
+    "example": "With reference to your email of 2 March, the refund has been sent.",
+    "tone": "formal · official",
+    "careful": "Very formal. In most emails, \"About your email\" is enough.",
+    "wrong": {
+      "label": "✗ Too formal for a quick chat",
+      "text": "With reference to your email, lunch at 1?"
+    },
+    "similar": [
+      "Regarding your email,",
+      "About your email,"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-056",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Quick question about the invoice.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Quick question about the invoice.",
+    "meaning": "I have one short question about the bill.",
+    "useWhen": "A subject line or first line for one small question.",
+    "example": "Quick question about the invoice: does it include tax?",
+    "tone": "casual · direct",
+    "careful": "Keep it to one question, so it stays quick.",
+    "wrong": {
+      "label": "✗ Not for a long list",
+      "text": "Quick question about the invoice. I have fifteen points below."
+    },
+    "similar": [
+      "One question on the invoice.",
+      "Could you clarify the invoice?"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-057",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Please reply all.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Please reply all.",
+    "meaning": "Reply to everyone on this email, not just me.",
+    "useWhen": "The whole group needs to see the answers.",
+    "example": "Please reply all, so the whole team sees your dates.",
+    "tone": "direct · practical",
+    "careful": "Ask for it only when everyone truly needs the replies.",
+    "wrong": {
+      "label": "✗ Not for a private answer",
+      "text": "Please reply all with your salary details."
+    },
+    "similar": [
+      "Please keep everyone copied.",
+      "Reply to all, please."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-058",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'm out of office today.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "I'm out of office today.",
+    "meaning": "I'm not working today, so my replies will be slow.",
+    "useWhen": "Telling people you're away for the day.",
+    "example": "I'm out of office today. I'll reply tomorrow morning.",
+    "tone": "neutral · informative",
+    "careful": "Give a backup contact for anything urgent.",
+    "wrong": {
+      "label": "✗ Not when you're working as usual",
+      "text": "I'm out of office today, so I'll join all my meetings."
+    },
+    "similar": [
+      "I'm away today.",
+      "I'm on leave today."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-059",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks for the reminder.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Thanks for the reminder.",
+    "meaning": "Thank you for reminding me.",
+    "useWhen": "Someone reminds you of a task or a date.",
+    "example": "Thanks for the reminder. I'll send it by noon.",
+    "tone": "polite · friendly",
+    "careful": "Add when you'll do it.",
+    "wrong": {
+      "label": "✗ Not when you reminded them",
+      "text": "Don't forget the report! Thanks for the reminder."
+    },
+    "similar": [
+      "Thanks for reminding me.",
+      "Good thing you reminded me."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-060",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks for the nudge.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Thanks for the nudge.",
+    "meaning": "Thanks for gently reminding me.",
+    "useWhen": "Someone gently reminded you about something you forgot.",
+    "example": "Thanks for the nudge. The form is filled in now.",
+    "tone": "friendly · light",
+    "careful": "Informal. Fine with colleagues, less so with a strict client.",
+    "wrong": {
+      "label": "✗ Not for a real push",
+      "text": "Thanks for the nudge. I fell down the stairs."
+    },
+    "similar": [
+      "Thanks for the reminder.",
+      "Good shout, thanks."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-061",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Gentle reminder.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Gentle reminder.",
+    "meaning": "A soft way to remind someone about a task.",
+    "useWhen": "A deadline is near and they haven't replied.",
+    "example": "Gentle reminder: timesheets are due today.",
+    "tone": "polite · soft",
+    "careful": "Don't send many. A second reminder can be clearer.",
+    "wrong": {
+      "label": "✗ Not for a scolding",
+      "text": "Gentle reminder: you are lazy and always late."
+    },
+    "similar": [
+      "Just a reminder,",
+      "Friendly reminder:"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-062",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Do let me know.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Do let me know.",
+    "meaning": "Please tell me.",
+    "useWhen": "Ending an email warmly, inviting a reply.",
+    "example": "If you'd like a second copy, do let me know.",
+    "tone": "warm · slightly formal",
+    "careful": "\"Do\" adds warmth, not pressure. \"Let me know\" alone is lighter.",
+    "wrong": {
+      "label": "✗ Not a demand",
+      "text": "Do let me know in ten minutes, or else."
+    },
+    "similar": [
+      "Please let me know.",
+      "Just let me know."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-063",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Thanks for your patience.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Thanks for your patience.",
+    "meaning": "Thank you for waiting without complaint.",
+    "useWhen": "Someone waited for your reply or a fix.",
+    "example": "Thanks for your patience. The issue is now fixed.",
+    "tone": "warm · polite",
+    "careful": "It thanks them, which lands better than \"Sorry for the delay\" alone.",
+    "wrong": {
+      "label": "✗ Not if they haven't waited",
+      "text": "Hi, this is my first email. Thanks for your patience."
+    },
+    "similar": [
+      "Thanks for waiting.",
+      "I appreciate your patience."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-064",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Sorry to bother you again.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Sorry to bother you again.",
+    "meaning": "I'm sorry to write to you one more time.",
+    "useWhen": "You follow up a second or third time.",
+    "example": "Sorry to bother you again. Any update on the visa letter?",
+    "tone": "humble · polite",
+    "careful": "Don't over-apologise. A clear question matters more.",
+    "wrong": {
+      "label": "✗ Not for a first email",
+      "text": "Hi, I'm new here. Sorry to bother you again."
+    },
+    "similar": [
+      "Just checking in again.",
+      "Following up once more."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-065",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Feel free to push back.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Feel free to push back.",
+    "meaning": "You can disagree with me openly.",
+    "useWhen": "You share an idea and want honest views.",
+    "example": "This is my first plan. Feel free to push back on the dates.",
+    "tone": "open · friendly",
+    "careful": "Mean it. If they disagree, thank them.",
+    "wrong": {
+      "label": "✗ Not about pushing objects",
+      "text": "Feel free to push back the heavy door."
+    },
+    "similar": [
+      "Tell me if you disagree.",
+      "Happy to hear other views."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-066",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Sorry for any confusion.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Sorry for any confusion.",
+    "meaning": "I'm sorry if my message was unclear.",
+    "useWhen": "You correct something you said badly.",
+    "example": "Sorry for any confusion. The meeting is at 3, not 2.",
+    "tone": "polite · calm",
+    "careful": "Give the clear version right after.",
+    "wrong": {
+      "label": "✗ Not for a big mistake",
+      "text": "We lost all your data. Sorry for any confusion."
+    },
+    "similar": [
+      "Apologies for the mix-up.",
+      "To clarify,"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-067",
+    "type": "module",
+    "module": "phrases",
+    "topic": "I'm happy to discuss further.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "I'm happy to discuss further.",
+    "meaning": "We can talk more about this if you want.",
+    "useWhen": "Ending an email on an open topic.",
+    "example": "That's my view on the pricing. I'm happy to discuss further.",
+    "tone": "open · professional",
+    "careful": "Say how: a call, a meeting or by email.",
+    "wrong": {
+      "label": "✗ Not to end the talk",
+      "text": "I'm happy to discuss further. Please don't reply."
+    },
+    "similar": [
+      "Happy to talk more.",
+      "Let's discuss if needed."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-068",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Please share the latest version.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Please share the latest version.",
+    "meaning": "Please send me the newest copy of the file.",
+    "useWhen": "Several drafts exist and you need the current one.",
+    "example": "Please share the latest version of the slides before 4.",
+    "tone": "polite · clear",
+    "careful": "Name the file, so they send the right one.",
+    "wrong": {
+      "label": "✗ Not for an old copy",
+      "text": "Please share the latest version from last year."
+    },
+    "similar": [
+      "Could you send the newest draft?",
+      "Can I get the current file?"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-069",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Could you resend the link?",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Could you resend the link?",
+    "meaning": "Please send the link one more time.",
+    "useWhen": "You lost the link, or it doesn't open.",
+    "example": "Sorry, I can't find the invite. Could you resend the link?",
+    "tone": "polite · simple",
+    "careful": "Search your inbox first, then ask.",
+    "wrong": {
+      "label": "✗ Not if it was never sent",
+      "text": "We've never spoken before. Could you resend the link?"
+    },
+    "similar": [
+      "Could you share the link again?",
+      "Can you send the link once more?"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-070",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Just to set expectations...",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "email"
+    ],
+    "group": "email",
+    "phrase": "Just to set expectations...",
+    "meaning": "Let me tell you now what will and won't happen.",
+    "useWhen": "Warning early about limits, timing or cost.",
+    "example": "Just to set expectations, the first draft will be rough.",
+    "tone": "honest · careful",
+    "careful": "Say it early, before anyone is disappointed.",
+    "wrong": {
+      "label": "✗ Not after the problem",
+      "text": "The launch failed. Just to set expectations, it might fail."
+    },
+    "similar": [
+      "To be upfront,",
+      "So you know what to expect,"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-071",
+    "type": "module",
+    "module": "phrases",
+    "topic": "We're back to square one.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "We're back to square one.",
+    "meaning": "We have to start again from the beginning.",
+    "useWhen": "A plan fails and the work is lost.",
+    "example": "The client rejected the design, so we're back to square one.",
+    "tone": "honest · common",
+    "careful": "Use it for real restarts, not small changes.",
+    "wrong": {
+      "label": "✗ Not for good progress",
+      "text": "We finished early! We're back to square one."
+    },
+    "similar": [
+      "We're starting from scratch.",
+      "We have to start over."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-072",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Back to the drawing board.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "Back to the drawing board.",
+    "meaning": "The idea failed, so we need a new plan.",
+    "useWhen": "A plan or design doesn't work.",
+    "example": "The test users hated it. Back to the drawing board.",
+    "tone": "casual · upbeat",
+    "careful": "It sounds positive, like \"let's try again\". Good after a setback.",
+    "wrong": {
+      "label": "✗ Not about art class",
+      "text": "I love painting, so back to the drawing board at 5."
+    },
+    "similar": [
+      "Let's rethink this.",
+      "Time for a new plan."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-073",
+    "type": "module",
+    "module": "phrases",
+    "topic": "It's a piece of cake.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "It's a piece of cake.",
+    "meaning": "It's very easy.",
+    "useWhen": "A task is simple for you.",
+    "example": "Setting up the printer? It's a piece of cake.",
+    "tone": "casual · confident",
+    "careful": "Don't say it about someone else's hard work. It can belittle them.",
+    "wrong": {
+      "label": "✗ Not for something hard",
+      "text": "This exam is really tough. It's a piece of cake."
+    },
+    "similar": [
+      "It's really easy.",
+      "Nothing to it."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-074",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Can you give me a ballpark figure?",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "Can you give me a ballpark figure?",
+    "meaning": "Can you give me a rough number?",
+    "useWhen": "You need an estimate, not an exact amount.",
+    "example": "Before the full quote, can you give me a ballpark figure?",
+    "tone": "casual · practical",
+    "careful": "Treat the answer as rough. Don't hold them to it.",
+    "wrong": {
+      "label": "✗ Not for an exact number",
+      "text": "Can you give me a ballpark figure, to the last rupee?"
+    },
+    "similar": [
+      "Roughly how much?",
+      "Can you give me a rough estimate?"
+    ]
+  },
+  {
+    "id": "v7-phrases-email-075",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's bite the bullet.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "Let's bite the bullet.",
+    "meaning": "Let's do the hard or unpleasant thing now.",
+    "useWhen": "Waiting won't make it easier.",
+    "example": "The old system keeps crashing. Let's bite the bullet and replace it.",
+    "tone": "firm · decisive",
+    "careful": "Use it for a tough choice, not an easy one.",
+    "wrong": {
+      "label": "✗ Not for something fun",
+      "text": "Let's bite the bullet and go for ice cream."
+    },
+    "similar": [
+      "Let's just do it.",
+      "Let's get it over with."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-076",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's break the ice.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "Let's break the ice.",
+    "meaning": "Let's do something to help people relax.",
+    "useWhen": "Starting a meeting with strangers or a quiet group.",
+    "example": "Let's break the ice: everyone, share one hobby.",
+    "tone": "friendly · warm",
+    "careful": "Keep the ice-breaker short and easy.",
+    "wrong": {
+      "label": "✗ Not about real ice",
+      "text": "Let's break the ice in the freezer tray."
+    },
+    "similar": [
+      "Let's warm up first.",
+      "Let's get to know each other."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-077",
+    "type": "module",
+    "module": "phrases",
+    "topic": "The ball is in your court.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "The ball is in your court.",
+    "meaning": "It's your turn to decide or act.",
+    "useWhen": "You've done your part and are waiting for them.",
+    "example": "We've sent our offer. The ball is in your court.",
+    "tone": "neutral · direct",
+    "careful": "It can sound like pressure. Add a soft line: \"No rush.\"",
+    "wrong": {
+      "label": "✗ Not when you still need to act",
+      "text": "I haven't replied yet, so the ball is in your court."
+    },
+    "similar": [
+      "It's your call.",
+      "Over to you."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-078",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Keep me in the loop.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "Keep me in the loop.",
+    "meaning": "Keep telling me what's happening.",
+    "useWhen": "You're not doing the work but want updates.",
+    "example": "You two handle the vendor. Keep me in the loop.",
+    "tone": "friendly · common",
+    "careful": "Say how often you want updates.",
+    "wrong": {
+      "label": "✗ Not about a running track",
+      "text": "Keep me in the loop around the park."
+    },
+    "similar": [
+      "Keep me posted.",
+      "Let me know how it goes."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-079",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's go for the low-hanging fruit.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "Let's go for the low-hanging fruit.",
+    "meaning": "Let's do the easy, quick wins first.",
+    "useWhen": "Planning where to start.",
+    "example": "Let's go for the low-hanging fruit: fix the typos first.",
+    "tone": "practical · casual",
+    "careful": "Common in offices, but some find it overused.",
+    "wrong": {
+      "label": "✗ Not for the hardest task",
+      "text": "Let's go for the low-hanging fruit: rebuild the whole app."
+    },
+    "similar": [
+      "Let's start with the quick wins.",
+      "Easy fixes first."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-080",
+    "type": "module",
+    "module": "phrases",
+    "topic": "They keep moving the goalposts.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "They keep moving the goalposts.",
+    "meaning": "They keep changing the rules or targets.",
+    "useWhen": "Someone keeps changing what they want.",
+    "example": "First a blue logo, now red. They keep moving the goalposts.",
+    "tone": "frustrated · informal",
+    "careful": "It's a complaint. Don't write it to that same client.",
+    "wrong": {
+      "label": "✗ Not for a fixed plan",
+      "text": "They agreed the brief in May and never changed it. They keep moving the goalposts."
+    },
+    "similar": [
+      "They keep changing what they want.",
+      "The targets keep shifting."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-081",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Easier said than done.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "Easier said than done.",
+    "meaning": "It sounds simple, but it's hard to do.",
+    "useWhen": "Someone suggests a fix that is hard in real life.",
+    "example": "\"Just finish it this week.\" Easier said than done.",
+    "tone": "honest · casual",
+    "careful": "Don't stop there. Say what would make it possible.",
+    "wrong": {
+      "label": "✗ Not for an easy task",
+      "text": "Turn the light on? Easier said than done."
+    },
+    "similar": [
+      "That's not as easy as it sounds.",
+      "If only it were that simple."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-082",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's not cut corners.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "Let's not cut corners.",
+    "meaning": "Let's not skip steps to save time or money.",
+    "useWhen": "Quality or safety matters.",
+    "example": "It's a hospital app. Let's not cut corners on testing.",
+    "tone": "firm · careful",
+    "careful": "Say which step must not be skipped.",
+    "wrong": {
+      "label": "✗ Not about paper",
+      "text": "Let's not cut corners off the poster."
+    },
+    "similar": [
+      "Let's do this properly.",
+      "No shortcuts on this one."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-083",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Better late than never.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "Better late than never.",
+    "meaning": "Doing it late is better than not doing it.",
+    "useWhen": "Something arrives late, but it still helps.",
+    "example": "Your birthday card is a week late. Better late than never!",
+    "tone": "light · friendly",
+    "careful": "Fine for small things. For a missed client deadline, apologise instead.",
+    "wrong": {
+      "label": "✗ Not as an excuse to a client",
+      "text": "We missed your launch by a month. Better late than never!"
+    },
+    "similar": [
+      "At least it's done.",
+      "Late, but it got here."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-084",
+    "type": "module",
+    "module": "phrases",
+    "topic": "We need to think outside the box.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "We need to think outside the box.",
+    "meaning": "We need new, creative ideas.",
+    "useWhen": "The usual ideas aren't working.",
+    "example": "The ads aren't working. We need to think outside the box.",
+    "tone": "encouraging · common",
+    "careful": "Very common. Give one example idea, so it doesn't sound empty.",
+    "wrong": {
+      "label": "✗ Not for doing the usual thing",
+      "text": "Let's do exactly what we did last year. We need to think outside the box."
+    },
+    "similar": [
+      "Let's try something new.",
+      "We need fresh ideas."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-085",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Read between the lines.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "Read between the lines.",
+    "meaning": "Understand the hidden meaning, not just the words.",
+    "useWhen": "Someone hints at something without saying it.",
+    "example": "He called the plan \"interesting\". Read between the lines: he's not convinced.",
+    "tone": "thoughtful · informal",
+    "careful": "Your guess may be wrong. Ask if it matters.",
+    "wrong": {
+      "label": "✗ Not about line spacing",
+      "text": "Read between the lines; the text is double-spaced."
+    },
+    "similar": [
+      "Notice what isn't said.",
+      "Look for the real meaning."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-086",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Time to hit the road.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "Time to hit the road.",
+    "meaning": "It's time to leave.",
+    "useWhen": "Ending a visit or a long day.",
+    "example": "It's 7 already. Time to hit the road.",
+    "tone": "casual · friendly",
+    "careful": "Casual. Fine with colleagues, not in a formal email.",
+    "wrong": {
+      "label": "✗ Not when you've just arrived",
+      "text": "I just got here. Time to hit the road."
+    },
+    "similar": [
+      "I'd better head off.",
+      "Time to go."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-087",
+    "type": "module",
+    "module": "phrases",
+    "topic": "You'll get the hang of it.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "You'll get the hang of it.",
+    "meaning": "You'll learn how to do it soon.",
+    "useWhen": "Encouraging someone who is new to a task.",
+    "example": "The new tool feels hard at first. You'll get the hang of it.",
+    "tone": "kind · encouraging",
+    "careful": "Offer help too, not just the line.",
+    "wrong": {
+      "label": "✗ Not for an expert",
+      "text": "You've done this for twenty years. You'll get the hang of it."
+    },
+    "similar": [
+      "You'll pick it up quickly.",
+      "It gets easier with practice."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-088",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's get the ball rolling.",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "Let's get the ball rolling.",
+    "meaning": "Let's start now.",
+    "useWhen": "Beginning a project or a meeting.",
+    "example": "Everyone's here, so let's get the ball rolling.",
+    "tone": "upbeat · friendly",
+    "careful": "Follow it with the first step, so people know where to begin.",
+    "wrong": {
+      "label": "✗ Not at the end",
+      "text": "Great meeting, everyone. Let's get the ball rolling. Bye!"
+    },
+    "similar": [
+      "Let's get started.",
+      "Let's kick things off."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-089",
+    "type": "module",
+    "module": "phrases",
+    "topic": "It's touch and go.",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "It's touch and go.",
+    "meaning": "It's uncertain. It could go either way.",
+    "useWhen": "You're not sure something will work out.",
+    "example": "The flight is delayed. It's touch and go if we make the meeting.",
+    "tone": "honest · tense",
+    "careful": "Say the risk clearly if people need to plan.",
+    "wrong": {
+      "label": "✗ Not for a sure thing",
+      "text": "We finished yesterday. It's touch and go."
+    },
+    "similar": [
+      "It could go either way.",
+      "It's too close to call."
+    ]
+  },
+  {
+    "id": "v7-phrases-email-090",
+    "type": "module",
+    "module": "phrases",
+    "topic": "Let's not jump the gun.",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Office phrases",
+    "tags": [
+      "phrases",
+      "idioms"
+    ],
+    "group": "idioms",
+    "phrase": "Let's not jump the gun.",
+    "meaning": "Let's not act too early.",
+    "useWhen": "Someone wants to act before the facts are clear.",
+    "example": "The results aren't final. Let's not jump the gun on the press release.",
+    "tone": "calm · cautious",
+    "careful": "Say what you're waiting for, and when.",
+    "wrong": {
+      "label": "✗ Not for being late",
+      "text": "We're a week behind. Let's not jump the gun."
+    },
+    "similar": [
+      "Let's wait for the facts.",
+      "Let's not rush this."
+    ]
+  }
+]

@@ -1,4 +1,5 @@
-import type { Card, CardKind, CardType, Lang, Track } from '../types/contract';
+import type { Card, CardKind, CardType, Lang, LineIcon, ModuleId, Track } from '../types/contract';
+import { MODULES } from '../types/contract';
 import { db } from './db';
 
 /**
@@ -50,6 +51,17 @@ const REQUIRED_BY_TYPE: Record<CardType, string[]> = {
     'tryPrompt',
     'register',
   ],
+  // v7 — the five feed modules. Each module's own parts are checked in checkModule.
+  module: ['module', 'topic'],
+};
+
+/** v7: the parts every card of one module must carry. */
+const REQUIRED_BY_MODULE: Record<ModuleId, string[]> = {
+  words: ['word', 'pos', 'say', 'meaning', 'examples', 'right', 'wrong', 'rule'],
+  smalltalk: ['kind', 'moment', 'deadEnd', 'reply', 'formula', 'more', 'donts'],
+  better: ['situation', 'thinking', 'mightSay', 'better', 'changes', 'next'],
+  phrases: ['phrase', 'meaning', 'useWhen', 'example', 'tone', 'careful', 'wrong', 'similar'],
+  stories: ['report', 'story', 'trick'],
 };
 
 
@@ -123,12 +135,114 @@ function checkTeach(o: Record<string, unknown>): string | null {
   return null;
 }
 
+const LINE_ICONS: readonly LineIcon[] = ['home', 'work', 'friends', 'thinking'];
+const TALK_KINDS = ['reply', 'open', 'keep_going', 'exit', 'save_it'];
+const PHRASE_GROUPS = ['meetings', 'email', 'pushback', 'praise', 'deadlines', 'idioms'];
+
+function isLabeledLine(v: unknown): boolean {
+  if (typeof v !== 'object' || v === null || Array.isArray(v)) return false;
+  const l = v as Record<string, unknown>;
+  if (!isNonEmptyString(l.label) || !isNonEmptyString(l.text)) return false;
+  return l.icon === undefined || LINE_ICONS.includes(l.icon as LineIcon);
+}
+
+function areLines(v: unknown, min: number, max: number): boolean {
+  return Array.isArray(v) && v.length >= min && v.length <= max && v.every(isLabeledLine);
+}
+
+function areStrings(v: unknown, min: number, max: number): boolean {
+  return Array.isArray(v) && v.length >= min && v.length <= max && v.every(isNonEmptyString);
+}
+
+function firstBlank(o: Record<string, unknown>, fields: string[]): string | null {
+  for (const f of fields) if (!isNonEmptyString(o[f])) return `${f} must be a non-empty string`;
+  return null;
+}
+
+/** Shape checks for a v7 `module` card. Word caps and file rules live in moduleSeedCheck.ts. */
+function checkModule(o: Record<string, unknown>): string | null {
+  if (!MODULES.includes(o.module as ModuleId)) return `unknown module ${String(o.module)}`;
+  const mod = o.module as ModuleId;
+  if (!isNonEmptyString(o.topic)) return 'topic must be a non-empty string';
+  for (const field of REQUIRED_BY_MODULE[mod]) {
+    if (o[field] === undefined) return `missing ${field}`;
+  }
+
+  if (mod === 'words') {
+    const blank = firstBlank(o, ['word', 'pos', 'say', 'meaning', 'rule']);
+    if (blank) return blank;
+    if (!areLines(o.examples, 2, 2)) return 'examples must be exactly two { label, text } lines';
+    if (!isLabeledLine(o.right)) return 'right must be a { label, text } line';
+    if (!areLines(o.wrong, 1, 2)) return 'wrong must be 1-2 { label, text } lines';
+    if (o.check !== undefined) {
+      const c = o.check as Record<string, unknown> | null;
+      if (typeof c !== 'object' || c === null || Array.isArray(c) || !isNonEmptyString(c.question)) {
+        return 'check must be { question, options }';
+      }
+      const opts = c.options;
+      if (
+        !Array.isArray(opts) || opts.length !== 3 ||
+        !opts.every((x) => typeof x === 'object' && x !== null && isNonEmptyString((x as Record<string, unknown>).text) && typeof (x as Record<string, unknown>).right === 'boolean')
+      ) {
+        return 'check options must be three { text, right } items';
+      }
+      if (opts.filter((x) => (x as { right: boolean }).right).length !== 1) {
+        return 'check must have exactly one right option';
+      }
+    }
+  }
+
+  if (mod === 'smalltalk') {
+    if (!TALK_KINDS.includes(o.kind as string)) return `unknown small talk kind ${String(o.kind)}`;
+    const blank = firstBlank(o, ['moment', 'deadEnd', 'reply', 'formula']);
+    if (blank) return blank;
+    const they = optionalString(o, 'they');
+    if (they) return they;
+    if (!areLines(o.more, 3, 3)) return 'more must be exactly three { label, text } lines';
+    if (!areStrings(o.donts, 1, 3)) return 'donts must be 1-3 strings';
+  }
+
+  if (mod === 'better') {
+    const blank = firstBlank(o, ['situation', 'mightSay', 'better']);
+    if (blank) return blank;
+    if (typeof o.thinking !== 'boolean') return 'thinking must be true or false';
+    if (!areStrings(o.changes, 2, 3)) return 'changes must be 2-3 strings';
+    const n = o.next as Record<string, unknown> | null;
+    if (typeof n !== 'object' || n === null || Array.isArray(n) || !isNonEmptyString(n.title) || !areLines(n.lines, 1, 3)) {
+      return 'next must be { title, lines: 1-3 { label, text } lines }';
+    }
+    const note = optionalString(n, 'note');
+    if (note) return `next ${note}`;
+  }
+
+  if (mod === 'phrases') {
+    if (!PHRASE_GROUPS.includes(o.group as string)) return `unknown phrase group ${String(o.group)}`;
+    const blank = firstBlank(o, ['phrase', 'meaning', 'useWhen', 'example', 'tone', 'careful']);
+    if (blank) return blank;
+    if (!isLabeledLine(o.wrong)) return 'wrong must be a { label, text } line';
+    if (!areStrings(o.similar, 2, 2)) return 'similar must be exactly two strings';
+  }
+
+  if (mod === 'stories') {
+    const blank = firstBlank(o, ['report', 'story', 'trick']);
+    if (blank) return blank;
+    if (o.yourTurn !== undefined) {
+      const y = o.yourTurn as Record<string, unknown> | null;
+      if (typeof y !== 'object' || y === null || Array.isArray(y) || !isNonEmptyString(y.prompt) || !isNonEmptyString(y.hint)) {
+        return 'yourTurn must be { prompt, hint }';
+      }
+    }
+  }
+  return null;
+}
+
 /**
  * Validate one raw seed entry. Exported for tests; `readSeedFiles` is the only
  * production caller.
  *
- * Returns `Card` for the 14 old types; a `teach` entry is a `TeachCard` at
- * runtime (see `AnyCard` in the contract).
+ * Returns `Card` for the 14 old types; a `teach` entry is a `TeachCard` and a
+ * `module` entry a `ModuleCard` at runtime (see `AnyCard` and `ModuleCard` in
+ * the contract).
  */
 export function validateSeedCard(raw: unknown): { ok: true; card: Card } | { ok: false; reason: string } {
   return validate(raw);
@@ -208,6 +322,10 @@ function validate(raw: unknown): { ok: true; card: Card } | { ok: false; reason:
 
   if (type === 'teach') {
     const bad = checkTeach(o);
+    if (bad) return { ok: false, reason: bad };
+  }
+  if (type === 'module') {
+    const bad = checkModule(o);
     if (bad) return { ok: false, reason: bad };
   }
   const badSkill = checkSkill(o.skill);

@@ -1,0 +1,675 @@
+/* ── SPEAK — v7 Night Glass styles ──────────────────────────────────────────
+ *
+ * One full-screen card at a time on a dark glowing background (each module its
+ * own colour), smoky frosted panels with a light rim, a glowing highlighted
+ * word, crossed-out grey weak lines, chat bubbles with tails, change chips,
+ * round slide dots, round glass rail buttons and a floating glass tab bar.
+ * Measured off docs/redesign-v7/glass-B-1..3. Values come from tokens.css.
+ *
+ * Layout: the card fills the whole screen. The title and chip row
+ * (glass-feed.css) and the tab bar float on top of it, so the glow runs behind
+ * them, as in the pictures. Slides pad themselves clear of both.
+ */
+
+/* ── Feed containers ──────────────────────────────────────────────────────── */
+
+.v7-feed {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--glass-night);
+  color: var(--glass-ink);
+}
+
+.v7-vfeed {
+  position: absolute;
+  inset: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.v7-vfeed::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Card & module glowing backgrounds ───────────────────────────────────── */
+
+.v7-card {
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+  overflow: hidden;
+  color: var(--glass-ink);
+  background: var(--glass-night);
+  box-sizing: border-box;
+  /* Per-module glass tint and panel rim; set below. */
+  --card-tint: var(--glass-bg);
+  --card-edge: var(--glass-border);
+  --card-hl: var(--glass-ink);
+  --card-hl-shadow: none;
+}
+
+/* Each glow fades on a curve (full → half at 35% → none), so no glow shows a
+   hard edge. A "ring" is an orb's bright rim plus its soft halo. */
+
+/* Words — deep green: an orb with a bright rim top right, glows mid, right,
+   bottom left and bottom (glass-B-1). */
+.v7-card[data-module="words"] {
+  --card-tint: var(--m-words-tint);
+  --card-edge: var(--m-words-edge);
+  --card-hl: var(--m-words-hl);
+  --card-hl-shadow: var(--m-words-hl-shadow);
+  background:
+    radial-gradient(circle at 100% 3%, transparent 0 14.8%, var(--m-words-rim) 16.6%, transparent 18.6%),
+    radial-gradient(circle at 100% 3%, transparent 0 13.4%, color-mix(in srgb, var(--m-words-rim) 35%, transparent) 16.8%, transparent 25.8%),
+    radial-gradient(circle at 100% 3%, var(--m-words-tint) 0 16.4%, transparent 16.8%),
+    radial-gradient(ellipse 72.0% 28.8% at 62% 47%, var(--m-words-glow-3), color-mix(in srgb, var(--m-words-glow-3) 50%, transparent) 35%, transparent),
+    radial-gradient(ellipse 50.4% 21.6% at 102% 71%, var(--m-words-glow-1), color-mix(in srgb, var(--m-words-glow-1) 50%, transparent) 35%, transparent),
+    radial-gradient(ellipse 31.2% 13.2% at 102% 52%, var(--m-words-glow-2), color-mix(in srgb, var(--m-words-glow-2) 50%, transparent) 35%, transparent),
+    radial-gradient(ellipse 66.0% 24.0% at 0% 83%, var(--m-words-glow-1), color-mix(in srgb, var(--m-words-glow-1) 50%, transparent) 35%, transparent),
+    radial-gradient(ellipse 84.0% 21.6% at 55% 100%, var(--m-words-glow-3), color-mix(in srgb, var(--m-words-glow-3) 50%, transparent) 35%, transparent),
+    radial-gradient(ellipse 36.0% 16.8% at 92% 18%, var(--m-words-glow-2), color-mix(in srgb, var(--m-words-glow-2) 50%, transparent) 35%, transparent),
+    radial-gradient(ellipse 110% 70% at 70% 30%, var(--m-words-glow-4), transparent),
+    var(--m-words-bg);
+}
+
+/* Small talk — plum: a magenta orb top right, a coral orb bottom left,
+   a purple haze mid left (glass-B-2). */
+.v7-card[data-module="smalltalk"] {
+  --card-tint: var(--m-talk-tint);
+  --card-edge: var(--m-talk-edge);
+  --card-hl: var(--glass-ink);
+  --card-hl-shadow: var(--m-talk-hl-shadow);
+  background:
+    radial-gradient(circle at 106% 3%, transparent 0 17.9%, var(--m-talk-rim) 19.7%, transparent 21.7%),
+    radial-gradient(circle at 106% 3%, transparent 0 15.7%, color-mix(in srgb, var(--m-talk-rim) 40%, transparent) 19.7%, transparent 29.1%),
+    radial-gradient(circle at 106% 3%, var(--m-talk-tint) 0 19.5%, transparent 19.9%),
+    radial-gradient(circle at -8% 95%, transparent 0 16.8%, var(--m-talk-glow-3) 18.6%, transparent 20.8%),
+    radial-gradient(circle at -8% 95%, color-mix(in srgb, var(--m-talk-glow-3) 75%, transparent) 0 18.4%, transparent 28.0%),
+    radial-gradient(ellipse 96.0% 26.4% at 45% 100%, var(--m-talk-glow-3), color-mix(in srgb, var(--m-talk-glow-3) 45%, transparent) 35%, transparent),
+    radial-gradient(ellipse 66.0% 26.4% at 2% 50%, var(--m-talk-glow-2), color-mix(in srgb, var(--m-talk-glow-2) 50%, transparent) 35%, transparent),
+    radial-gradient(ellipse 54.0% 21.6% at 98% 45%, var(--m-talk-glow-2), color-mix(in srgb, var(--m-talk-glow-2) 50%, transparent) 35%, transparent),
+    radial-gradient(ellipse 110% 70% at 60% 40%, var(--m-talk-glow-4), transparent),
+    var(--m-talk-bg);
+}
+
+/* Say it better — amber bokeh: bright top right, soft mid right, left,
+   bottom left and bottom right (glass-B-3). */
+.v7-card[data-module="better"] {
+  --card-tint: var(--m-better-tint);
+  --card-edge: var(--m-better-edge);
+  --card-hl: var(--m-better-accent);
+  --card-hl-shadow: var(--m-better-hl-shadow);
+  background:
+    radial-gradient(ellipse 38.4% 18.0% at 96% 0%, var(--m-better-glow-1), color-mix(in srgb, var(--m-better-glow-1) 70%, transparent) 50%, transparent),
+    radial-gradient(ellipse 28.8% 13.2% at 80% 22%, var(--m-better-glow-1), color-mix(in srgb, var(--m-better-glow-1) 55%, transparent) 50%, transparent),
+    radial-gradient(ellipse 28.8% 13.2% at 2% 44%, var(--m-better-glow-1), color-mix(in srgb, var(--m-better-glow-1) 55%, transparent) 50%, transparent),
+    radial-gradient(ellipse 36.0% 16.8% at 0% 88%, var(--m-better-glow-1), color-mix(in srgb, var(--m-better-glow-1) 65%, transparent) 50%, transparent),
+    radial-gradient(ellipse 30.0% 13.8% at 100% 76%, var(--m-better-glow-2), color-mix(in srgb, var(--m-better-glow-2) 60%, transparent) 50%, transparent),
+    radial-gradient(ellipse 15.6% 7.2% at 30% 70%, var(--m-better-glow-3), color-mix(in srgb, var(--m-better-glow-3) 50%, transparent) 50%, transparent),
+    radial-gradient(ellipse 110% 70% at 50% 45%, var(--m-better-glow-4), transparent),
+    var(--m-better-bg);
+}
+
+/* Office phrases — purple, built like Words. */
+.v7-card[data-module="phrases"] {
+  --card-tint: var(--m-phrases-tint);
+  --card-edge: var(--m-phrases-edge);
+  --card-hl: var(--m-phrases-hl);
+  --card-hl-shadow: var(--m-phrases-hl-shadow);
+  background:
+    radial-gradient(circle at 100% 3%, transparent 0 14.8%, var(--m-phrases-rim) 16.6%, transparent 18.6%),
+    radial-gradient(circle at 100% 3%, transparent 0 13.4%, color-mix(in srgb, var(--m-phrases-rim) 35%, transparent) 16.8%, transparent 25.8%),
+    radial-gradient(circle at 100% 3%, var(--m-phrases-tint) 0 16.4%, transparent 16.8%),
+    radial-gradient(ellipse 72.0% 28.8% at 62% 50%, var(--m-phrases-glow-3), color-mix(in srgb, var(--m-phrases-glow-3) 50%, transparent) 35%, transparent),
+    radial-gradient(ellipse 50.4% 21.6% at 102% 74%, var(--m-phrases-glow-1), color-mix(in srgb, var(--m-phrases-glow-1) 50%, transparent) 35%, transparent),
+    radial-gradient(ellipse 66.0% 24.0% at 0% 85%, var(--m-phrases-glow-2), color-mix(in srgb, var(--m-phrases-glow-2) 50%, transparent) 35%, transparent),
+    radial-gradient(ellipse 110% 70% at 70% 30%, var(--m-phrases-glow-4), transparent),
+    var(--m-phrases-bg);
+}
+
+/* Stories — blue, built like Small talk. */
+.v7-card[data-module="stories"] {
+  --card-tint: var(--m-stories-tint);
+  --card-edge: var(--m-stories-edge);
+  --card-hl: var(--m-stories-hl);
+  --card-hl-shadow: var(--m-stories-hl-shadow);
+  background:
+    radial-gradient(circle at 106% 3%, transparent 0 17.9%, var(--m-stories-rim) 19.7%, transparent 21.7%),
+    radial-gradient(circle at 106% 3%, transparent 0 15.7%, color-mix(in srgb, var(--m-stories-rim) 40%, transparent) 19.7%, transparent 29.1%),
+    radial-gradient(circle at 106% 3%, var(--m-stories-tint) 0 19.5%, transparent 19.9%),
+    radial-gradient(ellipse 66.0% 26.4% at 2% 52%, var(--m-stories-glow-2), color-mix(in srgb, var(--m-stories-glow-2) 50%, transparent) 35%, transparent),
+    radial-gradient(ellipse 72.0% 26.4% at 0% 92%, var(--m-stories-glow-1), color-mix(in srgb, var(--m-stories-glow-1) 50%, transparent) 35%, transparent),
+    radial-gradient(ellipse 54.0% 21.6% at 100% 78%, var(--m-stories-glow-3), color-mix(in srgb, var(--m-stories-glow-3) 50%, transparent) 35%, transparent),
+    radial-gradient(ellipse 110% 70% at 60% 40%, var(--m-stories-glow-4), transparent),
+    var(--m-stories-bg);
+}
+
+
+/* ── Horizontal slide row & slide ────────────────────────────────────────── */
+
+.v7-hrow {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.v7-hrow::-webkit-scrollbar {
+  display: none;
+}
+
+.v7-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  padding:
+    calc(var(--glass-top-h) + var(--safe-top))
+    var(--glass-rail-gutter)
+    calc(var(--glass-bottom-h) + var(--safe-bottom))
+    var(--glass-panel-inset);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.v7-slide-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--glass-gap);
+}
+
+.v7-card[data-module="smalltalk"] .v7-slide-body {
+  gap: var(--s-5);
+}
+
+/* Free text sits on the text gutter; panels and bubbles sit a little wider. */
+.v7-kicker,
+.v7-word-hero,
+.v7-pronounce,
+.v7-meaning,
+.v7-check-q {
+  margin-left: calc(var(--glass-gutter) - var(--glass-panel-inset));
+}
+
+/* ── Typography & kickers ────────────────────────────────────────────────── */
+
+.v7-kicker {
+  font-size: var(--glass-fs-kicker);
+  font-weight: var(--glass-fw-semi);
+  letter-spacing: var(--glass-ls-kicker);
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: var(--glass-ink-soft);
+  margin-bottom: var(--s-1);
+}
+
+.v7-card[data-module="better"] .v7-kicker {
+  font-size: var(--glass-fs-kicker-lg);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.2em;
+  color: var(--glass-ink);
+}
+
+.v7-word-hero {
+  --hero-size: min(var(--glass-fs-hero), 16vw);
+  margin-top: calc(-1 * var(--s-2));
+  margin-bottom: 0;
+  font-size: var(--hero-size);
+  font-weight: var(--fw-black);
+  line-height: 1.02;
+  letter-spacing: var(--glass-ls-hero);
+  color: var(--glass-ink);
+  overflow-wrap: anywhere;
+}
+
+.v7-word-hero.is-phrase {
+  font-size: var(--glass-fs-phrase);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.v7-pronounce {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: var(--s-3);
+  font-size: var(--glass-fs-say);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.02em;
+  color: var(--glass-ink-soft);
+  margin-top: calc(-1 * var(--s-1));
+}
+
+.v7-pronounce .v7-icon-sm {
+  width: var(--glass-icon-lg);
+  height: var(--glass-icon-lg);
+}
+
+.v7-meaning {
+  margin-bottom: var(--s-2);
+  font-size: var(--glass-fs-meaning);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.01em;
+  margin-top: var(--s-1);
+  color: var(--glass-ink);
+}
+
+/* ── Frosted panels ──────────────────────────────────────────────────────── */
+
+.v7-panel {
+  position: relative;
+  background: var(--glass-sheen), var(--card-tint);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--glass-rim) solid var(--card-edge);
+  border-top-color: color-mix(in srgb, var(--card-edge), var(--glass-ink) 40%);
+  border-radius: var(--glass-panel-r);
+  padding: var(--glass-panel-pad-y) var(--glass-panel-pad-x);
+  color: var(--glass-ink);
+  box-shadow: var(--glass-panel-shadow), var(--glass-inset);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.v7-panel-lbl {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  font-size: var(--glass-fs-kicker);
+  font-weight: var(--glass-fw-semi);
+  letter-spacing: var(--glass-ls-kicker);
+  text-transform: uppercase;
+  color: var(--glass-ink-soft);
+}
+
+.v7-panel-txt {
+  font-size: var(--glass-fs-panel);
+  font-weight: var(--fw-regular);
+  line-height: var(--glass-lh-snug);
+  color: var(--glass-ink);
+}
+
+.v7-panel.is-weak {
+  background: var(--glass-sheen), var(--glass-weak-bg);
+  border-color: var(--glass-weak-border);
+}
+
+.v7-panel.is-weak .v7-panel-txt,
+.v7-panel.is-weak .txt {
+  font-weight: var(--fw-medium);
+  text-decoration: line-through;
+  text-decoration-thickness: var(--glass-rim);
+  text-decoration-color: var(--glass-strike);
+  color: var(--glass-weak-ink);
+}
+
+.v7-panel.is-strong {
+  background: var(--m-better-strong-fill);
+  border: var(--glass-rim-strong) solid var(--m-better-border);
+  box-shadow: var(--glass-strong-shadow), var(--glass-inset);
+}
+
+.v7-card:not([data-module="better"]) .v7-panel.is-strong {
+  background: var(--glass-sheen), var(--card-tint);
+  border-color: var(--card-hl);
+  box-shadow: 0 0 22px var(--card-tint), var(--card-hl-shadow), var(--glass-inset);
+}
+
+.v7-panel.is-strong .v7-panel-lbl {
+  color: var(--glass-ink);
+}
+
+.v7-panel.is-strong .v7-panel-txt {
+  font-size: var(--glass-fs-strong);
+  font-weight: var(--fw-bold);
+  line-height: var(--glass-lh-snug);
+  letter-spacing: -0.01em;
+  color: var(--glass-ink);
+}
+
+/* ── Glowing highlighted word ────────────────────────────────────────────── */
+
+.v7-hl {
+  color: var(--card-hl);
+  font-weight: var(--fw-black);
+  text-shadow: var(--card-hl-shadow);
+}
+
+/* ── Chat bubbles (with tails) ───────────────────────────────────────────── */
+
+.v7-bubble {
+  position: relative;
+  max-width: 88%;
+  padding: var(--s-4) var(--s-5);
+  font-size: var(--glass-fs-bubble);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  border-radius: var(--glass-bubble-r);
+  box-sizing: border-box;
+}
+
+.v7-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: calc(-1 * var(--glass-hairline));
+  width: var(--s-4);
+  height: var(--s-5);
+  background: inherit;
+  -webkit-mask: var(--glass-tail-right) no-repeat center / 100% 100%;
+  mask: var(--glass-tail-right) no-repeat center / 100% 100%;
+}
+
+.v7-bubble.them {
+  align-self: flex-start;
+  max-width: 78%;
+  margin-right: var(--s-6);
+  border-bottom-left-radius: var(--s-1);
+  background: var(--card-tint);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--glass-rim) solid var(--card-edge);
+  box-shadow: var(--glass-panel-shadow), var(--glass-inset);
+  color: var(--glass-ink);
+}
+
+.v7-bubble.them::after {
+  left: calc(-1 * var(--s-4) + var(--glass-hairline));
+  background: var(--card-edge);
+  transform: scaleX(-1);
+}
+
+.v7-bubble.me {
+  align-self: flex-end;
+  max-width: 90%;
+  margin-left: var(--s-6);
+  padding: var(--s-5) var(--s-5) var(--s-5) var(--s-6);
+  border-bottom-right-radius: var(--s-1);
+  background: var(--m-talk-coral-fill);
+  color: var(--m-talk-coral-ink);
+  box-shadow: var(--m-talk-coral-shadow);
+  font-size: var(--glass-fs-bubble-me);
+}
+
+.v7-bubble.me::after {
+  right: calc(-1 * var(--s-4) + var(--glass-hairline));
+  background: var(--m-talk-coral);
+}
+
+.v7-bubble.me .v7-hl {
+  color: inherit;
+  font-weight: inherit;
+  text-shadow: none;
+}
+
+.v7-bubble.is-weak {
+  align-self: flex-end;
+  max-width: 70%;
+  margin-right: var(--s-2);
+  border-bottom-right-radius: var(--s-1);
+  background: var(--glass-weak-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--glass-rim) solid var(--glass-weak-border);
+  box-shadow: var(--glass-inset);
+  color: var(--glass-weak-ink);
+  font-weight: var(--fw-bold);
+  text-decoration: line-through;
+  text-decoration-thickness: var(--glass-rim);
+  text-decoration-color: var(--glass-strike-strong);
+}
+
+.v7-bubble.is-weak::after {
+  right: calc(-1 * var(--s-4) + var(--glass-hairline));
+  background: var(--glass-weak-border);
+}
+
+/* ── Change chips & formula pills ────────────────────────────────────────── */
+
+.v7-pill {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: var(--glass-pill-h);
+  padding: var(--glass-gap-sm) var(--glass-pill-pad-x);
+  border-radius: var(--r-pill);
+  background: var(--glass-sheen), var(--card-tint);
+  border: var(--glass-hairline) solid var(--glass-border-hi);
+  box-shadow: var(--glass-inset);
+  color: var(--glass-ink-soft);
+  font-size: var(--glass-fs-pill);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  backdrop-filter: blur(var(--glass-blur-sm));
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm));
+}
+
+.v7-chip-line > .v7-pill,
+.v7-slide-body > .v7-pill {
+  margin-left: calc(var(--glass-gutter) - var(--glass-panel-inset));
+}
+
+.v7-card[data-module="smalltalk"] .v7-slide-body > .v7-pill {
+  margin-top: var(--s-3);
+  margin-left: var(--s-5);
+  padding: var(--glass-gap-sm) var(--s-4);
+  font-size: var(--fs-3);
+}
+
+.v7-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: var(--s-3);
+}
+
+/* Below the rail, the change chips run the full width on one row (glass-B-3). */
+.v7-card[data-module="better"] .v7-chips-row {
+  margin-right: calc(var(--glass-rail-inset) - var(--glass-rail-gutter));
+}
+
+.v7-card[data-module="better"] .v7-chips-row .v7-pill {
+  font-size: var(--fs-2);
+}
+
+/* ── Interactive options (quick check) ───────────────────────────────────── */
+
+.v7-check-q {
+  margin-top: 0;
+  margin-bottom: var(--s-2);
+  font-size: var(--glass-fs-meaning);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-tight);
+}
+
+.v7-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.v7-opt-btn {
+  width: 100%;
+  text-align: left;
+  padding: var(--s-4) var(--glass-panel-pad-x);
+  border-radius: var(--glass-panel-r);
+  background: var(--glass-sheen), var(--card-tint);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--glass-rim) solid var(--card-edge);
+  box-shadow: var(--glass-inset);
+  color: var(--glass-ink);
+  font-size: var(--glass-fs-panel);
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+  transition: background var(--dur-fast), border-color var(--dur-fast), transform var(--dur-fast);
+}
+
+.v7-opt-btn:active {
+  transform: scale(0.98);
+}
+
+.v7-opt-btn.is-right {
+  background: var(--glass-right-bg);
+  border-color: var(--glass-right-border);
+  color: var(--glass-ink);
+  box-shadow: var(--glass-right-shadow);
+}
+
+.v7-opt-btn.is-wrong {
+  background: var(--glass-weak-bg);
+  border-color: var(--glass-weak-border);
+  color: var(--glass-weak-ink);
+  text-decoration: line-through;
+}
+
+/* ── Dots ────────────────────────────────────────────────────────────────── */
+
+.v7-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--glass-dots-bottom) + var(--safe-bottom));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--s-2);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.v7-dots i {
+  display: inline-block;
+  width: var(--glass-dot);
+  height: var(--glass-dot);
+  border-radius: 50%;
+  background: var(--glass-ink);
+  opacity: var(--glass-dot-off);
+  transition: opacity var(--dur) var(--ease);
+}
+
+.v7-dots i.is-on {
+  opacity: var(--glass-dot-on);
+  width: var(--glass-dot-on-w);
+}
+
+/* ── Glass rail buttons ──────────────────────────────────────────────────── */
+
+.v7-rail {
+  position: absolute;
+  right: var(--glass-rail-inset);
+  top: calc(var(--glass-rail-top) + var(--safe-top));
+  display: flex;
+  flex-direction: column;
+  gap: var(--glass-rail-gap);
+  z-index: 20;
+}
+
+/* A rail that brings its own .v7-rail inside the card's wrapper. */
+.v7-rail .v7-rail {
+  position: static;
+}
+
+.v7-rail-btn {
+  width: var(--glass-tap);
+  height: var(--glass-tap);
+  min-width: var(--glass-tap);
+  min-height: var(--glass-tap);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--glass-sheen), var(--glass-rail-btn-bg);
+  backdrop-filter: blur(var(--glass-blur-md));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  border: var(--glass-rim) solid var(--glass-rail-btn-border);
+  box-shadow: var(--glass-rail-shadow);
+  color: var(--glass-ink);
+  cursor: pointer;
+  transition: transform var(--dur-fast), background var(--dur-fast), border-color var(--dur-fast);
+}
+
+.v7-rail-btn:active {
+  transform: scale(0.94);
+}
+
+.v7-rail-btn.is-on {
+  background: var(--glass-rail-btn-on-bg);
+  color: var(--glass-rail-btn-on-ink);
+  border-color: var(--glass-ink);
+}
+
+.v7-line-icon {
+  width: var(--glass-icon-md);
+  height: var(--glass-icon-md);
+  flex-shrink: 0;
+  color: var(--glass-ink);
+}
+
+.v7-check-icon {
+  color: var(--m-words-accent);
+}
+
+.v7-cross-icon {
+  color: var(--glass-weak-ink);
+}
+
+.v7-icon-sm {
+  width: var(--glass-icon-md);
+  height: var(--glass-icon-md);
+}
+
+/* ── Floating glass tab bar (only while the Feed is open) ────────────────── */
+
+.v5-shell:has(.v7-feed) .v5-tabs {
+  position: absolute;
+  left: var(--glass-tabbar-gap);
+  right: var(--glass-tabbar-gap);
+  bottom: max(var(--glass-tabbar-gap), calc(var(--safe-bottom) - var(--s-3)));
+  height: var(--glass-tabbar-h);
+  min-height: var(--glass-tabbar-h);
+  padding: var(--s-1);
+  background: var(--glass-sheen), var(--glass-tabbar-bg);
+  backdrop-filter: blur(var(--glass-blur-lg)) saturate(1.3);
+  -webkit-backdrop-filter: blur(var(--glass-blur-lg)) saturate(1.3);
+  border: var(--glass-rim) solid var(--glass-tabbar-border);
+  border-radius: var(--r-pill);
+  box-shadow: var(--glass-tabbar-shadow);
+  z-index: 80;
+}
+
+.v5-shell:has(.v7-feed) .v5-tabs .tab {
+  color: var(--glass-ink-soft);
+  font-size: var(--glass-fs-tab);
+  font-weight: var(--fw-medium);
+  border-radius: var(--r-pill);
+  border: var(--glass-hairline) solid transparent;
+  gap: var(--glass-gap-xs);
+}
+
+.v5-shell:has(.v7-feed) .v5-tabs .tab .tab-icon {
+  width: var(--glass-icon-tab);
+  height: var(--glass-icon-tab);
+}
+
+.v5-shell:has(.v7-feed) .v5-tabs .tab.is-active {
+  color: var(--glass-ink);
+  font-weight: var(--fw-bold);
+  background: var(--glass-sheen), var(--glass-tab-on-bg);
+  border-color: var(--glass-tab-on-border);
+  box-shadow: var(--glass-inset);
+}

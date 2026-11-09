@@ -1,0 +1,1226 @@
+[
+  {
+    "id": "v7-stories-more-001",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "My alarm didn't ring and I woke up late.",
+    "story": "I opened my eyes to bright sunlight. Too bright. My phone was dead on the pillow, and the clock on the wall said **9:40**.",
+    "trick": "Let one detail tell the reader something is wrong.",
+    "yourTurn": {
+      "prompt": "Tell a morning that started badly in two lines.",
+      "hint": "Start with the first thing you noticed."
+    }
+  },
+  {
+    "id": "v7-stories-more-002",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "I waved at someone, but they were waving at another person.",
+    "story": "A man across the street waved, smiling. I waved back, big and happy. Then a woman behind me shouted, **'Coming, Papa!'** I pretended to fix my hair.",
+    "trick": "End on what you did to cover it up."
+  },
+  {
+    "id": "v7-stories-more-003",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "We almost lost a client, but then we closed the deal.",
+    "story": "The client wrote, 'We're going with someone else.' I asked for ten minutes on a call. By minute eight, they said, **'Send the contract.'**",
+    "trick": "Count down the time to build tension."
+  },
+  {
+    "id": "v7-stories-more-004",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is a lunch delivery service for offices.",
+    "story": "Every day at one, Priya eats a cold sandwich at her desk. Her mother's cooking is ten kilometres away. **We bring that lunch box to her, hot.**",
+    "trick": "Start with one person's problem, then the idea."
+  },
+  {
+    "id": "v7-stories-more-005",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "On our road trip, the car broke down.",
+    "story": "Halfway to Goa, the car coughed twice and stopped. No shop for miles. Then a truck driver pulled over and fixed it **with a hairband**.",
+    "trick": "Save the strangest detail for the end."
+  },
+  {
+    "id": "v7-stories-more-006",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "The cab driver took a shortcut and we reached early.",
+    "story": "The map said forty minutes. The driver smiled and turned into a lane I'd never seen. **Twelve minutes later**, I was at the office door.",
+    "trick": "Put one number against another."
+  },
+  {
+    "id": "v7-stories-more-007",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "I forgot my mic was on during a call.",
+    "story": "I thought I was on mute. So I told my wife, 'This meeting could have been an email.' Then my boss said, **'I agree, actually.'**",
+    "trick": "Let someone else's line deliver the punch.",
+    "yourTurn": {
+      "prompt": "Tell a small embarrassing moment from a call.",
+      "hint": "What did you say, and who heard it?"
+    }
+  },
+  {
+    "id": "v7-stories-more-008",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "I fixed a problem that nobody else could fix.",
+    "story": "The report had crashed for three days. Two seniors had given up. At 11 p.m., I found it: **one missing comma.** The team cheered on chat.",
+    "trick": "Make the cause tiny and the trouble big."
+  },
+  {
+    "id": "v7-stories-more-009",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is an app to split bills between flatmates.",
+    "story": "Four flatmates, one electricity bill, and a month of awkward messages. Our app splits every bill the moment it arrives, so **nobody has to ask for money.**",
+    "trick": "Name the awkward feeling your idea removes."
+  },
+  {
+    "id": "v7-stories-more-010",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "I got lost in a new city.",
+    "story": "My phone died on my first night in Kolkata. I asked a tea seller for directions. He closed his stall and **walked me to my hotel**.",
+    "trick": "Let a stranger's kindness be the turn.",
+    "yourTurn": {
+      "prompt": "Tell a time you were lost somewhere.",
+      "hint": "Who or what helped you find the way?"
+    }
+  },
+  {
+    "id": "v7-stories-more-011",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "I had a lot of calls today and I was tired.",
+    "story": "Call one started at nine. Call seven ended at six. In between, I ate half a banana **with my camera off**.",
+    "trick": "Use the clock to show how long it felt."
+  },
+  {
+    "id": "v7-stories-more-012",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "I called my teacher 'Mum' by mistake.",
+    "story": "In class seven, I put up my hand and said, 'Mum, can I go out?' Silence. Then my teacher said, **'Yes, dear.'** The class laughed for a week.",
+    "trick": "Pause on the silence before the punchline."
+  },
+  {
+    "id": "v7-stories-more-013",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "A client sent us a thank-you email.",
+    "story": "Most client emails start with a problem. This one began, 'I don't usually write these.' By evening, my manager had **sent it to the whole company**.",
+    "trick": "Contrast the usual with what happened this time.",
+    "yourTurn": {
+      "prompt": "Tell about a time someone thanked you for your work.",
+      "hint": "What did they say, word for word?"
+    }
+  },
+  {
+    "id": "v7-stories-more-014",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is a repair service that comes to your home.",
+    "story": "Your mixer breaks on Sunday. The shop is closed, and carrying it there takes an hour. With us, **a repair person comes to your door** the same day.",
+    "trick": "Walk through the old way before the new way."
+  },
+  {
+    "id": "v7-stories-more-015",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "We went to a hill station and it rained the whole time.",
+    "story": "We planned walks, viewpoints and photos. It rained for three days. So we played cards by the window and drank tea. **It's still my favourite trip.**",
+    "trick": "Let the plan fail and the ending surprise."
+  },
+  {
+    "id": "v7-stories-more-016",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "I went to buy groceries and it took two hours.",
+    "story": "I only needed milk. Then I met my neighbour, then her sister, then a sale on rice. **Two hours later**, I came home with everything except milk.",
+    "trick": "Stack small delays, then land the twist.",
+    "yourTurn": {
+      "prompt": "Tell a quick job that turned into a long one.",
+      "hint": "What was the one thing you went out for?"
+    }
+  },
+  {
+    "id": "v7-stories-more-017",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "A filter got stuck on my video during a meeting.",
+    "story": "My daughter had played with my laptop. I joined the client call and everyone went quiet. I was **a potato in a hat**, and I couldn't turn it off.",
+    "trick": "Say the funny picture plainly, with no build-up."
+  },
+  {
+    "id": "v7-stories-more-018",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "I made a slow process faster at work.",
+    "story": "Every invoice needed four signatures and took a week. I made one shared form. Last month, the slowest invoice took **two days**.",
+    "trick": "Give the before and after as numbers."
+  },
+  {
+    "id": "v7-stories-more-019",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is online tutoring for school kids.",
+    "story": "Good maths teachers live in big cities. Many kids who need them don't. We connect them on a video call, **for the price of one tuition class**.",
+    "trick": "Name the gap, then show how you close it.",
+    "yourTurn": {
+      "prompt": "Explain an idea you have in three lines.",
+      "hint": "Who has the problem? What do you do? What does it cost?"
+    }
+  },
+  {
+    "id": "v7-stories-more-020",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "On the train, a family talked to me the whole way.",
+    "story": "I planned to sleep through the twelve-hour ride. The family opposite had other plans. By morning, I had their snacks, their stories and **a wedding invite**.",
+    "trick": "End on a list where the last item is the biggest."
+  },
+  {
+    "id": "v7-stories-more-021",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "My neighbour's dog followed me home.",
+    "story": "I bought biscuits on the way back. Big mistake. The neighbour's dog walked behind me for three streets, then **sat at my door like he lived there**.",
+    "trick": "Admit the mistake early so the reader sees it coming."
+  },
+  {
+    "id": "v7-stories-more-022",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "My son repeated something I said about a guest.",
+    "story": "Before our guest arrived, I joked that he talks too much. At dinner, my son looked up and asked him, **'Uncle, why do you talk too much?'**",
+    "trick": "Plant a line early, then let it come back.",
+    "yourTurn": {
+      "prompt": "Tell a time a child said the wrong thing.",
+      "hint": "First tell what was said earlier."
+    }
+  },
+  {
+    "id": "v7-stories-more-023",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "We finished the project before the deadline.",
+    "story": "Everyone expected us to ask for more time. On Thursday, a full day early, I sent one line: **'It's live.'** My manager called to check it was true.",
+    "trick": "Keep the big moment to a few words."
+  },
+  {
+    "id": "v7-stories-more-024",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is to rent out party decorations.",
+    "story": "People spend thousands on decorations for one birthday, then throw them away. We rent them out, set them up, and **take them back the next morning**.",
+    "trick": "Show the waste before the fix."
+  },
+  {
+    "id": "v7-stories-more-025",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "We missed the ferry by one minute.",
+    "story": "We ran down the pier, bags bouncing. The ferry was **one metre** from the dock. The captain waved. We waved back. Then we waited three hours.",
+    "trick": "Make the near miss small enough to hurt.",
+    "yourTurn": {
+      "prompt": "Tell about something you missed by a whisker.",
+      "hint": "How close were you? Give a number."
+    }
+  },
+  {
+    "id": "v7-stories-more-026",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "The lift stopped working and I had to take the stairs.",
+    "story": "I live on the tenth floor. The lift had a paper sign: **'Out of order.'** I had two bags of shopping and a watermelon. I counted every step.",
+    "trick": "Add one heavy detail to make it real."
+  },
+  {
+    "id": "v7-stories-more-027",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "I sent a message to the wrong group.",
+    "story": "I typed, 'Boss is in a bad mood, keep your head down.' Then I saw the group name: **Team + Boss**. I've never deleted a message faster.",
+    "trick": "Let the reader spot the mistake when you do."
+  },
+  {
+    "id": "v7-stories-more-028",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "I got my first promotion at work.",
+    "story": "My manager called me in and closed the door. I was sure I was in trouble. Instead, she slid a letter across the desk: **'Team Lead.'**",
+    "trick": "Lead the reader to expect the opposite.",
+    "yourTurn": {
+      "prompt": "Tell a moment when good news surprised you.",
+      "hint": "What did you expect at first?"
+    }
+  },
+  {
+    "id": "v7-stories-more-029",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is a monthly box of local snacks.",
+    "story": "Every town has one snack people miss when they move away. Each month, we post a box of them across the country. **It's a taste of home, by post.**",
+    "trick": "Close on the feeling, not the features."
+  },
+  {
+    "id": "v7-stories-more-030",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "Our beach trip started badly but ended well.",
+    "story": "Flat tyre. Wrong hotel. Rain at noon. We almost turned back. Then at six, the clouds opened and we watched **the best sunset of our lives**.",
+    "trick": "List the bad things fast, then slow down for the good one."
+  },
+  {
+    "id": "v7-stories-more-031",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "The internet was down all day.",
+    "story": "No internet from morning to night. I read a book, called my aunt, and cooked a proper lunch. When the Wi-Fi came back, **I didn't rush to it**.",
+    "trick": "End on how you changed, not on what happened.",
+    "yourTurn": {
+      "prompt": "Tell about a day something stopped working.",
+      "hint": "What did you do instead?"
+    }
+  },
+  {
+    "id": "v7-stories-more-032",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "I wore two different shoes to work.",
+    "story": "I felt sharp all morning. New shirt, ironed trousers. Then the intern looked down and whispered, **'Sir, one black, one brown.'**",
+    "trick": "Build up the pride before the fall."
+  },
+  {
+    "id": "v7-stories-more-033",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "I helped the team save money.",
+    "story": "We were paying for twelve software licences. I checked who used them. **Five people.** One email later, we were saving the cost of a laptop every month.",
+    "trick": "Put the surprising number on its own."
+  },
+  {
+    "id": "v7-stories-more-034",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is a pet-sitting service.",
+    "story": "Every holiday, the same problem: who will feed the dog? We send a trusted sitter to your home twice a day, with **a photo of your pet** each visit.",
+    "trick": "Answer the worry your customer already has.",
+    "yourTurn": {
+      "prompt": "Explain a service you wish existed.",
+      "hint": "Start with the worry it removes."
+    }
+  },
+  {
+    "id": "v7-stories-more-035",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "I ate at a street-food stall that I still remember.",
+    "story": "In a small lane in Indore, an old man fried one thing only: potato fritters. The queue was forty people long. **I went back three times that night.**",
+    "trick": "Let the queue prove it was good."
+  },
+  {
+    "id": "v7-stories-more-036",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "I had a good cup of tea after a long day.",
+    "story": "Twelve hours, two deadlines, one broken bus. I got home, made tea, and sat on the balcony. For **five whole minutes**, nobody needed anything from me.",
+    "trick": "Rush through the day, then stop on the quiet moment."
+  },
+  {
+    "id": "v7-stories-more-037",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "My dog appeared in my work meeting.",
+    "story": "I was presenting the quarterly numbers. My dog jumped on the sofa behind me, yawned, and **fell asleep on camera**. The client called it the best slide.",
+    "trick": "Let the animal steal the scene quietly.",
+    "yourTurn": {
+      "prompt": "Tell a time something interrupted you.",
+      "hint": "Describe exactly what it did."
+    }
+  },
+  {
+    "id": "v7-stories-more-038",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "An angry customer called and I calmed him down.",
+    "story": "He was shouting before I said hello. I let him finish, then said, 'You're right, we got this wrong.' His voice dropped. **Ten minutes later, he thanked me.**",
+    "trick": "Quote the one line that turned it."
+  },
+  {
+    "id": "v7-stories-more-039",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is a spoken English class.",
+    "story": "Many people read English well but freeze when they speak. Our class is all talking, no grammar tests. In four weeks, **you'll lead a meeting in English**.",
+    "trick": "Promise one clear result with a time."
+  },
+  {
+    "id": "v7-stories-more-040",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "The trek was harder than we planned.",
+    "story": "The guide said, 'Easy, three hours.' Six hours later, we were crawling up rocks in the dark. At the top, he grinned: **'Easy for me.'**",
+    "trick": "Bring back the first line at the end.",
+    "yourTurn": {
+      "prompt": "Tell a time something was harder than you expected.",
+      "hint": "Quote what someone told you at the start."
+    }
+  },
+  {
+    "id": "v7-stories-more-041",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "I waited in a long queue at the bank.",
+    "story": "Token number 87. The screen said 12. I read the news, then every poster on the wall, twice. When they finally called me, **they needed a photocopy**.",
+    "trick": "Make the wait long, then add one last blow."
+  },
+  {
+    "id": "v7-stories-more-042",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "I talked to someone who wasn't listening because of an earphone.",
+    "story": "I told my colleague the whole story of my weekend. He nodded the entire time. Then he took out **an earphone I hadn't seen** and said, 'Sorry, what?'",
+    "trick": "Hide the key detail until the end."
+  },
+  {
+    "id": "v7-stories-more-043",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "I trained a new joiner and now she is doing well.",
+    "story": "On her first day, she asked me where the printer was. Last week, the director asked her to **lead the client demo**. I tried not to look proud.",
+    "trick": "Jump from the first day to now.",
+    "yourTurn": {
+      "prompt": "Tell about someone you helped grow.",
+      "hint": "Show the first day, then today."
+    }
+  },
+  {
+    "id": "v7-stories-more-044",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is a second-hand furniture shop.",
+    "story": "People moving cities sell good sofas for almost nothing. Students moving in buy new ones they can't afford. We buy from one, clean it, and **sell to the other**.",
+    "trick": "Show two people who need each other."
+  },
+  {
+    "id": "v7-stories-more-045",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "I took my first flight alone.",
+    "story": "I read my boarding pass ten times in the queue. At security, I took off my shoes, belt and watch. The officer smiled: **'Only the laptop, sir.'**",
+    "trick": "Show nerves through what you did, not how you felt."
+  },
+  {
+    "id": "v7-stories-more-046",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "Our water tank ran dry in the morning.",
+    "story": "Soap in my hair, I turned the tap. **One drop.** Then nothing. I finished my bath with a bottle of drinking water and a lot of patience.",
+    "trick": "Freeze the moment it goes wrong.",
+    "yourTurn": {
+      "prompt": "Tell about a small home disaster.",
+      "hint": "Where were you when it happened?"
+    }
+  },
+  {
+    "id": "v7-stories-more-047",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "Autocorrect changed my message to something wrong.",
+    "story": "I texted my manager, 'Sorry, I'll be late, stuck in traffic.' Autocorrect sent: **'stuck in a trance.'** She replied, 'Wake up soon.'",
+    "trick": "Let the other person's reply finish the joke."
+  },
+  {
+    "id": "v7-stories-more-048",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "My boss liked my idea and used it.",
+    "story": "I said it quietly at the end of a meeting, almost as a joke. Two weeks later, the boss showed the plan to the whole company, with **my name on slide one**.",
+    "trick": "Start small so the ending feels bigger."
+  },
+  {
+    "id": "v7-stories-more-049",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is a weekend trip planner for families.",
+    "story": "Parents spend Friday night searching hotels, routes and food for kids. We do it in one message: **tell us your city and budget, get a full plan back**.",
+    "trick": "Make the idea fit in one sentence.",
+    "yourTurn": {
+      "prompt": "Pitch an idea in one sentence.",
+      "hint": "Who is it for, and what do they get?"
+    }
+  },
+  {
+    "id": "v7-stories-more-050",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "We stayed at a homestay and the host became our friend.",
+    "story": "The host met us with hot soup at midnight. By day three, she was teaching us her recipes. **We still call her every new year.**",
+    "trick": "Show the friendship growing, day by day."
+  },
+  {
+    "id": "v7-stories-more-051",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "I finally cleared my email inbox.",
+    "story": "Four hundred and twelve unread emails. I made coffee and started. By lunch, the screen said **'You're all caught up.'** I took a screenshot.",
+    "trick": "End on a small, real action."
+  },
+  {
+    "id": "v7-stories-more-052",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "My grandmother took her first selfie.",
+    "story": "We taught her to tap the button. She held the phone at arm's length and smiled. We checked the photos: **forty pictures of her thumb**.",
+    "trick": "Give a number to make it funnier.",
+    "yourTurn": {
+      "prompt": "Tell a funny moment with an older relative.",
+      "hint": "Show what they tried to do."
+    }
+  },
+  {
+    "id": "v7-stories-more-053",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "We got a bad review and turned it into a good one.",
+    "story": "One star: 'Late delivery, cold food.' I called the customer, said sorry, and sent a fresh meal. Next day, it changed: **five stars, 'They actually care.'**",
+    "trick": "Show the before and after in their own words."
+  },
+  {
+    "id": "v7-stories-more-054",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is a laundry pick-up service.",
+    "story": "Working people lose their Sunday to washing. We pick up your bag on Monday morning and bring it back **folded on Wednesday night**.",
+    "trick": "Name the day your idea gives back."
+  },
+  {
+    "id": "v7-stories-more-055",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "I went on a trip with my grandparents.",
+    "story": "I thought they'd be tired by noon. Instead, my grandfather climbed every temple step and turned around at the top: **'What took you so long?'**",
+    "trick": "Turn the expectation upside down.",
+    "yourTurn": {
+      "prompt": "Tell a time someone surprised you on a trip.",
+      "hint": "What did you think before?"
+    }
+  },
+  {
+    "id": "v7-stories-more-056",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "An old friend visited me without telling me.",
+    "story": "The doorbell rang at nine at night. I opened it in my old T-shirt. There stood my school best friend, holding **the same snacks we ate at fifteen**.",
+    "trick": "One shared detail can carry years of friendship."
+  },
+  {
+    "id": "v7-stories-more-057",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "I thought a stranger was my friend.",
+    "story": "I tapped his shoulder and said, 'You owe me lunch!' He turned around. **Not my friend.** He laughed and said, 'Fine, but you're paying next time.'",
+    "trick": "Give the stranger the last line."
+  },
+  {
+    "id": "v7-stories-more-058",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "I found a big mistake before it cost us money.",
+    "story": "The price on the order said 1,000. It should have said 10,000. I spotted **the missing zero** two minutes before it went to the client.",
+    "trick": "Give the clock time to show how close it was.",
+    "yourTurn": {
+      "prompt": "Tell a time you caught a mistake in time.",
+      "hint": "How close was it to going wrong?"
+    }
+  },
+  {
+    "id": "v7-stories-more-059",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is a small bakery for custom cakes.",
+    "story": "Every child has a dream cake: a dinosaur, a rocket, a cricket bat. Big shops sell the same five designs. We bake **the one your child drew**.",
+    "trick": "Finish with the picture your customer will remember."
+  },
+  {
+    "id": "v7-stories-more-060",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "There was a mix-up with our hotel booking.",
+    "story": "We reached the hotel at midnight. 'No booking in your name,' said the clerk. Then he checked again and gave us **the only room left: the best suite**.",
+    "trick": "Turn the bad news into a better ending."
+  },
+  {
+    "id": "v7-stories-more-061",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "Monday was very long and tiring.",
+    "story": "By 10 a.m., I had spilt coffee, missed a bus and lost a file. I looked at the clock, sure it was evening. **It was 10:15.**",
+    "trick": "Let the time on the clock be the joke.",
+    "yourTurn": {
+      "prompt": "Tell about a day that felt endless.",
+      "hint": "Pick three things that went wrong."
+    }
+  },
+  {
+    "id": "v7-stories-more-062",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "The cake fell apart at the party.",
+    "story": "I carried the three-layer cake to the table like a trophy. Everyone started singing. Halfway through, **the top layer slid slowly onto the floor**.",
+    "trick": "Slow the sentence down as things fall."
+  },
+  {
+    "id": "v7-stories-more-063",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "I led my first meeting and it went well.",
+    "story": "I wrote the agenda three times and practised in the mirror. Ten minutes in, a senior said, 'Good point.' After that, **my voice stopped shaking**.",
+    "trick": "Show the moment confidence arrived."
+  },
+  {
+    "id": "v7-stories-more-064",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is to sell handmade candles online.",
+    "story": "My sister makes candles that smell like rain and jasmine. Her friends buy them all. We'll sell them online with **a small note from her in every box**.",
+    "trick": "Give the idea a real face.",
+    "yourTurn": {
+      "prompt": "Explain how a hobby could become a small business.",
+      "hint": "Who makes it, who buys it, and why?"
+    }
+  },
+  {
+    "id": "v7-stories-more-065",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "I saw snow for the first time.",
+    "story": "I stepped off the bus in Manali and something cold landed on my nose. Then another. I stood there **catching snowflakes on my tongue** until my friends dragged me inside.",
+    "trick": "Show the feeling through what your body did."
+  },
+  {
+    "id": "v7-stories-more-066",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "I did something useful before breakfast.",
+    "story": "I woke at six, before anyone else, and fixed the tap that had dripped for a month. At breakfast, my wife asked, **'Why is it so quiet?'**",
+    "trick": "Let someone notice the win without being told."
+  },
+  {
+    "id": "v7-stories-more-067",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "A cat took my seat.",
+    "story": "I got up for one second to fill my water bottle. When I turned back, the office cat was **curled up on my chair**, eyes closed, daring me.",
+    "trick": "Give the animal a human attitude.",
+    "yourTurn": {
+      "prompt": "Tell about an animal that did something funny.",
+      "hint": "What did it do while you weren't looking?"
+    }
+  },
+  {
+    "id": "v7-stories-more-068",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "We hit our sales target in the last week.",
+    "story": "Three weeks in, we were at sixty percent. The team stopped looking at the board. On the last Friday, at 5:52 p.m., **the final order came in**.",
+    "trick": "Give the exact minute it happened."
+  },
+  {
+    "id": "v7-stories-more-069",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is a co-working cafe.",
+    "story": "Freelancers work from cafes but feel guilty after one coffee. We charge by the hour, not the cup: **fast Wi-Fi, quiet corners, refills included**.",
+    "trick": "Flip how people usually pay."
+  },
+  {
+    "id": "v7-stories-more-070",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "We went on a last-minute weekend trip.",
+    "story": "Friday, 7 p.m.: 'Shall we just go?' By nine, the bags were in the car. By sunrise, we were drinking tea **beside a lake we'd never heard of**.",
+    "trick": "Use times to show how fast it moved.",
+    "yourTurn": {
+      "prompt": "Tell a plan that came together quickly.",
+      "hint": "Use times to move the story."
+    }
+  },
+  {
+    "id": "v7-stories-more-071",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "My parcel was delivered to the wrong flat.",
+    "story": "The app said 'Delivered.' My door said otherwise. I knocked on six doors. At the last one, an old man was already **wearing my new headphones**.",
+    "trick": "Let the reader search with you, door by door."
+  },
+  {
+    "id": "v7-stories-more-072",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "The map app took us in circles.",
+    "story": "'Turn left,' said the app. Then left again. And again. On our fourth time past the same sweet shop, the owner came out and **waved at us**.",
+    "trick": "Repeat the action until it becomes funny."
+  },
+  {
+    "id": "v7-stories-more-073",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "A tough supplier finally agreed to our terms.",
+    "story": "He said no on the first call and the second. On the third, I stopped arguing about price and asked about his problems. **He agreed by the end of that call.**",
+    "trick": "Show what you changed, not just that you won.",
+    "yourTurn": {
+      "prompt": "Tell a time you changed someone's mind.",
+      "hint": "What did you do differently the last time?"
+    }
+  },
+  {
+    "id": "v7-stories-more-074",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is an app that reminds people to pay bills.",
+    "story": "Most late fees aren't about money. People just forget. Our app sends one message three days before each bill, **with a pay button inside it**.",
+    "trick": "Find the real reason behind the problem."
+  },
+  {
+    "id": "v7-stories-more-075",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "We went to a festival in a small town.",
+    "story": "We stopped in a town for petrol and heard drums. The whole street was dancing. An hour later, we were dancing too, **with paint on our faces**.",
+    "trick": "Start small and let the story pull you in."
+  },
+  {
+    "id": "v7-stories-more-076",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "everyday"
+    ],
+    "module": "stories",
+    "topic": "Your day",
+    "report": "I went for a walk and felt better.",
+    "story": "I left the house angry about an email. On the walk, a kid on a cycle rang his bell at me and grinned. **I forgot the email for an hour.**",
+    "trick": "Let a tiny moment change the mood.",
+    "yourTurn": {
+      "prompt": "Tell about a moment that lifted your mood.",
+      "hint": "What exactly did you see or hear?"
+    }
+  },
+  {
+    "id": "v7-stories-more-077",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "funny"
+    ],
+    "module": "stories",
+    "topic": "A funny moment",
+    "report": "I laughed at my own joke before finishing it.",
+    "story": "I had the perfect joke for dinner. 'So a man walks into a...' and I started laughing. I couldn't stop. **Nobody heard the end.** They laughed anyway.",
+    "trick": "Cut the sentence off where you broke."
+  },
+  {
+    "id": "v7-stories-more-078",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "work"
+    ],
+    "module": "stories",
+    "topic": "A work win",
+    "report": "The demo went well after a bad start.",
+    "story": "The screen froze in the first minute. The client checked his phone. I closed the slides and **showed it live instead**. By the end, he was taking notes.",
+    "trick": "Show the client change from bored to busy."
+  },
+  {
+    "id": "v7-stories-more-079",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "business"
+    ],
+    "module": "stories",
+    "topic": "Explaining a business idea",
+    "report": "My idea is a school bus for one neighbourhood.",
+    "story": "Every morning, forty parents in our area drive forty cars to the same school. One bus could carry all those kids and **give every parent an hour back**.",
+    "trick": "Use one number twice to make the waste clear.",
+    "yourTurn": {
+      "prompt": "Explain an idea that solves a problem near your home.",
+      "hint": "Start with what you see every morning."
+    }
+  },
+  {
+    "id": "v7-stories-more-080",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "stories",
+      "travel"
+    ],
+    "module": "stories",
+    "topic": "A trip",
+    "report": "We went on a trip with very little money.",
+    "story": "Three friends, five thousand rupees, four days. We slept on trains and walked everywhere. **We came home with forty rupees and our best stories.**",
+    "trick": "Let the numbers frame the whole trip."
+  }
+]

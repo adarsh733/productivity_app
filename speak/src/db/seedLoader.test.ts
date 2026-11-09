@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readSeedFiles, retiredIds, validateSeedCard } from './seedLoader';
-import type { BreathCard, CardType, TeachCard } from '../types/contract';
+import type { BreathCard, CardType, ModuleCard, TeachCard, WordsCard } from '../types/contract';
 
 const { cards, report } = readSeedFiles();
 const breath = cards.filter((c): c is BreathCard => c.type === 'breath');
@@ -227,5 +227,148 @@ describe('retiredIds', () => {
 
   it('does not retire a card the device has never seen', () => {
     expect(retiredIds([], new Set(['a']))).toEqual([]);
+  });
+});
+
+describe('module cards (v7 Night glass)', () => {
+  const base = { type: 'module', topic: 'everyday', tags: ['v7'] };
+  const words = {
+    ...base,
+    id: 'v7-words-01',
+    module: 'words',
+    word: 'deafening',
+    pos: 'adjective',
+    say: 'DEF-uh-ning',
+    meaning: "So loud you can't hear anything else.",
+    examples: [
+      { label: 'At home', icon: 'home', text: 'The party next door is **deafening**.' },
+      { label: 'With friends', icon: 'friends', text: 'The stadium was **deafening**.' },
+    ],
+    right: { label: 'For sounds', text: 'The traffic is **deafening**.' },
+    wrong: [{ label: 'Not for smells', text: 'Her perfume was deafening.' }],
+    rule: 'only for sound',
+    check: {
+      question: 'Which one is right?',
+      options: [
+        { text: 'The sunlight was deafening.', right: false },
+        { text: 'The drums were deafening.', right: true },
+        { text: 'His idea was deafening.', right: false },
+      ],
+    },
+  };
+  const talk = {
+    ...base,
+    id: 'v7-talk-01',
+    module: 'smalltalk',
+    kind: 'reply',
+    moment: 'Monday at the coffee machine',
+    they: 'How was your weekend?',
+    deadEnd: 'Good.',
+    reply: 'Lazy, in a good way. Did you do anything fun?',
+    formula: 'feeling + one detail + ask back',
+    more: [
+      { label: 'Busy', text: 'Packed! How was yours?' },
+      { label: 'Quiet', text: 'Very quiet. You?' },
+      { label: 'Bad', text: 'A bit rough. Yours?' },
+    ],
+    donts: ['Stop at one word.'],
+  };
+  const better = {
+    ...base,
+    id: 'v7-better-01',
+    module: 'better',
+    situation: 'Explaining a delay',
+    thinking: false,
+    mightSay: 'Actually what happened is, the server was down.',
+    better: "Yesterday's release slipped because the server went down.",
+    changes: ['point first', 'cut the warm-up'],
+    next: { title: 'Even better', lines: [{ label: 'Add the next step', text: "We'll ship it today by 4." }] },
+  };
+  const phrase = {
+    ...base,
+    id: 'v7-phrases-01',
+    module: 'phrases',
+    group: 'meetings',
+    phrase: "Let's take this offline.",
+    meaning: "Let's discuss this later, with only the people who need to.",
+    useWhen: 'One topic is eating up a group meeting.',
+    example: "Good point, Rahul. **Let's take this offline** after the call.",
+    tone: 'polite · very common',
+    careful: "Don't use it to dodge a topic.",
+    wrong: { label: 'Not one-to-one', text: "Let's take this offline, on a one-to-one call." },
+    similar: ["Let's park this for now.", 'Can we pick this up after the call?'],
+  };
+  const story = {
+    ...base,
+    id: 'v7-stories-01',
+    module: 'stories',
+    report: 'I went to the airport, the flight was delayed, and I reached late.',
+    story: 'I had one job: reach Delhi by six.',
+    trick: 'start with what you wanted',
+  };
+
+  it('accepts one good card of each module and stamps it as an active seed card', () => {
+    for (const raw of [words, talk, better, phrase, story]) {
+      const res = validateSeedCard(raw);
+      expect(res.ok, raw.id).toBe(true);
+      if (!res.ok) continue;
+      const card = res.card as unknown as ModuleCard;
+      expect(card.type).toBe('module');
+      expect(card.module).toBe(raw.module);
+      expect(card.source).toBe('seed');
+      expect(card.status).toBe('active');
+      expect(card.lang).toBe('en');
+    }
+    const w = (validateSeedCard(words) as { ok: true; card: unknown }).card as WordsCard;
+    expect(w.examples[0].text).toMatch(/\*\*deafening\*\*/);
+  });
+
+  const reason = (raw: unknown) => {
+    const res = validateSeedCard(raw);
+    return res.ok ? null : res.reason;
+  };
+
+  it('refuses an unknown module and a missing topic', () => {
+    expect(reason({ ...story, module: 'grammar' })).toBe('unknown module grammar');
+    expect(reason({ ...story, topic: '' })).toBe('topic must be a non-empty string');
+  });
+
+  it('refuses a Words card with broken parts', () => {
+    const { rule: _r, ...noRule } = words;
+    expect(reason(noRule)).toBe('missing rule');
+    expect(reason({ ...words, examples: [words.examples[0]] })).toMatch(/exactly two/);
+    expect(reason({ ...words, wrong: [] })).toMatch(/wrong must be 1-2/);
+    expect(reason({ ...words, wrong: [...words.wrong, ...words.wrong, ...words.wrong] })).toMatch(/wrong must be 1-2/);
+    expect(reason({ ...words, right: { label: 'x' } })).toMatch(/right must be/);
+    expect(reason({ ...words, examples: [{ ...words.examples[0], icon: 'car' }, words.examples[1]] })).toMatch(/exactly two/);
+    const twoRight = { ...words.check, options: words.check.options.map((o) => ({ ...o, right: true })) };
+    expect(reason({ ...words, check: twoRight })).toBe('check must have exactly one right option');
+    expect(reason({ ...words, check: { ...words.check, options: words.check.options.slice(0, 2) } })).toMatch(/three/);
+  });
+
+  it('refuses a Small talk card with broken parts', () => {
+    expect(reason({ ...talk, kind: 'gossip' })).toBe('unknown small talk kind gossip');
+    expect(reason({ ...talk, more: talk.more.slice(0, 2) })).toMatch(/exactly three/);
+    expect(reason({ ...talk, donts: [] })).toMatch(/donts must be 1-3/);
+    expect(reason({ ...talk, they: '' })).toBe('they must be a non-empty string');
+    const { they: _t, ...noThey } = talk;
+    expect(reason(noThey)).toBeNull();
+  });
+
+  it('refuses a Say it better card with broken parts', () => {
+    expect(reason({ ...better, thinking: 'yes' })).toBe('thinking must be true or false');
+    expect(reason({ ...better, changes: ['one'] })).toMatch(/changes must be 2-3/);
+    expect(reason({ ...better, next: { title: 'Even better', lines: [] } })).toMatch(/next must be/);
+  });
+
+  it('refuses an Office phrase card with broken parts', () => {
+    expect(reason({ ...phrase, group: 'gossip' })).toBe('unknown phrase group gossip');
+    expect(reason({ ...phrase, similar: ['only one'] })).toMatch(/similar must be exactly two/);
+    expect(reason({ ...phrase, wrong: 'not a line' })).toMatch(/wrong must be/);
+  });
+
+  it('refuses a Stories card with a broken your-turn part', () => {
+    expect(reason({ ...story, yourTurn: { prompt: 'Tell it.' } })).toBe('yourTurn must be { prompt, hint }');
+    expect(reason({ ...story, yourTurn: { prompt: 'Tell it.', hint: 'Two lines.' } })).toBeNull();
   });
 });

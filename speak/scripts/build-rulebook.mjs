@@ -30,12 +30,15 @@ const TARGET = join(here, '..', 'netlify', 'rulebook.ts');
  *   gold     keep the "Gold card" worked examples (they are large, so off by default)
  */
 const SLICES = {
-  // Writing cards: who he is, universal rules, the four tracks, dedupe + steering.
-  expand_seed: { include: ['intro', '0', '1', '2', '3.3', '3.4', '8.3'], exclude: [], gold: false },
+  // Writing cards: who he is, universal rules, the four tracks, dedupe + steering,
+  // and (v7, 2026-11-08) chapter 9: the five module shapes and how feedback steers a batch.
+  expand_seed: { include: ['intro', '0', '1', '2', '3.3', '3.4', '8.3', '9'], exclude: [], gold: false },
   // Sorting a one-line thought: the same, plus how Ask questions are classified.
   classify_inbox: { include: ['intro', '0', '1', '2', '3.3', '3.4', '4.1'], exclude: [], gold: false },
   // The second model: everything it judges against, and the reject codes.
-  verify_batch: { include: ['intro', '0', '1', '2', '6', '7.2'], exclude: ['1.7'], gold: false },
+  // Chapter 9 without 9.1 (shapes: the job lines in ai.ts name them) and 9.3
+  // (steering is the writer's job), to stay under the Groq cap.
+  verify_batch: { include: ['intro', '0', '1', '2', '6', '7.2', '9'], exclude: ['1.7', '9.1', '9.3'], gold: false },
   // Voice feedback on a recording.
   review_recording: { include: ['intro', '0', '1.3', '1.4', '5'], exclude: [], gold: false },
   // Weekly plan: who he is and how new items are paced.

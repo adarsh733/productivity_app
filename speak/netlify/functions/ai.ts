@@ -9,10 +9,17 @@ import type {
   CardKind,
   CoachChatPayload,
   CoachChatResult,
+  FeedbackReason,
+  LabeledLine,
+  LineIcon,
+  ModuleBatchRequest,
+  ModuleCard,
+  ModuleId,
   TeachDraft,
   Track,
   TrackLevel,
 } from '../../src/types/contract';
+import { MODULES } from '../../src/types/contract';
 import { rulebookFor } from '../rulebook';
 
 /**
@@ -90,6 +97,60 @@ const DATA_RULE = [
 const AVOID_RULE =
   'If the input contains an "avoid" list, never produce any card whose headline term matches, or closely paraphrases, an entry in it.';
 
+// ── expand_seed module batches (v7 steps 4-6, rulebook chapter 9) ──────────
+// A batch rides `expand_seed` with payload `ModuleBatchRequest` (`type: 'module'`):
+// no new AiTask. The phone asks for 10 cards a call; each card is checked here
+// by `validateModuleDraft` (the library-file rules, minus the outline).
+/** Most module cards one call may ask for. */
+export const MODULE_BATCH_MAX = 10;
+/** Answer room for a module call: 10 cards are ~4k tokens, double the expand_seed default. */
+export const MODULE_MAX_TOKENS = 4096;
+/** A 4k-token answer takes longer than the 8 s default; two tries still fit the deadline. */
+const MODULE_TIMEOUT_MS = 12_000;
+/** No slide shows more than this many words (REDESIGN-V7 visual rule 6). */
+export const MODULE_SLIDE_WORDS = 40;
+/** Caps on the batch request lists. */
+const MODULE_SEEN_MAX = 5000;
+const MODULE_LIST_MAX = 100;
+const MODULE_HEAD_CHARS = 200;
+const MODULE_COMMENT_CHARS = 500;
+const FEEDBACK_REASONS: readonly FeedbackReason[] = ['too_easy', 'too_hard', 'confusing', 'wrong_english', 'loved'];
+/** Hindi kept out of every visible line (Adarsh 2026-11-08: Hindi stays hidden). */
+const HIDDEN_HINDI = ['yaar', 'accha', 'achha', 'arre', 'haan', 'nahi', 'bhai', 'bhaiya', 'chalo', 'theek', 'jugaad', 'ji'];
+const HINDI_RE = new RegExp(`\\b(${HIDDEN_HINDI.join('|')})\\b`, 'i');
+const DEVANAGARI_RE = /[ऀ-ॿ꣠-ꣿ]/;
+
+/** The one JSON shape the writer returns, per module (rulebook 9.1). */
+const MODULE_SHAPES: Record<ModuleId, string> = {
+  words:
+    '{"type":"module","module":"words","topic":string,"level":1|2|3,"word":string,"pos":string,"say":string (how to say it, e.g. "rih-LEEVD"),"meaning":string (plain words),"examples":[two {"label":string,"text":string,"icon"?:"home"|"work"|"friends"|"thinking"}, each text marking the word as **word**],"right":{"label":"✓ Use it right","text":string},"wrong":[one or two {"label":"✗ Wrong use","text":string}],"rule":string (a 2-4 word pattern, e.g. "feel relieved"),"check"?:{"question":string,"options":[three {"text":string,"right":boolean}, exactly one right]}}. Cards 3, 6 and 9 of the reply MUST carry "check".',
+  smalltalk:
+    '{"type":"module","module":"smalltalk","topic":string,"kind":"reply"|"open"|"keep_going"|"exit"|"save_it","moment":string,"they"?:string (what they say),"deadEnd":string,"reply":string,"formula":string (e.g. "answer + detail + question"),"more":[three {"label":string (the mood),"text":string}],"donts":[one to three strings]}.',
+  better:
+    '{"type":"module","module":"better","topic":string,"situation":string,"thinking":boolean (true for "Explain your thinking"),"mightSay":string (the long, loose version),"better":string (short and sharp),"changes":[two or three short chips, e.g. "point first"],"next":{"title":string,"lines":[one to three {"label":string,"text":string}],"note"?:string}}.',
+  phrases:
+    '{"type":"module","module":"phrases","topic":string,"level":1|2|3,"group":"meetings"|"email"|"pushback"|"praise"|"deadlines"|"idioms","phrase":string,"meaning":string,"useWhen":string,"example":string (one meeting or email line),"tone":string (e.g. "polite"),"careful":string (how people misuse it),"wrong":{"label":"✗ Wrong use","text":string},"similar":[two strings]}.',
+  stories:
+    '{"type":"module","module":"stories","topic":string,"report":string (the dull version),"story":string (the same moment as a real story),"trick":string (one line),"yourTurn"?:{"prompt":string,"hint":string}}.',
+};
+
+/** The job lines for one module batch (they follow the expand_seed rulebook slice). */
+function moduleBatchRule(module: ModuleId): string {
+  return [
+    'This is a v7 module batch ("type":"module"). Follow chapter 9 of the rulebook above; for these cards it replaces 1.2 and 2 (no analogy, credit, research, rule slide or try slide).',
+    `Return ONLY JSON: {"cards":[...]} with exactly "count" cards, all in the module "${module}", each exactly`,
+    MODULE_SHAPES[module],
+    'Never write a card whose head (the word, the phrase, the moment, the "you might say" line, the report) is in "seen" or repeats another card in the batch.',
+    '"level" is his level for this module, 1 easiest to 5 hardest; Words and Office phrases cards carry level 1-3 (batch level 1-2 gives 1, 3 gives 2, 4-5 gives 3). "liked": heads he liked, write more like them, never the same. "disliked": heads he disliked, with his reasons. "comments": his own words, newest first; follow them unless one breaks the rulebook.',
+    `At most ${MODULE_SLIDE_WORDS} words on a slide. Every Words and Office phrases card has a ✗ wrong-use line. No Hindi words and no Devanagari anywhere. Leave out "id": the app numbers the cards.`,
+    'A card that breaks any rule is thrown away.',
+  ].join(' ');
+}
+
+/** verify_batch: how module cards are judged (rulebook 9.2). */
+const MODULE_CHECK_RULE =
+  'An item may be a v7 module card ({"type":"module","module":"words"|"smalltalk"|"better"|"phrases"|"stories",...}): judge it by chapter 9 above, R4 MISSING against its own module shape (it needs no analogy, try or register). A Words or Office phrases card without a ✗ wrong-use line is R4; an analogy, credit or research claim on it is R8; a Hindi word or Hindi calque is R1.';
+
 // ── answer_ask limits (rulebook §4 and §1.2) ───────────────────────────────
 /** Longest question the Ask box sends. */
 export const ASK_TEXT_MAX = 1000;
@@ -154,8 +215,9 @@ const TASK_CONFIG: Record<
     shape: [
       'You are the checker: a different model wrote these items. Run cold and strict. Do not repair; judge. When in doubt, reject.',
       'Check every item in "items" against the rulebook above, using every section 6 reject code (R1 to R17).',
-      'Items come in the app\'s own card shapes (word, swap, idiom, phrase, feeling, story_move, situation, describe, explain, teach_back, or a teach card).',
+      'Items come in the app\'s own card shapes (word, swap, idiom, phrase, feeling, story_move, situation, describe, explain, teach_back, a teach card, or a v7 module card).',
       'An app shape carries only its own fields, so judge R4 MISSING against the fields that shape has; only a teach card needs the full anatomy (examples, analogy, try, register, track, level, category, kind).',
+      MODULE_CHECK_RULE,
       'One item may be {"type":"ask_answer","question","answer","versions"?,"weakSpot"?}: judge it as section 6 says for Ask answers (wrong English, wrong or invented meaning, unsafe claim, valid Indian English called wrong, a weak spot whose "right" is not standard global English). Card length limits do not apply to it.',
       'Also reject slurs and words with an offensive second meaning, and any claim that is contested, outdated, or medically or legally risky.',
       'Return ONLY JSON: {"results":[{"key":string,"ok":boolean,"reason":string}]} with one result per item, using the same "key" you were given.',
@@ -273,6 +335,15 @@ export const GROQ_MODEL = 'openai/gpt-oss-120b';
  */
 export function systemFor(task: ConfiguredTask): string {
   return `${rulebookFor(task)}\n\n=== THIS JOB ===\n${TASK_CONFIG[task].shape}\n${DATA_RULE}`;
+}
+
+/**
+ * The system prompt for an expand_seed module batch: the same expand_seed
+ * rulebook slice (it carries chapter 9), then only that module's job lines.
+ * The old card shapes are left out, which keeps the prompt inside Groq's minute.
+ */
+export function moduleBatchSystem(module: ModuleId): string {
+  return `${rulebookFor('expand_seed')}\n\n=== THIS JOB ===\n${moduleBatchRule(module)}\n${DATA_RULE}`;
 }
 
 /**
@@ -579,6 +650,9 @@ export function validateExpandSeed(raw: unknown, payload?: unknown): unknown {
   };
   // Never keep more than he asked for: a top-up of 3 stores 3, not the 5 a model sent.
   const wanted = typeof asked.count === 'number' && asked.count > 0 ? asked.count : Infinity;
+  if (asked.type === 'module') {
+    return validateModuleBatch(c.cards as unknown[], payload as ModuleBatchRequest);
+  }
   if (asked.type === 'teach') {
     // Teach cards: a bad card is dropped, not fatal. None left ⇒ fail over to the next provider.
     const cards: TeachDraft[] = [];
@@ -804,6 +878,367 @@ export function validateTeachDraft(d: unknown, i: number): TeachDraft {
     ...(answer ? { answer } : {}),
     ...(credit ? { credit: clampAtWord(credit, 80) } : {}),
   };
+}
+
+// ── v7 module cards (rulebook chapter 9) ───────────────────────────────────
+// The server's own copy of the library-file rules (`src/db/libraryCheck.ts`,
+// minus the outline): the function may share only `src/types` with the app.
+
+/** A checked module card as the server returns it: the phone adds source, status, createdAt, batchId. */
+type DraftOf<T> = T extends unknown ? Omit<T, 'id' | 'source' | 'status' | 'createdAt' | 'batchId' | 'seedId'> : never;
+export type ModuleDraft = DraftOf<ModuleCard> & { level?: 1 | 2 | 3 };
+
+/** The field that names a card inside its module (the seen-once key). */
+const MODULE_HEAD: Record<ModuleId, string> = {
+  words: 'word',
+  phrases: 'phrase',
+  smalltalk: 'moment',
+  better: 'mightSay',
+  stories: 'report',
+};
+const LINE_ICONS: readonly LineIcon[] = ['home', 'work', 'friends', 'thinking'];
+const TALK_KINDS = ['reply', 'open', 'keep_going', 'exit', 'save_it'] as const;
+const PHRASE_GROUPS = ['meetings', 'email', 'pushback', 'praise', 'deadlines', 'idioms'] as const;
+/** Slides that teach a rule, an analogy or the research are out (decision 2026-11-08). */
+const MODULE_BANNED_FIELDS = ['analogy', 'credit', 'research'];
+/** Fields never shown as reading text, so a Hindi-looking value there is not on screen. */
+const MODULE_NOT_VISIBLE = new Set(['id', 'type', 'module', 'lang', 'kind', 'icon', 'group', 'tags']);
+
+/** A card's head: words `word`, phrases `phrase`, small talk `moment`, better `mightSay`, stories `report`. */
+export function moduleHeadOf(card: unknown): string {
+  if (!card || typeof card !== 'object') return '';
+  const o = card as Record<string, unknown>;
+  const field = MODULE_HEAD[o.module as ModuleId];
+  return field ? (str(o[field]) ?? '') : '';
+}
+
+/** Words a reader has to read: `**` marks and lone symbols (· → —) do not count. */
+function readingWords(text: string | undefined): number {
+  if (!text) return 0;
+  return text
+    .replace(/\*\*/g, '')
+    .split(/\s+/)
+    .filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+}
+
+/** The reading text on each slide, the same split as `features/cards/moduleSlides.ts`. */
+function moduleSlides(c: ModuleDraft): (string | undefined)[][] {
+  const texts = (ls: LabeledLine[]) => ls.map((l) => l.text);
+  switch (c.module) {
+    case 'words': {
+      const slides = [
+        [c.word, c.say, c.meaning, ...texts(c.examples)],
+        [c.right.text, ...texts(c.wrong)],
+      ];
+      if (c.check) slides.push([c.check.question, ...c.check.options.map((o) => o.text)]);
+      return slides;
+    }
+    case 'smalltalk':
+      return [[c.moment, c.they, c.deadEnd, c.reply], texts(c.more), c.donts];
+    case 'better':
+      return [
+        [c.situation, c.mightSay, c.better],
+        [c.next.title, ...texts(c.next.lines), c.next.note],
+      ];
+    case 'phrases':
+      return [
+        [c.phrase, c.meaning, c.useWhen, c.example],
+        [c.careful, c.wrong.text, ...c.similar],
+      ];
+    case 'stories': {
+      const slides = [[c.report, c.story]];
+      if (c.yourTurn) slides.push([c.yourTurn.prompt, c.yourTurn.hint]);
+      return slides;
+    }
+  }
+}
+
+function bannedModuleKeys(v: unknown, path = ''): string[] {
+  if (Array.isArray(v)) return v.flatMap((x, k) => bannedModuleKeys(x, `${path}[${k}]`));
+  if (typeof v !== 'object' || v === null) return [];
+  const found: string[] = [];
+  for (const [k, val] of Object.entries(v as Record<string, unknown>)) {
+    const here = path ? `${path}.${k}` : k;
+    if (MODULE_BANNED_FIELDS.includes(k)) found.push(here);
+    found.push(...bannedModuleKeys(val, here));
+  }
+  return found;
+}
+
+/** Every string in a value, with the key it sits under. */
+function stringsIn(v: unknown, key = ''): { key: string; text: string }[] {
+  if (typeof v === 'string') return [{ key, text: v }];
+  if (Array.isArray(v)) return v.flatMap((x) => stringsIn(x, key));
+  if (typeof v === 'object' && v !== null) {
+    return Object.entries(v as Record<string, unknown>).flatMap(([k, val]) => stringsIn(val, k));
+  }
+  return [];
+}
+
+/**
+ * One AI-drafted v7 module card (rulebook chapter 9). Throws with the reason
+ * when it breaks a rule; the caller drops it. `i` is its place in the reply:
+ * Words cards 3, 6 and 9 must carry the quick check. The card comes back with
+ * only its module's fields, trimmed, and no id (the batch numbers the cards).
+ */
+export function validateModuleDraft(d: unknown, i: number, module: ModuleId): ModuleDraft {
+  if (!d || typeof d !== 'object' || Array.isArray(d)) throw new Error(`Card ${i}: must be an object`);
+  const r = d as Record<string, unknown>;
+  if (r.type !== undefined && r.type !== 'module') throw new Error(`Card ${i}: type must be "module"`);
+  if (r.module !== undefined && r.module !== module) throw new Error(`Card ${i}: not in the module "${module}"`);
+  if (r.lang !== undefined && r.lang !== 'en') throw new Error(`Card ${i}: lang must be "en"`);
+
+  const banned = bannedModuleKeys(r);
+  if (banned.length) throw new Error(`Card ${i}: field "${banned[0]}" is not allowed (no analogy, credit or research)`);
+  for (const { text } of stringsIn(r)) {
+    if (DEVANAGARI_RE.test(text)) throw new Error(`Card ${i}: Devanagari is not allowed`);
+  }
+
+  const need = (v: unknown, field: string): string => {
+    const s = str(v);
+    if (!s) throw new Error(`Card ${i}: missing "${field}"`);
+    return s;
+  };
+  const line = (v: unknown, field: string): LabeledLine => {
+    if (!v || typeof v !== 'object' || Array.isArray(v)) throw new Error(`Card ${i}: "${field}" must be a { label, text } line`);
+    const l = v as Record<string, unknown>;
+    const label = str(l.label);
+    const text = str(l.text);
+    if (!label || !text) throw new Error(`Card ${i}: "${field}" must be a { label, text } line`);
+    const icon = LINE_ICONS.includes(l.icon as LineIcon) ? (l.icon as LineIcon) : undefined;
+    return { label, text, ...(icon ? { icon } : {}) };
+  };
+  const lines = (v: unknown, field: string, min: number, max: number): LabeledLine[] => {
+    if (!Array.isArray(v) || v.length < min || v.length > max) {
+      throw new Error(`Card ${i}: "${field}" must be ${min === max ? min : `${min}-${max}`} lines`);
+    }
+    return v.map((x) => line(x, field));
+  };
+  const strings = (v: unknown, field: string, min: number, max: number): string[] => {
+    const list = Array.isArray(v) ? v.map(str) : [];
+    if (!Array.isArray(v) || list.length < min || list.length > max || list.some((s) => !s)) {
+      throw new Error(`Card ${i}: "${field}" must be ${min === max ? min : `${min}-${max}`} strings`);
+    }
+    return list as string[];
+  };
+  const wrongLine = (v: unknown, field: string): LabeledLine => {
+    const l = line(v, field);
+    if (!l.label.startsWith('✗')) throw new Error(`Card ${i}: the ${field} label must start with ✗`);
+    return l;
+  };
+  const cardLevel = (): 1 | 2 | 3 => {
+    if (r.level !== 1 && r.level !== 2 && r.level !== 3) throw new Error(`Card ${i}: level must be 1, 2 or 3`);
+    return r.level;
+  };
+
+  const head = need(r[MODULE_HEAD[module]], MODULE_HEAD[module]);
+  const topic = clampAtWord(str(r.topic) ?? head, 60);
+  const base = { type: 'module' as const, lang: 'en' as const, topic, tags: [module, 'ai'] };
+
+  let card: ModuleDraft;
+  if (module === 'words') {
+    const word = head;
+    const examples = lines(r.examples, 'examples', 2, 2) as [LabeledLine, LabeledLine];
+    examples.forEach((e, k) => {
+      if (!e.text.toLowerCase().includes(`**${word.toLowerCase()}**`)) {
+        throw new Error(`Card ${i}: example ${k + 1} must mark the word as **${word}**`);
+      }
+    });
+    const wrong = lines(r.wrong, 'wrong', 1, 2).map((l) => wrongLine(l, 'wrong'));
+    let check: { question: string; options: { text: string; right: boolean }[] } | undefined;
+    if (r.check !== undefined && r.check !== null) {
+      const c = r.check as Record<string, unknown>;
+      const question = str(c.question);
+      const opts = Array.isArray(c.options) ? (c.options as unknown[]) : [];
+      const options = opts.map((o) => {
+        const x = (o && typeof o === 'object' ? o : {}) as Record<string, unknown>;
+        return { text: str(x.text) ?? '', right: x.right };
+      });
+      if (
+        !question ||
+        options.length !== 3 ||
+        options.some((o) => !o.text || typeof o.right !== 'boolean') ||
+        options.filter((o) => o.right === true).length !== 1
+      ) {
+        throw new Error(`Card ${i}: the quick check needs a question and 3 options with exactly one right`);
+      }
+      check = { question, options: options as { text: string; right: boolean }[] };
+    }
+    if ((i + 1) % 3 === 0 && !check) throw new Error(`Card ${i}: every 3rd Words card needs a quick check`);
+    card = {
+      ...base,
+      module: 'words',
+      level: cardLevel(),
+      word,
+      pos: need(r.pos, 'pos'),
+      say: need(r.say, 'say'),
+      meaning: need(r.meaning, 'meaning'),
+      examples,
+      right: line(r.right, 'right'),
+      wrong,
+      rule: need(r.rule, 'rule'),
+      ...(check ? { check } : {}),
+    };
+  } else if (module === 'smalltalk') {
+    const kind = r.kind as (typeof TALK_KINDS)[number];
+    if (!TALK_KINDS.includes(kind)) throw new Error(`Card ${i}: unknown small talk kind`);
+    const they = str(r.they);
+    card = {
+      ...base,
+      module: 'smalltalk',
+      kind,
+      moment: head,
+      ...(they ? { they } : {}),
+      deadEnd: need(r.deadEnd, 'deadEnd'),
+      reply: need(r.reply, 'reply'),
+      formula: need(r.formula, 'formula'),
+      more: lines(r.more, 'more', 3, 3),
+      donts: strings(r.donts, 'donts', 1, 3),
+    };
+  } else if (module === 'better') {
+    if (typeof r.thinking !== 'boolean') throw new Error(`Card ${i}: thinking must be true or false`);
+    const n = r.next;
+    if (!n || typeof n !== 'object' || Array.isArray(n)) throw new Error(`Card ${i}: missing "next"`);
+    const next = n as Record<string, unknown>;
+    const note = str(next.note);
+    card = {
+      ...base,
+      module: 'better',
+      situation: need(r.situation, 'situation'),
+      thinking: r.thinking,
+      mightSay: head,
+      better: need(r.better, 'better'),
+      changes: strings(r.changes, 'changes', 2, 3),
+      next: { title: need(next.title, 'next.title'), lines: lines(next.lines, 'next.lines', 1, 3), ...(note ? { note } : {}) },
+    };
+  } else if (module === 'phrases') {
+    const group = r.group as (typeof PHRASE_GROUPS)[number];
+    if (!PHRASE_GROUPS.includes(group)) throw new Error(`Card ${i}: unknown phrase group`);
+    card = {
+      ...base,
+      module: 'phrases',
+      level: cardLevel(),
+      group,
+      phrase: head,
+      meaning: need(r.meaning, 'meaning'),
+      useWhen: need(r.useWhen, 'useWhen'),
+      example: need(r.example, 'example'),
+      tone: need(r.tone, 'tone'),
+      careful: need(r.careful, 'careful'),
+      wrong: wrongLine(r.wrong, 'wrong'),
+      similar: strings(r.similar, 'similar', 2, 2) as [string, string],
+    };
+  } else {
+    let yourTurn: { prompt: string; hint: string } | undefined;
+    if (r.yourTurn !== undefined && r.yourTurn !== null) {
+      const y = (typeof r.yourTurn === 'object' ? r.yourTurn : {}) as Record<string, unknown>;
+      const prompt = str(y.prompt);
+      const hint = str(y.hint);
+      if (!prompt || !hint) throw new Error(`Card ${i}: yourTurn must be { prompt, hint }`);
+      yourTurn = { prompt, hint };
+    }
+    card = {
+      ...base,
+      module: 'stories',
+      report: head,
+      story: need(r.story, 'story'),
+      trick: need(r.trick, 'trick'),
+      ...(yourTurn ? { yourTurn } : {}),
+    };
+  }
+
+  moduleSlides(card).forEach((texts, s) => {
+    const words = texts.reduce((sum, t) => sum + readingWords(t), 0);
+    if (words > MODULE_SLIDE_WORDS) {
+      throw new Error(`Card ${i}: slide ${s + 1} has ${words} words (max ${MODULE_SLIDE_WORDS})`);
+    }
+  });
+  for (const { key, text } of stringsIn(card)) {
+    if (MODULE_NOT_VISIBLE.has(key)) continue;
+    const hit = HINDI_RE.exec(text);
+    if (hit) throw new Error(`Card ${i}: Hindi word "${hit[1]}" in ${key}`);
+  }
+  return card;
+}
+
+/** `startId` and the ids after it: v7-ai-words-0009 → v7-ai-words-0010, keeping the width. */
+function idsFrom(startId: string, n: number): string[] {
+  const m = /^(.*?)(\d+)$/.exec(startId);
+  if (!m) return [];
+  const prefix = m[1] ?? '';
+  const digits = m[2] ?? '0';
+  const first = Number(digits);
+  return Array.from({ length: n }, (_, k) => `${prefix}${String(first + k).padStart(digits.length, '0')}`);
+}
+
+/**
+ * A module batch reply: every card through `validateModuleDraft`, a head he has
+ * seen (or one repeated inside the batch) dropped, at most `count` kept, ids
+ * from `startId` upward. None left ⇒ throws, so the next provider is tried.
+ */
+export function validateModuleBatch(rawCards: unknown[], req: ModuleBatchRequest): { cards: (ModuleDraft & { id: string })[] } {
+  const seen = new Set((Array.isArray(req.seen) ? req.seen : []).map((h) => String(h).trim().toLowerCase()));
+  const heads = new Set<string>();
+  const kept: ModuleDraft[] = [];
+  const reasons: string[] = [];
+  rawCards.forEach((d, i) => {
+    try {
+      const card = validateModuleDraft(d, i, req.module);
+      const key = moduleHeadOf(card).toLowerCase();
+      if (seen.has(key)) throw new Error(`Card ${i}: "${moduleHeadOf(card)}" was already seen`);
+      if (heads.has(key)) throw new Error(`Card ${i}: repeats another card's head`);
+      heads.add(key);
+      kept.push(card);
+    } catch (e) {
+      reasons.push((e as Error).message);
+    }
+  });
+  if (kept.length === 0) {
+    throw new Error(`No usable module cards${reasons.length ? `: ${reasons[0]}` : ''}`);
+  }
+  const cards = kept.slice(0, req.count);
+  const ids = idsFrom(req.startId, cards.length);
+  return { cards: cards.map((c, k) => ({ id: ids[k] ?? `${req.startId}-${k}`, ...c })) };
+}
+
+/** Plain-words reason a module batch request is refused, or null when it is fine. */
+export function checkModuleBatchPayload(payload: unknown): string | null {
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return 'Invalid payload';
+  const p = payload as Record<string, unknown>;
+  if (p.type !== 'module') return 'Invalid card type';
+  if (!MODULES.includes(p.module as ModuleId)) return 'Invalid module';
+  const count = p.count;
+  if (typeof count !== 'number' || !Number.isInteger(count) || count < 1 || count > MODULE_BATCH_MAX) return 'Invalid count';
+  const lv = p.level;
+  if (typeof lv !== 'number' || !Number.isInteger(lv) || lv < 1 || lv > 5) return 'Invalid level';
+  if (p.seed !== undefined) return 'Module cards take no seed card';
+  if (typeof p.startId !== 'string' || !/^v7-ai-[a-z]+-\d{1,6}$/.test(p.startId)) return 'Invalid startId';
+  const shortList = (v: unknown, max: number, chars: number): boolean =>
+    validStringList(v, max) && (v as string[]).every((s) => s.length <= chars);
+  if (!shortList(p.liked, MODULE_LIST_MAX, MODULE_HEAD_CHARS)) return 'Invalid liked list';
+  if (!shortList(p.seen, MODULE_SEEN_MAX, MODULE_HEAD_CHARS)) return 'Invalid seen list';
+  if (!shortList(p.comments, 20, MODULE_COMMENT_CHARS)) return 'Invalid comments';
+  const disliked = p.disliked;
+  if (
+    !Array.isArray(disliked) ||
+    disliked.length > MODULE_LIST_MAX ||
+    !disliked.every((x) => {
+      if (!x || typeof x !== 'object') return false;
+      const o = x as Record<string, unknown>;
+      return (
+        typeof o.head === 'string' && o.head.trim().length > 0 && o.head.length <= MODULE_HEAD_CHARS &&
+        Array.isArray(o.reasons) && o.reasons.every((rs) => FEEDBACK_REASONS.includes(rs as FeedbackReason))
+      );
+    })
+  ) {
+    return 'Invalid disliked list';
+  }
+  return null;
+}
+
+/** True when an expand_seed payload is a v7 module batch. */
+function isModuleBatch(task: AiTask, payload: unknown): payload is ModuleBatchRequest {
+  return task === 'expand_seed' && !!payload && typeof payload === 'object' && (payload as { type?: unknown }).type === 'module';
 }
 
 const CHUNK_MARK = /\[\[([^[\]]+?)\]\]/g;
@@ -1369,7 +1804,11 @@ export default async function handler(req: Request): Promise<Response> {
       return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
     }
     const isTeach = payload.type === 'teach';
-    if (
+    if (payload.type === 'module') {
+      // v7 module batch (rulebook chapter 9): its own payload check.
+      const bad = checkModuleBatchPayload(payload);
+      if (bad) return json({ ok: false, task: body.task, error: bad }, 400);
+    } else if (
       typeof payload.type !== 'string' ||
       !(isTeach || (DRAFT_TYPES as readonly string[]).includes(payload.type))
     ) {
@@ -1483,7 +1922,11 @@ export default async function handler(req: Request): Promise<Response> {
   // Safe: the ALLOWED_TASKS check above guarantees a configured task.
   const task = body.task as ConfiguredTask;
   const cfg = TASK_CONFIG[task];
-  const system = systemFor(task);
+  // A v7 module batch: its own job lines, 4,096 tokens of answer room and a longer wait.
+  const moduleBatch = isModuleBatch(body.task, body.payload);
+  const system = moduleBatch ? moduleBatchSystem((body.payload as ModuleBatchRequest).module) : systemFor(task);
+  const maxTokens = moduleBatch ? MODULE_MAX_TOKENS : cfg.maxTokens;
+  const providerTimeoutMs = moduleBatch ? MODULE_TIMEOUT_MS : (cfg.timeoutMs ?? PER_PROVIDER_TIMEOUT_MS);
   const userPrompt = JSON.stringify(body.payload ?? {});
   if (userPrompt.length > 60_000) {
     return json({ ok: false, task: body.task, error: 'payload too large' }, 413);
@@ -1516,14 +1959,14 @@ export default async function handler(req: Request): Promise<Response> {
 
     try {
       const remainingTime = Math.max(1000, functionDeadline - Date.now());
-      const timeoutMs = Math.min(cfg.timeoutMs ?? PER_PROVIDER_TIMEOUT_MS, remainingTime);
+      const timeoutMs = Math.min(providerTimeoutMs, remainingTime);
 
       const rawText = await callWithTimeout(
         provider,
         system,
         userPrompt,
         cfg.temperature,
-        cfg.maxTokens,
+        maxTokens,
         timeoutMs,
       );
 

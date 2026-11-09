@@ -112,7 +112,8 @@ describe('slidesFor', () => {
   });
 
   it('every seed card gives slides, none empty, and a game always has one right answer', () => {
-    const { cards } = readSeedFiles();
+    // v7 module cards are not in AnyCard and never reach slidesFor (they use moduleSlides).
+    const cards = readSeedFiles().cards.filter((c) => (c as { type: string }).type !== 'module');
     expect(cards.length).toBeGreaterThan(100);
     for (const card of cards as AnyCard[]) {
       const slides = slidesFor(card);

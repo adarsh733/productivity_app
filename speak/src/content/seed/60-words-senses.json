@@ -1,0 +1,4632 @@
+[
+  {
+    "id": "v7-words-senses-001",
+    "type": "module",
+    "module": "words",
+    "topic": "noisy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "noisy",
+    "pos": "adjective",
+    "say": "NOY-zee",
+    "meaning": "Full of loud, unwanted sound.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The kids are very **noisy** this morning.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Let's leave; this café is too **noisy** to talk.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For places, people, machines",
+      "text": "Our old fan is **noisy** at night."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for bright colours",
+        "text": "She wore a noisy yellow dress."
+      }
+    ],
+    "rule": "places, people, machines"
+  },
+  {
+    "id": "v7-words-senses-002",
+    "type": "module",
+    "module": "words",
+    "topic": "muffled",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "muffled",
+    "pos": "adjective",
+    "say": "MUFF-uld",
+    "meaning": "Hard to hear clearly, as if covered.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I heard **muffled** voices through the wall.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "Your voice is **muffled**; is your mic covered?",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ For sounds blocked by something",
+      "text": "The music was **muffled** from the next room."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for blurry pictures",
+        "text": "The photo came out muffled."
+      }
+    ],
+    "rule": "sound behind a wall or cover"
+  },
+  {
+    "id": "v7-words-senses-003",
+    "type": "module",
+    "module": "words",
+    "topic": "faint",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "faint",
+    "pos": "adjective",
+    "say": "FAYNT",
+    "meaning": "Weak and hard to notice.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "There's a **faint** smell of gas in the kitchen.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I could hear a **faint** song from the next building.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For weak sounds, smells, light",
+      "text": "There's a **faint** light under the door."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for quiet people",
+        "text": "My cousin is very faint; he hardly talks."
+      }
+    ],
+    "rule": "weak sound, smell or light",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The drums were faint; my ears hurt.",
+          "right": false
+        },
+        {
+          "text": "There's a faint smell of smoke here.",
+          "right": true
+        },
+        {
+          "text": "He is a faint boy who never talks.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-004",
+    "type": "module",
+    "module": "words",
+    "topic": "shrill",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "shrill",
+    "pos": "adjective",
+    "say": "SHRIL",
+    "meaning": "High, sharp and unpleasant to hear.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The pressure cooker gave a **shrill** whistle.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Her **shrill** laugh made everyone turn around.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For high, sharp sounds",
+      "text": "The **shrill** alarm woke the whole building."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for deep sounds",
+        "text": "The thunder was low and shrill."
+      },
+      {
+        "label": "✗ Not for tastes",
+        "text": "This lime pickle is shrill."
+      }
+    ],
+    "rule": "high, sharp sounds"
+  },
+  {
+    "id": "v7-words-senses-005",
+    "type": "module",
+    "module": "words",
+    "topic": "cacophony",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "cacophony",
+    "pos": "noun",
+    "say": "kuh-KOFF-uh-nee",
+    "meaning": "A loud mix of harsh, clashing sounds.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Horns, dogs and a drill: what a **cacophony**.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "The open office is a **cacophony** of phone calls.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ For many harsh sounds at once",
+      "text": "The market at noon is a **cacophony**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for one sound",
+        "text": "The doorbell made a cacophony."
+      },
+      {
+        "label": "✗ Not for a nice tune",
+        "text": "The flute played a lovely cacophony."
+      }
+    ],
+    "rule": "many harsh sounds together"
+  },
+  {
+    "id": "v7-words-senses-006",
+    "type": "module",
+    "module": "words",
+    "topic": "sticky",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "sticky",
+    "pos": "adjective",
+    "say": "STIK-ee",
+    "meaning": "Covered in something that holds on, like glue or syrup.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My hands are **sticky** from the mango.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The cinema floor was **sticky** with spilled cola.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For hands and surfaces",
+      "text": "Wipe the table; it's still **sticky**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for loyal people",
+        "text": "She is a very sticky friend."
+      }
+    ],
+    "rule": "glue, syrup, sweat",
+    "check": {
+      "question": "Which one is sticky?",
+      "options": [
+        {
+          "text": "A dry towel",
+          "right": false
+        },
+        {
+          "text": "Honey on your fingers",
+          "right": true
+        },
+        {
+          "text": "A cold glass of water",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-007",
+    "type": "module",
+    "module": "words",
+    "topic": "crackle",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "crackle",
+    "pos": "verb",
+    "say": "KRAK-ul",
+    "meaning": "To make small, sharp, popping sounds.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I love hearing mustard seeds **crackle** in hot oil.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We sat by the fire and listened to it **crackle**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For small popping sounds",
+      "text": "The old radio started to **crackle**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for big bangs",
+        "text": "The bomb crackled and shook the city."
+      }
+    ],
+    "rule": "small popping sounds"
+  },
+  {
+    "id": "v7-words-senses-008",
+    "type": "module",
+    "module": "words",
+    "topic": "soggy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "soggy",
+    "pos": "adjective",
+    "say": "SOG-ee",
+    "meaning": "Too wet and soft, in a bad way.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The biscuits went **soggy** in my tea.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Eat your fries now, before they get **soggy**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For things that should be dry",
+      "text": "My shoes are **soggy** after the rain."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for drinks",
+        "text": "This juice is soggy."
+      }
+    ],
+    "rule": "too wet and soft"
+  },
+  {
+    "id": "v7-words-senses-009",
+    "type": "module",
+    "module": "words",
+    "topic": "rustle",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "rustle",
+    "pos": "verb",
+    "say": "RUSS-ul",
+    "meaning": "To make a soft, dry sound, like leaves or paper.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I heard the plastic bags **rustle** in the kitchen.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The leaves **rustle** when the wind blows.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For dry, light things moving",
+      "text": "Please don't **rustle** your chips packet in the film."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for loud bangs",
+        "text": "The door rustled shut with a bang."
+      }
+    ],
+    "rule": "leaves, paper, plastic",
+    "check": {
+      "question": "What can rustle?",
+      "options": [
+        {
+          "text": "Dry leaves",
+          "right": true
+        },
+        {
+          "text": "A drum",
+          "right": false
+        },
+        {
+          "text": "A car horn",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-010",
+    "type": "module",
+    "module": "words",
+    "topic": "shimmer",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "shimmer",
+    "pos": "verb",
+    "say": "SHIM-er",
+    "meaning": "To shine with a soft light that seems to move.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The candles **shimmer** on the balcony at night.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The lake seemed to **shimmer** in the evening sun.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For soft, moving light",
+      "text": "Her silk dress seemed to **shimmer** under the lights."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for sounds",
+        "text": "The bell shimmered loudly."
+      }
+    ],
+    "rule": "soft, moving light"
+  },
+  {
+    "id": "v7-words-senses-011",
+    "type": "module",
+    "module": "words",
+    "topic": "crunchy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "crunchy",
+    "pos": "adjective",
+    "say": "KRUN-chee",
+    "meaning": "Hard, and making a noise when you bite it.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "These carrots are fresh and **crunchy**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I like my toast **crunchy**, not soft.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For firm food that cracks",
+      "text": "The peanuts are salty and **crunchy**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for soft food",
+        "text": "The curd is nice and crunchy."
+      }
+    ],
+    "rule": "food that cracks when bitten"
+  },
+  {
+    "id": "v7-words-senses-012",
+    "type": "module",
+    "module": "words",
+    "topic": "sizzle",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "sizzle",
+    "pos": "verb",
+    "say": "SIZ-ul",
+    "meaning": "To make a hissing sound while frying.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I could hear the onions **sizzle** in the pan.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Wait for the oil to **sizzle**, then add the eggs.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For hot oil and frying",
+      "text": "The kebabs **sizzle** on the grill."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for cold things",
+        "text": "The ice cream sizzled in the bowl."
+      }
+    ],
+    "rule": "frying sounds",
+    "check": {
+      "question": "When does food sizzle?",
+      "options": [
+        {
+          "text": "When it's in the fridge",
+          "right": false
+        },
+        {
+          "text": "When it hits hot oil",
+          "right": true
+        },
+        {
+          "text": "When it's left out overnight",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-013",
+    "type": "module",
+    "module": "words",
+    "topic": "crispy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "crispy",
+    "pos": "adjective",
+    "say": "KRIS-pee",
+    "meaning": "Pleasantly hard and dry on the outside.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Mum fries the potatoes until they're **crispy**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The chicken here is **crispy** outside and soft inside.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For food with a dry, firm outside",
+      "text": "These chips are still **crispy**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for soft or wet food",
+        "text": "The soup is very crispy today."
+      }
+    ],
+    "rule": "dry, firm outside"
+  },
+  {
+    "id": "v7-words-senses-014",
+    "type": "module",
+    "module": "words",
+    "topic": "thud",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "thud",
+    "pos": "noun",
+    "say": "THUD",
+    "meaning": "A dull, heavy sound, like something falling.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The bag hit the floor with a **thud**.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "I heard a **thud**; the printer had fallen over.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ For heavy, dull sounds",
+      "text": "The coconut fell with a loud **thud**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for high sounds",
+        "text": "The bird sang a sweet thud."
+      }
+    ],
+    "rule": "heavy things landing"
+  },
+  {
+    "id": "v7-words-senses-015",
+    "type": "module",
+    "module": "words",
+    "topic": "acrid",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "acrid",
+    "pos": "adjective",
+    "say": "AK-rid",
+    "meaning": "Sharp and bitter in a way that hurts your nose or throat.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "**Acrid** smoke came from the burnt pan.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The **acrid** smell of burning plastic made us cough.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For harsh smoke and fumes",
+      "text": "The air near the factory is **acrid**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for nice smells",
+        "text": "The roses smelled acrid and lovely."
+      }
+    ],
+    "rule": "harsh smoke and fumes",
+    "check": {
+      "question": "Which smell is acrid?",
+      "options": [
+        {
+          "text": "Fresh bread",
+          "right": false
+        },
+        {
+          "text": "Burning tyres",
+          "right": true
+        },
+        {
+          "text": "Sandalwood soap",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-016",
+    "type": "module",
+    "module": "words",
+    "topic": "chilly",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "chilly",
+    "pos": "adjective",
+    "say": "CHIL-ee",
+    "meaning": "Cold enough to feel uncomfortable.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It's **chilly** this morning; take a jacket.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The AC in the cinema was really **chilly**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For weather and rooms",
+      "text": "Delhi gets **chilly** in December."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for spicy food (that is chilli)",
+        "text": "This curry is too chilly for me."
+      }
+    ],
+    "rule": "a bit too cold"
+  },
+  {
+    "id": "v7-words-senses-017",
+    "type": "module",
+    "module": "words",
+    "topic": "clatter",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "clatter",
+    "pos": "noun",
+    "say": "KLAT-er",
+    "meaning": "A loud noise of hard things hitting each other.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I dropped the steel plates with a **clatter**.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "There was a **clatter** of cups in the pantry.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ For hard things banging",
+      "text": "The spoons fell in the sink with a **clatter**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for soft things",
+        "text": "The pillow fell with a clatter."
+      }
+    ],
+    "rule": "hard things knocking"
+  },
+  {
+    "id": "v7-words-senses-018",
+    "type": "module",
+    "module": "words",
+    "topic": "humid",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "humid",
+    "pos": "adjective",
+    "say": "HYOO-mid",
+    "meaning": "Hot, with a lot of water in the air.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Mumbai is so **humid** that my clothes never dry.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "It's **humid** today; my hair is a mess.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For air and weather",
+      "text": "The bathroom gets **humid** after a shower."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for wet things",
+        "text": "My towel is humid."
+      }
+    ],
+    "rule": "wet, heavy air",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "My socks are humid.",
+          "right": false
+        },
+        {
+          "text": "Chennai is humid in May.",
+          "right": true
+        },
+        {
+          "text": "This rice is humid.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-019",
+    "type": "module",
+    "module": "words",
+    "topic": "echo",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "echo",
+    "pos": "verb",
+    "say": "EK-oh",
+    "meaning": "To repeat a sound as it bounces back.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Our voices **echo** in the empty flat.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Shout in the cave and hear it **echo**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For sounds bouncing back",
+      "text": "Footsteps **echo** in the long hallway."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for light",
+        "text": "The mirror echoed the sunlight."
+      }
+    ],
+    "rule": "sound bouncing back"
+  },
+  {
+    "id": "v7-words-senses-020",
+    "type": "module",
+    "module": "words",
+    "topic": "mellow",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "mellow",
+    "pos": "adjective",
+    "say": "MEL-oh",
+    "meaning": "Soft, warm and gentle, never harsh.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I play **mellow** music while I cook.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The singer has a deep, **mellow** voice.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For gentle sounds, colours, moods",
+      "text": "The café has **mellow** lights in the evening."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for loud or sharp things",
+        "text": "The fire alarm has a mellow sound."
+      }
+    ],
+    "rule": "soft and warm"
+  },
+  {
+    "id": "v7-words-senses-021",
+    "type": "module",
+    "module": "words",
+    "topic": "stuffy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "stuffy",
+    "pos": "adjective",
+    "say": "STUF-ee",
+    "meaning": "Warm and without fresh air.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Open a window; the room is **stuffy**.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "The meeting room gets **stuffy** after an hour.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ For rooms with no fresh air",
+      "text": "The bus was crowded and **stuffy**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a full stomach",
+        "text": "I ate too much; I'm stuffy."
+      }
+    ],
+    "rule": "no fresh air",
+    "check": {
+      "question": "You ate a big lunch. How do you feel?",
+      "options": [
+        {
+          "text": "Stuffy",
+          "right": false
+        },
+        {
+          "text": "Full",
+          "right": true
+        },
+        {
+          "text": "Muggy",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-022",
+    "type": "module",
+    "module": "words",
+    "topic": "hiss",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "hiss",
+    "pos": "verb",
+    "say": "HISS",
+    "meaning": "To make a long 's' sound, like a snake.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The pressure cooker started to **hiss**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The cat will **hiss** if you pull its tail.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a long sss sound",
+      "text": "I heard the tyre **hiss** as the air came out."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for kind words",
+        "text": "She hissed a sweet thank-you."
+      }
+    ],
+    "rule": "a long sss sound"
+  },
+  {
+    "id": "v7-words-senses-023",
+    "type": "module",
+    "module": "words",
+    "topic": "smoky",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "smoky",
+    "pos": "adjective",
+    "say": "SMOH-kee",
+    "meaning": "Full of smoke, or tasting of smoke.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The kitchen got **smoky** when the toast burned.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "This grilled corn has a lovely **smoky** taste.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For smoke in air or food",
+      "text": "The old station was dark and **smoky**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for people who smoke",
+        "text": "My uncle is very smoky; he smokes ten a day."
+      }
+    ],
+    "rule": "smoke in air or taste"
+  },
+  {
+    "id": "v7-words-senses-024",
+    "type": "module",
+    "module": "words",
+    "topic": "scorching",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "scorching",
+    "pos": "adjective",
+    "say": "SKOR-ching",
+    "meaning": "Very, very hot, like burning.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Don't walk barefoot; the terrace is **scorching**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "It was a **scorching** day at the cricket ground.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For extreme heat",
+      "text": "The sand at noon is **scorching**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for mild warmth",
+        "text": "The tea is a little scorching."
+      }
+    ],
+    "rule": "extreme heat",
+    "check": {
+      "question": "Which day is scorching?",
+      "options": [
+        {
+          "text": "45°C in May",
+          "right": true
+        },
+        {
+          "text": "18°C in winter",
+          "right": false
+        },
+        {
+          "text": "A cool, rainy day",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-025",
+    "type": "module",
+    "module": "words",
+    "topic": "piercing",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "piercing",
+    "pos": "adjective",
+    "say": "PEER-sing",
+    "meaning": "So high or sharp it seems to go through you.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The baby let out a **piercing** cry.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She gave a **piercing** whistle to call the dog.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For sharp sounds and looks",
+      "text": "He gave me a **piercing** look."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for soft sounds",
+        "text": "The cat gave a piercing little purr."
+      }
+    ],
+    "rule": "sharp enough to go through you"
+  },
+  {
+    "id": "v7-words-senses-026",
+    "type": "module",
+    "module": "words",
+    "topic": "sour",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "sour",
+    "pos": "adjective",
+    "say": "SOW-er",
+    "meaning": "Sharp in taste, like lemon or old milk.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The milk smells **sour**; throw it away.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "These raw mangoes are really **sour**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For sharp tastes",
+      "text": "This curd has gone **sour**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for sweet things",
+        "text": "The sugar is very sour."
+      }
+    ],
+    "rule": "lemon-sharp taste"
+  },
+  {
+    "id": "v7-words-senses-027",
+    "type": "module",
+    "module": "words",
+    "topic": "sweltering",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "sweltering",
+    "pos": "adjective",
+    "say": "SWEL-ter-ing",
+    "meaning": "So hot that you sweat and feel weak.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The flat is **sweltering** when the power goes.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "The office was **sweltering** after the AC broke.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ For heat you suffer in",
+      "text": "It's a **sweltering** day; drink water."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for hot objects",
+        "text": "Careful, the pan is sweltering."
+      }
+    ],
+    "rule": "heat you suffer in",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "Don't touch the iron; it's sweltering.",
+          "right": false
+        },
+        {
+          "text": "The train was sweltering with no fans.",
+          "right": true
+        },
+        {
+          "text": "My tea is sweltering.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-028",
+    "type": "module",
+    "module": "words",
+    "topic": "bitter",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "bitter",
+    "pos": "adjective",
+    "say": "BIT-er",
+    "meaning": "A strong, sharp taste, like coffee with no sugar.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My kids say this medicine is too **bitter**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "This coffee is strong and **bitter**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a strong, sharp taste",
+      "text": "Dark chocolate is a little **bitter**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for sour tastes",
+        "text": "Lemon juice is very bitter."
+      }
+    ],
+    "rule": "coffee-like taste"
+  },
+  {
+    "id": "v7-words-senses-029",
+    "type": "module",
+    "module": "words",
+    "topic": "drenched",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "drenched",
+    "pos": "adjective",
+    "say": "DRENCHT",
+    "meaning": "Completely wet.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I forgot my umbrella and got **drenched**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We were **drenched** after the water fight at Holi.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For very wet people or things",
+      "text": "My shirt is **drenched** in sweat."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a little wet",
+        "text": "My hair is a bit drenched."
+      }
+    ],
+    "rule": "fully wet"
+  },
+  {
+    "id": "v7-words-senses-030",
+    "type": "module",
+    "module": "words",
+    "topic": "muggy",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "muggy",
+    "pos": "adjective",
+    "say": "MUG-ee",
+    "meaning": "Warm, damp and heavy, with no breeze.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It's **muggy** before the monsoon rain.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The evening was **muggy**, so we stayed inside.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For weather",
+      "text": "Kolkata gets **muggy** in July."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for objects",
+        "text": "My towel is muggy."
+      }
+    ],
+    "rule": "warm, damp weather",
+    "check": {
+      "question": "Which one is muggy?",
+      "options": [
+        {
+          "text": "A warm, sticky evening",
+          "right": true
+        },
+        {
+          "text": "A cold, dry morning",
+          "right": false
+        },
+        {
+          "text": "A wet towel",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-031",
+    "type": "module",
+    "module": "words",
+    "topic": "bland",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "bland",
+    "pos": "adjective",
+    "say": "BLAND",
+    "meaning": "With very little taste.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The hospital food was **bland**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Add some salt; the soup is **bland**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For food with little flavour",
+      "text": "Plain rice is **bland** without curry."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for food that has gone bad",
+        "text": "The milk has gone off; it's bland."
+      }
+    ],
+    "rule": "little flavour"
+  },
+  {
+    "id": "v7-words-senses-032",
+    "type": "module",
+    "module": "words",
+    "topic": "musty",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "musty",
+    "pos": "adjective",
+    "say": "MUSS-tee",
+    "meaning": "Smelling old, damp and closed up.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The old cupboard smells **musty**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The hotel room had a **musty** smell.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For old, damp places",
+      "text": "My grandfather's books smell **musty**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for fresh things",
+        "text": "The new car has a musty smell."
+      }
+    ],
+    "rule": "old, damp smell"
+  },
+  {
+    "id": "v7-words-senses-033",
+    "type": "module",
+    "module": "words",
+    "topic": "greasy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "greasy",
+    "pos": "adjective",
+    "say": "GREE-see",
+    "meaning": "Covered in too much oil or fat.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Wash the **greasy** pan with hot water.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "These fries are tasty but **greasy**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For too much oil",
+      "text": "My hair gets **greasy** in summer."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for wet with water",
+        "text": "The rain made my shirt greasy."
+      }
+    ],
+    "rule": "too much oil",
+    "check": {
+      "question": "Which one is greasy?",
+      "options": [
+        {
+          "text": "Hands after fried chicken",
+          "right": true
+        },
+        {
+          "text": "A glass of water",
+          "right": false
+        },
+        {
+          "text": "Clean, dry plates",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-034",
+    "type": "module",
+    "module": "words",
+    "topic": "pungent",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "pungent",
+    "pos": "adjective",
+    "say": "PUN-jent",
+    "meaning": "Very strong and sharp in smell or taste.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Garlic has a **pungent** smell when you crush it.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The fish market has a **pungent** smell.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For strong, sharp smells",
+      "text": "Raw mustard oil is **pungent**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for soft smells",
+        "text": "The baby powder is pungent."
+      }
+    ],
+    "rule": "very strong smell"
+  },
+  {
+    "id": "v7-words-senses-035",
+    "type": "module",
+    "module": "words",
+    "topic": "serene",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "serene",
+    "pos": "adjective",
+    "say": "suh-REEN",
+    "meaning": "Calm, quiet and peaceful.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Our village is **serene** in the early morning.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The lake was **serene** at sunrise.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For calm places and faces",
+      "text": "She looked **serene** after her yoga class."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for busy places",
+        "text": "The railway station is serene at rush hour."
+      }
+    ],
+    "rule": "calm and peaceful"
+  },
+  {
+    "id": "v7-words-senses-036",
+    "type": "module",
+    "module": "words",
+    "topic": "juicy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "juicy",
+    "pos": "adjective",
+    "say": "JOO-see",
+    "meaning": "Full of juice.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "This watermelon is sweet and **juicy**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The burger was hot and **juicy**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For fruit and meat",
+      "text": "Pick the **juicy** oranges, not the dry ones."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for drinks",
+        "text": "This milkshake is very juicy."
+      }
+    ],
+    "rule": "full of juice",
+    "check": {
+      "question": "Which one is juicy?",
+      "options": [
+        {
+          "text": "A ripe peach",
+          "right": true
+        },
+        {
+          "text": "A dry biscuit",
+          "right": false
+        },
+        {
+          "text": "A cup of coffee",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-037",
+    "type": "module",
+    "module": "words",
+    "topic": "fragrant",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "fragrant",
+    "pos": "adjective",
+    "say": "FRAY-grunt",
+    "meaning": "Having a sweet, pleasant smell.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The jasmine flowers are so **fragrant**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The rice at the wedding was **fragrant** and soft.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For nice smells",
+      "text": "The temple was **fragrant** with incense."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for bad smells",
+        "text": "The dustbin was fragrant."
+      }
+    ],
+    "rule": "pleasant smell"
+  },
+  {
+    "id": "v7-words-senses-038",
+    "type": "module",
+    "module": "words",
+    "topic": "smooth",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "smooth",
+    "pos": "adjective",
+    "say": "SMOOTH",
+    "meaning": "Even, with no bumps or rough parts.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The new floor is **smooth** and shiny.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The road to Lonavala is **smooth** now.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For surfaces, skin, drinks",
+      "text": "This coffee is rich and **smooth**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"easy\"",
+        "text": "Maths is very smooth for me."
+      }
+    ],
+    "rule": "no bumps"
+  },
+  {
+    "id": "v7-words-senses-039",
+    "type": "module",
+    "module": "words",
+    "topic": "aroma",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "aroma",
+    "pos": "noun",
+    "say": "uh-ROH-muh",
+    "meaning": "A strong, pleasant smell, often of food.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The **aroma** of fresh coffee woke me up.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "I love the **aroma** of the bakery near our office.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ For nice food smells",
+      "text": "The **aroma** of fried onions filled the house."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for bad smells",
+        "text": "The aroma of the drain was awful."
+      }
+    ],
+    "rule": "nice food smell",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The aroma of garbage was strong.",
+          "right": false
+        },
+        {
+          "text": "The aroma of baking bread was lovely.",
+          "right": true
+        },
+        {
+          "text": "His old socks had an aroma.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-040",
+    "type": "module",
+    "module": "words",
+    "topic": "tranquil",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "tranquil",
+    "pos": "adjective",
+    "say": "TRAN-kwil",
+    "meaning": "Calm, still and quiet.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Sunday mornings at home are **tranquil**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We found a **tranquil** beach in Goa.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For calm places and times",
+      "text": "The garden is **tranquil** after the rain."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for noisy places",
+        "text": "The market was tranquil at rush hour."
+      }
+    ],
+    "rule": "calm and still"
+  },
+  {
+    "id": "v7-words-senses-041",
+    "type": "module",
+    "module": "words",
+    "topic": "lumpy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "lumpy",
+    "pos": "adjective",
+    "say": "LUM-pee",
+    "meaning": "Full of small hard bits; not smooth.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Keep stirring or the batter gets **lumpy**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The mattress at the guest house was **lumpy**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For things that should be smooth",
+      "text": "The porridge was cold and **lumpy**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for clear liquids",
+        "text": "The water is lumpy."
+      }
+    ],
+    "rule": "small hard bits"
+  },
+  {
+    "id": "v7-words-senses-042",
+    "type": "module",
+    "module": "words",
+    "topic": "tangy",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "tangy",
+    "pos": "adjective",
+    "say": "TANG-ee",
+    "meaning": "Sharp, fresh and a little sour, in a nice way.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Add lemon to make the salad **tangy**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "This tamarind sauce is sweet and **tangy**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For pleasant sharp tastes",
+      "text": "I love the **tangy** taste of raw mango."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for plain food",
+        "text": "Plain boiled rice is tangy."
+      }
+    ],
+    "rule": "nicely sour",
+    "check": {
+      "question": "Which food is tangy?",
+      "options": [
+        {
+          "text": "Lemon pickle",
+          "right": true
+        },
+        {
+          "text": "Plain bread",
+          "right": false
+        },
+        {
+          "text": "A boiled potato",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-043",
+    "type": "module",
+    "module": "words",
+    "topic": "fluffy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "fluffy",
+    "pos": "adjective",
+    "say": "FLUFF-ee",
+    "meaning": "Soft, light and full of air.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The towels are **fluffy** after washing.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "These pancakes are so **fluffy**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For soft, airy things",
+      "text": "Our puppy is small and **fluffy**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for heavy, hard things",
+        "text": "The brick is fluffy."
+      }
+    ],
+    "rule": "soft and airy"
+  },
+  {
+    "id": "v7-words-senses-044",
+    "type": "module",
+    "module": "words",
+    "topic": "savoury",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "savoury",
+    "pos": "adjective",
+    "say": "SAY-vuh-ree",
+    "meaning": "Salty or spicy, not sweet.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I want something **savoury**, not cake.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We ordered **savoury** snacks for the match.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For salty food",
+      "text": "Cheese toast is my favourite **savoury** breakfast."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for sweets",
+        "text": "Chocolate is my favourite savoury snack."
+      }
+    ],
+    "rule": "salty, not sweet"
+  },
+  {
+    "id": "v7-words-senses-045",
+    "type": "module",
+    "module": "words",
+    "topic": "dazzling",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "dazzling",
+    "pos": "adjective",
+    "say": "DAZ-ling",
+    "meaning": "So bright it almost hurts your eyes.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The sun on the white wall is **dazzling**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The wedding lights were **dazzling**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For very bright light",
+      "text": "The headlights were **dazzling** on the dark road."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for dim light",
+        "text": "The candle gave a dazzling, weak glow."
+      }
+    ],
+    "rule": "very bright",
+    "check": {
+      "question": "Which one is dazzling?",
+      "options": [
+        {
+          "text": "A torch with dead batteries",
+          "right": false
+        },
+        {
+          "text": "Fireworks in the night sky",
+          "right": true
+        },
+        {
+          "text": "A cloudy evening",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-046",
+    "type": "module",
+    "module": "words",
+    "topic": "slippery",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "slippery",
+    "pos": "adjective",
+    "say": "SLIP-uh-ree",
+    "meaning": "Hard to stand on or hold, because it is wet or smooth.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Careful, the bathroom floor is **slippery**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The rocks near the waterfall are **slippery**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For surfaces you can slip on",
+      "text": "Roads are **slippery** after the first rain."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for sticky things",
+        "text": "My hands are slippery with honey."
+      }
+    ],
+    "rule": "you might slip"
+  },
+  {
+    "id": "v7-words-senses-047",
+    "type": "module",
+    "module": "words",
+    "topic": "mouth-watering",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "mouth-watering",
+    "pos": "adjective",
+    "say": "MOUTH-waw-ter-ing",
+    "meaning": "Looking or smelling so good you want to eat it now.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Mum's cake smells **mouth-watering**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The street food photos were **mouth-watering**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For tempting food",
+      "text": "That butter chicken looks **mouth-watering**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for bad food",
+        "text": "The burnt rice was mouth-watering."
+      }
+    ],
+    "rule": "tempting food"
+  },
+  {
+    "id": "v7-words-senses-048",
+    "type": "module",
+    "module": "words",
+    "topic": "muddy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "muddy",
+    "pos": "adjective",
+    "say": "MUD-ee",
+    "meaning": "Covered in wet earth.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Leave your **muddy** shoes outside.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The football ground was **muddy** after the rain.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For wet earth",
+      "text": "The kids came home **muddy** and happy."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for dry dust",
+        "text": "The shelf is muddy; nobody has cleaned it."
+      }
+    ],
+    "rule": "wet earth",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "The road is muddy after the storm.",
+          "right": true
+        },
+        {
+          "text": "The desk is muddy with dust.",
+          "right": false
+        },
+        {
+          "text": "The sky is muddy today.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-049",
+    "type": "module",
+    "module": "words",
+    "topic": "bumpy",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "bumpy",
+    "pos": "adjective",
+    "say": "BUM-pee",
+    "meaning": "Not flat or smooth; full of bumps.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The road to our village is very **bumpy**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "It was a **bumpy** flight because of the clouds.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For rough roads and rides",
+      "text": "The bus ride was short but **bumpy**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for smooth things",
+        "text": "The new glass table is bumpy."
+      }
+    ],
+    "rule": "rough ride or surface"
+  },
+  {
+    "id": "v7-words-senses-050",
+    "type": "module",
+    "module": "words",
+    "topic": "luminous",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "luminous",
+    "pos": "adjective",
+    "say": "LOO-mih-nus",
+    "meaning": "Giving out light, so it shines in the dark.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My old watch has **luminous** hands.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The moon looked **luminous** over the sea.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For things that glow",
+      "text": "The stars on the ceiling are **luminous** at night."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for sounds",
+        "text": "The music was luminous."
+      }
+    ],
+    "rule": "glows in the dark"
+  },
+  {
+    "id": "v7-words-senses-051",
+    "type": "module",
+    "module": "words",
+    "topic": "dusty",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "dusty",
+    "pos": "adjective",
+    "say": "DUSS-tee",
+    "meaning": "Covered with dust.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The fan is **dusty**; please wipe it.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The road to the farm was hot and **dusty**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For dust on things",
+      "text": "My laptop screen is **dusty**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for wet dirt",
+        "text": "My shoes are dusty from the rain puddles."
+      }
+    ],
+    "rule": "covered with dust",
+    "check": {
+      "question": "Which one is dusty?",
+      "options": [
+        {
+          "text": "A shelf nobody has cleaned",
+          "right": true
+        },
+        {
+          "text": "A fresh glass of milk",
+          "right": false
+        },
+        {
+          "text": "Shoes after a rain puddle",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-052",
+    "type": "module",
+    "module": "words",
+    "topic": "grainy",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "grainy",
+    "pos": "adjective",
+    "say": "GRAY-nee",
+    "meaning": "Rough with small bits, or not sharp in a photo.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "This old photo is **grainy** and dark.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "The video call was **grainy** on my slow Wi-Fi.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ For rough photos and textures",
+      "text": "The sugar left the cream a bit **grainy**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for sharp, clear photos",
+        "text": "The new phone takes grainy, crystal-clear photos."
+      }
+    ],
+    "rule": "small rough bits"
+  },
+  {
+    "id": "v7-words-senses-053",
+    "type": "module",
+    "module": "words",
+    "topic": "foggy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "foggy",
+    "pos": "adjective",
+    "say": "FOG-ee",
+    "meaning": "Full of fog, so you can't see far.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It's **foggy**; drive slowly today.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Delhi mornings are **foggy** in January.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For air you cannot see through",
+      "text": "My glasses go **foggy** when I wear a mask."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for smoke from cooking (that is smoky)",
+        "text": "The kitchen was foggy when the toast burned."
+      }
+    ],
+    "rule": "can't see far"
+  },
+  {
+    "id": "v7-words-senses-054",
+    "type": "module",
+    "module": "words",
+    "topic": "coarse",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "coarse",
+    "pos": "adjective",
+    "say": "KORS",
+    "meaning": "Rough to touch, made of thick parts.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "This towel is **coarse**; use the soft one.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "This beach sand is **coarse** and hurts my feet.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For rough cloth, grains, hair",
+      "text": "Use **coarse** salt for the barbecue."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"course\" (a class)",
+        "text": "I'm doing a coarse in coding."
+      },
+      {
+        "label": "✗ Not for smooth things",
+        "text": "Silk is very coarse."
+      }
+    ],
+    "rule": "rough to touch",
+    "check": {
+      "question": "Which one is coarse?",
+      "options": [
+        {
+          "text": "Silk",
+          "right": false
+        },
+        {
+          "text": "A rough jute bag",
+          "right": true
+        },
+        {
+          "text": "A baby's skin",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-055",
+    "type": "module",
+    "module": "words",
+    "topic": "tantalising",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "tantalising",
+    "pos": "adjective",
+    "say": "TAN-tuh-lie-zing",
+    "meaning": "So tempting you want it, but you can't have it yet.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The **tantalising** smell from the kitchen made us hungry.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The smell of popcorn in the queue was **tantalising**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For tempting things not yet yours",
+      "text": "The cake in the window looked **tantalising**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for things you dislike",
+        "text": "The bitter medicine smelled tantalising."
+      }
+    ],
+    "rule": "tempting, not yet yours"
+  },
+  {
+    "id": "v7-words-senses-056",
+    "type": "module",
+    "module": "words",
+    "topic": "dim",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "dim",
+    "pos": "adjective",
+    "say": "DIM",
+    "meaning": "Not bright; with little light.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The bulb is **dim**; we need a new one.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The restaurant was **dim** and quiet.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For weak light",
+      "text": "Don't read in **dim** light."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for quiet sounds",
+        "text": "Please make the TV dim; it's too loud."
+      }
+    ],
+    "rule": "weak light"
+  },
+  {
+    "id": "v7-words-senses-057",
+    "type": "module",
+    "module": "words",
+    "topic": "velvety",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "velvety",
+    "pos": "adjective",
+    "say": "VEL-vuh-tee",
+    "meaning": "Soft and smooth, like velvet cloth.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The rose petals feel **velvety**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "This hot chocolate is thick and **velvety**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For soft, smooth things",
+      "text": "The puppy's ears are **velvety**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for rough things",
+        "text": "The sandpaper is velvety."
+      }
+    ],
+    "rule": "soft like velvet",
+    "check": {
+      "question": "Which one is velvety?",
+      "options": [
+        {
+          "text": "The skin of a peach",
+          "right": true
+        },
+        {
+          "text": "A brick wall",
+          "right": false
+        },
+        {
+          "text": "A cactus",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-058",
+    "type": "module",
+    "module": "words",
+    "topic": "blurry",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "blurry",
+    "pos": "adjective",
+    "say": "BLUR-ee",
+    "meaning": "Not clear; the edges are not sharp.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The photo is **blurry**; take it again.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Without my glasses, everything looks **blurry**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For things you cannot see clearly",
+      "text": "The screen went **blurry** when I zoomed in."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for sounds (that is muffled)",
+        "text": "Your voice is blurry on the call."
+      }
+    ],
+    "rule": "not clear to see"
+  },
+  {
+    "id": "v7-words-senses-059",
+    "type": "module",
+    "module": "words",
+    "topic": "gritty",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "gritty",
+    "pos": "adjective",
+    "say": "GRIT-ee",
+    "meaning": "Full of tiny hard bits, like sand.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The spinach was **gritty**; wash it well.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "After the beach, my bag was **gritty** with sand.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For sandy bits",
+      "text": "The floor feels **gritty** under my feet."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for smooth food",
+        "text": "The yoghurt is nice and gritty."
+      }
+    ],
+    "rule": "tiny hard bits"
+  },
+  {
+    "id": "v7-words-senses-060",
+    "type": "module",
+    "module": "words",
+    "topic": "succulent",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "succulent",
+    "pos": "adjective",
+    "say": "SUK-yoo-lunt",
+    "meaning": "Juicy, soft and tasty.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The grilled chicken was **succulent**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "These **succulent** grapes are from Nashik.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For juicy food",
+      "text": "The fish was soft and **succulent**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for dry food",
+        "text": "The crackers were succulent."
+      }
+    ],
+    "rule": "juicy and tasty",
+    "check": {
+      "question": "Which one is succulent?",
+      "options": [
+        {
+          "text": "Dry toast",
+          "right": false
+        },
+        {
+          "text": "A ripe, juicy pear",
+          "right": true
+        },
+        {
+          "text": "A bag of chips",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-061",
+    "type": "module",
+    "module": "words",
+    "topic": "rotten",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "rotten",
+    "pos": "adjective",
+    "say": "ROT-un",
+    "meaning": "Old and bad, so you can't eat it.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Throw out the **rotten** tomatoes.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The eggs smell **rotten**; don't use them.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For food gone bad",
+      "text": "The bananas went **rotten** in the heat."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for food that is just a bit old",
+        "text": "The bread is one day old, so it's rotten."
+      }
+    ],
+    "rule": "gone bad"
+  },
+  {
+    "id": "v7-words-senses-062",
+    "type": "module",
+    "module": "words",
+    "topic": "hazy",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "hazy",
+    "pos": "adjective",
+    "say": "HAY-zee",
+    "meaning": "Not clear, because of smoke, dust or mist.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The sky is **hazy** with pollution today.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The hills looked **hazy** in the distance.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For unclear air or memories",
+      "text": "My memory of that trip is **hazy**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for clear days",
+        "text": "The sky was bright blue and hazy."
+      }
+    ],
+    "rule": "unclear air"
+  },
+  {
+    "id": "v7-words-senses-063",
+    "type": "module",
+    "module": "words",
+    "topic": "whisper",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "whisper",
+    "pos": "verb",
+    "say": "WIS-per",
+    "meaning": "To speak very softly, using your breath.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "**Whisper**, please; the baby is asleep.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She leaned in to **whisper** the secret.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For very soft speaking",
+      "text": "Please **whisper** in the library."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for shouting",
+        "text": "He whispered across the field so we'd hear him."
+      }
+    ],
+    "rule": "very soft speaking",
+    "check": {
+      "question": "Where do you whisper?",
+      "options": [
+        {
+          "text": "At a rock concert",
+          "right": false
+        },
+        {
+          "text": "In a library",
+          "right": true
+        },
+        {
+          "text": "At a cricket match",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-064",
+    "type": "module",
+    "module": "words",
+    "topic": "glare",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "glare",
+    "pos": "noun",
+    "say": "GLAIR",
+    "meaning": "A strong, harsh light that hurts your eyes.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Close the curtains; the **glare** is on the TV.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "The **glare** on my screen gives me a headache.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ For harsh light",
+      "text": "I wear sunglasses against the **glare**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for soft light",
+        "text": "The candle gave a gentle glare."
+      }
+    ],
+    "rule": "harsh light"
+  },
+  {
+    "id": "v7-words-senses-065",
+    "type": "module",
+    "module": "words",
+    "topic": "insipid",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "insipid",
+    "pos": "adjective",
+    "say": "in-SIP-id",
+    "meaning": "With no taste, or nothing interesting at all.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The hostel food was **insipid** every day.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The film was **insipid**; nothing happened.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For dull food or things",
+      "text": "The tea was weak and **insipid**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for strong tastes",
+        "text": "The chilli sauce was insipid and fiery."
+      }
+    ],
+    "rule": "no taste, no life"
+  },
+  {
+    "id": "v7-words-senses-066",
+    "type": "module",
+    "module": "words",
+    "topic": "hum",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "hum",
+    "pos": "verb",
+    "say": "HUM",
+    "meaning": "To sing with your lips closed, or make a low, steady sound.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My dad likes to **hum** while he cooks.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "The fridge in the pantry starts to **hum** at night.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ For low, steady sounds",
+      "text": "I **hum** old songs when I'm happy."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for loud bangs",
+        "text": "The thunder hummed and shook the windows."
+      }
+    ],
+    "rule": "low, steady sound",
+    "check": {
+      "question": "Which one can hum?",
+      "options": [
+        {
+          "text": "A fridge",
+          "right": true
+        },
+        {
+          "text": "A rock",
+          "right": false
+        },
+        {
+          "text": "A sheet of paper",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-067",
+    "type": "module",
+    "module": "words",
+    "topic": "flicker",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "flicker",
+    "pos": "verb",
+    "say": "FLIK-er",
+    "meaning": "To shine on and off, unsteadily.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The tube light started to **flicker** and went off.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Watch the candle **flicker** in the wind.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For unsteady light",
+      "text": "The screen began to **flicker**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for steady light",
+        "text": "The sun flickered all afternoon."
+      }
+    ],
+    "rule": "on-off light"
+  },
+  {
+    "id": "v7-words-senses-068",
+    "type": "module",
+    "module": "words",
+    "topic": "buzz",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "buzz",
+    "pos": "verb",
+    "say": "BUZZ",
+    "meaning": "To make a low, humming sound, like a bee.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I heard a fly **buzz** near my ear.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "My phone will **buzz** when you arrive.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For low, humming sounds",
+      "text": "The bees **buzz** around the flowers."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for big booms",
+        "text": "The plane buzzed with a huge boom."
+      }
+    ],
+    "rule": "bee-like sound"
+  },
+  {
+    "id": "v7-words-senses-069",
+    "type": "module",
+    "module": "words",
+    "topic": "glimpse",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "glimpse",
+    "pos": "noun",
+    "say": "GLIMPS",
+    "meaning": "A quick, short look at something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I caught a **glimpse** of the moon through the clouds.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We got a **glimpse** of the actor at the airport.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a very short look",
+      "text": "I only got a **glimpse** of her new car."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a long look",
+        "text": "I had a two-hour glimpse of the museum."
+      }
+    ],
+    "rule": "a quick look",
+    "check": {
+      "question": "Which one is a glimpse?",
+      "options": [
+        {
+          "text": "Seeing a friend's face for a second from a bus",
+          "right": true
+        },
+        {
+          "text": "Watching a whole film",
+          "right": false
+        },
+        {
+          "text": "Staring at a wall for an hour",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-070",
+    "type": "module",
+    "module": "words",
+    "topic": "palpable",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "palpable",
+    "pos": "adjective",
+    "say": "PAL-puh-bul",
+    "meaning": "So strong you can almost touch it.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The tension at dinner was **palpable**.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "The excitement before the launch was **palpable**.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ For strong feelings in a room",
+      "text": "The relief in the room was **palpable**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for objects",
+        "text": "The table is palpable."
+      }
+    ],
+    "rule": "feelings you can almost touch"
+  },
+  {
+    "id": "v7-words-senses-071",
+    "type": "module",
+    "module": "words",
+    "topic": "creak",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "creak",
+    "pos": "verb",
+    "say": "KREEK",
+    "meaning": "To make a long, squeaky sound, like an old door.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The old door will **creak** if you open it.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The wooden stairs **creak** at night.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For old wood or doors",
+      "text": "My chair starts to **creak** when I lean back."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for voices",
+        "text": "The singer creaked a lovely song."
+      }
+    ],
+    "rule": "old wood sound"
+  },
+  {
+    "id": "v7-words-senses-072",
+    "type": "module",
+    "module": "words",
+    "topic": "squint",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "squint",
+    "pos": "verb",
+    "say": "SKWINT",
+    "meaning": "To look with your eyes half closed.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I have to **squint** to read the small print.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Don't **squint** at the sun; wear sunglasses.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For half-closed eyes",
+      "text": "Without his glasses, he has to **squint** at the screen."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for sleeping",
+        "text": "The baby squinted all night in her cot."
+      }
+    ],
+    "rule": "eyes half closed",
+    "check": {
+      "question": "When do people squint?",
+      "options": [
+        {
+          "text": "In bright sun",
+          "right": true
+        },
+        {
+          "text": "When they're asleep",
+          "right": false
+        },
+        {
+          "text": "When they whisper",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-073",
+    "type": "module",
+    "module": "words",
+    "topic": "rattle",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "rattle",
+    "pos": "verb",
+    "say": "RAT-ul",
+    "meaning": "To make quick knocking sounds by shaking.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The windows **rattle** when trucks go by.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The old car began to **rattle** on the highway.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For loose things shaking",
+      "text": "Coins **rattle** in my pocket."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for soft things",
+        "text": "The pillow rattled on the bed."
+      }
+    ],
+    "rule": "loose things shaking"
+  },
+  {
+    "id": "v7-words-senses-074",
+    "type": "module",
+    "module": "words",
+    "topic": "gaze",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "gaze",
+    "pos": "verb",
+    "say": "GAYZ",
+    "meaning": "To look at something for a long time.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I love to **gaze** at the sea from our balcony.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We lay on the roof to **gaze** at the stars.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a long, calm look",
+      "text": "He would **gaze** out of the train window for hours."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a quick look",
+        "text": "I gazed at the clock for one second."
+      }
+    ],
+    "rule": "long, calm look"
+  },
+  {
+    "id": "v7-words-senses-075",
+    "type": "module",
+    "module": "words",
+    "topic": "jarring",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "jarring",
+    "pos": "adjective",
+    "say": "JAR-ing",
+    "meaning": "Sudden and unpleasant, a shock to your senses.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The **jarring** alarm made me jump.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "The bright red logo looks **jarring** on that soft page.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ For sudden, harsh things",
+      "text": "The silence after the music was **jarring**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for gentle things",
+        "text": "The soft rain was jarring and calm."
+      }
+    ],
+    "rule": "a harsh shock",
+    "check": {
+      "question": "Which one is jarring?",
+      "options": [
+        {
+          "text": "A gentle breeze",
+          "right": false
+        },
+        {
+          "text": "A car horn at 5 a.m.",
+          "right": true
+        },
+        {
+          "text": "Soft piano music",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-076",
+    "type": "module",
+    "module": "words",
+    "topic": "sniff",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "sniff",
+    "pos": "verb",
+    "say": "SNIF",
+    "meaning": "To breathe in quickly through your nose to smell.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "**Sniff** the milk to check it's fresh.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The dog came to **sniff** my shoes.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a quick smell",
+      "text": "I **sniff** the flowers whenever I pass."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for listening",
+        "text": "I sniffed the music."
+      }
+    ],
+    "rule": "smell with the nose"
+  },
+  {
+    "id": "v7-words-senses-077",
+    "type": "module",
+    "module": "words",
+    "topic": "numb",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "numb",
+    "pos": "adjective",
+    "say": "NUM",
+    "meaning": "Unable to feel anything.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My fingers went **numb** in the cold water.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "After the injection, my lip was **numb**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For no feeling in the body",
+      "text": "My leg went **numb** from sitting too long."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for quiet",
+        "text": "The class went numb when the teacher came in."
+      }
+    ],
+    "rule": "no feeling"
+  },
+  {
+    "id": "v7-words-senses-078",
+    "type": "module",
+    "module": "words",
+    "topic": "glance",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "glance",
+    "pos": "verb",
+    "say": "GLAHNS",
+    "meaning": "To look quickly at something.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I **glance** at my phone during lunch.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "She didn't even **glance** at me.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a quick look",
+      "text": "Please **glance** at my email before the meeting."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a long look",
+        "text": "I glanced at the painting for an hour."
+      }
+    ],
+    "rule": "a quick look",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "I glanced at the stars all night.",
+          "right": false
+        },
+        {
+          "text": "I glanced at the time and ran out.",
+          "right": true
+        },
+        {
+          "text": "She glanced the music.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-079",
+    "type": "module",
+    "module": "words",
+    "topic": "tingle",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "tingle",
+    "pos": "verb",
+    "say": "TING-gul",
+    "meaning": "To feel small, light pricks on your skin.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My feet **tingle** after sitting cross-legged.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "This mint gum makes my mouth **tingle**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a light pricking feeling",
+      "text": "My fingers **tingle** in the cold."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for big pain",
+        "text": "I broke my arm and it tingled."
+      }
+    ],
+    "rule": "light pricks on skin"
+  },
+  {
+    "id": "v7-words-senses-080",
+    "type": "module",
+    "module": "words",
+    "topic": "grating",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "grating",
+    "pos": "adjective",
+    "say": "GRAY-ting",
+    "meaning": "Harsh and annoying to hear.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The **grating** sound of the drill went on all day.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "His **grating** voice on calls makes me tired.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ For harsh, annoying sounds",
+      "text": "The chair made a **grating** noise on the floor."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for sweet sounds",
+        "text": "The flute was soft and grating."
+      }
+    ],
+    "rule": "harsh, annoying sound"
+  },
+  {
+    "id": "v7-words-senses-081",
+    "type": "module",
+    "module": "words",
+    "topic": "stare",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "stare",
+    "pos": "verb",
+    "say": "STAIR",
+    "meaning": "To look at something for a long time without moving your eyes.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It's rude to **stare** at strangers.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Kids **stare** at the fish tank for ages.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For a long, fixed look",
+      "text": "Don't **stare** at the screen all night."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a quick look",
+        "text": "I stared at him for half a second."
+      }
+    ],
+    "rule": "long, fixed look",
+    "check": {
+      "question": "Which one is a stare?",
+      "options": [
+        {
+          "text": "Looking at someone for a full minute",
+          "right": true
+        },
+        {
+          "text": "A quick look at the clock",
+          "right": false
+        },
+        {
+          "text": "Closing your eyes",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-082",
+    "type": "module",
+    "module": "words",
+    "topic": "sting",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "sting",
+    "pos": "verb",
+    "say": "STING",
+    "meaning": "To give a sharp, small pain.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Soap will **sting** if it gets in your eyes.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "A bee can **sting** you if you scare it.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For sharp, small pain",
+      "text": "Onions make my eyes **sting**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a dull ache",
+        "text": "My back stings after a long drive."
+      }
+    ],
+    "rule": "sharp, small pain"
+  },
+  {
+    "id": "v7-words-senses-083",
+    "type": "module",
+    "module": "words",
+    "topic": "squeeze",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "squeeze",
+    "pos": "verb",
+    "say": "SKWEEZ",
+    "meaning": "To press something hard with your hands.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "**Squeeze** half a lemon on the salad.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I **squeeze** my friend's hand when the film gets scary.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For pressing hard",
+      "text": "**Squeeze** the toothpaste from the bottom."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a button",
+        "text": "Squeeze the lift button for the fifth floor."
+      }
+    ],
+    "rule": "press hard"
+  },
+  {
+    "id": "v7-words-senses-084",
+    "type": "module",
+    "module": "words",
+    "topic": "throb",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "throb",
+    "pos": "verb",
+    "say": "THROB",
+    "meaning": "To hurt with a strong, steady beat.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My head starts to **throb** when I skip lunch.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "My feet **throb** after dancing all night.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For pain that beats",
+      "text": "My tooth began to **throb** at night."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a quick, sharp pain",
+        "text": "The paper cut throbbed for one second."
+      }
+    ],
+    "rule": "pain that beats",
+    "check": {
+      "question": "Which one can throb?",
+      "options": [
+        {
+          "text": "A headache",
+          "right": true
+        },
+        {
+          "text": "A whisper",
+          "right": false
+        },
+        {
+          "text": "A smell",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-085",
+    "type": "module",
+    "module": "words",
+    "topic": "lilting",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "lilting",
+    "pos": "adjective",
+    "say": "LIL-ting",
+    "meaning": "Rising and falling in a pleasant, musical way.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My grandmother has a soft, **lilting** voice.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We heard a **lilting** song from the boat.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For gentle, musical voices",
+      "text": "Her accent is **lilting** and warm."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for flat or harsh sounds",
+        "text": "The drill made a lilting noise."
+      }
+    ],
+    "rule": "musical rise and fall"
+  },
+  {
+    "id": "v7-words-senses-086",
+    "type": "module",
+    "module": "words",
+    "topic": "itchy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "itchy",
+    "pos": "adjective",
+    "say": "ICH-ee",
+    "meaning": "Making you want to scratch.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "This wool sweater is **itchy**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Mosquito bites make my legs **itchy**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For skin you want to scratch",
+      "text": "My eyes are red and **itchy**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for pain",
+        "text": "I hit my knee and it's itchy."
+      }
+    ],
+    "rule": "you want to scratch"
+  },
+  {
+    "id": "v7-words-senses-087",
+    "type": "module",
+    "module": "words",
+    "topic": "lukewarm",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "lukewarm",
+    "pos": "adjective",
+    "say": "look-WORM",
+    "meaning": "Only a little warm.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My tea went **lukewarm** while I was on a call.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The pool water was **lukewarm**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For not hot, not cold",
+      "text": "Wash the baby in **lukewarm** water."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for very hot",
+        "text": "Careful, the soup is lukewarm and burning."
+      }
+    ],
+    "rule": "a little warm",
+    "check": {
+      "question": "Which one is lukewarm?",
+      "options": [
+        {
+          "text": "Tea left out for 15 minutes",
+          "right": true
+        },
+        {
+          "text": "Boiling water",
+          "right": false
+        },
+        {
+          "text": "Ice cubes",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-088",
+    "type": "module",
+    "module": "words",
+    "topic": "sore",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "sore",
+    "pos": "adjective",
+    "say": "SOR",
+    "meaning": "Painful, often after use or an injury.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My throat is **sore** from shouting at the match.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "My legs are **sore** after the long hike.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For aching body parts",
+      "text": "My back is **sore** from the new chair."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for \"sorry\"",
+        "text": "I'm sore I was late."
+      }
+    ],
+    "rule": "aching after use"
+  },
+  {
+    "id": "v7-words-senses-089",
+    "type": "module",
+    "module": "words",
+    "topic": "piping hot",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "piping hot",
+    "pos": "adjective",
+    "say": "PIE-ping HOT",
+    "meaning": "Very hot, straight from the stove.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Mum served the soup **piping hot**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Eat the chips while they're **piping hot**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For food and drink served hot",
+      "text": "The tea arrived **piping hot**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for weather",
+        "text": "It's piping hot in Jaipur today."
+      }
+    ],
+    "rule": "hot from the stove"
+  },
+  {
+    "id": "v7-words-senses-090",
+    "type": "module",
+    "module": "words",
+    "topic": "pristine",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "pristine",
+    "pos": "adjective",
+    "say": "PRISS-teen",
+    "meaning": "Perfectly clean, like new.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Her white sofa is still **pristine**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The beach was **pristine**; no plastic at all.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For spotless things",
+      "text": "He keeps his car **pristine**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for old, messy things",
+        "text": "My messy desk is pristine."
+      }
+    ],
+    "rule": "spotless, like new",
+    "check": {
+      "question": "Which one is pristine?",
+      "options": [
+        {
+          "text": "A brand-new white shirt",
+          "right": true
+        },
+        {
+          "text": "Muddy shoes",
+          "right": false
+        },
+        {
+          "text": "A dusty shelf",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-091",
+    "type": "module",
+    "module": "words",
+    "topic": "chewy",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "chewy",
+    "pos": "adjective",
+    "say": "CHOO-ee",
+    "meaning": "Needing a lot of chewing.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The meat was tough and **chewy**.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I love **chewy** toffees at the movies.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For food you chew a lot",
+      "text": "This bread is soft and **chewy**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for crisp food",
+        "text": "The chips are crisp and chewy."
+      }
+    ],
+    "rule": "lots of chewing"
+  },
+  {
+    "id": "v7-words-senses-092",
+    "type": "module",
+    "module": "words",
+    "topic": "blaring",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "blaring",
+    "pos": "adjective",
+    "say": "BLAIR-ing",
+    "meaning": "Very loud and harsh.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The neighbours had music **blaring** till 2 a.m.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We couldn't talk over the **blaring** horns.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For loud machines and music",
+      "text": "The TV was **blaring** in the waiting room."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for soft sounds",
+        "text": "A blaring whisper came from the back row."
+      }
+    ],
+    "rule": "loud and harsh"
+  },
+  {
+    "id": "v7-words-senses-093",
+    "type": "module",
+    "module": "words",
+    "topic": "freezing",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "freezing",
+    "pos": "adjective",
+    "say": "FREE-zing",
+    "meaning": "Very, very cold.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "Shut the door; it's **freezing** outside.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "The river water in Manali was **freezing**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For extreme cold",
+      "text": "My hands are **freezing**; I forgot my gloves."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for a bit cool",
+        "text": "It's 24°C and freezing."
+      }
+    ],
+    "rule": "extreme cold",
+    "check": {
+      "question": "Which one is right?",
+      "options": [
+        {
+          "text": "It's freezing; pass me a blanket.",
+          "right": true
+        },
+        {
+          "text": "The tea is freezing hot.",
+          "right": false
+        },
+        {
+          "text": "Summer in Chennai is freezing.",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-094",
+    "type": "module",
+    "module": "words",
+    "topic": "jingle",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "jingle",
+    "pos": "verb",
+    "say": "JING-gul",
+    "meaning": "To make light ringing sounds, like keys or bells.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "I heard his keys **jingle** at the door.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "Her bangles **jingle** when she dances.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For small metal things",
+      "text": "The bells on the cow **jingle** as it walks."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for heavy sounds",
+        "text": "The truck jingled down the road."
+      }
+    ],
+    "rule": "light ringing"
+  },
+  {
+    "id": "v7-words-senses-095",
+    "type": "module",
+    "module": "words",
+    "topic": "vivid",
+    "lang": "en",
+    "track": "words",
+    "level": 3,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "vivid",
+    "pos": "adjective",
+    "say": "VIV-id",
+    "meaning": "Very bright and clear, or very real in your mind.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "The walls are painted in **vivid** colours.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "I have a **vivid** memory of my first day at school.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For strong colours and memories",
+      "text": "Last night I had a **vivid** dream."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for faded things",
+        "text": "The old, faded photo is vivid."
+      }
+    ],
+    "rule": "bright and clear"
+  },
+  {
+    "id": "v7-words-senses-096",
+    "type": "module",
+    "module": "words",
+    "topic": "drizzle",
+    "lang": "en",
+    "track": "words",
+    "level": 1,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "drizzle",
+    "pos": "noun",
+    "say": "DRIZ-ul",
+    "meaning": "Light, thin rain.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "It's only a **drizzle**; we can still walk.",
+        "icon": "home"
+      },
+      {
+        "label": "With friends",
+        "text": "We had coffee on the roof in the **drizzle**.",
+        "icon": "friends"
+      }
+    ],
+    "right": {
+      "label": "✓ For very light rain",
+      "text": "A **drizzle** started as we left."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for heavy rain",
+        "text": "The drizzle flooded the streets."
+      }
+    ],
+    "rule": "light rain",
+    "check": {
+      "question": "Which one is a drizzle?",
+      "options": [
+        {
+          "text": "Light rain you can walk in",
+          "right": true
+        },
+        {
+          "text": "A storm that floods the road",
+          "right": false
+        },
+        {
+          "text": "A hot, dry day",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "v7-words-senses-097",
+    "type": "module",
+    "module": "words",
+    "topic": "murmur",
+    "lang": "en",
+    "track": "words",
+    "level": 2,
+    "kind": "learn",
+    "category": "Words",
+    "tags": [
+      "words",
+      "senses"
+    ],
+    "word": "murmur",
+    "pos": "verb",
+    "say": "MUR-mer",
+    "meaning": "To speak in a low, soft voice.",
+    "examples": [
+      {
+        "label": "At home",
+        "text": "My grandfather would **murmur** a prayer each morning.",
+        "icon": "home"
+      },
+      {
+        "label": "At work",
+        "text": "I heard people **murmur** when the boss walked in.",
+        "icon": "work"
+      }
+    ],
+    "right": {
+      "label": "✓ For low, soft talk",
+      "text": "The crowd began to **murmur**."
+    },
+    "wrong": [
+      {
+        "label": "✗ Not for loud talk",
+        "text": "He murmured into the mic so the whole hall could hear."
+      }
+    ],
+    "rule": "low, soft voice"
+  }
+]

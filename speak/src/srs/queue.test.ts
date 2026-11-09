@@ -71,6 +71,8 @@ function card(id: string, type: CardType, lang: 'en' | 'hi' = 'en', tags: string
         tryPrompt: 'p',
         register: 'both',
       } as unknown as Card;
+    case 'module':
+      throw new Error('v7 module cards are not Card and never reach the old queue');
   }
 }
 

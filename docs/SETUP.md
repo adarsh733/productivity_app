@@ -25,8 +25,25 @@ the phone dies.
    paste it into the editor, and press **Run**.
    - Expect: *Success. No rows returned.* That's correct — it creates tables, it
      doesn't select anything.
-   - To confirm: sidebar → **Table Editor**. You should see six tables:
-     `profile`, `cards`, `reviews`, `events`, `days`, `inbox`.
+   - To confirm: sidebar → **Table Editor**. You should see eleven tables:
+     `profile`, `cards`, `reviews`, `events`, `days`, `inbox`,
+     `lab_sessions`, `voice_samples`, and the three v7 ones —
+     `card_feedback` (your 👍 👎 and notes), `seen_terms` (every card you have
+     already seen, so a new phone never shows it again) and `saved_reviews`
+     (your ♡ cards on the Sunday review).
+   - Already ran an older copy of this file? Just run the whole file again. It
+     only adds what is missing and never deletes your data.
+   - The AI-written cards back up into `cards`, and your level per module goes
+     into `profile` — no extra tables for those.
+5b. **Sign-in email: show the 6-digit code.** The app signs you in with a code
+   you type, not a link you tap (a link would open Safari, not the home-screen
+   app). Sidebar → **Authentication** → **Emails** (or **Email Templates**) →
+   **Magic Link**. In the message body, replace `{{ .ConfirmationURL }}` (the
+   link) with the code, for example:
+   `Your Articulate code is {{ .Token }}` → **Save**.
+   Leave **Authentication → Providers → Email** switched on (it is by default).
+   Then on the phone: **Me** → type your email → **Send code** → type the 6
+   digits → **Sign in**. Me then shows "Backed up · <time>".
 6. Sidebar → **Project Settings** (gear) → **API**. Copy and keep two values:
    - **Project URL** — looks like `https://abcdefgh.supabase.co`
    - **anon / public** key — a long string starting `eyJ…`

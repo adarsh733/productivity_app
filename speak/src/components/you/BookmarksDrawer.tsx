@@ -15,7 +15,9 @@ export default function BookmarksDrawer({
   onOpenSpeakWithCard,
 }: BookmarksDrawerProps) {
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
-  const { savedCards, removeBookmark } = useBookmarks();
+  const { savedCards: allSaved, removeBookmark } = useBookmarks();
+  // v7 module cards are not in the `Card` union: this drawer's switches cannot show them.
+  const savedCards = allSaved.filter((c) => (c.type as string) !== 'module');
 
   const { containerRef, handleBackdropClick } = useModalTrap<HTMLDivElement>({
     isOpen: true,

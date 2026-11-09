@@ -1,0 +1,584 @@
+[
+  {
+    "id": "v7-better-01",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining a delay",
+    "situation": "Explaining a delay",
+    "thinking": false,
+    "mightSay": "Actually what happened is, the server was down, so because of that we could not do the release yesterday.",
+    "better": "Yesterday's release slipped because the server went down.",
+    "changes": [
+      "point first",
+      "cut \"actually what happened is\"",
+      "19 words → 8"
+    ],
+    "next": {
+      "title": "Even better",
+      "lines": [
+        {
+          "label": "Add the next step",
+          "text": "Yesterday's release slipped because the server went down. We'll ship it today by 4."
+        }
+      ],
+      "note": "Answer their next question before they ask it."
+    }
+  },
+  {
+    "id": "v7-better-02",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Choosing an option",
+    "situation": "Choosing an option",
+    "thinking": true,
+    "mightSay": "I am thinking that maybe we should go with second option only, because first one is having more cost.",
+    "better": "I'd go with option two. Option one costs more for the same result.",
+    "changes": [
+      "decision first",
+      "then one reason",
+      "19 words → 13"
+    ],
+    "next": {
+      "title": "Show the trade-off",
+      "lines": [
+        {
+          "label": "Trade-off",
+          "text": "Option two is cheaper, but it takes a week longer."
+        }
+      ],
+      "note": "Name what matters most."
+    }
+  },
+  {
+    "id": "v7-better-03",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Choosing a deadline",
+    "situation": "Choosing a deadline",
+    "thinking": true,
+    "mightSay": "Maybe Friday would be good, I am not sure.",
+    "better": "I'd aim for Friday. That gives us two days to test.",
+    "changes": [
+      "recommendation",
+      "reason"
+    ],
+    "next": {
+      "title": "Name the risk",
+      "lines": [
+        {
+          "label": "Risk",
+          "text": "Thursday is possible, but we'd have no time to test."
+        }
+      ],
+      "note": "Show what the extra time buys."
+    }
+  },
+  {
+    "id": "v7-better-04",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Changing your mind",
+    "situation": "Changing your mind",
+    "thinking": true,
+    "mightSay": "Before I said yes but now I think no.",
+    "better": "I've changed my mind. The new price is beyond our budget.",
+    "changes": [
+      "state the change",
+      "explain why"
+    ],
+    "next": {
+      "title": "Suggest another path",
+      "lines": [
+        {
+          "label": "Alternative",
+          "text": "Could we start with the smaller plan?"
+        }
+      ],
+      "note": "Name the new information."
+    }
+  },
+  {
+    "id": "v7-better-05",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Comparing two plans",
+    "situation": "Comparing two plans",
+    "thinking": true,
+    "mightSay": "Both plans are good and bad in different ways.",
+    "better": "Plan A costs less. Plan B saves time. I'd choose B for this deadline.",
+    "changes": [
+      "name the trade-off",
+      "make a choice"
+    ],
+    "next": {
+      "title": "Set a condition",
+      "lines": [
+        {
+          "label": "Condition",
+          "text": "If the deadline moves, I'd reconsider plan A."
+        }
+      ],
+      "note": "Say what could change your view."
+    }
+  },
+  {
+    "id": "v7-better-06",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Making an estimate",
+    "situation": "Making an estimate",
+    "thinking": true,
+    "mightSay": "It will take two days I think maybe.",
+    "better": "I estimate two days, assuming the data is ready.",
+    "changes": [
+      "give an estimate",
+      "state the assumption"
+    ],
+    "next": {
+      "title": "Handle uncertainty",
+      "lines": [
+        {
+          "label": "If needed",
+          "text": "If the data needs cleaning, allow another day."
+        }
+      ],
+      "note": "Keep estimates separate from promises."
+    }
+  },
+  {
+    "id": "v7-better-07",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Explaining a priority",
+    "situation": "Explaining a priority",
+    "thinking": true,
+    "mightSay": "This one is important so we should do it first.",
+    "better": "Let's fix login first. People can't use the app without it.",
+    "changes": [
+      "priority first",
+      "show the impact"
+    ],
+    "next": {
+      "title": "Explain the order",
+      "lines": [
+        {
+          "label": "Next",
+          "text": "Then we can improve search, which still works."
+        }
+      ],
+      "note": "Use the effect on people as your reason."
+    }
+  },
+  {
+    "id": "v7-better-08",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for a reply",
+    "situation": "Asking for a reply",
+    "thinking": false,
+    "mightSay": "Please revert by Friday.",
+    "better": "Please reply by Friday.",
+    "changes": [
+      "plain verb",
+      "clear deadline"
+    ],
+    "next": {
+      "title": "Make the reply specific",
+      "lines": [
+        {
+          "label": "Request",
+          "text": "Please confirm the delivery date by Friday."
+        }
+      ],
+      "note": "Use reply when you want an answer."
+    }
+  },
+  {
+    "id": "v7-better-09",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Requesting a specific action",
+    "situation": "Requesting a specific action",
+    "thinking": false,
+    "mightSay": "Please do the needful.",
+    "better": "Please approve the invoice by noon.",
+    "changes": [
+      "name the action",
+      "add a time"
+    ],
+    "next": {
+      "title": "Add useful context",
+      "lines": [
+        {
+          "label": "Context",
+          "text": "The supplier needs approval before sending the order."
+        }
+      ],
+      "note": "A clear request is easier to act on."
+    }
+  },
+  {
+    "id": "v7-better-10",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Moving a meeting earlier",
+    "situation": "Moving a meeting earlier",
+    "thinking": false,
+    "mightSay": "Can we prepone the meeting?",
+    "better": "Can we move the meeting to 10 a.m.?",
+    "changes": [
+      "specific time",
+      "widely understood wording"
+    ],
+    "next": {
+      "title": "Keep the choice open",
+      "lines": [
+        {
+          "label": "Question",
+          "text": "Would 10 a.m. work for everyone?"
+        }
+      ],
+      "note": "For an international audience, spell out the change."
+    }
+  },
+  {
+    "id": "v7-better-11",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Mentioning a question",
+    "situation": "Mentioning a question",
+    "thinking": false,
+    "mightSay": "I have one doubt in this report.",
+    "better": "I have a question about this report.",
+    "changes": [
+      "use question",
+      "name the topic"
+    ],
+    "next": {
+      "title": "Ask the question",
+      "lines": [
+        {
+          "label": "Specific",
+          "text": "Does this total include tax?"
+        }
+      ],
+      "note": "Put the actual question next."
+    }
+  },
+  {
+    "id": "v7-better-12",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Introducing yourself",
+    "situation": "Introducing yourself",
+    "thinking": false,
+    "mightSay": "Myself Rohan, from finance.",
+    "better": "I'm Rohan from finance.",
+    "changes": [
+      "natural introduction",
+      "short sentence"
+    ],
+    "next": {
+      "title": "Add your role",
+      "lines": [
+        {
+          "label": "Role",
+          "text": "I handle supplier payments."
+        }
+      ],
+      "note": "Give one detail they can use."
+    }
+  },
+  {
+    "id": "v7-better-13",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Describing ownership",
+    "situation": "Describing ownership",
+    "thinking": false,
+    "mightSay": "I am having a spare charger.",
+    "better": "I have a spare charger.",
+    "changes": [
+      "have for ownership",
+      "remove am"
+    ],
+    "next": {
+      "title": "Make an offer",
+      "lines": [
+        {
+          "label": "Offer",
+          "text": "You can borrow it if you like."
+        }
+      ],
+      "note": "Add the useful next sentence."
+    }
+  },
+  {
+    "id": "v7-better-14",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Describing a long friendship",
+    "situation": "Describing a long friendship",
+    "thinking": false,
+    "mightSay": "I know her since college.",
+    "better": "I've known her since college.",
+    "changes": [
+      "ongoing connection",
+      "since a starting point"
+    ],
+    "next": {
+      "title": "Add a detail",
+      "lines": [
+        {
+          "label": "Detail",
+          "text": "We were in the same class."
+        }
+      ],
+      "note": "Keep the context simple."
+    }
+  },
+  {
+    "id": "v7-better-15",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Reporting a finished task",
+    "situation": "Reporting a finished task",
+    "thinking": false,
+    "mightSay": "I have sent it yesterday.",
+    "better": "I sent it yesterday.",
+    "changes": [
+      "finished time",
+      "simple past"
+    ],
+    "next": {
+      "title": "Help them find it",
+      "lines": [
+        {
+          "label": "Location",
+          "text": "It's in the project chat."
+        }
+      ],
+      "note": "Add where to look."
+    }
+  },
+  {
+    "id": "v7-better-16",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Giving an update",
+    "situation": "Giving an update",
+    "thinking": false,
+    "mightSay": "The work is going on and all.",
+    "better": "The draft is done. I'm checking the figures now.",
+    "changes": [
+      "specific progress",
+      "current step"
+    ],
+    "next": {
+      "title": "Give a finish time",
+      "lines": [
+        {
+          "label": "Timing",
+          "text": "I'll send it by three."
+        }
+      ],
+      "note": "Use a time you can meet."
+    }
+  },
+  {
+    "id": "v7-better-17",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Asking for help",
+    "situation": "Asking for help",
+    "thinking": false,
+    "mightSay": "Please help me in this thing.",
+    "better": "Could you check this formula?",
+    "changes": [
+      "specific request",
+      "polite question"
+    ],
+    "next": {
+      "title": "Explain the problem",
+      "lines": [
+        {
+          "label": "Problem",
+          "text": "The total looks too high."
+        }
+      ],
+      "note": "Show where you are stuck."
+    }
+  },
+  {
+    "id": "v7-better-18",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Disagreeing politely",
+    "situation": "Disagreeing politely",
+    "thinking": false,
+    "mightSay": "You are wrong about this number.",
+    "better": "I get a different total. Can we check it together?",
+    "changes": [
+      "describe the difference",
+      "invite a check"
+    ],
+    "next": {
+      "title": "Point to evidence",
+      "lines": [
+        {
+          "label": "Evidence",
+          "text": "My sheet includes the delivery charge."
+        }
+      ],
+      "note": "Compare the details calmly."
+    }
+  },
+  {
+    "id": "v7-better-19",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Following up",
+    "situation": "Following up",
+    "thinking": false,
+    "mightSay": "Why have you not replied till now?",
+    "better": "Have you had a chance to review the draft?",
+    "changes": [
+      "neutral question",
+      "name the task"
+    ],
+    "next": {
+      "title": "Explain the timing",
+      "lines": [
+        {
+          "label": "Timing",
+          "text": "I need your comments before the meeting tomorrow."
+        }
+      ],
+      "note": "Give context without blame."
+    }
+  },
+  {
+    "id": "v7-better-20",
+    "type": "module",
+    "lang": "en",
+    "tags": [
+      "better",
+      "everyday"
+    ],
+    "module": "better",
+    "topic": "Declining extra work",
+    "situation": "Declining extra work",
+    "thinking": false,
+    "mightSay": "I cannot do this, too much work.",
+    "better": "I can take this on Monday. Today I need to finish payroll.",
+    "changes": [
+      "clear availability",
+      "brief reason"
+    ],
+    "next": {
+      "title": "Offer a choice",
+      "lines": [
+        {
+          "label": "Choice",
+          "text": "Should I pause payroll to do this first?"
+        }
+      ],
+      "note": "Let the owner choose the priority."
+    }
+  }
+]

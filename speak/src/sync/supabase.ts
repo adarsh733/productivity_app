@@ -1,17 +1,28 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { db, getProfile, type OutboxRow } from '../db/db';
 import type {
+  Card,
   CardEvent,
+  CardFeedback,
+  CardType,
+  CardViewedEvent,
   DayRecord,
+  FeedbackReason,
   InboxItem,
   LabSession,
+  ModuleCard,
+  ModuleId,
+  ModuleLevel,
   Profile,
   Review,
+  SavedReview,
+  SeenTerm,
   VoiceGoal,
   VoiceSample,
   WeekPlan,
 } from '../types/contract';
 import { VOICE_GOALS } from '../features/auto/plan';
+import { toDayKey } from '../lib/date';
 
 /**
  * Sync and backup. Never the read path — see src/db/db.ts.
@@ -27,8 +38,19 @@ const URL = import.meta.env.VITE_SUPABASE_URL as string | undefined;
 const ANON = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
 
 let client: SupabaseClient | null = null;
+/** `undefined` = the real client from env; anything else wins (tests only). */
+let testClient: SupabaseClient | null | undefined;
+
+/**
+ * Tests only: swap in a fake client, or `null` for "not set up". Never real
+ * keys in a test. The override stays until the next call.
+ */
+export function setSupabaseForTests(c: SupabaseClient | null): void {
+  testClient = c;
+}
 
 export function supabase(): SupabaseClient | null {
+  if (testClient !== undefined) return testClient;
   if (!URL || !ANON) return null;
   client ??= createClient(URL, ANON, {
     auth: { persistSession: true, autoRefreshToken: true },
@@ -47,13 +69,41 @@ export async function currentUserId(): Promise<string | null> {
   return data.user?.id ?? null;
 }
 
-/** Magic-link sign-in. One account, his own. */
-export async function signIn(email: string): Promise<{ ok: boolean; error?: string }> {
+/** The signed-in email, or null. */
+export async function currentEmail(): Promise<string | null> {
   const sb = supabase();
-  if (!sb) return { ok: false, error: 'sync not configured' };
-  const { error } = await sb.auth.signInWithOtp({ email });
+  if (!sb) return null;
+  const { data } = await sb.auth.getUser();
+  return data.user?.email ?? null;
+}
+
+/**
+ * Step 1 of the 6-digit email code sign-in (answer Q10). No redirect link: the
+ * email shows `{{ .Token }}` (docs/SETUP.md step 1) and he types it back in.
+ */
+export async function sendCode(email: string): Promise<{ ok: boolean; error?: string }> {
+  const sb = supabase();
+  if (!sb) return { ok: false, error: 'Backup is not switched on yet' };
+  const clean = email.trim();
+  if (!clean) return { ok: false, error: 'Type your email first' };
+  const { error } = await sb.auth.signInWithOtp({ email: clean, options: { shouldCreateUser: true } });
   return error ? { ok: false, error: error.message } : { ok: true };
 }
+
+/** Step 2: the 6-digit code from the email. */
+export async function verifyCode(email: string, code: string): Promise<{ ok: boolean; error?: string }> {
+  const sb = supabase();
+  if (!sb) return { ok: false, error: 'Backup is not switched on yet' };
+  const token = code.replace(/\s+/g, '');
+  if (!/^\d{6}$/.test(token)) return { ok: false, error: 'The code is 6 digits' };
+  const { data, error } = await sb.auth.verifyOtp({ email: email.trim(), token, type: 'email' });
+  if (error) return { ok: false, error: error.message };
+  if (!data.user && !data.session) return { ok: false, error: 'That code did not work' };
+  return { ok: true };
+}
+
+/** Old name, kept for any caller: sends the code. */
+export const signIn = sendCode;
 
 export async function signOut(): Promise<void> {
   await supabase()?.auth.signOut();
@@ -70,6 +120,9 @@ const TABLE_KEY: Record<OutboxRow['table'], string> = {
   cards: 'id',
   labSessions: 'id',
   voiceSamples: 'id',
+  feedback: 'id',
+  seen: 'id',
+  savedReviews: 'card_id',
 };
 
 /** Dexie table name → Postgres table name. They differ only in case style. */
@@ -82,6 +135,9 @@ const REMOTE_TABLE: Record<OutboxRow['table'], string> = {
   cards: 'cards',
   labSessions: 'lab_sessions',
   voiceSamples: 'voice_samples',
+  feedback: 'card_feedback',
+  seen: 'seen_terms',
+  savedReviews: 'saved_reviews',
 };
 
 /**
@@ -95,7 +151,11 @@ export async function push(): Promise<number> {
   if (!userId) return 0;
 
   const rows = await db.outbox.orderBy('seq').limit(500).toArray();
-  if (rows.length === 0) return 0;
+  if (rows.length === 0) {
+    // Nothing waiting = everything is backed up as of now.
+    await stampSync(userId);
+    return 0;
+  }
 
   // Collapse repeats — only the latest state of each row matters.
   const latest = new Map<string, OutboxRow>();
@@ -106,6 +166,22 @@ export async function push(): Promise<number> {
 
   for (const [, row] of latest) {
     const payload = await materialise(row, userId);
+    if (payload === null && (row.op === 'delete' || DELETE_WHEN_GONE.has(row.table))) {
+      // Gone on the phone (an un-♡'d card, say) → gone in the backup too, or a
+      // restore would bring it back on the next phone.
+      const { error } = await sb
+        .from(REMOTE_TABLE[row.table])
+        .delete()
+        .eq('user_id', userId)
+        .eq(TABLE_KEY[row.table], row.key);
+      if (error) {
+        console.warn('[sync] delete failed', row.table, error.message);
+        continue;
+      }
+      sent++;
+      doneSeqs.push(...rows.filter((r) => r.table === row.table && r.key === row.key).map((r) => r.seq!));
+      continue;
+    }
     if (payload === null) {
       doneSeqs.push(...rows.filter((r) => r.table === row.table && r.key === row.key).map((r) => r.seq!));
       continue;
@@ -126,11 +202,18 @@ export async function push(): Promise<number> {
 
   if (doneSeqs.length) await db.outbox.bulkDelete(doneSeqs);
 
-  const profile = await getProfile();
-  await db.profile.put({ ...profile, userId, lastSyncAt: Date.now() });
+  await stampSync(userId);
 
   return sent;
 }
+
+async function stampSync(userId: string): Promise<void> {
+  const profile = await getProfile();
+  await db.profile.put({ ...profile, userId, lastSyncAt: Date.now() });
+}
+
+/** v7 tables where a row missing on the phone means "removed": delete it remotely. */
+const DELETE_WHEN_GONE = new Set<OutboxRow['table']>(['feedback', 'seen', 'savedReviews']);
 
 async function materialise(row: OutboxRow, userId: string): Promise<Record<string, unknown> | null> {
   switch (row.table) {
@@ -162,6 +245,7 @@ async function materialise(row: OutboxRow, userId: string): Promise<Record<strin
         target_band_max_db: p.targetBandDb?.maxDb ?? null,
         calibrated_at: p.calibratedAt ? new Date(p.calibratedAt).toISOString() : null,
         week_plan: weekPlanToRemote(p.weekPlan),
+        module_levels: moduleLevelsToRemote(p.moduleLevels),
       };
     }
     case 'labSessions': {
@@ -189,6 +273,18 @@ async function materialise(row: OutboxRow, userId: string): Promise<Record<strin
         seed_id: seedId ?? null,
         created_at: new Date(createdAt).toISOString(),
       };
+    }
+    case 'feedback': {
+      const f = await db.feedback.get(row.key);
+      return f ? feedbackRow(f, userId) : null;
+    }
+    case 'seen': {
+      const t = await db.seen.get(row.key);
+      return t ? seenRow(t, userId) : null;
+    }
+    case 'savedReviews': {
+      const r = await db.savedReviews.get(row.key);
+      return r ? savedReviewRow(r, userId) : null;
     }
   }
 }
@@ -223,17 +319,162 @@ export const reviewFromRow = (r: ReviewRow): Review => ({
   skippedAt: r.skipped_at ? Date.parse(r.skipped_at) : undefined,
 });
 
-const eventRow = (e: CardEvent, userId: string) => ({
+/**
+ * `type` is new in v7. `grade`, `card_id`, `card_type` and `mode` are nullable
+ * remotely from the v7 block of schema.sql — a `card_viewed` event has no grade.
+ */
+export const eventRow = (e: CardEvent, userId: string) => ({
   user_id: userId,
   id: e.id,
-  card_id: e.cardId,
-  card_type: e.cardType,
+  type: e.type as string,
+  card_id: (e.cardId ?? null) as string | null,
+  card_type: (e.cardType ?? null) as string | null,
   at: new Date(e.at).toISOString(),
-  grade: e.grade,
-  ms_spent: e.msSpent,
-  mode: e.mode,
+  grade: (e.grade ?? null) as string | null,
+  ms_spent: e.msSpent ?? 0,
+  mode: (e.mode ?? null) as string | null,
   measure: e.measure ?? null,
 });
+
+export type EventRow = ReturnType<typeof eventRow>;
+
+/**
+ * Remote row → local, `card_viewed` only: the one kind restore brings back
+ * (the feed's view history). Anything else, or a row with no card, is null.
+ */
+export function viewEventFromRow(r: EventRow): CardEvent | null {
+  if (r.type !== 'card_viewed' || !r.card_id || !r.card_type) return null;
+  const at = Date.parse(r.at);
+  if (!Number.isFinite(at)) return null;
+  const e: CardViewedEvent = {
+    id: r.id,
+    type: 'card_viewed',
+    at,
+    date: toDayKey(new Date(at)),
+    cardId: r.card_id,
+    cardType: r.card_type as CardType,
+    ...(r.ms_spent ? { msSpent: Number(r.ms_spent) } : {}),
+    ...(r.mode === 'endless' ? { mode: 'endless' as const } : {}),
+  };
+  return e;
+}
+
+// ── v7 (2026-11-08): feedback, seen list, ♡ Sunday review, AI cards ────────
+
+const MODULE_IDS: readonly string[] = ['words', 'smalltalk', 'better', 'phrases', 'stories'];
+const isModule = (v: unknown): v is ModuleId => typeof v === 'string' && MODULE_IDS.includes(v);
+
+export const feedbackRow = (f: CardFeedback, userId: string) => ({
+  user_id: userId,
+  id: f.id,
+  card_id: f.cardId,
+  module: f.module,
+  thumb: (f.thumb ?? null) as string | null,
+  reasons: [...f.reasons] as string[],
+  comment: f.comment ?? null,
+  reply: f.reply,
+  at: new Date(f.at).toISOString(),
+  hidden: f.hidden ?? false,
+});
+
+export type FeedbackRow = ReturnType<typeof feedbackRow>;
+
+const REASONS: readonly FeedbackReason[] = ['too_easy', 'too_hard', 'confusing', 'wrong_english', 'loved'];
+
+/** Remote row → local. Absent optionals come back as absent, unknown reasons are dropped. */
+export const feedbackFromRow = (r: FeedbackRow): CardFeedback => ({
+  id: r.id,
+  cardId: r.card_id,
+  module: r.module,
+  ...(r.thumb === 'up' || r.thumb === 'down' ? { thumb: r.thumb } : {}),
+  reasons: (r.reasons ?? []).filter((x): x is FeedbackReason => (REASONS as readonly string[]).includes(x)),
+  ...(r.comment != null ? { comment: r.comment } : {}),
+  reply: r.reply ?? '',
+  at: Date.parse(r.at),
+  ...(r.hidden ? { hidden: true } : {}),
+});
+
+export const seenRow = (t: SeenTerm, userId: string) => ({
+  user_id: userId,
+  id: t.id,
+  module: t.module,
+  head: t.head,
+  card_id: t.cardId,
+  at: new Date(t.at).toISOString(),
+});
+
+export type SeenRow = ReturnType<typeof seenRow>;
+
+export const seenFromRow = (r: SeenRow): SeenTerm => ({
+  id: r.id,
+  module: r.module,
+  head: r.head,
+  cardId: r.card_id,
+  at: Date.parse(r.at),
+});
+
+export const savedReviewRow = (r: SavedReview, userId: string) => ({
+  user_id: userId,
+  card_id: r.cardId,
+  module: r.module,
+  saved_at: new Date(r.savedAt).toISOString(),
+  step: r.step as number,
+  due: r.due,
+  rights: r.rights,
+  retired_at: r.retiredAt ? new Date(r.retiredAt).toISOString() : null,
+  last_answer: (r.lastAnswer ?? null) as string | null,
+});
+
+export type SavedReviewRow = ReturnType<typeof savedReviewRow>;
+
+export const savedReviewFromRow = (r: SavedReviewRow): SavedReview => ({
+  cardId: r.card_id,
+  module: r.module,
+  savedAt: Date.parse(r.saved_at),
+  step: r.step === 1 || r.step === 2 ? r.step : 0,
+  due: r.due,
+  rights: Number(r.rights ?? 0),
+  ...(r.retired_at ? { retiredAt: Date.parse(r.retired_at) } : {}),
+  ...(r.last_answer === 'knew' || r.last_answer === 'not_yet' ? { lastAnswer: r.last_answer } : {}),
+});
+
+/** Remote `cards` row → local module card. Only AI-written v7 cards come back (seed cards ship with the app). */
+export function aiModuleCardFromRow(r: Record<string, unknown>): ModuleCard | null {
+  if (r.type !== 'module' || r.source !== 'ai' || typeof r.id !== 'string') return null;
+  const payload = r.payload;
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return null;
+  const card: Record<string, unknown> = {
+    ...(payload as Record<string, unknown>),
+    id: r.id,
+    type: 'module',
+    lang: typeof r.lang === 'string' ? r.lang : 'en',
+    tags: Array.isArray(r.tags) ? r.tags : [],
+    source: 'ai',
+    status: typeof r.status === 'string' ? r.status : 'active',
+    createdAt: typeof r.created_at === 'string' ? Date.parse(r.created_at) : Date.now(),
+    ...(typeof r.batch_id === 'string' ? { batchId: r.batch_id } : {}),
+    ...(typeof r.seed_id === 'string' ? { seedId: r.seed_id } : {}),
+  };
+  if (!isModule(card.module)) return null;
+  return card as unknown as ModuleCard;
+}
+
+/** `Profile.moduleLevels` → `profile.module_levels` (jsonb). Null when never moved. */
+export const moduleLevelsToRemote = (
+  m: Profile['moduleLevels'],
+): Partial<Record<ModuleId, ModuleLevel>> | null => (m && Object.keys(m).length > 0 ? { ...m } : null);
+
+/** Remote `module_levels` → `Profile.moduleLevels`. Unknown modules and levels outside 1-5 are dropped. */
+export function moduleLevelsFromRemote(v: unknown): Partial<Record<ModuleId, ModuleLevel>> | undefined {
+  if (!v || typeof v !== 'object' || Array.isArray(v)) return undefined;
+  const out: Partial<Record<ModuleId, ModuleLevel>> = {};
+  for (const [k, n] of Object.entries(v as Record<string, unknown>)) {
+    if (isModule(k) && typeof n === 'number' && Number.isInteger(n) && n >= 1 && n <= 5) {
+      out[k] = n as ModuleLevel;
+    }
+  }
+  return Object.keys(out).length > 0 ? out : undefined;
+}
 
 export const dayRow = (d: DayRecord, userId: string) => ({
   user_id: userId,
@@ -381,26 +622,90 @@ export function weekPlanFromRemote(v: unknown): WeekPlan | undefined {
  * One-shot restore after signing in on a fresh device. Local rows win on
  * conflict, because the local copy is the one he has actually been using.
  */
-export async function restore(): Promise<{
+export interface RestoreCounts {
   reviews: number;
   days: number;
   inbox: number;
   labSessions: number;
   voiceSamples: number;
-}> {
-  const empty = { reviews: 0, days: 0, inbox: 0, labSessions: 0, voiceSamples: 0 };
+  // v7 (2026-11-08)
+  feedback: number;
+  seen: number;
+  savedReviews: number;
+  events: number;
+  cards: number;
+}
+
+export async function restore(): Promise<RestoreCounts> {
+  const empty: RestoreCounts = {
+    reviews: 0,
+    days: 0,
+    inbox: 0,
+    labSessions: 0,
+    voiceSamples: 0,
+    feedback: 0,
+    seen: 0,
+    savedReviews: 0,
+    events: 0,
+    cards: 0,
+  };
   const sb = supabase();
   const userId = await currentUserId();
   if (!sb || !userId) return empty;
 
-  const [rv, dy, ib, ls, vs, pf] = await Promise.all([
+  const [rv, dy, ib, ls, vs, pf, fb, sn, sr, ev, cd] = await Promise.all([
     sb.from('reviews').select('*'),
     sb.from('days').select('*'),
     sb.from('inbox').select('*'),
     sb.from('lab_sessions').select('*'),
     sb.from('voice_samples').select('*'),
     sb.from('profile').select('*').maybeSingle(),
+    sb.from('card_feedback').select('*'),
+    sb.from('seen_terms').select('*'),
+    sb.from('saved_reviews').select('*'),
+    sb.from('events').select('*').eq('type', 'card_viewed'),
+    sb.from('cards').select('*').eq('source', 'ai').eq('type', 'module'),
   ]);
+
+  // ── v7: the seen list, ♡ reviews, feedback, view history and AI cards. Without
+  // these a new phone re-shows every card he has already seen and loses the
+  // cards the AI wrote for him. Local wins, row by row.
+  let feedback = 0;
+  for (const r of (fb.data ?? []) as FeedbackRow[]) {
+    if (await db.feedback.get(r.id)) continue;
+    await db.feedback.put(feedbackFromRow(r));
+    feedback++;
+  }
+
+  let seen = 0;
+  for (const r of (sn.data ?? []) as SeenRow[]) {
+    if (await db.seen.get(r.id)) continue;
+    await db.seen.put(seenFromRow(r));
+    seen++;
+  }
+
+  let savedReviews = 0;
+  for (const r of (sr.data ?? []) as SavedReviewRow[]) {
+    if (await db.savedReviews.get(r.card_id)) continue;
+    await db.savedReviews.put(savedReviewFromRow(r));
+    savedReviews++;
+  }
+
+  let events = 0;
+  for (const r of (ev.data ?? []) as EventRow[]) {
+    const e = viewEventFromRow(r);
+    if (!e || (await db.events.get(e.id))) continue;
+    await db.events.put(e);
+    events++;
+  }
+
+  let cards = 0;
+  for (const r of (cd.data ?? []) as Record<string, unknown>[]) {
+    const c = aiModuleCardFromRow(r);
+    if (!c || (await db.cards.get(c.id))) continue;
+    await db.cards.put(c as unknown as Card);
+    cards++;
+  }
 
   let reviews = 0;
   for (const r of (rv.data ?? []) as ReviewRow[]) {
@@ -483,8 +788,15 @@ export async function restore(): Promise<{
         changed = true;
       }
     }
+    if (local.moduleLevels === undefined && remote.module_levels != null) {
+      const levels = moduleLevelsFromRemote(remote.module_levels);
+      if (levels) {
+        next.moduleLevels = levels;
+        changed = true;
+      }
+    }
     if (changed) await db.profile.put(next);
   }
 
-  return { reviews, days, inbox, labSessions, voiceSamples };
+  return { reviews, days, inbox, labSessions, voiceSamples, feedback, seen, savedReviews, events, cards };
 }

@@ -211,6 +211,7 @@ describe('Articulate V3 Release-Hardening & Regressions Suite', () => {
         case 'teach_back': return { id: 'tb1', type: 'teach_back', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, prompt: 'pr', beats: ['b1', 'b2', 'b3'], targetSec: 45 };
         case 'situation': return { id: 'st1', type: 'situation', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, kind: 'incident', title: 't', prompt: 'pr', beats: ['b1', 'b2', 'b3'], targetVocab: [], targetSec: 60 };
         case 'teach': return { id: 'te1', type: 'teach', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, track: 'smalltalk', level: 1, kind: 'learn', category: 'Answer well', title: 'The 1+1 answer', rule: 'Answer with a feeling word plus one real detail.', examples: { work: 'Tiring, but good.', everyday: 'Really nice.' }, analogy: 'A door left open a crack.', tryPrompt: 'Answer with 1+1.', register: 'both' };
+        case 'module': throw new Error('v7 module cards are not AnyCard and never reach CardFace');
       }
     };
 

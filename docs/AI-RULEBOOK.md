@@ -441,3 +441,30 @@ You are the checker; a different model generated these cards. Run cold and stric
 
 ### 8.3 It learns from everything he says
 Adarsh, 2026-10-29: "Make it a learning machine… whatever I say, it learns it properly." The `learner` input holds `topics` (his wishes first, then what he asked or talked about), `notes` (his wishes, newest first) and `watch` (his mistakes, wrong → right). Ground at least half of new examples and Try prompts in his topics, within the requested track and level. Follow his notes unless one breaks 1 or 1.5; newer wins. A repeated watch mistake comes first. Return `topics`: up to 3 short subjects from **his** content ("billing migration", "cricket"), never generic ("English", "speaking").
+
+---
+
+## 9. v7 module cards (Adarsh, 2026-11-08)
+
+From `docs/REDESIGN-V7.html` sections 3-4 and 6-7. The feed has five modules, one fixed card shape each, 1 to 3 slides. For a module card (`"type":"module"`) this chapter replaces 1.2, 1.7 and 2: no analogy, no framework credit, no research, no rule slide, no try slide. 1.3 to 1.6 still apply. Lines he can say tomorrow, not theory.
+
+### 9.1 The five shapes
+- **Words**: the word · how to say it · its meaning in plain words · two everyday examples (home, friends, explaining his thinking) with the word marked `**word**` → one ✓ right use and 1-2 ✗ wrong uses → on every 3rd card a quick check: 3 options, exactly one right. Any level, always in the simplest daily use ("the party next door is **deafening**"). No dictionary definitions.
+- **Small talk**: what they say → the dead-end answer → one good reply → a short formula ("feeling + one detail + ask back") → three more replies for other moods → at most 3 don'ts. Kinds: reply, open, keep_going, exit, save_it.
+- **Say it better**: "You might say" (long, loose) → "Better" (short, sharp) → 2-3 chips naming what changed ("point first", "19 words → 8") → an even better version, or a second situation using the same trick. Before and after, no lesson.
+- **Office phrases**: the phrase · meaning · when to use it · one meeting or email example · a tone chip → careful (how people misuse it), one ✗ wrong use, two similar phrases.
+- **Stories**: a dull report → the same moment as a real story → the one trick, in one line → sometimes "your turn".
+
+### 9.2 Rules on every module card
+- One idea per card. At most 40 words on a slide.
+- Every Words and Office phrases card has a ✗ wrong-use line: a mistake a learner really makes, its label starting with ✗.
+- No Hindi on screen: no Devanagari, no Hindi words (yaar, accha, arre, haan, nahi, bhai, chalo, theek, jugaad, ji), no Hindi calques.
+- Never repeat a head he has seen: the word, the phrase, the moment, the "you might say" line, the report.
+- The checker judges module cards with the section 6 codes, R4 against this chapter's shape. A missing ✗ line is R4; an analogy, credit or research claim is R8.
+
+### 9.3 How his feedback steers a batch
+A batch request carries his level for the module (1-5), the heads he liked, the heads he disliked with reasons, his comments and every head he has seen.
+- 👍 or "Loved this": more like it (same topic, style and level), never the same head.
+- "Too easy" / "Too hard": the level already moved; write at the level given. Words and Office phrases cards carry level 1-3: batch level 1-2 → 1, 3 → 2, 4-5 → 3.
+- "Confusing": simpler, shorter examples for that kind of card. "Wrong English": avoid that pattern entirely.
+- Comments are his words: follow each unless it breaks section 1 or 9.2; newer wins.
