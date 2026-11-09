@@ -6,13 +6,12 @@ import {
   currentEmail,
   push,
   restore,
-  sendCode as sendCodeRemote,
+  signInWithPassword,
   signOut as signOutRemote,
   syncConfigured,
-  verifyCode as verifyCodeRemote,
 } from './supabase';
 
-export type AccountStatus = 'not_set_up' | 'signed_out' | 'code_sent' | 'signed_in';
+export type AccountStatus = 'not_set_up' | 'signed_out' | 'signed_in';
 
 export interface UseAccount {
   /** False until VITE_SUPABASE_URL + VITE_SUPABASE_ANON_KEY are set. */
@@ -21,15 +20,15 @@ export interface UseAccount {
   email: string | null;
   /** `Profile.lastSyncAt`: the last push that reached the backup. */
   lastBackupAt: Millis | null;
-  sendCode(email: string): Promise<{ ok: boolean; error?: string }>;
-  verifyCode(code: string): Promise<{ ok: boolean; error?: string }>;
+  /** Email + password. First time on a fresh project it creates the backup. */
+  signIn(email: string, password: string): Promise<{ ok: boolean; error?: string }>;
   signOut(): Promise<void>;
 }
 
 /**
- * Backup sign-in under Me (6-digit email code, answer Q10). The app never
- * needs it: signed out, everything works and nothing is sent. After a good
- * code, `restore()` brings his rows to this phone first (local wins), then
+ * Backup sign-in under Me (email + password; no email is ever sent). The app
+ * never needs it: signed out, everything works and nothing is sent. After a
+ * good sign-in, `restore()` brings his rows to this phone first (local wins), then
  * `push()` sends what this phone has.
  */
 export function useAccount(): UseAccount {
@@ -56,39 +55,25 @@ export function useAccount(): UseAccount {
     };
   }, [configured]);
 
-  const sendCode = useCallback(
-    async (to: string) => {
+  const signIn = useCallback(
+    async (to: string, password: string) => {
       if (!configured) return { ok: false, error: 'Backup is not switched on yet' };
-      const res = await sendCodeRemote(to).catch((e: unknown) => ({
+      const res = await signInWithPassword(to, password).catch(() => ({
         ok: false,
-        error: e instanceof Error ? e.message : 'Could not send the code',
+        error: "Can't reach the backup. Check your internet and try again.",
       }));
-      if (res.ok && alive.current) {
-        setEmail(to.trim());
-        setStatus('code_sent');
-      }
-      return res;
-    },
-    [configured],
-  );
-
-  const verifyCode = useCallback(
-    async (code: string) => {
-      if (!configured) return { ok: false, error: 'Backup is not switched on yet' };
-      if (!email) return { ok: false, error: 'Send a code first' };
-      const res = await verifyCodeRemote(email, code).catch((e: unknown) => ({
-        ok: false,
-        error: e instanceof Error ? e.message : 'That code did not work',
-      }));
-      if (!res.ok) return res;
+      if (!res.ok) return { ok: false, error: res.error };
       // Restore first so his old rows land before this phone's queue goes up.
       // Failures are silent: the next background push tries again.
       await restore().catch(() => {});
       await push().catch(() => 0);
-      if (alive.current) setStatus('signed_in');
+      if (alive.current) {
+        setEmail(to.trim());
+        setStatus('signed_in');
+      }
       return { ok: true };
     },
-    [configured, email],
+    [configured],
   );
 
   const signOut = useCallback(async () => {
@@ -98,5 +83,5 @@ export function useAccount(): UseAccount {
     setStatus(configured ? 'signed_out' : 'not_set_up');
   }, [configured]);
 
-  return { configured, status, email, lastBackupAt, sendCode, verifyCode, signOut };
+  return { configured, status, email, lastBackupAt, signIn, signOut };
 }

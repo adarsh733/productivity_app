@@ -86,8 +86,39 @@ describe('Ask: any kind of question', () => {
     ).toEqual({ wrong: 'discuss about', right: 'discuss' });
   });
 
-  it('a Try card with nothing to reveal is dropped', () => {
-    expect(() => validateAnswerAsk(ask({ cards: cards(3, { kind: 'try' }) }), Q('flag'))).toThrow(/try cards need an answer/);
+  it('a Try card with nothing to reveal becomes a Learn card; never a Try card without an answer', () => {
+    const r = validateAnswerAsk(ask({ cards: cards(3, { kind: 'try' }) }), Q('flag'));
+    expect(r.cards).toHaveLength(3);
+    expect(r.cards.every((c) => c.kind === 'learn' && c.answer === undefined)).toBe(true);
+  });
+
+  it('live 2026-11-09: one Try card missing its answer no longer costs the whole reply', () => {
+    const r = validateAnswerAsk(
+      ask({
+        cards: [
+          card({ title: 'Flag means raise' }),
+          card({ title: 'Flag it early', kind: 'use' }),
+          card({ title: 'Try flagging', kind: 'try', answer: '   ' }),
+          card({ title: 'Say it your way', kind: 'try', answer: 'I flagged the delay this morning.' }),
+        ],
+      }),
+      Q('what does flag mean'),
+    );
+    expect(r.cards).toHaveLength(4);
+    expect(r.cards.filter((c) => c.kind === 'try' && !c.answer)).toHaveLength(0);
+    expect(r.cards.find((c) => c.title === 'Try flagging')?.kind).toBe('learn');
+    expect(r.cards.find((c) => c.title === 'Say it your way')).toMatchObject({ kind: 'try', answer: 'I flagged the delay this morning.' });
+  });
+
+  it('3 cards sent and 1 breaks a rule: the 2 good ones are served; 2 sent is still too few', () => {
+    const r = validateAnswerAsk(ask({ cards: [...cards(2), card({ title: 'Ask them', kind: 'ask_them' })] }), Q('flag'));
+    expect(r.cards).toHaveLength(2);
+    expect(() => validateAnswerAsk(ask({ cards: [...cards(1), card({ title: 'Ask them', kind: 'ask_them' })] }), Q('flag'))).toThrow(
+      /Only 1 usable cards \(need 3\)/,
+    );
+    expect(() =>
+      validateAnswerAsk(ask({ cards: [...cards(1), card({ title: 'X', kind: 'ask_them' }), card({ title: 'Y', kind: 'ask_them' })] }), Q('flag')),
+    ).toThrow(/Only 1 usable cards \(need 2\)/);
   });
 
   it('topics: specific subjects kept, generic ones dropped, max 3', () => {
@@ -274,5 +305,79 @@ describe('Whole function: honest reasons, and a checker never checks itself', ()
   it('a junk exclude list is refused', async () => {
     const res = await post({ task: 'verify_batch', payload: { items: [] }, exclude: ['openai'] });
     expect(res.status).toBe(400);
+  });
+});
+
+describe('Live 2026-11-09: answer_ask failures say why, and Haiku gets a request it accepts', () => {
+  const originalEnv = process.env;
+  beforeEach(() => {
+    process.env = { ...originalEnv };
+    delete process.env.GEMINI_API_KEY;
+    delete process.env.GROQ_API_KEY;
+    delete process.env.ANTHROPIC_API_KEY;
+  });
+  afterEach(() => {
+    process.env = originalEnv;
+    vi.restoreAllMocks();
+  });
+  const post = (body: unknown) =>
+    handler(new Request('http://x/ai', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) }));
+  const errorBody = (message: string) => JSON.stringify({ type: 'error', error: { type: 'invalid_request_error', message } });
+
+  it("the provider's own error message (at most 200 characters) is in the logged failure reason; never the key", async () => {
+    process.env.ANTHROPIC_API_KEY = 'sk-ant-secret-key-123456';
+    process.env.GROQ_API_KEY = 'gsk_secretgroqkey123';
+    const long = 'temperature: only the default value is supported for this model. ' + 'x'.repeat(400);
+    global.fetch = vi.fn(async (url: string | URL | Request) =>
+      String(url).includes('anthropic')
+        ? new Response(errorBody(long), { status: 400 })
+        : new Response(errorBody('Rate limit reached for gsk_secretgroqkey123'), { status: 429 }),
+    ) as never;
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const res = await post({ task: 'answer_ask', payload: { text: 'what does flag mean' } });
+    expect(res.status).toBe(502);
+    const line = warn.mock.calls.map((c) => String(c[0])).find((l) => l.includes('answer_ask failed')) ?? '';
+    expect(line).toContain('anthropic: http 400: temperature: only the default value is supported');
+    expect(line).toContain('groq: http 429: Rate limit reached for [key]');
+    const anthropicPart = line.split(' | ').find((p) => p.startsWith('anthropic:')) ?? '';
+    expect(anthropicPart.length).toBeLessThanOrEqual('anthropic: http 400: '.length + 200);
+    expect(line).not.toContain('sk-ant-secret');
+    expect(line).not.toContain('gsk_secret');
+    expect(line).not.toContain('what does flag mean'); // never the payload
+    // The phone still gets plain words, not the provider's message.
+    expect(JSON.stringify(await res.json())).not.toContain('temperature');
+  });
+
+  it('an error page that is not JSON still logs a short snippet; an empty one logs just the status', async () => {
+    process.env.ANTHROPIC_API_KEY = 'x';
+    process.env.GEMINI_API_KEY = 'x';
+    global.fetch = vi.fn(async (url: string | URL | Request) =>
+      String(url).includes('anthropic')
+        ? new Response('<html><body>Service Unavailable</body></html>', { status: 503 })
+        : new Response('', { status: 503 }),
+    ) as never;
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    await post({ task: 'answer_ask', payload: { text: 'flag' } });
+    const line = String(warn.mock.calls.at(-1)?.[0]);
+    expect(line).toContain('gemini: http 503 |');
+    expect(line).toContain('anthropic: http 503: Service Unavailable');
+  });
+
+  it('Haiku is sent no temperature, and a reply that starts with a thinking block is read from its text block', async () => {
+    process.env.ANTHROPIC_API_KEY = 'x';
+    const good = JSON.stringify(ask({ cards: [...cards(2), card({ title: 'Try it', kind: 'try' })] }));
+    const fetchSpy = vi.fn(async () =>
+      new Response(JSON.stringify({ content: [{ type: 'thinking', thinking: '', signature: 's' }, { type: 'text', text: good }] }), { status: 200 }),
+    );
+    global.fetch = fetchSpy as never;
+    const res = await post({ task: 'answer_ask', payload: { text: 'what does flag mean' } });
+    const sent = JSON.parse(String((fetchSpy.mock.calls[0] as unknown as [string, RequestInit])[1].body));
+    expect(sent).not.toHaveProperty('temperature');
+    expect(sent.model).toBe('claude-haiku-5-5');
+    const data = (await res.json()) as { ok: boolean; provider: string; data: { cards: { kind: string; answer?: string }[] } };
+    expect(data.ok).toBe(true);
+    expect(data.provider).toBe('anthropic');
+    expect(data.data.cards).toHaveLength(3);
+    expect(data.data.cards.some((c) => c.kind === 'try' && !c.answer)).toBe(false);
   });
 });

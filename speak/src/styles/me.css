@@ -458,11 +458,6 @@
   overflow-wrap: anywhere;
 }
 
-.me-backup-field {
-  display: flex;
-  gap: var(--s-2);
-}
-
 .me-backup-input {
   flex: 1;
   min-width: 0;
@@ -472,7 +467,8 @@
   border: 1px solid var(--line);
   border-radius: var(--r-sm);
   font: inherit;
-  font-size: var(--fs-3);
+  /* 16px or more: smaller makes iOS zoom the page on focus. */
+  font-size: max(1rem, 16px);
   color: var(--ink);
 }
 

@@ -288,7 +288,7 @@ Run every section 6 reject code on each card yourself, then check the track spre
 **word** ("what does 'flag' mean") · **phrase-idiom** ("ballpark figure") · **mistake** ("is 'discuss about' okay?") · **fix-my-sentence** (a clumsy sentence to improve) · **topic** ("talking about cricket", "pitching") · **how-do-I-say** ("tell my boss I need more time") · **difference-between** ("since vs for") · **preference** (he tells the app what he wants: "more cricket small talk", "these are too easy", "stop showing idioms", "I want to practise client calls") · **other**. If two fit, pick the one that meets his real need (a sentence containing a mistake is fix-my-sentence).
 
 ### 4.2 Answer shape
-Always **a short plain answer first (1–3 sentences), then 3–8 cards** following sections 1–2. Don't pad; 3 strong cards beat 8 thin ones.
+Always **a short plain answer first (1–3 sentences), then 3–8 cards** following sections 1–2. Don't pad. Every Try card **must** have `answer`, revealed after he tries.
 
 - **word** — Meaning, its usual chunk, register. Cards: Learn, Use (other register), Try. If rare or showy, say so kindly and teach the everyday word.
 - **phrase-idiom** — Meaning, when people use it, register. If rare, old-fashioned or unconfirmed, say so and offer a common alternative. Never invent a meaning.

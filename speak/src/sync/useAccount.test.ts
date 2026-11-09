@@ -10,12 +10,21 @@ import { useAccount } from './useAccount';
 type Row = Record<string, unknown>;
 type Filter = [string, unknown];
 
-function fakeClient(opts: { user?: { id: string; email: string } | null; tables?: Record<string, Row[]> } = {}) {
+function fakeClient(
+  opts: {
+    user?: { id: string; email: string } | null;
+    tables?: Record<string, Row[]>;
+    /** Accounts that already exist: email → password. */
+    accounts?: Record<string, string>;
+    offline?: boolean;
+  } = {},
+) {
+  const accounts = { ...(opts.accounts ?? {}) };
   const state = {
     user: opts.user ?? null,
     tables: opts.tables ?? ({} as Record<string, Row[]>),
     upserts: [] as { table: string; payload: Row }[],
-    otp: [] as unknown[],
+    signUps: 0,
     signedOut: 0,
   };
   const select = (table: string) => {
@@ -37,16 +46,28 @@ function fakeClient(opts: { user?: { id: string; email: string } | null; tables?
   const client = {
     auth: {
       getUser: async () => ({ data: { user: state.user }, error: null }),
-      signInWithOtp: async (c: unknown) => {
-        state.otp.push(c);
-        return { data: {}, error: null };
-      },
-      verifyOtp: async (p: { email: string; token: string }) => {
-        if (p.token !== '123456') {
-          return { data: { user: null, session: null }, error: { message: 'Token has expired or is invalid' } };
+      signInWithPassword: async (c: { email: string; password: string }) => {
+        if (opts.offline) throw new TypeError('Failed to fetch');
+        if (accounts[c.email] !== c.password) {
+          return {
+            data: { user: null, session: null },
+            error: { status: 400, code: 'invalid_credentials', message: 'Invalid login credentials' },
+          };
         }
-        state.user = { id: 'user-1', email: p.email };
+        state.user = { id: 'user-1', email: c.email };
         return { data: { user: state.user, session: {} }, error: null };
+      },
+      signUp: async (c: { email: string; password: string }) => {
+        state.signUps++;
+        if (c.email in accounts) {
+          return {
+            data: { user: null, session: null },
+            error: { status: 422, code: 'user_already_exists', message: 'User already registered' },
+          };
+        }
+        accounts[c.email] = c.password;
+        state.user = { id: 'user-1', email: c.email };
+        return { data: { user: { ...state.user, identities: [{}] }, session: {} }, error: null };
       },
       signOut: async () => {
         state.user = null;
@@ -79,21 +100,67 @@ describe('useAccount', () => {
   });
   afterEach(() => setSupabaseForTests(null));
 
-  it('is "not_set_up" with no keys, and sending a code does nothing', async () => {
+  it('is "not_set_up" with no keys, and signing in does nothing', async () => {
     setSupabaseForTests(null);
     const { result } = renderHook(() => useAccount());
     expect(result.current.configured).toBe(false);
     expect(result.current.status).toBe('not_set_up');
     let res: { ok: boolean } = { ok: true };
     await act(async () => {
-      res = await result.current.sendCode('me@example.com');
+      res = await result.current.signIn('me@example.com', 'secret1');
     });
     expect(res.ok).toBe(false);
     expect(result.current.status).toBe('not_set_up');
   });
 
-  it('signed out → code sent → signed in, restoring first and then pushing', async () => {
+  it('wrong password keeps him signed out and sends nothing', async () => {
+    const { client, state } = fakeClient({ accounts: { 'me@example.com': 'secret1' } });
+    setSupabaseForTests(client);
+    await db.seen.put({ id: 'phrases:circle back', module: 'phrases', head: 'circle back', cardId: 'p1', at: AT });
+    await enqueue('seen', 'phrases:circle back');
+
+    const { result } = renderHook(() => useAccount());
+    await act(async () => {
+      expect(await result.current.signIn('me@example.com', 'nope123')).toEqual({ ok: false, error: 'Wrong password' });
+    });
+    expect(result.current.status).toBe('signed_out');
+    expect(state.upserts).toEqual([]);
+    expect(await db.outbox.count()).toBe(1);
+  });
+
+  it('no internet: plain message, still signed out', async () => {
+    const { client } = fakeClient({ offline: true });
+    setSupabaseForTests(client);
+    const { result } = renderHook(() => useAccount());
+    await act(async () => {
+      expect(await result.current.signIn('me@example.com', 'secret1')).toEqual({
+        ok: false,
+        error: "Can't reach the backup. Check your internet and try again.",
+      });
+    });
+    expect(result.current.status).toBe('signed_out');
+  });
+
+  it('first sign-in creates the backup, then pushes this phone', async () => {
+    const { client, state } = fakeClient();
+    setSupabaseForTests(client);
+    await db.seen.put({ id: 'phrases:circle back', module: 'phrases', head: 'circle back', cardId: 'p1', at: AT });
+    await enqueue('seen', 'phrases:circle back');
+
+    const { result } = renderHook(() => useAccount());
+    await act(async () => {
+      expect(await result.current.signIn(' me@example.com ', 'secret1')).toEqual({ ok: true });
+    });
+    expect(state.signUps).toBe(1);
+    expect(result.current.status).toBe('signed_in');
+    expect(result.current.email).toBe('me@example.com');
+    expect(state.upserts.map((u) => u.table)).toContain('seen_terms');
+    expect(await db.outbox.count()).toBe(0);
+  });
+
+  it('existing account: signs in, restoring first and then pushing', async () => {
     const { client, state } = fakeClient({
+      accounts: { 'me@example.com': 'secret1' },
       tables: {
         seen_terms: [
           seenRow({ id: 'words:candid', module: 'words', head: 'candid', cardId: 'v7-words-009', at: AT }, 'user-1'),
@@ -110,20 +177,11 @@ describe('useAccount', () => {
     expect(result.current.status).toBe('signed_out');
 
     await act(async () => {
-      expect(await result.current.sendCode(' me@example.com ')).toEqual({ ok: true });
+      expect(await result.current.signIn('me@example.com', 'secret1')).toEqual({ ok: true });
     });
-    expect(result.current.status).toBe('code_sent');
-    expect(result.current.email).toBe('me@example.com');
-
-    await act(async () => {
-      expect(await result.current.verifyCode('000000')).toMatchObject({ ok: false });
-    });
-    expect(result.current.status).toBe('code_sent');
-
-    await act(async () => {
-      expect(await result.current.verifyCode('123456')).toEqual({ ok: true });
-    });
+    expect(state.signUps).toBe(0);
     expect(result.current.status).toBe('signed_in');
+    expect(result.current.email).toBe('me@example.com');
     // restore() brought the backup's seen list to this phone…
     expect(await db.seen.get('words:candid')).toMatchObject({ cardId: 'v7-words-009' });
     // …and push() sent this phone's queue up.

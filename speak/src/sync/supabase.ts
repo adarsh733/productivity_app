@@ -77,33 +77,84 @@ export async function currentEmail(): Promise<string | null> {
   return data.user?.email ?? null;
 }
 
+export type SignInResult = { ok: boolean; error?: string; created?: boolean };
+
+export const MIN_PASSWORD = 6;
+
+const MSG = {
+  off: 'Backup is not switched on yet',
+  noEmail: 'Type your email first',
+  short: `Password needs at least ${MIN_PASSWORD} characters`,
+  wrong: 'Wrong password',
+  wrongEither: 'Wrong email or password',
+  offline: "Can't reach the backup. Check your internet and try again.",
+  busy: 'Too many tries. Wait a minute and try again.',
+  confirm: 'Supabase still wants an email check. Turn off "Confirm email" in Supabase, then try again.',
+  badEmail: 'That email does not look right',
+  generic: 'Could not sign in. Try again.',
+} as const;
+
+type AuthErr = { message?: string; code?: string; status?: number; name?: string } | null | undefined;
+
+const has = (e: AuthErr, ...needles: string[]) => {
+  const hay = `${e?.code ?? ''} ${e?.message ?? ''}`.toLowerCase();
+  return needles.some((n) => hay.includes(n));
+};
+
+/** A Supabase auth error in words he can act on. */
+function plain(e: AuthErr): string {
+  if (!e) return MSG.generic;
+  if (e.name === 'AuthRetryableFetchError' || e.status === 0 || has(e, 'failed to fetch', 'network', 'load failed'))
+    return MSG.offline;
+  if (e.status === 429 || has(e, 'rate limit', 'too many')) return MSG.busy;
+  if (has(e, 'email_not_confirmed', 'email not confirmed')) return MSG.confirm;
+  if (has(e, 'weak_password', 'password should be')) return MSG.short;
+  if (has(e, 'email_address_invalid', 'invalid email', 'unable to validate email')) return MSG.badEmail;
+  return MSG.generic;
+}
+
 /**
- * Step 1 of the 6-digit email code sign-in (answer Q10). No redirect link: the
- * email shows `{{ .Token }}` (docs/SETUP.md step 1) and he types it back in.
+ * Email + password sign-in (replaces the 6-digit code: Supabase would not let
+ * this project change the code email). With "Confirm email" OFF in Supabase
+ * (docs/SETUP.md 5b) no email is ever sent.
+ *
+ * Try sign-in first. Only on "Invalid login credentials" try sign-up, which
+ * succeeds just when no account exists yet (first time on a fresh project).
+ * If sign-up says the email is already registered, the password was wrong:
+ * nothing is created and he sees "Wrong password".
  */
-export async function sendCode(email: string): Promise<{ ok: boolean; error?: string }> {
+export async function signInWithPassword(email: string, password: string): Promise<SignInResult> {
   const sb = supabase();
-  if (!sb) return { ok: false, error: 'Backup is not switched on yet' };
+  if (!sb) return { ok: false, error: MSG.off };
   const clean = email.trim();
-  if (!clean) return { ok: false, error: 'Type your email first' };
-  const { error } = await sb.auth.signInWithOtp({ email: clean, options: { shouldCreateUser: true } });
-  return error ? { ok: false, error: error.message } : { ok: true };
-}
+  if (!clean) return { ok: false, error: MSG.noEmail };
+  if (password.length < MIN_PASSWORD) return { ok: false, error: MSG.short };
+  try {
+    const first = await sb.auth.signInWithPassword({ email: clean, password });
+    if (!first.error) {
+      return first.data.session ? { ok: true } : { ok: false, error: MSG.generic };
+    }
+    if (!has(first.error, 'invalid_credentials', 'invalid login credentials')) {
+      return { ok: false, error: plain(first.error) };
+    }
 
-/** Step 2: the 6-digit code from the email. */
-export async function verifyCode(email: string, code: string): Promise<{ ok: boolean; error?: string }> {
-  const sb = supabase();
-  if (!sb) return { ok: false, error: 'Backup is not switched on yet' };
-  const token = code.replace(/\s+/g, '');
-  if (!/^\d{6}$/.test(token)) return { ok: false, error: 'The code is 6 digits' };
-  const { data, error } = await sb.auth.verifyOtp({ email: email.trim(), token, type: 'email' });
-  if (error) return { ok: false, error: error.message };
-  if (!data.user && !data.session) return { ok: false, error: 'That code did not work' };
-  return { ok: true };
+    const made = await sb.auth.signUp({ email: clean, password });
+    if (made.error) {
+      if (has(made.error, 'user_already_exists', 'already registered', 'already been registered'))
+        return { ok: false, error: MSG.wrong };
+      if (has(made.error, 'signup_disabled', 'signups not allowed')) return { ok: false, error: MSG.wrongEither };
+      return { ok: false, error: plain(made.error) };
+    }
+    // With "Confirm email" ON, Supabase hides an existing account behind a
+    // fake user with no identities and no session: that is a wrong password.
+    if (made.data.user && made.data.user.identities?.length === 0) return { ok: false, error: MSG.wrong };
+    if (!made.data.session) return { ok: false, error: MSG.confirm };
+    return { ok: true, created: true };
+  } catch {
+    // supabase-js returns its errors; a throw here is the network giving out.
+    return { ok: false, error: MSG.offline };
+  }
 }
-
-/** Old name, kept for any caller: sends the code. */
-export const signIn = sendCode;
 
 export async function signOut(): Promise<void> {
   await supabase()?.auth.signOut();

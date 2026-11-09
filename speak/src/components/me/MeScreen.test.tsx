@@ -9,8 +9,8 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import { setSupabaseForTests } from '../../sync/supabase';
 
 /** A fake Supabase client for the backup row — never real keys. */
-function fakeClient(user: { id: string; email: string } | null = null) {
-  const state = { user, otp: [] as unknown[] };
+function fakeClient(user: { id: string; email: string } | null = null, accounts: Record<string, string> = {}) {
+  const state = { user, accounts: { ...accounts }, signUps: 0 };
   const empty = () => {
     const q = {
       eq: () => q,
@@ -22,16 +22,27 @@ function fakeClient(user: { id: string; email: string } | null = null) {
   const client = {
     auth: {
       getUser: async () => ({ data: { user: state.user }, error: null }),
-      signInWithOtp: async (c: unknown) => {
-        state.otp.push(c);
-        return { data: {}, error: null };
-      },
-      verifyOtp: async (p: { email: string; token: string }) => {
-        if (p.token !== '123456') {
-          return { data: { user: null, session: null }, error: { message: 'Token has expired or is invalid' } };
+      signInWithPassword: async (c: { email: string; password: string }) => {
+        if (state.accounts[c.email] !== c.password) {
+          return {
+            data: { user: null, session: null },
+            error: { status: 400, code: 'invalid_credentials', message: 'Invalid login credentials' },
+          };
         }
-        state.user = { id: 'user-1', email: p.email };
+        state.user = { id: 'user-1', email: c.email };
         return { data: { user: state.user, session: {} }, error: null };
+      },
+      signUp: async (c: { email: string; password: string }) => {
+        state.signUps++;
+        if (c.email in state.accounts) {
+          return {
+            data: { user: null, session: null },
+            error: { status: 422, code: 'user_already_exists', message: 'User already registered' },
+          };
+        }
+        state.accounts[c.email] = c.password;
+        state.user = { id: 'user-1', email: c.email };
+        return { data: { user: { ...state.user, identities: [{}] }, session: {} }, error: null };
       },
       signOut: async () => {
         state.user = null;
@@ -258,7 +269,8 @@ describe('MeScreen backup row (v7 step 6)', () => {
     render(<MeScreen />);
     const row = screen.getByTestId('me-backup');
     expect(row.textContent).toBe('Backup is not switched on yet');
-    expect(screen.queryByRole('button', { name: 'Send code' })).toBeNull();
+    expect(screen.queryByRole('button', { name: 'Sign in' })).toBeNull();
+    expect(screen.queryByLabelText('Password')).toBeNull();
     // Sits between the stats and the rows.
     const stats = document.querySelector('.me-stats')!;
     const rows = document.querySelector('.me-rows')!;
@@ -266,27 +278,32 @@ describe('MeScreen backup row (v7 step 6)', () => {
     expect(row.compareDocumentPosition(rows) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
-  it('email → Send code → 6-digit code → Sign in → "Backed up" + Sign out', async () => {
-    const { client, state } = fakeClient();
+  it('email + password → Sign in: wrong password says so, right one → "Backed up" + Sign out', async () => {
+    const { client, state } = fakeClient(null, { 'me@example.com': 'secret1' });
     setSupabaseForTests(client);
     render(<MeScreen />);
 
-    const send = screen.getByRole('button', { name: 'Send code' }) as HTMLButtonElement;
-    expect(send.disabled).toBe(true);
-    fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'me@example.com' } });
-    fireEvent.click(send);
+    expect(screen.getByText('First time? This creates your backup with this password.')).toBeInTheDocument();
+    const email = screen.getByLabelText('Email') as HTMLInputElement;
+    const password = screen.getByLabelText('Password') as HTMLInputElement;
+    expect(password.type).toBe('password');
+    expect(password.autocomplete).toBe('current-password');
+    expect(password.minLength).toBe(6);
+    const signIn = screen.getByRole('button', { name: 'Sign in' }) as HTMLButtonElement;
+    expect(signIn.className).toContain('me-backup-btn');
+    expect(signIn.disabled).toBe(true);
 
-    const codeBox = await screen.findByLabelText('6-digit code');
-    expect(state.otp).toEqual([{ email: 'me@example.com', options: { shouldCreateUser: true } }]);
-    expect(screen.getByText(/emailed to me@example\.com/)).toBeInTheDocument();
+    fireEvent.change(email, { target: { value: 'me@example.com' } });
+    fireEvent.change(password, { target: { value: '12345' } });
+    expect(signIn.disabled).toBe(true);
 
-    fireEvent.change(codeBox, { target: { value: '000000' } });
-    fireEvent.click(screen.getByRole('button', { name: 'Sign in' }));
-    expect(await screen.findByRole('alert')).toBeInTheDocument();
-    expect(screen.getByRole('alert').textContent).toBe('Token has expired or is invalid');
+    fireEvent.change(password, { target: { value: 'nope123' } });
+    expect(signIn.disabled).toBe(false);
+    fireEvent.click(signIn);
+    expect((await screen.findByRole('alert')).textContent).toBe('Wrong password');
+    expect(state.accounts).toEqual({ 'me@example.com': 'secret1' });
 
-    fireEvent.change(codeBox, { target: { value: '12a3456' } });
-    expect((codeBox as HTMLInputElement).value).toBe('123456');
+    fireEvent.change(password, { target: { value: 'secret1' } });
     fireEvent.click(screen.getByRole('button', { name: 'Sign in' }));
 
     const status = await screen.findByTestId('me-backup-status');
@@ -295,6 +312,18 @@ describe('MeScreen backup row (v7 step 6)', () => {
     await waitFor(async () => expect((await db.profile.get('me'))?.lastSyncAt).toBeTypeOf('number'));
 
     fireEvent.click(screen.getByRole('button', { name: 'Sign out' }));
-    expect(await screen.findByRole('button', { name: 'Send code' })).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: 'Sign in' })).toBeInTheDocument();
+  });
+
+  it('first time on a fresh backup: Sign in creates the account', async () => {
+    const { client, state } = fakeClient();
+    setSupabaseForTests(client);
+    render(<MeScreen />);
+    fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'me@example.com' } });
+    fireEvent.change(screen.getByLabelText('Password'), { target: { value: 'secret1' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Sign in' }));
+    expect((await screen.findByTestId('me-backup-status')).textContent).toMatch(/^Backed up · /);
+    expect(state.signUps).toBe(1);
+    expect(state.accounts).toEqual({ 'me@example.com': 'secret1' });
   });
 });

@@ -161,6 +161,8 @@ export const ASK_ANSWER_MAX = 600;
 /** One fix-my-sentence version. Longer fails over (cutting would break [[chunks]]). */
 export const ASK_VERSION_MAX = 400;
 export const ASK_CARDS_MIN = 3;
+/** Fewest usable cards served when the model sent at least ASK_CARDS_MIN and some broke a rule. */
+export const ASK_CARDS_FLOOR = 2;
 export const ASK_CARDS_MAX = 8;
 export const ASK_CHUNKS_MAX = 8;
 /** Weak-spot halves and chunks (rulebook §4.3). */
@@ -287,7 +289,7 @@ const TASK_CONFIG: Record<
       'weakSpot: only per 4.3 (a mistake he made himself, or a known pattern in his sentence); "wrong" is his exact phrase and "right" the global form, each at most 60 characters. Otherwise leave it out.',
       'cards: 3 to 8 teach cards, never more; 3 strong cards beat 8 thin ones. For "other" and "preference", 0 to 2 cards. Each card is exactly',
       '{"type":"teach","track":"smalltalk"|"stories"|"clearly"|"words","level":1-5,"kind":"learn"|"use"|"fix"|"try"|"ask_them","category":string,"title":string,"rule":string,"examples":{"work":string,"everyday":string},"insteadOf"?:string,"analogy":string,"tryPrompt":string,"register":"casual"|"office"|"both","answer"?:string,"credit"?:string}.',
-      'The section 1.2 limits are hard: a card over any limit is thrown away. title at most 40 characters. insteadOf is required on fix cards; answer is required on try cards. ask_them is small talk only. credit names the framework (appendix), if any.',
+      'The section 1.2 limits are hard: a card over any limit is thrown away. title at most 40 characters. insteadOf is required on fix cards. EVERY card with "kind":"try" MUST include "answer": the great answer he sees after he tries, one or two lines in plain English. No answer, no try card: use "learn" instead. ask_them is small talk only. credit names the framework (appendix), if any.',
       'weakSpot.wrong must be words he actually typed; never invent one from a plain curiosity question.',
       'answer is plain text: no markdown, no bullet points, no headings.',
       'Use the "levels" input, when given, as his current level per track.',
@@ -1252,6 +1254,21 @@ function chunksIn(version: string, name: string): string[] {
   return found;
 }
 
+/**
+ * A Try card with no `answer` has nothing to reveal (both models do this
+ * often, 2026-11-09 log). Its rule, examples and tryPrompt still teach, so it
+ * comes back as a Learn card (a kind every track allows, rulebook 2) instead
+ * of costing the whole reply. Never a Try card without an answer.
+ */
+function salvageTry(d: unknown): unknown {
+  if (!d || typeof d !== 'object' || Array.isArray(d)) return d;
+  const r = d as Record<string, unknown>;
+  if (r.kind !== 'try' || str(r.answer)) return d;
+  const learn: Record<string, unknown> = { ...r, kind: 'learn' };
+  delete learn.answer;
+  return learn;
+}
+
 /** Fewest usable cards per kind: "other" and "preference" may answer with none. */
 export function askCardsMin(kind: AskKind): number {
   return kind === 'other' || kind === 'preference' ? 0 : ASK_CARDS_MIN;
@@ -1397,7 +1414,7 @@ export function validateAnswerAsk(raw: unknown, payload?: unknown): AnswerAskRes
   const titles = new Set<string>();
   c.cards.forEach((d, i) => {
     try {
-      const card = validateTeachDraft(d, i);
+      const card = validateTeachDraft(salvageTry(d), i);
       const key = card.title.toLowerCase();
       if (titles.has(key)) throw new Error(`Card ${i}: repeats another card's title`);
       titles.add(key);
@@ -1406,7 +1423,11 @@ export function validateAnswerAsk(raw: unknown, payload?: unknown): AnswerAskRes
       reasons.push((e as Error).message);
     }
   });
-  const min = askCardsMin(askKind);
+  // The model followed the 3-8 rule but one card broke a rule: 2 checked cards
+  // plus a good answer beat "the AI's answer didn't pass". A reply that sent
+  // fewer cards than asked still fails over, so the next model gets a turn.
+  const wanted = askCardsMin(askKind);
+  const min = wanted > 0 && c.cards.length >= wanted ? Math.min(wanted, ASK_CARDS_FLOOR) : wanted;
   if (cards.length < min) {
     throw new Error(
       `Only ${cards.length} usable cards (need ${min})${reasons.length ? `: ${reasons[0]}` : ''}`,
@@ -2042,18 +2063,22 @@ async function call(
         'x-api-key': key,
         'anthropic-version': '2023-06-01',
       },
+      // No `temperature`: Claude Haiku 5.5 answers any value but the default
+      // with http 400 (the every-call 400 in the 2026-11-09 log).
       body: JSON.stringify({
         model: ANTHROPIC_MODEL,
         max_tokens: maxTokens,
-        temperature,
         // Cached: the rulebook slice is identical on every call for a task.
         system: [{ type: 'text', text: system, cache_control: { type: 'ephemeral' } }],
         messages: [{ role: 'user', content: user }],
       }),
     });
-    if (!res.ok) throw new Error(`http ${res.status}`);
-    const data = (await res.json()) as { content?: { text?: string }[] };
-    return data.content?.[0]?.text ?? '';
+    if (!res.ok) throw new Error(await httpError(res));
+    const data = (await res.json()) as { content?: { type?: string; text?: string }[] };
+    // Haiku 5.5 thinks by default, so the reply can start with a thinking block: read the text block.
+    const blocks = data.content ?? [];
+    const textBlock = blocks.find((b) => b.type === 'text') ?? blocks.find((b) => typeof b.text === 'string');
+    return textBlock?.text ?? '';
   }
 
   if (provider === 'gemini') {
@@ -2076,7 +2101,7 @@ async function call(
         }),
       },
     );
-    if (!res.ok) throw new Error(`http ${res.status}`);
+    if (!res.ok) throw new Error(await httpError(res));
     const data = (await res.json()) as {
       candidates?: { content?: { parts?: { text?: string }[] } }[];
     };
@@ -2102,9 +2127,48 @@ async function call(
       ],
     }),
   });
-  if (!res.ok) throw new Error(`http ${res.status}`);
+  if (!res.ok) throw new Error(await httpError(res));
   const data = (await res.json()) as { choices?: { message?: { content?: string } }[] };
   return data.choices?.[0]?.message?.content ?? '';
+}
+
+/** Longest piece of a provider's error message kept in the server log. */
+export const PROVIDER_ERROR_SNIPPET_MAX = 200;
+
+/**
+ * "http 400: <the provider's own message, at most 200 characters>" for the
+ * server log, so a failure says why. Only the provider's reply is read, never
+ * our request; anything shaped like a key is masked. Never throws.
+ */
+export async function httpError(res: Response): Promise<string> {
+  const head = `http ${res.status}`;
+  let raw = '';
+  try {
+    if (typeof res.text === 'function') raw = await res.text();
+    else if (typeof (res as { json?: unknown }).json === 'function') raw = JSON.stringify(await res.json());
+  } catch {
+    return head;
+  }
+  let msg = raw;
+  try {
+    const j = JSON.parse(raw) as Record<string, unknown> | unknown[];
+    const o = (Array.isArray(j) ? j[0] : j) as Record<string, unknown> | undefined;
+    const err = o?.error;
+    const found =
+      (err && typeof err === 'object' ? (err as Record<string, unknown>).message : undefined) ??
+      (typeof err === 'string' ? err : undefined) ??
+      o?.message;
+    msg = typeof found === 'string' ? found : '';
+  } catch {
+    // Not JSON (an HTML error page, plain text): keep the text itself.
+  }
+  const snippet = msg
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/\b(?:sk-[\w-]{8,}|gsk_\w{8,}|AIza[\w-]{8,}|Bearer\s+\S+)/g, '[key]')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, PROVIDER_ERROR_SNIPPET_MAX);
+  return snippet ? `${head}: ${snippet}` : head;
 }
 
 /**

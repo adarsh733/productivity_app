@@ -1060,9 +1060,11 @@ describe('answer_ask validator', () => {
     const long = Array.from({ length: 16 }, (_, i) => `w${i}`).join(' ');
     const base = goodWordAsk().cards;
     // 16-word example: too long on words, fine on small talk.
-    expect(() =>
-      validateAnswerAsk({ ...goodWordAsk(), cards: [...base.slice(0, 2), card({ title: 'X', examples: { work: long, everyday: 'ok' } })] }),
-    ).toThrow(/Only 2/);
+    // (3 sent, 1 over a limit: the card is dropped and the 2 good ones are served, ASK_CARDS_FLOOR.)
+    const titles = (v: { cards: { title: string }[] }) => v.cards.map((c) => c.title);
+    expect(
+      titles(validateAnswerAsk({ ...goodWordAsk(), cards: [...base.slice(0, 2), card({ title: 'X', examples: { work: long, everyday: 'ok' } })] })),
+    ).not.toContain('X');
     const st = validateAnswerAsk({
       ...goodWordAsk(),
       cards: [...base.slice(0, 2), card({ title: 'X', track: 'smalltalk', kind: 'ask_them', examples: { work: long, everyday: 'ok' } })],
@@ -1074,7 +1076,9 @@ describe('answer_ask validator', () => {
     // Analogy over 20 words, tryPrompt over 25 words.
     const w = (n: number) => Array.from({ length: n }, () => 'x').join(' ');
     for (const bad of [{ analogy: w(21) }, { tryPrompt: w(26) }, { insteadOf: w(21) }, { analogy: 'line one\nline two' }]) {
-      expect(() => validateAnswerAsk({ ...goodWordAsk(), cards: [...base.slice(0, 2), card({ title: 'B', ...bad })] })).toThrow(/Only 2/);
+      expect(titles(validateAnswerAsk({ ...goodWordAsk(), cards: [...base.slice(0, 2), card({ title: 'B', ...bad })] }))).toEqual(
+        base.slice(0, 2).map((x) => x.title),
+      );
     }
   });
 

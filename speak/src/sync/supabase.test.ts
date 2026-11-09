@@ -30,10 +30,9 @@ import {
   savedReviewRow,
   seenFromRow,
   seenRow,
-  sendCode,
   setSupabaseForTests,
+  signInWithPassword,
   syncConfigured,
-  verifyCode,
   viewEventFromRow,
   weekPlanFromRemote,
   weekPlanToRemote,
@@ -266,14 +265,27 @@ type Row = Record<string, unknown>;
 type Filter = [string, unknown];
 const matches = (r: Row, f: Filter[]) => f.every(([k, v]) => r[k] === v);
 
-function fakeClient(opts: { user?: { id: string; email: string } | null; tables?: Record<string, Row[]> } = {}) {
+type FakeAuthOpts = {
+  /** Accounts that already exist: email → password. */
+  accounts?: Record<string, string>;
+  /** Supabase "Confirm email" ON: sign-up gives no session. */
+  confirmEmail?: boolean;
+  /** Every auth call throws, as fetch does with no signal. */
+  offline?: boolean;
+};
+
+function fakeClient(
+  opts: { user?: { id: string; email: string } | null; tables?: Record<string, Row[]> } & FakeAuthOpts = {},
+) {
+  const accounts = { ...(opts.accounts ?? {}) };
   const state = {
+    accounts,
+    signIns: [] as { email: string; password: string }[],
+    signUps: [] as { email: string; password: string }[],
     user: opts.user ?? null,
     tables: opts.tables ?? ({} as Record<string, Row[]>),
     upserts: [] as { table: string; payload: Row; onConflict?: string }[],
     deletes: [] as { table: string; filters: Filter[] }[],
-    otp: [] as unknown[],
-    verify: [] as Record<string, unknown>[],
   };
   const select = (table: string) => {
     const filters: Filter[] = [];
@@ -291,17 +303,31 @@ function fakeClient(opts: { user?: { id: string; email: string } | null; tables?
   const client = {
     auth: {
       getUser: async () => ({ data: { user: state.user }, error: null }),
-      signInWithOtp: async (c: unknown) => {
-        state.otp.push(c);
-        return { data: {}, error: null };
-      },
-      verifyOtp: async (p: Record<string, unknown>) => {
-        state.verify.push(p);
-        if (p.token !== '123456') {
-          return { data: { user: null, session: null }, error: { message: 'Token has expired or is invalid' } };
+      signInWithPassword: async (c: { email: string; password: string }) => {
+        state.signIns.push(c);
+        if (opts.offline) throw new TypeError('Failed to fetch');
+        if (accounts[c.email] !== c.password) {
+          const error = { name: 'AuthApiError', status: 400, code: 'invalid_credentials', message: 'Invalid login credentials' };
+          return { data: { user: null, session: null }, error };
         }
-        state.user = { id: 'user-1', email: String(p.email) };
-        return { data: { user: state.user, session: {} }, error: null };
+        state.user = { id: 'user-1', email: c.email };
+        return { data: { user: state.user, session: { access_token: 't' } }, error: null };
+      },
+      signUp: async (c: { email: string; password: string }) => {
+        state.signUps.push(c);
+        if (c.email in accounts) {
+          if (opts.confirmEmail) {
+            // Supabase hides the existing account behind a fake user.
+            return { data: { user: { id: 'fake', identities: [] }, session: null }, error: null };
+          }
+          const error = { name: 'AuthApiError', status: 422, code: 'user_already_exists', message: 'User already registered' };
+          return { data: { user: null, session: null }, error };
+        }
+        accounts[c.email] = c.password;
+        const user = { id: 'user-1', email: c.email, identities: [{ id: 'i1' }] };
+        if (opts.confirmEmail) return { data: { user, session: null }, error: null };
+        state.user = { id: 'user-1', email: c.email };
+        return { data: { user, session: { access_token: 't' } }, error: null };
       },
       signOut: async () => {
         state.user = null;
@@ -463,7 +489,7 @@ describe('push and restore on a fake client', () => {
     setSupabaseForTests(null);
     expect(syncConfigured()).toBe(false);
     expect(await push()).toBe(0);
-    expect(await sendCode('a@b.co')).toEqual({ ok: false, error: 'Backup is not switched on yet' });
+    expect(await signInWithPassword('a@b.co', 'secret1')).toEqual({ ok: false, error: 'Backup is not switched on yet' });
 
     const { client, state } = fakeClient({ user: null });
     setSupabaseForTests(client);
@@ -573,29 +599,67 @@ describe('push and restore on a fake client', () => {
   });
 });
 
-describe('6-digit email code sign-in', () => {
+describe('email + password sign-in', () => {
   afterEach(() => setSupabaseForTests(null));
 
-  it('sendCode asks for a code with no redirect link', async () => {
+  it('first time on a fresh project: sign-in fails, then sign-up creates the backup', async () => {
     const { client, state } = fakeClient();
     setSupabaseForTests(client);
-    expect(await sendCode('  me@example.com ')).toEqual({ ok: true });
-    expect(state.otp).toEqual([{ email: 'me@example.com', options: { shouldCreateUser: true } }]);
-    expect(await sendCode('   ')).toMatchObject({ ok: false });
-    expect(state.otp).toHaveLength(1);
+    expect(await signInWithPassword('  me@example.com ', 'secret1')).toEqual({ ok: true, created: true });
+    expect(state.signIns).toEqual([{ email: 'me@example.com', password: 'secret1' }]);
+    expect(state.signUps).toEqual([{ email: 'me@example.com', password: 'secret1' }]);
+    expect(state.user).toMatchObject({ email: 'me@example.com' });
   });
 
-  it('verifyCode checks the code with type email and rejects bad codes', async () => {
+  it('existing account, right password: signs in and never calls sign-up', async () => {
+    const { client, state } = fakeClient({ accounts: { 'me@example.com': 'secret1' } });
+    setSupabaseForTests(client);
+    expect(await signInWithPassword('me@example.com', 'secret1')).toEqual({ ok: true });
+    expect(state.signUps).toEqual([]);
+    expect(state.user).toMatchObject({ email: 'me@example.com' });
+  });
+
+  it('existing account, wrong password: says "Wrong password" and creates nothing', async () => {
+    const { client, state } = fakeClient({ accounts: { 'me@example.com': 'secret1' } });
+    setSupabaseForTests(client);
+    expect(await signInWithPassword('me@example.com', 'nope123')).toEqual({ ok: false, error: 'Wrong password' });
+    expect(state.accounts).toEqual({ 'me@example.com': 'secret1' });
+    expect(state.user).toBeNull();
+  });
+
+  it('wrong password still says so when "Confirm email" was left on', async () => {
+    const { client, state } = fakeClient({ accounts: { 'me@example.com': 'secret1' }, confirmEmail: true });
+    setSupabaseForTests(client);
+    expect(await signInWithPassword('me@example.com', 'nope123')).toEqual({ ok: false, error: 'Wrong password' });
+    expect(state.user).toBeNull();
+  });
+
+  it('a new account with "Confirm email" still on explains the one switch to flip', async () => {
+    const { client } = fakeClient({ confirmEmail: true });
+    setSupabaseForTests(client);
+    const res = await signInWithPassword('me@example.com', 'secret1');
+    expect(res.ok).toBe(false);
+    expect(res.error).toMatch(/Turn off "Confirm email"/);
+  });
+
+  it('no internet: a plain message, no sign-up attempt', async () => {
+    const { client, state } = fakeClient({ offline: true });
+    setSupabaseForTests(client);
+    expect(await signInWithPassword('me@example.com', 'secret1')).toEqual({
+      ok: false,
+      error: "Can't reach the backup. Check your internet and try again.",
+    });
+    expect(state.signUps).toEqual([]);
+  });
+
+  it('checks the email and the 6-character minimum before calling Supabase', async () => {
     const { client, state } = fakeClient();
     setSupabaseForTests(client);
-    expect(await verifyCode('me@example.com', '12 34')).toEqual({ ok: false, error: 'The code is 6 digits' });
-    expect(state.verify).toEqual([]);
-    expect(await verifyCode('me@example.com', '000000')).toEqual({
+    expect(await signInWithPassword('   ', 'secret1')).toEqual({ ok: false, error: 'Type your email first' });
+    expect(await signInWithPassword('me@example.com', '12345')).toEqual({
       ok: false,
-      error: 'Token has expired or is invalid',
+      error: 'Password needs at least 6 characters',
     });
-    expect(await verifyCode('me@example.com', '123 456')).toEqual({ ok: true });
-    expect(state.verify.at(-1)).toEqual({ email: 'me@example.com', token: '123456', type: 'email' });
-    expect(state.user).toMatchObject({ email: 'me@example.com' });
+    expect(state.signIns).toEqual([]);
   });
 });

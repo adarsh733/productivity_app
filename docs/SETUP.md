@@ -35,15 +35,14 @@ the phone dies.
      only adds what is missing and never deletes your data.
    - The AI-written cards back up into `cards`, and your level per module goes
      into `profile` — no extra tables for those.
-5b. **Sign-in email: show the 6-digit code.** The app signs you in with a code
-   you type, not a link you tap (a link would open Safari, not the home-screen
-   app). Sidebar → **Authentication** → **Emails** (or **Email Templates**) →
-   **Magic Link**. In the message body, replace `{{ .ConfirmationURL }}` (the
-   link) with the code, for example:
-   `Your Articulate code is {{ .Token }}` → **Save**.
-   Leave **Authentication → Providers → Email** switched on (it is by default).
-   Then on the phone: **Me** → type your email → **Send code** → type the 6
-   digits → **Sign in**. Me then shows "Backed up · <time>".
+5b. **Sign-in: email + password, no email sent.** Supabase will not let this
+   project change its sign-in emails, so the app never sends one. Sidebar →
+   **Authentication** → **Sign In / Providers** → **Email** → turn **OFF**
+   "Confirm email" → **Save**. (Leave the Email provider itself switched on.)
+   Then on the phone: **Me** → type your email and a password (6+ characters)
+   → **Sign in**. The first time, that creates your backup with that password;
+   after that, the same email + password signs you in on any phone. Me then
+   shows "Backed up · <time>".
 6. Sidebar → **Project Settings** (gear) → **API**. Copy and keep two values:
    - **Project URL** — looks like `https://abcdefgh.supabase.co`
    - **anon / public** key — a long string starting `eyJ…`
