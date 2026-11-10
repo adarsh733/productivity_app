@@ -14,7 +14,7 @@ vi.mock('../auto/moduleBatch', async (orig) => ({
 describe('gotItLine', () => {
   it('returns the exact brief exemplar: Too easy on Words', () => {
     const line = gotItLine('words', { reasons: ['too_easy'] });
-    expect(line).toBe('Got it: Words will get harder from the next batch.');
+    expect(line).toBe('Got it: Words gets harder now.');
   });
 
   it('formats too_easy correctly across each module using its label', () => {
@@ -28,15 +28,29 @@ describe('gotItLine', () => {
 
     for (const [mod, label] of cases) {
       expect(gotItLine(mod, { reasons: ['too_easy'] })).toBe(
-        `Got it: ${label} will get harder from the next batch.`,
+        `Got it: ${label} gets harder now.`,
       );
     }
   });
 
   it('handles too_hard', () => {
     expect(gotItLine('words', { reasons: ['too_hard'] })).toBe(
-      'Got it: Words will get easier from the next batch.',
+      'Got it: Words gets easier now.',
     );
+  });
+
+  it('too_easy and too_hard say the change is now, for every module', () => {
+    const labels: Array<[ModuleId, string]> = [
+      ['words', 'Words'],
+      ['smalltalk', 'Small talk'],
+      ['better', 'Say it better'],
+      ['phrases', 'Office phrases'],
+      ['stories', 'Stories'],
+    ];
+    for (const [mod, label] of labels) {
+      expect(gotItLine(mod, { reasons: ['too_hard'] })).toBe(`Got it: ${label} gets easier now.`);
+      expect(gotItLine(mod, { reasons: ['too_easy'] })).not.toMatch(/next batch/);
+    }
   });
 
   it('handles confusing', () => {
@@ -89,7 +103,7 @@ describe('learnedLines', () => {
         id: 'fb-1',
         cardId: 'c1',
         module: 'words',
-        reply: 'Got it: Words will get harder from the next batch.',
+        reply: 'Got it: Words gets harder now.',
         reasons: ['too_easy'],
         at: 100,
       },
@@ -120,7 +134,7 @@ describe('learnedLines', () => {
       },
       {
         id: 'fb-1',
-        text: 'Got it: Words will get harder from the next batch.',
+        text: 'Got it: Words gets harder now.',
       },
     ]);
   });

@@ -7,6 +7,7 @@ import samplePhrases from './53-office-phrases.json';
 import sampleStories from './54-stories.json';
 import outlineJson from '../library/outline.json';
 import { checkLibrary, checkLibraryFile, type OutlineItem } from '../../db/libraryCheck';
+import { tagProblems } from '../../features/cards/cardTags';
 
 // v7 steps 4-6, pass 11: the 115 Say it better pairs for explaining your
 // thinking, giving an update, explaining a delay and "what do you do?".
@@ -47,5 +48,9 @@ describe('library: better-thinking (72-better-thinking.json)', () => {
         expect(`${card.mightSay} ${card.better}`.toLowerCase()).not.toContain(phrase);
       }
     }
+  });
+  it('gives every card a topic from the fixed list and a level of 1, 2 or 3', () => {
+    const bad = cards.flatMap((card) => tagProblems(card).map((p) => `${card.id}: ${p}`));
+    expect(bad).toEqual([]);
   });
 });

@@ -430,3 +430,38 @@
 .v7-review-btn:active {
   transform: scale(0.97);
 }
+
+/* ── v8: topic label on every card + the Know it button first on the rail ── */
+
+.v7-theme {
+  align-self: flex-start;
+  margin-left: calc(var(--glass-gutter) - var(--glass-panel-inset));
+  padding: var(--s-1) var(--s-2);
+  border-radius: var(--glass-tap);
+  background: var(--glass-rail-btn-bg);
+  border: var(--glass-rim) solid var(--glass-rail-btn-border);
+  color: var(--glass-ink-soft);
+  font-size: var(--fs-1);
+  font-weight: var(--glass-fw-semi);
+  letter-spacing: var(--ls-label);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* A capsule: the tick over a tiny caption, never shorter than a thumb tap. */
+.v7-rail-btn.v7-rail-know {
+  flex-direction: column;
+  gap: 0;
+  width: var(--glass-tap);
+  height: auto;
+  min-height: var(--glass-tap);
+  padding: var(--s-1) 0;
+  border-radius: var(--glass-tap);
+}
+
+.v7-rail-cap {
+  font-size: var(--fs-1);
+  font-weight: var(--glass-fw-semi);
+  line-height: 1.1;
+  white-space: nowrap;
+}

@@ -1,12 +1,13 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { render, renderHook, screen, fireEvent, waitFor } from '@testing-library/react';
 import MeScreen from './MeScreen';
+import { useMe } from '../../features/me/useMe';
 import { db } from '../../db/db';
 import { addDays, todayKey } from '../../lib/date';
 import { emptyDay } from '../../features/session/day';
-import { grade, newReview } from '../../srs/scheduler';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { setSupabaseForTests } from '../../sync/supabase';
+import { askLearnedLines, saveAskTurn } from '../../features/learn/askLearned';
 
 /** A fake Supabase client for the backup row — never real keys. */
 function fakeClient(user: { id: string; email: string } | null = null, accounts: Record<string, string> = {}) {
@@ -60,13 +61,7 @@ const now = Date.now();
 async function clearAll() {
   await Promise.all([
     db.days.clear(),
-    db.reviews.clear(),
-    db.bookmarks.clear(),
-    db.lessonProgress.clear(),
-    db.weakSpots.clear(),
-    db.storyBank.clear(),
-    db.chats.clear(),
-    db.asks.clear(),
+    db.seen.clear(),
     db.meta.clear(),
     db.cards.clear(),
     db.feedback.clear(),
@@ -79,122 +74,60 @@ describe('MeScreen (v5)', () => {
     await clearAll();
   });
 
-  it('shows the three stats and five rows with empty states on a fresh phone', async () => {
+  it('shows the three stats and the learned panel, and nothing from the old screen, on a fresh phone', async () => {
     render(<MeScreen />);
 
     expect(screen.getByRole('heading', { name: 'Me' })).toBeInTheDocument();
     await waitFor(() => {
       expect(screen.getByTestId('stat-streak').textContent).toContain('0');
     });
-    expect(screen.getByTestId('stat-streak').textContent).toContain('day streak');
-    expect(screen.getByTestId('stat-words').textContent).toContain('words and phrases');
-    expect(screen.getByTestId('stat-lessons').textContent).toContain('lessons done');
+    expect(screen.getByTestId('stat-streak').textContent).toBe('0day streak');
+    expect(screen.getByTestId('stat-today').textContent).toBe('0cards today');
+    expect(screen.getByTestId('stat-words').textContent).toBe('0words and phrases');
+    expect(document.querySelectorAll('.me-stat')).toHaveLength(3);
+    expect(screen.queryByTestId('stat-lessons')).toBeNull();
 
+    // No rows, no gear, no "knows about me" panel.
+    expect(document.querySelector('.me-row')).toBeNull();
+    expect(document.querySelector('.me-rows')).toBeNull();
+    expect(document.querySelector('.me-gear')).toBeNull();
+    expect(screen.queryByRole('button', { name: /Old tools/i })).toBeNull();
+    expect(screen.queryByRole('button', { name: /Settings/i })).toBeNull();
     for (const title of ['Saved', 'My weak spots', 'Story bank', 'Evening chats', 'Things I asked']) {
-      expect(screen.getByText(title)).toBeInTheDocument();
+      expect(screen.queryByText(title)).toBeNull();
     }
-    expect(screen.getByText('Nothing saved yet')).toBeInTheDocument();
-    expect(screen.getByText('No chats yet')).toBeInTheDocument();
-    expect(screen.getByText('Nothing asked yet')).toBeInTheDocument();
-    expect(document.querySelectorAll('.me-row.is-empty')).toHaveLength(5);
+    expect(screen.queryByRole('heading', { name: 'What the app knows about me' })).toBeNull();
 
     expect(screen.getByRole('heading', { name: 'What the app learned from you' })).toBeInTheDocument();
     expect(screen.getByTestId('me-learned-empty')).toBeInTheDocument();
   });
 
-  it('opens the old tools sheet from the gear', () => {
-    const onOpen = vi.fn();
-    render(<MeScreen onOpenOldTools={onOpen} />);
-    fireEvent.click(screen.getByRole('button', { name: /Old tools/i }));
-    expect(onOpen).toHaveBeenCalledTimes(1);
-  });
-
   it('traces every number to a stored query', async () => {
     for (let i = 0; i < 3; i++) {
-      await db.days.put({ ...emptyDay(addDays(today, -i)), cardsCompleted: 5, coreThreeDone: true });
+      await db.days.put({ ...emptyDay(addDays(today, -i)), cardsCompleted: 5 + i, coreThreeDone: true });
     }
-    const reviews = Array.from({ length: 4 }, (_, i) => grade(newReview(`c${i}`, today), 'good', today, now).review);
-    await db.reviews.bulkPut(reviews);
-    await db.lessonProgress.bulkPut([
-      { lessonId: 'ls-smalltalk-1-1-1', doneAt: now },
-      { lessonId: 'ls-smalltalk-1-1-2', doneAt: now },
+    await db.seen.bulkPut([
+      { id: 'words:a', module: 'words', head: 'a', cardId: 'c1', at: now },
+      { id: 'words:b', module: 'words', head: 'b', cardId: 'c2', at: now },
+      { id: 'phrases:c', module: 'phrases', head: 'c', cardId: 'c3', at: now },
+      { id: 'smalltalk:d', module: 'smalltalk', head: 'd', cardId: 'c4', at: now },
+      { id: 'stories:e', module: 'stories', head: 'e', cardId: 'c5', at: now },
     ]);
-    await db.weakSpots.bulkPut([
-      { id: 'w1', wrong: 'tell my point', right: 'make my point', source: 'ask', createdAt: now },
-      { id: 'w2', wrong: 'old one', right: 'fixed', source: 'chat', createdAt: now - 10, fixedAt: now },
-    ]);
-    await db.asks.put({
-      id: 'a1',
-      createdAt: now,
-      text: 'ubiquitous',
-      askKind: 'word',
-      answer: 'everywhere',
-      cardIds: ['x', 'y', 'z'],
-      addedToFeed: true,
-    });
 
     render(<MeScreen />);
 
+    // 3 days in a row; today has 5 cards; seen = 2 words + 1 phrase (small talk and stories don't count).
     await waitFor(() => {
-      expect(screen.getByTestId('stat-streak').textContent).toContain('3');
-      expect(screen.getByTestId('stat-words').textContent).toContain('4');
-      expect(screen.getByTestId('stat-lessons').textContent).toContain('2');
+      expect(screen.getByTestId('stat-streak').textContent).toBe('3day streak');
+      expect(screen.getByTestId('stat-today').textContent).toBe('5cards today');
+      expect(screen.getByTestId('stat-words').textContent).toBe('3words and phrases');
     });
-    expect(screen.getByText('"tell my point"')).toBeInTheDocument();
-    expect(screen.queryByText(/old one/)).toBeNull();
-    expect(screen.getByText('1 question → 3 cards')).toBeInTheDocument();
   });
 
-  it('"What the app knows about me": plain empty lines on a fresh phone', async () => {
-    render(<MeScreen />);
-    expect(await screen.findByRole('heading', { name: 'What the app knows about me' })).toBeInTheDocument();
-    expect(screen.getByText(/Nothing yet\. Tell Ask what you want/)).toBeInTheDocument();
-    expect(screen.getByText(/None yet\. They come from what you ask/)).toBeInTheDocument();
-    await waitFor(() => expect(screen.getByTestId('me-knows-weak').textContent).toBe('None open right now.'));
-  });
-
-  it('shows his wishes newest first with Forget, the subjects (max 8) and open weak-spot counts', async () => {
-    await db.meta.put({
-      key: 'learn.profile',
-      value: {
-        wishTopics: [{ text: 'cricket', at: 9 }],
-        seenTopics: Array.from({ length: 10 }, (_, i) => ({ text: `subject ${i}`, at: 8 - i, source: 'chat' })),
-        notes: [
-          { text: 'Too easy for me', at: 5 },
-          { text: 'More cricket small talk', at: 9 },
-        ],
-        avoid: [],
-        amount: [],
-        difficulty: [],
-      },
-      updatedAt: 1,
-    });
-    await db.weakSpots.bulkPut([
-      { id: 'w1', wrong: 'tell my point', right: 'make my point', source: 'ask', createdAt: now },
-      { id: 'w2', wrong: 'do the needful', right: 'please handle it', source: 'chat', createdAt: now },
-      { id: 'w3', wrong: 'revert back', right: 'reply', source: 'chat', createdAt: now },
-      { id: 'w4', wrong: 'old', right: 'new', source: 'ask', createdAt: now, fixedAt: now },
-    ]);
-
-    render(<MeScreen />);
-
-    await waitFor(() => expect(screen.getAllByTestId('me-wish')).toHaveLength(2));
-    expect(screen.getAllByTestId('me-wish').map((li) => li.textContent)).toEqual([
-      'More cricket small talkForget',
-      'Too easy for meForget',
-    ]);
-    await waitFor(() => expect(screen.getAllByTestId('me-topic')).toHaveLength(8));
-    expect(screen.getAllByTestId('me-topic')[0]!.textContent).toBe('cricket');
-    expect(screen.getByTestId('me-knows-weak').textContent).toBe('3 open · 1 from Ask, 2 from evening chats');
-
-    const forget = screen.getByRole('button', { name: 'Forget: Too easy for me' });
-    expect(forget.className).toContain('tap');
-    fireEvent.click(forget);
-    await waitFor(() => expect(screen.getAllByTestId('me-wish')).toHaveLength(1));
-    const row = await db.meta.get('learn.profile');
-    expect((row?.value as { notes: Array<{ text: string }> }).notes.map((n) => n.text)).toEqual([
-      'More cricket small talk',
-    ]);
+  it('useMe returns the three numbers and nothing else', async () => {
+    const { result } = renderHook(() => useMe());
+    await waitFor(() => expect(result.current).toEqual({ streak: 0, cardsToday: 0, wordsAndPhrases: 0 }));
+    expect(Object.keys(result.current).sort()).toEqual(['cardsToday', 'streak', 'wordsAndPhrases']);
   });
 
   it('shows "What the app learned from you" newest first with a 44px remove button and removes lines', async () => {
@@ -258,6 +191,56 @@ describe('MeScreen (v5)', () => {
   });
 });
 
+describe('MeScreen: lines from the Ask box (v8)', () => {
+  beforeEach(async () => {
+    setSupabaseForTests(null);
+    await clearAll();
+  });
+
+  it('says what teaches the app when nothing is learned yet', async () => {
+    render(<MeScreen />);
+    expect((await screen.findByTestId('me-learned-empty')).textContent).toBe(
+      'Nothing yet. Know it, thumbs, comments and the Ask box teach the app what to show next.',
+    );
+  });
+
+  it('lists an Ask line with the card lines, newest first, and Remove takes it away', async () => {
+    await db.feedback.put({
+      id: 'fb-v7-words-01',
+      cardId: 'v7-words-01',
+      module: 'words',
+      reply: 'Got it: Words gets harder now.',
+      reasons: ['too_easy'],
+      at: now - 5000,
+    });
+    await saveAskTurn(
+      'more about money',
+      { reply: 'Done.', learned: [{ kind: 'more', theme: 'Money' }, { kind: 'wish', note: 'Short sentences please.' }] },
+      now,
+    );
+
+    render(<MeScreen />);
+
+    await waitFor(() => expect(screen.getAllByTestId('me-learned-item')).toHaveLength(3));
+    const items = screen.getAllByTestId('me-learned-item');
+    expect(items.map((i) => i.querySelector('.me-learned-text')!.textContent)).toEqual([
+      'More cards about Money.',
+      'Short sentences please.',
+      'Got it: Words gets harder now.',
+    ]);
+
+    const remove = screen.getByRole('button', { name: 'Remove: More cards about Money.' });
+    expect(remove.className).toContain('me-learned-remove');
+    fireEvent.click(remove);
+
+    await waitFor(() => expect(screen.getAllByTestId('me-learned-item')).toHaveLength(2));
+    expect(screen.queryByText('More cards about Money.')).toBeNull();
+    // The Ask store marked it removed (removeAskLearned); the card row is untouched.
+    expect((await askLearnedLines()).map((l) => l.text)).toEqual(['Short sentences please.']);
+    expect((await db.feedback.get('fb-v7-words-01'))?.hidden).toBeFalsy();
+  });
+});
+
 describe('MeScreen backup row (v7 step 6)', () => {
   beforeEach(async () => {
     await Promise.all([clearAll(), db.profile.clear(), db.outbox.clear()]);
@@ -271,11 +254,11 @@ describe('MeScreen backup row (v7 step 6)', () => {
     expect(row.textContent).toBe('Backup is not switched on yet');
     expect(screen.queryByRole('button', { name: 'Sign in' })).toBeNull();
     expect(screen.queryByLabelText('Password')).toBeNull();
-    // Sits between the stats and the rows.
+    // Sits under the stats and above "What the app learned from you".
     const stats = document.querySelector('.me-stats')!;
-    const rows = document.querySelector('.me-rows')!;
+    const learned = screen.getByRole('heading', { name: 'What the app learned from you' });
     expect(stats.compareDocumentPosition(row) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(row.compareDocumentPosition(rows) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(row.compareDocumentPosition(learned) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
   it('email + password → Sign in: wrong password says so, right one → "Backed up" + Sign out', async () => {

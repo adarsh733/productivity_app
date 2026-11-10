@@ -345,8 +345,10 @@ body,
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
+  /* v7 Night glass on every screen: the Feed's night page, not cream paper.
+     (--paper stays as a token for the old readers that still name it.) */
+  background: var(--glass-night);
+  color: var(--glass-ink);
   font-family: var(--sans);
   font-size: var(--fs-3);
   line-height: var(--lh-body);

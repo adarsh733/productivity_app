@@ -633,9 +633,9 @@
   height: var(--glass-icon-md);
 }
 
-/* ── Floating glass tab bar (only while the Feed is open) ────────────────── */
+/* ── Floating glass tab bar (every tab) ──────────────────────────────────── */
 
-.v5-shell:has(.v7-feed) .v5-tabs {
+.v5-shell .v5-tabs {
   position: absolute;
   left: var(--glass-tabbar-gap);
   right: var(--glass-tabbar-gap);
@@ -652,7 +652,7 @@
   z-index: 80;
 }
 
-.v5-shell:has(.v7-feed) .v5-tabs .tab {
+.v5-shell .v5-tabs .tab {
   color: var(--glass-ink-soft);
   font-size: var(--glass-fs-tab);
   font-weight: var(--fw-medium);
@@ -661,12 +661,12 @@
   gap: var(--glass-gap-xs);
 }
 
-.v5-shell:has(.v7-feed) .v5-tabs .tab .tab-icon {
+.v5-shell .v5-tabs .tab .tab-icon {
   width: var(--glass-icon-tab);
   height: var(--glass-icon-tab);
 }
 
-.v5-shell:has(.v7-feed) .v5-tabs .tab.is-active {
+.v5-shell .v5-tabs .tab.is-active {
   color: var(--glass-ink);
   font-weight: var(--fw-bold);
   background: var(--glass-sheen), var(--glass-tab-on-bg);

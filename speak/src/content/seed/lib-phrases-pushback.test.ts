@@ -7,6 +7,7 @@ import samplePhrases from './53-office-phrases.json';
 import sampleStories from './54-stories.json';
 import outlineJson from '../library/outline.json';
 import { checkLibrary, checkLibraryFile, type OutlineItem } from '../../db/libraryCheck';
+import { tagProblems } from '../../features/cards/cardTags';
 
 // v7 steps 4-6, pass 15: the 85 Office-phrase cards on pushback (45) and deadlines (40).
 const outline = outlineJson as unknown as Record<string, OutlineItem[]>;
@@ -45,5 +46,10 @@ describe('library: phrases-pushback (76-phrases-pushback.json)', () => {
       expect(card.similar).toHaveLength(2);
       expect(card.tags).toContain(card.group);
     }
+  });
+
+  it('gives every card a topic from the fixed list and a level of 1, 2 or 3 (v8)', () => {
+    const problems = (cards as unknown[]).flatMap((c) => tagProblems(c).map((p) => `${(c as { id: string }).id}: ${p}`));
+    expect(problems).toEqual([]);
   });
 });

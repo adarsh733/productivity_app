@@ -1,17 +1,10 @@
-import { describe, expect, it, vi, beforeEach } from 'vitest';
-import { render, screen, act } from '@testing-library/react';
+import { describe, expect, it, beforeEach } from 'vitest';
 import fs from 'fs';
 import path from 'path';
 import { db } from '../db/db';
 import { ensureSeeded, readSeedFiles } from '../db/seedLoader';
 import { buildQueue, getCardMultiplier } from '../srs/queue';
-import { INTEREST_OPTIONS } from '../types/interests';
-import { searchCards } from '../features/browse/categories';
-import { SpeakingAttemptSession } from '../features/speak/useSpeakingAttempt';
-import { validateAiFeedback } from '../features/ai/useAiFeedback';
-import CardFace from '../components/cards/CardFace';
-import AudioRecorder from '../components/speak/AudioRecorder';
-import type { AnyCard, Card, CardType, WordCard } from '../types/contract';
+import type { Card, WordCard } from '../types/contract';
 import { QUEUE_RULES } from '../types/contract';
 
 describe('Articulate V3 Release-Hardening & Regressions Suite', () => {
@@ -21,68 +14,6 @@ describe('Articulate V3 Release-Hardening & Regressions Suite', () => {
     await db.reviews.clear();
     await db.events.clear();
     await db.profile.clear();
-  });
-
-  // 1. Regression 1: Fabricated Spoken Rep
-  it('Regression 1: Audio session cancellation or idle state produces zero spoken rep credit', () => {
-    const session = new SpeakingAttemptSession({
-      durationSec: 30,
-    });
-
-    expect(session.state).toBe('idle');
-    expect(session.result).toBeNull();
-
-    session.cancel();
-    expect(session.state).toBe('cancelled');
-    expect(session.result).toBeNull();
-  });
-
-  // 2. Regression 2: Fabricated AI Fallback
-  it('Regression 2: AI feedback validator requires structured transcript evidence and rejects missing fields', () => {
-    // Missing required fields throws validation error rather than inventing canned praise
-    expect(() =>
-      validateAiFeedback({
-        summary: 'Incomplete response',
-      })
-    ).toThrow(/missing or empty strongPoint/);
-
-    expect(() => validateAiFeedback(null)).toThrow(/expected an object/);
-
-    const valid = validateAiFeedback({
-      summary: 'Crisp update on latency targets.',
-      strongPoint: 'Directly stated the 100ms p99 requirement.',
-      oneCorrection: 'Eliminate filler word before closing.',
-      suggestedAlternative: 'We will ship on Friday.',
-    });
-    expect(valid.summary).toBe('Crisp update on latency targets.');
-    expect(valid.strongPoint).toBe('Directly stated the 100ms p99 requirement.');
-  });
-
-  // 3. Regression 3: Recorder Cancellation on Render
-  it('Regression 3: AudioRecorder cleans up stream tracks cleanly on unmount without throwing errors', async () => {
-    const onComplete = vi.fn();
-    const onCancel = vi.fn();
-
-    const { unmount } = render(
-      <AudioRecorder
-        durationSec={30}
-        onComplete={onComplete}
-        onCancel={onCancel}
-        promptNode={<div>Test Active Recording</div>}
-      />
-    );
-
-    // Start recording
-    await act(async () => {
-      screen.getByRole('button', { name: /Start speaking/i }).click();
-    });
-
-    // Unmount during active recording
-    expect(() => {
-      act(() => {
-        unmount();
-      });
-    }).not.toThrow();
   });
 
   // 4. Regression 4: Duplicate XP Protection
@@ -166,63 +97,6 @@ describe('Articulate V3 Release-Hardening & Regressions Suite', () => {
     expect(newItems.length).toBe(0);
   });
 
-  // 7. Regression 7: Search Card Coverage & Browse Detail
-  it('Regression 7: searchCards covers all 13 card types without skipping any type', () => {
-    const sampleCards: Card[] = [
-      { id: 'w1', type: 'word', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, term: 'tangible', pos: 'adj', meaning: 'real', examples: ['a', 'b'], say: 'c' },
-      { id: 'p1', type: 'phrase', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, weak: 'revert back', strong: 'get back', why: 'calque', register: 'office' },
-      { id: 'd1', type: 'describe', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, imagePath: '', alt: '', prompt: 'monsoon cafe scene', beats: ['a', 'b', 'c'], targetVocab: ['rain', 'coffee', 'steam'], targetSec: 45 },
-      { id: 'e1', type: 'explain', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, topic: 'caching', angle: 'redis memory', beats: ['a', 'b', 'c'], targetVocab: ['latency', 'throughput', 'memory'], targetSec: 45 },
-      { id: 't1', type: 'teach_back', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, prompt: 'microservices vs monolith', beats: ['a', 'b', 'c'], targetSec: 45 },
-      { id: 'b1', type: 'breath', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, drill: 'box', title: 'Box Breathing', instructions: ['in', 'hold', 'out'], logUnit: 'seconds' },
-    ];
-
-    expect(searchCards(sampleCards, 'tangible').length).toBe(1);
-    expect(searchCards(sampleCards, 'revert').length).toBe(1);
-    expect(searchCards(sampleCards, 'monsoon').length).toBe(1);
-    expect(searchCards(sampleCards, 'caching').length).toBe(1);
-    expect(searchCards(sampleCards, 'monolith').length).toBe(1);
-    expect(searchCards(sampleCards, 'Box Breathing').length).toBe(1);
-  });
-
-  // 8. Regression 8: All 15 Card Faces Render Cleanly (14 old types + the v5 teach card)
-  it('Regression 8: CardFace renders all 15 card types without throwing or crashing', () => {
-    const cardTypes: CardType[] = [
-      'word', 'swap', 'idiom', 'action_verb', 'pronounce',
-      'say_it', 'breath', 'phrase', 'feeling', 'story_move',
-      'describe', 'explain', 'teach_back', 'situation', 'teach',
-    ];
-    expect(cardTypes).toHaveLength(15);
-
-    const makeCard = (type: CardType): AnyCard => {
-      switch (type) {
-        case 'word': return { id: 'w1', type: 'word', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, term: 'term', pos: 'noun', meaning: 'm', examples: ['e1', 'e2'], say: 's' };
-        case 'swap': return { id: 'sw1', type: 'swap', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, weak: 'w', answers: ['a'], timerSec: 5 };
-        case 'idiom': return { id: 'id1', type: 'idiom', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, phrase: 'p', meaning: 'm', scenario: 'sc', example: 'ex', corporate: true };
-        case 'action_verb': return { id: 'av1', type: 'action_verb', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, verb: 'v', meaning: 'm', contrast: 'c', examples: ['e1', 'e2'] };
-        case 'pronounce': return { id: 'pr1', type: 'pronounce', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, term: 't', syllables: 'T·est', stressIndex: 0 };
-        case 'say_it': return { id: 'sy1', type: 'say_it', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, line: 'l', marked: 'l /', targetWpm: 120 };
-        case 'breath': return { id: 'br1', type: 'breath', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, drill: 'box', title: 'Box', instructions: ['i1'], logUnit: 'seconds' };
-        case 'phrase': return { id: 'ph1', type: 'phrase', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, weak: 'wk', strong: 'st', why: 'y', register: 'office' };
-        case 'feeling': return { id: 'fe1', type: 'feeling', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, term: 'fe', meaning: 'm', contrast: 'c', example: 'ex' };
-        case 'story_move': return { id: 'sm1', type: 'story_move', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, move: 'mv', why: 'y', example: 'ex' };
-        case 'describe': return { id: 'ds1', type: 'describe', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, imagePath: '', alt: '', prompt: 'pr', beats: ['b1', 'b2', 'b3'], targetVocab: ['v1', 'v2', 'v3'], targetSec: 45 };
-        case 'explain': return { id: 'ex1', type: 'explain', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, topic: 'top', angle: 'ang', beats: ['b1', 'b2', 'b3'], targetVocab: ['v1', 'v2', 'v3'], targetSec: 45 };
-        case 'teach_back': return { id: 'tb1', type: 'teach_back', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, prompt: 'pr', beats: ['b1', 'b2', 'b3'], targetSec: 45 };
-        case 'situation': return { id: 'st1', type: 'situation', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, kind: 'incident', title: 't', prompt: 'pr', beats: ['b1', 'b2', 'b3'], targetVocab: [], targetSec: 60 };
-        case 'teach': return { id: 'te1', type: 'teach', lang: 'en', tags: [], source: 'seed', status: 'active', createdAt: 0, track: 'smalltalk', level: 1, kind: 'learn', category: 'Answer well', title: 'The 1+1 answer', rule: 'Answer with a feeling word plus one real detail.', examples: { work: 'Tiring, but good.', everyday: 'Really nice.' }, analogy: 'A door left open a crack.', tryPrompt: 'Answer with 1+1.', register: 'both' };
-        case 'module': throw new Error('v7 module cards are not AnyCard and never reach CardFace');
-      }
-    };
-
-    for (const type of cardTypes) {
-      const card = makeCard(type);
-      expect(() => {
-        render(<CardFace card={card} />);
-      }).not.toThrow();
-    }
-  });
-
   // 9. Regression 9: Asset Integrity
   it('Regression 9: manifest icons exist; scene images are optional (text-only scenes)', () => {
     const publicDir = path.resolve(__dirname, '../../public');
@@ -252,16 +126,6 @@ describe('Articulate V3 Release-Hardening & Regressions Suite', () => {
       const imagePath = (card as Extract<Card, { type: 'describe' }>).imagePath as string;
       const cleanPath = imagePath.replace(/^\//, '');
       expect(fs.existsSync(path.join(publicDir, cleanPath)), `Missing scene image: ${imagePath}`).toBe(true);
-    }
-  });
-
-  // 10. Regression 10: Stale Interest IDs
-  it('Regression 10: All interest IDs in INTEREST_OPTIONS are active and valid', () => {
-    const validIds = ['office', 'words', 'hindi', 'speaking', 'storytelling', 'ideas'];
-    for (const opt of INTEREST_OPTIONS) {
-      expect(validIds).toContain(opt.id);
-      expect(opt.label.length).toBeGreaterThan(0);
-      expect(opt.icon.length).toBeGreaterThan(0);
     }
   });
 

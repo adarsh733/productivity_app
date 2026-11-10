@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import cards from './62-words-people.json';
+import { tagProblems } from '../../features/cards/cardTags';
 import sampleWords from './50-words.json';
 import sampleTalk from './51-small-talk.json';
 import sampleBetter from './52-say-it-better.json';
@@ -24,5 +25,9 @@ describe('v7 library: words-people (62-words-people.json)', () => {
       '54-stories.json': sampleStories,
       '62-words-people.json': cards,
     })).toEqual([]);
+  });
+
+  it('gives every card a topic from the fixed list and a level 1-3', () => {
+    expect(cards.flatMap((c) => tagProblems(c))).toEqual([]);
   });
 });

@@ -1,13 +1,21 @@
-import { CardIcon, ChatIcon, YouIcon } from './Icons';
+import type { ComponentType, SVGProps } from 'react';
+import { CardIcon, ChatIcon, HeartIcon, YouIcon } from './Icons';
 
-export type AppTab = 'feed' | 'ask' | 'me';
+export type AppTab = 'feed' | 'favorites' | 'ask' | 'me';
 
-const TABS = [
-  { id: 'feed' as const, label: 'Feed' },
-  { id: 'ask' as const, label: 'Ask' },
-  { id: 'me' as const, label: 'Me' },
-] as const;
+interface TabEntry {
+  id: AppTab;
+  label: string;
+  Icon: ComponentType<SVGProps<SVGSVGElement> & { className?: string }>;
+}
 
+/** One entry per tab. Feed · Favorites · Ask · Me; a new tab = one union member above + one entry here. */
+const TABS: readonly TabEntry[] = [
+  { id: 'feed', label: 'Feed', Icon: CardIcon },
+  { id: 'favorites', label: 'Favorites', Icon: HeartIcon },
+  { id: 'ask', label: 'Ask', Icon: ChatIcon },
+  { id: 'me', label: 'Me', Icon: YouIcon },
+];
 
 export default function TabBar({
   active,
@@ -18,7 +26,7 @@ export default function TabBar({
 }) {
   return (
     <nav className="reset-tabbar tabs v5-tabs" aria-label="Primary navigation">
-      {TABS.map(({ id, label }) => {
+      {TABS.map(({ id, label, Icon }) => {
         const isActive = id === active;
         return (
           <button
@@ -29,13 +37,7 @@ export default function TabBar({
             onClick={() => onChange(id)}
             aria-label={`${label} tab`}
           >
-            {id === 'ask' ? (
-              <ChatIcon className="tab-icon" />
-            ) : id === 'feed' ? (
-              <CardIcon className="tab-icon" />
-            ) : (
-              <YouIcon className="tab-icon" />
-            )}
+            <Icon className="tab-icon" />
             <span>{label}</span>
           </button>
         );

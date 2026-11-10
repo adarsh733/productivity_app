@@ -3,10 +3,12 @@ import { db } from '../../db/db';
 import { ensureSeeded } from '../../db/seedLoader';
 import { headOf } from '../../db/libraryCheck';
 import { todayKey } from '../../lib/date';
-import { buildModuleQueue, seenHeadKey } from '../../srs/moduleQueue';
+import { buildModuleQueue, seenHeadKey, RUN_LENGTH } from '../../srs/moduleQueue';
+import { levelOf, themeOf } from '../cards/cardTags';
+import { THEMES } from '../../types/contract';
 import type { CardFeedback, ModuleCard, SeenTerm } from '../../types/contract';
 import { aiCallsUsed } from './budget';
-import { MODULE_BATCH_CALLS, maybeModuleBatch, recheckBatch, seenKey, unseenByModule, hiddenFrom, loadSeen } from './moduleBatch';
+import { KNOW_IT_TRIGGER, MODULE_BATCH_CALLS, maybeModuleBatch, recheckBatch, seenKey, unseenByModule, hiddenFrom, loadSeen } from './moduleBatch';
 import type { FetchFn } from '../coach/pipeline';
 
 // v7 steps 4-6, pass 21 (final review): one fake batch walked end to end.
@@ -102,6 +104,11 @@ describe('a fake AI batch, end to end', () => {
     await ensureSeeded();
     const library = (await db.cards.toArray()).filter((c) => (c as { type?: string }).type === 'module') as unknown as ModuleCard[];
     expect(library).toHaveLength(1500);
+    // Every seed card carries a topic from the fixed list and a level 1-3.
+    for (const c of library) {
+      expect(THEMES as readonly string[]).toContain(c.theme);
+      expect([1, 2, 3]).toContain(c.level);
+    }
 
     // 2. He has read 50 of the 100 Stories, so Stories drops under the trigger of 60.
     const stories = library.filter((c) => c.module === 'stories');
@@ -155,7 +162,13 @@ describe('a fake AI batch, end to end', () => {
     expect(ai.map((c) => c.id).sort()[0]).toBe('v7-ai-stories-0001');
     for (const c of ai) {
       expect(c).toMatchObject({ type: 'module', module: 'stories', lang: 'en', source: 'ai', status: 'active', batchId: batch!.id });
+      // v8: every stored AI card keeps a topic from the list and a level (the drafts sent none: the server fills them).
+      expect(THEMES as readonly string[]).toContain(themeOf(c));
+      expect(c.theme).toBeDefined();
+      expect(c.level).toBeDefined();
     }
+    // The request told the writer the topic list; his 👍 card's topic leads the liked topics.
+    expect(first).toContain('Money');
     const outbox = await db.outbox.toArray();
     for (const c of ai) expect(outbox.some((o) => o.table === 'cards' && o.key === c.id)).toBe(true);
     expect(await aiCallsUsed(TODAY)).toBe(MODULE_BATCH_CALLS);
@@ -183,5 +196,106 @@ describe('a fake AI batch, end to end', () => {
     expect((await db.cards.get(rest[0]!.id) as unknown as Raw).status).toBe('buried');
     expect((await db.feedback.get(`fb-${rest[0]!.id}`))?.hidden).toBe(true);
     expect(checkerCalls).toHaveLength(4);
+  });
+
+  it('ten Know-its on Words start a batch of harder Words even with plenty unseen; the new cards are served up front', async () => {
+    await ensureSeeded();
+    const library = (await db.cards.toArray()).filter((c) => (c as { type?: string }).type === 'module') as unknown as ModuleCard[];
+    const words = library.filter((c) => c.module === 'words');
+    // Nothing is thin: he has read nothing, every module has 100+ unseen.
+    const none = await loadSeen();
+    const unseen = unseenByModule(await db.cards.toArray(), none.ids, none.keys, new Set());
+    expect(Math.min(...Object.values(unseen))).toBeGreaterThanOrEqual(60);
+
+    // Nine Know-its: no batch. The tenth: a batch for Words.
+    const know = (c: ModuleCard, i: number): CardFeedback => ({
+      id: `fb-${c.id}`, cardId: c.id, module: 'words', reasons: ['too_easy'], reply: '', at: NOW - 5000 + i,
+    });
+    await db.feedback.bulkPut(words.slice(0, KNOW_IT_TRIGGER - 1).map(know));
+    expect(await maybeModuleBatch({ fetchFn: phoneFetch, now: () => NOW })).toBeNull();
+    expect(writerCalls).toHaveLength(0);
+    await db.feedback.put(know(words[KNOW_IT_TRIGGER - 1]!, KNOW_IT_TRIGGER));
+    await db.profile.put({ id: 'me', createdAt: 1, userId: null, moduleLevels: { words: 3 } });
+
+    const wordsDraft = (k: number): Raw => ({
+      type: 'module',
+      module: 'words',
+      topic: 'Strong feelings',
+      theme: 'Emotions',
+      level: 3,
+      word: `exuberant${k}`,
+      pos: 'adjective',
+      say: 'ig-ZOO-ber-ant',
+      meaning: 'Full of lively, happy energy.',
+      examples: [
+        { label: 'At home', text: `The kids were **exuberant${k}** at breakfast.`, icon: 'home' },
+        { label: 'At work', text: `The team was **exuberant${k}** after the launch.`, icon: 'work' },
+      ],
+      right: { label: '✓ Right', text: `An **exuberant${k}** welcome.` },
+      wrong: [{ label: '✗ Not for a calm mood', text: `I felt exuberant${k} and tired.` }],
+      rule: 'only for lively joy',
+      // the server asks for a quick check on every third Words card; every card here carries one
+      check: {
+        question: `Which line fits exuberant${k}?`,
+        options: [
+          { text: 'A loud, happy crowd', right: true },
+          { text: 'A quiet, sad room', right: false },
+          { text: 'A slow, tired walk', right: false },
+        ],
+      },
+    });
+    // Swap the writer for Words cards: the real server still validates them.
+    const realFetch = global.fetch;
+    global.fetch = vi.fn(async (url: RequestInfo | URL, init?: RequestInit) => {
+      if (String(url).includes('generativelanguage.googleapis.com')) {
+        const body = JSON.parse(String(init?.body ?? '{}'));
+        writerCalls.push({ system: body.systemInstruction.parts[0].text, user: body.contents[0].parts[0].text });
+        const cards = Array.from({ length: 10 }, () => wordsDraft(++n));
+        const text = JSON.stringify({ cards });
+        return new Response(JSON.stringify({ candidates: [{ content: { parts: [{ text }] } }] }), { status: 200 });
+      }
+      return (realFetch as typeof fetch)(url, init);
+    }) as typeof fetch;
+
+    const batch = await maybeModuleBatch({ fetchFn: phoneFetch, now: () => NOW });
+    expect(batch).not.toBeNull();
+    expect(batch!.module).toBe('words');
+    expect(batch!.status).toBe('done');
+    expect(batch!.level).toBe(3);
+    expect(batch!.kept).toHaveLength(30);
+    expect(await aiCallsUsed(TODAY)).toBe(MODULE_BATCH_CALLS);
+
+    // The writer was told his level and the topic list.
+    expect(writerCalls).toHaveLength(3);
+    expect(writerCalls[0]!.user).toContain('Emotions');
+    const ai = (await db.cards.where('id').anyOf(batch!.kept).toArray()) as unknown as ModuleCard[];
+    for (const c of ai) {
+      expect(c).toMatchObject({ source: 'ai', batchId: batch!.id, theme: 'Emotions', level: 3 });
+      expect(levelOf(c)).toBe(3);
+    }
+
+    // The next app open does not batch Words again (the ten are older than the finished batch).
+    expect(await maybeModuleBatch({ fetchFn: phoneFetch, now: () => NOW + 10 * 60 * 1000 })).toBeNull();
+
+    // The feed: his level, and the new cards up front (mixed in with the usual cards).
+    const all = (await db.cards.toArray()).filter((c) => (c as { type?: string }).type === 'module') as unknown as ModuleCard[];
+    const seenNow = await loadSeen();
+    const queue = buildModuleQueue(all, {
+      today: TODAY,
+      filter: 'words',
+      seenIds: seenNow.ids,
+      hiddenIds: hiddenFrom(await db.feedback.toArray()),
+      limit: 100,
+      seenHeads: new Set(),
+      levels: { words: 3 },
+      runLength: RUN_LENGTH,
+      frontIds: [...batch!.kept].reverse(),
+    });
+    expect(queue.length).toBeGreaterThan(30);
+    // Mixed in one for one (answer 4 = A): all 30 are inside the first 60 places, and none was served.
+    const isAi = (c: ModuleCard) => (c as unknown as Raw).source === 'ai';
+    expect(queue.slice(0, 60).filter(isAi)).toHaveLength(30);
+    expect(isAi(queue[0]!) || isAi(queue[1]!)).toBe(true);
+    expect(queue.every((c) => levelOf(c) === 3)).toBe(true);
   });
 });

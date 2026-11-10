@@ -2,7 +2,7 @@ import { MODULE_LABEL, type CardFeedback, type FeedbackReason, type ModuleId } f
 
 /**
  * Generates the one-line AI reply for feedback given on a module card.
- * Example: Too easy on Words gives "Got it: Words will get harder from the next batch."
+ * Example: Too easy on Words gives "Got it: Words gets harder now."
  */
 export function gotItLine(
   module: ModuleId,
@@ -19,10 +19,10 @@ export function gotItLine(
     return 'Got it: Card removed and flagged for review.';
   }
   if (reasons.includes('too_easy')) {
-    return `Got it: ${name} will get harder from the next batch.`;
+    return `Got it: ${name} gets harder now.`;
   }
   if (reasons.includes('too_hard')) {
-    return `Got it: ${name} will get easier from the next batch.`;
+    return `Got it: ${name} gets easier now.`;
   }
   if (reasons.includes('confusing')) {
     return `Got it: We'll use simpler examples for ${name} from the next batch.`;

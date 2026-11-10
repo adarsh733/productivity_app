@@ -121,6 +121,55 @@ all feed top-up, misses, Ask, the evening chat and the weekly plan.
   (generate + check); background work stops when fewer than 12 are left.
 - **"Harder" may stretch one level past the open lesson level** (top-up only).
 
+## v8 levels, Know it, topic runs, Ask box (2026-11-10) — owed, not blocked
+
+- **Not committed, not pushed.** Built on `v4-usable` on top of the trim; the
+  live site runs the pushed v7 build until Adarsh says push.
+- **His look at the new screens.** `docs/redesign-v7/built-know-it.png`,
+  `built-ask.png`, `built-ask-reply.png` (faked reply), `built-me-learned-ask.png`,
+  `built-tabbar-ask.png`; every Feed / Favorites picture now shows the topic label.
+- **Owed for a live run:** the AI keys on Netlify (the Ask box says "The AI is
+  not set up yet." without them) and one real `tell_app` reply and one real
+  Know-it batch. Every test fakes the model.
+- **expand_seed rulebook slice is at 17,970 of its 18,000-character cap**
+  (verify_batch 17,502). Any new line in chapters 0-9 that expand_seed carries
+  needs a trim elsewhere first, or the rulebook test fails.
+- **Know it's "Got it" line is stored, not shown.** Know it just moves to the
+  next card (answer 7 = A); the line lands on the card's feedback row and in Me.
+- **An Ask reply reaches the Feed when the Feed next opens.** The Feed is not
+  mounted while Ask is open, so switching back re-reads levels and topic boosts.
+  Edge: send, then switch to Feed before the reply lands, and that one reply
+  waits for the next Feed open (or the next refill).
+- **Thinking words are mostly "General"** (92 of 97): no thinking topic in the
+  fixed 10. Topic runs weigh each topic the same, so General does not flood the
+  Feed. Tag notes: `speak/src/content/staging/v8-tags-*.md`.
+- **👍 line still says "from the next batch"** (true for the batch; the Feed's
+  topic runs pick it up on the next load too). Only Too easy / Too hard say "now".
+
+## v7 trim to Feed · Favorites · Me (2026-11-10) — owed, not blocked
+
+- **Not committed, not pushed.** The live site still runs the pushed v7 build
+  (with Ask) until Adarsh looks at the pictures and says push.
+- **His look at the new screens.** `docs/redesign-v7/built-favorites.png`,
+  `built-favorites-empty.png`, `built-me-home.png`, `built-me-learned.png`,
+  `built-me-backup.png`, `built-tabbar-favorites.png`, `built-tabbar-me.png`.
+  Feed pictures were re-shot and look the same (the card shown is the day's
+  first, so the word differs). Favorites and Me use the plain night background
+  (no module glow) when no card fills the screen.
+- **Favorites shows module cards only.** Old-style ♡ bookmarks (pre-v7 cards)
+  stay in `db.bookmarks` but are not listed. A card un-♡'d in Favorites stays
+  on screen with a hollow ♡ (tap again to keep it) until Favorites is opened
+  again; then it is gone.
+- **"Words and phrases" counts cards seen,** not cards mastered (`db.seen` rows
+  for Words + Office phrases). "Cards today" reads `db.days.cardsCompleted`.
+- **Kept but unused on purpose:** `features/learn/profile.ts` (v8 reads it),
+  `features/auto/plan.ts` (the weekly `plan_week` call is unplugged; `sync`
+  imports `VOICE_GOALS`), `components/feed/useCardGestures.ts` (Feed file),
+  the old Dexie tables and contract types (his stored data). The old picture
+  specs and the 16 v4 screenshots were deleted, not just switched off.
+- **Backup row test** now accepts either line: with keys in `speak/.env` Me
+  shows the email + password form, without them "Backup is not switched on yet".
+
 ## v7 steps 4-6 final review (2026-11-08) — owed, not blocked
 
 - **Backup is built but off: his Supabase keys.** He pastes the Project URL and

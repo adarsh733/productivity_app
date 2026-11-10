@@ -1,6 +1,7 @@
 import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent, act, waitFor, cleanup } from '@testing-library/react';
 import FeedScreen from './FeedScreen';
+import FavoritesScreen from '../favorites/FavoritesScreen';
 import { db } from '../../db/db';
 import { ensureSeeded } from '../../db/seedLoader';
 import * as speechModule from '../../lib/speech';
@@ -11,6 +12,33 @@ vi.mock('../../lib/speech', () => ({
   speak: vi.fn(),
   supported: vi.fn(() => true),
   voices: vi.fn(() => []),
+}));
+
+// The real feed hook, with the two v8 calls watched (they still run for real).
+const spies = vi.hoisted(() => ({ knowIt: vi.fn(), applyLevels: vi.fn() }));
+vi.mock('../../features/feed/useModuleFeed', async (orig) => {
+  const real = await orig<typeof import('../../features/feed/useModuleFeed')>();
+  return {
+    ...real,
+    useModuleFeed: () => {
+      const feed = real.useModuleFeed();
+      return {
+        ...feed,
+        knowIt: (card: ModuleCard) => {
+          spies.knowIt(card);
+          return feed.knowIt(card);
+        },
+        applyLevels: () => {
+          spies.applyLevels();
+          return feed.applyLevels();
+        },
+      };
+    },
+  };
+});
+vi.mock('../../features/auto/moduleBatch', async (orig) => ({
+  ...(await orig<typeof import('../../features/auto/moduleBatch')>()),
+  maybeModuleBatch: () => Promise.resolve(null),
 }));
 
 describe('FeedScreen Component Suite', () => {
@@ -342,5 +370,106 @@ describe('FeedScreen Component Suite', () => {
       expect(row?.due).toBe(addDays(todayKey(), 3));
       expect(row?.lastAnswer).toBe('not_yet');
     });
+  });
+
+  it('every card shows its topic label and carries data-theme and data-level', async () => {
+    render(<FeedScreen />);
+    await waitFor(() => {
+      expect(document.querySelector('.v7-card')).not.toBeNull();
+    });
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('.v7-card'));
+    expect(cards.length).toBeGreaterThan(0);
+    cards.forEach((card) => {
+      expect(card.getAttribute('data-theme')).toBeTruthy();
+      expect(['1', '2', '3']).toContain(card.getAttribute('data-level'));
+      const label = card.querySelector('[data-testid="card-theme"]');
+      expect(label?.textContent).toBe(card.getAttribute('data-theme'));
+    });
+  });
+
+  it('Know it is the first rail button; tapping it calls knowIt, then moves to the next card', async () => {
+    const scrollTo = vi.fn();
+    const proto = HTMLElement.prototype as unknown as { scrollTo?: unknown };
+    const hadScrollTo = Object.prototype.hasOwnProperty.call(proto, 'scrollTo');
+    const before = proto.scrollTo;
+    proto.scrollTo = scrollTo;
+    const height = vi.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(800);
+    try {
+      render(<FeedScreen />);
+      await waitFor(() => {
+        expect(document.querySelector('.v7-card')).not.toBeNull();
+      });
+
+      const first = document.querySelector('.v7-card')!;
+      const rail = first.querySelector('[role="toolbar"]')!;
+      const labels = Array.from(rail.querySelectorAll('button')).map((b) => b.getAttribute('aria-label'));
+      expect(labels[0]).toBe('Know it');
+
+      const firstId = first.getAttribute('data-card-id')!;
+      const btn = screen.getAllByRole('button', { name: 'Know it' })[0]!;
+      await act(async () => {
+        fireEvent.click(btn);
+      });
+
+      expect(spies.knowIt).toHaveBeenCalledTimes(1);
+      expect(spies.knowIt.mock.calls[0]![0].id).toBe(firstId);
+      await waitFor(() => {
+        expect(scrollTo).toHaveBeenCalledWith({ top: 800, behavior: 'smooth' });
+      });
+      const row = await db.feedback.get(`fb-${firstId}`);
+      expect(row?.reasons).toContain('too_easy');
+    } finally {
+      height.mockRestore();
+      if (hadScrollTo) proto.scrollTo = before;
+      else delete proto.scrollTo;
+    }
+  });
+
+  it('closing the feedback sheet re-reads the levels', async () => {
+    render(<FeedScreen />);
+    await waitFor(() => {
+      expect(document.querySelector('.v7-card')).not.toBeNull();
+    });
+    await act(async () => {
+      fireEvent.click(screen.getAllByRole('button', { name: 'Comment' })[0]!);
+    });
+    expect(await screen.findByRole('heading', { name: 'What did you think?' })).toBeInTheDocument();
+    expect(spies.applyLevels).not.toHaveBeenCalled();
+    await act(async () => {
+      fireEvent.click(screen.getByTestId('feedback-sheet-handle'));
+    });
+    await waitFor(() => expect(spies.applyLevels).toHaveBeenCalledTimes(1));
+  });
+
+  it('Too easy in the sheet says the change is now', async () => {
+    render(<FeedScreen />);
+    await waitFor(() => {
+      expect(document.querySelector('.v7-card')).not.toBeNull();
+    });
+    await act(async () => {
+      fireEvent.click(screen.getAllByRole('button', { name: 'Comment' })[0]!);
+    });
+    await act(async () => {
+      fireEvent.click(await screen.findByRole('button', { name: 'Too easy' }));
+    });
+    const dialog = screen.getByRole('dialog');
+    await waitFor(() => {
+      expect(dialog.textContent).toMatch(/gets harder now\./);
+    });
+    expect(dialog.textContent).not.toMatch(/next batch/);
+  });
+
+  it('Favorites keeps its one heart + speaker rail (no Know it) and still shows the topic label', async () => {
+    const all = (await db.cards.where('type').equals('module').toArray()) as unknown as ModuleCard[];
+    const word = all.find((c) => c.module === 'words')!;
+    await db.bookmarks.put({ cardId: word.id, createdAt: 1_000 });
+    render(<FavoritesScreen />);
+    await waitFor(() => expect(screen.getAllByTestId('fav-card')).toHaveLength(1));
+    expect(screen.queryByRole('button', { name: 'Know it' })).toBeNull();
+    const rail = screen.getByRole('toolbar', { name: 'Card actions' });
+    const labels = Array.from(rail.querySelectorAll('button')).map((b) => b.getAttribute('aria-label'));
+    expect(labels).toEqual(['Remove from Favorites', 'Hear pronunciation']);
+    expect(screen.getByTestId('card-theme')).toBeInTheDocument();
+    expect(document.querySelector('.v7-card')?.getAttribute('data-level')).toBeTruthy();
   });
 });

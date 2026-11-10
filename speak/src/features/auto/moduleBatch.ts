@@ -8,9 +8,11 @@ import type {
   ModuleId,
   ModuleLevel,
 } from '../../types/contract';
-import { MODULES } from '../../types/contract';
+import { MODULES, THEMES } from '../../types/contract';
 import { db, enqueue, getMeta, setMeta } from '../../db/db';
 import { headOf, checkLibraryFile, type LibraryKey } from '../../db/libraryCheck';
+import { tagProblems, themeOf } from '../cards/cardTags';
+import { addedThemes, askWishes, themeBoosts } from '../learn/askLearned';
 import { todayKey } from '../../lib/date';
 import {
   AI_NEEDS_KEY_META,
@@ -48,6 +50,13 @@ export const MODULE_BATCH_CALLS = 6;
 export const MODULE_BATCHES_PER_DAY = 2;
 /** Between two batches (also stops two simultaneous app opens). */
 export const MODULE_BATCH_GAP_MS = 5 * 60 * 1000;
+/**
+ * v8: a module with this many Know it / Too easy taps since its last finished
+ * batch gets a batch of harder cards even with plenty unseen.
+ */
+export const KNOW_IT_TRIGGER = 10;
+/** Most topic labels one request may carry (the server's limit). */
+const THEMES_MAX = 20;
 /** Every module starts here. */
 export const MODULE_LEVEL_START: ModuleLevel = 2;
 
@@ -73,8 +82,8 @@ const KEY_FOR: Record<ModuleId, LibraryKey> = {
   stories: 'stories-more',
 };
 
-/** A feedback row with the head of the card it is about. */
-export type FeedbackWithHead = CardFeedback & { head: string };
+/** A feedback row with the head (and topic label) of the card it is about. */
+export type FeedbackWithHead = CardFeedback & { head: string; theme?: string };
 
 /** The seen-once key: `${module}:${head.toLowerCase()}` (same as `SeenTerm.id`). */
 export function seenKey(module: ModuleId, head: string): string {
@@ -107,18 +116,55 @@ export function unseenByModule(
 }
 
 /**
- * The module with the fewest unseen cards that is under the trigger, skipping
- * any module already batched today. null = nothing to do now (also when
- * today's two batches are used). Ties keep the module list order.
+ * Know it / Too easy taps per module since that module's last finished batch
+ * (rows he forgot on Me do not count). `batches` = the stored batch rows.
+ */
+export function knowItCounts(
+  feedback: readonly CardFeedback[],
+  batches: readonly Pick<ModuleBatch, 'module' | 'at' | 'status'>[],
+): Record<ModuleId, number> {
+  const out = { words: 0, smalltalk: 0, better: 0, phrases: 0, stories: 0 } as Record<ModuleId, number>;
+  const lastDone: Partial<Record<ModuleId, number>> = {};
+  for (const b of batches) {
+    if (b.status === 'done') lastDone[b.module] = Math.max(lastDone[b.module] ?? 0, b.at);
+  }
+  for (const f of feedback) {
+    if (!MODULES.includes(f.module) || f.hidden || !f.reasons?.includes('too_easy')) continue;
+    if (f.at > (lastDone[f.module] ?? 0)) out[f.module]++;
+  }
+  return out;
+}
+
+/**
+ * The module that gets a batch now. First (v8) a module with
+ * `KNOW_IT_TRIGGER` or more Know-its since its last batch (the one with the
+ * most), even with 60 or more unseen. Then the module with the fewest unseen
+ * cards under the trigger. A module already batched today is skipped; null =
+ * nothing to do now (also when today's two batches are used). Ties keep the
+ * module list order.
  */
 export function pickBatchModule(
   unseen: Record<ModuleId, number>,
   state: BatchState | undefined,
   today: string = todayKey(),
+  knowIts?: Partial<Record<ModuleId, number>>,
 ): ModuleId | null {
   const sameDay = !!state && state.date === today;
   if (sameDay && state.count >= MODULE_BATCHES_PER_DAY) return null;
   const done = new Set(sameDay ? state.modules : []);
+  if (knowIts) {
+    let top: ModuleId | null = null;
+    let topCount = KNOW_IT_TRIGGER - 1;
+    for (const m of MODULES) {
+      if (done.has(m)) continue;
+      const k = knowIts[m] ?? 0;
+      if (k > topCount) {
+        top = m;
+        topCount = k;
+      }
+    }
+    if (top) return top;
+  }
   let best: ModuleId | null = null;
   let bestCount = Infinity;
   for (const m of MODULES) {
@@ -157,6 +203,7 @@ export function batchRequest(
   seenHeads: readonly string[],
   startId: string,
   count: number = MODULE_BATCH_PER_CALL,
+  topics?: BatchTopics,
 ): ModuleBatchRequest {
   const rows = feedback
     .filter((f) => f.module === module && !f.hidden)
@@ -165,6 +212,7 @@ export function batchRequest(
   const liked: string[] = [];
   const disliked: ModuleBatchRequest['disliked'] = [];
   const comments: string[] = [];
+  const likedThemes: string[] = [];
   for (const f of rows) {
     const reasons = f.reasons ?? [];
     if (f.head) {
@@ -172,12 +220,13 @@ export function batchRequest(
         disliked.push({ head: f.head, reasons: [...reasons] });
       } else if (f.thumb === 'up' || reasons.includes('loved')) {
         liked.push(f.head);
+        if (f.theme && f.theme !== 'General') likedThemes.push(f.theme);
       }
     }
     const c = f.comment?.trim();
     if (c && comments.length < COMMENTS_MAX) comments.push(c);
   }
-  return {
+  const request: ModuleBatchRequest = {
     type: 'module',
     module,
     count: Math.max(1, Math.min(MODULE_BATCH_PER_CALL, count)),
@@ -188,18 +237,51 @@ export function batchRequest(
     seen: [...seenHeads],
     startId,
   };
+  if (topics) {
+    request.themes = unique(topics.themes).slice(0, THEMES_MAX);
+    request.likedThemes = unique([...likedThemes, ...topics.more]).slice(0, THEMES_MAX);
+    request.wishes = topics.wishes.slice(0, 6);
+  }
+  return request;
+}
+
+/** What the writer is told about topics: the allowed labels, his Ask "more" topics, his Ask wishes. */
+export interface BatchTopics {
+  themes: string[];
+  more: string[];
+  wishes: string[];
+}
+
+const unique = (xs: readonly string[]): string[] => [...new Set(xs)];
+
+/** THEMES plus the topics added via Ask, his "more" topics and wishes (all from the Ask store). */
+export async function loadBatchTopics(): Promise<BatchTopics> {
+  const [added, boosts, wishes] = await Promise.all([
+    addedThemes().catch(() => [] as string[]),
+    themeBoosts().catch(() => ({}) as Record<string, number>),
+    askWishes().catch(() => [] as string[]),
+  ]);
+  const themes = unique([...THEMES, ...added]);
+  const more = Object.entries(boosts)
+    .filter(([t, w]) => w > 1 && themes.includes(t))
+    .map(([t]) => t);
+  return { themes, more, wishes };
 }
 
 /**
  * The library rules for ONE drafted card (no outline): shape, 40-word slides,
- * no Hindi, the ✗ wrong-use line. Returns the problems; empty = fine.
+ * no Hindi, the ✗ wrong-use line, and (v8) a topic label from THEMES or
+ * `extraThemes` plus a level 1-3. Returns the problems; empty = fine.
  */
-export function draftProblems(draft: unknown, module: ModuleId): string[] {
+export function draftProblems(draft: unknown, module: ModuleId, extraThemes: readonly string[] = []): string[] {
   if (!draft || typeof draft !== 'object' || Array.isArray(draft)) return ['not a card'];
   const o = draft as Record<string, unknown>;
   const key = KEY_FOR[module];
   const probe = { ...o, lang: o.lang ?? 'en', id: `v7-${key}-001` };
-  return checkLibraryFile([probe], key).filter((p) => !p.startsWith('expected exactly'));
+  return [
+    ...checkLibraryFile([probe], key).filter((p) => !p.startsWith('expected exactly')),
+    ...tagProblems(o, extraThemes),
+  ];
 }
 
 const pad4 = (n: number) => String(n).padStart(4, '0');
@@ -237,12 +319,12 @@ async function feedbackWithHeads(
   rows: CardFeedback[],
   cards: readonly unknown[],
 ): Promise<FeedbackWithHead[]> {
-  const heads = new Map<string, string>();
-  for (const c of cards) if (isModuleCard(c)) heads.set(c.id, headOf(c));
+  const heads = new Map<string, { head: string; theme: string }>();
+  for (const c of cards) if (isModuleCard(c)) heads.set(c.id, { head: headOf(c), theme: themeOf(c) });
   const out: FeedbackWithHead[] = [];
   for (const f of rows) {
-    const head = heads.get(f.cardId);
-    if (head) out.push({ ...f, head });
+    const h = heads.get(f.cardId);
+    if (h?.head) out.push({ ...f, head: h.head, theme: h.theme });
     else if (f.comment) out.push({ ...f, head: '' });
   }
   return out;
@@ -296,6 +378,7 @@ async function executeBatch(module: ModuleId, d: BatchDeps, at: number, today: s
     await db.batches.put({ ...batch });
 
     const feedback = await feedbackWithHeads(fbRows, cards);
+    const topics = await loadBatchTopics();
     // Every head the new cards must not repeat: seen, already in his library, and this batch's own.
     const known = new Set<string>(seen.keys);
     const seenHeads: string[] = seen.terms.filter((t) => t.module === module).map((t) => t.head);
@@ -312,6 +395,8 @@ async function executeBatch(module: ModuleId, d: BatchDeps, at: number, today: s
         feedback,
         seenHeads,
         `v7-ai-${module}-${pad4(counter)}`,
+        MODULE_BATCH_PER_CALL,
+        topics,
       );
       batch.asked += request.count;
 
@@ -330,7 +415,7 @@ async function executeBatch(module: ModuleId, d: BatchDeps, at: number, today: s
       // Local check first: shape, 40 words, no Hindi, the ✗ line, no repeated head.
       const usable: Record<string, unknown>[] = [];
       for (const raw of drafts) {
-        if (draftProblems(raw, module).length > 0) continue;
+        if (draftProblems(raw, module, topics.themes).length > 0) continue;
         const o = raw as Record<string, unknown>;
         const head = headOf(o);
         const k = seenKey(module, head);
@@ -452,13 +537,19 @@ export function maybeModuleBatch(deps: Partial<BatchDeps> = {}): Promise<ModuleB
       const d = depsOf(deps);
       const at = d.now();
       const today = todayKey(new Date(at));
-      const [cards, fbRows, seen, state] = await Promise.all([
+      const [cards, fbRows, seen, state, batches] = await Promise.all([
         db.cards.toArray(),
         db.feedback.toArray(),
         loadSeen(),
         getMeta<BatchState>(MODULE_BATCH_META),
+        db.batches.toArray(),
       ]);
-      const module = pickBatchModule(unseenByModule(cards, seen.ids, seen.keys, hiddenFrom(fbRows)), state, today);
+      const module = pickBatchModule(
+        unseenByModule(cards, seen.ids, seen.keys, hiddenFrom(fbRows)),
+        state,
+        today,
+        knowItCounts(fbRows, batches),
+      );
       if (!module) return null;
       if (!(await claimBatch(module, at, today))) return null;
       return await executeBatch(module, d, at, today);

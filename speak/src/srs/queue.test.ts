@@ -311,18 +311,6 @@ describe('V3 Queue Rules and Rotation', () => {
     expect(pos).toBeLessThan(10);
   });
 
-  it('deck rings count reviews: seen/total from stored review state', async () => {
-    const { getDeckProgress } = await import('../features/browse/categories');
-    const deck = [card('a', 'word'), card('b', 'word'), card('c', 'word')];
-    const reviews = new Map<string, Review>([
-      ['a', { ...newReview('a', TODAY), state: 'learning', reps: 1 }],
-    ]);
-    const progress = getDeckProgress(deck, reviews);
-    expect(progress.total).toBe(3);
-    expect(progress.seen).toBe(1);
-    expect(progress.percent).toBe(33);
-  });
-
   it('downweighted type shows up measurably less often across a 200-card queue', () => {
     const deck: Card[] = [];    for (let i = 0; i < 40; i++) deck.push(card(`w${i}`, 'word'));
     for (let i = 0; i < 40; i++) deck.push(card(`i${i}`, 'idiom'));

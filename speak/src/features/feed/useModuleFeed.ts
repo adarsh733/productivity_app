@@ -1,9 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type {
+  CardFeedback,
   DayKey,
   DayRecord,
   FeedFilter,
   ModuleCard,
+  ModuleId,
+  ModuleLevel,
   ProductionEvent,
   SeenTerm,
 } from '../../types/contract';
@@ -11,11 +14,66 @@ import { db, enqueue } from '../../db/db';
 import { headOf } from '../../db/libraryCheck';
 import { todayKey } from '../../lib/date';
 import { applyCardView, currentStreak, emptyDay } from '../session/day';
-import { buildModuleQueue, seenHeadKey } from '../../srs/moduleQueue';
+import { RUN_LENGTH, belowFloor, buildModuleQueue, seenHeadKey } from '../../srs/moduleQueue';
 import { newSavedReview, reviewDue } from '../../srs/savedReview';
+import { themeOf } from '../cards/cardTags';
+import { themeBoosts } from '../learn/askLearned';
+import { recordKnowIt } from '../learn/knowIt';
 
 export const MODULE_FEED_CHUNK = 20;
 export const MODULE_FEED_REFILL_THRESHOLD = 5;
+/** v8: most a theme's 👍 / Loved count adds to its weight. */
+export const LIKED_THEME_CAP = 3;
+
+type Levels = Partial<Record<ModuleId, ModuleLevel>>;
+
+/** 👎 or Wrong English (or removed by a recheck) hides a card. */
+export function hiddenCardIds(rows: readonly CardFeedback[]): Set<string> {
+  const hidden = new Set<string>();
+  for (const fb of rows) {
+    if (fb.thumb === 'down' || fb.reasons?.includes('wrong_english') || fb.hidden === true) {
+      hidden.add(fb.cardId);
+    }
+  }
+  return hidden;
+}
+
+/**
+ * v8 topic weights: 1 + his 👍 / Loved count on that theme (max +3), times the
+ * Ask box's boost ("more" 2, "fewer" 0.5). Themes absent from the result weigh 1.
+ */
+export function themeWeightsFrom(
+  cards: readonly ModuleCard[],
+  rows: readonly CardFeedback[],
+  boosts: Record<string, number>,
+): Record<string, number> {
+  const byId = new Map(cards.map((c) => [c.id, c]));
+  const liked = new Map<string, number>();
+  for (const fb of rows) {
+    const up = fb.thumb === 'up' || fb.reasons?.includes('loved');
+    if (!up || fb.thumb === 'down' || fb.reasons?.includes('wrong_english')) continue;
+    const card = byId.get(fb.cardId);
+    if (!card) continue;
+    const t = themeOf(card);
+    liked.set(t, (liked.get(t) ?? 0) + 1);
+  }
+  const weights: Record<string, number> = {};
+  for (const t of new Set([...liked.keys(), ...Object.keys(boosts)])) {
+    weights[t] = (1 + Math.min(LIKED_THEME_CAP, liked.get(t) ?? 0)) * (boosts[t] ?? 1);
+  }
+  return weights;
+}
+
+/** v8 front cards: unseen AI cards, newest batch first (then by id). */
+export function frontIdsFrom(cards: readonly ModuleCard[], seenIds: ReadonlySet<string>): string[] {
+  type Raw = ModuleCard & { source?: string; createdAt?: number };
+  return (cards as readonly Raw[])
+    .filter((c) => c.source === 'ai' && !seenIds.has(c.id))
+    .sort((a, b) => (b.createdAt ?? 0) - (a.createdAt ?? 0) || a.id.localeCompare(b.id))
+    .map((c) => c.id);
+}
+
+const noBoosts = (): Record<string, number> => ({});
 
 export interface ModuleFeedApi {
   ready: boolean;
@@ -29,6 +87,16 @@ export interface ModuleFeedApi {
   /** ♡ on a card creates its Sunday review; taking the ♡ off removes it. */
   setSaved(card: ModuleCard, saved: boolean): Promise<void>;
   reload(): Promise<void>;
+  /**
+   * v8 "Know it": records Too easy (and the level rise), then drops every
+   * queued card after the current one that is now below its module's floor.
+   */
+  knowIt(card: ModuleCard): Promise<void>;
+  /**
+   * v8: re-reads levels, 👍 and Ask boosts, and re-builds the cards after the
+   * current one (after the sheet's Too easy / Too hard, and after an Ask reply).
+   */
+  applyLevels(): Promise<void>;
 }
 
 export function useModuleFeed(initialFilter: FeedFilter = 'mix'): ModuleFeedApi {
@@ -59,6 +127,53 @@ export function useModuleFeed(initialFilter: FeedFilter = 'mix'): ModuleFeedApi 
   const reviewIdsRef = useRef<string[]>([]);
   const engagedIdsRef = useRef<Set<string>>(new Set());
   const dayRef = useRef<DayRecord>(emptyDay(today));
+  // v8 signals for the queue
+  const levelsRef = useRef<Levels>({});
+  const themeWeightsRef = useRef<Record<string, number>>({});
+  const frontIdsRef = useRef<string[]>([]);
+
+  /** The v8 options every queue build passes. */
+  const v8Opts = () => ({
+    levels: levelsRef.current,
+    runLength: RUN_LENGTH,
+    themeWeights: themeWeightsRef.current,
+    frontIds: frontIdsRef.current,
+  });
+
+  /** Re-reads the cards, hidden set, levels, 👍 and Ask boosts, and the front list. */
+  const loadSignals = async (): Promise<void> => {
+    const [rawCards, feedbacks, profile, boosts] = await Promise.all([
+      db.cards.toArray(),
+      db.feedback.toArray(),
+      db.profile.get('me'),
+      themeBoosts().catch(noBoosts),
+    ]);
+    const moduleCards = (rawCards as unknown[]).filter(
+      (c): c is ModuleCard =>
+        Boolean(c) && typeof c === 'object' && (c as { type?: string }).type === 'module',
+    );
+    allModuleCardsRef.current = moduleCards;
+    hiddenIdsRef.current = hiddenCardIds(feedbacks);
+    levelsRef.current = { ...(profile?.moduleLevels ?? {}) };
+    themeWeightsRef.current = themeWeightsFrom(moduleCards, feedbacks, boosts);
+    frontIdsRef.current = frontIdsFrom(moduleCards, seenIdsRef.current);
+  };
+
+  /** Appends a chunk when few cards are left after `at`. */
+  const refillIfLow = (list: ModuleCard[], at: number): ModuleCard[] => {
+    if (list.length - at > MODULE_FEED_REFILL_THRESHOLD) return list;
+    const inQueueOrSeen = new Set([...seenIdsRef.current, ...list.map((c) => c.id)]);
+    const moreCards = buildModuleQueue(allModuleCardsRef.current, {
+      today: todayRef.current,
+      filter: filterRef.current,
+      seenIds: inQueueOrSeen,
+      hiddenIds: hiddenIdsRef.current,
+      limit: MODULE_FEED_CHUNK,
+      seenHeads: seenHeadsRef.current,
+      ...v8Opts(),
+    });
+    return moreCards.length > 0 ? [...list, ...moreCards] : list;
+  };
 
   // Serialize settle calls to avoid races during rapid scrolling
   const settlingPromiseRef = useRef<Promise<void>>(Promise.resolve());
@@ -66,7 +181,7 @@ export function useModuleFeed(initialFilter: FeedFilter = 'mix'): ModuleFeedApi 
   // ─── LOAD & RELOAD ──────────────────────────────────────────────────────────
   const loadData = useCallback(async () => {
     const currentDate = todayRef.current;
-    const [rawCards, feedbacks, events, dayRow, allDays, seenTerms, savedRows] =
+    const [rawCards, feedbacks, events, dayRow, allDays, seenTerms, savedRows, profile, boosts] =
       await Promise.all([
         db.cards.toArray(),
         db.feedback.toArray(),
@@ -75,6 +190,8 @@ export function useModuleFeed(initialFilter: FeedFilter = 'mix'): ModuleFeedApi 
         db.days.toArray(),
         db.seen.toArray(),
         db.savedReviews.toArray(),
+        db.profile.get('me'),
+        themeBoosts().catch(noBoosts),
       ]);
 
     // 1. Module cards only
@@ -85,12 +202,7 @@ export function useModuleFeed(initialFilter: FeedFilter = 'mix'): ModuleFeedApi 
     allModuleCardsRef.current = moduleCards;
 
     // 2. Hidden cards per answers: thumb down or wrong_english reason (or hidden flag)
-    const hidden = new Set<string>();
-    for (const fb of feedbacks) {
-      if (fb.thumb === 'down' || fb.reasons?.includes('wrong_english') || fb.hidden === true) {
-        hidden.add(fb.cardId);
-      }
-    }
+    const hidden = hiddenCardIds(feedbacks);
     hiddenIdsRef.current = hidden;
 
     // 3. Seen cards:
@@ -115,6 +227,11 @@ export function useModuleFeed(initialFilter: FeedFilter = 'mix'): ModuleFeedApi 
     seenHeadsRef.current = new Set(seenTerms.map((t) => t.id));
     reviewIdsRef.current = reviewDue(savedRows, currentDate);
 
+    // 3c. v8: his level per module (none yet = start level), topic weights, new AI cards first
+    levelsRef.current = { ...(profile?.moduleLevels ?? {}) };
+    themeWeightsRef.current = themeWeightsFrom(moduleCards, feedbacks, boosts);
+    frontIdsRef.current = frontIdsFrom(moduleCards, seenAll);
+
     // 4. Day & Streak
     const currentDay = dayRow ?? emptyDay(currentDate);
     dayRef.current = currentDay;
@@ -131,6 +248,7 @@ export function useModuleFeed(initialFilter: FeedFilter = 'mix'): ModuleFeedApi 
       limit: MODULE_FEED_CHUNK,
       reviewIds: reviewIdsRef.current,
       seenHeads: seenHeadsRef.current,
+      ...v8Opts(),
     });
 
     itemsRef.current = initialQueue;
@@ -161,6 +279,7 @@ export function useModuleFeed(initialFilter: FeedFilter = 'mix'): ModuleFeedApi 
       limit: MODULE_FEED_CHUNK,
       reviewIds: reviewIdsRef.current,
       seenHeads: seenHeadsRef.current,
+      ...v8Opts(),
     });
 
     itemsRef.current = initialQueue;
@@ -271,25 +390,10 @@ export function useModuleFeed(initialFilter: FeedFilter = 'mix'): ModuleFeedApi 
       setIndex(nextIndex);
 
       // Check for refill near the end of the window
-      if (currentItems.length - nextIndex <= MODULE_FEED_REFILL_THRESHOLD) {
-        const inQueueOrSeen = new Set([
-          ...seenIdsRef.current,
-          ...currentItems.map((c) => c.id),
-        ]);
-        const moreCards = buildModuleQueue(allModuleCardsRef.current, {
-          today: currentDate,
-          filter: filterRef.current,
-          seenIds: inQueueOrSeen,
-          hiddenIds: hiddenIdsRef.current,
-          limit: MODULE_FEED_CHUNK,
-          seenHeads: seenHeadsRef.current,
-        });
-
-        if (moreCards.length > 0) {
-          const updatedItems = [...currentItems, ...moreCards];
-          itemsRef.current = updatedItems;
-          setItems(updatedItems);
-        }
+      const updatedItems = refillIfLow(currentItems, nextIndex);
+      if (updatedItems !== currentItems) {
+        itemsRef.current = updatedItems;
+        setItems(updatedItems);
       }
     };
 
@@ -302,6 +406,59 @@ export function useModuleFeed(initialFilter: FeedFilter = 'mix'): ModuleFeedApi 
     await loadData();
   }, [loadData]);
 
+  /** Runs `job` after any settle or level change already in flight. */
+  const serial = (job: () => Promise<void>): Promise<void> => {
+    settlingPromiseRef.current = settlingPromiseRef.current.then(job, job);
+    return settlingPromiseRef.current;
+  };
+
+  // ─── KNOW IT ────────────────────────────────────────────────────────────────
+  const knowIt = useCallback(
+    (card: ModuleCard): Promise<void> =>
+      serial(async () => {
+        const { level } = await recordKnowIt(card);
+        levelsRef.current = { ...levelsRef.current, [card.module]: level };
+        const list = itemsRef.current;
+        const at = indexRef.current;
+        const review = new Set(reviewIdsRef.current);
+        const kept = list.filter(
+          (c, i) => i <= at || review.has(c.id) || !belowFloor(c, levelsRef.current),
+        );
+        const next = refillIfLow(kept, at);
+        if (next.length !== list.length || next.some((c, i) => c !== list[i])) {
+          itemsRef.current = next;
+          setItems(next);
+        }
+      }),
+    [],
+  );
+
+  // ─── APPLY LEVELS ───────────────────────────────────────────────────────────
+  const applyLevels = useCallback(
+    (): Promise<void> =>
+      serial(async () => {
+        await loadSignals();
+        const list = itemsRef.current;
+        const at = indexRef.current;
+        const head = list.slice(0, at + 1);
+        const headIds = new Set(head.map((c) => c.id));
+        const tail = buildModuleQueue(allModuleCardsRef.current, {
+          today: todayRef.current,
+          filter: filterRef.current,
+          seenIds: new Set([...seenIdsRef.current, ...headIds]),
+          hiddenIds: hiddenIdsRef.current,
+          limit: Math.max(MODULE_FEED_CHUNK, list.length - head.length),
+          reviewIds: reviewIdsRef.current.filter((id) => !headIds.has(id)),
+          seenHeads: seenHeadsRef.current,
+          ...v8Opts(),
+        });
+        const next = [...head, ...tail];
+        itemsRef.current = next;
+        setItems(next);
+      }),
+    [],
+  );
+
   return {
     ready,
     filter,
@@ -313,5 +470,7 @@ export function useModuleFeed(initialFilter: FeedFilter = 'mix'): ModuleFeedApi 
     markEngaged,
     setSaved,
     reload,
+    knowIt,
+    applyLevels,
   };
 }

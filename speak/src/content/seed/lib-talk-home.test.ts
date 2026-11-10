@@ -7,6 +7,7 @@ import samplePhrases from './53-office-phrases.json';
 import sampleStories from './54-stories.json';
 import outline from '../library/outline.json';
 import { checkLibrary, checkLibraryFile, type OutlineItem } from '../../db/libraryCheck';
+import { tagProblems } from '../../features/cards/cardTags';
 
 const items = (outline as unknown as Record<string, OutlineItem[]>)['talk-home'] ?? [];
 
@@ -30,5 +31,9 @@ describe('v7 library: talk-home (71-talk-home.json)', () => {
       '54-stories.json': sampleStories,
       '71-talk-home.json': cards,
     })).toEqual([]);
+  });
+  it('gives every card a topic from the fixed list and a level of 1, 2 or 3', () => {
+    const bad = cards.flatMap((card) => tagProblems(card).map((p) => `${card.id}: ${p}`));
+    expect(bad).toEqual([]);
   });
 });

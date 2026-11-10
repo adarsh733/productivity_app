@@ -4,10 +4,12 @@ import handler, {
   GROQ_TOKENS_PER_MINUTE,
   MODULE_BATCH_MAX,
   MODULE_MAX_TOKENS,
+  cardLevelFor,
   checkModuleBatchPayload,
   moduleBatchSystem,
   moduleHeadOf,
   systemFor,
+  themeFrom,
   validateModuleBatch,
   validateModuleDraft,
   validateProviderOutput,
@@ -158,8 +160,6 @@ describe('validateModuleDraft: the library rules on one AI card', () => {
     ['three wrong lines', words('calm', { wrong: [1, 2, 3].map((n) => ({ label: '✗ Wrong', text: `bad ${n}` })) }), 'words', /wrong/],
     ['a wrong label without ✗', words('calm', { wrong: [{ label: 'Wrong use', text: 'I calm.' }] }), 'words', /must start with ✗/],
     ['a phrase wrong label without ✗', phrase('Circle back', { wrong: { label: 'Wrong', text: 'x' } }), 'phrases', /must start with ✗/],
-    ['a level outside 1-3', words('calm', { level: 4 }), 'words', /level must be 1, 2 or 3/],
-    ['a phrase with no level', phrase('Circle back', { level: undefined }), 'phrases', /level/],
     ['an unknown phrase group', phrase('Circle back', { group: 'sales' }), 'phrases', /group/],
     ['an unknown small talk kind', talk('Lunch', { kind: 'flirt' }), 'smalltalk', /kind/],
     ['two more lines, not three', talk('Lunch', { more: [{ label: 'a', text: 'b' }, { label: 'c', text: 'd' }] }), 'smalltalk', /more/],
@@ -171,6 +171,48 @@ describe('validateModuleDraft: the library rules on one AI card', () => {
     ['a check with two right options', words('calm', { check: { question: 'q', options: [{ text: 'a', right: true }, { text: 'b', right: true }, { text: 'c', right: false }] } }), 'words', /exactly one right/],
   ] as [string, Raw, ModuleId, RegExp][])('drops %s', (_name, raw, module, reason) => {
     expect(() => validateModuleDraft(raw, 0, module)).toThrow(reason);
+  });
+
+  it('v8: every module card keeps its theme and level 1-3', () => {
+    const goods: [ModuleId, Raw][] = [
+      ['words', words('calm', { theme: 'Emotions', level: 1 })],
+      ['smalltalk', talk('Lunch chat', { theme: 'Food', level: 2 })],
+      ['better', better('Maybe Friday would be good, I am not sure.', { theme: 'Work', level: 3 })],
+      ['phrases', phrase("Let's come back to that.", { theme: 'Work', level: 3 })],
+      ['stories', story('I cooked dinner and it was too spicy.', { theme: 'Food', level: 1 })],
+    ];
+    for (const [module, raw] of goods) {
+      const card = validateModuleDraft(raw, 0, module, { themes: ['Emotions', 'Food', 'Work', 'General'], level: 2 }) as unknown as Raw;
+      expect(card.theme, module).toBe(raw.theme);
+      expect(card.level, module).toBe(raw.level);
+      // The card's own headline is untouched by the topic label.
+      expect(card.topic, module).toBe(raw.topic);
+    }
+  });
+
+  it('v8: a theme outside the request list becomes General; case is matched to the list', () => {
+    const ctx = { themes: ['Money', 'Food', 'General', 'Cricket'] };
+    expect(validateModuleDraft(words('calm', { theme: 'Space travel' }), 0, 'words', ctx).theme).toBe('General');
+    expect(validateModuleDraft(words('calm', { theme: 'cricket' }), 0, 'words', ctx).theme).toBe('Cricket');
+    expect(validateModuleDraft(words('calm', { theme: 'Emotions' }), 0, 'words', ctx).theme).toBe('General');
+    expect(validateModuleDraft(words('calm', { theme: undefined }), 0, 'words', ctx).theme).toBe('General');
+    // A request from before v8 sends no themes: the fixed start list applies.
+    expect(validateModuleDraft(words('calm', { theme: 'Emotions' }), 0, 'words').theme).toBe('Emotions');
+    expect(validateModuleDraft(words('calm', { theme: 'Cricket' }), 0, 'words').theme).toBe('General');
+    expect(themeFrom(42, ['Money'])).toBe('General');
+  });
+
+  it('v8: a missing or bad level takes the mapped card level of the batch', () => {
+    expect(validateModuleDraft(words('calm', { level: undefined }), 0, 'words', { level: 2 }).level).toBe(2);
+    expect(validateModuleDraft(words('calm', { level: 4 }), 0, 'words', { level: 1 }).level).toBe(1);
+    expect(validateModuleDraft(phrase('Circle back', { level: undefined }), 0, 'phrases', { level: 5 }).level).toBe(3);
+    expect(validateModuleDraft(talk('Lunch', { level: '2' }), 0, 'smalltalk', { level: 3 }).level).toBe(3);
+    // No batch level at all: the start level 2 maps to card level 2.
+    expect(validateModuleDraft(story('A dull day.'), 0, 'stories').level).toBe(2);
+  });
+
+  it('v8 level map: module level 1 -> 1, 2 -> 2, 3 -> 3, 4-5 -> 3', () => {
+    expect([1, 2, 3, 4, 5].map((l) => cardLevelFor(l as 1 | 2 | 3 | 4 | 5))).toEqual([1, 2, 3, 3, 3]);
   });
 
   it('every 3rd Words card in the reply must carry the quick check', () => {
@@ -219,6 +261,17 @@ describe('validateModuleBatch: one writer reply', () => {
     expect(out.cards).toHaveLength(2);
   });
 
+  it('v8: passes the request themes and level to every card', () => {
+    const out = validateModuleBatch(
+      [words('calm', { theme: 'Money', level: undefined }), words('tidy', { theme: 'Home', level: 3 })],
+      request({ level: 2, themes: ['Money', 'General'] }),
+    );
+    expect(out.cards.map((c) => [c.theme, c.level])).toEqual([
+      ['Money', 2],
+      ['General', 3],
+    ]);
+  });
+
   it('throws when nothing is left, so the next provider is tried', () => {
     expect(() => validateModuleBatch([words('relieved')], request())).toThrow(/No usable module cards: .*already seen/);
     expect(() => validateModuleBatch([], request())).toThrow(/No usable module cards/);
@@ -239,6 +292,14 @@ describe('checkModuleBatchPayload', () => {
     expect(checkModuleBatchPayload(request({ count: MODULE_BATCH_MAX, level: 5, module: 'smalltalk', startId: 'v7-ai-smalltalk-0101' }))).toBeNull();
   });
 
+  it('v8: accepts the three new optional fields, and an old request without them', () => {
+    expect(checkModuleBatchPayload(request({ themes: ['Money', 'General', 'Cricket'], likedThemes: ['Money'], wishes: ['More cricket examples.'] }))).toBeNull();
+    expect(checkModuleBatchPayload(request({ themes: [], likedThemes: [], wishes: [] }))).toBeNull();
+    const old = request() as unknown as Raw;
+    expect('themes' in old || 'likedThemes' in old || 'wishes' in old).toBe(false);
+    expect(checkModuleBatchPayload(old)).toBeNull();
+  });
+
   it.each([
     ['an unknown module', { module: 'poetry' }],
     ['count 0', { count: 0 }],
@@ -252,6 +313,12 @@ describe('checkModuleBatchPayload', () => {
     ['an unknown dislike reason', { disliked: [{ head: 'wary', reasons: ['boring'] }] }],
     ['a dislike with no head', { disliked: [{ head: '', reasons: [] }] }],
     ['a seed card', { seed: words('calm') }],
+    ['themes not a list', { themes: 'Money' }],
+    ['21 themes', { themes: Array.from({ length: 21 }, (_, k) => `T${k}`) }],
+    ['a theme over 40 characters', { themes: ['x'.repeat(41)] }],
+    ['an empty liked theme', { likedThemes: [''] }],
+    ['7 wishes', { wishes: Array.from({ length: 7 }, (_, k) => `w${k}`) }],
+    ['a wish over 500 characters', { wishes: ['x'.repeat(501)] }],
   ] as [string, Raw][])('refuses %s', (_name, over) => {
     expect(checkModuleBatchPayload({ ...request(), ...over })).not.toBeNull();
   });
@@ -302,7 +369,7 @@ describe('expand_seed module batch through the handler (fake model replies)', ()
     const body = JSON.parse(fetchSpy.mock.calls[0]![1].body as string);
     expect(body.generationConfig.maxOutputTokens).toBe(MODULE_MAX_TOKENS);
     const sent = body.systemInstruction.parts[0].text as string;
-    expect(sent).toBe(moduleBatchSystem('words'));
+    expect(sent).toBe(moduleBatchSystem('words', 2));
     expect(sent.startsWith(rulebookFor('expand_seed'))).toBe(true);
     expect(sent).toContain('## 9. v7 module cards (Adarsh, 2026-11-08)');
     expect(sent).toContain('"module":"words"');
@@ -330,6 +397,39 @@ describe('expand_seed module batch through the handler (fake model replies)', ()
     const data = (await res.json()) as any;
     expect(data.ok).toBe(true);
     expect(data.data.cards.map((c: Raw) => c.word)).toEqual(['calm', 'brave']);
+  });
+
+  it('v8: start level 2 asks for card level 2 (not 1), and every shape names theme and level', async () => {
+    process.env.GEMINI_API_KEY = 'k';
+    const fetchSpy = vi.fn().mockResolvedValueOnce(gemini(JSON.stringify({ cards: [words('calm', { level: undefined, theme: 'Emotions' })] })));
+    global.fetch = fetchSpy as any;
+
+    const res = await post('expand_seed', request({ level: 2, count: 1, themes: ['Emotions', 'General'] }));
+    const data = (await res.json()) as any;
+    expect(data.ok).toBe(true);
+    expect(data.data.cards[0]).toMatchObject({ level: 2, theme: 'Emotions', topic: 'calm' });
+
+    const sent = JSON.parse(fetchSpy.mock.calls[0]![1].body as string).systemInstruction.parts[0].text as string;
+    expect(sent).toContain('This batch is level 2: write every card at "level":2.');
+    expect(sent).toContain('2 gives 2');
+    expect(sent).not.toContain('1-2 gives 1');
+    expect(rulebookFor('expand_seed')).toContain('batch level 1 → 1, 2 → 2, 3 → 3, 4-5 → 3');
+    expect(rulebookFor('expand_seed')).not.toContain('batch level 1-2 → 1');
+    expect(moduleBatchSystem('stories', 5)).toContain('"level":3, harder than the library\'s level 3');
+    for (const module of ['words', 'smalltalk', 'better', 'phrases', 'stories'] as ModuleId[]) {
+      const prompt = moduleBatchSystem(module, 3);
+      expect(prompt, module).toContain(`"module":"${module}","topic":string,"theme":string,"level":1|2|3`);
+      expect(prompt, module).toContain('"level":3.');
+    }
+  });
+
+  it('v8: an old request without themes, likedThemes or wishes still runs', async () => {
+    process.env.GEMINI_API_KEY = 'k';
+    global.fetch = vi.fn().mockResolvedValueOnce(gemini(JSON.stringify({ cards: [talk('Lunch chat')] }))) as any;
+    const res = await post('expand_seed', request({ module: 'smalltalk', count: 1, startId: 'v7-ai-smalltalk-0001' }));
+    const data = (await res.json()) as any;
+    expect(res.status).toBe(200);
+    expect(data.data.cards[0]).toMatchObject({ theme: 'General', level: 2 });
   });
 
   it('fails over when the first reply has no usable card, and the Groq call still fits its minute', async () => {

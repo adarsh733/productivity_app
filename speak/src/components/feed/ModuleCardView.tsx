@@ -21,6 +21,7 @@ import {
   type SmallTalkCard,
 } from '../../types/contract';
 import { type ModuleSlide, moduleSlides } from '../../features/cards/moduleSlides';
+import { levelOf, themeOf } from '../../features/cards/cardTags';
 
 export interface ModuleCardViewProps {
   card: ModuleCard;
@@ -416,6 +417,8 @@ export default function ModuleCardView({
       className="v7-card"
       data-module={card.module}
       data-card-id={card.id}
+      data-theme={themeOf(card)}
+      data-level={levelOf(card)}
       aria-label={`${MODULE_LABEL[card.module]}: ${headline}`}
     >
       <div className="v7-hrow" ref={rowRef} onScroll={handleScroll}>
@@ -425,7 +428,14 @@ export default function ModuleCardView({
             className="v7-slide"
             aria-label={`Slide ${idx + 1} of ${slides.length}`}
           >
-            <div className="v7-slide-body">{renderSlideContent(slide)}</div>
+            <div className="v7-slide-body">
+              {idx === 0 && (
+                <span className="v7-theme" data-testid="card-theme">
+                  {themeOf(card)}
+                </span>
+              )}
+              {renderSlideContent(slide)}
+            </div>
           </section>
         ))}
       </div>

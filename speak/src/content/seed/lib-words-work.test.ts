@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import cards from './64-words-work.json';
+import { tagProblems } from '../../features/cards/cardTags';
 import sampleWords from './50-words.json';
 import sampleTalk from './51-small-talk.json';
 import sampleBetter from './52-say-it-better.json';
@@ -39,5 +40,9 @@ describe('library: words-work (64-words-work.json)', () => {
 
   it('sets each card level from its outline item', () => {
     expect(cards.map((c) => c.level)).toEqual(outline['words-work']!.map((o) => o.level));
+  });
+
+  it('gives every card a topic from the fixed list and a level 1-3', () => {
+    expect(cards.flatMap((c) => tagProblems(c))).toEqual([]);
   });
 });

@@ -4,7 +4,9 @@ import { todayKey } from '../../lib/date';
 import type { Card, CardFeedback, ModuleBatchRequest, ModuleCard, ModuleId, ModuleLevel } from '../../types/contract';
 import { AI_BUDGET_META, AI_DAILY_CAP, BACKGROUND_RESERVE, aiCallsUsed } from './budget';
 import { AiCallError, CoachNeedsKeyError } from '../coach/pipeline';
+import { saveAskTurn } from '../learn/askLearned';
 import {
+  KNOW_IT_TRIGGER,
   MODULE_BATCH_CALLS,
   MODULE_BATCH_META,
   MODULE_BATCH_PER_CALL,
@@ -13,6 +15,7 @@ import {
   batchProviderMeta,
   batchRequest,
   draftProblems,
+  knowItCounts,
   maybeModuleBatch,
   nextLevel,
   pickBatchModule,
@@ -25,6 +28,7 @@ import {
   type BatchState,
 } from './moduleBatch';
 
+const MODULE_BATCH_GAP_MS_TEST = 6 * 60 * 1000;
 const NOW = new Date(2026, 10, 8, 10, 0, 0).getTime();
 const TODAY = todayKey(new Date(NOW));
 
@@ -35,6 +39,7 @@ function wordDraft(head: string, over: Record<string, unknown> = {}): Record<str
     type: 'module',
     module: 'words',
     topic: 'Loud sounds',
+    theme: 'Senses & weather',
     lang: 'en',
     track: 'words',
     level: 2,
@@ -83,6 +88,7 @@ describe('constants', () => {
     expect(MODULE_BATCH_TRIGGER).toBe(60);
     expect(MODULE_BATCH_PER_CALL).toBe(10);
     expect(MODULE_BATCH_CALLS).toBe(6);
+    expect(KNOW_IT_TRIGGER).toBe(10);
   });
 });
 
@@ -113,6 +119,41 @@ describe('unseenByModule / pickBatchModule (pure)', () => {
     expect(pickBatchModule(low, one, TODAY)).toBe('stories');
     expect(pickBatchModule(low, { ...one, count: 2, modules: ['words', 'stories'] }, TODAY)).toBeNull();
     expect(pickBatchModule(low, { ...one, date: '2000-01-01' }, TODAY)).toBe('words');
+  });
+});
+
+describe('Know it trigger (pure)', () => {
+  const tooEasy = (n: number, module: ModuleId = 'words', at = 5): CardFeedback[] =>
+    Array.from({ length: n }, (_, i) => fb(`${module}-${i}`, { module, reasons: ['too_easy'], at }));
+
+  it('counts too_easy rows newer than the last done batch; forgotten rows and other reasons do not count', () => {
+    const rows = [
+      ...tooEasy(4),
+      fb('x', { reasons: ['too_hard'], at: 5 }),
+      fb('y', { reasons: ['too_easy'], hidden: true, at: 5 }),
+      ...tooEasy(3, 'stories'),
+    ];
+    expect(knowItCounts(rows, [])).toMatchObject({ words: 4, stories: 3, better: 0 });
+    // a done batch at 5 covers rows at 5 and older; a failed one covers nothing
+    expect(knowItCounts(rows, [{ module: 'words', at: 5, status: 'done' }]).words).toBe(0);
+    expect(knowItCounts(rows, [{ module: 'words', at: 9, status: 'failed' }]).words).toBe(4);
+    expect(knowItCounts(rows, [{ module: 'words', at: 4, status: 'done' }]).words).toBe(4);
+  });
+
+  it('9 Know-its change nothing; 10 pick that module even with plenty unseen, before the low-stock rule', () => {
+    expect(pickBatchModule(full(), undefined, TODAY, { words: KNOW_IT_TRIGGER - 1 })).toBeNull();
+    expect(pickBatchModule(full(), undefined, TODAY, { words: KNOW_IT_TRIGGER })).toBe('words');
+    // low stock elsewhere does not beat a Know it module
+    expect(pickBatchModule({ ...full(), better: 3 }, undefined, TODAY, { stories: 12 })).toBe('stories');
+    // the module with the most Know-its first
+    expect(pickBatchModule(full(), undefined, TODAY, { words: 10, phrases: 14 })).toBe('phrases');
+  });
+
+  it('keeps the day cap and module-once-a-day', () => {
+    const one: BatchState = { date: TODAY, count: 1, lastAt: 1, modules: ['words'] };
+    expect(pickBatchModule(full(), one, TODAY, { words: 20 })).toBeNull();
+    expect(pickBatchModule({ ...full(), smalltalk: 2 }, one, TODAY, { words: 20 })).toBe('smalltalk');
+    expect(pickBatchModule(full(), { ...one, count: 2 }, TODAY, { stories: 20 })).toBeNull();
   });
 });
 
@@ -150,6 +191,24 @@ describe('batchRequest', () => {
     });
   });
 
+  it('carries themes, liked themes (from his thumbs and Ask) and wishes when given', () => {
+    const rows = [
+      { ...fb('a', { thumb: 'up', at: 2 }), head: 'alpha', theme: 'Money' },
+      { ...fb('b', { reasons: ['loved'], at: 1 }), head: 'beta', theme: 'General' },
+      { ...fb('c', { thumb: 'up', at: 3 }), head: 'gamma', theme: 'Money' },
+    ];
+    const r = batchRequest('words', 2, rows, [], 'v7-ai-words-0001', 10, {
+      themes: ['Money', 'Work', 'Chess'],
+      more: ['Food', 'Money'],
+      wishes: ['stories about cricket'],
+    });
+    expect(r.themes).toEqual(['Money', 'Work', 'Chess']);
+    expect(r.likedThemes).toEqual(['Money', 'Food']);
+    expect(r.wishes).toEqual(['stories about cricket']);
+    // without topics the request is the old shape
+    expect(batchRequest('words', 2, rows, [], 'v7-ai-words-0001')).not.toHaveProperty('themes');
+  });
+
   it('keeps at most 20 comments', () => {
     const rows = Array.from({ length: 25 }, (_, i) => ({ ...fb(`c${i}`, { comment: `note ${i}`, at: i }), head: `h${i}` }));
     const r = batchRequest('words', 2, rows, [], 'v7-ai-words-0001');
@@ -166,6 +225,13 @@ describe('draftProblems (local check)', () => {
     expect(draftProblems(wordDraft('x3', { meaning: Array(60).fill('word').join(' ') }), 'words').join(' ')).toMatch(/words \(max/);
     expect(draftProblems('nope', 'words')).toEqual(['not a card']);
   });
+
+  it('drops a draft with an unknown or missing theme or a bad level; an Ask-added theme is allowed', () => {
+    expect(draftProblems(wordDraft('t1', { theme: 'Cricket' }), 'words').join(' ')).toMatch(/unknown theme/);
+    expect(draftProblems(wordDraft('t1', { theme: 'Cricket' }), 'words', ['Cricket'])).toEqual([]);
+    expect(draftProblems(wordDraft('t2', { theme: undefined }), 'words').join(' ')).toMatch(/no theme/);
+    expect(draftProblems(wordDraft('t3', { level: 4 }), 'words').length).toBeGreaterThan(0);
+  });
 });
 
 /** Fake aiPost + checkItems: every writer call returns `perCall` drafts; remembers what it was asked. */
@@ -173,6 +239,7 @@ function fakes(
   opts: {
     perCall?: number;
     heads?: (call: number, i: number) => string;
+    over?: (call: number, i: number) => Record<string, unknown>;
     failAt?: number;
     passKeys?: (keys: string[]) => string[];
   } = {},
@@ -186,7 +253,7 @@ function fakes(
     const c = call++;
     if (opts.failAt === c) throw new AiCallError('offline', 'offline');
     const cards = Array.from({ length: opts.perCall ?? 10 }, (_, i) =>
-      wordDraft(opts.heads ? opts.heads(c, i) : `word${c}x${i}`),
+      wordDraft(opts.heads ? opts.heads(c, i) : `word${c}x${i}`, opts.over?.(c, i)),
     );
     return { data: { cards }, provider: 'gemini' as const };
   });
@@ -247,6 +314,40 @@ describe('runModuleBatch', () => {
     expect(third!.seen).toContain('Muffled');
     expect(third!.seen).toContain('word0x0');
     expect(third!.startId).toBe('v7-ai-words-0021');
+  });
+
+  it('sends themes, liked themes and wishes; drops a draft with an unknown theme; stored cards keep theme and level', async () => {
+    await db.cards.put(libraryWord('v7-words-01', 'deafening', { theme: 'Food' }));
+    await db.feedback.put(fb('v7-words-01', { thumb: 'up' }));
+    await saveAskTurn(
+      'more about cricket and money, please',
+      {
+        reply: 'Okay.',
+        learned: [
+          { kind: 'new_theme', theme: 'Cricket' },
+          { kind: 'more', theme: 'Money' },
+          { kind: 'wish', note: 'cricket talk for office chats' },
+        ],
+      },
+      NOW,
+    );
+    const f = fakes({
+      perCall: 3,
+      over: (c, i) => (c === 0 && i === 0 ? { theme: 'Astrology' } : i === 1 ? { theme: 'Cricket', level: 3 } : {}),
+    });
+    const b = await runModuleBatch('words', f.deps);
+    const first = f.requests[0]!;
+    expect(first.themes).toEqual(expect.arrayContaining(['Money', 'General', 'Cricket']));
+    expect(first.themes).toHaveLength(11);
+    expect(first.likedThemes).toEqual(['Food', 'Money']);
+    expect(first.wishes).toEqual(['cricket talk for office chats']);
+    // call 0: the Astrology draft never reached the checker
+    expect(f.checks[0]).toHaveLength(2);
+    expect(b.kept).toHaveLength(8);
+    const stored = (await db.cards.where('id').anyOf(b.kept).toArray()) as unknown as ModuleCard[];
+    expect(stored.every((c) => c.theme !== 'Astrology')).toBe(true);
+    expect(stored.filter((c) => c.theme === 'Cricket' && c.level === 3)).toHaveLength(3);
+    expect(stored.filter((c) => c.theme === 'Senses & weather' && c.level === 2)).toHaveLength(5);
   });
 
   it('drops cards that fail the local check, repeat a seen or library head, or fail the other provider', async () => {
@@ -313,6 +414,51 @@ describe('runModuleBatch', () => {
 });
 
 describe('maybeModuleBatch', () => {
+  async function fullLibrary() {
+    const mods: ModuleId[] = ['words', 'smalltalk', 'better', 'phrases', 'stories'];
+    for (const m of mods) {
+      await db.cards.bulkPut(
+        Array.from({ length: 100 }, (_, i) => libraryWord(`${m}-${i}`, `head ${m} ${i}`, { module: m })),
+      );
+    }
+  }
+  const knowIts = (n: number, at = NOW - 1000) =>
+    db.feedback.bulkPut(
+      Array.from({ length: n }, (_, i) => fb(`words-${i}`, { module: 'words', reasons: ['too_easy'], at })),
+    );
+
+  it('9 Know-its start no batch; 10 do, even with plenty unseen, and the count starts again after it', async () => {
+    await fullLibrary();
+    await knowIts(9);
+    const f = fakes({ perCall: 2 });
+    expect(await maybeModuleBatch(f.deps)).toBeNull();
+    expect(f.aiPostFake).not.toHaveBeenCalled();
+
+    await knowIts(10);
+    const b = await maybeModuleBatch(f.deps);
+    expect(b).not.toBeNull();
+    expect(b!.module).toBe('words');
+    expect(b!.status).toBe('done');
+    expect(f.aiPostFake).toHaveBeenCalledTimes(3);
+
+    // those 10 are now older than the finished batch: nothing more, even after the gap and a new day's room
+    expect(await maybeModuleBatch({ ...f.deps, now: () => NOW + 10 * 60 * 1000 })).toBeNull();
+  });
+
+  it('still holds the day cap, the gap and the budget for a Know it batch', async () => {
+    await fullLibrary();
+    await knowIts(10);
+    const f = fakes({ perCall: 2 });
+    await setMeta(AI_BUDGET_META, { date: TODAY, count: AI_DAILY_CAP - BACKGROUND_RESERVE - MODULE_BATCH_CALLS + 1 });
+    expect(await maybeModuleBatch(f.deps)).toBeNull();
+    expect(f.aiPostFake).not.toHaveBeenCalled();
+
+    await db.meta.clear();
+    await setMeta(MODULE_BATCH_META, { date: TODAY, count: 1, lastAt: NOW - 1000, modules: ['stories'] } satisfies BatchState);
+    expect(await maybeModuleBatch(f.deps)).toBeNull();
+    expect(await maybeModuleBatch({ ...f.deps, now: () => NOW + MODULE_BATCH_GAP_MS_TEST })).not.toBeNull();
+  });
+
   it('does nothing while every module is above the trigger', async () => {
     const mods: ModuleId[] = ['words', 'smalltalk', 'better', 'phrases', 'stories'];
     for (const m of mods) {

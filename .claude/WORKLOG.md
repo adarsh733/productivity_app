@@ -922,3 +922,39 @@ rewrite describes as 60 text scenes, new 130 situations, +100 words / +60 phrase
 - [x] AI batches of 30 from 👍👎💬 + level + seen list, second-AI check, Wrong English rechecks the batch; old top-up switched off. Proven on fake AI replies only.
 - [x] Supabase backup: one SQL script, 6-digit email code sign-in under Me, backup + restore. Proven on a fake Supabase only; waits on his URL + public key.
 - [x] All tests + build green; old picture-feed browser tests switched off with a note. Not committed; not tried on his phone.
+- [x] Supabase URL + public key saved for the laptop; project answers, tables not created yet (his SQL run is next).
+- [x] Saved and pushed v7 (steps 1–6) to v4-usable and master on his yes.
+- [x] Live site checked (productivity-app-voice.netlify.app): newest app, new Supabase. Found Ask failing live (Try cards without answers; Anthropic 400 from temperature).
+- [x] Fixed Ask + switched backup sign-in to email + password (Supabase can't send code emails without SMTP). He turned off Confirm email and deleted the Anthropic key. Pushed both branches on his yes; live Ask answers 2 of 2.
+
+## 2026-11-10 — SPEAK: difficulty + faster feedback (question)
+
+**Agenda:** explain how difficulty, repeats and feedback work today · options so the app pivots fast off his ratings. No app code yet.
+
+- [x] Explained: seen cards never come back (only ♡); feed ignores card level; "Too easy" only reaches AI batches, which don't start until a module is nearly empty (~540 Words seen). Options given.
+- [x] Checked every screen against the new look: 11 of 30 new (Feed only); Ask, Me and the rest still old.
+- [x] Adarsh: remove Ask, Evening voice chat, old tools, lesson player, story bank, weak spots, things I asked; keep Feed + Me in Night glass. Handed to a fresh chat (handoff 2026-11-10-speak-trim-and-glass.md).
+- [x] He picked all 4 fixes + topic tags (AI may add topics), 👍 = more like this, topic runs, a 'Tell the app' box, tabs Feed · Favorites · Me (Ask inside Me, old tools gone). Clash with the earlier clean-up plan settled: 4 tabs Feed · Favorites · Ask (one AI feedback box) · Me. Clean-up note amended; v8 build note written to run after it. Both go via /one-go in fresh chats.
+
+## 2026-11-10 — SPEAK: trim to Feed · Favorites · Me + Night glass (/one-go dispatch)
+
+**Agenda:** remove Ask screen, Evening voice chat, Old tools, lesson player + skill pages, Story bank, weak spots, Things I asked · tabs Feed · Favorites · Me (room for a 4th) · Favorites = ♡ cards full-size with Feed chips · Me in Night glass (streak/day numbers, backup, what the app learned) · glass tab bar everywhere · no push without his yes.
+
+- [x] Plan written and sealed; his later pick "The other chat's picks (Recommended)" = 3 tabs.
+- [x] Removed Ask, Evening voice chat, Old tools, lessons + skill pages, Story bank, weak spots, Things I asked, Me gear, 'What the app knows' (+ 46 old pictures, 12 old style sheets, 4 server tasks, transcribe).
+- [x] Tabs Feed · Favorites · Me (one list, a 4th tab = one line); Favorites = ♡ cards full-size with the Feed's chips; Me = 3 stats, backup, what the app learned.
+- [x] Night glass on every screen; glass tab bar on all three tabs; Feed unchanged (re-shot pictures match).
+- [x] Final review: all unit tests, both type checks, rulebook check, both browser specs, build + offline file green. Stored data untouched. Not committed, not pushed.
+- [x] Docs: speak/CLAUDE.md + docs/known-issues.md updated; LATEST.md now points at the v8 note.
+- [x] Review fixes: browser tests now expect the Favorites empty line and the un-♡'d card staying until Favorites reopens; all checks re-run green.
+
+## 2026-11-10 — SPEAK v8: levels, Know it, topic runs, new Ask box (/one-go dispatch)
+
+**Agenda:** tag all 1,500 cards with topic + level · feed uses level (start L2–3) and serves topic runs, 👍 = more like this · "Know it" on every card drops easier cards · ~10 Know-it → 30 harder AI cards at the front, start-level map fixed, wishes + topics reach batches · Ask tab = one AI feedback box, learned lines under Me · tabs Feed · Favorites · Ask · Me · no push without his yes.
+
+- [x] Plan read and sealed (11 steps); his picks: all 9 recommendations.
+- [x] All 1,500 cards tagged with a topic + level 1-3 (three hand-read tag notes).
+- [x] Feed uses level (level-1 cards skipped at first), topic runs of 4, 👍 and Ask raise a topic; start-level map fixed.
+- [x] "Know it" on every Feed card: raises the module, drops easier cards at once; 10 in a module → 30 harder AI cards at the front.
+- [x] Ask tab (4th): one AI box, short reply, what it learned shown under Me with Remove; steers Feed and next batch.
+- [x] Final review: all unit tests, both type checks, rulebook check, both browser specs, build + offline file green; fresh pictures looked at. Not committed, not pushed.

@@ -9,7 +9,8 @@
   height: 100dvh;
   display: flex;
   flex-direction: column;
-  background: var(--paper);
+  background: var(--glass-night);
+  color: var(--glass-ink);
   position: relative;
   overflow: hidden;
 }
@@ -163,7 +164,9 @@
   border-top: 1px solid var(--line);
   padding-bottom: var(--safe-bottom);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* One column per tab, however many there are (3 now, 4 with v8's Ask). */
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
   z-index: 10;
   box-shadow: 0 -2px 8px rgba(21, 23, 26, 0.03);
 }
@@ -189,15 +192,9 @@
   height: 20px;
 }
 
-.tab.on,
-.tab.is-active {
-  color: var(--accent);
-}
-
-/* v5: Feed, Ask, Me. Three equal tabs. */
+/* v7: Feed, Favorites, Me. Equal tabs; the glass look lives in glass.css. */
 .v5-shell .tab { font-size: var(--fs-2); }
 .v5-shell .tab .tab-icon { width: 24px; height: 24px; }
-.v5-shell .tab.is-active { color: var(--poster-cobalt); }
 
 /* -- Floating Capture Action Button (FAB) ----------------------------------- */
 .fab {

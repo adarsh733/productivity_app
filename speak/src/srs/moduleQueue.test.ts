@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type {
+  CardLevel,
   DayKey,
   ModuleCard,
   ModuleId,
@@ -9,7 +10,8 @@ import type {
   StoryCard,
   WordsCard,
 } from '../types/contract';
-import { buildModuleQueue, seenHeadKey } from './moduleQueue';
+import { RUN_LENGTH, belowFloor, buildModuleQueue, seenHeadKey } from './moduleQueue';
+import { themeOf } from '../features/cards/cardTags';
 
 function makeCard(id: string, module: ModuleId): ModuleCard {
   switch (module) {
@@ -403,5 +405,199 @@ describe('buildModuleQueue', () => {
       expect(seenHeadKey(makeCard('x', 'words'))).toBe('words:word-x');
       expect(seenHeadKey(makeCard('x', 'phrases'))).toBe('phrases:touch base');
     });
+  });
+});
+
+// ─── v8 (2026-11-10): levels, topic runs, 👍 weights, front cards ─────────────
+
+const MODS: ModuleId[] = ['words', 'smalltalk', 'better', 'phrases', 'stories'];
+
+function tagged(id: string, module: ModuleId, theme?: string, level?: CardLevel): ModuleCard {
+  const c = makeCard(id, module) as ModuleCard & { theme?: string; level?: CardLevel };
+  if (theme !== undefined) c.theme = theme;
+  if (level !== undefined) c.level = level;
+  return c;
+}
+
+/** `n` cards of one theme, spread over the 5 modules. */
+function themeDeck(theme: string, n: number, level?: CardLevel): ModuleCard[] {
+  return Array.from({ length: n }, (_, i) => tagged(`${theme}-${i}`, MODS[i % 5]!, theme, level));
+}
+
+describe('buildModuleQueue v8 options', () => {
+  const today: DayKey = '2026-11-10';
+  const base = { today, seenIds: new Set<string>(), hiddenIds: new Set<string>(), limit: 200 };
+
+  it('RUN_LENGTH is 4 cards (answer 2 = B)', () => {
+    expect(RUN_LENGTH).toBe(4);
+  });
+
+  it('no v8 options gives exactly the v7 order', () => {
+    const cards = [...themeDeck('Money', 7, 1), ...themeDeck('Food', 6, 3), ...themeDeck('Work', 5)];
+    for (const filter of ['mix', 'words', 'stories'] as const) {
+      const v7 = buildModuleQueue(cards, { ...base, filter }).map((c) => c.id);
+      expect(buildModuleQueue(cards, { ...base, filter, runLength: 1 }).map((c) => c.id)).toEqual(v7);
+      // Weights alone change nothing: they only steer topic runs.
+      expect(
+        buildModuleQueue(cards, { ...base, filter, themeWeights: { Money: 9 } }).map((c) => c.id),
+      ).toEqual(v7);
+      expect(buildModuleQueue(cards, { ...base, filter, frontIds: [] }).map((c) => c.id)).toEqual(v7);
+    }
+    // v7 Mix is still the strict round-robin, level-1 cards included.
+    const mix = buildModuleQueue(cards, { ...base, filter: 'mix' });
+    expect(mix.slice(0, 5).map((c) => c.module)).toEqual(MODS);
+    expect(mix).toHaveLength(cards.length);
+  });
+
+  it('skips level-1 cards at the start: a module with no level is at level 2 (answer 8 = A)', () => {
+    const cards = MODS.flatMap((m) => [
+      tagged(`${m}-l1`, m, 'General', 1),
+      tagged(`${m}-l2`, m, 'General', 2),
+      tagged(`${m}-l3`, m, 'General', 3),
+      tagged(`${m}-none`, m), // no level stored: counts as 2
+    ]);
+    const start = buildModuleQueue(cards, { ...base, filter: 'mix', levels: {} });
+    expect(start).toHaveLength(15);
+    expect(start.some((c) => c.id.endsWith('-l1'))).toBe(false);
+    expect(start.some((c) => c.id.endsWith('-none'))).toBe(true);
+
+    // Words back at level 1 brings its level-1 card back, only for Words.
+    const wordsEasy = buildModuleQueue(cards, { ...base, filter: 'mix', levels: { words: 1 } });
+    expect(wordsEasy.filter((c) => c.id.endsWith('-l1')).map((c) => c.id)).toEqual(['words-l1']);
+
+    // Level 3 and above serve level-3 cards only.
+    for (const lv of [3, 4, 5] as const) {
+      const hard = buildModuleQueue(cards, { ...base, filter: 'words', levels: { words: lv } });
+      expect(hard.map((c) => c.id)).toEqual(['words-l3']);
+    }
+    expect(belowFloor(cards[1]!, { words: 3 })).toBe(true);
+    expect(belowFloor(cards[2]!, { words: 3 })).toBe(false);
+  });
+
+  it('a ♡ review card is served even below the floor', () => {
+    const easy = tagged('w-easy', 'words', 'General', 1);
+    const queue = buildModuleQueue([easy, tagged('w-3', 'words', 'General', 3)], {
+      ...base,
+      filter: 'words',
+      levels: { words: 3 },
+      reviewIds: ['w-easy'],
+    });
+    expect(queue.map((c) => c.id)).toEqual(['w-easy', 'w-3']);
+  });
+
+  it('serves topic runs of RUN_LENGTH cards of one theme, spread across modules (answer 3 = A)', () => {
+    const cards = [...themeDeck('Money', 12), ...themeDeck('Food', 12), ...themeDeck('Travel', 12)];
+    const queue = buildModuleQueue(cards, { ...base, filter: 'mix', runLength: RUN_LENGTH });
+    expect(queue).toHaveLength(36);
+    const runs: ModuleCard[][] = [];
+    for (let i = 0; i < queue.length; i += RUN_LENGTH) runs.push(queue.slice(i, i + RUN_LENGTH));
+    for (const run of runs) {
+      expect(new Set(run.map((c) => themeOf(c))).size).toBe(1);
+      // one topic across modules: never two cards of one module in a row inside a run
+      for (let i = 1; i < run.length; i++) expect(run[i]!.module).not.toBe(run[i - 1]!.module);
+    }
+    // never the same theme twice in a row while another has cards
+    for (let i = 1; i < runs.length; i++) {
+      const prev = themeOf(runs[i - 1]![0]!);
+      const otherLeft = queue.slice(i * RUN_LENGTH).some((c) => themeOf(c) !== prev);
+      if (otherLeft) expect(themeOf(runs[i]![0]!)).not.toBe(prev);
+    }
+    // same day, same order; another day, another order
+    const again = buildModuleQueue(cards, { ...base, filter: 'mix', runLength: RUN_LENGTH });
+    expect(again.map((c) => c.id)).toEqual(queue.map((c) => c.id));
+    const other = buildModuleQueue(cards, {
+      ...base,
+      today: '2026-11-21',
+      filter: 'mix',
+      runLength: RUN_LENGTH,
+    });
+    expect(other.map((c) => c.id)).not.toEqual(queue.map((c) => c.id));
+  });
+
+  it('a single-module feed also runs by theme; cards with no theme count as General', () => {
+    const cards = [
+      ...Array.from({ length: 6 }, (_, i) => tagged(`m-${i}`, 'words', 'Money')),
+      ...Array.from({ length: 6 }, (_, i) => tagged(`g-${i}`, 'words')),
+      tagged('s-1', 'smalltalk', 'Money'),
+    ];
+    const queue = buildModuleQueue(cards, { ...base, filter: 'words', runLength: RUN_LENGTH });
+    expect(queue).toHaveLength(12);
+    expect(queue.every((c) => c.module === 'words')).toBe(true);
+    expect(new Set(queue.slice(0, 4).map((c) => themeOf(c))).size).toBe(1);
+    expect(themeOf(queue[4]!)).not.toBe(themeOf(queue[0]!));
+  });
+
+  it('a theme that runs out lets the other theme repeat, and nothing is lost', () => {
+    const cards = [...themeDeck('Money', 14), ...themeDeck('Food', 2)];
+    const queue = buildModuleQueue(cards, {
+      ...base,
+      filter: 'mix',
+      runLength: RUN_LENGTH,
+      themeWeights: { Money: 1000 },
+    });
+    expect(queue).toHaveLength(16);
+    // Heavy Money still lets Food in as the second run.
+    expect(queue.slice(0, 4).every((c) => themeOf(c) === 'Money')).toBe(true);
+    expect(queue.slice(4, 6).every((c) => themeOf(c) === 'Food')).toBe(true);
+    expect(queue.slice(6).every((c) => themeOf(c) === 'Money')).toBe(true);
+  });
+
+  it('themes with more 👍 come up more often, Ask "fewer" less often', () => {
+    const themes = ['Money', 'Food', 'Travel', 'Work', 'Home'];
+    const cards = themes.flatMap((t) => themeDeck(t, 20));
+    const moneyEarly = (weights?: Record<string, number>) => {
+      let n = 0;
+      for (let d = 1; d <= 30; d++) {
+        const q = buildModuleQueue(cards, {
+          ...base,
+          today: `2026-12-${String(d).padStart(2, '0')}`,
+          filter: 'mix',
+          runLength: RUN_LENGTH,
+          limit: 12,
+          themeWeights: weights,
+        });
+        n += q.filter((c) => themeOf(c) === 'Money').length;
+      }
+      return n;
+    };
+    const plain = moneyEarly();
+    expect(moneyEarly({ Money: 4 })).toBeGreaterThan(plain * 1.5);
+    expect(moneyEarly({ Money: 0.25 })).toBeLessThan(plain);
+  });
+
+  it('front cards come next after review cards, mixed in one-for-one (answer 4 = A)', () => {
+    const cards = [
+      ...themeDeck('General', 10),
+      tagged('ai-1', 'words', 'Money', 3),
+      tagged('ai-2', 'words', 'Money', 3),
+      tagged('ai-3', 'words', 'Money', 3),
+      tagged('ai-seen', 'words', 'Money', 3),
+      tagged('ai-easy', 'words', 'Money', 1),
+    ];
+    const queue = buildModuleQueue(cards, {
+      ...base,
+      filter: 'mix',
+      seenIds: new Set(['ai-seen']),
+      reviewIds: ['General-4'],
+      levels: {},
+      runLength: RUN_LENGTH,
+      frontIds: ['ai-3', 'ai-1', 'ai-seen', 'ai-easy', 'missing', 'ai-2', 'ai-1'],
+    });
+    const ids = queue.map((c) => c.id);
+    expect(ids[0]).toBe('General-4');
+    expect([ids[1], ids[3], ids[5]]).toEqual(['ai-3', 'ai-1', 'ai-2']);
+    for (const i of [2, 4, 6]) expect(ids[i]!.startsWith('General-')).toBe(true);
+    // seen and too-easy front cards still stay out; nothing appears twice
+    expect(ids).not.toContain('ai-seen');
+    expect(ids).not.toContain('ai-easy');
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(ids).toHaveLength(13);
+
+    // front cards follow the module filter and the limit
+    const stories = buildModuleQueue(cards, { ...base, filter: 'stories', frontIds: ['ai-1'] });
+    expect(stories.map((c) => c.id)).not.toContain('ai-1');
+    const capped = buildModuleQueue(cards, { ...base, filter: 'mix', limit: 2, frontIds: ['ai-2'] });
+    expect(capped.map((c) => c.id)).toHaveLength(2);
+    expect(capped[0]!.id).toBe('ai-2');
   });
 });

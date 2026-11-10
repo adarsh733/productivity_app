@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import cards from './52-say-it-better.json';
 import { checkModuleSeedFile } from '../../db/moduleSeedCheck';
+import { tagProblems } from '../../features/cards/cardTags';
 
 describe('v7 say it better seed', () => {
   it('passes the shared shape, unique situation and slide-length checks', () => {
@@ -37,5 +38,9 @@ describe('v7 say it better seed', () => {
       sample.next.title, sample.next.lines[0]!.label, sample.next.lines[0]!.text, sample.next.note]) {
       expect(sampleHtml).toContain(text);
     }
+  });
+  it('gives every card a topic from the fixed list and a level of 1, 2 or 3', () => {
+    const bad = cards.flatMap((card) => tagProblems(card).map((p) => `${card.id}: ${p}`));
+    expect(bad).toEqual([]);
   });
 });

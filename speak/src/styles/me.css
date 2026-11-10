@@ -1,507 +1,242 @@
-/* -- SPEAK v5: Me screen and the old-tools sheet (tokens only) ------------- */
+/* -- SPEAK v7: Me screen in Night glass (tokens only, AGENTS rule 4) ---------
+   One view: header "Me", three stats, backup row, "What the app learned from
+   you". Every rule sits under .me-screen. The floating glass tab bar covers the
+   bottom, so the scroll area keeps clear of it (tab bar + gap + safe area). */
 
 .me-screen {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding: var(--s-4) var(--gutter) calc(var(--tabbar-h) + var(--s-6) + var(--safe-bottom));
+  overscroll-behavior: contain;
+  padding: var(--glass-title-pad-top) var(--glass-gutter)
+    calc(var(--glass-tabbar-h) + var(--glass-tabbar-gap) * 2 + var(--s-4) + var(--safe-bottom));
   display: flex;
   flex-direction: column;
-  gap: var(--s-4);
+  gap: var(--glass-gap);
+  background: var(--glass-night);
+  color: var(--glass-ink);
+  font-family: var(--sans);
 }
 
-.me-head {
+.me-screen .me-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.me-title {
-  font-family: var(--serif);
-  font-size: var(--fs-6);
-  line-height: var(--lh-tight);
-  color: var(--ink);
+.me-screen .me-title {
   margin: 0;
+  font-family: var(--sans);
+  font-size: var(--glass-fs-title);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-tight);
+  color: var(--glass-ink);
 }
 
-.me-gear {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  color: var(--ink);
-  cursor: pointer;
-  border-radius: var(--r-pill);
+/* -- Shared glass panel look (stats, backup, learned) ----------------------- */
+.me-screen .me-stat,
+.me-screen .me-backup,
+.me-screen .me-learned {
+  background: var(--glass-sheen), var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--glass-rim) solid var(--glass-border);
+  border-top-color: var(--glass-border-hi);
+  border-radius: var(--glass-panel-r);
+  box-shadow: var(--glass-panel-shadow), var(--glass-inset);
+  color: var(--glass-ink);
 }
 
-.me-stats {
+/* -- Stats ------------------------------------------------------------------ */
+.me-screen .me-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--s-3);
 }
 
-.me-stat {
+.me-screen .me-stat {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   gap: var(--s-1);
   padding: var(--s-4) var(--s-2);
-  min-height: 104px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
   text-align: center;
 }
 
-.me-stat-num {
-  font-family: var(--serif);
-  font-size: var(--fs-6);
-  line-height: var(--lh-tight);
-  font-weight: var(--fw-bold);
-  color: var(--ink);
-}
-
-.me-stat-label {
-  font-size: var(--fs-2);
-  line-height: var(--lh-body);
-  color: var(--ink-3);
-}
-
-.me-rows {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-3);
-}
-
-.me-row {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: var(--s-4);
-  padding: var(--s-4);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-  text-align: left;
-  font: inherit;
-  color: var(--ink);
-  cursor: pointer;
-}
-
-.me-row-icon {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: var(--r-sm);
-  font-size: var(--fs-5);
-  background: var(--raised);
-}
-
-.me-row-icon-saved { background: color-mix(in srgb, var(--bad) 10%, var(--card)); }
-.me-row-icon-weak { background: color-mix(in srgb, var(--t-idiom) 12%, var(--card)); }
-.me-row-icon-stories { background: color-mix(in srgb, var(--t-swap) 12%, var(--card)); }
-.me-row-icon-chats { background: color-mix(in srgb, var(--t-say_it) 12%, var(--card)); }
-.me-row-icon-asked { background: color-mix(in srgb, var(--t-word) 10%, var(--card)); }
-
-.me-row-text {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.me-row-title {
-  font-size: var(--fs-4);
-  font-weight: var(--fw-bold);
-  color: var(--ink);
-}
-
-.me-row-sub {
-  font-size: var(--fs-3);
-  line-height: var(--lh-body);
-  color: var(--ink-2);
-  overflow-wrap: anywhere;
-}
-
-.me-row.is-empty .me-row-sub {
-  color: var(--ink-3);
-}
-
-.me-row-chev {
-  flex: none;
-  width: 18px;
-  height: 18px;
-  color: var(--ink-3);
-}
-
-/* -- Old tools sheet ---------------------------------------------------------- */
-.old-tools {
-  position: absolute;
-  inset: 0;
-  z-index: 30;
-  display: flex;
-  flex-direction: column;
-  background: var(--paper);
-  padding-top: var(--safe-top);
-}
-
-.old-tools-head {
-  flex: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--s-2);
-  padding: var(--s-2) var(--s-3);
-  border-bottom: 1px solid var(--line);
-  background: var(--card);
-}
-
-.old-tools-title {
-  font-size: var(--fs-4);
-  font-weight: var(--fw-bold);
-  color: var(--ink);
-  margin: 0;
-}
-
-.old-tools-spacer {
-  width: 44px;
-  height: 44px;
-}
-
-.old-tools-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  color: var(--ink);
-  cursor: pointer;
-  border-radius: var(--r-pill);
-}
-
-.old-tools-body {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-}
-
-.old-tools-list {
-  list-style: none;
-  margin: 0;
-  padding: var(--s-4) var(--gutter);
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-3);
-}
-
-.old-tools-item {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: var(--s-4);
-  padding: var(--s-4);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-  text-align: left;
-  font: inherit;
-  color: var(--ink);
-  cursor: pointer;
-}
-
-.old-tools-item-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.old-tools-item-label {
-  font-size: var(--fs-4);
-  font-weight: var(--fw-bold);
-}
-
-.old-tools-item-hint {
-  font-size: var(--fs-3);
-  color: var(--ink-2);
-}
-
-/* -- What the app knows about me (learner memory) ------------------------- */
-.me-knows {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-4);
-  padding: var(--s-4);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-}
-
-.me-knows-title {
-  font-size: var(--fs-4);
+/* Sans with tabular figures, never serif (tokens.css: no serif for numbers). */
+.me-screen .me-stat-num {
+  font-family: var(--sans);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--glass-fs-title);
   font-weight: var(--fw-bold);
   line-height: var(--lh-tight);
-  color: var(--ink);
-  margin: 0;
+  color: var(--glass-ink);
 }
 
-.me-knows-part {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-2);
-}
-
-.me-knows-label {
-  font-size: var(--fs-1);
-  font-weight: var(--fw-bold);
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--ink-3);
-  margin: 0;
-}
-
-.me-knows-empty,
-.me-knows-line {
-  font-size: var(--fs-3);
-  line-height: var(--lh-body);
-  color: var(--ink-2);
-  margin: 0;
-}
-
-.me-knows-empty {
-  color: var(--ink-3);
-}
-
-.me-knows-wishes,
-.me-knows-topics {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.me-knows-wishes {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-2);
-}
-
-.me-knows-wish {
-  display: flex;
-  align-items: center;
-  gap: var(--s-3);
-  padding: var(--s-2) var(--s-2) var(--s-2) var(--s-3);
-  background: var(--raised);
-  border-radius: var(--r-sm);
-}
-
-.me-knows-wish-text {
-  flex: 1;
-  min-width: 0;
-  font-size: var(--fs-3);
-  line-height: var(--lh-body);
-  color: var(--ink);
-  overflow-wrap: anywhere;
-}
-
-.me-knows-forget {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 var(--s-4);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--r-pill);
-  font: inherit;
+.me-screen .me-stat-label {
   font-size: var(--fs-2);
-  font-weight: var(--fw-medium);
-  color: var(--ink-2);
-  cursor: pointer;
-}
-
-.me-knows-forget:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
-
-.me-knows-topics {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s-2);
-}
-
-.me-knows-topic {
-  max-width: 100%;
-  padding: var(--s-1) var(--s-3);
-  background: var(--raised);
-  border-radius: var(--r-pill);
-  font-size: var(--fs-2);
-  line-height: var(--lh-body);
-  color: var(--ink-2);
-  overflow-wrap: anywhere;
-}
-
-
-/* -- What the app learned from you --------------------------------------- */
-.me-learned {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-3);
-  padding: var(--s-4);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-}
-
-.me-learned-title {
-  font-size: var(--fs-4);
-  font-weight: var(--fw-bold);
   line-height: var(--lh-tight);
-  color: var(--ink);
-  margin: 0;
+  color: var(--glass-ink-muted);
 }
 
-.me-learned-empty {
-  font-size: var(--fs-3);
-  line-height: var(--lh-body);
-  color: var(--ink-3);
-  margin: 0;
-}
-
-.me-learned-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+/* -- Backup row ------------------------------------------------------------- */
+.me-screen .me-backup {
   display: flex;
   flex-direction: column;
   gap: var(--s-2);
+  margin: 0;
+  padding: var(--glass-panel-pad-y) var(--glass-panel-pad-x);
 }
 
-.me-learned-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--s-3);
-  padding: var(--s-2) var(--s-2) var(--s-2) var(--s-3);
-  background: var(--raised);
-  border-radius: var(--r-sm);
-}
-
-.me-learned-text {
-  flex: 1;
-  min-width: 0;
-  font-size: var(--fs-3);
+.me-screen .me-backup-line {
+  margin: 0;
+  font-size: var(--fs-4);
+  font-weight: var(--glass-fw-semi);
   line-height: var(--lh-body);
-  color: var(--ink);
+  color: var(--glass-ink);
+}
+
+.me-screen .me-backup-sub {
+  margin: 0;
+  font-size: var(--fs-2);
+  line-height: var(--lh-body);
+  color: var(--glass-ink-muted);
   overflow-wrap: anywhere;
 }
 
-.me-learned-remove {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0 var(--s-3);
-  background: var(--card);
-  border: 1px solid var(--line);
+.me-screen .me-backup-input {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--glass-tap);
+  padding: 0 var(--glass-pill-pad-x);
+  background: var(--glass-sheen), var(--glass-bg);
+  border: var(--glass-hairline) solid var(--glass-border-hi);
   border-radius: var(--r-pill);
-  font: inherit;
-  font-size: var(--fs-2);
-  font-weight: var(--fw-medium);
-  color: var(--ink-2);
-  cursor: pointer;
-}
-
-.me-learned-remove:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
-
-/* -- v7 steps 4-6: Backup row under the stats (tokens only) ---------------- */
-
-.me-backup {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-2);
-  padding: var(--s-4);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-  margin: 0;
-}
-
-.me-backup-line {
-  margin: 0;
-  font-size: var(--fs-3);
-  line-height: var(--lh-body);
-  color: var(--ink);
-}
-
-.me-backup-sub {
-  margin: 0;
-  font-size: var(--fs-2);
-  color: var(--ink-2);
-  overflow-wrap: anywhere;
-}
-
-.me-backup-input {
-  flex: 1;
-  min-width: 0;
-  min-height: 44px;
-  padding: 0 var(--s-3);
-  background: var(--raised);
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
+  box-shadow: var(--glass-inset);
   font: inherit;
   /* 16px or more: smaller makes iOS zoom the page on focus. */
   font-size: max(1rem, 16px);
-  color: var(--ink);
+  color: var(--glass-ink);
 }
 
-.me-backup-btn {
+.me-screen .me-backup-input::placeholder {
+  color: var(--glass-ink-faint);
+}
+
+.me-screen .me-backup-btn {
   flex: none;
   align-self: flex-start;
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0 var(--s-4);
-  background: var(--accent);
-  border: none;
+  min-width: var(--glass-tap);
+  min-height: var(--glass-tap);
+  padding: 0 var(--s-5);
+  background: var(--glass-rail-btn-on-bg);
+  border: var(--glass-hairline) solid var(--glass-rail-btn-on-bg);
   border-radius: var(--r-pill);
   font: inherit;
-  font-size: var(--fs-2);
-  font-weight: var(--fw-medium);
-  color: var(--accent-ink);
+  font-size: var(--glass-fs-pill);
+  font-weight: var(--fw-bold);
+  color: var(--glass-rail-btn-on-ink);
   cursor: pointer;
 }
 
-.me-backup-on .me-backup-btn {
-  background: var(--card);
-  border: 1px solid var(--line);
-  color: var(--ink-2);
+.me-screen .me-backup-on .me-backup-btn {
+  background: var(--glass-sheen), var(--glass-rail-btn-bg);
+  border-color: var(--glass-rail-btn-border);
+  box-shadow: var(--glass-inset);
+  color: var(--glass-ink-soft);
 }
 
-.me-backup-btn:disabled {
+.me-screen .me-backup-btn:disabled {
   opacity: 0.5;
   cursor: default;
 }
 
 /* Plain ink, never red (Instagram-look rule: no red text). */
-.me-backup-error {
+.me-screen .me-backup-error {
   margin: 0;
   font-size: var(--fs-2);
-  color: var(--ink-2);
+  color: var(--glass-ink-soft);
+}
+
+/* -- What the app learned from you ----------------------------------------- */
+.me-screen .me-learned {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--glass-panel-pad-y) var(--glass-panel-pad-x);
+}
+
+.me-screen .me-learned-title {
+  margin: 0;
+  font-size: var(--glass-fs-kicker);
+  font-weight: var(--glass-fw-semi);
+  letter-spacing: var(--glass-ls-kicker);
+  line-height: var(--lh-body);
+  text-transform: uppercase;
+  color: var(--glass-ink-soft);
+}
+
+.me-screen .me-learned-empty {
+  margin: 0;
+  font-size: var(--fs-3);
+  line-height: var(--lh-body);
+  color: var(--glass-ink-muted);
+}
+
+.me-screen .me-learned-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.me-screen .me-learned-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-2) var(--s-2) var(--s-2) var(--s-4);
+  background: var(--glass-weak-bg);
+  border: var(--glass-hairline) solid var(--glass-weak-border);
+  border-radius: var(--glass-bubble-r);
+}
+
+.me-screen .me-learned-text {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--fs-3);
+  line-height: var(--lh-body);
+  color: var(--glass-ink);
+  overflow-wrap: anywhere;
+}
+
+.me-screen .me-learned-remove {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--glass-tap);
+  min-height: var(--glass-tap);
+  padding: 0 var(--glass-pill-pad-x);
+  background: var(--glass-sheen), var(--glass-rail-btn-bg);
+  border: var(--glass-hairline) solid var(--glass-rail-btn-border);
+  border-radius: var(--r-pill);
+  box-shadow: var(--glass-inset);
+  font: inherit;
+  font-size: var(--glass-fs-pill);
+  font-weight: var(--fw-medium);
+  color: var(--glass-ink-soft);
+  cursor: pointer;
+}
+
+.me-screen .me-learned-remove:hover {
+  background: var(--glass-sheen), var(--glass-rail-btn-hover-bg);
+}
+
+.me-screen .me-learned-remove:disabled {
+  opacity: 0.5;
+  cursor: default;
 }

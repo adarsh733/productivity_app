@@ -12,6 +12,7 @@ import ChipRow from './ChipRow';
 import FeedbackSheet from './FeedbackSheet';
 import ReviewBar from './ReviewBar';
 import {
+  CheckCircleIcon,
   CommentIcon,
   HeartIcon,
   ThumbsDownIcon,
@@ -28,6 +29,7 @@ interface FeedCardRailProps {
   onOpenSheet: (thumb?: 'up' | 'down') => void;
   onEngage: () => void;
   onSaved: (card: ModuleCard, saved: boolean) => Promise<void>;
+  onKnowIt: (card: ModuleCard) => void;
   currentSlideIndex: number;
 }
 
@@ -36,11 +38,18 @@ function FeedCardRail({
   onOpenSheet,
   onEngage,
   onSaved,
+  onKnowIt,
   currentSlideIndex,
 }: FeedCardRailProps) {
   const { thumb, setThumb } = useCardFeedback(card);
   const { isBookmarked, toggleBookmark } = useBookmarks();
   const bookmarked = isBookmarked(card.id);
+
+  const handleKnowIt = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onEngage();
+    onKnowIt(card);
+  };
 
   const handleThumbUp = async (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -80,6 +89,18 @@ function FeedCardRail({
 
   return (
     <div className="v7-rail" role="toolbar" aria-label="Card actions">
+      <button
+        type="button"
+        className="v7-rail-btn v7-rail-know"
+        aria-label="Know it"
+        onClick={handleKnowIt}
+      >
+        <CheckCircleIcon className="v7-icon-sm" />
+        <span className="v7-rail-cap" aria-hidden="true">
+          Know it
+        </span>
+      </button>
+
       <button
         type="button"
         className={`v7-rail-btn ${thumb === 'up' ? 'is-on' : ''}`}
@@ -199,6 +220,24 @@ export default function FeedScreen({ onOpenSpeakWithCard: _ }: FeedScreenProps) 
     return () => el.removeEventListener('scrollend', onScrollEnd);
   }, [handleSettleIndex]);
 
+  // Know it: record it, then move on by itself to the next card (answer 7 = A).
+  const handleKnowIt = useCallback(
+    (card: ModuleCard) => {
+      const at = feed.items.findIndex((c) => c.id === card.id);
+      void feed.knowIt(card).then(() => {
+        const el = feedContainerRef.current;
+        if (!el || at < 0) return;
+        const top = (at + 1) * (el.clientHeight || 1);
+        if (typeof el.scrollTo === 'function') {
+          el.scrollTo({ top, behavior: 'smooth' });
+        } else {
+          el.scrollTop = top;
+        }
+      });
+    },
+    [feed.items, feed.knowIt],
+  );
+
   const handleSlideChange = useCallback(
     (cardId: string, slideIndex: number) => {
       setCardSlideIndices((prev) => ({ ...prev, [cardId]: slideIndex }));
@@ -240,6 +279,7 @@ export default function FeedScreen({ onOpenSpeakWithCard: _ }: FeedScreenProps) 
                     onOpenSheet={(thumb) => setActiveFeedback({ card, startThumb: thumb })}
                     onEngage={() => feed.markEngaged(card.id)}
                     onSaved={feed.setSaved}
+                    onKnowIt={handleKnowIt}
                     currentSlideIndex={cardSlideIndices[card.id] ?? 0}
                   />
                   {dueIds.includes(card.id) && (
@@ -262,7 +302,10 @@ export default function FeedScreen({ onOpenSpeakWithCard: _ }: FeedScreenProps) 
         <FeedbackSheet
           card={activeFeedback.card}
           startThumb={activeFeedback.startThumb}
-          onClose={() => setActiveFeedback(null)}
+          onClose={() => {
+            setActiveFeedback(null);
+            void feed.applyLevels();
+          }}
         />
       )}
     </div>

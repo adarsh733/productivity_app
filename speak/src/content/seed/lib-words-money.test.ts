@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import cards from './65-words-money-time.json';
+import { tagProblems } from '../../features/cards/cardTags';
 import sampleWords from './50-words.json';
 import sampleTalk from './51-small-talk.json';
 import sampleBetter from './52-say-it-better.json';
@@ -36,5 +37,9 @@ describe('library: words-money (65-words-money-time.json)', () => {
       expect(card.tags).toEqual(['words', String(card.topic).toLowerCase()]);
       expect(card.check !== undefined).toBe((i + 1) % 3 === 0);
     });
+  });
+
+  it('gives every card a topic from the fixed list and a level 1-3', () => {
+    expect(cards.flatMap((c) => tagProblems(c))).toEqual([]);
   });
 });

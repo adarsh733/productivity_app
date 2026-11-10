@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import cards from './54-stories.json';
 import { checkModuleSeedFile } from '../../db/moduleSeedCheck';
+import { tagProblems } from '../../features/cards/cardTags';
 
 describe('v7 stories seed', () => {
   it('passes the shared shape, ID and slide-length checks', () => {
@@ -35,5 +36,10 @@ describe('v7 stories seed', () => {
     for (const text of [sample.report, sample.story, sample.trick, sample.yourTurn!.prompt, sample.yourTurn!.hint]) {
       expect(sampleHtml).toContain(text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>'));
     }
+  });
+
+  it('gives every card a topic from the fixed list and a level of 1, 2 or 3 (v8)', () => {
+    const problems = (cards as unknown[]).flatMap((c) => tagProblems(c).map((p) => `${(c as { id: string }).id}: ${p}`));
+    expect(problems).toEqual([]);
   });
 });

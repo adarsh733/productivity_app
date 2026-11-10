@@ -2,20 +2,24 @@ import { describe, expect, it, vi } from 'vitest';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import TabBar from './TabBar';
 
-describe('TabBar (v5: Feed · Ask · Me)', () => {
-  it('renders exactly three tabs and no old ones', () => {
+describe('TabBar (Feed · Favorites · Ask · Me)', () => {
+  it('renders exactly four tabs in the set order and no old ones', () => {
     render(<TabBar active="feed" onChange={vi.fn()} />);
 
-    expect(screen.getAllByRole('button')).toHaveLength(3);
-    expect(screen.getByRole('button', { name: /Feed/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Ask/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Me/i })).toBeInTheDocument();
+    const buttons = screen.getAllByRole('button');
+    expect(buttons).toHaveLength(4);
+    expect(buttons.map((b) => b.getAttribute('aria-label'))).toEqual([
+      'Feed tab',
+      'Favorites tab',
+      'Ask tab',
+      'Me tab',
+    ]);
     expect(screen.queryByRole('button', { name: /Browse/i })).toBeNull();
     expect(screen.queryByRole('button', { name: /Speak/i })).toBeNull();
     expect(screen.queryByRole('button', { name: /You/i })).toBeNull();
   });
 
-  it('keeps all three tabs the same: an icon and a label, nothing raised', () => {
+  it('keeps all tabs the same: an icon and a label, nothing raised', () => {
     render(<TabBar active="feed" onChange={vi.fn()} />);
     for (const button of screen.getAllByRole('button')) {
       expect(button.querySelectorAll('svg')).toHaveLength(1);
@@ -25,20 +29,22 @@ describe('TabBar (v5: Feed · Ask · Me)', () => {
 
   it('marks the active tab with aria-current and calls onChange when tapped', async () => {
     const onChange = vi.fn();
-    render(<TabBar active="feed" onChange={onChange} />);
+    render(<TabBar active="ask" onChange={onChange} />);
 
-    const askBtn = screen.getByRole('button', { name: /Ask/i });
-    expect(screen.getByRole('button', { name: /Feed/i })).toHaveAttribute('aria-current', 'page');
-    expect(askBtn).not.toHaveAttribute('aria-current');
+    const favBtn = screen.getByRole('button', { name: 'Favorites tab' });
+    expect(screen.getByRole('button', { name: 'Ask tab' })).toHaveAttribute('aria-current', 'page');
+    expect(favBtn).not.toHaveAttribute('aria-current');
 
-    await act(async () => {
-      fireEvent.click(askBtn);
-    });
-    expect(onChange).toHaveBeenCalledWith('ask');
-
-    await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: /Me/i }));
-    });
-    expect(onChange).toHaveBeenCalledWith('me');
+    for (const [name, tab] of [
+      ['Favorites tab', 'favorites'],
+      ['Ask tab', 'ask'],
+      ['Me tab', 'me'],
+      ['Feed tab', 'feed'],
+    ] as const) {
+      await act(async () => {
+        fireEvent.click(screen.getByRole('button', { name }));
+      });
+      expect(onChange).toHaveBeenLastCalledWith(tab);
+    }
   });
 });

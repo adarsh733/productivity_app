@@ -161,6 +161,35 @@ describe('ModuleCardView', () => {
     expect(dots[0]?.classList.contains('is-on')).toBe(true);
   });
 
+  it('shows the topic label and carries data-theme and data-level', () => {
+    const { container } = render(
+      <ModuleCardView card={{ ...wordsCard, theme: 'Money', level: 3 }} />,
+    );
+    const root = container.querySelector('.v7-card')!;
+    expect(root.getAttribute('data-theme')).toBe('Money');
+    expect(root.getAttribute('data-level')).toBe('3');
+    const label = screen.getByTestId('card-theme');
+    expect(label.classList.contains('v7-theme')).toBe(true);
+    expect(label.textContent).toBe('Money');
+  });
+
+  it('a card with no tags reads General and level 2', () => {
+    const { container } = render(<ModuleCardView card={wordsCard} />);
+    const root = container.querySelector('.v7-card')!;
+    expect(root.getAttribute('data-theme')).toBe('General');
+    expect(root.getAttribute('data-level')).toBe('2');
+    expect(screen.getByTestId('card-theme').textContent).toBe('General');
+  });
+
+  it('draws the label once per card, on every module', () => {
+    for (const card of [smallTalkCard, sayBetterCard, phrasesCard, storyCard]) {
+      const { unmount } = render(<ModuleCardView card={{ ...card, theme: 'Work', level: 1 }} />);
+      expect(screen.getAllByTestId('card-theme')).toHaveLength(1);
+      expect(document.querySelector('.v7-card')?.getAttribute('data-level')).toBe('1');
+      unmount();
+    }
+  });
+
   it('interacts with the quick check options', () => {
     render(<ModuleCardView card={wordsCard} />);
 

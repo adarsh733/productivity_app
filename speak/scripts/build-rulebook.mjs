@@ -33,21 +33,17 @@ const SLICES = {
   // Writing cards: who he is, universal rules, the four tracks, dedupe + steering,
   // and (v7, 2026-11-08) chapter 9: the five module shapes and how feedback steers a batch.
   expand_seed: { include: ['intro', '0', '1', '2', '3.3', '3.4', '8.3', '9'], exclude: [], gold: false },
-  // Sorting a one-line thought: the same, plus how Ask questions are classified.
-  classify_inbox: { include: ['intro', '0', '1', '2', '3.3', '3.4', '4.1'], exclude: [], gold: false },
   // The second model: everything it judges against, and the reject codes.
   // Chapter 9 without 9.1 (shapes: the job lines in ai.ts name them) and 9.3
   // (steering is the writer's job), to stay under the Groq cap.
   verify_batch: { include: ['intro', '0', '1', '2', '6', '7.2', '9'], exclude: ['1.7', '9.1', '9.3'], gold: false },
-  // Voice feedback on a recording.
-  review_recording: { include: ['intro', '0', '1.3', '1.4', '5'], exclude: [], gold: false },
   // Weekly plan: who he is and how new items are paced.
   plan_week: { include: ['intro', '0', '3.1', '3.4'], exclude: [], gold: false },
-  // Ask (added in step 3): classify, answer shape, cards, "everything comes back".
-  // 8.3 (learning from him) is left out to stay under the Groq cap; its rule rides in DATA_RULE in ai.ts.
-  answer_ask: { include: ['intro', '0', '1', '2', '4', '8'], exclude: ['1.7', '8.3'], gold: false },
-  // Evening chat coach (added in step 5): feedback rules and what it may judge.
-  coach_chat: { include: ['intro', '0', '1.3', '1.4', '5', '8'], exclude: [], gold: false },
+  // v8 Ask box (2026-11-10): who he is, how feedback steers a batch (what a
+  // learned item changes) and chapter 10, the Ask box itself.
+  tell_app: { include: ['intro', '0', '9.3', '10'], exclude: [], gold: false },
+  // classify_inbox, review_recording, answer_ask and coach_chat were removed on
+  // 2026-11-10 with the screens that called them (v7 trim).
 };
 
 const HEADER = 'SPEAK AI RULEBOOK. These are the parts of it that apply to this job. Section numbers match the full rulebook.';
@@ -137,8 +133,8 @@ export function generate(md) {
 // Lives outside netlify/functions so Netlify never deploys it as a function.
 import type { AiTask } from '../src/types/contract';
 
-/** Every job that gets a slice of the rulebook (Ask and chat arrive in later steps). */
-export type RulebookTask = AiTask | 'answer_ask' | 'coach_chat';
+/** Every job that gets a slice of the rulebook: exactly the server's tasks. */
+export type RulebookTask = AiTask;
 
 /** The whole rulebook, word for word. Too long to send to the free Groq tier whole. */
 export const RULEBOOK: string = ${JSON.stringify(text)};

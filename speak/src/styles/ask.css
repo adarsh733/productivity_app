@@ -1,455 +1,178 @@
-/* -- SPEAK v5: Ask screen (tokens only) ------------------------------------- */
+/* -- SPEAK v8: Ask tab in Night glass (tokens only, AGENTS rule 4) ----------
+   Title + one line, the thread (his last 10 messages, oldest first), the box.
+   The floating glass tab bar covers the bottom, so the box sits above it
+   (tab bar + gap + safe area). No red: errors use the same soft ink. */
 
 .ask-screen {
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
-  padding: var(--s-4) var(--gutter) calc(var(--tabbar-h) + var(--s-6) + var(--safe-bottom));
   display: flex;
   flex-direction: column;
-  gap: var(--s-4);
-}
-
-.ask-title {
+  gap: var(--glass-gap);
+  padding: var(--glass-title-pad-top) var(--glass-gutter)
+    calc(var(--glass-tabbar-h) + var(--glass-tabbar-gap) * 2 + var(--s-4) + var(--safe-bottom));
+  background: var(--glass-night);
+  color: var(--glass-ink);
   font-family: var(--sans);
-  font-size: var(--fs-7);
-  font-weight: var(--fw-black);
-  letter-spacing: -0.02em;
-  line-height: var(--lh-tight);
-  color: var(--poster-cobalt);
-  margin: 0;
 }
 
-/* The question box holds its own round send button. */
-.ask-form {
-  position: relative;
-}
-
-.ask-box {
-  display: flex;
-  align-items: center;
-  min-height: 60px;
-  padding: var(--s-1) 60px var(--s-1) var(--s-5);
-  background: var(--card);
-  border: 1.5px solid var(--line);
-  border-radius: var(--r-lg);
-  box-shadow: var(--shadow-card);
-}
-
-.ask-box:focus-within {
-  border-color: var(--poster-cobalt);
-}
-
-.ask-input {
-  flex: 1;
-  min-width: 0;
-  min-height: 44px;
-  border: none;
-  outline: none;
-  background: transparent;
-  font: inherit;
-  font-size: var(--fs-4);
-  color: var(--ink);
-}
-
-/* The box is a textarea: one line to start, grows with the question. */
-textarea.ask-input {
-  display: block;
-  resize: none;
-  padding: var(--s-3) 0;
-  line-height: var(--lh-body);
-  max-height: 40vh;
-  overflow-y: auto;
-  field-sizing: content;
-}
-
-.ask-input::placeholder {
-  color: var(--ink-3);
-}
-
-.ask-chips {
-  display: flex;
-  gap: var(--s-2);
-  margin: 0 calc(var(--gutter) * -1);
-  padding: 0 var(--gutter);
-  overflow-x: auto;
-  scrollbar-width: none;
-  flex: none;
-}
-
-.ask-chips::-webkit-scrollbar {
-  display: none;
-}
-
-.ask-chip {
-  display: inline-flex;
-  flex: none;
-  white-space: nowrap;
-  align-items: center;
-  gap: var(--s-2);
-  padding: 0 var(--s-4);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--r-pill);
-  font: inherit;
-  font-size: var(--fs-3);
-  color: var(--ink);
-  cursor: pointer;
-}
-
-.ask-h2 {
-  font-size: var(--fs-4);
-  font-weight: var(--fw-bold);
-  color: var(--ink);
-  margin: var(--s-2) 0 0;
-}
-
-.ask-tiles {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--s-3);
-}
-
-.ask-tile {
-  position: relative;
-  aspect-ratio: 1;
-  display: flex;
-  flex-direction: column;
-  padding: var(--s-3) var(--s-4);
-  border-radius: var(--r-md);
-  background: var(--poster-bg);
-  color: var(--poster-ink);
-  overflow: hidden;
-}
-
-.ask-tile-name {
-  position: relative;
-  z-index: 1;
-  font-family: var(--sans);
-  font-size: var(--fs-5);
-  font-weight: var(--fw-black);
-  letter-spacing: -0.01em;
-  line-height: var(--lh-tight);
-}
-
-.ask-tile-art {
-  position: absolute;
-  right: var(--s-1);
-  bottom: var(--s-3);
-  width: 64%;
-  height: 64%;
-  object-fit: cover;
-  -webkit-mask-image: radial-gradient(circle at 60% 60%, #000 55%, transparent 72%);
-  mask-image: radial-gradient(circle at 60% 60%, #000 55%, transparent 72%);
-}
-
-.ask-tile-bar {
-  position: absolute;
-  inset: auto var(--s-3) var(--s-2);
-  z-index: 1;
-  display: block;
-  height: 4px;
-  border-radius: var(--r-pill);
-  background: color-mix(in srgb, currentColor 30%, transparent);
-  overflow: hidden;
-}
-
-.ask-tile-fill {
-  display: block;
-  width: 0;
-  height: 100%;
-  background: currentColor;
-  border-radius: var(--r-pill);
-}
-
-.ask-recent {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.ask-recent-item {
-  padding: var(--s-3) 0;
-  border-bottom: 1px solid var(--line);
-  font-size: var(--fs-3);
-  color: var(--ink-2);
-  overflow-wrap: anywhere;
-}
-
-.ask-empty {
-  margin: 0;
-  font-size: var(--fs-3);
-  color: var(--ink-3);
-}
-
-/* -- Step 3: sending a question, the answer, the library ------------------- */
-
-.ask-send {
-  position: absolute;
-  right: var(--s-2);
-  bottom: var(--s-2);
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border: none;
-  border-radius: var(--r-pill);
-  background: var(--poster-cobalt);
-  color: var(--poster-on-colour);
-  cursor: pointer;
-}
-
-.ask-send:disabled {
-  background: var(--raised);
-  color: var(--ink-3);
-  cursor: default;
-}
-
-.ask-answer {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-4);
-}
-
-.ask-line {
-  margin: 0;
-  padding: var(--s-3) var(--s-4);
-  border-radius: var(--r-sm);
-  background: var(--accent-soft);
-  border-left: 3px solid var(--accent-line);
-  font-size: var(--fs-3);
-  color: var(--ink);
-  overflow-wrap: anywhere;
-}
-
-.ask-line[data-failure] {
-  background: color-mix(in srgb, var(--warn) 10%, var(--card));
-  border-left-color: var(--warn);
-}
-
-.ask-rule {
-  margin: 0;
-  font-family: var(--serif);
-  font-size: var(--fs-4);
-  line-height: var(--lh-tight);
-  color: var(--ink);
-  overflow-wrap: anywhere;
-}
-
-.ask-section,
-.ask-fix {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-3);
-}
-
-.ask-hits {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-2);
-}
-
-.ask-hit {
+.ask-screen .ask-head {
   display: flex;
   flex-direction: column;
   gap: var(--s-1);
-  padding: var(--s-3) var(--s-4);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
 }
 
-.ask-hit-new {
-  border-color: var(--accent-line);
+.ask-screen .ask-title {
+  margin: 0;
+  font-size: var(--glass-fs-title);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-tight);
+  color: var(--glass-ink);
 }
 
-.ask-hit-meta {
-  font-size: var(--fs-1);
-  color: var(--ink-3);
-  text-transform: uppercase;
-}
-
-.ask-hit-title {
-  font-size: var(--fs-3);
-  font-weight: var(--fw-bold);
-  color: var(--ink);
-  overflow-wrap: anywhere;
-}
-
-.ask-hit-line {
-  font-size: var(--fs-2);
-  color: var(--ink-2);
-  overflow-wrap: anywhere;
-}
-
-.ask-add {
-  min-height: 48px;
-  padding: 0 var(--s-5);
-  border: none;
-  border-radius: var(--r-pill);
-  background: var(--accent);
-  color: var(--accent-ink);
-  font: inherit;
-  font-size: var(--fs-3);
-  font-weight: var(--fw-bold);
-  cursor: pointer;
-}
-
-.ask-add:disabled {
-  opacity: 0.6;
-  cursor: default;
-}
-
-.ask-added {
+.ask-screen .ask-sub {
   margin: 0;
   font-size: var(--fs-3);
-  color: var(--ink-2);
+  line-height: var(--lh-body);
+  color: var(--glass-ink-muted);
 }
 
-.ask-weak {
+/* -- Thread ------------------------------------------------------------------ */
+.ask-screen .ask-thread {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.ask-screen .ask-turn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.ask-screen .ask-said {
+  align-self: flex-end;
+  max-width: 85%;
   margin: 0;
-  font-size: var(--fs-2);
-  color: var(--warn);
+  padding: var(--s-3) var(--s-4);
+  background: var(--glass-rail-btn-on-bg);
+  color: var(--glass-rail-btn-on-ink);
+  border-radius: var(--glass-bubble-r);
+  font-size: var(--fs-3);
+  line-height: var(--lh-body);
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.ask-screen .ask-reply {
+  align-self: flex-start;
+  max-width: 92%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-3) var(--s-4);
+  background: var(--glass-sheen), var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--glass-rim) solid var(--glass-border);
+  border-top-color: var(--glass-border-hi);
+  border-radius: var(--glass-bubble-r);
+  box-shadow: var(--glass-panel-shadow), var(--glass-inset);
+}
+
+.ask-screen .ask-reply-text {
+  margin: 0;
+  font-size: var(--fs-3);
+  line-height: var(--lh-body);
+  color: var(--glass-ink);
   overflow-wrap: anywhere;
 }
 
-.ask-version {
-  padding: var(--s-3) var(--s-4);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-}
-
-.ask-version-head {
+.ask-screen .ask-chips {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
   gap: var(--s-2);
-  margin-bottom: var(--s-2);
-}
-
-.ask-version-name {
-  font-size: var(--fs-2);
-  font-weight: var(--fw-bold);
-  color: var(--accent);
-}
-
-.ask-version-hint {
-  font-size: var(--fs-1);
-  color: var(--ink-3);
-}
-
-.ask-version-text {
   margin: 0;
-  font-size: var(--fs-3);
-  color: var(--ink);
-  overflow-wrap: anywhere;
-}
-
-.ask-chunk {
-  background: var(--accent-soft);
-  color: inherit;
-  border-radius: 4px;
-  padding: 0 2px;
-}
-
-.ask-chunks-label {
-  font-size: var(--fs-1);
-  color: var(--ink-3);
-  text-transform: uppercase;
-}
-
-.ask-chunk-list {
-  list-style: none;
-  margin: var(--s-2) 0 0;
   padding: 0;
+  list-style: none;
+}
+
+.ask-screen .ask-chip {
+  padding: var(--s-1) var(--glass-chip-pad-sm);
+  background: var(--glass-weak-bg);
+  border: var(--glass-hairline) solid var(--glass-weak-border);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-2);
+  line-height: var(--lh-tight);
+  color: var(--glass-ink-soft);
+}
+
+.ask-screen .ask-line {
+  margin: 0;
+  font-size: var(--fs-2);
+  line-height: var(--lh-body);
+  color: var(--glass-ink-muted);
+}
+
+.ask-screen .ask-error {
+  color: var(--glass-ink);
+}
+
+/* -- The box ------------------------------------------------------------------ */
+.ask-screen .ask-form {
+  flex: none;
   display: flex;
-  flex-wrap: wrap;
+  align-items: flex-end;
   gap: var(--s-2);
 }
 
-.ask-chunk-item {
-  padding: var(--s-1) var(--s-3);
-  background: var(--accent-soft);
-  border-radius: var(--r-pill);
-  font-size: var(--fs-2);
-  color: var(--ink);
-}
-
-/* Under the box: "Type a word or a question" and the 950 / 1000 counter. */
-.ask-input-meta {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--s-2);
-  margin-top: calc(-1 * var(--s-2));
-}
-
-.ask-hint {
-  margin: 0;
-  font-size: var(--fs-2);
-  color: var(--warn);
-}
-
-.ask-counter {
-  margin-left: auto;
-  font-size: var(--fs-2);
-  color: var(--ink-3);
-  font-variant-numeric: tabular-nums;
-}
-
-/* The second check was not sure about the answer. */
-.ask-unsure {
-  margin: 0;
-  font-size: var(--fs-2);
-  color: var(--warn);
-  overflow-wrap: anywhere;
-}
-
-/* A wish: "What I'll change". */
-.ask-changes {
-  margin: 0;
-  padding: var(--s-3) var(--s-4);
-  border-radius: var(--r-sm);
-  background: var(--raised);
-  font-size: var(--fs-3);
-  color: var(--ink);
-  overflow-wrap: anywhere;
-}
-
-.ask-changes-label {
-  display: block;
-  font-size: var(--fs-1);
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-
-/* Cards couldn't be checked: the whole line is the retry. */
-.ask-retry {
-  min-height: 44px;
-  padding: var(--s-2) var(--s-4);
-  border: 1px solid var(--line);
-  border-radius: var(--r-pill);
-  background: var(--card);
-  color: var(--ink);
+.ask-screen .ask-input {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--glass-tap);
+  padding: var(--s-3) var(--glass-pill-pad-x);
+  background: var(--glass-sheen), var(--glass-bg);
+  border: var(--glass-hairline) solid var(--glass-border-hi);
+  border-radius: var(--glass-panel-r);
+  box-shadow: var(--glass-inset);
   font: inherit;
-  font-size: var(--fs-2);
-  text-align: left;
+  /* 16px or more: smaller makes iOS zoom the page on focus. */
+  font-size: max(1rem, 16px);
+  line-height: var(--lh-body);
+  color: var(--glass-ink);
+  resize: none;
+}
+
+.ask-screen .ask-input::placeholder {
+  color: var(--glass-ink-faint);
+}
+
+.ask-screen .ask-send {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: var(--glass-tap);
+  height: var(--glass-tap);
+  padding: 0;
+  background: var(--glass-rail-btn-on-bg);
+  border: var(--glass-hairline) solid var(--glass-rail-btn-on-bg);
+  border-radius: var(--r-pill);
+  color: var(--glass-rail-btn-on-ink);
   cursor: pointer;
 }
 
-.ask-retry:disabled {
-  opacity: 0.6;
-  cursor: default;
+.ask-screen .ask-send svg {
+  width: var(--glass-icon-md);
+  height: var(--glass-icon-md);
 }
 
-.ask-check-line {
-  margin: 0;
-  font-size: var(--fs-2);
-  color: var(--ink-2);
-  overflow-wrap: anywhere;
+.ask-screen .ask-send:disabled {
+  background: var(--glass-rail-btn-bg);
+  border-color: var(--glass-rail-btn-border);
+  color: var(--glass-ink-faint);
+  cursor: default;
 }

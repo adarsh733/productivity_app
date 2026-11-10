@@ -1,6 +1,7 @@
 import plan from '../../../../docs/REDESIGN-V7.html?raw';
 import { describe, expect, it } from 'vitest';
 import cards from './50-words.json';
+import { tagProblems } from '../../features/cards/cardTags';
 import { checkModuleSeedFile } from '../../db/moduleSeedCheck';
 
 describe('v7 Words seed', () => {
@@ -37,5 +38,9 @@ describe('v7 Words seed', () => {
     expect(cards.flatMap((c, i) => c.check ? [i + 1] : [])).toEqual([1, 3, 6, 9, 12, 15, 18]);
     expect(new Set(cards.flatMap(c => c.examples.map(l => l.icon))))
       .toEqual(new Set(['home', 'friends', 'thinking']));
+  });
+
+  it('gives every card a topic from the fixed list and a level 1-3', () => {
+    expect(cards.flatMap((c) => tagProblems(c))).toEqual([]);
   });
 });

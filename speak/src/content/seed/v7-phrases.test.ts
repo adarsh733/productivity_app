@@ -2,6 +2,7 @@ import plan from '../../../../docs/REDESIGN-V7.html?raw';
 import { describe, expect, it } from 'vitest';
 import cards from './53-office-phrases.json';
 import { checkModuleSeedFile } from '../../db/moduleSeedCheck';
+import { tagProblems } from '../../features/cards/cardTags';
 
 describe('v7 Office phrases seed', () => {
   it('passes the shared shape, sequence, uniqueness and slide checks', () => {
@@ -33,5 +34,10 @@ describe('v7 Office phrases seed', () => {
       expect(card.similar).toHaveLength(2);
     }
     expect(new Set(cards.map(c => c.level)).size).toBeGreaterThanOrEqual(2);
+  });
+
+  it('gives every card a topic from the fixed list and a level of 1, 2 or 3 (v8)', () => {
+    const problems = (cards as unknown[]).flatMap((c) => tagProblems(c).map((p) => `${(c as { id: string }).id}: ${p}`));
+    expect(problems).toEqual([]);
   });
 });

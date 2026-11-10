@@ -105,7 +105,7 @@ describe('FeedbackSheet Component Suite', () => {
     await waitFor(() => {
       expect(tooEasyChip).toHaveAttribute('aria-pressed', 'true');
       expect(
-        screen.getByText('Got it: Words will get harder from the next batch.'),
+        screen.getByText('Got it: Words gets harder now.'),
       ).toBeInTheDocument();
     });
 

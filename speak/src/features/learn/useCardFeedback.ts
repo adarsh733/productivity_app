@@ -4,6 +4,7 @@ import { db, enqueue } from '../../db/db';
 import type { CardFeedback, FeedbackReason, ModuleCard } from '../../types/contract';
 import { gotItLine, learnedLines, newReasons } from './cardFeedback';
 import { recheckBatch, shiftModuleLevel } from '../auto/moduleBatch';
+import { askLearnedLines, removeAskLearned } from './askLearned';
 
 export function useCardFeedback(card: ModuleCard | undefined): {
   thumb: 'up' | 'down' | null;
@@ -88,6 +89,12 @@ export function useCardFeedback(card: ModuleCard | undefined): {
   return { thumb, setThumb, send };
 }
 
+/** Ask lines carry their time in the id: `ask-<millis>-<n>`. */
+function askAt(id: string): number {
+  const n = Number(id.split('-')[1]);
+  return Number.isFinite(n) ? n : 0;
+}
+
 export function useLearned(): {
   lines: { id: string; text: string }[];
   forget(id: string): Promise<void>;
@@ -97,10 +104,26 @@ export function useLearned(): {
       () => db.feedback.orderBy('at').reverse().toArray(),
       [],
     ) ?? [];
+  const askLines = useLiveQuery(() => askLearnedLines(), []) ?? [];
 
-  const lines = useMemo(() => learnedLines(rows), [rows]);
+  // Card lines and Ask lines in one list, newest first (ties keep their order).
+  const lines = useMemo(() => {
+    const at = new Map(rows.map((r) => [r.id, r.at]));
+    const all = [
+      ...askLines.map((l) => ({ ...l, at: askAt(l.id) })),
+      ...learnedLines(rows).map((l) => ({ ...l, at: at.get(l.id) ?? 0 })),
+    ];
+    return all
+      .map((l, n) => ({ l, n }))
+      .sort((a, b) => b.l.at - a.l.at || a.n - b.n)
+      .map(({ l }) => ({ id: l.id, text: l.text }));
+  }, [rows, askLines]);
 
   const forget = useCallback(async (id: string) => {
+    if (id.startsWith('ask-')) {
+      await removeAskLearned(id);
+      return;
+    }
     await db.feedback.update(id, { hidden: true });
     await enqueue('feedback', id);
   }, []);

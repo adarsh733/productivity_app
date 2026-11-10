@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import cards from './51-small-talk.json';
 import { checkModuleSeedFile } from '../../db/moduleSeedCheck';
+import { tagProblems } from '../../features/cards/cardTags';
 
 describe('v7 small talk seed', () => {
   it('passes the shared shape, ID and slide-length checks', () => {
@@ -38,5 +39,9 @@ describe('v7 small talk seed', () => {
       ...sample.more.flatMap((item) => [item.label, item.text]), ...sample.donts]) {
       expect(sampleHtml).toContain(text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>'));
     }
+  });
+  it('gives every card a topic from the fixed list and a level of 1, 2 or 3', () => {
+    const bad = cards.flatMap((card) => tagProblems(card).map((p) => `${card.id}: ${p}`));
+    expect(bad).toEqual([]);
   });
 });

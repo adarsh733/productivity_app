@@ -1,0 +1,18 @@
+/* ── SPEAK — Favorites (his ♡ cards) ─────────────────────────────────────────
+ *
+ * Reuses the Feed's look: .v7-feed, .v7-vfeed, .v7-card and the rail come from
+ * glass.css + glass-feed.css. Only what the Favorites screen adds lives here,
+ * from the existing --glass-* tokens.
+ */
+
+/* The test-id wrapper adds no box, so each card still snaps like the Feed's. */
+.v7-favorites .v7-fav-item {
+  display: contents;
+}
+
+/* The empty line reads as the screen's one message, not a footnote. */
+.v7-favorites .v7-empty-sub {
+  max-width: 28ch;
+  color: var(--glass-ink);
+  font-size: var(--glass-fs-say);
+}

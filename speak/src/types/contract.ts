@@ -333,8 +333,37 @@ export interface LabeledLine {
 interface ModuleCardBase extends CardBase {
   type: 'module';
   module: ModuleId;
+  /** The card's own headline (the word, "Weekend", the story kicker). Not the topic label. */
   topic: string;
+  /**
+   * v8 (2026-11-10): the topic label, one of THEMES or a topic the AI added
+   * through the Ask box. The screen calls it "topic". Optional only because AI
+   * cards stored before v8 lack it; every seed card has one. Read via `themeOf`.
+   */
+  theme?: string;
+  /** v8: how hard the card is, 1-3. Optional for pre-v8 AI cards; read via `levelOf`. */
+  level?: CardLevel;
 }
+
+// v8 (2026-11-10, Adarsh): levels and topic labels on every module card.
+
+/** A card's own difficulty. Module levels 1-5 map onto it (see `floorFor`). */
+export type CardLevel = 1 | 2 | 3;
+
+/** The fixed start list of topic labels. The AI may add more only via the Ask box. */
+export const THEMES = [
+  'Money',
+  'Emotions',
+  'Work',
+  'People',
+  'Food',
+  'Health',
+  'Home',
+  'Travel',
+  'Senses & weather',
+  'General',
+] as const;
+export type Theme = (typeof THEMES)[number];
 
 export interface WordsCard extends ModuleCardBase {
   module: 'words';
@@ -483,6 +512,62 @@ export interface ModuleBatchRequest {
   seen: string[];
   /** First id to use, e.g. v7-ai-words-0001. */
   startId: string;
+  /** v8: topic labels the writer may use (THEMES plus the ones added via Ask). Optional: old requests stay valid. */
+  themes?: string[];
+  /** v8: topics of his 👍 / Loved cards in this module plus Ask "more". */
+  likedThemes?: string[];
+  /** v8: his Ask box wishes, newest first, max 6. */
+  wishes?: string[];
+}
+
+// v8 (2026-11-10): the Ask box (4th tab). One AI text box: he tells the app
+// anything, it answers in a line or two and saves what it learned (phone-only,
+// `features/learn/askLearned.ts`). Server task `tell_app`.
+
+/** One thing the Ask box learned. Shown under Me with Remove. */
+export interface AskLearned {
+  /** `ask-...` */
+  id: string;
+  kind: 'wish' | 'more' | 'fewer' | 'new_theme' | 'level';
+  /** The plain line shown under Me. */
+  text: string;
+  module?: ModuleId;
+  theme?: string;
+  delta?: 1 | -1;
+  note?: string;
+  removed?: boolean;
+}
+
+/** One message he sent and the app's reply. */
+export interface AskTurn {
+  id: string;
+  at: Millis;
+  said: string;
+  reply: string;
+  learned: AskLearned[];
+}
+
+/** The `tell_app` payload. */
+export interface TellAppRequest {
+  /** His words, max 1,000 chars. */
+  text: string;
+  /** Topic labels in use (THEMES plus the ones added via Ask). */
+  themes: string[];
+  levels: Partial<Record<ModuleId, ModuleLevel>>;
+  /** The last turns, max 5. */
+  recent: { said: string; reply: string }[];
+}
+
+/** The `tell_app` result. */
+export interface TellAppResult {
+  /** One or two sentences, max 240 chars. */
+  reply: string;
+  /** Max 4. */
+  learned: Array<
+    | { kind: 'wish'; note: string }
+    | { kind: 'more' | 'fewer' | 'new_theme'; theme: string }
+    | { kind: 'level'; module: ModuleId; delta: 1 | -1 }
+  >;
 }
 
 /** How reshaped old cards carry the new parts (`CardBase.skill`). */
@@ -1146,11 +1231,11 @@ export const QUEUE_RULES = {
 export type AiTask =
   | 'expand_seed' // one input → high-temperature variant cards
   | 'verify_batch' // temp 0: is each generated item real and natural?
-  | 'classify_inbox' // raw dump → typed card stubs
-  | 'review_recording' // Phase 2: judgment over a recording's transcript
   | 'plan_week' // AG-008 §5: weekly coach plan over last week's stats
-  | 'answer_ask' // v5 Ask tab: classify + short answer + 3-8 TeachDraft cards (rulebook §4)
-  | 'coach_chat'; // v5 Chat: Haiku coaches a spoken turn (rulebook §5)
+  | 'tell_app'; // v8 (2026-11-10): the Ask box — reply in a line or two + what it learned
+// Trimmed 2026-11-10 (v7 plan): classify_inbox, review_recording, answer_ask and
+// coach_chat left with the screens that called them. Their payload and result
+// types elsewhere in this file stay as they are.
 
 export interface AiRequest {
   task: AiTask;

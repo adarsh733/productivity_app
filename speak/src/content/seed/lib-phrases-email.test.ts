@@ -7,6 +7,7 @@ import samplePhrases from './53-office-phrases.json';
 import sampleStories from './54-stories.json';
 import outlineJson from '../library/outline.json';
 import { checkLibrary, checkLibraryFile, type OutlineItem } from '../../db/libraryCheck';
+import { tagProblems } from '../../features/cards/cardTags';
 
 // v7 steps 4-6, pass 14: the 90 Office-phrase cards for email (70) and idioms (20).
 const outline = outlineJson as unknown as Record<string, OutlineItem[]>;
@@ -31,5 +32,10 @@ describe('library: phrases-email (75-phrases-email.json)', () => {
     const groups = cards.map((c) => c.group);
     expect(groups.filter((g) => g === 'email')).toHaveLength(70);
     expect(groups.filter((g) => g === 'idioms')).toHaveLength(20);
+  });
+
+  it('gives every card a topic from the fixed list and a level of 1, 2 or 3 (v8)', () => {
+    const problems = (cards as unknown[]).flatMap((c) => tagProblems(c).map((p) => `${(c as { id: string }).id}: ${p}`));
+    expect(problems).toEqual([]);
   });
 });

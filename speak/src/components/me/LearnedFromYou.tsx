@@ -30,7 +30,7 @@ export default function LearnedFromYou(props?: LearnedFromYouProps) {
 
       {lines.length === 0 ? (
         <p className="me-learned-empty" data-testid="me-learned-empty">
-          Nothing yet. Thumbs and comments on cards teach the app what to show next.
+          Nothing yet. Know it, thumbs, comments and the Ask box teach the app what to show next.
         </p>
       ) : (
         <ul className="me-learned-list" data-testid="me-learned-list">

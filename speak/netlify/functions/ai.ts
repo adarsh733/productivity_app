@@ -3,23 +3,21 @@ import type {
   AiResponse,
   AiTask,
   AiFailReason,
-  AnswerAskResult,
-  AskKind,
-  AskPreference,
   CardKind,
-  CoachChatPayload,
-  CoachChatResult,
   FeedbackReason,
   LabeledLine,
   LineIcon,
   ModuleBatchRequest,
   ModuleCard,
   ModuleId,
+  ModuleLevel,
   TeachDraft,
+  TellAppRequest,
+  TellAppResult,
   Track,
   TrackLevel,
 } from '../../src/types/contract';
-import { MODULES } from '../../src/types/contract';
+import { MODULES, THEMES } from '../../src/types/contract';
 import { rulebookFor } from '../rulebook';
 
 /**
@@ -41,11 +39,8 @@ import { rulebookFor } from '../rulebook';
 const CONFIGURED_TASKS = [
   'expand_seed',
   'verify_batch',
-  'classify_inbox',
-  'review_recording',
   'plan_week',
-  'answer_ask',
-  'coach_chat',
+  'tell_app', // v8 (2026-11-10): the Ask box, rulebook chapter 10
 ] as const;
 type ConfiguredTask = (typeof CONFIGURED_TASKS)[number];
 
@@ -65,7 +60,7 @@ const DRAFT_TYPES = [
   'situation',
 ] as const;
 
-/** Card shapes shared by the `classify_inbox` and `expand_seed` prompts. */
+/** The old card shapes the `expand_seed` prompt allows. */
 const CARD_SHAPES = [
   'word {type:"word",term,pos,meaning,examples:[two everyday sentences],say} — a Hindi word only: add "lang":"hi";',
   'swap {type:"swap",weak,answers:[1-5 single words],timerSec:5-60};',
@@ -123,25 +118,39 @@ const DEVANAGARI_RE = /[ऀ-ॿ꣠-ꣿ]/;
 /** The one JSON shape the writer returns, per module (rulebook 9.1). */
 const MODULE_SHAPES: Record<ModuleId, string> = {
   words:
-    '{"type":"module","module":"words","topic":string,"level":1|2|3,"word":string,"pos":string,"say":string (how to say it, e.g. "rih-LEEVD"),"meaning":string (plain words),"examples":[two {"label":string,"text":string,"icon"?:"home"|"work"|"friends"|"thinking"}, each text marking the word as **word**],"right":{"label":"✓ Use it right","text":string},"wrong":[one or two {"label":"✗ Wrong use","text":string}],"rule":string (a 2-4 word pattern, e.g. "feel relieved"),"check"?:{"question":string,"options":[three {"text":string,"right":boolean}, exactly one right]}}. Cards 3, 6 and 9 of the reply MUST carry "check".',
+    '{"type":"module","module":"words","topic":string,"theme":string,"level":1|2|3,"word":string,"pos":string,"say":string (how to say it, e.g. "rih-LEEVD"),"meaning":string (plain words),"examples":[two {"label":string,"text":string,"icon"?:"home"|"work"|"friends"|"thinking"}, each text marking the word as **word**],"right":{"label":"✓ Use it right","text":string},"wrong":[one or two {"label":"✗ Wrong use","text":string}],"rule":string (a 2-4 word pattern, e.g. "feel relieved"),"check"?:{"question":string,"options":[three {"text":string,"right":boolean}, exactly one right]}}. Cards 3, 6 and 9 of the reply MUST carry "check".',
   smalltalk:
-    '{"type":"module","module":"smalltalk","topic":string,"kind":"reply"|"open"|"keep_going"|"exit"|"save_it","moment":string,"they"?:string (what they say),"deadEnd":string,"reply":string,"formula":string (e.g. "answer + detail + question"),"more":[three {"label":string (the mood),"text":string}],"donts":[one to three strings]}.',
+    '{"type":"module","module":"smalltalk","topic":string,"theme":string,"level":1|2|3,"kind":"reply"|"open"|"keep_going"|"exit"|"save_it","moment":string,"they"?:string (what they say),"deadEnd":string,"reply":string,"formula":string (e.g. "answer + detail + question"),"more":[three {"label":string (the mood),"text":string}],"donts":[one to three strings]}.',
   better:
-    '{"type":"module","module":"better","topic":string,"situation":string,"thinking":boolean (true for "Explain your thinking"),"mightSay":string (the long, loose version),"better":string (short and sharp),"changes":[two or three short chips, e.g. "point first"],"next":{"title":string,"lines":[one to three {"label":string,"text":string}],"note"?:string}}.',
+    '{"type":"module","module":"better","topic":string,"theme":string,"level":1|2|3,"situation":string,"thinking":boolean (true for "Explain your thinking"),"mightSay":string (the long, loose version),"better":string (short and sharp),"changes":[two or three short chips, e.g. "point first"],"next":{"title":string,"lines":[one to three {"label":string,"text":string}],"note"?:string}}.',
   phrases:
-    '{"type":"module","module":"phrases","topic":string,"level":1|2|3,"group":"meetings"|"email"|"pushback"|"praise"|"deadlines"|"idioms","phrase":string,"meaning":string,"useWhen":string,"example":string (one meeting or email line),"tone":string (e.g. "polite"),"careful":string (how people misuse it),"wrong":{"label":"✗ Wrong use","text":string},"similar":[two strings]}.',
+    '{"type":"module","module":"phrases","topic":string,"theme":string,"level":1|2|3,"group":"meetings"|"email"|"pushback"|"praise"|"deadlines"|"idioms","phrase":string,"meaning":string,"useWhen":string,"example":string (one meeting or email line),"tone":string (e.g. "polite"),"careful":string (how people misuse it),"wrong":{"label":"✗ Wrong use","text":string},"similar":[two strings]}.',
   stories:
-    '{"type":"module","module":"stories","topic":string,"report":string (the dull version),"story":string (the same moment as a real story),"trick":string (one line),"yourTurn"?:{"prompt":string,"hint":string}}.',
+    '{"type":"module","module":"stories","topic":string,"theme":string,"level":1|2|3,"report":string (the dull version),"story":string (the same moment as a real story),"trick":string (one line),"yourTurn"?:{"prompt":string,"hint":string}}.',
 };
 
+/**
+ * Module level (1-5) to the card level a batch is written at (rulebook 9.3, fixed
+ * 2026-11-10): 1 -> 1, 2 -> 2, 3 -> 3, 4-5 -> 3 "and harder than the library's level 3".
+ * Before v8 the prompt said "1-2 gives 1", so his start level 2 got the easiest cards.
+ */
+export function cardLevelFor(level: ModuleLevel): 1 | 2 | 3 {
+  return level <= 1 ? 1 : level === 2 ? 2 : 3;
+}
+
 /** The job lines for one module batch (they follow the expand_seed rulebook slice). */
-function moduleBatchRule(module: ModuleId): string {
+function moduleBatchRule(module: ModuleId, level?: ModuleLevel): string {
   return [
     'This is a v7 module batch ("type":"module"). Follow chapter 9 of the rulebook above; for these cards it replaces 1.2 and 2 (no analogy, credit, research, rule slide or try slide).',
     `Return ONLY JSON: {"cards":[...]} with exactly "count" cards, all in the module "${module}", each exactly`,
     MODULE_SHAPES[module],
     'Never write a card whose head (the word, the phrase, the moment, the "you might say" line, the report) is in "seen" or repeats another card in the batch.',
-    '"level" is his level for this module, 1 easiest to 5 hardest; Words and Office phrases cards carry level 1-3 (batch level 1-2 gives 1, 3 gives 2, 4-5 gives 3). "liked": heads he liked, write more like them, never the same. "disliked": heads he disliked, with his reasons. "comments": his own words, newest first; follow them unless one breaks the rulebook.',
+    '"level" is his level for this module, 1 easiest to 5 hardest; every card carries its own "level" 1-3 (batch level 1 gives 1, 2 gives 2, 3 gives 3, 4-5 gives 3 and harder than the library\'s level 3).',
+    ...(level !== undefined
+      ? [`This batch is level ${level}: write every card at "level":${cardLevelFor(level)}${level >= 4 ? ', harder than the library\'s level 3' : ''}.`]
+      : []),
+    '"liked": heads he liked, write more like them, never the same. "disliked": heads he disliked, with his reasons. "comments": his own words, newest first; follow them unless one breaks the rulebook.',
+    `"theme" is the card's topic label: exactly one entry of "themes" (when there is no "themes" list, one of ${THEMES.map((t) => `"${t}"`).join(', ')}); "General" when none fits. "likedThemes": topics of cards he liked, lean toward them. "wishes": what he told the Ask box, newest first; follow them like comments.`,
     `At most ${MODULE_SLIDE_WORDS} words on a slide. Every Words and Office phrases card has a ✗ wrong-use line. No Hindi words and no Devanagari anywhere. Leave out "id": the app numbers the cards.`,
     'A card that breaks any rule is thrown away.',
   ].join(' ');
@@ -149,40 +158,36 @@ function moduleBatchRule(module: ModuleId): string {
 
 /** verify_batch: how module cards are judged (rulebook 9.2). */
 const MODULE_CHECK_RULE =
-  'An item may be a v7 module card ({"type":"module","module":"words"|"smalltalk"|"better"|"phrases"|"stories",...}): judge it by chapter 9 above, R4 MISSING against its own module shape (it needs no analogy, try or register). A Words or Office phrases card without a ✗ wrong-use line is R4; an analogy, credit or research claim on it is R8; a Hindi word or Hindi calque is R1.';
+  'An item may be a v7 module card ({"type":"module","module":"words"|"smalltalk"|"better"|"phrases"|"stories",...}): judge it by chapter 9 above, R4 MISSING against its own module shape (it needs no analogy, try or register). A Words or Office phrases card without a ✗ wrong-use line is R4; an analogy, credit or research claim on it is R8; a Hindi word or Hindi calque is R1. Its "theme" (topic label) and "level" (1-3) are the app\'s labels, not content: never reject a card for them.';
 
-// ── answer_ask limits (rulebook §4 and §1.2) ───────────────────────────────
-/** Longest question the Ask box sends. */
-export const ASK_TEXT_MAX = 1000;
 /** Most teach cards one top-up call may ask for. */
 export const EXPAND_TEACH_MAX = 5;
-/** The short plain answer: 1-3 sentences. Longer is cut at a sentence end. */
-export const ASK_ANSWER_MAX = 600;
-/** One fix-my-sentence version. Longer fails over (cutting would break [[chunks]]). */
-export const ASK_VERSION_MAX = 400;
-export const ASK_CARDS_MIN = 3;
-/** Fewest usable cards served when the model sent at least ASK_CARDS_MIN and some broke a rule. */
-export const ASK_CARDS_FLOOR = 2;
-export const ASK_CARDS_MAX = 8;
-export const ASK_CHUNKS_MAX = 8;
-/** Weak-spot halves and chunks (rulebook §4.3). */
-export const ASK_SHORT_MAX = 60;
 
-// ── coach_chat limits (rulebook §5) ────────────────────────────────────────
-/** The partner's question shown to him. */
-export const CHAT_QUESTION_MAX = 500;
-/** One spoken answer's transcript (about 4 minutes of speech). */
-export const CHAT_TRANSCRIPT_MAX = 5000;
-/** Point 1 (what went well) and each fix: one or two plain sentences. */
-export const CHAT_POINT_MAX = 300;
-/** The rewritten better version. */
-export const CHAT_BETTER_MAX = 600;
-/** Most fixes per answer (rulebook §5.4: one or two). */
-export const CHAT_FIXES_MAX = 2;
-/** A lesson name a fix points to. */
-export const CHAT_LESSON_MAX = 80;
-/** Below this many words the coach only nudges (rulebook §5.6). */
-export const CHAT_SHORT_WORDS = 5;
+// ── v8 module batch extras and the Ask box (2026-11-10) ───────────────────
+/** Topic labels a request may carry: the 10 of THEMES plus at most 10 added via Ask. */
+const THEMES_MAX = 20;
+const THEME_CHARS = 40;
+/** His Ask box wishes on a batch request, newest first. */
+const WISHES_MAX = 6;
+/** tell_app limits (contract `TellAppRequest` / `TellAppResult`, rulebook chapter 10). */
+export const TELL_TEXT_MAX = 1000;
+export const TELL_RECENT_MAX = 5;
+export const TELL_REPLY_MAX = 240;
+export const TELL_LEARNED_MAX = 4;
+export const TELL_NOTE_MAX = 200;
+/** A topic the Ask box adds: one to three plain words. */
+const NEW_THEME_CHARS = 30;
+const NEW_THEME_WORDS = 3;
+
+/** The tell_app job lines (they follow its rulebook slice: chapter 0, 9.3 and 10). */
+const TELL_APP_SHAPE = [
+  'You run the Ask box of the app (chapter 10 above). He tells the app what he wants to see; you reply and return what you learned. Feedback and wishes only.',
+  'Input: "text" (his message, the one to answer), "themes" (the topic labels in use), "levels" (his level 1-5 per module), "recent" (earlier turns, oldest first, for context only).',
+  'Return ONLY JSON: {"reply":string,"learned":[...]}.',
+  `"reply": one or two short sentences, at most ${TELL_REPLY_MAX} characters, plain everyday English, no markdown, no Hindi words and no Devanagari.`,
+  `"learned": at most ${TELL_LEARNED_MAX} items, each exactly one of {"kind":"wish","note":string (at most ${TELL_NOTE_MAX} characters)}, {"kind":"more"|"fewer","theme":string (copied exactly from "themes")}, {"kind":"new_theme","theme":string (one to three words, not in "themes")}, {"kind":"level","module":"words"|"smalltalk"|"better"|"phrases"|"stories","delta":1|-1} (1 = harder, -1 = easier). [] when there is nothing to learn.`,
+  'An English question, a sentence to fix or anything else gets one line saying this box tells the app what to show, and "learned":[]. Never answer it. An item that breaks these rules is thrown away.',
+].join(' ');
 
 /**
  * Per-task generation settings. `verify_batch` is deliberately cold.
@@ -191,7 +196,7 @@ export const CHAT_SHORT_WORDS = 5;
  */
 const TASK_CONFIG: Record<
   ConfiguredTask,
-  { temperature: number; maxTokens: number; shape: string; timeoutMs?: number }
+  { temperature: number; maxTokens: number; shape: string }
 > = {
   expand_seed: {
     temperature: 1.0,
@@ -226,38 +231,6 @@ const TASK_CONFIG: Record<
       'ok true when no code applies (reason "pass"). ok false when any code applies: the reason starts with the code and its name, for example "R2 GRAMMAR: ...", then one short line saying why.',
     ].join(' '),
   },
-  classify_inbox: {
-    temperature: 0.4,
-    maxTokens: 2048,
-    shape: [
-      'You turn a raw one-line thought into grounded drill cards for one Indian English speaker in a corporate setting.',
-      'Return ONLY JSON: {"kind":"word"|"mistake"|"topic"|"other","subject":string,"fix"?:string,"cards":[...]}.',
-      'Allowed card types and exact shapes:',
-      ...CARD_SHAPES,
-      NEVER_PRODUCE,
-      AVOID_RULE,
-      'Prefer 1-2 cards. Preserve what the user was actually curious about. Everyday register, never literary.',
-    ].join(' '),
-  },
-  review_recording: {
-    temperature: 0.3,
-    maxTokens: 1024,
-    shape: [
-      'You are an executive speech and communication coach for an Indian English speaker in tech.',
-      'Review the user transcript, prompt context, and performance duration.',
-      'Provide concise, high-signal, actionable feedback grounded strictly in what was said.',
-      'Return ONLY a valid JSON object matching this exact schema: {"summary": string, "strongPoint": string, "oneCorrection": string, "suggestedAlternative": string, "mistake": {"wrong": string, "right": string} | null}.',
-      'Rules:',
-      '1. "summary": One crisp sentence evaluating the overall rep.',
-      '2. "strongPoint": What worked well. You MUST quote or reference specific words or phrases that appear in the transcript.',
-      '3. "oneCorrection": One high-leverage delivery or phrasing tweak for next time.',
-      '4. "suggestedAlternative": An upgraded sentence showing better executive presence or phrasing.',
-      '5. "mistake": if the transcript contains ONE clear standard-English error (a non-native slip, not a style choice), set "wrong" to the exact phrase the speaker said and "right" to the fix — both max 60 chars. One error only; if none, null.',
-      'Never invent quotes. Never comment on accent or pronunciation quirks. Focus on pacing, executive presence, and word precision.',
-      'If a "watch" list of known mistakes is provided, check the transcript for each watched phrase first;',
-      'when the transcript contains one, the correction must address it.',
-    ].join(' '),
-  },
   plan_week: {
     temperature: 0.2,
     maxTokens: 1024,
@@ -273,55 +246,13 @@ const TASK_CONFIG: Record<
       'No jargon, no numbers-only notes, no emoji, no quotes, no markdown.',
     ].join(' '),
   },
-  answer_ask: {
-    temperature: 0.4,
-    maxTokens: 6144,
-    // 3-8 full cards take longer than the other jobs; two tries still fit the deadline.
-    timeoutMs: 11_000,
-    shape: [
-      'You answer ONE question he typed in the Ask tab, following section 4 of the rulebook above, and every card follows sections 1-2.',
-      'Return ONLY JSON: {"askKind":"word"|"phrase_idiom"|"mistake"|"fix_sentence"|"topic"|"how_say"|"difference"|"preference"|"other","answer":string,"versions"?:{"crisp":string,"confident":string,"polite":string},"chunks"?:[string],"weakSpot"?:{"wrong":string,"right":string},"preference"?:{"topics"?:[string],"moreOf"?:[track],"lessOf"?:[track],"harder"?:[track],"easier"?:[track],"avoid"?:[string],"note":string},"topics":[string],"cards":[...]}.',
-      'askKind: classify first (4.1). phrase-idiom is "phrase_idiom", fix-my-sentence is "fix_sentence", how-do-I-say is "how_say", difference-between is "difference". A sentence that contains a mistake is "fix_sentence". He telling the app what he wants (more, less, harder, easier, a topic, never show X) is "preference". Follow 4.4 for any input.',
-      'preference: ONLY when askKind is "preference", and then required. Tracks are "smalltalk","stories","clearly","words". Fill only what he said; "note" is his wish in one plain line (at most 160 characters).',
-      'topics: up to 3 short subjects from HIS question, never generic ones like "English" or "speaking"; [] when none.',
-      `answer: the short plain answer first, 1-3 sentences, at most ${ASK_ANSWER_MAX} characters, no markdown. For fix_sentence it is the 1-2 lines on what changed, tied to a rule.`,
-      'versions and chunks: ONLY when askKind is "fix_sentence", and then required. crisp = shortest clear version, point first; confident = no hedges, active voice, clear ask or next step; polite = warm and respectful, still direct. Mark every reusable chunk inside the versions with [[double brackets]] (never nested) and list the same chunks, without brackets, in "chunks" (at most 8).',
-      'weakSpot: only per 4.3 (a mistake he made himself, or a known pattern in his sentence); "wrong" is his exact phrase and "right" the global form, each at most 60 characters. Otherwise leave it out.',
-      'cards: 3 to 8 teach cards, never more; 3 strong cards beat 8 thin ones. For "other" and "preference", 0 to 2 cards. Each card is exactly',
-      '{"type":"teach","track":"smalltalk"|"stories"|"clearly"|"words","level":1-5,"kind":"learn"|"use"|"fix"|"try"|"ask_them","category":string,"title":string,"rule":string,"examples":{"work":string,"everyday":string},"insteadOf"?:string,"analogy":string,"tryPrompt":string,"register":"casual"|"office"|"both","answer"?:string,"credit"?:string}.',
-      'The section 1.2 limits are hard: a card over any limit is thrown away. title at most 40 characters. insteadOf is required on fix cards. EVERY card with "kind":"try" MUST include "answer": the great answer he sees after he tries, one or two lines in plain English. No answer, no try card: use "learn" instead. ask_them is small talk only. credit names the framework (appendix), if any.',
-      'weakSpot.wrong must be words he actually typed; never invent one from a plain curiosity question.',
-      'answer is plain text: no markdown, no bullet points, no headings.',
-      'Use the "levels" input, when given, as his current level per track.',
-      AVOID_RULE,
-    ].join(' '),
-  },
-  coach_chat: {
+  // v8 Ask box: a short, steady reply. 1,024 tokens of room, not 400: Groq's
+  // gpt-oss and Claude Haiku think first, and the thinking spends max_tokens.
+  tell_app: {
     temperature: 0.3,
     maxTokens: 1024,
-    shape: [
-      'You are the coach in the daily voice practice chat. You get the partner "question", his spoken answer as "transcript", the day\'s "track", and only the numbers his phone measured ("wpm", "loudness" vs his own normal, "voicedSec"). Follow section 5 of the rulebook above.',
-      'Return ONLY JSON: {"good":string,"fixes":[{"text":string,"lesson":string}],"better":string,"slip":{"wrong":string,"right":string}|null,"topics":[string]}.',
-      'topics: up to 3 short subjects he talked about, from his own content, e.g. "billing migration"; [] when none.',
-      `good: point 1, the one thing done well. Quote his exact words in "double quotes" and name the rule it follows. At most ${CHAT_POINT_MAX} characters.`,
-      `fixes: one or two fixes, never more. Each "text" teaches the rule in one line plus the better way (at most ${CHAT_POINT_MAX} characters); each "lesson" names the track lesson or card that teaches it, for example "Speak clearly: say the answer first" (at most ${CHAT_LESSON_MAX} characters).`,
-      `better: one rewritten better version of his answer or its key sentence, using his own content and words. Same facts; invent nothing. At most ${CHAT_BETTER_MAX} characters.`,
-      'slip: at most one clear standard-English slip, not a style choice: "wrong" is his exact phrase from the transcript, "right" the global form, each at most 60 characters; null when there is none. If a phrase from the "watch" list appears in the transcript, the slip is that one.',
-      'Quote marks (double or single) are ONLY for his exact words from the transcript. Never put rule names, lesson names or your own words in quotes. Never quote a word that is not in the transcript.',
-      'Mention pace or speed ONLY when "wpm" is given, and loudness or volume ONLY when "loudness" is given; never guess them from text and never invent a figure. When loudness is "above", the tip is to ease off, never to project more or speak up.',
-      `If the transcript has fewer than ${CHAT_SHORT_WORDS} words, do not analyse: "good" thanks him for starting, the one fix nudges one more try with something concrete, and "better" shows a fuller sample answer.`,
-      'Never comment on accent or pronunciation. Judge against the track being practised, not everything at once. No markdown, no emoji.',
-    ].join(' '),
+    shape: TELL_APP_SHAPE,
   },
-};
-
-/**
- * Tasks with a frozen first provider. The client's `prefer` still wins, and
- * the rest of the locked order follows as the fallback.
- * coach_chat: "Haiku coaches" (frozen 2026-10-29).
- */
-const TASK_PREFER: Partial<Record<ConfiguredTask, Provider>> = {
-  coach_chat: 'anthropic',
 };
 
 type Provider = 'gemini' | 'groq' | 'anthropic';
@@ -344,16 +275,15 @@ export function systemFor(task: ConfiguredTask): string {
  * rulebook slice (it carries chapter 9), then only that module's job lines.
  * The old card shapes are left out, which keeps the prompt inside Groq's minute.
  */
-export function moduleBatchSystem(module: ModuleId): string {
-  return `${rulebookFor('expand_seed')}\n\n=== THIS JOB ===\n${moduleBatchRule(module)}\n${DATA_RULE}`;
+export function moduleBatchSystem(module: ModuleId, level?: ModuleLevel): string {
+  return `${rulebookFor('expand_seed')}\n\n=== THIS JOB ===\n${moduleBatchRule(module, level)}\n${DATA_RULE}`;
 }
 
 /**
  * Groq's free tier for gpt-oss-120b reads 8,000 tokens a minute, and it counts
  * the answer room (`max_tokens`) up front: a request whose prompt plus
- * max_tokens is over the limit is refused before it runs. answer_ask asks for
- * 6,144 answer tokens on top of a ~5,000-token prompt, so without this cap Groq
- * refused every Ask (and a long verify_batch).
+ * max_tokens is over the limit is refused before it runs, so without this cap
+ * a long verify_batch (or a big prompt) was refused outright.
  */
 export const GROQ_TOKENS_PER_MINUTE = 8000;
 /** Rough characters per token for English plus JSON; a little low, to stay safe. */
@@ -387,38 +317,7 @@ function checkRateLimit(ip: string, maxPerMin = 30): boolean {
   return true;
 }
 
-export interface ReviewRecordingResponse {
-  summary: string;
-  strongPoint: string;
-  oneCorrection: string;
-  suggestedAlternative?: string;
-  mistake?: { wrong: string; right: string };
-}
-
-/**
- * Validates provider output against exact schema for the task.
- * Returns validated data object, or throws Error if invalid.
- */
-export function validateClassifyInbox(raw: unknown): unknown {
-  if (!raw || typeof raw !== 'object') throw new Error('Classifier response must be an object');
-  const c = raw as Record<string, unknown>;
-  const kinds = ['word', 'mistake', 'topic', 'other'];
-  if (typeof c.kind !== 'string' || !kinds.includes(c.kind)) throw new Error('Missing or invalid "kind"');
-  if (typeof c.subject !== 'string' || !c.subject.trim()) throw new Error('Missing or empty "subject"');
-  if (c.fix !== undefined && (typeof c.fix !== 'string' || !c.fix.trim())) {
-    throw new Error('Invalid "fix"');
-  }
-  if (!Array.isArray(c.cards)) throw new Error('Missing "cards" array');
-  const cards = (c.cards as unknown[]).map((d, i) => validateClassifyDraft(d, i));
-  return {
-    kind: c.kind,
-    subject: (c.subject as string).trim(),
-    ...(typeof c.fix === 'string' && c.fix.trim() ? { fix: c.fix.trim() } : {}),
-    cards,
-  };
-}
-
-// ── classify_inbox draft validation ────────────────────────────────────────
+// ── Old-shape draft validation (expand_seed) ──────────────────────────────
 // Structural caps mirror `scripts/content-pipeline/check-seed.mjs`. Identity
 // fields throw when missing; sizes and ranges are clamped so one loose value
 // can never smuggle an out-of-contract card into the store.
@@ -487,7 +386,7 @@ function validStringList(v: unknown, max: number): boolean {
   return Array.isArray(v) && v.length <= max && v.every((s) => typeof s === 'string' && s.trim().length > 0);
 }
 
-function validateClassifyDraft(d: unknown, i: number): unknown {
+function validateDraftCard(d: unknown, i: number): unknown {
   if (!d || typeof d !== 'object') throw new Error(`Draft ${i}: must be an object`);
   const r = d as Record<string, unknown>;
 
@@ -679,7 +578,7 @@ export function validateExpandSeed(raw: unknown, payload?: unknown): unknown {
     }
     return { cards: cards.slice(0, wanted) };
   }
-  return { cards: (c.cards as unknown[]).map((d, i) => validateClassifyDraft(d, i)).slice(0, wanted) };
+  return { cards: (c.cards as unknown[]).map((d, i) => validateDraftCard(d, i)).slice(0, wanted) };
 }
 
 /**
@@ -729,34 +628,10 @@ export function validatePlanWeek(raw: unknown): unknown {
   };
 }
 
-// ── answer_ask output validation (rulebook §4.1-4.3, card limits §1.2) ──────
-// Strict on what the screen depends on (kind, answer, the three versions, at
-// least 3 good cards): anything wrong there throws, so the next provider gets
-// a turn. Loose on the rest: one bad card is dropped, sizes are clamped, a bad
-// weak spot is dropped. Card word limits mirror check-seed.mjs `checkTeach`.
+// ── Teach card validation (card limits §1.2) ──────────────────────────────
+// One bad card is dropped, sizes are clamped. Card word limits mirror
+// check-seed.mjs `checkTeach`.
 
-const ASK_KINDS: readonly AskKind[] = [
-  'word',
-  'phrase_idiom',
-  'mistake',
-  'fix_sentence',
-  'topic',
-  'how_say',
-  'difference',
-  'preference',
-  'other',
-];
-/** The rulebook's own names for the kinds, which a model may echo back. */
-const ASK_KIND_ALIASES: Record<string, AskKind> = {
-  'phrase-idiom': 'phrase_idiom',
-  phrase_idiom: 'phrase_idiom',
-  'fix-my-sentence': 'fix_sentence',
-  fix_my_sentence: 'fix_sentence',
-  'how-do-i-say': 'how_say',
-  how_do_i_say: 'how_say',
-  'difference-between': 'difference',
-  difference_between: 'difference',
-};
 const TRACKS: readonly Track[] = ['smalltalk', 'stories', 'clearly', 'words'];
 const CARD_KINDS: readonly CardKind[] = ['learn', 'use', 'fix', 'try', 'ask_them'];
 const REGISTERS = ['casual', 'office', 'both'] as const;
@@ -780,15 +655,6 @@ function clampAtWord(s: string, max: number): string {
   const cut = s.slice(0, max + 1);
   const space = cut.lastIndexOf(' ');
   return (space > 0 ? cut.slice(0, space) : s.slice(0, max)).trim();
-}
-
-/** Cut to at most `max` characters at the last sentence end; else at a word, with "…". */
-function clampAtSentence(s: string, max: number): string {
-  if (s.length <= max) return s;
-  const cut = s.slice(0, max);
-  const end = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('? '), cut.lastIndexOf('! '));
-  if (end > 0) return cut.slice(0, end + 1).trim();
-  return `${clampAtWord(s, max - 1)}…`;
 }
 
 /**
@@ -890,6 +756,29 @@ export function validateTeachDraft(d: unknown, i: number): TeachDraft {
 type DraftOf<T> = T extends unknown ? Omit<T, 'id' | 'source' | 'status' | 'createdAt' | 'batchId' | 'seedId'> : never;
 export type ModuleDraft = DraftOf<ModuleCard> & { level?: 1 | 2 | 3 };
 
+/** A module's level before he moves it (mirrors `MODULE_LEVEL_START` in features/auto/moduleBatch.ts). */
+const MODULE_START_LEVEL: ModuleLevel = 2;
+
+/** What a module card is checked against from its batch request (v8: topic labels and level). */
+export interface ModuleDraftContext {
+  /** The request's topic labels; none sent (a pre-v8 request) means THEMES. */
+  themes?: readonly unknown[];
+  /** The batch level (1-5); none means the start level. */
+  level?: unknown;
+}
+
+/**
+ * A card's topic label: the request's own spelling of the label it names (any
+ * case), else "General". `topic` (the card's headline) is never touched.
+ */
+export function themeFrom(v: unknown, allowed?: readonly unknown[]): string {
+  const given = (Array.isArray(allowed) ? allowed : []).map(str).filter((t): t is string => !!t);
+  const list: readonly string[] = given.length ? given : THEMES;
+  const want = str(v)?.toLowerCase();
+  if (!want) return 'General';
+  return list.find((t) => t.toLowerCase() === want) ?? 'General';
+}
+
 /** The field that names a card inside its module (the seen-once key). */
 const MODULE_HEAD: Record<ModuleId, string> = {
   words: 'word',
@@ -983,7 +872,7 @@ function stringsIn(v: unknown, key = ''): { key: string; text: string }[] {
  * Words cards 3, 6 and 9 must carry the quick check. The card comes back with
  * only its module's fields, trimmed, and no id (the batch numbers the cards).
  */
-export function validateModuleDraft(d: unknown, i: number, module: ModuleId): ModuleDraft {
+export function validateModuleDraft(d: unknown, i: number, module: ModuleId, ctx: ModuleDraftContext = {}): ModuleDraft {
   if (!d || typeof d !== 'object' || Array.isArray(d)) throw new Error(`Card ${i}: must be an object`);
   const r = d as Record<string, unknown>;
   if (r.type !== undefined && r.type !== 'module') throw new Error(`Card ${i}: type must be "module"`);
@@ -1028,14 +917,16 @@ export function validateModuleDraft(d: unknown, i: number, module: ModuleId): Mo
     if (!l.label.startsWith('✗')) throw new Error(`Card ${i}: the ${field} label must start with ✗`);
     return l;
   };
-  const cardLevel = (): 1 | 2 | 3 => {
-    if (r.level !== 1 && r.level !== 2 && r.level !== 3) throw new Error(`Card ${i}: level must be 1, 2 or 3`);
-    return r.level;
-  };
+  // v8: every module card keeps a level 1-3; a missing or bad one takes the batch's mapped level.
+  const batchLevel = typeof ctx.level === 'number' && Number.isInteger(ctx.level) && ctx.level >= 1 && ctx.level <= 5
+    ? (ctx.level as ModuleLevel)
+    : MODULE_START_LEVEL;
+  const level: 1 | 2 | 3 = r.level === 1 || r.level === 2 || r.level === 3 ? r.level : cardLevelFor(batchLevel);
 
   const head = need(r[MODULE_HEAD[module]], MODULE_HEAD[module]);
   const topic = clampAtWord(str(r.topic) ?? head, 60);
-  const base = { type: 'module' as const, lang: 'en' as const, topic, tags: [module, 'ai'] };
+  const theme = themeFrom(r.theme, ctx.themes);
+  const base = { type: 'module' as const, lang: 'en' as const, topic, theme, level, tags: [module, 'ai'] };
 
   let card: ModuleDraft;
   if (module === 'words') {
@@ -1070,7 +961,6 @@ export function validateModuleDraft(d: unknown, i: number, module: ModuleId): Mo
     card = {
       ...base,
       module: 'words',
-      level: cardLevel(),
       word,
       pos: need(r.pos, 'pos'),
       say: need(r.say, 'say'),
@@ -1119,7 +1009,6 @@ export function validateModuleDraft(d: unknown, i: number, module: ModuleId): Mo
     card = {
       ...base,
       module: 'phrases',
-      level: cardLevel(),
       group,
       phrase: head,
       meaning: need(r.meaning, 'meaning'),
@@ -1185,7 +1074,7 @@ export function validateModuleBatch(rawCards: unknown[], req: ModuleBatchRequest
   const reasons: string[] = [];
   rawCards.forEach((d, i) => {
     try {
-      const card = validateModuleDraft(d, i, req.module);
+      const card = validateModuleDraft(d, i, req.module, { themes: req.themes, level: req.level });
       const key = moduleHeadOf(card).toLowerCase();
       if (seen.has(key)) throw new Error(`Card ${i}: "${moduleHeadOf(card)}" was already seen`);
       if (heads.has(key)) throw new Error(`Card ${i}: repeats another card's head`);
@@ -1220,6 +1109,10 @@ export function checkModuleBatchPayload(payload: unknown): string | null {
   if (!shortList(p.liked, MODULE_LIST_MAX, MODULE_HEAD_CHARS)) return 'Invalid liked list';
   if (!shortList(p.seen, MODULE_SEEN_MAX, MODULE_HEAD_CHARS)) return 'Invalid seen list';
   if (!shortList(p.comments, 20, MODULE_COMMENT_CHARS)) return 'Invalid comments';
+  // v8 (2026-11-10): optional, so a request from before v8 stays valid.
+  if (p.themes !== undefined && !shortList(p.themes, THEMES_MAX, THEME_CHARS)) return 'Invalid themes';
+  if (p.likedThemes !== undefined && !shortList(p.likedThemes, THEMES_MAX, THEME_CHARS)) return 'Invalid liked themes';
+  if (p.wishes !== undefined && !shortList(p.wishes, WISHES_MAX, MODULE_COMMENT_CHARS)) return 'Invalid wishes';
   const disliked = p.disliked;
   if (
     !Array.isArray(disliked) ||
@@ -1243,519 +1136,127 @@ function isModuleBatch(task: AiTask, payload: unknown): payload is ModuleBatchRe
   return task === 'expand_seed' && !!payload && typeof payload === 'object' && (payload as { type?: unknown }).type === 'module';
 }
 
-const CHUNK_MARK = /\[\[([^[\]]+?)\]\]/g;
-
-/** Chunks marked [[like this]] in a version. Throws on broken or nested markers. */
-function chunksIn(version: string, name: string): string[] {
-  const found = [...version.matchAll(CHUNK_MARK)].map((m) => (m[1] ?? '').trim()).filter(Boolean);
-  if (/\[\[|\]\]/.test(version.replace(CHUNK_MARK, ''))) {
-    throw new Error(`"versions.${name}" has broken [[chunk]] markers`);
-  }
-  return found;
+/** True when a line shows Hindi: Devanagari, or a Hindi word as a whole word. */
+function hasHindi(text: string): boolean {
+  return DEVANAGARI_RE.test(text) || HINDI_RE.test(text);
 }
 
-/**
- * A Try card with no `answer` has nothing to reveal (both models do this
- * often, 2026-11-09 log). Its rule, examples and tryPrompt still teach, so it
- * comes back as a Learn card (a kind every track allows, rulebook 2) instead
- * of costing the whole reply. Never a Try card without an answer.
- */
-function salvageTry(d: unknown): unknown {
-  if (!d || typeof d !== 'object' || Array.isArray(d)) return d;
-  const r = d as Record<string, unknown>;
-  if (r.kind !== 'try' || str(r.answer)) return d;
-  const learn: Record<string, unknown> = { ...r, kind: 'learn' };
-  delete learn.answer;
-  return learn;
-}
-
-/** Fewest usable cards per kind: "other" and "preference" may answer with none. */
-export function askCardsMin(kind: AskKind): number {
-  return kind === 'other' || kind === 'preference' ? 0 : ASK_CARDS_MIN;
-}
-/** Most cards per kind (rulebook 4.2: 0-2 for other and preference). */
-export function askCardsMax(kind: AskKind): number {
-  return kind === 'other' || kind === 'preference' ? 2 : ASK_CARDS_MAX;
-}
-
-/** Subjects too generic to steer future cards (rulebook 8.3). */
-const GENERIC_TOPICS = new Set(['english', 'speaking', 'communication', 'grammar', 'vocabulary', 'language', 'talking', 'conversation', 'other', 'none', 'general']);
-
-/** Up to `max` short, specific subjects; junk and generic words dropped. Never throws. */
-export function cleanTopics(v: unknown, max = 3): string[] {
-  if (!Array.isArray(v)) return [];
-  const out: string[] = [];
-  const seen = new Set<string>();
-  for (const t of v) {
-    const s = str(t)?.replace(/\s+/g, ' ');
-    if (!s || s.length > 60) continue;
-    const k = s.toLowerCase();
-    if (GENERIC_TOPICS.has(k) || seen.has(k)) continue;
-    seen.add(k);
-    out.push(s);
-    if (out.length >= max) break;
-  }
-  return out;
-}
-
-/** Plain text only: markdown marks and bullets removed, lines joined. */
-export function plainText(s: string): string {
-  return s
-    .replace(/\*\*|__|`/g, '')
-    .replace(/(^|\s)[*_](\S[^*_]*\S|\S)[*_](?=\s|[.,;:!?]|$)/g, '$1$2')
-    .split('\n')
-    .map((l) => l.replace(/^\s*(?:#{1,6}\s+|[-*•]\s+|\d+[.)]\s+)/, '').trim())
-    .filter(Boolean)
-    .join(' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-function trackList(v: unknown): Track[] {
-  return Array.isArray(v) ? [...new Set(v.filter((t): t is Track => TRACKS.includes(t as Track)))] : [];
-}
-
-/** His wish, cleaned. Null when nothing usable is left. */
-export function cleanPreference(v: unknown): AskPreference | null {
-  if (!v || typeof v !== 'object' || Array.isArray(v)) return null;
-  const r = v as Record<string, unknown>;
-  const list = (x: unknown, max: number) =>
-    Array.isArray(x) ? x.map(str).filter((s): s is string => !!s && s.length <= 60).slice(0, max) : [];
-  const pref: AskPreference = { note: clampAtWord(str(r.note) ?? '', 160) };
-  const topics = list(r.topics, 5);
-  const avoid = list(r.avoid, 10);
-  if (topics.length) pref.topics = topics;
-  if (avoid.length) pref.avoid = avoid;
-  for (const f of ['moreOf', 'lessOf', 'harder', 'easier'] as const) {
-    const t = trackList(r[f]);
-    if (t.length) pref[f] = t;
-  }
-  const hasAny = pref.note || topics.length || avoid.length || pref.moreOf || pref.lessOf || pref.harder || pref.easier;
-  return hasAny ? pref : null;
-}
-
-export function validateAnswerAsk(raw: unknown, payload?: unknown): AnswerAskResult {
-  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new Error('Ask response must be an object');
-  const c = raw as Record<string, unknown>;
-  const asked = payload && typeof payload === 'object' ? (payload as Record<string, unknown>) : {};
-  const question = typeof asked.text === 'string' ? asked.text : '';
-
-  const kindRaw = typeof c.askKind === 'string' ? c.askKind.trim().toLowerCase() : '';
-  const askKind = ASK_KIND_ALIASES[kindRaw] ?? (ASK_KINDS.includes(kindRaw as AskKind) ? (kindRaw as AskKind) : undefined);
-  if (!askKind) throw new Error('Missing or invalid "askKind"');
-
-  const answerRaw = str(c.answer);
-  if (!answerRaw) throw new Error('Missing or empty "answer"');
-  const answerPlain = plainText(answerRaw);
-  if (!answerPlain) throw new Error('Missing or empty "answer"');
-  const answer = clampAtSentence(answerPlain, ASK_ANSWER_MAX);
-
-  // A wish he told the app: the preference is the answer, so it is required.
-  let preference: AskPreference | undefined;
-  if (askKind === 'preference') {
-    const p = cleanPreference(c.preference);
-    if (!p) throw new Error('preference needs "preference"');
-    preference = p;
-  }
-  const topics = cleanTopics(c.topics);
-
-  // Fix-my-sentence: the three versions are the answer, so they are required.
-  let versions: AnswerAskResult['versions'];
-  let chunks: string[] | undefined;
-  if (askKind === 'fix_sentence') {
-    const v = c.versions as Record<string, unknown> | undefined;
-    if (!v || typeof v !== 'object' || Array.isArray(v)) throw new Error('fix_sentence needs "versions"');
-    const marked: string[] = [];
-    const version = (name: 'crisp' | 'confident' | 'polite'): string => {
-      const s = str(v[name]);
-      if (!s) throw new Error(`Missing or empty "versions.${name}"`);
-      if (s.length > ASK_VERSION_MAX) throw new Error(`"versions.${name}" is too long`);
-      marked.push(...chunksIn(s, name));
-      return s;
-    };
-    versions = { crisp: version('crisp'), confident: version('confident'), polite: version('polite') };
-    const out = versions;
-
-    // The [[markers]] are the source of truth; a listed chunk counts only if
-    // it really appears in a version, so the screen never shows a stray one.
-    const plain = Object.values(out)
-      .join(' ')
-      .replace(CHUNK_MARK, '$1')
-      .toLowerCase();
-    const listed = Array.isArray(c.chunks)
-      ? c.chunks.map(str).filter((s): s is string => !!s && plain.includes(s.toLowerCase()))
-      : [];
-    const seen = new Set<string>();
-    chunks = [...marked, ...listed]
-      .filter((s) => s.length <= ASK_SHORT_MAX)
-      .filter((s) => {
-        const k = s.toLowerCase();
-        if (seen.has(k)) return false;
-        seen.add(k);
-        return true;
-      })
-      .slice(0, ASK_CHUNKS_MAX);
-  }
-
-  // Weak spot is optional and never fatal (rulebook §4.3).
-  let weakSpot: AnswerAskResult['weakSpot'];
-  const w = c.weakSpot;
-  if (w && typeof w === 'object' && !Array.isArray(w)) {
-    const wrong = str((w as Record<string, unknown>).wrong)?.slice(0, ASK_SHORT_MAX).trim();
-    const right = str((w as Record<string, unknown>).right)?.slice(0, ASK_SHORT_MAX).trim();
-    // His own words only (rulebook 4.3): never a weak spot he did not type.
-    const his = !question || inTranscript(wrong ?? '', question);
-    if (wrong && right && his && wrong.toLowerCase() !== right.toLowerCase()) weakSpot = { wrong, right };
-  }
-
-  if (!Array.isArray(c.cards)) throw new Error('Missing "cards" array');
-  const cards: TeachDraft[] = [];
-  const reasons: string[] = [];
-  const titles = new Set<string>();
-  c.cards.forEach((d, i) => {
-    try {
-      const card = validateTeachDraft(salvageTry(d), i);
-      const key = card.title.toLowerCase();
-      if (titles.has(key)) throw new Error(`Card ${i}: repeats another card's title`);
-      titles.add(key);
-      cards.push(card);
-    } catch (e) {
-      reasons.push((e as Error).message);
-    }
-  });
-  // The model followed the 3-8 rule but one card broke a rule: 2 checked cards
-  // plus a good answer beat "the AI's answer didn't pass". A reply that sent
-  // fewer cards than asked still fails over, so the next model gets a turn.
-  const wanted = askCardsMin(askKind);
-  const min = wanted > 0 && c.cards.length >= wanted ? Math.min(wanted, ASK_CARDS_FLOOR) : wanted;
-  if (cards.length < min) {
-    throw new Error(
-      `Only ${cards.length} usable cards (need ${min})${reasons.length ? `: ${reasons[0]}` : ''}`,
-    );
-  }
-
-  return {
-    askKind,
-    answer,
-    ...(versions ? { versions } : {}),
-    ...(chunks && chunks.length ? { chunks } : {}),
-    ...(weakSpot ? { weakSpot } : {}),
-    ...(preference ? { preference } : {}),
-    topics,
-    cards: cards.slice(0, askCardsMax(askKind)),
-  };
-}
-
-/** answer_ask payload: plain-words error, or null when fine. */
-export function checkAnswerAskPayload(payload: unknown): string | null {
+/** Plain-words reason a tell_app request is refused, or null when it is fine. */
+export function checkTellAppPayload(payload: unknown): string | null {
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return 'Invalid payload';
   const p = payload as Record<string, unknown>;
-  if (typeof p.text !== 'string' || !p.text.trim()) return 'Type a question first';
-  if (p.text.trim().length > ASK_TEXT_MAX) return `Keep the question under ${ASK_TEXT_MAX} characters`;
-  if (p.avoid !== undefined && !validStringList(p.avoid, 50)) return 'Invalid payload';
-  if (p.levels !== undefined) {
-    if (!p.levels || typeof p.levels !== 'object' || Array.isArray(p.levels)) return 'Invalid payload';
-    for (const [k, v] of Object.entries(p.levels as Record<string, unknown>)) {
-      if (!TRACKS.includes(k as Track)) return 'Invalid payload';
-      if (typeof v !== 'number' || !Number.isInteger(v) || v < 1 || v > 5) return 'Invalid payload';
-    }
+  if (typeof p.text !== 'string' || !p.text.trim()) return 'Say something first';
+  if (p.text.length > TELL_TEXT_MAX) return `Keep it under ${TELL_TEXT_MAX} characters`;
+  if (!Array.isArray(p.themes) || !validStringList(p.themes, THEMES_MAX) || !(p.themes as string[]).every((t) => t.length <= THEME_CHARS)) {
+    return 'Invalid themes';
   }
-  if (p.learner !== undefined && !validLearner(p.learner)) return 'Invalid payload';
-  return null;
-}
-
-/** The learner memory the phone sends (rulebook 8.3): small, plain lists only. */
-function validLearner(v: unknown): boolean {
-  if (!v || typeof v !== 'object' || Array.isArray(v)) return false;
-  const l = v as Record<string, unknown>;
-  if (l.topics !== undefined && !validStringList(l.topics, 12)) return false;
-  if (l.notes !== undefined && !validStringList(l.notes, 6)) return false;
-  if (l.watch !== undefined && !validWatch(l.watch)) return false;
-  return true;
-}
-
-/** A known-mistakes list: max 10 { wrong, right } pairs of non-empty strings. */
-function validWatch(v: unknown): boolean {
-  if (!Array.isArray(v) || v.length > 10) return false;
-  return v.every((w) => {
-    if (!w || typeof w !== 'object' || Array.isArray(w)) return false;
-    const ww = w as Record<string, unknown>;
-    return typeof ww.wrong === 'string' && !!ww.wrong.trim() && typeof ww.right === 'string' && !!ww.right.trim();
-  });
-}
-
-// ── coach_chat (rulebook §5: voice practice chat feedback) ─────────────────
-// Strict where a wrong word would teach him something false: a quote that is
-// not in his transcript, a pace or loudness comment with no measured number,
-// a figure the phone never measured, or a fix that names no lesson. Any of
-// those throws, so the next provider gets a turn. Sizes are clamped; a slip
-// that is not his own words is dropped, never fatal.
-
-const CHAT_LOUDNESS = ['below', 'normal', 'above'] as const;
-
-/** Lower-case, straight apostrophes, punctuation to spaces, single spaces. */
-function normForMatch(s: string): string {
-  return ` ${s
-    .toLowerCase()
-    .replace(/[‘’ʼ`]/g, "'")
-    .replace(/[^\p{L}\p{N}'\s]/gu, ' ')
-    // An apostrophe counts only inside a word ("don't"); 'quote marks' at word edges go.
-    .replace(/(^|\s)'+|'+(?=\s|$)/g, '$1')
-    .replace(/\s+/g, ' ')
-    .trim()} `;
-}
-
-/** True when `phrase` appears in `transcript` as whole words (case and punctuation ignored). */
-function inTranscript(phrase: string, transcript: string): boolean {
-  const p = normForMatch(phrase);
-  if (!p.trim()) return true;
-  return normForMatch(transcript).includes(p);
-}
-
-/** "Double" spans (straight or curly). */
-const DOUBLE_QUOTED = /["“”]([^"“”]+)["“”]/g;
-/**
- * 'Single' spans (straight or curly). The opening mark must follow a space,
- * a bracket or the line start, and the closing one must precede a space or
- * punctuation, so apostrophes in "don't" or "the team's" never count.
- */
-const SINGLE_QUOTED = /(^|[\s(\[—–:])['‘]([^'‘’\n]*?[^\s'‘’])['’](?=$|[\s.,;:!?)\]—–])/g;
-
-/** Every quoted span in a coach line: double or single, straight or curly. */
-function quotesIn(s: string): string[] {
-  const doubles = [...s.matchAll(DOUBLE_QUOTED)].map((m) => m[1] ?? '');
-  const rest = s.replace(DOUBLE_QUOTED, ' ');
-  const singles = [...rest.matchAll(SINGLE_QUOTED)].map((m) => m[2] ?? '');
-  return [...doubles, ...singles].map((q) => q.trim()).filter(Boolean);
-}
-
-/** A quote may skip words with "..." or "…"; each piece must be his words. */
-function quoteIsHis(quote: string, transcript: string): boolean {
-  return quote
-    .split(/\.{3}|…/)
-    .map((piece) => piece.trim())
-    .filter(Boolean)
-    .every((piece) => inTranscript(piece, transcript));
-}
-
-/** The coach's own words in a line: the line minus his quoted words. */
-function coachWords(s: string): string {
-  return s
-    .replace(DOUBLE_QUOTED, ' ')
-    .replace(SINGLE_QUOTED, '$1 ')
-    // "Say it out loud" is a practice instruction, not a volume comment.
-    .replace(/\b(?:out loud|aloud|read it loud)\b/gi, ' ');
-}
-
-// Narrow on purpose: "project" or "faster" are everyday office words, not voice comments.
-// "Rushed", "softer" and "quiet" are left out: "the ending felt rushed", "a softer word"
-// and "a quiet weekend" are about content, not his voice.
-const PACE_TERMS =
-  /\b(pace|pacing|speaking speed|your speed|too fast|too slow|slow down|speak slower|speak faster|speed up|talk faster|talk slower|wpm|words per minute|words a minute)\b/i;
-const LOUD_TERMS =
-  /\b(loud|louder|loudly|loudness|too quiet|quieter|speak quietly|volume|speak softer|speak more softly|softer voice|project more|project your voice|speak up)\b/i;
-/** A push-harder phrase right after one of these is advice to ease off ("no need to speak up"). */
-const NEGATED_BEFORE = /\b(?:no need to|don'?t|do not|never|stop|avoid|without|instead of|rather than)\s+(?:\w+\s+){0,2}$/i;
-/** Instructions to push harder. "You were louder than your normal" is a description, not one of these. */
-const PUSH_HARDER =
-  /\b(speak louder|be louder|get louder|talk louder|say it louder|project more|projecting more|project your voice|speak up|more volume|raise your voice)\b/i;
-
-/** First term from `re` in the coach's words that he did not say himself. */
-function strayTerm(text: string, re: RegExp, transcript: string): string | undefined {
-  const m = re.exec(coachWords(text));
-  if (!m) return undefined;
-  return inTranscript(m[0], transcript) ? undefined : m[0];
-}
-
-/** True when a line tells him to push harder, and the instruction is not negated. */
-function pushesHarder(line: string): boolean {
-  const re = new RegExp(PUSH_HARDER.source, 'gi');
-  for (const m of line.matchAll(re)) {
-    if (!NEGATED_BEFORE.test(line.slice(0, m.index ?? 0))) return true;
+  const levels = p.levels;
+  if (!levels || typeof levels !== 'object' || Array.isArray(levels)) return 'Invalid levels';
+  for (const [module, lv] of Object.entries(levels as Record<string, unknown>)) {
+    if (!MODULES.includes(module as ModuleId)) return 'Invalid module';
+    if (typeof lv !== 'number' || !Number.isInteger(lv) || lv < 1 || lv > 5) return 'Invalid level';
   }
-  return false;
-}
-
-export function validateCoachChat(raw: unknown, payload?: unknown): CoachChatResult {
-  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new Error('Coach response must be an object');
-  const c = raw as Record<string, unknown>;
-  const p = (payload && typeof payload === 'object' ? payload : {}) as Partial<CoachChatPayload>;
-  const transcript = typeof p.transcript === 'string' ? p.transcript : '';
-  const short = wordsOf(transcript) < CHAT_SHORT_WORDS;
-
-  const goodRaw = str(c.good);
-  if (!goodRaw) throw new Error('Missing or empty "good"');
-  const good = clampAtSentence(goodRaw, CHAT_POINT_MAX);
-
-  if (!Array.isArray(c.fixes)) throw new Error('Missing "fixes" array');
-  const fixes: CoachChatResult['fixes'] = [];
-  for (const f of c.fixes) {
-    if (!f || typeof f !== 'object' || Array.isArray(f)) continue;
-    const fr = f as Record<string, unknown>;
-    const text = str(fr.text);
-    const lesson = str(fr.lesson);
-    // Every fix is taught and names its lesson (rulebook §5.4); one without is dropped.
-    if (!text || !lesson) continue;
-    fixes.push({ text: clampAtSentence(text, CHAT_POINT_MAX), lesson: clampAtWord(lesson, CHAT_LESSON_MAX) });
-    if (fixes.length === CHAT_FIXES_MAX) break;
-  }
-  if (fixes.length === 0) throw new Error('No fix that names its lesson');
-
-  const betterRaw = str(c.better);
-  if (!betterRaw) throw new Error('Missing or empty "better"');
-  const better = clampAtSentence(betterRaw, CHAT_BETTER_MAX);
-
-  // Never quote words he did not say (rulebook §5.3). The rewrite is exempt: it is new wording.
-  const coachLines = [good, ...fixes.map((f) => f.text)];
-  for (const line of coachLines) {
-    for (const q of quotesIn(line)) {
-      if (!quoteIsHis(q, transcript)) throw new Error('Quotes words that are not in the transcript');
-    }
-  }
-  // Point 1 quotes his exact words, unless the answer was too short to analyse.
-  if (!short && quotesIn(good).length === 0) throw new Error('"good" quotes none of his words');
-  // The rewrite uses his content: at least one of his longer words survives.
-  if (!short) {
-    const his = new Set(
-      normForMatch(transcript)
-        .split(' ')
-        .filter((w) => w.length >= 4),
-    );
-    const kept = normForMatch(better)
-      .split(' ')
-      .some((w) => his.has(w));
-    if (his.size > 0 && !kept) throw new Error('"better" does not use his words');
-  }
-
-  // Pace and loudness only from the measured numbers (rulebook §5.3).
-  const hasWpm = typeof p.wpm === 'number' && Number.isFinite(p.wpm);
-  const loudness = CHAT_LOUDNESS.includes(p.loudness as (typeof CHAT_LOUDNESS)[number]) ? p.loudness : undefined;
-  for (const line of coachLines) {
-    if (!hasWpm) {
-      const t = strayTerm(line, PACE_TERMS, transcript);
-      if (t) throw new Error(`Talks about pace ("${t}") with no measured number`);
-    }
-    if (!loudness) {
-      const t = strayTerm(line, LOUD_TERMS, transcript);
-      if (t) throw new Error(`Talks about loudness ("${t}") with no measured number`);
-    } else if (loudness === 'above' && pushesHarder(coachWords(line))) {
-      throw new Error('Tells him to push harder while he is above his normal');
-    }
-    // Never invent figures: a words-per-minute number must be the measured one.
-    for (const m of coachWords(line).matchAll(/(\d+(?:\.\d+)?)\s*(?:wpm|w\.p\.m\.?|words?\s*(?:per|a|an|\/|each)\s*min(?:ute)?s?\b)/gi)) {
-      if (!hasWpm || Math.abs(Number(m[1]) - (p.wpm as number)) > 1) {
-        throw new Error('States a pace figure the phone did not measure');
-      }
-    }
-  }
-
-  // The slip is his own words or nothing. A watched mistake he repeated comes first.
-  let slip: CoachChatResult['slip'] = null;
-  const s = c.slip;
-  if (s && typeof s === 'object' && !Array.isArray(s)) {
-    const wrong = str((s as Record<string, unknown>).wrong);
-    const right = str((s as Record<string, unknown>).right);
-    if (
-      wrong &&
-      right &&
-      wrong.length <= ASK_SHORT_MAX &&
-      right.length <= ASK_SHORT_MAX &&
-      wrong.toLowerCase() !== right.toLowerCase() &&
-      inTranscript(wrong, transcript)
-    ) {
-      slip = { wrong, right };
-    }
-  }
-  if (Array.isArray(p.watch)) {
-    const hit = p.watch.find(
-      (w) => w && typeof w.wrong === 'string' && w.wrong.trim() && inTranscript(w.wrong, transcript),
-    );
-    if (hit && (!slip || normForMatch(slip.wrong) !== normForMatch(hit.wrong))) {
-      slip = { wrong: hit.wrong.trim().slice(0, ASK_SHORT_MAX), right: String(hit.right ?? '').trim().slice(0, ASK_SHORT_MAX) };
-      if (!slip.right) slip = null;
-    }
-  }
-
-  const topics = cleanTopics(c.topics);
-  return { good, fixes, better, slip, ...(topics.length ? { topics } : {}) };
-}
-
-/** coach_chat payload: plain-words error, or null when fine. */
-export function checkCoachChatPayload(payload: unknown): string | null {
-  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return 'Invalid payload';
-  const p = payload as Record<string, unknown>;
-  if (typeof p.question !== 'string' || !p.question.trim()) return 'The chat needs the question you answered';
-  if (p.question.trim().length > CHAT_QUESTION_MAX) return 'Invalid payload';
-  if (typeof p.transcript !== 'string') return 'Invalid payload';
-  if (!p.transcript.trim()) return "I didn't catch any words. Try answering again, a little closer to the phone.";
-  if (p.transcript.trim().length > CHAT_TRANSCRIPT_MAX) return 'That answer is too long for one turn. Keep it under about 3 minutes.';
-  if (typeof p.track !== 'string' || !TRACKS.includes(p.track as Track)) return 'Invalid payload';
-  if (p.wpm !== undefined && (typeof p.wpm !== 'number' || !Number.isFinite(p.wpm) || p.wpm <= 0 || p.wpm > 400)) {
-    return 'Invalid payload';
-  }
-  if (p.loudness !== undefined && !CHAT_LOUDNESS.includes(p.loudness as (typeof CHAT_LOUDNESS)[number])) {
-    return 'Invalid payload';
-  }
+  const recent = p.recent;
   if (
-    p.voicedSec !== undefined &&
-    (typeof p.voicedSec !== 'number' || !Number.isFinite(p.voicedSec) || p.voicedSec < 0 || p.voicedSec > 600)
+    !Array.isArray(recent) ||
+    recent.length > TELL_RECENT_MAX ||
+    !recent.every((t) => {
+      if (!t || typeof t !== 'object' || Array.isArray(t)) return false;
+      const o = t as Record<string, unknown>;
+      return typeof o.said === 'string' && o.said.length <= TELL_TEXT_MAX && typeof o.reply === 'string' && o.reply.length <= TELL_TEXT_MAX;
+    })
   ) {
-    return 'Invalid payload';
+    return 'Invalid recent turns';
   }
-  if (p.watch !== undefined && !validWatch(p.watch)) return 'Invalid payload';
   return null;
+}
+
+/** One or two sentences, at most TELL_REPLY_MAX characters: two, else one, else cut at a word. */
+function shortReply(text: string): string {
+  const flat = text.replace(/\*\*/g, '').replace(/\s+/g, ' ').trim();
+  const sentences = (flat.match(/[^.!?]+(?:[.!?]+["')\]]*|$)/g) ?? [flat]).map((x) => x.trim()).filter(Boolean);
+  for (const n of [2, 1]) {
+    const pick = sentences.slice(0, n).join(' ');
+    if (pick && pick.length <= TELL_REPLY_MAX) return pick;
+  }
+  return `${clampAtWord(flat, TELL_REPLY_MAX - 1)}…`;
+}
+
+type TellLearned = TellAppResult['learned'][number];
+
+/** One learned item, checked; null drops it. */
+function tellItem(v: unknown, themes: readonly string[]): TellLearned | null {
+  if (!v || typeof v !== 'object' || Array.isArray(v)) return null;
+  const o = v as Record<string, unknown>;
+  const known = (t: unknown): string | undefined => {
+    const want = str(t)?.toLowerCase();
+    return want ? themes.find((x) => x.toLowerCase() === want) : undefined;
+  };
+  if (o.kind === 'wish') {
+    const note = str(o.note);
+    if (!note || hasHindi(note)) return null;
+    return { kind: 'wish', note: clampAtWord(note.replace(/\s+/g, ' '), TELL_NOTE_MAX) };
+  }
+  if (o.kind === 'more' || o.kind === 'fewer') {
+    const theme = known(o.theme);
+    return theme ? { kind: o.kind, theme } : null;
+  }
+  if (o.kind === 'new_theme') {
+    const raw = str(o.theme)?.replace(/\s+/g, ' ');
+    if (!raw) return null;
+    // A "new" topic he already has is a wish for more of it.
+    const have = known(raw);
+    if (have) return { kind: 'more', theme: have };
+    if (
+      raw.length > NEW_THEME_CHARS ||
+      raw.split(' ').length > NEW_THEME_WORDS ||
+      !/^\p{L}[\p{L}\p{N}&' -]*$/u.test(raw) ||
+      hasHindi(raw)
+    ) {
+      return null;
+    }
+    return { kind: 'new_theme', theme: raw.charAt(0).toUpperCase() + raw.slice(1) };
+  }
+  if (o.kind === 'level') {
+    if (!MODULES.includes(o.module as ModuleId)) return null;
+    if (o.delta !== 1 && o.delta !== -1) return null;
+    return { kind: 'level', module: o.module as ModuleId, delta: o.delta };
+  }
+  return null;
+}
+
+/**
+ * tell_app output (rulebook chapter 10). No reply, or Hindi in it, throws (the
+ * next provider is tried). The reply is cut to one or two sentences and 240
+ * characters; each learned item is checked on its own and a bad one dropped;
+ * repeats dropped; at most 4 kept.
+ */
+export function validateTellApp(raw: unknown, payload?: unknown): TellAppResult {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new Error('tell_app response must be an object');
+  const c = raw as Record<string, unknown>;
+  const said = str(c.reply);
+  if (!said) throw new Error('Missing "reply"');
+  if (hasHindi(said)) throw new Error('Hindi in the reply');
+  const req = (payload && typeof payload === 'object' ? payload : {}) as Partial<TellAppRequest>;
+  const given = (Array.isArray(req.themes) ? req.themes : []).map(str).filter((t): t is string => !!t);
+  const themes: readonly string[] = given.length ? given : THEMES;
+  const learned: TellLearned[] = [];
+  const keys = new Set<string>();
+  for (const item of Array.isArray(c.learned) ? c.learned : []) {
+    if (learned.length >= TELL_LEARNED_MAX) break;
+    const x = tellItem(item, themes);
+    if (!x) continue;
+    const key = JSON.stringify(x).toLowerCase();
+    if (keys.has(key)) continue;
+    keys.add(key);
+    learned.push(x);
+  }
+  return { reply: shortReply(said), learned };
 }
 
 export function validateProviderOutput(task: AiTask, raw: unknown, payload?: unknown): unknown {
   if (!raw || typeof raw !== 'object') {
     throw new Error('Provider response must be an object');
-  }
-
-  if (task === 'review_recording') {
-    const candidate = raw as Record<string, unknown>;
-    if (typeof candidate.summary !== 'string' || !candidate.summary.trim()) {
-      throw new Error('Missing or empty "summary"');
-    }
-    if (typeof candidate.strongPoint !== 'string' || !candidate.strongPoint.trim()) {
-      throw new Error('Missing or empty "strongPoint"');
-    }
-    if (typeof candidate.oneCorrection !== 'string' || !candidate.oneCorrection.trim()) {
-      throw new Error('Missing or empty "oneCorrection"');
-    }
-
-    let suggestedAlternative: string | undefined;
-    if (
-      typeof candidate.suggestedAlternative === 'string' &&
-      candidate.suggestedAlternative.trim()
-    ) {
-      suggestedAlternative = candidate.suggestedAlternative.trim();
-    }
-
-    // `mistake` is optional and never fatal: a malformed one is dropped,
-    // not thrown — feedback must survive a bad optional field.
-    let mistake: { wrong: string; right: string } | undefined;
-    const m = candidate.mistake;
-    if (m && typeof m === 'object') {
-      const mm = m as Record<string, unknown>;
-      const wrong = typeof mm.wrong === 'string' ? mm.wrong.trim().slice(0, 60) : '';
-      const right = typeof mm.right === 'string' ? mm.right.trim().slice(0, 60) : '';
-      if (wrong && right && wrong.toLowerCase() !== right.toLowerCase()) {
-        mistake = { wrong, right };
-      }
-    }
-
-    const validated: ReviewRecordingResponse = {
-      summary: candidate.summary.trim(),
-      strongPoint: candidate.strongPoint.trim(),
-      oneCorrection: candidate.oneCorrection.trim(),
-      ...(suggestedAlternative ? { suggestedAlternative } : {}),
-      ...(mistake ? { mistake } : {}),
-    };
-    return validated;
-  }
-
-  if (task === 'classify_inbox') {
-    return validateClassifyInbox(raw);
   }
 
   if (task === 'verify_batch') {
@@ -1770,12 +1271,8 @@ export function validateProviderOutput(task: AiTask, raw: unknown, payload?: unk
     return validatePlanWeek(raw);
   }
 
-  if (task === 'answer_ask') {
-    return validateAnswerAsk(raw, payload);
-  }
-
-  if (task === 'coach_chat') {
-    return validateCoachChat(raw, payload);
+  if (task === 'tell_app') {
+    return validateTellApp(raw, payload);
   }
 
   // Every configured task has a validator above; nothing unchecked reaches the client.
@@ -1806,19 +1303,6 @@ export default async function handler(req: Request): Promise<Response> {
   }
 
   // Task-specific payload validation
-  if (body.task === 'classify_inbox') {
-    const payload = body.payload as Record<string, unknown> | undefined;
-    if (!payload || typeof payload !== 'object' || typeof payload.text !== 'string' || !payload.text.trim()) {
-      return json({ ok: false, task: body.task, error: 'AI sorting needs the note text' }, 400);
-    }
-    // `avoid` is optional: his rejected headlines (max 50). Never a hard error to omit.
-    if (payload.avoid !== undefined) {
-      if (!validStringList(payload.avoid, 50)) {
-        return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
-      }
-    }
-  }
-
   if (body.task === 'expand_seed') {
     const payload = body.payload as Record<string, unknown> | undefined;
     if (!payload || typeof payload !== 'object') {
@@ -1855,7 +1339,7 @@ export default async function handler(req: Request): Promise<Response> {
     if (payload.seed !== undefined && !isTeach) {
       let seed: unknown;
       try {
-        seed = validateClassifyDraft(payload.seed, 0);
+        seed = validateDraftCard(payload.seed, 0);
       } catch {
         return json({ ok: false, task: body.task, error: 'Invalid seed card' }, 400);
       }
@@ -1905,38 +1389,9 @@ export default async function handler(req: Request): Promise<Response> {
     }
   }
 
-  if (body.task === 'review_recording') {
-    const payload = body.payload as Record<string, unknown> | undefined;
-    if (!payload || typeof payload !== 'object') {
-      return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
-    }
-    if (typeof payload.transcript !== 'string' || !payload.transcript.trim()) {
-      return json({ ok: false, task: body.task, error: 'AI feedback needs a transcript' }, 400);
-    }
-    const transcript = payload.transcript.trim();
-    const wordCount = transcript.split(/\s+/).filter(Boolean).length;
-    if (wordCount < 5) {
-      return json(
-        { ok: false, task: body.task, error: 'Transcript too short for AI review (minimum 5 words)' },
-        400,
-      );
-    }
-    // `watch` is optional: his known mistakes (max 10). Never a hard error.
-    const watch = (payload as { watch?: unknown }).watch;
-    if (watch !== undefined) {
-      if (!Array.isArray(watch) || watch.length > 10) {
-        return json({ ok: false, task: body.task, error: 'Invalid payload' }, 400);
-      }
-    }
-  }
-
-  if (body.task === 'answer_ask') {
-    const bad = checkAnswerAskPayload(body.payload);
-    if (bad) return json({ ok: false, task: body.task, error: bad }, 400);
-  }
-
-  if (body.task === 'coach_chat') {
-    const bad = checkCoachChatPayload(body.payload);
+  if (body.task === 'tell_app') {
+    // v8 Ask box (rulebook chapter 10): his words, the topic labels, his levels, the last turns.
+    const bad = checkTellAppPayload(body.payload);
     if (bad) return json({ ok: false, task: body.task, error: bad }, 400);
   }
 
@@ -1945,17 +1400,17 @@ export default async function handler(req: Request): Promise<Response> {
   const cfg = TASK_CONFIG[task];
   // A v7 module batch: its own job lines, 4,096 tokens of answer room and a longer wait.
   const moduleBatch = isModuleBatch(body.task, body.payload);
-  const system = moduleBatch ? moduleBatchSystem((body.payload as ModuleBatchRequest).module) : systemFor(task);
+  const batchReq = body.payload as ModuleBatchRequest;
+  const system = moduleBatch ? moduleBatchSystem(batchReq.module, batchReq.level) : systemFor(task);
   const maxTokens = moduleBatch ? MODULE_MAX_TOKENS : cfg.maxTokens;
-  const providerTimeoutMs = moduleBatch ? MODULE_TIMEOUT_MS : (cfg.timeoutMs ?? PER_PROVIDER_TIMEOUT_MS);
+  const providerTimeoutMs = moduleBatch ? MODULE_TIMEOUT_MS : PER_PROVIDER_TIMEOUT_MS;
   const userPrompt = JSON.stringify(body.payload ?? {});
   if (userPrompt.length > 60_000) {
     return json({ ok: false, task: body.task, error: 'payload too large' }, 413);
   }
 
   // Provider order is Gemini → Groq → Anthropic (locked decision).
-  // Anthropic stays only as a last fallback. `prefer` (or a task's frozen
-  // first provider, TASK_PREFER) moves one provider to the front.
+  // Anthropic stays only as a last fallback. `prefer` moves one provider to the front.
   const allProviders: Provider[] = ['gemini', 'groq', 'anthropic'];
   // `exclude` is strict: a checker must never fall back to the model that wrote the cards.
   if (body.exclude !== undefined && (!Array.isArray(body.exclude) || body.exclude.some((p) => !allProviders.includes(p)))) {
@@ -1963,8 +1418,7 @@ export default async function handler(req: Request): Promise<Response> {
   }
   const excluded = new Set<Provider>(body.exclude ?? []);
   const allowed = allProviders.filter((p) => !excluded.has(p));
-  const preferredRaw = body.prefer && allowed.includes(body.prefer) ? body.prefer : TASK_PREFER[task];
-  const preferred = preferredRaw && allowed.includes(preferredRaw) ? preferredRaw : undefined;
+  const preferred = body.prefer && allowed.includes(body.prefer) ? body.prefer : undefined;
   const order: Provider[] = preferred ? [preferred, ...allowed.filter((p) => p !== preferred)] : allowed;
 
   const functionDeadline = Date.now() + TOTAL_FUNCTION_DEADLINE_MS;

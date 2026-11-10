@@ -7,6 +7,7 @@ import samplePhrases from './53-office-phrases.json';
 import sampleStories from './54-stories.json';
 import outlineJson from '../library/outline.json';
 import { checkLibrary, checkLibraryFile, type OutlineItem } from '../../db/libraryCheck';
+import { tagProblems } from '../../features/cards/cardTags';
 
 // v7 steps 4-6, pass 12: the 115 Say-it-better pairs for pushback, saying no,
 // asking for help, explaining work to a non-tech person and the Indian-English fixes.
@@ -48,5 +49,9 @@ describe('library: better-pushback (73-better-pushback.json)', () => {
       '54-stories.json': sampleStories,
       '73-better-pushback.json': cards,
     })).toEqual([]);
+  });
+  it('gives every card a topic from the fixed list and a level of 1, 2 or 3', () => {
+    const bad = cards.flatMap((card) => tagProblems(card).map((p) => `${card.id}: ${p}`));
+    expect(bad).toEqual([]);
   });
 });

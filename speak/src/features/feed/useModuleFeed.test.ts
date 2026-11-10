@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { act, cleanup, renderHook, waitFor } from '@testing-library/react';
 import type {
   CardFeedback,
@@ -11,7 +11,20 @@ import type {
 } from '../../types/contract';
 import { db } from '../../db/db';
 import { addDays, todayKey } from '../../lib/date';
-import { MODULE_FEED_CHUNK, useModuleFeed } from './useModuleFeed';
+import {
+  MODULE_FEED_CHUNK,
+  frontIdsFrom,
+  themeWeightsFrom,
+  useModuleFeed,
+} from './useModuleFeed';
+import { shiftModuleLevel } from '../auto/moduleBatch';
+import { levelOf } from '../cards/cardTags';
+
+// Know it may start a module batch; the tests never reach a model.
+vi.mock('../auto/moduleBatch', async (importOriginal) => {
+  const real = await importOriginal<typeof import('../auto/moduleBatch')>();
+  return { ...real, maybeModuleBatch: () => Promise.resolve(null) };
+});
 
 function makeCard(id: string, module: ModuleId): ModuleCard {
   return {
@@ -44,6 +57,7 @@ describe('useModuleFeed', () => {
     await db.profile.clear();
     await db.seen.clear();
     await db.savedReviews.clear();
+    await db.meta.clear();
   });
 
   afterEach(() => {
@@ -467,5 +481,162 @@ describe('useModuleFeed', () => {
     ).toBe(true);
 
     unmount();
+  });
+
+  // ─── v8 (2026-11-10): levels, Know it, front cards ──────────────────────────
+
+  type Extra = { level?: 1 | 2 | 3; theme?: string; source?: string; createdAt?: number };
+  const tag = (id: string, module: ModuleId, extra: Extra): ModuleCard =>
+    ({ ...makeCard(id, module), ...extra }) as ModuleCard;
+
+  it('starts above the easiest cards: level 1 stays out until his level allows it', async () => {
+    await db.cards.bulkPut([
+      tag('w1', 'words', { level: 1 }),
+      tag('w2', 'words', { level: 2 }),
+      tag('w3', 'words', { level: 3 }),
+      tag('s1', 'smalltalk', { level: 1 }),
+    ] as any);
+
+    const { result, unmount } = renderHook(() => useModuleFeed());
+    await waitFor(() => expect(result.current.ready).toBe(true), { timeout: 10000 });
+    expect(result.current.items.map((c) => c.id).sort()).toEqual(['w2', 'w3']);
+
+    await db.profile.put({ id: 'me', createdAt: 1, userId: null, moduleLevels: { words: 1 } });
+    await act(async () => {
+      await result.current.reload();
+    });
+    expect(result.current.items.map((c) => c.id).sort()).toEqual(['w1', 'w2', 'w3']);
+
+    unmount();
+  });
+
+  it('serves new AI cards next, newest batch first, mixed in with the library', async () => {
+    await db.cards.bulkPut([
+      ...Array.from({ length: 6 }, (_, i) => makeCard(`w-${i}`, 'words')),
+      tag('ai-old', 'words', { source: 'ai', createdAt: 100 }),
+      tag('ai-new', 'words', { source: 'ai', createdAt: 200 }),
+    ] as any);
+
+    const { result, unmount } = renderHook(() => useModuleFeed('words'));
+    await waitFor(() => expect(result.current.ready).toBe(true), { timeout: 10000 });
+    const ids = result.current.items.map((c) => c.id);
+    expect(ids[0]).toBe('ai-new');
+    expect(ids[1]!.startsWith('w-')).toBe(true);
+    expect(ids[2]).toBe('ai-old');
+    expect(ids).toHaveLength(8);
+
+    unmount();
+  });
+
+  it('Know it drops the queued easier cards at once; a later Too hard brings them back', async () => {
+    await db.cards.bulkPut([
+      ...[0, 1, 2].map((i) => tag(`l1-${i}`, 'words', { level: 1 })),
+      ...[0, 1, 2, 3].map((i) => tag(`l2-${i}`, 'words', { level: 2 })),
+      ...[0, 1, 2].map((i) => tag(`l3-${i}`, 'words', { level: 3 })),
+    ] as any);
+
+    const { result, unmount } = renderHook(() => useModuleFeed('words'));
+    await waitFor(() => expect(result.current.ready).toBe(true), { timeout: 10000 });
+    expect(result.current.items).toHaveLength(7); // level 2 and 3 only
+
+    // Move one card on, then tap Know it on a level-2 card.
+    await act(async () => {
+      await result.current.onSettle(1);
+    });
+    const at = 1;
+    const current = result.current.items[at]!;
+    const seen = result.current.items.slice(0, at + 1);
+    await act(async () => {
+      await result.current.knowIt(tag('l2-x', 'words', { level: 2 }));
+    });
+
+    expect((await db.profile.get('me'))?.moduleLevels?.words).toBe(3);
+    expect((await db.feedback.get('fb-l2-x'))?.reasons).toContain('too_easy');
+    // the cards up to the current one stay; every one after it is level 3 now
+    expect(result.current.items.slice(0, at + 1)).toEqual(seen);
+    const after = result.current.items.slice(at + 1);
+    expect(after).toHaveLength(3 - seen.filter((c) => levelOf(c) === 3).length);
+    expect(after.length).toBeGreaterThan(0);
+    expect(after.every((c) => levelOf(c) === 3)).toBe(true);
+
+    // Too hard from the sheet moves Words back to 2; applyLevels re-builds what comes next.
+    await shiftModuleLevel('words', ['too_hard']);
+    await act(async () => {
+      await result.current.applyLevels();
+    });
+    const back = result.current.items.slice(at + 1);
+    expect(back.filter((c) => levelOf(c) === 2)).toHaveLength(
+      4 - seen.filter((c) => levelOf(c) === 2).length,
+    );
+    expect(back.some((c) => levelOf(c) === 1)).toBe(false);
+    expect(back.some((c) => c.id === current.id)).toBe(false);
+    const ids = result.current.items.map((c) => c.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(result.current.index).toBe(at);
+
+    unmount();
+  });
+
+  it('applyLevels also picks up a new 👎 and new cards stored since the load', async () => {
+    await db.cards.bulkPut([makeCard('w-1', 'words'), makeCard('w-2', 'words')] as any);
+    const { result, unmount } = renderHook(() => useModuleFeed('words'));
+    await waitFor(() => expect(result.current.ready).toBe(true), { timeout: 10000 });
+    const second = result.current.items[1]!.id;
+
+    await db.feedback.put({
+      id: `fb-${second}`,
+      cardId: second,
+      module: 'words',
+      thumb: 'down',
+      reasons: [],
+      reply: 'Got it',
+      at: 1,
+    });
+    await db.cards.put(tag('ai-1', 'words', { source: 'ai', createdAt: 5 }) as any);
+    await act(async () => {
+      await result.current.applyLevels();
+    });
+    const ids = result.current.items.map((c) => c.id);
+    expect(ids).not.toContain(second);
+    expect(ids[1]).toBe('ai-1');
+
+    unmount();
+  });
+
+  it('themeWeightsFrom: 1 + 👍 / Loved count (max +3), times the Ask boost', () => {
+    const cards = [
+      ...[0, 1, 2, 3, 4].map((i) => tag(`m-${i}`, 'words', { theme: 'Money' })),
+      tag('f-0', 'words', { theme: 'Food' }),
+      tag('g-0', 'words', {}),
+    ];
+    const fb = (cardId: string, extra: Partial<CardFeedback>): CardFeedback => ({
+      id: `fb-${cardId}`,
+      cardId,
+      module: 'words',
+      reasons: [],
+      reply: '',
+      at: 1,
+      ...extra,
+    });
+    const rows = [
+      ...[0, 1, 2, 3, 4].map((i) => fb(`m-${i}`, { thumb: 'up' })),
+      fb('f-0', { reasons: ['loved'] }),
+      fb('g-0', { thumb: 'up', reasons: ['wrong_english'] }),
+    ];
+    expect(themeWeightsFrom(cards, rows, { Food: 2, Travel: 0.5 })).toEqual({
+      Money: 4,
+      Food: 4,
+      Travel: 0.5,
+    });
+  });
+
+  it('frontIdsFrom: unseen AI cards only, newest first', () => {
+    const cards = [
+      makeCard('w-1', 'words'),
+      tag('a', 'words', { source: 'ai', createdAt: 1 }),
+      tag('b', 'words', { source: 'ai', createdAt: 3 }),
+      tag('c', 'words', { source: 'ai', createdAt: 2 }),
+    ];
+    expect(frontIdsFrom(cards, new Set(['c']))).toEqual(['b', 'a']);
   });
 });

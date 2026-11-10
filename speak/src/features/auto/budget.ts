@@ -7,8 +7,8 @@ import { todayKey } from '../../lib/date';
  * Coach, misses, top-up and (stage 5) the weekly plan all draw from a single
  * counter stored in Dexie `meta` under `ai.dailyCalls` — local only, never
  * synced, same store as the other AI operational flags. Over budget ⇒ callers
- * skip silently and retry tomorrow. `verify_batch` and `review_recording` are
- * not generation calls and don't draw from it.
+ * skip silently and retry tomorrow. `verify_batch` is not a generation call
+ * and doesn't draw from it on its own.
  */
 
 export const AI_DAILY_CAP = 25;
@@ -42,13 +42,9 @@ export async function tryConsumeAiCall(today: string = todayKey()): Promise<bool
   });
 }
 
-// ── v5 (question 9A): Ask always goes first ─────────────────────────────────
-// The cap stays 25. An Ask costs 2 calls (the answer + the check on the other
-// provider) and is allowed all the way to the cap. Background work (top-ups,
-// misses) stops once fewer than 10 are left, so Ask keeps room all day.
-
-/** What one Ask spends: the answer and its check. */
-export const ASK_CALLS_PER_QUESTION = 2;
+// ── Background reserve ──────────────────────────────────────────────────────
+// The cap stays 25. Background work (module batches) stops once fewer than 10
+// are left, so a call he asks for himself keeps room all day (v8's Ask box).
 
 /** Background work stops when fewer than this many calls are left today. */
 export const BACKGROUND_RESERVE = 10;
@@ -60,7 +56,7 @@ export async function aiCallsLeft(today: string = todayKey()): Promise<number> {
 
 /**
  * Take `n` slots at once, all or nothing, in one transaction. false = not
- * enough left, nothing taken. Ask uses this with ASK_CALLS_PER_QUESTION.
+ * enough left, nothing taken.
  */
 export async function tryConsumeAiCalls(n: number, today: string = todayKey()): Promise<boolean> {
   if (n <= 0) return true;

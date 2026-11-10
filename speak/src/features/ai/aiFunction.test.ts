@@ -2,13 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { AiFailReason, AiRequest, AiResponse, AiTask } from '../../types/contract';
 
 describe('Netlify AI Function Contract Suite', () => {
-  const ALLOWED_TASKS: readonly AiTask[] = [
-    'expand_seed',
-    'verify_batch',
-    'classify_inbox',
-    'review_recording',
-    'plan_week',
-  ];
+  const ALLOWED_TASKS: readonly AiTask[] = ['expand_seed', 'verify_batch', 'plan_week', 'tell_app'];
 
   const TASK_CONFIG: Record<AiTask, { temperature: number; maxTokens: number }> = {
     expand_seed: {
@@ -19,34 +13,21 @@ describe('Netlify AI Function Contract Suite', () => {
       temperature: 0,
       maxTokens: 2048,
     },
-    classify_inbox: {
-      temperature: 0.4,
-      maxTokens: 2048,
-    },
-    review_recording: {
-      temperature: 0.3,
-      maxTokens: 1024,
-    },
     plan_week: {
       temperature: 0.2,
       maxTokens: 1024,
     },
-    answer_ask: {
-      temperature: 0.4,
-      maxTokens: 4096,
-    },
-    coach_chat: {
+    // v8 Ask box (2026-11-10): the values in netlify/functions/ai.ts. 1,024 tokens, not
+    // fewer: Groq's gpt-oss and Claude Haiku think first, and thinking spends max_tokens.
+    tell_app: {
       temperature: 0.3,
       maxTokens: 1024,
     },
   };
 
-  it('ALLOWED_TASKS includes all 5 system tasks and rejects arbitrary tasks', () => {
-    expect(ALLOWED_TASKS).toContain('expand_seed');
-    expect(ALLOWED_TASKS).toContain('verify_batch');
-    expect(ALLOWED_TASKS).toContain('classify_inbox');
-    expect(ALLOWED_TASKS).toContain('review_recording');
-    expect(ALLOWED_TASKS).toContain('plan_week');
+  it('ALLOWED_TASKS holds the 4 system tasks and rejects arbitrary tasks', () => {
+    expect(ALLOWED_TASKS).toEqual(['expand_seed', 'verify_batch', 'plan_week', 'tell_app']);
+    expect(Object.keys(TASK_CONFIG).sort()).toEqual([...ALLOWED_TASKS].sort());
 
     const isTaskAllowed = (task: string): boolean =>
       (ALLOWED_TASKS as readonly string[]).includes(task);
@@ -54,12 +35,23 @@ describe('Netlify AI Function Contract Suite', () => {
     expect(isTaskAllowed('chat_completion')).toBe(false);
   });
 
-  it('verify_batch is strictly cold (temperature 0) to prevent hallucinated English validation', () => {
-    expect(TASK_CONFIG.verify_batch.temperature).toBe(0);
+  it('the tasks removed on 2026-11-10 are not AI tasks any more', () => {
+    // Each line fails the type check if the name ever comes back into AiTask.
+    // @ts-expect-error answer_ask was removed with the old Ask screen
+    const ask: AiTask = 'answer_ask';
+    // @ts-expect-error coach_chat was removed with the evening voice chat
+    const chat: AiTask = 'coach_chat';
+    // @ts-expect-error review_recording was removed with the old Speak tools
+    const review: AiTask = 'review_recording';
+    // @ts-expect-error classify_inbox was removed with the coach box
+    const inbox: AiTask = 'classify_inbox';
+    for (const task of [ask, chat, review, inbox]) {
+      expect((ALLOWED_TASKS as readonly string[]).includes(task)).toBe(false);
+    }
   });
 
-  it('review_recording has focused 0.3 temperature for consistent coaching', () => {
-    expect(TASK_CONFIG.review_recording.temperature).toBe(0.3);
+  it('verify_batch is strictly cold (temperature 0) to prevent hallucinated English validation', () => {
+    expect(TASK_CONFIG.verify_batch.temperature).toBe(0);
   });
 
   it('Payload size guard rejects payloads exceeding 60,000 chars', () => {
@@ -69,52 +61,25 @@ describe('Netlify AI Function Contract Suite', () => {
     expect(isPayloadWithinLimit('x'.repeat(60_001))).toBe(false);
   });
 
-  it('review_recording requires non-empty transcript payload with minimum 5 words', () => {
-    const isValidReviewPayload = (payload: unknown): { valid: boolean; error?: string } => {
-      if (!payload || typeof payload !== 'object') return { valid: false, error: 'Invalid payload' };
-      const p = payload as { transcript?: string };
-      if (typeof p.transcript !== 'string' || !p.transcript.trim()) {
-        return { valid: false, error: 'AI feedback needs a transcript' };
-      }
-      const words = p.transcript.trim().split(/\s+/).filter(Boolean);
-      if (words.length < 5) {
-        return { valid: false, error: 'Transcript too short for AI review (minimum 5 words)' };
-      }
-      return { valid: true };
-    };
-
-    expect(isValidReviewPayload(null).valid).toBe(false);
-    expect(isValidReviewPayload({}).valid).toBe(false);
-    expect(isValidReviewPayload({ transcript: '' }).valid).toBe(false);
-    expect(isValidReviewPayload({ transcript: '   ' }).valid).toBe(false);
-    expect(isValidReviewPayload({ transcript: 'Three short words' }).valid).toBe(false);
-    expect(isValidReviewPayload({ transcript: 'Three short words' }).error).toContain('minimum 5 words');
-    expect(isValidReviewPayload({ transcript: 'Here is a valid spoken transcript with many words' }).valid).toBe(true);
-  });
-
   it('AiRequest and AiResponse interface shapes conform to the contract', () => {
     const req: AiRequest = {
-      task: 'review_recording',
+      task: 'expand_seed',
       prefer: 'gemini',
-      payload: {
-        transcript: 'Valid transcript text for speaking rep',
-        promptText: 'A prompt',
-        drillTitle: 'Rapid Rep',
-        elapsedSec: 30,
-      },
+      payload: { type: 'word', count: 2 },
     };
 
-    const res: AiResponse<{ summary: string }> = {
+    const res: AiResponse<{ cards: unknown[] }> = {
       ok: true,
-      task: 'review_recording',
+      task: 'expand_seed',
       provider: 'gemini',
-      data: { summary: 'Great pacing' },
+      data: { cards: [] },
     };
 
-    expect(req.task).toBe('review_recording');
+    expect(req.task).toBe('expand_seed');
     expect(res.ok).toBe(true);
     expect(res.provider).toBe('gemini');
   });
+
   it('a verify_batch request can name the providers that must not serve it', () => {
     const req: AiRequest = { task: 'verify_batch', payload: { items: [] }, prefer: 'groq', exclude: ['gemini'] };
     expect(req.exclude).toEqual(['gemini']);
@@ -123,7 +88,7 @@ describe('Netlify AI Function Contract Suite', () => {
   it('every failure reply carries plain words and a reason the phone can act on', () => {
     const reasons: AiFailReason[] = ['no_key', 'bad_reply', 'busy', 'bad_input', 'rate_limited'];
     for (const reason of reasons) {
-      const res: AiResponse = { ok: false, task: 'answer_ask', error: 'Plain words.', reason };
+      const res: AiResponse = { ok: false, task: 'expand_seed', error: 'Plain words.', reason };
       expect(res.ok).toBe(false);
       expect(res.reason).toBe(reason);
       expect(typeof res.error).toBe('string');
